@@ -1,4 +1,6 @@
 ---
+import Button from '../Button/Button.astro';
+
 interface Props {
   title: string;
   eyebrow?: string;
@@ -40,12 +42,7 @@ const {
       </p>
 
       <div class="flex flex-wrap items-center gap-4 pt-2">
-        <a
-          href={primaryCtaHref}
-          class="inline-flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/30 hover:bg-indigo-700 transition"
-        >
-          {primaryCtaLabel}
-        </a>
+        <Button href={primaryCtaHref} label={primaryCtaLabel} variant="primary" size="lg" />
         <a
           href={secondaryCtaHref}
           class="inline-flex items-center text-sm font-semibold text-indigo-700 hover:text-indigo-900"

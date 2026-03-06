@@ -2,10 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Common base typography and layout - applied globally via layout */
+:root {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-size-base: 14px;
+  --font-weight-base: 400;
+  --line-height-base: 24px;
+  --letter-spacing-base: normal;
+  /* Card / banner border radius - match reference */
+  --card-radius: 16px;
+  --card-radius-lg: 24px;
+  /* Card background - use wherever card color is needed */
+  --card-bg: #ebf0ef;
+  /* Primary button color */
+  --btn-primary: #f27e5e;
+  --btn-primary-hover: #e06d4d;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+  font-variant: normal;
+  text-rendering: auto;
+  text-transform: none;
+  text-indent: 0;
+  word-break: normal;
+  white-space: normal;
+  padding: 0;
+  margin: 0;
+  border-width: 0;
   @apply bg-white text-gray-900 antialiased;
 }
 
+/* Common section/layout utilities */
 .page-section {
   @apply py-24;
 }
@@ -14,3 +52,50 @@ body {
   @apply max-w-[1200px] mx-auto px-6 lg:px-12;
 }
 
+/* Base text - inherit common styling */
+.text-base-copy {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+}
+
+/* Card border radius - use for banners, cards, images that should match reference */
+.card-radius {
+  border-radius: var(--card-radius);
+}
+.bg-card {
+  background-color: var(--card-bg);
+}
+.btn-primary {
+  background-color: var(--btn-primary);
+}
+.btn-primary:hover {
+  background-color: var(--btn-primary-hover);
+}
+@media (min-width: 1024px) {
+  .card-radius-lg {
+    border-radius: var(--card-radius-lg);
+  }
+}
+/* Tour banner: image at end with radius matching card right edge */
+.tour-banner-card {
+  border-radius: var(--card-radius);
+}
+@media (min-width: 1024px) {
+  .tour-banner-card {
+    border-radius: var(--card-radius-lg);
+  }
+}
+.tour-banner-card__image-wrap {
+  overflow: hidden;
+  /* Stacked: image below text, round bottom only */
+  border-radius: 0 0 var(--card-radius) var(--card-radius);
+}
+@media (min-width: 1024px) {
+  .tour-banner-card__image-wrap {
+    /* Side by side: image at end, round right edge to match card */
+    border-radius: 0 var(--card-radius-lg) var(--card-radius-lg) 0;
+  }
+}
