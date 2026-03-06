@@ -2,17 +2,17 @@
 import NavItem from "./NavItem.astro";
 
 const navItems = [
-  { label: "Products", href: "#platform" },
+  { label: "Products", href: "#platform", hasDropdown: true },
   { label: "Features", href: "#solutions" },
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#company" },
   { label: "Case Studies", href: "#resources" },
-  { label: "Resources", href: "#resources" },
+  { label: "Resources", href: "#resources", hasDropdown: true },
 ];
 ---
 
-<nav class="sticky top-0 z-50 bg-white">
-  <div class="page-container flex items-center justify-between gap-6 py-5">
+<nav class="sticky top-0 z-50 border-b border-[#E1EBEB] bg-white">
+  <div class="page-container flex items-center justify-between gap-6 py-4">
     <!-- Logo -->
     <a href="/" class="flex items-center gap-2">
       <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-tebra-teal">
@@ -25,15 +25,19 @@ const navItems = [
 
     <!-- Desktop nav -->
     <div class="hidden lg:flex flex-1 items-center justify-center">
-      <div class="flex items-center gap-8 text-sm font-medium text-tebra-teal">
+      <div class="flex items-center gap-7">
         {navItems.map((item) => (
-          <NavItem label={item.label} href={item.href} />
+          <NavItem
+            label={item.label}
+            href={item.href}
+            hasDropdown={item.hasDropdown}
+          />
         ))}
       </div>
     </div>
 
     <!-- Desktop actions -->
-    <div class="hidden lg:flex items-center gap-4 text-xs font-medium text-tebra-teal">
+    <div class="hidden lg:flex items-center gap-4 text-xs font-medium text-tebra-teal-dark">
       <a
         href="#login"
         class="hover:underline"
