@@ -1,5 +1,6 @@
 ---
 import NavItem from "./NavItem.astro";
+import logoTebraRaw from "../../assets/tebra navbar.svg";
 
 const navItems = [
   { label: "Products", href: "#platform", hasDropdown: true },
@@ -9,18 +10,21 @@ const navItems = [
   { label: "Case Studies", href: "#resources" },
   { label: "Resources", href: "#resources", hasDropdown: true },
 ];
+
+const logoTebra =
+  typeof logoTebraRaw === "string" ? logoTebraRaw : logoTebraRaw.src;
 ---
 
 <nav class="sticky top-0 z-50 border-b border-[#E1EBEB] bg-white">
-  <div class="page-container flex items-center justify-between gap-6 py-4">
+  <div class="page-container flex items-center justify-between gap-6 py-3">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2">
-      <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-tebra-teal">
-        <span class="text-white text-lg font-semibold leading-none">T</span>
-      </div>
-      <span class="text-xl font-semibold tracking-tight text-tebra-teal-dark">
-        Tebra
-      </span>
+    <a href="/" class="flex items-center gap-3">
+      <img
+        src={logoTebra}
+        alt="Tebra"
+        class="h-6 w-auto"
+        loading="lazy"
+      />
     </a>
 
     <!-- Desktop nav -->
