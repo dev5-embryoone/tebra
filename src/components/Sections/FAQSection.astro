@@ -1,0 +1,73 @@
+---
+import FAQItem from '../FAQ/FAQItem.astro';
+import { faqItems } from '../../data/faq';
+---
+
+<section id="faq" class="bg-[#FBF9F4] py-16 lg:py-24">
+  <div class="page-container">
+    <p class="text-sm font-medium uppercase tracking-wider text-gray-500">FAQs</p>
+    <h2 class="mt-1 text-3xl font-semibold tracking-tight text-tebra-800 lg:text-4xl">
+      Frequently asked questions
+    </h2>
+
+    <div class="mt-8 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+      {faqItems.map((item, index) => (
+        <FAQItem
+          itemId={item.id}
+          question={item.question}
+          answer={item.answer}
+          isOpen={index === 0}
+        />
+      ))}
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <button
+        type="button"
+        id="faq-show-more"
+        class="rounded-full border-2 border-gray-900 px-6 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+      >
+        Show more
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const triggers = document.querySelectorAll<HTMLButtonElement>('[data-faq-trigger]');
+    triggers.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('is-open');
+        if (isOpen) {
+          item.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    const showMoreBtn = document.getElementById('faq-show-more');
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener('click', () => {
+        const items = document.querySelectorAll('.faq-item');
+        const allOpen = Array.from(items).every((el) => el.classList.contains('is-open'));
+        items.forEach((item, i) => {
+          const trigger = item.querySelector<HTMLButtonElement>('[data-faq-trigger]');
+          if (allOpen) {
+            item.classList.remove('is-open');
+            trigger?.setAttribute('aria-expanded', 'false');
+          } else {
+            item.classList.add('is-open');
+            trigger?.setAttribute('aria-expanded', 'true');
+          }
+        });
+        showMoreBtn.textContent = allOpen ? 'Show more' : 'Show less';
+      });
+    }
+  });
+</script>

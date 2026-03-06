@@ -6,7 +6,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: [
+          '"Inter"',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Helvetica',
+          'Arial',
+          'sans-serif',
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+        ],
+      },
+      fontSize: {
+        base: ['14px', { lineHeight: '24px' }],
       },
       maxWidth: {
         content: '1200px',
@@ -27,6 +40,11 @@ export default {
           700: '#115758',
           800: '#0C3D3F',
           900: '#082A2C',
+        },
+        card: '#ebf0ef',
+        btn: {
+          primary: '#f27e5e',
+          'primary-hover': '#e06d4d',
         },
       },
     },

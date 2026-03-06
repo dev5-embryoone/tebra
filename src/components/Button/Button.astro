@@ -1,0 +1,56 @@
+---
+interface Props {
+  /** Button label - only prop you need to change for reuse */
+  label: string;
+  /** primary (filled) or secondary (outline) or outline-light (white outline on dark) */
+  variant?: 'primary' | 'secondary' | 'outline-light';
+  /** If set, renders as <a href="...">; otherwise <button> */
+  href?: string;
+  /** Button type when not a link */
+  type?: 'button' | 'submit';
+  /** Size affects padding and text */
+  size?: 'sm' | 'md' | 'lg';
+  /** Extra CSS classes */
+  class?: string;
+}
+
+const {
+  label,
+  variant = 'primary',
+  href,
+  type = 'button',
+  size = 'md',
+  class: className = '',
+} = Astro.props as Props;
+
+const base =
+  'inline-flex items-center justify-center font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+
+const variants = {
+  primary:
+    'bg-btn-primary text-white shadow-sm hover:bg-btn-primary-hover focus:ring-btn-primary',
+  secondary:
+    'border-2 border-[#CCCCCC] bg-white text-[#333333] hover:border-gray-400 hover:bg-gray-50 focus:ring-gray-300',
+  /** For use on dark backgrounds (e.g. CTA strip) */
+  'outline-light':
+    'border-2 border-white bg-transparent text-white hover:bg-white/10 focus:ring-white',
+};
+
+const sizes = {
+  sm: 'rounded-full px-6 py-2.5 text-sm',
+  md: 'rounded-xl px-6 py-3.5 text-base',
+  lg: 'rounded-full px-6 py-3 text-sm shadow-lg shadow-btn-primary/30',
+};
+
+const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`.trim();
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    {label}
+  </a>
+) : (
+  <button type={type} class={classes}>
+    {label}
+  </button>
+)}

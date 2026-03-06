@@ -1,9 +1,13 @@
 ---
+import Button from '../Button/Button.astro';
+
 interface Props {
   title: string;
   description: string;
   primaryCtaLabel: string;
   primaryCtaHref?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
 }
 
 const {
@@ -11,29 +15,27 @@ const {
   description,
   primaryCtaLabel,
   primaryCtaHref = "#demo",
+  secondaryCtaLabel,
+  secondaryCtaHref = "#",
 } = Astro.props as Props;
 ---
 
-<section id="demo" class="page-section bg-white">
-  <div class="page-container">
-    <div class="overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-14 text-center text-white md:px-12 lg:px-20">
-      <div class="mx-auto max-w-2xl space-y-4">
-        <h2 class="text-3xl font-semibold tracking-tight lg:text-4xl">
-          {title}
-        </h2>
-        <p class="text-base text-indigo-100 md:text-lg">
-          {description}
-        </p>
-        <div class="pt-2">
-          <a
-            href={primaryCtaHref}
-            class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-50 transition"
-          >
-            {primaryCtaLabel}
-          </a>
-        </div>
+<!-- CTA above footer: dark teal #004d4d, centered heading + two buttons -->
+<section id="demo" class="bg-[#004d4d] text-white">
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-12 py-16 md:py-20 text-center">
+    <div class="mx-auto max-w-2xl space-y-4">
+      <h2 class="text-[28px] md:text-[32px] lg:text-[36px] font-semibold tracking-tight text-white leading-tight">
+        {title}
+      </h2>
+      <p class="text-base md:text-lg text-white/90 leading-relaxed">
+        {description}
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <Button href={primaryCtaHref} label={primaryCtaLabel} variant="primary" size="lg" class="rounded-full" />
+        {secondaryCtaLabel && (
+          <Button href={secondaryCtaHref} label={secondaryCtaLabel} variant="outline-light" size="lg" class="rounded-full" />
+        )}
       </div>
     </div>
   </div>
 </section>
-
