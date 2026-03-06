@@ -1,0 +1,21 @@
+---
+import { logos } from "../../data/logos";
+---
+
+<section class="page-section border-y border-gray-100 bg-white">
+  <div class="page-container">
+    <p class="text-center text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
+      Trusted by 150,000+ providers
+    </p>
+    <div class="mt-8 grid grid-cols-2 items-center justify-items-center gap-8 md:grid-cols-4 lg:grid-cols-6">
+      {logos.map((logo) => (
+        <div class="flex h-10 items-center grayscale">
+          <span class="text-xs font-medium uppercase tracking-wide text-gray-400">
+            {logo.name}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,104 @@
+---
+interface Props {
+  title: string;
+  eyebrow?: string;
+  subtitle: string;
+  supporting?: string;
+  primaryCtaLabel: string;
+  primaryCtaHref?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+}
+
+const {
+  title,
+  eyebrow = "EHR+ for private practices",
+  subtitle,
+  supporting = "We safeguard your practice with full security and HIPAA compliance.",
+  primaryCtaLabel,
+  primaryCtaHref = "#demo",
+  secondaryCtaLabel = "Take a quick tour",
+  secondaryCtaHref = "#tour",
+} = Astro.props as Props;
+---
+
+<section class="page-section bg-gradient-to-b from-white to-gray-50">
+  <div class="page-container grid gap-12 lg:grid-cols-2 lg:items-center">
+    <div class="space-y-6">
+      <div class="inline-flex items-center gap-2 rounded-full bg-tebra-50 px-3 py-1 text-xs font-medium text-tebra-700">
+        <span class="h-1.5 w-1.5 rounded-full bg-tebra-500" />
+        <span>{eyebrow}</span>
+      </div>
+      <h1 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+        {title}
+      </h1>
+      <p class="max-w-xl text-lg text-gray-600">
+        {subtitle}
+      </p>
+      <p class="max-w-xl text-sm text-gray-500">
+        {supporting}
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <a
+          href={primaryCtaHref}
+          class="inline-flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/30 hover:bg-indigo-700 transition"
+        >
+          {primaryCtaLabel}
+        </a>
+        <a
+          href={secondaryCtaHref}
+          class="inline-flex items-center text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+        >
+          {secondaryCtaLabel}
+          <svg
+            class="ml-1.5 h-4 w-4"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 8h7M8 4l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div
+        class="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+      >
+        <div class="h-64 w-full bg-gradient-to-br from-tebra-500 via-indigo-500 to-purple-600 opacity-90 sm:h-80 lg:h-96" />
+        <div class="pointer-events-none absolute inset-x-6 bottom-6 rounded-2xl bg-white/90 p-4 shadow-lg backdrop-blur">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-tebra-600">
+                EHR+ overview
+              </p>
+              <p class="mt-1 text-sm font-medium text-gray-900">
+                Take a quick tour of Tebra&apos;s EHR+ platform
+              </p>
+            </div>
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white">
+              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path
+                  d="M6 4.667L11 8l-5 3.333V4.667z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pointer-events-none absolute -left-6 -top-6 hidden h-16 w-16 rounded-full border border-dashed border-tebra-300 md:block" />
+      <div class="pointer-events-none absolute -right-4 bottom-10 hidden h-8 w-8 rounded-full bg-tebra-200 md:block" />
+    </div>
+  </div>
+</section>
+

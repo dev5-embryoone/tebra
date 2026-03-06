@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  primaryCtaLabel: string;
+  primaryCtaHref?: string;
+}
+
+const {
+  title,
+  description,
+  primaryCtaLabel,
+  primaryCtaHref = "#demo",
+} = Astro.props as Props;
+---
+
+<section id="demo" class="page-section bg-white">
+  <div class="page-container">
+    <div class="overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-14 text-center text-white md:px-12 lg:px-20">
+      <div class="mx-auto max-w-2xl space-y-4">
+        <h2 class="text-3xl font-semibold tracking-tight lg:text-4xl">
+          {title}
+        </h2>
+        <p class="text-base text-indigo-100 md:text-lg">
+          {description}
+        </p>
+        <div class="pt-2">
+          <a
+            href={primaryCtaHref}
+            class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-indigo-700 shadow-sm hover:bg-indigo-50 transition"
+          >
+            {primaryCtaLabel}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

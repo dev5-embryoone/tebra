@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-white text-gray-900 antialiased;
+}
+
+.page-section {
+  @apply py-24;
+}
+
+.page-container {
+  @apply max-w-[1200px] mx-auto px-6 lg:px-12;
+}
+

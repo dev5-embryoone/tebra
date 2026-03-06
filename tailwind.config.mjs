@@ -1,0 +1,32 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      maxWidth: {
+        content: '1200px',
+      },
+      colors: {
+        tebra: {
+          50: '#F2FBF9',
+          100: '#D9F4ED',
+          200: '#B3E9DB',
+          300: '#7FD8C4',
+          400: '#4AC2A6',
+          500: '#1B8A7E',
+          600: '#15706A',
+          700: '#115758',
+          800: '#0C3D3F',
+          900: '#082A2C',
+        },
+      },
+    },
+  },
+  plugins: [],
+};
+

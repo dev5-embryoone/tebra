@@ -1,17 +1,30 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/Hero/HeroSection.astro";
+import LogosSection from "../components/Sections/LogosSection.astro";
+import FeaturesSection from "../components/Sections/FeaturesSection.astro";
+import PlatformSection from "../components/Sections/PlatformSection.astro";
+import TestimonialsSection from "../components/Sections/TestimonialsSection.astro";
+import CTASection from "../components/Sections/CTASection.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Run your entire practice with one EHR+ platform | Tebra"
+  description="Tebra’s EHR+ platform connects care, billing, scheduling, and more. Built-in AI speeds up notes, handles reviews, and automates repetitive admin work."
+>
+  <HeroSection
+    title="Run your entire practice with one EHR+ platform"
+    subtitle="Tebra’s EHR+ platform connects care, billing, scheduling, and more. Built‑in AI speeds up notes, handles reviews, and automates repetitive admin work."
+    primaryCtaLabel="Get a demo"
+  />
+  <LogosSection />
+  <FeaturesSection />
+  <PlatformSection />
+  <TestimonialsSection />
+  <CTASection
+    title="See Tebra&apos;s EHR+ platform in action"
+    description="Take a guided tour of how Tebra brings your EHR, billing, scheduling, and patient experience together in one connected platform."
+    primaryCtaLabel="Get a personalized demo"
+  />
+</BaseLayout>
+
