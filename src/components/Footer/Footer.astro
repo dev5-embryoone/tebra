@@ -1,54 +1,55 @@
 ---
 import logoSrc from '../../assets/logo_tebra.ad466dee.svg?url';
+import FooterColumn from './FooterColumn.astro';
 
 const whoWeAreFor = [
-  "Independent practices",
-  "New practices",
-  "Billing payments",
-  "Specialties",
-  "Patients",
+  { label: "Independent practices", href: "#" },
+  { label: "New practices", href: "#" },
+  { label: "Billing payments", href: "#" },
+  { label: "Specialties", href: "#" },
+  { label: "Patients", href: "#" },
 ];
 
 const products = [
-  "Product Tour",
-  "Patient Experience",
-  "EHR",
-  "Billing payments",
-  "Data & insights",
-  "Find a doctor",
-  "Pricing",
-  "AI Smart Staff",
+  { label: "Product Tour", href: "#" },
+  { label: "Patient Experience", href: "#" },
+  { label: "EHR", href: "#" },
+  { label: "Billing payments", href: "#" },
+  { label: "Data & insights", href: "#" },
+  { label: "Find a doctor", href: "#" },
+  { label: "Pricing", href: "#" },
+  { label: "AI Smart Staff", href: "#" },
 ];
 
 const resources = [
-  "The Intake",
-  "Practice Efficiency Grader",
-  "Case studies",
-  "Blog",
-  "Partner Marketplace",
-  "Newsroom",
-  "Help Center",
-  "Quality Programs & Regulatory Support",
+  { label: "The Intake", href: "#" },
+  { label: "Practice Efficiency Grader", href: "#" },
+  { label: "Case studies", href: "#" },
+  { label: "Blog", href: "#" },
+  { label: "Partner Marketplace", href: "#" },
+  { label: "Newsroom", href: "#" },
+  { label: "Help Center", href: "#" },
+  { label: "Quality Programs & Regulatory Support", href: "#" },
 ];
 
 const about = [
-  "Our Story",
-  "Leadership",
-  "Investors",
-  "Partners",
-  "Billing payments",
-  "Culture & Careers",
-  "DEI",
+  { label: "Our Story", href: "#" },
+  { label: "Leadership", href: "#" },
+  { label: "Investors", href: "#" },
+  { label: "Partners", href: "#" },
+  { label: "Billing payments", href: "#" },
+  { label: "Culture & Careers", href: "#" },
+  { label: "DEI", href: "#" },
 ];
 
 const whyTebra = [
-  "Attract More Patients",
-  "Manage Your Reputation",
-  "Enhance Your Patient Experience",
-  "Automate Your Practice",
-  "Deliver Better Care",
-  "Get Paid Faster",
-  "Gain Deeper Insights",
+  { label: "Attract More Patients", href: "#" },
+  { label: "Manage Your Reputation", href: "#" },
+  { label: "Enhance Your Patient Experience", href: "#" },
+  { label: "Automate Your Practice", href: "#" },
+  { label: "Deliver Better Care", href: "#" },
+  { label: "Get Paid Faster", href: "#" },
+  { label: "Gain Deeper Insights", href: "#" },
 ];
 ---
 
@@ -56,60 +57,11 @@ const whyTebra = [
   <!-- Upper section: 5 columns - exact match to Tebra footer -->
   <div class="max-w-[1200px] mx-auto px-6 lg:px-12 pt-14 pb-10">
     <div class="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-      <div>
-        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">Who We're For</h3>
-        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
-          {whoWeAreFor.map((item) => (
-            <li>
-              <a href="#" class="hover:text-white transition-colors">{item}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">Products</h3>
-        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
-          {products.map((item) => (
-            <li>
-              <a href="#" class="hover:text-white transition-colors">{item}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">Resources</h3>
-        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
-          {resources.map((item) => (
-            <li>
-              <a href="#" class="hover:text-white transition-colors">{item}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">About</h3>
-        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
-          {about.map((item) => (
-            <li>
-              <a href="#" class="hover:text-white transition-colors">{item}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">Why Tebra</h3>
-        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
-          {whyTebra.map((item) => (
-            <li>
-              <a href="#" class="hover:text-white transition-colors">{item}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <FooterColumn title="Who We're For" links={whoWeAreFor} />
+      <FooterColumn title="Products" links={products} />
+      <FooterColumn title="Resources" links={resources} />
+      <FooterColumn title="About" links={about} />
+      <FooterColumn title="Why Tebra" links={whyTebra} />
     </div>
   </div>
 

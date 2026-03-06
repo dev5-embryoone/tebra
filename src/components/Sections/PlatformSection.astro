@@ -1,18 +1,16 @@
 ---
 import PlatformFeature from "./PlatformFeature.astro";
+import SectionHeader from "../SectionHeader/SectionHeader.astro";
 import { platformItems } from "../../data/platform";
 ---
 
 <section id="platform" class="page-section bg-white">
   <div class="page-container space-y-14 lg:space-y-20">
-    <div class="max-w-2xl">
-      <h2 class="text-3xl font-semibold tracking-tight text-gray-900 lg:text-4xl">
-        Software solutions powering your practice
-      </h2>
-      <p class="mt-4 text-lg text-gray-600">
-        One platform. Every workflow. Built for private practices.
-      </p>
-    </div>
+    <SectionHeader
+      title="Software solutions powering your practice"
+      description="One platform. Every workflow. Built for private practices."
+      class="max-w-2xl"
+    />
 
     {platformItems.map((item, index) => (
       <PlatformFeature

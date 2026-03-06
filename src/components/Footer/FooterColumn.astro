@@ -1,0 +1,21 @@
+---
+interface Props {
+  /** Column heading */
+  title: string;
+  /** List of links { label, href } */
+  links: Array<{ label: string; href: string }>;
+}
+
+const { title, links } = Astro.props as Props;
+---
+
+<div>
+  <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">{title}</h3>
+  <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
+    {links.map((item) => (
+      <li>
+        <a href={item.href} class="hover:text-white transition-colors">{item.label}</a>
+      </li>
+    ))}
+  </ul>
+</div>

@@ -1,0 +1,47 @@
+---
+interface Props {
+  /** Link label */
+  label: string;
+  /** URL (opens in new tab when external is true) */
+  href: string;
+  /** Open in new tab with rel="noopener noreferrer" */
+  external?: boolean;
+  /** 'tebra' (tebra-700), 'gray' (gray-700 on light), 'white' (for dark/card backgrounds) */
+  variant?: 'tebra' | 'gray' | 'white';
+  /** Extra CSS classes */
+  class?: string;
+}
+
+const {
+  label,
+  href,
+  external = true,
+  variant = 'tebra',
+  class: className = '',
+} = Astro.props as Props;
+
+const variantClasses = {
+  tebra:
+    'text-tebra-700 hover:text-tebra-600 focus:ring-tebra-500',
+  gray:
+    'text-gray-700 hover:text-gray-900 group-hover:text-gray-900',
+  white:
+    'text-white',
+};
+
+const linkClass = `inline-flex items-center gap-1.5 text-base font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 rounded ${variantClasses[variant]} ${className}`.trim();
+const iconClass = variant === 'gray' ? 'text-gray-400 group-hover:text-tebra-600' : 'text-current';
+---
+
+<a
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  class={linkClass}
+>
+  {label}
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class={`w-4 h-4 flex-shrink-0 ${iconClass}`} aria-hidden="true">
+    <path d="M8.22 6.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L11.94 11H4.75A.75.75 0 0 1 4 10.25v-4.5a.75.75 0 0 1 1.5 0v5.69l2.22-2.22a.75.75 0 0 1 1.06 0Z" />
+    <path d="M2.5 3.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5H4.09l6.22 6.22a.75.75 0 1 1-1.06 1.06L3 4.56v2.69a.75.75 0 0 1-1.5 0v-4.5Z" />
+  </svg>
+</a>

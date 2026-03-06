@@ -1,18 +1,16 @@
 ---
 import FeatureCard from "../Cards/FeatureCard.astro";
+import SectionHeader from "../SectionHeader/SectionHeader.astro";
 import { features } from "../../data/features";
 ---
 
 <section id="solutions" class="page-section bg-gray-50">
   <div class="page-container">
-    <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-3xl font-semibold tracking-tight text-gray-900 lg:text-4xl">
-        Everything you need, finally connected
-      </h2>
-      <p class="mt-4 text-lg text-gray-600">
-        Tebra brings your EHR, billing, scheduling, and reputation tools together in one EHR+ platform, so every workflow talks to the next.
-      </p>
-    </div>
+    <SectionHeader
+      title="Everything you need, finally connected"
+      description="Tebra brings your EHR, billing, scheduling, and reputation tools together in one EHR+ platform, so every workflow talks to the next."
+      centered
+    />
 
     <div class="mt-10 grid gap-10 md:grid-cols-2 lg:mt-12 lg:grid-cols-3">
       {features.map((feature) => (

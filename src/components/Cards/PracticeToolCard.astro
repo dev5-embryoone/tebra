@@ -1,0 +1,57 @@
+---
+import type { PracticeTool } from '../../data/practiceTools';
+
+interface Props {
+  tool: PracticeTool;
+  imageSrc: string;
+}
+
+const { tool, imageSrc } = Astro.props as Props;
+
+const cardVariants = {
+  white:
+    'bg-white text-gray-900 shadow-md border border-gray-100 hover:border-gray-200 focus:ring-gray-900',
+  coral:
+    'bg-btn-primary text-white shadow-md border border-btn-primary hover:bg-btn-primary-hover focus:ring-btn-primary',
+  teal:
+    'bg-tebra-700 text-white shadow-md border border-tebra-700 hover:bg-tebra-600 focus:ring-tebra-700',
+};
+
+const descClass = tool.variant === 'white' ? 'text-gray-600' : 'text-white/95';
+const iconClass = tool.variant === 'white' ? 'text-gray-700 group-hover:text-gray-900' : 'text-white';
+---
+
+<a
+  href={tool.ctaHref}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`
+    group relative flex min-h-[320px] flex-col overflow-hidden rounded-2xl p-8 transition-all duration-300 ease-out lg:min-h-[360px] lg:p-10
+    hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2
+    ${cardVariants[tool.variant]}
+  `}
+>
+  <h3 class="text-xl font-semibold tracking-tight lg:text-[22px]">
+    {tool.title}
+  </h3>
+  <p class={`mt-4 flex-1 text-base leading-relaxed lg:text-[17px] ${descClass}`}>
+    {tool.description}
+  </p>
+  <span class="mt-5 inline-flex items-center gap-1.5 text-base font-semibold">
+    {tool.ctaLabel}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class={`w-4 h-4 flex-shrink-0 ${iconClass}`} aria-hidden="true">
+      <path d="M8.22 6.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L11.94 11H4.75A.75.75 0 0 1 4 10.25v-4.5a.75.75 0 0 1 1.5 0v5.69l2.22-2.22a.75.75 0 0 1 1.06 0Z" />
+      <path d="M2.5 3.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5H4.09l6.22 6.22a.75.75 0 1 1-1.06 1.06L3 4.56v2.69a.75.75 0 0 1-1.5 0v-4.5Z" />
+    </svg>
+  </span>
+  <div class="absolute right-6 bottom-6 flex h-24 w-24 items-center justify-center overflow-hidden rounded-lg opacity-90 sm:h-28 sm:w-28 lg:right-8 lg:bottom-8 lg:h-32 lg:w-32" aria-hidden="true">
+    <img
+      src={imageSrc}
+      alt=""
+      width={128}
+      height={128}
+      class="h-24 w-24 object-contain sm:h-28 sm:w-28 lg:h-32 lg:w-32"
+      loading="lazy"
+    />
+  </div>
+</a>

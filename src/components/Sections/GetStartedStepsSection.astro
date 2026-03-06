@@ -1,22 +1,21 @@
 ---
 import { getStartedSteps } from '../../data/steps';
 import Button from '../Button/Button.astro';
+import SectionHeader from '../SectionHeader/SectionHeader.astro';
 ---
 
 <section id="get-started" class="bg-[#F5F7F8] py-16 lg:py-24">
   <div class="page-container">
     <div class="grid gap-10 lg:grid-cols-[1fr,1fr] lg:items-center lg:gap-12">
-      <!-- Left column: centered text -->
       <div class="text-center lg:text-left">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[#777777]">
-          Step-by-step process
-        </p>
-        <h2 class="mt-2 text-3xl font-bold leading-tight text-[#00566C] lg:text-4xl">
-          Get started with Tebra in 3 easy steps
-        </h2>
-        <p class="mt-4 mx-auto max-w-lg text-base leading-relaxed text-[#777777] lg:mx-0">
-          Simple, supported, and designed to fit the way you work. From setup to go-live, we'll guide you every step so your practice sees value from day one.
-        </p>
+        <SectionHeader
+          eyebrow="Step-by-step process"
+          title="Get started with Tebra in 3 easy steps"
+          description="Simple, supported, and designed to fit the way you work. From setup to go-live, we'll guide you every step so your practice sees value from day one."
+          eyebrowClass="text-[#777777]"
+          titleClass="font-bold text-[#00566C]"
+          descriptionClass="text-base text-[#777777] mx-auto max-w-lg lg:mx-0"
+        />
         <div class="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
           <Button href="#demo" label="Get started today" variant="primary" size="md" />
           <Button href="#get-started" label="See how it works" variant="secondary" size="md" />

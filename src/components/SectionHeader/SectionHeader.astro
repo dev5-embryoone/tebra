@@ -1,0 +1,51 @@
+---
+interface Props {
+  /** Optional small uppercase label above the title */
+  eyebrow?: string;
+  /** Main section heading */
+  title: string;
+  /** Optional description paragraph below title */
+  description?: string;
+  /** Center-align text (for sections like Features, Testimonials) */
+  centered?: boolean;
+  /** Extra class for the wrapper (e.g. max-w-2xl) */
+  class?: string;
+  /** Extra class for the title (e.g. text-tebra-800, text-[#00566C]) */
+  titleClass?: string;
+  /** Extra class for eyebrow */
+  eyebrowClass?: string;
+  /** Extra class for description */
+  descriptionClass?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  centered = false,
+  class: className = '',
+  titleClass = 'text-gray-900',
+  eyebrowClass = 'text-gray-500',
+  descriptionClass = '',
+} = Astro.props as Props;
+
+const wrapperClass = `${centered ? 'mx-auto max-w-2xl text-center' : ''} ${className}`.trim();
+const eyebrowStyles = `text-xs font-semibold uppercase tracking-widest ${eyebrowClass}`;
+const titleMarginClass = eyebrow ? (centered ? 'mt-3' : 'mt-2') : '';
+---
+
+<div class={wrapperClass}>
+  {eyebrow && (
+    <p class={eyebrowStyles}>
+      {eyebrow}
+    </p>
+  )}
+  <h2 class={`${titleMarginClass} text-3xl font-semibold tracking-tight lg:text-4xl ${titleClass}`}>
+    {title}
+  </h2>
+  {description && (
+    <p class={`mt-4 text-lg text-gray-600 leading-relaxed ${descriptionClass}`.trim()}>
+      {description}
+    </p>
+  )}
+</div>

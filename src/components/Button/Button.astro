@@ -2,8 +2,8 @@
 interface Props {
   /** Button label - only prop you need to change for reuse */
   label: string;
-  /** primary (filled) or secondary (outline) or outline-light (white outline on dark) */
-  variant?: 'primary' | 'secondary' | 'outline-light';
+  /** primary (filled) or secondary (outline) or outline-light (white on dark) or outline-dark (dark border) */
+  variant?: 'primary' | 'secondary' | 'outline-light' | 'outline-dark';
   /** If set, renders as <a href="...">; otherwise <button> */
   href?: string;
   /** Button type when not a link */
@@ -12,6 +12,8 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
   /** Extra CSS classes */
   class?: string;
+  /** Optional id for the element (e.g. for JS hooks) */
+  id?: string;
 }
 
 const {
@@ -21,6 +23,7 @@ const {
   type = 'button',
   size = 'md',
   class: className = '',
+  id,
 } = Astro.props as Props;
 
 const base =
@@ -34,6 +37,9 @@ const variants = {
   /** For use on dark backgrounds (e.g. CTA strip) */
   'outline-light':
     'border-2 border-white bg-transparent text-white hover:bg-white/10 focus:ring-white',
+  /** Dark border, hover fill (e.g. FAQ Show more) */
+  'outline-dark':
+    'border-2 border-gray-900 bg-transparent text-gray-900 hover:bg-gray-900 hover:text-white focus:ring-gray-900',
 };
 
 const sizes = {
@@ -46,11 +52,11 @@ const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`.trim(
 ---
 
 {href ? (
-  <a href={href} class={classes}>
+  <a id={id} href={href} class={classes}>
     {label}
   </a>
 ) : (
-  <button type={type} class={classes}>
+  <button id={id} type={type} class={classes}>
     {label}
   </button>
 )}
