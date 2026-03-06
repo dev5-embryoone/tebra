@@ -1,64 +1,151 @@
 ---
+import logoSrc from '../../assets/logo_tebra.ad466dee.svg';
+
+const whoWeAreFor = [
+  "Independent practices",
+  "New practices",
+  "Billing payments",
+  "Specialties",
+  "Patients",
+];
+
+const products = [
+  "Product Tour",
+  "Patient Experience",
+  "EHR",
+  "Billing payments",
+  "Data & insights",
+  "Find a doctor",
+  "Pricing",
+  "AI Smart Staff",
+];
+
+const resources = [
+  "The Intake",
+  "Practice Efficiency Grader",
+  "Case studies",
+  "Blog",
+  "Partner Marketplace",
+  "Newsroom",
+  "Help Center",
+  "Quality Programs & Regulatory Support",
+];
+
+const about = [
+  "Our Story",
+  "Leadership",
+  "Investors",
+  "Partners",
+  "Billing payments",
+  "Culture & Careers",
+  "DEI",
+];
+
+const whyTebra = [
+  "Attract More Patients",
+  "Manage Your Reputation",
+  "Enhance Your Patient Experience",
+  "Automate Your Practice",
+  "Deliver Better Care",
+  "Get Paid Faster",
+  "Gain Deeper Insights",
+];
 ---
 
-<footer id="company" class="border-t border-gray-100 bg-gray-50">
-  <div class="page-container py-12 lg:py-16">
-    <div class="grid gap-10 md:grid-cols-3 lg:grid-cols-5">
+<footer class="bg-tebra-800 text-white">
+  <!-- Upper section: 5 columns - exact match to Tebra footer -->
+  <div class="max-w-[1200px] mx-auto px-6 lg:px-12 pt-14 pb-10">
+    <div class="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       <div>
-        <h3 class="text-sm font-semibold text-gray-900">Product</h3>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="#platform" class="hover:text-gray-900">EHR+ platform</a></li>
-          <li><a href="#solutions" class="hover:text-gray-900">Scheduling</a></li>
-          <li><a href="#solutions" class="hover:text-gray-900">Billing &amp; claims</a></li>
-          <li><a href="#solutions" class="hover:text-gray-900">Reputation</a></li>
+        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">Who We're For</h3>
+        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
+          {whoWeAreFor.map((item) => (
+            <li>
+              <a href="#" class="hover:text-white transition-colors">{item}</a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold text-gray-900">Solutions</h3>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="#solutions" class="hover:text-gray-900">Private practices</a></li>
-          <li><a href="#solutions" class="hover:text-gray-900">Billing companies</a></li>
-          <li><a href="#solutions" class="hover:text-gray-900">Specialty care</a></li>
+        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">Products</h3>
+        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
+          {products.map((item) => (
+            <li>
+              <a href="#" class="hover:text-white transition-colors">{item}</a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold text-gray-900">Resources</h3>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="#resources" class="hover:text-gray-900">The Intake</a></li>
-          <li><a href="#resources" class="hover:text-gray-900">Practice tools</a></li>
-          <li><a href="#resources" class="hover:text-gray-900">Case studies</a></li>
+        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">Resources</h3>
+        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
+          {resources.map((item) => (
+            <li>
+              <a href="#" class="hover:text-white transition-colors">{item}</a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold text-gray-900">Company</h3>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="#company" class="hover:text-gray-900">About</a></li>
-          <li><a href="#company" class="hover:text-gray-900">Careers</a></li>
-          <li><a href="#company" class="hover:text-gray-900">Press</a></li>
+        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">About</h3>
+        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
+          {about.map((item) => (
+            <li>
+              <a href="#" class="hover:text-white transition-colors">{item}</a>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div>
-        <h3 class="text-sm font-semibold text-gray-900">Legal</h3>
-        <ul class="mt-4 space-y-2 text-sm text-gray-600">
-          <li><a href="#" class="hover:text-gray-900">Privacy</a></li>
-          <li><a href="#" class="hover:text-gray-900">Terms</a></li>
-          <li><a href="#" class="hover:text-gray-900">HIPAA &amp; security</a></li>
+        <h3 class="text-[13px] font-bold uppercase tracking-wide text-white mb-4">Why Tebra</h3>
+        <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
+          {whyTebra.map((item) => (
+            <li>
+              <a href="#" class="hover:text-white transition-colors">{item}</a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
+  </div>
 
-    <div class="mt-10 flex flex-col gap-4 border-t border-gray-100 pt-6 md:flex-row md:items-center md:justify-between">
-      <p class="text-xs text-gray-500">
-        &copy; {new Date().getFullYear()} Tebra clone. All trademarks are the property of their respective owners.
-      </p>
-      <p class="text-xs text-gray-500">
-        Built with Astro &amp; Tailwind CSS.
-      </p>
+  <!-- Bottom section: logo + Contact Us + address/phone | copyright + legal -->
+  <div class="border-t border-white/15">
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-12 py-6 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+      <div class="flex flex-col gap-3">
+        <a href="/" class="inline-block w-[100px] h-[24px] shrink-0" aria-label="Tebra homepage">
+          <img
+            src={logoSrc}
+            alt=""
+            width="100"
+            height="24"
+            class="h-6 w-auto brightness-0 invert block"
+          />
+        </a>
+        <p class="text-[11px] font-bold uppercase tracking-wide text-white/90 mt-1">Contact Us</p>
+        <address class="text-[13px] text-white/90 not-italic leading-[1.5]">
+          1111 Bayside Drive<br />
+          Suite 270<br />
+          Corona Del Mar, CA 92625
+        </address>
+        <a href="tel:8669383272" class="text-[13px] text-white/90 hover:text-white transition-colors">
+          (866) 93-TEBRA (83272)
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-1 items-start md:items-end md:text-right">
+        <p class="text-[13px] text-white/90">
+          Copyright © 2026 Tebra Technologies, Inc
+        </p>
+        <div class="flex flex-wrap gap-x-4 gap-y-1 text-[13px]">
+          <a href="#" class="text-white/90 hover:text-white transition-colors">Terms &amp; Conditions</a>
+          <a href="#" class="text-white/90 hover:text-white transition-colors">Privacy Policy</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
-
