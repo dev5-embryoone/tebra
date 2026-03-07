@@ -21,14 +21,14 @@ const products = [
 ];
 
 const resources = [
-  "The Intake",
-  "Practice Efficiency Grader",
-  "Case studies",
-  "Blog",
-  "Partner Marketplace",
-  "Newsroom",
-  "Help Center",
-  "Quality Programs & Regulatory Support",
+  { label: "The Intake", href: "#" },
+  { label: "Practice Efficiency Grader", href: "#" },
+  { label: "Case studies", href: "/case-studies" },
+  { label: "Blog", href: "#" },
+  { label: "Partner Marketplace", href: "#" },
+  { label: "Newsroom", href: "#" },
+  { label: "Help Center", href: "#" },
+  { label: "Quality Programs & Regulatory Support", href: "#" },
 ];
 
 const about = [
@@ -83,7 +83,7 @@ const whyTebra = [
         <ul class="space-y-[11px] text-[13px] font-normal text-white/90">
           {resources.map((item) => (
             <li>
-              <a href="#" class="hover:text-white transition-colors">{item}</a>
+              <a href={item.href} class="hover:text-white transition-colors">{item.label}</a>
             </li>
           ))}
         </ul>

@@ -1,0 +1,3 @@
+# Prevent search engines from indexing this Strapi host (admin + API)
+User-Agent: *
+Disallow: /
