@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCaseStudies, getCaseStudyBySlug } from "../../lib/strapi";
+
+export async function getStaticPaths() {
+  const caseStudies = await getCaseStudies();
+  return caseStudies.map((cs) => ({ params: { slug: cs.slug } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect("/case-studies");
+const caseStudy = await getCaseStudyBySlug(slug);
+if (!caseStudy) return Astro.redirect("/case-studies");
+---
+
+<BaseLayout
+  title={`${caseStudy.company} - Case Study | Tebra`}
+  description={caseStudy.quote}
+>
+  <section class="page-section bg-tebra-hero-bg">
+    <div class="page-container max-w-3xl">
+      <a href="/case-studies" class="inline-flex items-center gap-1.5 text-sm font-semibold text-tebra-600 hover:text-tebra-700 mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        All case studies
+      </a>
+      <span class="text-xs font-semibold uppercase tracking-wider text-tebra-600">{caseStudy.product}</span>
+      <h1 class="mt-2 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
+        {caseStudy.title}
+      </h1>
+      <p class="mt-4 text-lg font-semibold text-tebra-700">{caseStudy.metric}</p>
+      <div class="mt-6 flex items-center gap-3">
+        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-tebra-500 text-sm font-semibold text-white">
+          {caseStudy.author.split(" ").map((n) => n[0]).join("").slice(0, 2)}
+        </div>
+        <div>
+          <p class="font-semibold text-gray-900">{caseStudy.author}</p>
+          <p class="text-sm text-gray-500">{caseStudy.role}, {caseStudy.company}</p>
+        </div>
+      </div>
+      <blockquote class="mt-8 text-xl text-gray-700 leading-relaxed border-l-4 border-tebra-500 pl-6">
+        "{caseStudy.quote}"
+      </blockquote>
+      <p class="mt-8 text-sm text-gray-500">
+        Full case study content will be managed by CMS. This page is a placeholder for slug: <code class="bg-gray-100 px-1 rounded">{caseStudy.slug}</code>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

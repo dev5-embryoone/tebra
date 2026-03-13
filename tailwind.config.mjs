@@ -25,6 +25,10 @@ export default {
         content: '1200px',
       },
       colors: {
+        'tebra-hero-bg': '#F7FBFB',
+        'tebra-teal': '#005A57',
+        'tebra-teal-dark': '#003F3B',
+        'tebra-orange': '#FF6B5B',
         tebra: {
           50: '#F2FBF9',
           100: '#D9F4ED',

@@ -1,5 +1,5 @@
 ---
-import Button from '../Button/Button.astro';
+import heroImageRaw from "../../assets/hero-short.webp";
 
 interface Props {
   title: string;
@@ -22,16 +22,34 @@ const {
   secondaryCtaLabel = "Take a quick tour",
   secondaryCtaHref = "#tour",
 } = Astro.props as Props;
+
+const heroImage =
+  typeof heroImageRaw === "string" ? heroImageRaw : heroImageRaw.src;
 ---
 
-<section class="page-section bg-gradient-to-b from-white to-gray-50">
+<section class="page-section bg-tebra-hero-bg">
   <div class="page-container grid gap-12 lg:grid-cols-2 lg:items-center">
     <div class="space-y-6">
-      <div class="inline-flex items-center gap-2 rounded-full bg-tebra-50 px-3 py-1 text-xs font-medium text-tebra-700">
-        <span class="h-1.5 w-1.5 rounded-full bg-tebra-500" />
+      <div class="flex items-center gap-4 text-xs text-tebra-teal">
+        <div class="flex items-center gap-1">
+          <span class="text-base leading-none text-[#FFB800]">★</span>
+          <span class="font-semibold text-tebra-teal-dark">4.5</span>
+          <span class="text-gray-300">|</span>
+          <span class="tracking-wide text-gray-500">★★★★★</span>
+        </div>
+        <div class="h-3 w-px bg-gray-200" />
+        <div class="flex items-center gap-1">
+          <span class="text-base leading-none text-[#FFB800]">★</span>
+          <span class="font-semibold text-tebra-teal-dark">4.1</span>
+          <span class="text-gray-300">|</span>
+          <span class="tracking-wide text-gray-500">★★★★☆</span>
+        </div>
+      </div>
+      <div class="inline-flex items-center gap-2 rounded-full bg-[#E4F3F3] px-3 py-1 text-xs font-medium text-tebra-teal">
+        <span class="h-1.5 w-1.5 rounded-full bg-tebra-teal" />
         <span>{eyebrow}</span>
       </div>
-      <h1 class="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+      <h1 class="hero-heading">
         {title}
       </h1>
       <p class="max-w-xl text-lg text-gray-600">
@@ -42,10 +60,15 @@ const {
       </p>
 
       <div class="flex flex-wrap items-center gap-4 pt-2">
-        <Button href={primaryCtaHref} label={primaryCtaLabel} variant="primary" size="lg" />
+        <a
+          href={primaryCtaHref}
+          class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#ff5a49] transition"
+        >
+          {primaryCtaLabel}
+        </a>
         <a
           href={secondaryCtaHref}
-          class="inline-flex items-center text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+          class="inline-flex items-center rounded-full border border-tebra-teal bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal hover:bg-white transition"
         >
           {secondaryCtaLabel}
           <svg
@@ -66,35 +89,13 @@ const {
       </div>
     </div>
 
-    <div class="relative">
-      <div
-        class="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
-      >
-        <div class="h-64 w-full bg-gradient-to-br from-tebra-500 via-indigo-500 to-purple-600 opacity-90 sm:h-80 lg:h-96" />
-        <div class="pointer-events-none absolute inset-x-6 bottom-6 rounded-2xl bg-white/90 p-4 shadow-lg backdrop-blur">
-          <div class="flex items-center justify-between gap-4">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-tebra-600">
-                EHR+ overview
-              </p>
-              <p class="mt-1 text-sm font-medium text-gray-900">
-                Take a quick tour of Tebra&apos;s EHR+ platform
-              </p>
-            </div>
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white">
-              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path
-                  d="M6 4.667L11 8l-5 3.333V4.667z"
-                  fill="currentColor"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pointer-events-none absolute -left-6 -top-6 hidden h-16 w-16 rounded-full border border-dashed border-tebra-300 md:block" />
-      <div class="pointer-events-none absolute -right-4 bottom-10 hidden h-8 w-8 rounded-full bg-tebra-200 md:block" />
+    <div class="relative flex justify-center lg:justify-end">
+      <img
+        src={heroImage}
+        alt="Tebra EHR+ platform hero"
+        class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+        loading="lazy"
+      />
     </div>
   </div>
 </section>

@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CaseStudiesHeroSection from "../../components/Sections/CaseStudiesHeroSection.astro";
+import CaseStudiesFeaturedStrip from "../../components/Sections/CaseStudiesFeaturedStrip.astro";
+import CaseStudiesRealStoriesSection from "../../components/Sections/CaseStudiesRealStoriesSection.astro";
+import CaseStudiesFilterSection from "../../components/Sections/CaseStudiesFilterSection.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+import { getCaseStudies } from "../../lib/strapi";
+
+const caseStudies = await getCaseStudies();
+const featuredCaseStudies = caseStudies.filter((c) => c.featured);
+const realStoryCaseStudies = caseStudies.filter((c) => c.realStory);
+---
+
+<BaseLayout
+  title="Case Studies - How practices and billing companies grow with Tebra"
+  description="Discover real success stories from private practices and billing companies using Tebra to work smarter, grow faster, and deliver better patient care."
+>
+  <CaseStudiesHeroSection />
+  <CaseStudiesFeaturedStrip caseStudies={featuredCaseStudies} />
+
+  <!-- Trusted strip -->
+  <section class="py-6 border-b border-gray-200 bg-white">
+    <div class="page-container flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
+      <span class="font-semibold text-gray-900">Trusted by 150,000 providers</span>
+      <span class="flex items-center gap-1">
+        <span class="font-semibold text-gray-900">4.3</span>
+        <span class="text-amber-500">★</span>
+        <span>|</span>
+        <span>5.0</span>
+        <span class="text-amber-500">★</span>
+        <span>Average Rating</span>
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+        HIPAA compliance
+      </span>
+    </div>
+  </section>
+
+  <CaseStudiesRealStoriesSection caseStudies={realStoryCaseStudies} />
+  <CaseStudiesFilterSection caseStudies={caseStudies} />
+  <CTASection
+    title="Ready to create your own success story?"
+    description="Let's talk about your challenges and explore how Tebra can help you achieve the same results — or better."
+    primaryCtaLabel="Book a demo"
+    primaryCtaHref="#demo"
+  />
+</BaseLayout>

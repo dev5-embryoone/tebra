@@ -1,0 +1,164 @@
+---
+import type { CaseStudy } from "../../data/caseStudies";
+import CaseStudyCard from "../Cards/CaseStudyCard.astro";
+import {
+  caseStudyChallenges,
+  caseStudyRoles,
+  caseStudyProducts,
+} from "../../data/caseStudies";
+
+interface Props {
+  caseStudies: CaseStudy[];
+}
+
+const { caseStudies } = Astro.props as Props;
+---
+
+<section id="case-studies-grid" class="page-section bg-white">
+  <div class="page-container">
+    <div class="mx-auto max-w-2xl text-center mb-10">
+      <h2 class="text-3xl font-semibold tracking-tight text-gray-900 lg:text-4xl">
+        Find stories like yours
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Whether you're a solo provider, part of a growing practice, or running a billing company, discover how others are achieving measurable results with Tebra.
+      </p>
+    </div>
+
+    <p class="text-sm text-gray-500 mb-4">
+      Showing <span id="case-studies-count">{caseStudies.length}</span> of {caseStudies.length} case studies
+    </p>
+
+    <div class="flex flex-wrap gap-2 mb-8" id="case-study-filters">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Challenges</span>
+        {caseStudyChallenges.map((ch) => (
+          <button
+            type="button"
+            class="case-study-filter px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:border-tebra-500 hover:text-tebra-700 transition-colors"
+            data-filter="challenge"
+            data-value={ch}
+          >
+            {ch}
+          </button>
+        ))}
+      </div>
+      <div class="flex flex-wrap gap-2 items-center mt-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Roles</span>
+        {caseStudyRoles.map((role) => (
+          <button
+            type="button"
+            class="case-study-filter px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:border-tebra-500 hover:text-tebra-700 transition-colors"
+            data-filter="role"
+            data-value={role}
+          >
+            {role}
+          </button>
+        ))}
+      </div>
+      <div class="flex flex-wrap gap-2 items-center mt-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Products</span>
+        {caseStudyProducts.map((product) => (
+          <button
+            type="button"
+            class="case-study-filter px-3 py-1.5 rounded-full text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:border-tebra-500 hover:text-tebra-700 transition-colors"
+            data-filter="product"
+            data-value={product}
+          >
+            {product}
+          </button>
+        ))}
+      </div>
+      <button
+        type="button"
+        id="clear-filters"
+        class="mt-2 text-sm font-semibold text-tebra-600 hover:text-tebra-700"
+      >
+        Clear all
+      </button>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="case-studies-list">
+      {caseStudies.map((cs) => (
+        <div
+          class="case-study-item"
+          data-challenges={cs.challenges.join(",")}
+          data-roles={cs.roles.join(",")}
+          data-product={cs.product}
+        >
+          <CaseStudyCard caseStudy={cs} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function runFilters() {
+    const items = document.querySelectorAll<HTMLDivElement>(".case-study-item");
+    const countEl = document.getElementById("case-studies-count");
+    const activeFilters: Record<string, Set<string>> = {
+      challenge: new Set(),
+      role: new Set(),
+      product: new Set(),
+    };
+
+    function updateCount() {
+      const visible = Array.from(items).filter((el) => el.style.display !== "none");
+      if (countEl) countEl.textContent = String(visible.length);
+    }
+
+    function applyFilters() {
+      items.forEach((el) => {
+        const challenges = (el.dataset.challenges ?? "").split(",").filter(Boolean);
+        const roles = (el.dataset.roles ?? "").split(",").filter(Boolean);
+        const product = (el.dataset.product ?? "").trim();
+
+        const matchChallenge =
+          activeFilters.challenge.size === 0 ||
+          challenges.some((c) => activeFilters.challenge.has(c));
+        const matchRole =
+          activeFilters.role.size === 0 || roles.some((r) => activeFilters.role.has(r));
+        const matchProduct =
+          activeFilters.product.size === 0 || activeFilters.product.has(product);
+
+        const show = matchChallenge && matchRole && matchProduct;
+        (el as HTMLElement).style.display = show ? "" : "none";
+      });
+      updateCount();
+    }
+
+    document.querySelectorAll(".case-study-filter").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = (btn as HTMLElement).dataset.filter as keyof typeof activeFilters;
+        const value = (btn as HTMLElement).dataset.value ?? "";
+        if (!filter || !value) return;
+        if (activeFilters[filter].has(value)) {
+          activeFilters[filter].delete(value);
+          btn.classList.remove("border-tebra-500", "bg-tebra-50", "text-tebra-700");
+          btn.classList.add("border-gray-300", "bg-white", "text-gray-700");
+        } else {
+          activeFilters[filter].add(value);
+          btn.classList.add("border-tebra-500", "bg-tebra-50", "text-tebra-700");
+          btn.classList.remove("border-gray-300", "bg-white", "text-gray-700");
+        }
+        applyFilters();
+      });
+    });
+
+    document.getElementById("clear-filters")?.addEventListener("click", () => {
+      activeFilters.challenge.clear();
+      activeFilters.role.clear();
+      activeFilters.product.clear();
+      document.querySelectorAll(".case-study-filter").forEach((b) => {
+        b.classList.remove("border-tebra-500", "bg-tebra-50", "text-tebra-700");
+        b.classList.add("border-gray-300", "bg-white", "text-gray-700");
+      });
+      applyFilters();
+    });
+
+    updateCount();
+  }
+
+  runFilters();
+</script>
