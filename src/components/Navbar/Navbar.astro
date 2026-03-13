@@ -2,6 +2,40 @@
 import NavItem from "./NavItem.astro";
 import logoTebraRaw from "../../assets/tebra navbar.svg";
 
+const allPagesLinks = [
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Integrations", href: "/integrations" },
+  { label: "Security", href: "/security" },
+  { label: "Compliance", href: "/compliance" },
+  { label: "Support", href: "/support" },
+  { label: "Documentation", href: "/documentation" },
+  { label: "Partners", href: "/partners" },
+  { label: "Resources", href: "/resources" },
+  { label: "Webinars", href: "/webinars" },
+  { label: "Guides", href: "/guides" },
+  { label: "EHR", href: "/ehr" },
+  { label: "Billing", href: "/billing" },
+  { label: "Scheduling", href: "/scheduling" },
+  { label: "Patient Portal", href: "/patient-portal" },
+  { label: "Telehealth", href: "/telehealth" },
+  { label: "Reporting", href: "/reporting" },
+  { label: "Analytics", href: "/analytics" },
+  { label: "Request a Demo", href: "/demo" },
+  { label: "Sign Up", href: "/sign-up" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Press", href: "/press" },
+  { label: "Events", href: "/events" },
+  { label: "Product Tour", href: "/product-tour" },
+  { label: "For Providers", href: "/for-providers" },
+  { label: "For Billing Companies", href: "/for-billing-companies" },
+  { label: "Implementation", href: "/implementation" },
+];
+
 const navItems = [
   { label: "Products", href: "#platform", hasDropdown: true },
   { label: "Features", href: "#solutions" },
@@ -9,6 +43,7 @@ const navItems = [
   { label: "About", href: "#company" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Resources", href: "#resources", hasDropdown: true },
+  { label: "More", href: "#", hasDropdown: true, dropdownLinks: allPagesLinks },
 ];
 
 const logoTebra =
@@ -35,6 +70,7 @@ const logoTebra =
             label={item.label}
             href={item.href}
             hasDropdown={item.hasDropdown}
+            dropdownLinks={item.dropdownLinks}
           />
         ))}
       </div>
@@ -92,7 +128,7 @@ const logoTebra =
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-100 bg-white">
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-100 bg-white max-h-[80vh] overflow-y-auto">
     <div class="page-container flex flex-col gap-4 py-4">
       <div class="flex flex-col gap-3">
         {navItems.map((item) => (
@@ -103,6 +139,19 @@ const logoTebra =
             {item.label}
           </a>
         ))}
+      </div>
+      <div class="border-t border-gray-100 pt-3">
+        <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">All pages</p>
+        <div class="flex flex-wrap gap-x-4 gap-y-1">
+          {allPagesLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm text-gray-600 hover:text-tebra-teal transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
       <div class="mt-2 flex flex-col gap-3">
         <a

@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContentCard from "../../components/Cards/ContentCard.astro";
+import { pageCards } from "../../data/pageCards";
+
+const cards = pageCards.careers ?? [];
+---
+<BaseLayout
+  title="Careers | Tebra"
+  description="Join the Tebra team and help transform healthcare for independent practices."
+>
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h1 class="text-3xl font-semibold text-gray-900">Careers</h1>
+      <p class="mt-3 max-w-2xl text-gray-600">
+        Join the Tebra team and help transform healthcare for independent practices.
+      </p>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card) => (
+          <ContentCard title={card.title} description={card.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

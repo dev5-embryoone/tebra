@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContentCard from "../../components/Cards/ContentCard.astro";
+import { pageCards } from "../../data/pageCards";
+
+const cards = pageCards.partners ?? [];
+---
+<BaseLayout
+  title="Partners | Tebra"
+  description="Tebra partner program and technology partners."
+>
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h1 class="text-3xl font-semibold text-gray-900">Partners</h1>
+      <p class="mt-3 max-w-2xl text-gray-600">
+        Technology partners, reseller program, and referral opportunities with Tebra.
+      </p>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card) => (
+          <ContentCard title={card.title} description={card.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
