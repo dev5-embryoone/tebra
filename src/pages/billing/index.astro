@@ -2,9 +2,27 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroSection from "../../components/Hero/HeroSection.astro";
 import billingHeroRaw from "../../assets/BP-2-Hero-Images.webp";
+import inHouseImageRaw from "../../assets/BILLING-Hub-In-house-billers.webp";
+import outsourcedImageRaw from "../../assets/BILLING-Hub-Outsourcing-billing.webp";
+import billingCosImageRaw from "../../assets/BILLING-Hub-Billing-cos.webp";
+import SectionHeader from "../../components/SectionHeader/SectionHeader.astro";
+import FAQSection from "../../components/Sections/FAQSection.astro";
 
 const billingHero =
   typeof billingHeroRaw === "string" ? billingHeroRaw : billingHeroRaw.src;
+
+const inHouseImage =
+  typeof inHouseImageRaw === "string" ? inHouseImageRaw : inHouseImageRaw.src;
+
+const outsourcedImage =
+  typeof outsourcedImageRaw === "string"
+    ? outsourcedImageRaw
+    : outsourcedImageRaw.src;
+
+const billingCosImage =
+  typeof billingCosImageRaw === "string"
+    ? billingCosImageRaw
+    : billingCosImageRaw.src;
 ---
 <BaseLayout
   title="Medical billing software that gets you paid faster | Tebra"
@@ -22,4 +40,145 @@ const billingHero =
     imageSrc={billingHero}
     imageAlt="Tebra billing and payments dashboard"
   />
+
+  <section class="bg-white py-6 lg:py-8">
+    <div class="page-container space-y-8">
+      <SectionHeader
+        title="Get matched with the right tools, partner, or plan for your billing needs"
+        description="Whether you bill in house, outsource to a partner, or run a billing company, Tebra gives you workflows that fit the way you already work."
+        centered
+      />
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="#in-house-billers"
+          class="inline-flex items-center rounded-full bg-[#F2F5F6] px-5 py-2 text-sm font-semibold text-tebra-teal-dark hover:bg-[#E6ECEE] transition"
+        >
+          In-House Billers
+        </a>
+        <a
+          href="#outsourced-billing"
+          class="inline-flex items-center rounded-full bg-[#F2F5F6] px-5 py-2 text-sm font-semibold text-tebra-teal-dark hover:bg-[#E6ECEE] transition"
+        >
+          Outsourced Billing
+        </a>
+        <a
+          href="#billing-companies"
+          class="inline-flex items-center rounded-full bg-[#F2F5F6] px-5 py-2 text-sm font-semibold text-tebra-teal-dark hover:bg-[#E6ECEE] transition"
+        >
+          Billing Companies
+        </a>
+        <a
+          href="#faq"
+          class="inline-flex items-center rounded-full bg-[#F2F5F6] px-5 py-2 text-sm font-semibold text-tebra-teal-dark hover:bg-[#E6ECEE] transition"
+        >
+          FAQs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="in-house-billers" class="bg-white py-10 lg:py-14">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="space-y-5">
+        <h2 class="heading-lg text-tebra-teal-dark">In-house billers</h2>
+        <p class="body-base-muted max-w-xl">
+          Take control of your in-house billing with automation, real-time tools that speed up collections,
+          and clear reporting to show what’s working. No EHR switch required.
+        </p>
+        <ul class="space-y-2 text-sm text-gray-700">
+          <li>✓ Auto-scrub claims and submit them in batches</li>
+          <li>✓ Check insurance eligibility in real time</li>
+          <li>✓ Track denials and collections with easy-to-use dashboards</li>
+          <li>✓ Automate routine tasks like remit posting and eligibility checks</li>
+        </ul>
+        <div class="pt-3">
+          <a
+            href="/billing/in-house"
+            class="inline-flex items-center rounded-full border border-tebra-teal bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal hover:bg-white transition"
+          >
+            Explore in-house billing
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center lg:justify-end">
+        <img
+          src={inHouseImage}
+          alt="In-house biller using Tebra"
+          class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section id="outsourced-billing" class="bg-[#F2F8F5] py-10 lg:py-14">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="flex justify-center lg:order-2">
+        <img
+          src={outsourcedImage}
+          alt="Practice outsourcing billing with a Tebra partner"
+          class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+          loading="lazy"
+        />
+      </div>
+      <div class="space-y-5 lg:order-1">
+        <h2 class="heading-lg text-tebra-teal-dark">Practices outsourcing billing</h2>
+        <p class="body-base-muted max-w-xl">
+          Tebra connects you with trusted billing partners, so you can collect more without handling claims
+          yourself. You stay in your EHR and keep full visibility over performance and payments.
+        </p>
+        <ul class="space-y-2 text-sm text-gray-700">
+          <li>✓ Work with vetted billing partners who understand your specialty</li>
+          <li>✓ Track denials, reimbursements, and collections in real time</li>
+          <li>✓ Avoid switching EHRs or disrupting your front office</li>
+          <li>✓ Keep intake, scheduling, and billing aligned across systems</li>
+        </ul>
+        <div class="pt-3">
+          <a
+            href="/billing/outsourced"
+            class="inline-flex items-center rounded-full border border-tebra-teal bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal hover:bg-white transition"
+          >
+            Find your billing partner
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="billing-companies" class="bg-white py-10 lg:py-14">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="space-y-5">
+        <h2 class="heading-lg text-tebra-teal-dark">Billing companies</h2>
+        <p class="body-base-muted max-w-xl">
+          Tebra gives billing companies the tools to win more clients, keep them longer, and run
+          high-volume billing without burning out your team.
+        </p>
+        <ul class="space-y-2 text-sm text-gray-700">
+          <li>✓ Manage all clients in one dashboard, regardless of EHR</li>
+          <li>✓ Customize billing rules by client, provider, or payer</li>
+          <li>✓ Deliver branded reports and communications</li>
+          <li>✓ Win more business with partner support and go-to-market tools</li>
+        </ul>
+        <div class="pt-3">
+          <a
+            href="/for-billing-companies"
+            class="inline-flex items-center rounded-full border border-tebra-teal bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal hover:bg-white transition"
+          >
+            Explore billing company solutions
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center lg:justify-end">
+        <img
+          src={billingCosImage}
+          alt="Billing company team using Tebra"
+          class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <FAQSection />
 </BaseLayout>
