@@ -20,6 +20,7 @@ const hasDropdownPanel = dropdownLinks.length > 0;
     <button
       type="button"
       class="nav-link cursor-pointer bg-transparent border-0"
+      class="inline-flex items-center gap-1 rounded px-2 py-1.5 text-sm font-medium text-[#1a1a1a] hover:bg-[#f5f0eb] hover:text-tebra-teal group-hover:bg-[#f5f0eb] transition-colors cursor-pointer bg-transparent border-0"
       aria-haspopup="true"
       aria-expanded="false"
       aria-controls="nav-dropdown-{label.replace(/\s+/g, '-').toLowerCase()}"
@@ -63,6 +64,7 @@ const hasDropdownPanel = dropdownLinks.length > 0;
   <a
     href={href}
     class="nav-link"
+    class="inline-flex items-center gap-1 rounded px-2 py-1.5 text-sm font-medium text-[#1a1a1a] hover:bg-[#f5f0eb] hover:text-tebra-teal transition-colors"
   >
     {label}
     {hasDropdown && (

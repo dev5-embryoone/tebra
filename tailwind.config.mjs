@@ -13,7 +13,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-sans)'],
+        sans: ['var(--font-akkurat)', 'sans-serif'],
       },
       fontSize: {
         base: ['14px', { lineHeight: '24px' }],

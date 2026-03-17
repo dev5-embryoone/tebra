@@ -2,12 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens: single source of truth for the UI.
-   Update values here to restyle the entire clone. */
+/* Akkurat LL – font files in public/fonts/ */
+@font-face {
+  font-family: "__AkkuratLL_8dc0fd";
+  src: url("/fonts/akkurat-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "__AkkuratLL_Fallback_8dc0fd";
+  src: url("/fonts/akkurat-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Common base typography and layout - applied globally via layout */
 :root {
-  /* Typography */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  /* Single source of truth for Akkurat LL – referenced by Tailwind via var(--font-akkurat) */
+  --font-akkurat: "__AkkuratLL_8dc0fd", "__AkkuratLL_Fallback_8dc0fd";
+  --font-sans: var(--font-akkurat), sans-serif;
   --font-size-base: 14px;
   --font-weight-base: 400;
   --line-height-base: 24px;
