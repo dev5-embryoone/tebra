@@ -1,24 +1,217 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ContentCard from "../../components/Cards/ContentCard.astro";
-import { pageCards } from "../../data/pageCards";
-
-const cards = pageCards.pricing ?? [];
+import capterraLogo from "../../assets/capterra-logo.webp";
+import capterraLogoSvg from "../../assets/capterra-logo.351b446a.svg";
+import quoteArrow from "../../assets/quote-arrow2.1d5851cb.svg";
+import quoteLight from "../../assets/quote-light.7ecdc53b.svg";
+import deloitteLogo from "../../assets/deloitte.svg";
+import mgmaLogo from "../../assets/mgma.svg";
+import inc5000Logo from "../../assets/inc5000.svg";
+import aafpLogo from "../../assets/aafp.svg";
+import hbmaLogo from "../../assets/hbma.webp";
 ---
+
 <BaseLayout
   title="Pricing | Tebra"
-  description="Plans and pricing for Tebra EHR+ platform."
+  description="See your pricing in 2 minutes, tailored to your practice. Tell us about your practice and get a custom price. No commitment, no surprises."
 >
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h1 class="text-3xl font-semibold text-gray-900">Pricing</h1>
-      <p class="mt-3 max-w-2xl text-gray-600">
-        Clear, transparent plans for the Tebra EHR+ platform. See what’s included and get a demo.
+  <section class="bg-white py-16 lg:py-24">
+    <!-- Single width for headline, progress bar, inputs, and button -->
+    <div class="page-container mx-auto w-full max-w-[360px] px-4 sm:px-6">
+      <!-- Subtitle -->
+      <p class="text-center text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">
+        Tebra Pricing
       </p>
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {cards.map((card) => (
-          <ContentCard title={card.title} description={card.description} />
-        ))}
+
+      <!-- Main headline: dark teal -->
+      <h1 class="text-center text-[1.75rem] font-semibold leading-tight tracking-tight text-[#396d70] sm:text-3xl lg:text-4xl lg:leading-snug">
+        See your pricing in 2 minutes, tailored to your practice
+      </h1>
+
+      <!-- Step indicator: uppercase, small, muted grey -->
+      <p class="text-center text-xs font-normal uppercase tracking-wide text-[#6c757d] mt-8 mb-2 sm:text-[13px]">
+        Step 1/5
+      </p>
+
+      <!-- Description: two lines, dark grey, then progress bar below -->
+      <p class="text-center text-[15px] font-normal leading-relaxed text-[#495057] sm:text-base">
+        Tell us about your practice and get a custom price in under two minutes.<br />
+        No commitment, no surprises.
+      </p>
+
+      <!-- Progress bar: same width as inputs, teal fill -->
+      <div class="h-1.5 w-full rounded-full bg-gray-200 overflow-hidden mt-4 mb-6">
+        <div class="h-full w-1/5 rounded-full bg-[#396d70]" aria-hidden="true" />
+      </div>
+
+      <!-- Form: inputs full width; button slightly narrower, pill-shaped -->
+      <form class="space-y-4" action="#" method="post">
+        <div>
+          <label for="pricing-full-name" class="sr-only">Full name</label>
+          <input
+            id="pricing-full-name"
+            type="text"
+            name="fullName"
+            required
+            placeholder="Full name*"
+            class="h-12 w-full rounded-md border border-[#cbd5e1] bg-white px-4 text-[15px] text-gray-900 placeholder-[#64748b] focus:border-[#396d70] focus:ring-1 focus:ring-[#396d70] outline-none transition-colors sm:h-14 sm:text-base"
+            autocomplete="name"
+          />
+        </div>
+        <div>
+          <label for="pricing-company" class="sr-only">Company name</label>
+          <input
+            id="pricing-company"
+            type="text"
+            name="companyName"
+            required
+            placeholder="Company name*"
+            class="h-12 w-full rounded-md border border-[#cbd5e1] bg-white px-4 text-[15px] text-gray-900 placeholder-[#64748b] focus:border-[#396d70] focus:ring-1 focus:ring-[#396d70] outline-none transition-colors sm:h-14 sm:text-base"
+            autocomplete="organization"
+          />
+        </div>
+        <div>
+          <label for="pricing-email" class="sr-only">Email</label>
+          <input
+            id="pricing-email"
+            type="email"
+            name="email"
+            required
+            placeholder="Email*"
+            class="h-12 w-full rounded-md border border-[#cbd5e1] bg-white px-4 text-[15px] text-gray-900 placeholder-[#64748b] focus:border-[#396d70] focus:ring-1 focus:ring-[#396d70] outline-none transition-colors sm:h-14 sm:text-base"
+            autocomplete="email"
+          />
+        </div>
+        <div>
+          <label for="pricing-phone" class="sr-only">Phone</label>
+          <input
+            id="pricing-phone"
+            type="tel"
+            name="phone"
+            required
+            placeholder="Phone*"
+            class="h-12 w-full rounded-md border border-[#cbd5e1] bg-white px-4 text-[15px] text-gray-900 placeholder-[#64748b] focus:border-[#396d70] focus:ring-1 focus:ring-[#396d70] outline-none transition-colors sm:h-14 sm:text-base"
+            autocomplete="tel"
+          />
+        </div>
+        <div class="pt-2 flex justify-center">
+          <button
+            type="submit"
+            class="h-12 w-full max-w-[280px] rounded-full bg-[#f97316] px-6 text-[15px] font-semibold text-white shadow-sm hover:bg-[#ea580c] transition-colors focus:outline-none focus:ring-2 focus:ring-[#396d70] focus:ring-offset-2 sm:h-14 sm:text-base"
+          >
+            Continue
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Testimonial: Value for Money -->
+  <section class="bg-[#f5f7f7] py-10 lg:py-14">
+    <div class="page-container flex justify-center">
+      <div class="w-full max-w-4xl rounded-2xl bg-[#fafaf9] px-8 py-6 text-center shadow-lg sm:px-12 sm:py-8">
+        <div class="inline-flex items-center gap-2 rounded-full bg-[#f5f0eb] px-4 py-2 text-sm font-medium text-gray-700">
+          <span>Value for Money</span>
+          <span class="flex items-center gap-0.5" aria-label="5 out of 5 stars">
+            <span class="text-amber-400">★★★★★</span>
+          </span>
+          <span class="font-semibold">5.0</span>
+        </div>
+        <blockquote class="mt-4 text-lg sm:text-xl italic leading-relaxed text-gray-700">
+          "I appreciate that the cost each month has been predictable and fair."
+        </blockquote>
+        <p class="mt-2 text-sm font-medium text-gray-700">
+          Tracy G. Owner, Mental Health Care
+        </p>
+        <div class="mt-4 flex items-center justify-center gap-2">
+          <img
+            src={capterraLogo.src}
+            alt=""
+            width="120"
+            height="24"
+            class="h-6 w-auto object-contain"
+            loading="lazy"
+          />
+          <span class="text-sm font-medium text-gray-600">Capterra</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capterra quote banner (dark teal, arrow left, large quote right) -->
+  <section class="bg-[#1c5c5b] py-16 lg:py-24">
+    <div class="page-container">
+      <div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+        <!-- Left: decorative winding line + arrow -->
+        <div class="relative flex-shrink-0 lg:w-[42%] lg:max-w-[540px]">
+          <img
+            src={quoteArrow.src}
+            alt=""
+            class="pointer-events-none select-none w-full max-w-[420px] lg:max-w-full"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Right: quote with background mark, attribution, Capterra -->
+        <div class="relative flex-1 min-w-0 pl-0 lg:pl-4">
+          <!-- Large faint quote mark behind text -->
+          <img
+            src={quoteLight.src}
+            alt=""
+            class="pointer-events-none select-none absolute left-0 top-0 h-24 w-auto opacity-30 sm:h-28 lg:h-32"
+            loading="lazy"
+            aria-hidden="true"
+          />
+
+          <blockquote class="relative z-10">
+            <p class="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl lg:leading-tight">
+              “Affordable pricing and way less politics”
+            </p>
+          </blockquote>
+
+          <div class="mt-6 space-y-1 text-base text-white/90 sm:text-lg">
+            <p class="font-semibold text-white">Vincent A.</p>
+            <p class="text-white/85">Physician, Medical Practice, 1-10 employees</p>
+          </div>
+
+          <div class="mt-6 flex items-center gap-2">
+            <img
+              src={capterraLogoSvg.src}
+              alt=""
+              width="120"
+              height="24"
+              class="h-6 w-auto object-contain sm:h-7"
+              loading="lazy"
+            />
+            <span class="text-base font-medium text-white/90 sm:text-lg">Capterra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards and accolades -->
+  <section class="bg-[#396d70] py-14 lg:py-20">
+    <div class="page-container text-center">
+      <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+        Awards and accolades from industry leaders
+      </h2>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 sm:gap-x-14 lg:gap-x-16">
+        <div class="flex h-14 w-28 items-center justify-center sm:h-16 sm:w-32">
+          <img src={deloitteLogo.src} alt="Deloitte" class="max-h-full max-w-full object-contain opacity-90" loading="lazy" />
+        </div>
+        <div class="flex h-14 w-28 items-center justify-center sm:h-16 sm:w-32">
+          <img src={hbmaLogo.src} alt="HBMA - Healthcare Business Management Association" class="max-h-full max-w-full object-contain opacity-90" loading="lazy" />
+        </div>
+        <div class="flex h-14 w-28 items-center justify-center sm:h-16 sm:w-32">
+          <img src={aafpLogo.src} alt="AAFP" class="max-h-full max-w-full object-contain opacity-90" loading="lazy" />
+        </div>
+        <div class="flex h-14 w-28 items-center justify-center sm:h-16 sm:w-32">
+          <img src={inc5000Logo.src} alt="Inc. 5000" class="max-h-full max-w-full object-contain opacity-90" loading="lazy" />
+        </div>
+        <div class="flex h-14 w-28 items-center justify-center sm:h-16 sm:w-32">
+          <img src={mgmaLogo.src} alt="MGMA" class="max-h-full max-w-full object-contain opacity-90" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
