@@ -1,14 +1,25 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSection from "../../components/Hero/HeroSection.astro";
+import billingHeroRaw from "../../assets/BP-2-Hero-Images.webp";
+
+const billingHero =
+  typeof billingHeroRaw === "string" ? billingHeroRaw : billingHeroRaw.src;
 ---
 <BaseLayout
-  title="Billing | Tebra"
-  description="Practice billing and revenue cycle management with Tebra."
+  title="Medical billing software that gets you paid faster | Tebra"
+  description="Tebra’s medical billing and payments software helps you reduce denials, improve collections, and take the chaos out of getting paid."
 >
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h1 class="text-2xl font-semibold text-gray-900">Billing</h1>
-      <p class="mt-2 text-gray-600">Placeholder for hosting test.</p>
-    </div>
-  </section>
+  <HeroSection
+    eyebrow="Billing & payments"
+    title="Medical billing software that gets you paid faster"
+    subtitle="Billing in-house, outsourcing, or running a medical billing company? Tebra helps you reduce denials, improve collections, and take the chaos out of getting paid."
+    supporting="Get billing, payments, and revenue cycle tools that fit the way your practice or billing company already works."
+    primaryCtaLabel="Request a demo"
+    primaryCtaHref="#demo"
+    secondaryCtaLabel="Try our billing calculator"
+    secondaryCtaHref="#billing-calculator"
+    imageSrc={billingHero}
+    imageAlt="Tebra billing and payments dashboard"
+  />
 </BaseLayout>

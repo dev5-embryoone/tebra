@@ -1,5 +1,6 @@
 ---
 import practiceMarketingImageRaw from "../../assets/medical-practice-marketing-min.webp";
+import practiceMarketingBadgeRaw from "../../assets/G2-Easiest-to-Use-3.webp";
 import FeatureDetailContent from "./FeatureDetailContent.astro";
 import FeatureAllFeaturesCard from "./FeatureAllFeaturesCard.astro";
 
@@ -7,9 +8,13 @@ const practiceMarketingImage =
   typeof practiceMarketingImageRaw === "string"
     ? practiceMarketingImageRaw
     : practiceMarketingImageRaw.src;
+const practiceMarketingBadge =
+  typeof practiceMarketingBadgeRaw === "string"
+    ? practiceMarketingBadgeRaw
+    : practiceMarketingBadgeRaw.src;
 ---
 
-<section id="practice-marketing" class="bg-white py-16 lg:py-20">
+<section id="practice-marketing" class="bg-white py-8 lg:py-10">
   <div class="page-container">
     <FeatureDetailContent
       pillLabel="Practice Marketing"
@@ -20,6 +25,8 @@ const practiceMarketingImage =
       quoteSubtitle="Celebrations Speech Group"
       imageSrc={practiceMarketingImage}
       imageAlt="Practice marketing dashboard"
+      badgeImageSrc={practiceMarketingBadge}
+      badgeImageAlt="G2 Easiest to Use badge"
     />
     <FeatureAllFeaturesCard
       title="All features"
@@ -27,21 +34,33 @@ const practiceMarketingImage =
       ctaLabel="Explore Marketing Tools"
       ctaHref="/medical-practice-marketing"
     >
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Custom websites</h4>
         <p class="text-xs text-gray-600">Make a great first impression with a modern, mobile-friendly site.</p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Search engine optimization (SEO)</h4>
         <p class="text-xs text-gray-600">Climb local rankings and bring in more patients with proven SEO.</p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Reputation management</h4>
         <p class="text-xs text-gray-600">Reply to reviews with HIPAA-compliant AI and monitor sentiment.</p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Social media marketing</h4>
         <p class="text-xs text-gray-600">Stay active on key platforms with expert-managed campaigns.</p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Search engine marketing (SEM)</h4>
+        <p class="text-xs text-gray-600">
+          Run targeted paid campaigns that help patients discover your practice faster through local search.
+        </p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Web profiles &amp; directories</h4>
+        <p class="text-xs text-gray-600">
+          Keep your information accurate across Google, Tebra Care Connect, and 80+ online directories.
+        </p>
       </div>
     </FeatureAllFeaturesCard>
   </div>

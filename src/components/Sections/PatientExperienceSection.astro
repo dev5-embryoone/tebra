@@ -1,5 +1,6 @@
 ---
 import patientExperienceImageRaw from "../../assets/PATIEN-EXPERIENCE-min.webp";
+import patientExperienceBadgeRaw from "../../assets/G2-Easiest-to-Use-2.webp";
 import FeatureDetailContent from "./FeatureDetailContent.astro";
 import FeatureAllFeaturesCard from "./FeatureAllFeaturesCard.astro";
 
@@ -7,9 +8,13 @@ const patientExperienceImage =
   typeof patientExperienceImageRaw === "string"
     ? patientExperienceImageRaw
     : patientExperienceImageRaw.src;
+const patientExperienceBadge =
+  typeof patientExperienceBadgeRaw === "string"
+    ? patientExperienceBadgeRaw
+    : patientExperienceBadgeRaw.src;
 ---
 
-<section id="patient-experience" class="bg-white py-16 lg:py-20">
+<section id="patient-experience" class="bg-white py-8 lg:py-10">
   <div class="page-container">
     <FeatureDetailContent
       pillLabel="Patient Experience"
@@ -19,6 +24,8 @@ const patientExperienceImage =
       quoteAuthor="Jennifer M."
       imageSrc={patientExperienceImage}
       imageAlt="Patient experience dashboard"
+      badgeImageSrc={patientExperienceBadge}
+      badgeImageAlt="G2 Easiest to Use badge"
     />
     <FeatureAllFeaturesCard
       title="All features"
@@ -26,21 +33,39 @@ const patientExperienceImage =
       ctaLabel="Explore Patient Experience"
       ctaHref="/patient-experience"
     >
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Online scheduling</h4>
         <p class="text-xs text-gray-600">Let patients book or request visits 24/7 based on your availability.</p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Appointment reminders</h4>
         <p class="text-xs text-gray-600">Send automated reminders by text, email, or phone to reduce no-shows.</p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Two-way text communication</h4>
         <p class="text-xs text-gray-600">Answer questions and confirm visits on patients’ preferred channels.</p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Digital intake</h4>
         <p class="text-xs text-gray-600">Replace clipboards with forms patients complete before their visit.</p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Patient portal</h4>
+        <p class="text-xs text-gray-600">
+          Give patients secure online access to test results, visit notes, and messaging with your practice.
+        </p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">AI review replies</h4>
+        <p class="text-xs text-gray-600">
+          Generate HIPAA-compliant responses to every review in seconds to save time and build trust.
+        </p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">AI review insights</h4>
+        <p class="text-xs text-gray-600">
+          Track themes and sentiment across reviews in one dashboard so you can act on feedback quickly.
+        </p>
       </div>
     </FeatureAllFeaturesCard>
   </div>

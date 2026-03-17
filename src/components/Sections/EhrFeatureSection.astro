@@ -1,13 +1,16 @@
 ---
 import ehrImageRaw from "../../assets/EHR-min.webp";
+import badgeImageRaw from "../../assets/G2-Easiest-to-Use.webp";
 import FeatureDetailContent from "./FeatureDetailContent.astro";
 import FeatureAllFeaturesCard from "./FeatureAllFeaturesCard.astro";
 
 const ehrImage =
   typeof ehrImageRaw === "string" ? ehrImageRaw : ehrImageRaw.src;
+const badgeImage =
+  typeof badgeImageRaw === "string" ? badgeImageRaw : badgeImageRaw.src;
 ---
 
-<section id="ehr" class="bg-white py-16 lg:py-20">
+<section id="ehr" class="bg-white py-6 lg:py-8">
   <div class="page-container">
     <FeatureDetailContent
       pillLabel="Electronic Health Records"
@@ -18,6 +21,8 @@ const ehrImage =
       quoteSubtitle="Optimal Psychiatry and Wellness"
       imageSrc={ehrImage}
       imageAlt="EHR feature"
+      badgeImageSrc={badgeImage}
+      badgeImageAlt="G2 Easiest to Use badge"
     />
     <FeatureAllFeaturesCard
       title="All features"
@@ -25,21 +30,53 @@ const ehrImage =
       ctaLabel="Explore Tebra’s EHR"
       ctaHref="/ehr"
     >
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">AI-powered charting</h4>
-        <p class="text-xs text-gray-600">Finish notes faster with AI Note Assist, templates, and macros.</p>
+        <p class="text-xs text-gray-600">
+          Finish notes faster with AI Note Assist, reusable templates, macros, and past-visit recall.
+        </p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Electronic prescriptions</h4>
-        <p class="text-xs text-gray-600">Send prescriptions directly to the pharmacy with safety checks.</p>
+        <p class="text-xs text-gray-600">
+          Send prescriptions directly to the pharmacy with built-in interaction checks and refill tracking.
+        </p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Electronic labs</h4>
-        <p class="text-xs text-gray-600">Order tests and see results in one place — no portals.</p>
+        <p class="text-xs text-gray-600">
+          Order tests and view lab results in one place — no paper, portals, or extra clicks.
+        </p>
       </div>
-      <div class="space-y-1">
+      <div class="space-y-1 min-w-[180px] max-w-xs">
         <h4 class="text-sm font-semibold text-tebra-teal-dark">Telehealth</h4>
-        <p class="text-xs text-gray-600">HIPAA-compliant video visits integrated with your schedule and notes.</p>
+        <p class="text-xs text-gray-600">
+          See patients virtually with HIPAA-compliant video visits integrated with your schedule and notes.
+        </p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Patient intake</h4>
+        <p class="text-xs text-gray-600">
+          Have patients complete forms online before their visit so you can start every appointment prepared.
+        </p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Patient portal</h4>
+        <p class="text-xs text-gray-600">
+          Give patients 24/7 access to visit summaries, test results, and secure messages in one portal.
+        </p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Online scheduling</h4>
+        <p class="text-xs text-gray-600">
+          Let patients request or book appointments online based on your availability to keep schedules full.
+        </p>
+      </div>
+      <div class="space-y-1 min-w-[180px] max-w-xs">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Appointment reminders</h4>
+        <p class="text-xs text-gray-600">
+          Send automated reminders by text, email, or phone to reduce no-shows and late cancellations.
+        </p>
       </div>
     </FeatureAllFeaturesCard>
   </div>

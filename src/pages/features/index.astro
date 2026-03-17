@@ -8,6 +8,12 @@ import PatientExperienceSection from "../../components/Sections/PatientExperienc
 import PracticeMarketingSection from "../../components/Sections/PracticeMarketingSection.astro";
 import FAQSection from "../../components/Sections/FAQSection.astro";
 import CTASection from "../../components/Sections/CTASection.astro";
+import ehrFeatureHeroRaw from "../../assets/ehr (1).webp";
+
+const ehrFeatureHero =
+  typeof ehrFeatureHeroRaw === "string"
+    ? ehrFeatureHeroRaw
+    : ehrFeatureHeroRaw.src;
 ---
 
 <BaseLayout
@@ -19,6 +25,8 @@ import CTASection from "../../components/Sections/CTASection.astro";
     title="Features that help you run a better practice"
     subtitle="Tebra combines your EHR, billing, scheduling, marketing, and patient communication in one easy-to-use platform, built for private practices."
     supporting="We safeguard your practice with full security and HIPAA compliance."
+    imageSrc={ehrFeatureHero}
+    imageAlt="EHR features helping you run a better practice"
     primaryCtaLabel="Get a demo"
     primaryCtaHref="#demo"
     secondaryCtaLabel="Take a product tour"
