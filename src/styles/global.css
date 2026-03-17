@@ -27,14 +27,23 @@
   --font-weight-base: 400;
   --line-height-base: 24px;
   --letter-spacing-base: normal;
-  /* Card / banner border radius - match reference */
+
+  /* Brand colors (RGB so Tailwind can use opacity-aware utilities) */
+  --color-tebra-hero-bg: 247 251 251;     /* #F7FBFB */
+  --color-tebra-teal: 0 90 87;            /* #005A57 */
+  --color-tebra-teal-dark: 0 63 59;       /* #003F3B */
+  --color-tebra-orange: 255 107 91;       /* #FF6B5B */
+
+  --color-card: 235 240 239;              /* #EBF0EF */
+  --color-border-subtle: 225 235 235;     /* #E1EBEB */
+  --color-border-muted: 204 204 204;      /* #CCCCCC */
+
+  --color-btn-primary: 242 126 94;        /* #F27E5E */
+  --color-btn-primary-hover: 224 109 77;  /* #E06D4D */
+
+  /* Radii */
   --card-radius: 16px;
   --card-radius-lg: 24px;
-  /* Card background - use wherever card color is needed */
-  --card-bg: #ebf0ef;
-  /* Primary button color */
-  --btn-primary: #f27e5e;
-  --btn-primary-hover: #e06d4d;
 }
 
 *,
@@ -79,18 +88,52 @@ body {
   letter-spacing: var(--letter-spacing-base);
 }
 
+/* Global typography utilities – wire all headings/eyebrows/descriptions to these.
+   Change sizes/weights here to affect every section that uses them. */
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-widest text-gray-500;
+}
+
+.heading-xl {
+  @apply text-3xl font-semibold tracking-tight leading-tight md:text-4xl lg:text-5xl;
+}
+
+.heading-lg {
+  @apply text-3xl font-semibold tracking-tight lg:text-4xl;
+}
+
+.heading-md {
+  @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+}
+
+.heading-sm {
+  @apply text-xl font-semibold;
+}
+
+.body-lg-muted {
+  @apply text-lg text-gray-600 leading-relaxed;
+}
+
+.body-base-muted {
+  @apply text-base text-gray-600 leading-relaxed;
+}
+
+.body-sm-muted {
+  @apply text-sm text-gray-500 leading-relaxed;
+}
+
 /* Card border radius - use for banners, cards, images that should match reference */
 .card-radius {
   border-radius: var(--card-radius);
 }
 .bg-card {
-  background-color: var(--card-bg);
+  background-color: rgb(var(--color-card));
 }
 .btn-primary {
-  background-color: var(--btn-primary);
+  background-color: rgb(var(--color-btn-primary));
 }
 .btn-primary:hover {
-  background-color: var(--btn-primary-hover);
+  background-color: rgb(var(--color-btn-primary-hover));
 }
 @media (min-width: 1024px) {
   .card-radius-lg {
@@ -116,4 +159,74 @@ body {
     /* Side by side: image at end, round right edge to match card */
     border-radius: 0 var(--card-radius-lg) var(--card-radius-lg) 0;
   }
+}
+
+/* Navbar-specific typography and spacing – adjusts global nav look */
+.nav-bar {
+  @apply text-[13px] leading-[1.4];
+}
+
+.nav-link {
+  @apply inline-flex items-center gap-1 text-[13px] font-medium text-tebra-teal-dark hover:text-tebra-teal transition-colors;
+}
+
+.nav-actions {
+  @apply text-[12px] font-medium text-tebra-teal-dark;
+}
+
+.nav-cta-outline {
+  @apply inline-flex items-center rounded-full border border-tebra-teal bg-white px-5 py-2 text-[12px] font-semibold text-tebra-teal hover:bg-tebra-hero-bg transition;
+}
+
+.nav-cta-solid {
+  @apply inline-flex items-center rounded-full bg-tebra-orange px-5 py-2 text-[12px] font-semibold text-white shadow-sm hover:bg-btn-primary-hover transition;
+}
+
+/* Global hero layout + rating strip used on marketing pages */
+.hero-heading {
+  @apply heading-xl text-tebra-teal-dark;
+}
+
+.hero-rating-strip {
+  @apply flex items-center gap-4 text-xs text-tebra-teal;
+}
+
+.hero-rating-block {
+  @apply flex items-center gap-1;
+}
+
+.hero-rating-star {
+  @apply text-base leading-none text-[#FFB800];
+}
+
+.hero-rating-divider {
+  @apply h-3 w-px bg-gray-200;
+}
+
+.hero-rating-score {
+  @apply font-semibold text-tebra-teal-dark;
+}
+
+.hero-rating-text {
+  @apply tracking-wide text-gray-500;
+}
+
+.hero-eyebrow-pill {
+  @apply inline-flex items-center gap-2 rounded-full bg-tebra-hero-bg px-3 py-1 text-xs font-medium text-tebra-teal;
+}
+
+.hero-compliance-strip {
+  @apply bg-tebra-hero-bg py-10;
+}
+
+.hero-compliance-inner {
+  @apply page-container flex flex-nowrap items-center justify-between gap-10 lg:gap-16;
+}
+
+.hero-compliance-text {
+  @apply text-sm md:text-base font-medium text-tebra-teal-dark whitespace-nowrap;
+}
+
+.hero-compliance-logos {
+  @apply flex flex-nowrap items-center justify-end gap-10;
 }

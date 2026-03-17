@@ -1,0 +1,49 @@
+---
+import practiceMarketingImageRaw from "../../assets/medical-practice-marketing-min.webp";
+import FeatureDetailContent from "./FeatureDetailContent.astro";
+import FeatureAllFeaturesCard from "./FeatureAllFeaturesCard.astro";
+
+const practiceMarketingImage =
+  typeof practiceMarketingImageRaw === "string"
+    ? practiceMarketingImageRaw
+    : practiceMarketingImageRaw.src;
+---
+
+<section id="practice-marketing" class="bg-white py-16 lg:py-20">
+  <div class="page-container">
+    <FeatureDetailContent
+      pillLabel="Practice Marketing"
+      title="Practice Marketing"
+      description="Stand out online and build patient trust with marketing tools that manage your website, reviews, and profiles from one platform."
+      quote="“Tebra was how I was able to open two more practices in the last year."
+      quoteAuthor="Chimezie Chidi, M.A., CCC-SLP"
+      quoteSubtitle="Celebrations Speech Group"
+      imageSrc={practiceMarketingImage}
+      imageAlt="Practice marketing dashboard"
+    />
+    <FeatureAllFeaturesCard
+      title="All features"
+      description="Everything you need to grow your online presence and attract more patients."
+      ctaLabel="Explore Marketing Tools"
+      ctaHref="/medical-practice-marketing"
+    >
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Custom websites</h4>
+        <p class="text-xs text-gray-600">Make a great first impression with a modern, mobile-friendly site.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Search engine optimization (SEO)</h4>
+        <p class="text-xs text-gray-600">Climb local rankings and bring in more patients with proven SEO.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Reputation management</h4>
+        <p class="text-xs text-gray-600">Reply to reviews with HIPAA-compliant AI and monitor sentiment.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Social media marketing</h4>
+        <p class="text-xs text-gray-600">Stay active on key platforms with expert-managed campaigns.</p>
+      </div>
+    </FeatureAllFeaturesCard>
+  </div>
+</section>
+

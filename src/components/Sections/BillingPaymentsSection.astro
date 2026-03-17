@@ -1,0 +1,141 @@
+---
+import billingImageRaw from "../../assets/BILLING-SOFTWARE-min.webp";
+import paymentsImageRaw from "../../assets/BILLING-PAYMENTS-min.webp";
+import FeatureDetailContent from "./FeatureDetailContent.astro";
+import FeatureAllFeaturesCard from "./FeatureAllFeaturesCard.astro";
+
+const billingImage =
+  typeof billingImageRaw === "string" ? billingImageRaw : billingImageRaw.src;
+const paymentsImage =
+  typeof paymentsImageRaw === "string" ? paymentsImageRaw : paymentsImageRaw.src;
+---
+
+<section id="billing-payments" class="bg-white py-16 lg:py-20">
+  <div class="page-container space-y-10">
+    <div class="flex flex-wrap items-center gap-3">
+      <div class="inline-flex items-center rounded-full border border-border-subtle bg-white p-1 shadow-sm">
+        <button
+          type="button"
+          data-tab="billing"
+          class="billing-tab inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold bg-tebra-teal text-white shadow-sm"
+        >
+          Medical Billing
+        </button>
+        <button
+          type="button"
+          data-tab="payments"
+          class="billing-tab inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold bg-transparent text-tebra-teal-dark"
+        >
+          Payments
+        </button>
+      </div>
+    </div>
+
+    <!-- Billing panel -->
+    <div id="billing-panel">
+      <FeatureDetailContent
+        pillLabel="Medical Billing"
+        title="Medical Billing"
+        description="Whether you bill in house or outsource, Tebra helps you reduce denials, improve collections, and take the chaos out of getting paid."
+        quote="“As a billing company, we are an extension of Tebra’s system. That relationship is reflected in how Tebra supports their billing companies.”"
+        quoteAuthor="Jennifer Bittner, President"
+        quoteSubtitle="Physician Billing Solutions"
+        imageSrc={billingImage}
+        imageAlt="Medical billing dashboard"
+      />
+      <FeatureAllFeaturesCard
+        title="All features"
+        description="Everything you need to simplify billing and speed up reimbursements."
+        ctaLabel="Explore Billing Tools"
+        ctaHref="/billing"
+      >
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold text-tebra-teal-dark">Insurance eligibility</h4>
+          <p class="text-xs text-gray-600">Verify coverage and copays instantly so you can prevent denials.</p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold text-tebra-teal-dark">Electronic claim submission</h4>
+          <p class="text-xs text-gray-600">Submit clean claims in batches and get reimbursed faster.</p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold text-tebra-teal-dark">Automated patient statements</h4>
+          <p class="text-xs text-gray-600">Send professional statements with direct payment links.</p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold text-tebra-teal-dark">Robotic process automation (RPA)</h4>
+          <p class="text-xs text-gray-600">Automate ERA posting, data transfers, and A/R updates.</p>
+        </div>
+      </FeatureAllFeaturesCard>
+    </div>
+
+    <!-- Payments panel -->
+    <div id="payments-panel" class="hidden">
+      <FeatureDetailContent
+        pillLabel="Payments"
+        title="Payments"
+        description="Tebra makes it simple for patients to pay and simple for your practice to collect, with flexible options that improve cash flow and reduce manual work."
+        quote='"Only software that gets your claims paid!"'
+        quoteAuthor="Sharon Hollander"
+        quoteSubtitle="Excellent | Trustpilot"
+        imageSrc={paymentsImage}
+        imageAlt="Payments dashboard"
+      />
+      <FeatureAllFeaturesCard
+        title="All features"
+        description="Everything you need to make it easier for patients to pay — and simpler for your practice to collect."
+        ctaLabel="Explore Tebra Payments"
+        ctaHref="/billing-payments"
+      >
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold text-tebra-teal-dark">Online payments</h4>
+          <p class="text-xs text-gray-600">Let patients pay from any device with a few clicks.</p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold text-tebra-teal-dark">Card on file</h4>
+          <p class="text-xs text-gray-600">Store cards securely to collect balances automatically.</p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold text-tebra-teal-dark">Flexible payment options</h4>
+          <p class="text-xs text-gray-600">Offer plans and options that reduce bad debt and write-offs.</p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="text-sm font-semibold text-tebra-teal-dark">Automated posting</h4>
+          <p class="text-xs text-gray-600">Match payments to charges automatically to save staff time.</p>
+        </div>
+      </FeatureAllFeaturesCard>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabs = Array.from(
+        document.querySelectorAll<HTMLButtonElement>(".billing-tab"),
+      );
+      const billingPanel = document.getElementById("billing-panel");
+      const paymentsPanel = document.getElementById("payments-panel");
+
+      if (!tabs.length || !billingPanel || !paymentsPanel) return;
+
+      const setActive = (active: "billing" | "payments") => {
+        tabs.forEach((tab) => {
+          const isActive = tab.dataset.tab === active;
+          tab.classList.toggle("bg-tebra-teal", isActive);
+          tab.classList.toggle("text-white", isActive);
+          tab.classList.toggle("shadow-sm", isActive);
+          tab.classList.toggle("bg-transparent", !isActive);
+          tab.classList.toggle("text-tebra-teal-dark", !isActive);
+        });
+        billingPanel.classList.toggle("hidden", active !== "billing");
+        paymentsPanel.classList.toggle("hidden", active !== "payments");
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const target = (tab.dataset.tab as "billing" | "payments") ?? "billing";
+          setActive(target);
+        });
+      });
+    });
+  </script>
+</section>
+

@@ -1,8 +1,15 @@
+const withOpacity = (variable) => ({
+  opacityValue,
+}) => {
+  if (opacityValue === undefined) {
+    return `rgb(var(${variable}))`;
+  }
+  return `rgb(var(${variable}) / ${opacityValue})`;
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}',
-  ],
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}'],
   theme: {
     extend: {
       fontFamily: {
@@ -15,26 +22,18 @@ export default {
         content: '1200px',
       },
       colors: {
-        'tebra-hero-bg': '#F7FBFB',
-        'tebra-teal': '#005A57',
-        'tebra-teal-dark': '#003F3B',
-        'tebra-orange': '#FF6B5B',
-        tebra: {
-          50: '#F2FBF9',
-          100: '#D9F4ED',
-          200: '#B3E9DB',
-          300: '#7FD8C4',
-          400: '#4AC2A6',
-          500: '#1B8A7E',
-          600: '#15706A',
-          700: '#115758',
-          800: '#0C3D3F',
-          900: '#082A2C',
-        },
-        card: '#ebf0ef',
+        /* Brand colors powered by CSS variables.
+           Change values in :root in global.css to update everywhere. */
+        'tebra-hero-bg': withOpacity('--color-tebra-hero-bg'),
+        'tebra-teal': withOpacity('--color-tebra-teal'),
+        'tebra-teal-dark': withOpacity('--color-tebra-teal-dark'),
+        'tebra-orange': withOpacity('--color-tebra-orange'),
+        card: withOpacity('--color-card'),
+        'border-subtle': withOpacity('--color-border-subtle'),
+        'border-muted': withOpacity('--color-border-muted'),
         btn: {
-          primary: '#f27e5e',
-          'primary-hover': '#e06d4d',
+          primary: withOpacity('--color-btn-primary'),
+          'primary-hover': withOpacity('--color-btn-primary-hover'),
         },
       },
     },
