@@ -204,13 +204,51 @@ body {
 }
 
 .hero-compliance-inner {
-  @apply page-container flex flex-nowrap items-center justify-between gap-10 lg:gap-16;
+  @apply page-container flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between md:gap-10 lg:gap-16;
 }
 
 .hero-compliance-text {
-  @apply text-sm md:text-base font-medium text-tebra-teal-dark whitespace-nowrap;
+  @apply text-sm md:text-base font-medium text-tebra-teal-dark;
 }
 
 .hero-compliance-logos {
-  @apply flex flex-nowrap items-center justify-end gap-10;
+  @apply flex flex-wrap items-center justify-start gap-6 md:flex-nowrap md:justify-end md:gap-10;
+}
+
+/* Global image motion animations */
+@keyframes image-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.image-float {
+  animation: image-float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.image-float:hover {
+  animation-play-state: paused;
+}
+
+@keyframes image-slide-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.image-slide-horizontal {
+  animation: image-slide-horizontal 5s ease-in-out infinite;
 }

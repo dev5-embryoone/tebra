@@ -4,6 +4,10 @@ import hipaaRaw from "../../assets/hipaa.webp";
 import hitrustRaw from "../../assets/hitrust.webp";
 import aipcaRaw from "../../assets/aipca.webp";
 import pciRaw from "../../assets/pci.webp";
+import paymentsRaw from "../../assets/payments.webp";
+import billingRaw from "../../assets/billing.webp";
+import marketingRaw from "../../assets/marketing.webp";
+import patientExperienceRaw from "../../assets/patient-experience.webp";
 
 interface Props {
   title: string;
@@ -17,6 +21,8 @@ interface Props {
   /** Optional custom hero image URL so pages can reuse this layout with different art */
   imageSrc?: string;
   imageAlt?: string;
+  /** Show floating vertical feature images behind hero copy (features page only) */
+  featureFloating?: boolean;
 }
 
 const {
@@ -30,6 +36,7 @@ const {
   secondaryCtaHref = "#tour",
   imageSrc,
   imageAlt,
+  featureFloating = false,
 } = Astro.props as Props;
 
 const defaultHeroImage =
@@ -39,6 +46,16 @@ const hipaa = typeof hipaaRaw === "string" ? hipaaRaw : hipaaRaw.src;
 const hitrust = typeof hitrustRaw === "string" ? hitrustRaw : hitrustRaw.src;
 const aipca = typeof aipcaRaw === "string" ? aipcaRaw : aipcaRaw.src;
 const pci = typeof pciRaw === "string" ? pciRaw : pciRaw.src;
+const payments =
+  typeof paymentsRaw === "string" ? paymentsRaw : paymentsRaw.src;
+const billing =
+  typeof billingRaw === "string" ? billingRaw : billingRaw.src;
+const marketing =
+  typeof marketingRaw === "string" ? marketingRaw : marketingRaw.src;
+const patientExperience =
+  typeof patientExperienceRaw === "string"
+    ? patientExperienceRaw
+    : patientExperienceRaw.src;
 
 const heroImage = imageSrc ?? defaultHeroImage;
 const heroImageAlt = imageAlt ?? "Tebra EHR+ platform hero";
@@ -106,13 +123,42 @@ const heroImageAlt = imageAlt ?? "Tebra EHR+ platform hero";
       </div>
     </div>
 
-    <div class="relative flex justify-center lg:justify-end">
-      <img
-        src={heroImage}
-        alt={heroImageAlt}
-        class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
-        loading="lazy"
-      />
+    <div class="relative flex justify-center lg:justify-start">
+      {featureFloating ? (
+        <div class="grid grid-cols-2 gap-4 lg:gap-6">
+          <img
+            src={payments}
+            alt="Payments feature"
+            class="image-float max-w-[180px] rounded-3xl border border-gray-100 bg-white/80 shadow-xl"
+            loading="lazy"
+          />
+          <img
+            src={billing}
+            alt="Billing feature"
+            class="image-float max-w-[180px] rounded-3xl border border-gray-100 bg-white/80 shadow-xl"
+            loading="lazy"
+          />
+          <img
+            src={marketing}
+            alt="Marketing feature"
+            class="image-float max-w-[180px] rounded-3xl border border-gray-100 bg-white/80 shadow-xl"
+            loading="lazy"
+          />
+          <img
+            src={patientExperience}
+            alt="Patient experience feature"
+            class="image-float max-w-[180px] rounded-3xl border border-gray-100 bg-white/80 shadow-xl"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <img
+          src={heroImage}
+          alt={heroImageAlt}
+          class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+          loading="lazy"
+        />
+      )}
     </div>
   </div>
 </section>

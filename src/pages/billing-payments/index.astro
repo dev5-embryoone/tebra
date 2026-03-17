@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSection from "../../components/Hero/HeroSection.astro";
+
+import paymentsHeroRaw from "../../assets/Payments-1-Hero-Image.webp";
+
+const paymentsHero =
+  typeof paymentsHeroRaw === "string" ? paymentsHeroRaw : paymentsHeroRaw.src;
+---
+
+<BaseLayout
+  title="Healthcare payment solutions for private practices | Tebra"
+  description="Collect patient balances faster with fewer steps, less stress, and automated payment workflows your staff can rely on."
+>
+  <HeroSection
+    eyebrow="Billing &amp; payments"
+    title="Healthcare payment solutions made for private practices"
+    subtitle="Collect patient balances faster with fewer steps, less stress, and automated payment workflows your staff can rely on."
+    supporting="We safeguard your practice with full security and HIPAA compliance."
+    primaryCtaLabel="Request a demo"
+    primaryCtaHref="#demo"
+    secondaryCtaLabel="Try our billing calculator"
+    secondaryCtaHref="/billing"
+    imageSrc={paymentsHero}
+    imageAlt="Tebra payments dashboard"
+  />
+
+  <section class="bg-white py-10 lg:py-14">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="space-y-5">
+        <h2 class="heading-lg text-tebra-teal-dark">
+          Reduce friction at every step of patient payments
+        </h2>
+        <p class="body-base-muted max-w-xl">
+          Tebra brings online payments, cards on file, and automated plans into one workflow, so patients can
+          pay how they want — and your team spends less time chasing balances.
+        </p>
+        <ul class="space-y-2 text-sm text-gray-700">
+          <li>✓ Let patients pay from any device with secure online payments</li>
+          <li>✓ Store cards on file to automatically collect remaining balances</li>
+          <li>✓ Offer flexible payment plans without manual tracking</li>
+          <li>✓ Keep staff in sync with real-time payment and posting dashboards</li>
+        </ul>
+        <div class="pt-3 flex flex-wrap gap-3">
+          <a
+            href="#demo"
+            class="inline-flex items-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#ff5a49] transition"
+          >
+            Request a demo
+          </a>
+          <a
+            href="/billing"
+            class="inline-flex items-center rounded-full border border-tebra-teal bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal hover:bg-white transition"
+          >
+            Try our billing calculator
+          </a>
+        </div>
+      </div>
+
+      <div class="flex justify-center lg:justify-end">
+        <img
+          src={paymentsHero}
+          alt="Payments dashboard showing automated collections"
+          class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

@@ -22,6 +22,7 @@ const allPagesLinks = [
   { label: "Guides", href: "/guides" },
   { label: "EHR", href: "/ehr" },
   { label: "Billing", href: "/billing" },
+  { label: "Payments", href: "/billing-payments" },
   { label: "Scheduling", href: "/scheduling" },
   { label: "Patient Portal", href: "/patient-portal" },
   { label: "Telehealth", href: "/telehealth" },
@@ -39,14 +40,40 @@ const allPagesLinks = [
   { label: "Implementation", href: "/implementation" },
 ];
 
+// Mobile-only dropdown link groups
+const productLinks = [
+  { label: "EHR", href: "/ehr" },
+  { label: "Billing", href: "/billing" },
+  { label: "Payments", href: "/billing-payments" },
+  { label: "Scheduling", href: "/scheduling" },
+  { label: "Patient Portal", href: "/patient-portal" },
+  { label: "Telehealth", href: "/telehealth" },
+  { label: "Reporting", href: "/reporting" },
+  { label: "Analytics", href: "/analytics" },
+];
+
+const aboutLinks = [
+  { label: "About Tebra", href: "/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Partners", href: "/partners" },
+  { label: "Press", href: "/press" },
+  { label: "Events", href: "/events" },
+];
+
+const resourcesLinks = [
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Webinars", href: "/webinars" },
+  { label: "Guides", href: "/guides" },
+  { label: "Resources hub", href: "/resources" },
+];
+
 const navItems = [
   { label: "Products", href: "#", hasDropdown: true },
   { label: "Features", href: "/features" },
   { label: "Pricing", href: "/pricing" },
-  { label: "About", href: "/about" },
+  { label: "About", href: "/about", hasDropdown: true },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Resources", href: "/resources", hasDropdown: true },
-  { label: "More", href: "#", hasDropdown: true, dropdownLinks: allPagesLinks },
 ];
 
 const logoTebra =
@@ -81,7 +108,7 @@ const logoTebra =
       <!-- Desktop nav links (center) -->
       <div class="hidden lg:flex flex-1 items-center justify-center">
         <div class="flex items-center gap-8">
-          {navItems.map((item) => (
+          {navItems.map((item) =>
             item.label === "Products" ? (
               <ProductsDropdown />
             ) : item.label === "About" ? (
@@ -96,11 +123,11 @@ const logoTebra =
                 dropdownLinks={item.dropdownLinks}
               />
             )
-          ))}
+          )}
         </div>
       </div>
 
-      <!-- Desktop: Take a tour + Get a demo only -->
+      <!-- Desktop: Take a tour + Get a demo -->
       <div class="hidden lg:flex items-center gap-3 shrink-0">
         <a
           href="/product-tour"
@@ -117,30 +144,132 @@ const logoTebra =
       </div>
 
       <!-- Mobile menu button -->
-        <button
+      <button
         id="mobile-menu-button"
         class="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white p-2 text-gray-700 hover:bg-gray-50 lg:hidden"
         aria-label="Open main menu"
+        aria-expanded="false"
       >
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Hamburger icon -->
+        <svg
+          id="mobile-menu-icon-open"
+          class="h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 7h16M4 12h16M4 17h16"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <!-- Close icon -->
+        <svg
+          id="mobile-menu-icon-close"
+          class="h-5 w-5 hidden"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 6l12 12M18 6L6 18"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
     </div>
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-100 bg-white max-h-[80vh] overflow-y-auto">
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden border-t border-gray-100 bg-white max-h-[80vh] overflow-y-auto"
+  >
     <div class="page-container flex flex-col gap-4 py-4">
+      <!-- Primary nav sections with mobile-friendly dropdowns -->
       <div class="flex flex-col gap-3">
-        {navItems.map((item) => (
-          <a
-            href={item.href}
-            class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+        <details class="group">
+          <summary
+            class="flex items-center justify-between text-sm font-medium text-gray-700 hover:text-gray-900 cursor-pointer"
           >
-            {item.label}
-          </a>
-        ))}
+            <span>Products</span>
+            <span class="ml-2 text-gray-400 group-open:rotate-180 transition-transform">
+              ▾
+            </span>
+          </summary>
+          <div class="mt-2 pl-4 flex flex-col gap-2">
+            {productLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-sm text-gray-600 hover:text-tebra-teal transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </details>
+
+        <details class="group">
+          <summary
+            class="flex items-center justify-between text-sm font-medium text-gray-700 hover:text-gray-900 cursor-pointer"
+          >
+            <span>About</span>
+            <span class="ml-2 text-gray-400 group-open:rotate-180 transition-transform">
+              ▾
+            </span>
+          </summary>
+          <div class="mt-2 pl-4 flex flex-col gap-2">
+            {aboutLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-sm text-gray-600 hover:text-tebra-teal transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </details>
+
+        <details class="group">
+          <summary
+            class="flex items-center justify-between text-sm font-medium text-gray-700 hover:text-gray-900 cursor-pointer"
+          >
+            <span>Resources</span>
+            <span class="ml-2 text-gray-400 group-open:rotate-180 transition-transform">
+              ▾
+            </span>
+          </summary>
+          <div class="mt-2 pl-4 flex flex-col gap-2">
+            {resourcesLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-sm text-gray-600 hover:text-tebra-teal transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </details>
+
+        {navItems
+          .filter(
+            (item) =>
+              item.label !== "Products" &&
+              item.label !== "About" &&
+              item.label !== "Resources"
+          )
+          .map((item) => (
+            <a
+              href={item.href}
+              class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
       </div>
       <div class="border-t border-gray-100 pt-3">
         <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">All pages</p>
@@ -163,8 +292,8 @@ const logoTebra =
           Login
         </a>
         <a
-          href="#demo"
-          class="inline-flex items-center justify-center rounded-full bg-btn-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-btn-primary-hover transition"
+          href="/demo"
+          class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff5a49] transition-colors"
         >
           Get demo
         </a>
@@ -174,15 +303,45 @@ const logoTebra =
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const button = document.querySelector<HTMLButtonElement>("#mobile-menu-button");
-      const menu = document.querySelector<HTMLDivElement>("#mobile-menu");
+      const button = document.querySelector("#mobile-menu-button");
+      const menu = document.querySelector("#mobile-menu");
+      const iconOpen = document.querySelector("#mobile-menu-icon-open");
+      const iconClose = document.querySelector("#mobile-menu-icon-close");
 
       if (!button || !menu) return;
 
       button.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
+        const isHidden = menu.classList.contains("hidden");
+
+        if (isHidden) {
+          menu.classList.remove("hidden");
+          button.setAttribute("aria-expanded", "true");
+          if (iconOpen && iconClose) {
+            iconOpen.classList.add("hidden");
+            iconClose.classList.remove("hidden");
+          }
+        } else {
+          menu.classList.add("hidden");
+          button.setAttribute("aria-expanded", "false");
+          if (iconOpen && iconClose) {
+            iconOpen.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          }
+        }
+      });
+
+      // Close mobile menu when any link inside it is clicked
+      menu.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target && target.tagName === "A") {
+          menu.classList.add("hidden");
+          button.setAttribute("aria-expanded", "false");
+          if (iconOpen && iconClose) {
+            iconOpen.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          }
+        }
       });
     });
   </script>
 </nav>
-
