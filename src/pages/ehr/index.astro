@@ -127,8 +127,9 @@ const ehrBadgeSrc = typeof ehrBadgeImage === "string" ? ehrBadgeImage : ehrBadge
         </p>
       </div>
 
-      <!-- Testimonial box: centered, light pink, quote left / badge right -->
-      <div class="max-w-4xl mx-auto mb-14">
+      <!-- Testimonial + EHR image side by side -->
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12 mb-14">
+        <!-- Left: Testimonial box -->
         <div class="rounded-2xl bg-[#FDF5F3] border border-[#F5E0DB] p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start">
           <div class="flex-1 text-left min-w-0">
             <p class="text-tebra-teal-dark font-medium text-lg sm:text-xl leading-snug">
@@ -156,16 +157,16 @@ const ehrBadgeSrc = typeof ehrBadgeImage === "string" ? ehrBadgeImage : ehrBadge
             />
           </div>
         </div>
-      </div>
 
-      <!-- Right column: EHR image -->
-      <div class="flex justify-center lg:justify-end">
-        <img
-          src={ehrpageSrc}
-          alt="EHR patient demographics and practice features"
-          class="w-full max-w-2xl rounded-xl border border-gray-200 shadow-lg object-cover"
-          loading="lazy"
-        />
+        <!-- Right: EHR image -->
+        <div class="flex justify-center lg:justify-end">
+          <img
+            src={ehrpageSrc}
+            alt="EHR patient demographics and practice features"
+            class="w-full max-w-2xl rounded-xl border border-gray-200 shadow-lg object-cover"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   </section>
