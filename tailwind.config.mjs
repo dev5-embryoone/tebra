@@ -6,17 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          '"Inter"',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Segoe UI"',
-          'Helvetica',
-          'Arial',
-          'sans-serif',
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-        ],
+        sans: ['var(--font-akkurat)', 'sans-serif'],
       },
       fontSize: {
         base: ['14px', { lineHeight: '24px' }],
