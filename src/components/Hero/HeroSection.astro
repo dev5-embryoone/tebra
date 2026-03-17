@@ -1,5 +1,9 @@
 ---
 import heroImageRaw from "../../assets/hero-short.webp";
+import hipaaRaw from "../../assets/hipaa.webp";
+import hitrustRaw from "../../assets/hitrust.webp";
+import aipcaRaw from "../../assets/aipca.webp";
+import pciRaw from "../../assets/pci.webp";
 
 interface Props {
   title: string;
@@ -10,6 +14,9 @@ interface Props {
   primaryCtaHref?: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  /** Optional custom hero image URL so pages can reuse this layout with different art */
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 const {
@@ -21,31 +28,41 @@ const {
   primaryCtaHref = "#demo",
   secondaryCtaLabel = "Take a quick tour",
   secondaryCtaHref = "#tour",
+  imageSrc,
+  imageAlt,
 } = Astro.props as Props;
 
-const heroImage =
+const defaultHeroImage =
   typeof heroImageRaw === "string" ? heroImageRaw : heroImageRaw.src;
+
+const hipaa = typeof hipaaRaw === "string" ? hipaaRaw : hipaaRaw.src;
+const hitrust = typeof hitrustRaw === "string" ? hitrustRaw : hitrustRaw.src;
+const aipca = typeof aipcaRaw === "string" ? aipcaRaw : aipcaRaw.src;
+const pci = typeof pciRaw === "string" ? pciRaw : pciRaw.src;
+
+const heroImage = imageSrc ?? defaultHeroImage;
+const heroImageAlt = imageAlt ?? "Tebra EHR+ platform hero";
 ---
 
 <section class="page-section bg-tebra-hero-bg">
   <div class="page-container grid gap-12 lg:grid-cols-2 lg:items-center">
     <div class="space-y-6">
-      <div class="flex items-center gap-4 text-xs text-tebra-teal">
-        <div class="flex items-center gap-1">
-          <span class="text-base leading-none text-[#FFB800]">★</span>
-          <span class="font-semibold text-tebra-teal-dark">4.5</span>
+      <div class="hero-rating-strip">
+        <div class="hero-rating-block">
+          <span class="hero-rating-star">★</span>
+          <span class="hero-rating-score">4.5</span>
           <span class="text-gray-300">|</span>
-          <span class="tracking-wide text-gray-500">★★★★★</span>
+          <span class="hero-rating-text">★★★★★</span>
         </div>
-        <div class="h-3 w-px bg-gray-200" />
-        <div class="flex items-center gap-1">
-          <span class="text-base leading-none text-[#FFB800]">★</span>
-          <span class="font-semibold text-tebra-teal-dark">4.1</span>
+        <div class="hero-rating-divider" />
+        <div class="hero-rating-block">
+          <span class="hero-rating-star">★</span>
+          <span class="hero-rating-score">4.1</span>
           <span class="text-gray-300">|</span>
-          <span class="tracking-wide text-gray-500">★★★★☆</span>
+          <span class="hero-rating-text">★★★★☆</span>
         </div>
       </div>
-      <div class="inline-flex items-center gap-2 rounded-full bg-[#E4F3F3] px-3 py-1 text-xs font-medium text-tebra-teal">
+      <div class="hero-eyebrow-pill">
         <span class="h-1.5 w-1.5 rounded-full bg-tebra-teal" />
         <span>{eyebrow}</span>
       </div>
@@ -92,10 +109,24 @@ const heroImage =
     <div class="relative flex justify-center lg:justify-end">
       <img
         src={heroImage}
-        alt="Tebra EHR+ platform hero"
+        alt={heroImageAlt}
         class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
         loading="lazy"
       />
+    </div>
+  </div>
+</section>
+
+<section class="hero-compliance-strip">
+  <div class="hero-compliance-inner">
+    <p class="hero-compliance-text">
+      We safeguard your practice with full security and HIPAA compliance.
+    </p>
+    <div class="hero-compliance-logos">
+      <img src={hipaa} alt="HIPAA compliant" class="h-14 md:h-16 w-auto" loading="lazy" />
+      <img src={hitrust} alt="HITRUST certified" class="h-14 md:h-16 w-auto" loading="lazy" />
+      <img src={aipca} alt="AICPA SOC" class="h-14 md:h-16 w-auto" loading="lazy" />
+      <img src={pci} alt="PCI compliant" class="h-14 md:h-16 w-auto" loading="lazy" />
     </div>
   </div>
 </section>

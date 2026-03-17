@@ -1,0 +1,48 @@
+---
+import patientExperienceImageRaw from "../../assets/PATIEN-EXPERIENCE-min.webp";
+import FeatureDetailContent from "./FeatureDetailContent.astro";
+import FeatureAllFeaturesCard from "./FeatureAllFeaturesCard.astro";
+
+const patientExperienceImage =
+  typeof patientExperienceImageRaw === "string"
+    ? patientExperienceImageRaw
+    : patientExperienceImageRaw.src;
+---
+
+<section id="patient-experience" class="bg-white py-16 lg:py-20">
+  <div class="page-container">
+    <FeatureDetailContent
+      pillLabel="Patient Experience"
+      title="Patient Experience"
+      description="Tebra makes it easy for patients to schedule, communicate, and stay connected with your practice, while giving you tools to capture feedback and strengthen loyalty over time."
+      quote='"Tebra is super user friendly. It is streamlined where you can schedule, talk to patients, can send messages."'
+      quoteAuthor="Jennifer M."
+      imageSrc={patientExperienceImage}
+      imageAlt="Patient experience dashboard"
+    />
+    <FeatureAllFeaturesCard
+      title="All features"
+      description="Everything you need to deliver a smoother patient journey from first contact to follow-up."
+      ctaLabel="Explore Patient Experience"
+      ctaHref="/patient-experience"
+    >
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Online scheduling</h4>
+        <p class="text-xs text-gray-600">Let patients book or request visits 24/7 based on your availability.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Appointment reminders</h4>
+        <p class="text-xs text-gray-600">Send automated reminders by text, email, or phone to reduce no-shows.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Two-way text communication</h4>
+        <p class="text-xs text-gray-600">Answer questions and confirm visits on patients’ preferred channels.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Digital intake</h4>
+        <p class="text-xs text-gray-600">Replace clipboards with forms patients complete before their visit.</p>
+      </div>
+    </FeatureAllFeaturesCard>
+  </div>
+</section>
+

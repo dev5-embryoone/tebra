@@ -1,0 +1,47 @@
+---
+import ehrImageRaw from "../../assets/EHR-min.webp";
+import FeatureDetailContent from "./FeatureDetailContent.astro";
+import FeatureAllFeaturesCard from "./FeatureAllFeaturesCard.astro";
+
+const ehrImage =
+  typeof ehrImageRaw === "string" ? ehrImageRaw : ehrImageRaw.src;
+---
+
+<section id="ehr" class="bg-white py-16 lg:py-20">
+  <div class="page-container">
+    <FeatureDetailContent
+      pillLabel="Electronic Health Records"
+      title="Electronic Health Records"
+      description="Tebra’s EHR helps you document faster, reduce busywork, and stay focused on your patients."
+      quote='"Tebra helps my private practice grow, by being easily scalable."'
+      quoteAuthor="Dr. Fabius Santos DNP, PMHNP-BC"
+      quoteSubtitle="Optimal Psychiatry and Wellness"
+      imageSrc={ehrImage}
+      imageAlt="EHR feature"
+    />
+    <FeatureAllFeaturesCard
+      title="All features"
+      description="Everything you need to chart faster, stay organized, and deliver better care."
+      ctaLabel="Explore Tebra’s EHR"
+      ctaHref="/ehr"
+    >
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">AI-powered charting</h4>
+        <p class="text-xs text-gray-600">Finish notes faster with AI Note Assist, templates, and macros.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Electronic prescriptions</h4>
+        <p class="text-xs text-gray-600">Send prescriptions directly to the pharmacy with safety checks.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Electronic labs</h4>
+        <p class="text-xs text-gray-600">Order tests and see results in one place — no portals.</p>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-tebra-teal-dark">Telehealth</h4>
+        <p class="text-xs text-gray-600">HIPAA-compliant video visits integrated with your schedule and notes.</p>
+      </div>
+    </FeatureAllFeaturesCard>
+  </div>
+</section>
+

@@ -30,7 +30,7 @@ const {
 } = Astro.props as Props;
 
 const wrapperClass = `${centered ? 'mx-auto max-w-2xl text-center' : ''} ${className}`.trim();
-const eyebrowStyles = `text-xs font-semibold uppercase tracking-widest ${eyebrowClass}`;
+const eyebrowStyles = `eyebrow ${eyebrowClass}`;
 const titleMarginClass = eyebrow ? (centered ? 'mt-3' : 'mt-2') : '';
 ---
 
@@ -40,11 +40,11 @@ const titleMarginClass = eyebrow ? (centered ? 'mt-3' : 'mt-2') : '';
       {eyebrow}
     </p>
   )}
-  <h2 class={`${titleMarginClass} text-3xl font-semibold tracking-tight lg:text-4xl ${titleClass}`}>
+  <h2 class={`${titleMarginClass} heading-lg ${titleClass}`}>
     {title}
   </h2>
   {description && (
-    <p class={`mt-4 text-lg text-gray-600 leading-relaxed ${descriptionClass}`.trim()}>
+    <p class={`mt-4 body-lg-muted ${descriptionClass}`.trim()}>
       {description}
     </p>
   )}

@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSection from "../../components/Hero/HeroSection.astro";
+import FeaturesOverviewSection from "../../components/Sections/FeaturesOverviewSection.astro";
+import EhrFeatureSection from "../../components/Sections/EhrFeatureSection.astro";
+import BillingPaymentsSection from "../../components/Sections/BillingPaymentsSection.astro";
+import PatientExperienceSection from "../../components/Sections/PatientExperienceSection.astro";
+import PracticeMarketingSection from "../../components/Sections/PracticeMarketingSection.astro";
+import FAQSection from "../../components/Sections/FAQSection.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+---
+
+<BaseLayout
+  title="Healthcare software features built for private practices | Tebra"
+  description="Explore Tebra’s EHR, billing, payments, patient experience, and marketing features — all connected in one EHR+ platform."
+>
+  <HeroSection
+    eyebrow="Features that help you run a better practice"
+    title="Features that help you run a better practice"
+    subtitle="Tebra combines your EHR, billing, scheduling, marketing, and patient communication in one easy-to-use platform, built for private practices."
+    supporting="We safeguard your practice with full security and HIPAA compliance."
+    primaryCtaLabel="Get a demo"
+    primaryCtaHref="#demo"
+    secondaryCtaLabel="Take a product tour"
+    secondaryCtaHref="/product-tour"
+  />
+
+  <FeaturesOverviewSection />
+  <EhrFeatureSection />
+  <BillingPaymentsSection />
+  <PatientExperienceSection />
+  <PracticeMarketingSection />
+  <FAQSection />
+  <CTASection
+    title="Automate, optimize, and thrive with Tebra"
+    description="The leading practice automation solution for independent practices."
+    primaryCtaLabel="Get Demo"
+    primaryCtaHref="#demo"
+    secondaryCtaLabel="Explore for Free"
+    secondaryCtaHref="#"
+  />
+</BaseLayout>
+
