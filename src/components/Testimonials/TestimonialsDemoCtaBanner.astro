@@ -1,0 +1,35 @@
+---
+import illo from "../../assets/TBR_Micro_Illo_Take_The_Complexity_Out_Of_Scheduling.webp";
+
+const illoSrc = typeof illo === "string" ? illo : illo.src;
+---
+
+<section class="border-t border-gray-100 bg-white py-10 sm:py-12" aria-labelledby="testimonials-demo-cta-heading">
+  <div class="page-container">
+    <div
+      class="flex flex-col items-center gap-6 rounded-xl bg-tebra-cta-cream px-6 py-8 shadow-sm ring-1 ring-black/[0.04] sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-10 sm:py-9 lg:px-14 lg:py-10"
+    >
+      <img
+        src={illoSrc}
+        alt=""
+        class="h-auto w-36 shrink-0 object-contain sm:w-40 lg:w-44"
+        width="176"
+        height="140"
+        loading="lazy"
+        decoding="async"
+      />
+      <h2
+        id="testimonials-demo-cta-heading"
+        class="max-w-xl text-center text-xl font-bold leading-snug text-tebra-teal-dark sm:flex-1 sm:text-left sm:text-[22px] lg:text-2xl"
+      >
+        Learn how Tebra can help your business thrive!
+      </h2>
+      <a
+        href="/demo"
+        class="inline-flex shrink-0 items-center justify-center rounded-full bg-tebra-cta-coral px-7 py-3 text-sm font-semibold text-tebra-teal-dark shadow-sm transition hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tebra-teal-dark"
+      >
+        Get a demo
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import StoryCenteredHero from "../../../components/About/StoryCenteredHero.astro";
+import KareoPatientPopCircle from "../../../components/About/KareoPatientPopCircle.astro";
+import heroImage from "../../../assets/about.webp";
+
+const heroSrc = typeof heroImage === "string" ? heroImage : heroImage.src;
+---
+
+<BaseLayout
+  title="Our Story | Tebra"
+  description="Healthcare works best when technology supports care. Through our AI-powered EHR+, Tebra helps independent practices keep care human."
+>
+  <article class="bg-white">
+    <div class="page-container pt-16 pb-10 sm:pt-20 sm:pb-14 lg:pt-24 lg:pb-16">
+      <StoryCenteredHero
+        eyebrow="Our story"
+        title="Built to support care — and the people behind it"
+        intro="Healthcare works best when technology supports care, not the other way around. Through our AI-powered EHR+, Tebra reduces administrative burden and helps independent practices keep care human."
+      />
+    </div>
+
+    <figure class="mx-auto w-full max-w-[1200px] px-0 sm:px-6 lg:px-12">
+      <img
+        src={heroSrc}
+        alt="Healthcare professionals collaborating with technology in a modern practice"
+        class="h-auto w-full object-cover sm:rounded-2xl sm:shadow-lg"
+        loading="eager"
+      />
+    </figure>
+
+    <div
+      class="border-t border-gray-100 bg-gradient-to-b from-white to-tebra-hero-bg/40"
+    >
+      <div class="page-container py-14 sm:py-20">
+        <p
+          class="mx-auto mb-2 max-w-2xl text-center text-xs font-bold uppercase tracking-[0.28em] text-gray-500"
+        >
+          One platform
+        </p>
+        <h2
+          class="mx-auto mb-10 max-w-xl text-center text-2xl font-semibold text-tebra-teal-dark sm:text-3xl"
+        >
+          Everything your practice needs to grow and deliver great care
+        </h2>
+        <KareoPatientPopCircle />
+        <div class="mx-auto mt-12 max-w-2xl text-center">
+          <p class="text-gray-600 leading-relaxed">
+            Tebra brings together the capabilities practices rely on—from patient
+            acquisition and engagement to clinical workflows, billing, and
+            analytics—so your team can work from one connected system.
+          </p>
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href="/product-tour"
+              class="inline-flex items-center justify-center rounded-full border-2 border-tebra-teal-dark px-6 py-3 text-sm font-semibold text-tebra-teal-dark hover:bg-tebra-teal-dark hover:text-white transition-colors"
+            >
+              Take a tour
+            </a>
+            <a
+              href="/demo"
+              class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#ff5a49] transition-colors"
+            >
+              Get a demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,368 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+
+const strategicAnchors = [
+  {
+    title: "Our people",
+    description:
+      "We strive to attract, hire, retain, and develop a high-performing workforce that reflects the communities we serve.",
+  },
+  {
+    title: "Our culture",
+    description:
+      "We strive to ensure that leaders and employees at all levels promote Tebra’s vision for DE&I and maintain an inclusive and equitable workplace.",
+  },
+  {
+    title: "Our community impact",
+    description:
+      "We strive to cultivate partnerships and support organizations whose primary objective is to serve underrepresented and under-resourced communities.",
+  },
+];
+
+const quotes = [
+  {
+    quote:
+      "Tebra is the first company I’ve worked for that celebrates cultural diversity. From our active employee resource groups to the cultural calendar, Tebra has created a company culture that really supports diversity.",
+    name: "Jordan White",
+    role: "Onboarding",
+  },
+  {
+    quote:
+      "Psychological safety is so important in today’s culture and Tebra has allowed me to bring my most authentic self to work every day!",
+    name: "Michael Hamilton",
+    role: "Account Management",
+  },
+];
+
+const representation = {
+  race: {
+    label: "Race/Ethnicity",
+    items: [
+      { label: "White", value: 38.65 },
+      { label: "Asian", value: 12.84 },
+      { label: "Hispanic or Latino", value: 37.03 },
+      { label: "Black or African American", value: 5.49 },
+      { label: "Two or more races", value: 5.24 },
+      { label: "Native Hawaiian or Other Pacific Islander", value: 0.37 },
+      { label: "American Indian or Alaska Native", value: 0.37 },
+    ],
+  },
+  gender: {
+    label: "Gender",
+    items: [
+      { label: "Women", value: 44.43 },
+      { label: "Men", value: 55.22 },
+      { label: "Non-binary", value: 0.35 },
+    ],
+  },
+  age: {
+    label: "Age",
+    items: [
+      { label: "<20", value: 13.2 },
+      { label: "21-30", value: 35.23 },
+      { label: "31-40", value: 33.3 },
+      { label: "41-50", value: 12.99 },
+      { label: "51-60", value: 4.06 },
+      { label: "61-64", value: 0.61 },
+      { label: "65<", value: 0.61 },
+    ],
+  },
+} as const;
+
+const ergs = [
+  {
+    name: "AHA",
+    subtitle: "Asian Heritage Community + Allies",
+    description:
+      "The mission of AHA is to bring awareness to the AAPI community and foster networking, professional development, and learning about AAPI culture and heritage.",
+  },
+  {
+    name: "Noir",
+    subtitle: "Black + African American Community + Allies",
+    description:
+      "The purpose of Noir is to provide a safe space to grow Black cultural knowledge within the Tebra community while also celebrating our past, present, and paving the way for our future.",
+  },
+  {
+    name: "Poder Latino",
+    subtitle: "Latinx Community + Allies",
+    description:
+      "The purpose of Poder Latino at Tebra is to celebrate the amazing contributions of Costa Rican, and all Latinx people, as well as support and build awareness of Latinx struggles.",
+  },
+  {
+    name: "Pride",
+    subtitle: "LGBTQIA+ + Allies",
+    description:
+      "The purpose of Pride at Tebra is to provide community, networking, and education opportunities for members of the LGBTQIA+ communities and allies, to elevate the voices of LGBTQIA+ employees and create a space where employees can bring their authentic self to work.",
+  },
+  {
+    name: "SHE (Supporting Human Equality)",
+    subtitle: "Women-Identified Community + Allies",
+    description:
+      "Serves as a circle of support for Women through shared experiences to empower each other for greatness in all aspects of life.",
+  },
+];
+---
+
+<BaseLayout
+  title="Diversity, Equity, and Inclusion (DEI) | Tebra"
+  description="We’re committed to seeking out diverse backgrounds, experiences, thoughts, and personalities — all of which strengthen our culture."
+>
+  <PageSection variant="default">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-xs font-bold uppercase tracking-[0.28em] text-gray-500 sm:text-sm">
+        Diversity, Equity, Inclusion
+      </p>
+      <h1 class="mt-4 font-display text-4xl font-semibold tracking-tight text-tebra-teal-dark sm:text-5xl">
+        All are welcome
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
+        At Tebra, our employees are the heart of our organization. One of our core values is “better together,”
+        and we live this ethos in everything from collaboration to celebration. As such, we’re committed to
+        seeking out diverse backgrounds, experiences, thoughts, and personalities — all of which strengthen not
+        only our ability to solve problems creatively, but our greater Tebra culture.
+      </p>
+    </div>
+  </PageSection>
+
+  <PageSection variant="warm" class="py-14 lg:py-20">
+    <div class="grid gap-8 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        <h2 class="font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">
+          Tebra DE&I strategic anchors
+        </h2>
+      </div>
+      <div class="lg:col-span-8">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {strategicAnchors.map((a) => (
+            <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+              <h3 class="text-base font-bold text-gray-900">{a.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-gray-600">{a.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" class="pt-0">
+    <div class="grid gap-6 lg:grid-cols-2">
+      {quotes.map((q) => (
+        <figure class="rounded-2xl bg-[#FBF9F4] p-7 shadow-sm ring-1 ring-gray-100">
+          <blockquote class="text-base leading-relaxed text-gray-700">“{q.quote}”</blockquote>
+          <figcaption class="mt-5 text-sm font-semibold text-gray-900">
+            {q.name}
+            <span class="ml-2 font-normal text-gray-500">{q.role}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection variant="default">
+    <div class="mx-auto max-w-4xl">
+      <p class="text-xs font-bold uppercase tracking-[0.28em] text-gray-500 sm:text-sm">
+        Accountability &amp; Transparency
+      </p>
+      <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+        Representation at Tebra
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg">
+        We have spent time looking at our employee cycle from recruitment, retention, progression, and overall
+        employee experience to find areas where we can improve and mitigate bias. There is work to be done, and
+        we are committed to transparency as we take steps to ensure Tebra is truly a diverse, equitable, and
+        inclusive workplace.
+      </p>
+
+      <div class="mt-8 rounded-2xl border border-gray-100 bg-white shadow-sm">
+        <div
+          class="flex flex-wrap items-center gap-2 border-b border-gray-100 p-3"
+          role="tablist"
+          aria-label="Representation tabs"
+        >
+          <button
+            type="button"
+            class="dei-tab rounded-full px-4 py-2 text-sm font-semibold text-tebra-teal-dark hover:bg-tebra-hero-bg"
+            data-tab="race"
+            aria-selected="true"
+          >
+            Race/Ethnicity
+          </button>
+          <button
+            type="button"
+            class="dei-tab rounded-full px-4 py-2 text-sm font-semibold text-tebra-teal-dark hover:bg-tebra-hero-bg"
+            data-tab="gender"
+            aria-selected="false"
+          >
+            Gender
+          </button>
+          <button
+            type="button"
+            class="dei-tab rounded-full px-4 py-2 text-sm font-semibold text-tebra-teal-dark hover:bg-tebra-hero-bg"
+            data-tab="age"
+            aria-selected="false"
+          >
+            Age
+          </button>
+        </div>
+
+        <div class="p-6 sm:p-8">
+          <div class="dei-panel" data-panel="race">
+            <h3 class="text-lg font-bold text-gray-900">{representation.race.label}</h3>
+            <div class="mt-5 space-y-4">
+              {representation.race.items.map((item) => (
+                <div class="grid gap-2 sm:grid-cols-[1fr,80px] sm:items-center">
+                  <div>
+                    <div class="flex items-center justify-between gap-4">
+                      <span class="text-sm font-semibold text-gray-900">{item.label}</span>
+                      <span class="text-sm font-semibold text-gray-700 sm:hidden">{item.value.toFixed(2)}%</span>
+                    </div>
+                    <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+                      <div
+                        class="h-2 rounded-full bg-tebra-teal"
+                        style={`width: ${Math.min(100, Math.max(0, item.value))}%`}
+                      />
+                    </div>
+                  </div>
+                  <div class="hidden text-right text-sm font-semibold text-gray-700 sm:block">
+                    {item.value.toFixed(2)}%
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="dei-panel hidden" data-panel="gender">
+            <h3 class="text-lg font-bold text-gray-900">{representation.gender.label}</h3>
+            <div class="mt-5 space-y-4">
+              {representation.gender.items.map((item) => (
+                <div class="grid gap-2 sm:grid-cols-[1fr,80px] sm:items-center">
+                  <div>
+                    <div class="flex items-center justify-between gap-4">
+                      <span class="text-sm font-semibold text-gray-900">{item.label}</span>
+                      <span class="text-sm font-semibold text-gray-700 sm:hidden">{item.value.toFixed(2)}%</span>
+                    </div>
+                    <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+                      <div
+                        class="h-2 rounded-full bg-tebra-teal"
+                        style={`width: ${Math.min(100, Math.max(0, item.value))}%`}
+                      />
+                    </div>
+                  </div>
+                  <div class="hidden text-right text-sm font-semibold text-gray-700 sm:block">
+                    {item.value.toFixed(2)}%
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="dei-panel hidden" data-panel="age">
+            <h3 class="text-lg font-bold text-gray-900">{representation.age.label}</h3>
+            <div class="mt-5 space-y-4">
+              {representation.age.items.map((item) => (
+                <div class="grid gap-2 sm:grid-cols-[1fr,80px] sm:items-center">
+                  <div>
+                    <div class="flex items-center justify-between gap-4">
+                      <span class="text-sm font-semibold text-gray-900">{item.label}</span>
+                      <span class="text-sm font-semibold text-gray-700 sm:hidden">{item.value.toFixed(2)}%</span>
+                    </div>
+                    <div class="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+                      <div
+                        class="h-2 rounded-full bg-tebra-teal"
+                        style={`width: ${Math.min(100, Math.max(0, item.value))}%`}
+                      />
+                    </div>
+                  </div>
+                  <div class="hidden text-right text-sm font-semibold text-gray-700 sm:block">
+                    {item.value.toFixed(2)}%
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const tabs = Array.from(document.querySelectorAll(".dei-tab"));
+      const panels = Array.from(document.querySelectorAll(".dei-panel"));
+
+      function setActive(tabKey) {
+        tabs.forEach((t) => {
+          const isActive = t.getAttribute("data-tab") === tabKey;
+          t.setAttribute("aria-selected", String(isActive));
+          t.classList.toggle("bg-tebra-hero-bg", isActive);
+        });
+
+        panels.forEach((p) => {
+          const isActive = p.getAttribute("data-panel") === tabKey;
+          p.classList.toggle("hidden", !isActive);
+        });
+      }
+
+      tabs.forEach((t) => {
+        t.addEventListener("click", () => setActive(t.getAttribute("data-tab")));
+      });
+
+      setActive("race");
+    </script>
+  </PageSection>
+
+  <PageSection variant="warm">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+      <div class="lg:col-span-4">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+          Employee resource groups
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-gray-600">
+          To enhance and foster an inclusive workplace focused on welcoming, supporting, and celebrating what
+          makes our employees unique, Tebra sponsors employee resource groups (ERGs).
+        </p>
+      </div>
+      <div class="lg:col-span-8">
+        <div class="grid gap-5 sm:grid-cols-2">
+          {ergs.map((e) => (
+            <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+              <p class="text-xs font-bold uppercase tracking-[0.22em] text-gray-500">{e.name}</p>
+              <h3 class="mt-2 text-base font-bold text-gray-900">{e.subtitle}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-gray-600">{e.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default">
+    <div class="mx-auto max-w-4xl rounded-2xl bg-[#FBF9F4] p-8 shadow-sm ring-1 ring-gray-100 sm:p-10">
+      <h2 class="font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">
+        Commitment to affirmative care
+      </h2>
+      <div class="mt-4 space-y-4 text-base leading-relaxed text-gray-600">
+        <p>
+          At Tebra, our commitment to fostering an inclusive environment where all individuals feel respected,
+          valued, and understood remains unwavering. We believe in inclusivity for our customers and their
+          patients, ensuring that our platform reflects the diverse identities of everyone we serve.
+        </p>
+        <p>
+          We are actively enhancing our platform to be more accommodating and respectful of the diverse
+          identities and unique experiences of all our users. Our goal is to create a modern, all-in-one
+          platform designed for all.
+        </p>
+      </div>
+    </div>
+  </PageSection>
+
+  <CTASection
+    title="Automate, optimize, and thrive with Tebra"
+    description="The leading practice automation solution for independent practices."
+    primaryCtaLabel="Get a demo"
+    primaryCtaHref="/demo"
+    secondaryCtaLabel="Explore for Free"
+    secondaryCtaHref="/sign-up"
+  />
+</BaseLayout>
+

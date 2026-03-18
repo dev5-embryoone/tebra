@@ -10,6 +10,7 @@ import TourBannerSection from "../components/Sections/TourBannerSection.astro";
 import FAQSection from "../components/Sections/FAQSection.astro";
 import PracticeManagementToolsSection from "../components/Sections/PracticeManagementToolsSection.astro";
 import CTASection from "../components/Sections/CTASection.astro";
+import { homeHero, homeClosingCta } from "../data/homePage";
 ---
 
 <BaseLayout
@@ -17,9 +18,12 @@ import CTASection from "../components/Sections/CTASection.astro";
   description="Tebra’s EHR+ platform connects care, billing, scheduling, and more. Built-in AI speeds up notes, handles reviews, and automates repetitive admin work."
 >
   <HeroSection
-    title="Run your entire practice with one EHR+ platform"
-    subtitle="Tebra’s EHR+ platform connects care, billing, scheduling, and more. Built‑in AI speeds up notes, handles reviews, and automates repetitive admin work."
-    primaryCtaLabel="Get a demo"
+    title={homeHero.title}
+    subtitle={homeHero.subtitle}
+    primaryCtaLabel={homeHero.primaryCtaLabel}
+    primaryCtaHref={homeHero.primaryCtaHref}
+    secondaryCtaLabel={homeHero.secondaryCtaLabel}
+    secondaryCtaHref={homeHero.secondaryCtaHref}
   />
   <LogosSection />
   <FeaturesSection />
@@ -30,12 +34,11 @@ import CTASection from "../components/Sections/CTASection.astro";
   <FAQSection />
   <PracticeManagementToolsSection />
   <CTASection
-    title="Automate, optimize, and thrive with Tebra"
-    description="The leading practice automation solution for independent practices."
-    primaryCtaLabel="Get Demo"
-    primaryCtaHref="#demo"
-    secondaryCtaLabel="Explore for Free"
-    secondaryCtaHref="#"
+    title={homeClosingCta.title}
+    description={homeClosingCta.description}
+    primaryCtaLabel={homeClosingCta.primaryCtaLabel}
+    primaryCtaHref={homeClosingCta.primaryCtaHref}
+    secondaryCtaLabel={homeClosingCta.secondaryCtaLabel}
+    secondaryCtaHref={homeClosingCta.secondaryCtaHref}
   />
 </BaseLayout>
-

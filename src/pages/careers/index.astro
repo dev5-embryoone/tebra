@@ -1,25 +1,480 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ContentCard from "../../components/Cards/ContentCard.astro";
-import { pageCards } from "../../data/pageCards";
+import PageSection from "../../components/Layout/PageSection.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
 
-const cards = pageCards.careers ?? [];
+import heroRaw from "../../assets/Hero-2-scaled-v2.jpg";
+import bannerRaw from "../../assets/Banner-1-768x768.jpg";
+
+const heroSrc = typeof heroRaw === "string" ? heroRaw : heroRaw.src;
+const bannerSrc = typeof bannerRaw === "string" ? bannerRaw : bannerRaw.src;
+
+const coreValues = [
+  {
+    title: "Start with the customer",
+    description:
+      "We get to know our customers—and their patients—and look at the world through their lens.",
+  },
+  {
+    title: "Keep it simple",
+    description:
+      "Healthcare is too complex. We aim to simplify it for everyone.",
+  },
+  {
+    title: "Stay entrepreneurial",
+    description:
+      "We reject the status quo and solve problems with creativity, perseverance, and a bias to action.",
+  },
+  {
+    title: "Better together",
+    description:
+      "We are diverse, humble, and collaborative. We put the team first and win together.",
+  },
+  {
+    title: "Celebrate success",
+    description:
+      "Life is short and joy is underrated. We take time to have fun and celebrate success.",
+  },
+];
+
+const perks = [
+  {
+    title: "Compensation",
+    items: ["Competitive compensation packages", "Employee referral program", "Stock options"],
+  },
+  {
+    title: "Hybrid work model",
+    items: ["Equipment stipend when hired", "Monthly work-from-home subsidy", "Indoor-outdoor workspaces"],
+  },
+  {
+    title: "Time off",
+    items: ["Flexible, paid time off", "10 paid holidays", "Employee recharge days"],
+  },
+  {
+    title: "Physical well-being",
+    items: ["Financial health tools", "Gympass", "Annual fitness challenge"],
+  },
+  {
+    title: "Benefits",
+    items: [
+      "Competitive medical, dental, and vision insurance",
+      "401k",
+      "Employer-funded HSA",
+      "Life and disability insurance",
+      "Employee assistance program",
+    ],
+  },
+  {
+    title: "Learning",
+    items: ["Mentorship program", "Professional development training", "Employee resource groups", "Special events and speakers"],
+  },
+  {
+    title: "Team building",
+    items: ["Community volunteer events", "Sponsored team events and sports", "Recognition program", "Anniversary program"],
+  },
+];
+
+const recognition = [
+  { label: "Tebra", detail: "Named to Built In Los Angeles: Best Places to Work 2024" },
+  { label: "Tebra", detail: "Named a National Top Workplace for 2023" },
+  { label: "CEO", detail: "Recognized for executive leadership in SaaS" },
+  { label: "CTO", detail: "Recognized for technology leadership" },
+];
+
+const recruitmentNotice =
+  "Tebra only initiates contact with candidates via email from an official Tebra email address (@tebra.com, @patientpop.com, or @kareo.com) or through our applicant tracking system, Greenhouse. We will only ask for information through those channels.";
+
+const featuredJobs = [
+  {
+    dept: "Product",
+    deptIcon: "box" as const,
+    location: "United States - Remote",
+    title: "Senior Business Analyst",
+    href: "https://www.tebra.com/careers",
+  },
+  {
+    dept: "Technology",
+    deptIcon: "gear" as const,
+    location: "United States - Remote",
+    title: "Senior Business Analyst",
+    href: "https://www.tebra.com/careers",
+  },
+  {
+    dept: "Technology",
+    deptIcon: "gear" as const,
+    location: "Heredia, Heredia, Costa Rica",
+    title: "Staff Backend Software Engineer",
+    href: "https://www.tebra.com/careers",
+  },
+];
+
+const totalValues = coreValues.length;
 ---
+
 <BaseLayout
   title="Careers | Tebra"
   description="Join the Tebra team and help transform healthcare for independent practices."
 >
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h1 class="text-3xl font-semibold text-gray-900">Careers</h1>
-      <p class="mt-3 max-w-2xl text-gray-600">
-        Join the Tebra team and help transform healthcare for independent practices.
+  <!-- Hero: copy + Hero-2 lifestyle image -->
+  <PageSection variant="default" class="!py-12 lg:!py-16">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div class="order-2 lg:order-1">
+        <h1 class="font-display text-4xl font-semibold tracking-tight text-tebra-teal-dark sm:text-5xl lg:text-[2.75rem] lg:leading-[1.12]">
+          Redefining workplace well-being
+        </h1>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
+          At Tebra, we’re building the future of well-being together. And that shared vision for tomorrow begins
+          with compassion and humanity today.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a
+            href="#open-roles"
+            class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+          >
+            View open roles
+          </a>
+          <a
+            href="/about"
+            class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition hover:bg-tebra-hero-bg"
+          >
+            Learn about Tebra
+          </a>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <img
+          src={heroSrc}
+          alt="Tebra team members collaborating in a bright office"
+          class="h-[280px] w-full rounded-2xl object-cover shadow-sm ring-1 ring-gray-100 sm:h-[360px] lg:h-[min(480px,55vh)] lg:min-h-[400px]"
+          width="1200"
+          height="800"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </PageSection>
+
+  <!-- Mission: two columns, teal typography like reference -->
+  <PageSection variant="alt" class="py-14 lg:py-20">
+    <div class="grid gap-8 lg:grid-cols-2 lg:gap-16 lg:items-start">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal sm:text-3xl lg:text-4xl">
+          Tebra’s mission
+        </h2>
+      </div>
+      <div>
+        <p class="text-base leading-relaxed text-tebra-teal sm:text-lg">
+          Tebrans share a passion for unlocking better healthcare by helping independent practices bring
+          modernized care to patients everywhere. We also share common values and beliefs that anchor our
+          culture of workplace well-being.
+        </p>
+      </div>
+    </div>
+  </PageSection>
+
+  <!-- Core values carousel: Hero-2 left, Banner-1 right -->
+  <PageSection variant="warm" class="relative overflow-hidden py-14 lg:py-20" id="core-values">
+    <div class="careers-values-root mx-auto grid max-w-6xl gap-8 lg:grid-cols-12 lg:items-center lg:gap-6">
+      <div class="hidden lg:col-span-3 lg:block">
+        <img
+          src={heroSrc}
+          alt=""
+          class="h-[220px] w-full rounded-2xl object-cover shadow-sm ring-1 ring-black/5"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="relative text-center lg:col-span-6">
+        <p
+          class="careers-values-index mb-2 text-sm font-medium tabular-nums text-tebra-teal-dark"
+          aria-live="polite"
+        >
+          01 / {String(totalValues).padStart(2, "0")}
+        </p>
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tebra-teal">Core values</p>
+        <h3 class="careers-values-title mt-4 font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.25rem]">
+          {coreValues[0].title}
+        </h3>
+        <p class="careers-values-desc mx-auto mt-4 max-w-lg text-base leading-relaxed text-gray-600 sm:text-lg">
+          {coreValues[0].description}
+        </p>
+
+        <div class="careers-values-dots mt-8 flex justify-center gap-2" role="tablist" aria-label="Core value">
+          {coreValues.map((_, i) => (
+            <button
+              type="button"
+              class:list={[
+                "h-2 w-2 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal",
+                i === 0 ? "bg-tebra-teal" : "bg-gray-300 hover:bg-gray-400",
+              ]}
+              data-dot={i}
+              aria-label={`Show value ${i + 1}`}
+              aria-selected={i === 0 ? "true" : "false"}
+            />
+          ))}
+        </div>
+
+        <div class="mt-8 flex items-center justify-between gap-4 px-2 sm:px-8 lg:px-0">
+          <button
+            type="button"
+            class="careers-values-prev flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gray-200/90 text-tebra-teal-dark transition hover:bg-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal"
+            aria-label="Previous value"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="careers-values-next flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-tebra-orange text-white shadow-sm transition hover:bg-[#ff5a49] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-tebra-orange"
+            aria-label="Next value"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="hidden lg:col-span-3 lg:block">
+        <img
+          src={bannerSrc}
+          alt=""
+          class="ml-auto h-[180px] w-full max-w-[280px] rounded-2xl object-cover shadow-sm ring-1 ring-black/5"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <!-- Mobile: show banner under carousel -->
+    <div class="mt-8 flex justify-center lg:hidden">
+      <img
+        src={bannerSrc}
+        alt=""
+        class="h-48 w-full max-w-sm rounded-2xl object-cover shadow-sm ring-1 ring-black/5"
+        loading="lazy"
+      />
+    </div>
+  </PageSection>
+
+  <!-- DEI: text + Banner-1 large rounded -->
+  <PageSection variant="warm" class="border-t border-gray-100/80 py-14 lg:py-20">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div class="max-w-xl">
+        <h2 class="font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+          Our commitment to building a diverse, equitable, and inclusive culture
+        </h2>
+        <p class="mt-5 text-base leading-relaxed text-tebra-teal-dark/90 sm:text-lg">
+          Diversity, Equity, and Inclusion are at the core of our success at Tebra. We foster an environment that
+          welcomes diversity of thought, perspective, and lived experiences. We want everyone to feel valued and
+          respected, and be able to bring their whole, authentic self to Tebra. This helps us cultivate our
+          innovation and creativity when solving challenges for our customers and understanding the communities we
+          serve. From employee resource groups to community partnerships, Tebrans take an active role in creating
+          and amplifying DE&amp;I in all that we do.
+        </p>
+        <div class="mt-7">
+          <a
+            href="/diversity-equity-and-inclusion"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark transition-colors"
+          >
+            Learn more about DEI
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M6 12l4-4-4-4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center lg:justify-end">
+        <img
+          src={bannerSrc}
+          alt="Tebra team members collaborating at work"
+          class="w-full max-w-lg rounded-3xl object-cover shadow-md ring-1 ring-black/5"
+          width="768"
+          height="768"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+        Perks and benefits
+      </h2>
+      <p class="mt-4 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
+        Benefits offered to all Tebrans—designed to support life and work, together.
       </p>
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {cards.map((card) => (
-          <ContentCard title={card.title} description={card.description} />
+
+      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {perks.map((p) => (
+          <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <h3 class="text-base font-bold text-gray-900">{p.title}</h3>
+            <ul class="mt-4 space-y-2 text-sm leading-relaxed text-gray-600">
+              {p.items.map((item) => (
+                <li class="flex gap-2">
+                  <span class="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-tebra-teal" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         ))}
       </div>
     </div>
-  </section>
+  </PageSection>
+
+  <PageSection variant="default">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+        Recognition
+      </h2>
+      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {recognition.map((r) => (
+          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-gray-500">{r.label}</p>
+            <p class="mt-3 text-sm font-semibold text-gray-900">{r.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" id="open-roles" class="pb-8 lg:pb-12">
+    <div class="mx-auto max-w-content">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+          Join Team Tebra
+        </h2>
+        <a
+          href="https://www.tebra.com/careers"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex w-fit shrink-0 items-center justify-center rounded-full border border-tebra-teal-dark bg-white px-6 py-2.5 text-sm font-semibold text-tebra-teal-dark transition hover:bg-tebra-hero-bg"
+        >
+          View more jobs
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {featuredJobs.map((job) => (
+          <a
+            href={job.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col rounded-2xl bg-[#F4EFE6] p-6 shadow-sm ring-1 ring-black/[0.04] transition hover:shadow-md"
+          >
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 px-2.5 py-1 text-xs font-medium text-tebra-teal-dark">
+                {job.deptIcon === "box" ? (
+                  <svg class="h-3.5 w-3.5 shrink-0 opacity-80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"
+                      stroke="currentColor"
+                      stroke-width="1.25"
+                      stroke-linejoin="round"
+                    />
+                    <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" stroke-width="1.25" />
+                  </svg>
+                ) : (
+                  <svg class="h-3.5 w-3.5 shrink-0 opacity-80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M12 15a3 3 0 100-6 3 3 0 000 6z"
+                      stroke="currentColor"
+                      stroke-width="1.25"
+                    />
+                    <path
+                      d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"
+                      stroke="currentColor"
+                      stroke-width="1.25"
+                    />
+                  </svg>
+                )}
+                {job.dept}
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 px-2.5 py-1 text-xs font-medium text-tebra-teal-dark">
+                <svg class="h-3.5 w-3.5 shrink-0 opacity-80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 21s-8-4.5-8-11a8 8 0 1116 0c0 6.5-8 11-8 11z"
+                    stroke="currentColor"
+                    stroke-width="1.25"
+                    stroke-linejoin="round"
+                  />
+                  <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.25" />
+                </svg>
+                {job.location}
+              </span>
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-tebra-teal-dark group-hover:text-tebra-teal">
+              {job.title}
+            </h3>
+            <p class="mt-3 line-clamp-4 text-sm leading-relaxed text-gray-600">{recruitmentNotice}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </PageSection>
+
+  <CTASection
+    title="Automate, optimize, and thrive with Tebra"
+    description="The leading practice automation solution for independent practices."
+    primaryCtaLabel="Get a demo"
+    primaryCtaHref="/demo"
+    secondaryCtaLabel="Explore for Free"
+    secondaryCtaHref="/sign-up"
+  />
 </BaseLayout>
+
+<script define:vars={{ careersSlides: coreValues }}>
+  function initCareersValues() {
+    const root = document.querySelector(".careers-values-root");
+    if (!root || !careersSlides || !careersSlides.length) return;
+    const slides = careersSlides;
+    const total = slides.length;
+    const indexEl = root.querySelector(".careers-values-index");
+    const titleEl = root.querySelector(".careers-values-title");
+    const descEl = root.querySelector(".careers-values-desc");
+    const dots = root.querySelectorAll("[data-dot]");
+    const prev = root.querySelector(".careers-values-prev");
+    const next = root.querySelector(".careers-values-next");
+    if (!indexEl || !titleEl || !descEl || !prev || !next) return;
+
+    let i = 0;
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
+    function render() {
+      const s = slides[i];
+      indexEl.textContent = `${pad(i + 1)} / ${pad(total)}`;
+      titleEl.textContent = s.title;
+      descEl.textContent = s.description;
+      dots.forEach((d, idx) => {
+        const on = idx === i;
+        d.classList.toggle("bg-tebra-teal", on);
+        d.classList.toggle("bg-gray-300", !on);
+        d.setAttribute("aria-selected", String(on));
+      });
+    }
+    function go(delta) {
+      i = (i + delta + total) % total;
+      render();
+    }
+    prev.addEventListener("click", () => go(-1));
+    next.addEventListener("click", () => go(1));
+    dots.forEach((d, idx) => {
+      d.addEventListener("click", () => {
+        i = idx;
+        render();
+      });
+    });
+    render();
+  }
+  initCareersValues();
+</script>

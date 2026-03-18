@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import FeatureSplitHero from "../../../components/Layout/FeatureSplitHero.astro";
+import RatingStrip from "../../../components/Hero/RatingStrip.astro";
+import TestimonialsHeroCollage from "../../../components/Testimonials/TestimonialsHeroCollage.astro";
+import TestimonialsCarouselSection from "../../../components/Testimonials/TestimonialsCarouselSection.astro";
+import TestimonialsDemoCtaBanner from "../../../components/Testimonials/TestimonialsDemoCtaBanner.astro";
+---
+
+<BaseLayout
+  title="Testimonials | Tebra"
+  description="See what healthcare professionals say about working with Tebra — real stories from independent practices."
+>
+  <FeatureSplitHero
+    class="relative overflow-visible bg-gradient-to-br from-emerald-50/60 via-white to-orange-50/40 before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_70%_45%_at_85%_15%,rgba(167,243,208,0.35),transparent),radial-gradient(ellipse_50%_40%_at_10%_70%,rgba(254,215,170,0.22),transparent)] before:z-0"
+    align="start"
+    containerClass="relative z-[1] pb-8 lg:pb-14"
+  >
+    <div slot="left" class="space-y-6 lg:pt-4">
+      <RatingStrip />
+      <h1
+        class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-tight max-w-xl"
+      >
+        We&rsquo;re invested in your success
+      </h1>
+      <p class="max-w-xl text-lg text-gray-600 leading-relaxed">
+        At Tebra, we&rsquo;re proud to support the people who care for others,
+        making their lives a little easier and their impact even greater.
+        But don&rsquo;t just take our word for it — see what healthcare
+        professionals say about working with us.
+      </p>
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a
+          href="/case-studies"
+          class="inline-flex items-center justify-center rounded-full border-2 border-tebra-teal-dark bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal-dark hover:bg-tebra-teal-dark hover:text-white transition-colors"
+        >
+          Read case studies
+        </a>
+        <a
+          href="/demo"
+          class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#ff5a49] transition-colors"
+        >
+          Get a demo
+        </a>
+      </div>
+    </div>
+
+    <div
+      slot="right"
+      class="relative flex min-h-0 w-full min-w-0 justify-center overflow-visible lg:justify-end"
+    >
+      <TestimonialsHeroCollage />
+    </div>
+  </FeatureSplitHero>
+
+  <!-- Case-study style carousel section -->
+  <TestimonialsCarouselSection />
+
+  <TestimonialsDemoCtaBanner />
+
+  <section class="border-t border-gray-100 bg-white py-14 lg:py-20">
+    <div class="page-container text-center">
+      <p
+        class="text-xs font-bold uppercase tracking-[0.35em] text-tebra-teal-dark/70"
+      >
+        Real stories, real results
+      </p>
+      <h2
+        class="mt-4 text-2xl font-semibold text-tebra-teal-dark sm:text-3xl max-w-2xl mx-auto"
+      >
+        Explore how practices like yours grow with Tebra
+      </h2>
+      <p class="mt-4 text-gray-600 max-w-xl mx-auto">
+        Dive deeper into case studies, specialty spotlights, and measurable
+        outcomes from teams across the country.
+      </p>
+      <a
+        href="/case-studies"
+        class="mt-8 inline-flex items-center text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
+      >
+        View all case studies
+        <svg
+          class="ml-1 h-4 w-4"
+          viewBox="0 0 16 16"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 8h7M8 4l4 4-4 4"
+            stroke="currentColor"
+            stroke-width="1.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

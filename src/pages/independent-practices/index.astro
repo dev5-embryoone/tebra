@@ -1,0 +1,177 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSection from "../../components/Hero/HeroSection.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import SectionHeader from "../../components/SectionHeader/SectionHeader.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+import ProductPageBreadcrumb from "../../components/PatientExperience/ProductPageBreadcrumb.astro";
+import MarketingQuoteCard from "../../components/Marketing/MarketingQuoteCard.astro";
+import CaseStudyCard from "../../components/Cards/CaseStudyCard.astro";
+
+import heroImageRaw from "../../assets/BP-2-Hero-Images.webp";
+
+import {
+  ipMeta,
+  ipBreadcrumb,
+  ipHero,
+  ipFeaturesIntro,
+  ipFeatures,
+  ipWhyIntro,
+  ipWhyBlocks,
+  ipStats,
+  ipPlatformIntro,
+  ipPlatformCards,
+  ipTestimonialsIntro,
+  ipTestimonials,
+  ipCaseStudiesIntro,
+  ipClosingCta,
+} from "../../data/independentPracticesPage";
+
+import { caseStudies } from "../../data/caseStudies";
+
+const heroImage = typeof heroImageRaw === "string" ? heroImageRaw : heroImageRaw.src;
+
+const featuredCaseStudies = caseStudies
+  .filter((c) => c.realStory || c.featured)
+  .slice(0, 3);
+
+function whyIconSvg(kind: "platform" | "automation" | "insights") {
+  const base =
+    'class="h-16 w-16 text-tebra-teal-dark/80" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"';
+  switch (kind) {
+    case "platform":
+      return `<svg ${base}><circle cx="32" cy="32" r="18"/><path d="M32 10v8M32 46v8M10 32h8M46 32h8"/><circle cx="32" cy="10" r="3"/><circle cx="32" cy="54" r="3"/><circle cx="10" cy="32" r="3"/><circle cx="54" cy="32" r="3"/><path d="M23 23l-6-6"/><path d="M41 41l6 6"/><path d="M41 23l6-6"/><path d="M23 41l-6 6"/></svg>`;
+    case "automation":
+      return `<svg ${base}><rect x="14" y="18" width="36" height="28" rx="8"/><path d="M22 32h20"/><path d="M22 26h8"/><path d="M44 26h0"/><circle cx="44" cy="26" r="2"/><path d="M22 38h12"/><path d="M50 46l4 4"/><path d="M14 18l-4-4"/></svg>`;
+    case "insights":
+      return `<svg ${base}><path d="M14 46V18"/><path d="M14 46h36"/><path d="M22 40l8-10 7 6 9-14"/><circle cx="30" cy="30" r="2"/><circle cx="37" cy="36" r="2"/><circle cx="46" cy="22" r="2"/><path d="M46 22l8 0"/><path d="M54 22l0 8"/></svg>`;
+  }
+}
+---
+
+<BaseLayout title={ipMeta.title} description={ipMeta.description}>
+  <div class="bg-tebra-hero-bg">
+    <div class="page-container pt-8">
+      <ProductPageBreadcrumb items={[...ipBreadcrumb]} />
+    </div>
+  </div>
+
+  <HeroSection
+    eyebrow={ipHero.eyebrow}
+    title={ipHero.title}
+    subtitle={ipHero.subtitle}
+    supporting=""
+    primaryCtaLabel={ipHero.primaryCta.label}
+    primaryCtaHref={ipHero.primaryCta.href}
+    secondaryCtaLabel={ipHero.secondaryCta.label}
+    secondaryCtaHref={ipHero.secondaryCta.href}
+    imageSrc={heroImage}
+    imageAlt="Tebra platform for independent practices"
+  />
+
+  <PageSection variant="default">
+    <SectionHeader title={ipFeaturesIntro.title} centered titleClass="text-tebra-teal-dark" />
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {ipFeatures.map((f) => (
+        <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-tebra-teal-dark">{f.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">{f.description}</p>
+        </article>
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection variant="alt">
+    <SectionHeader
+      eyebrow={ipWhyIntro.eyebrow}
+      title={ipWhyIntro.title}
+      description={ipWhyIntro.subtitle}
+      centered
+      titleClass="text-tebra-teal-dark"
+    />
+    <div class="mt-12 grid gap-10 lg:grid-cols-3 lg:gap-12">
+      {ipWhyBlocks.map((b, i) => (
+        <article class="text-center">
+          <div class="mx-auto mb-5 flex h-20 w-20 items-center justify-center">
+            <div
+              class="opacity-90"
+              set:html={whyIconSvg(i === 0 ? "platform" : i === 1 ? "automation" : "insights")}
+            />
+          </div>
+          <h3 class="text-base font-semibold text-gray-900">{b.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">{b.description}</p>
+        </article>
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection variant="dark" noContainer class="py-14 lg:py-16">
+    <div class="page-container">
+      <div class="grid gap-10 sm:grid-cols-3 sm:gap-6">
+        {ipStats.map((s) => (
+          <div class="text-center">
+            <div class="text-4xl font-semibold tracking-tight text-white">{s.value}</div>
+            <div class="mt-2 text-sm leading-relaxed text-white/80">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default">
+    <SectionHeader
+      title={ipPlatformIntro.title}
+      description={ipPlatformIntro.subtitle}
+      centered
+      titleClass="text-tebra-teal-dark"
+    />
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {ipPlatformCards.map((c) => (
+        <a
+          href={c.href}
+          class="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+        >
+          <h3 class="text-lg font-semibold text-gray-900 group-hover:text-tebra-teal">{c.title}</h3>
+          <p class="mt-3 flex-1 text-sm leading-relaxed text-gray-600">{c.description}</p>
+          <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-tebra-teal">
+            Learn more
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection variant="alt">
+    <SectionHeader title={ipTestimonialsIntro.title} centered titleClass="text-tebra-teal-dark" />
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {ipTestimonials.map((t) => (
+        <MarketingQuoteCard quote={t.quote} author={t.author} org={t.org} />
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection variant="default">
+    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{ipCaseStudiesIntro.title}</h2>
+      <a href={ipCaseStudiesIntro.ctaHref} class="text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark transition-colors">
+        {ipCaseStudiesIntro.ctaLabel}
+      </a>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {featuredCaseStudies.map((c) => <CaseStudyCard caseStudy={c} />)}
+    </div>
+  </PageSection>
+
+  <CTASection
+    title={ipClosingCta.title}
+    description={ipClosingCta.description}
+    primaryCtaLabel={ipClosingCta.primaryCtaLabel}
+    primaryCtaHref={ipClosingCta.primaryCtaHref}
+    secondaryCtaLabel={ipClosingCta.secondaryCtaLabel}
+    secondaryCtaHref={ipClosingCta.secondaryCtaHref}
+  />
+</BaseLayout>
+

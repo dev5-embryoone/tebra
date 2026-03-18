@@ -1,14 +1,213 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import FeatureSplitHero from "../../components/Layout/FeatureSplitHero.astro";
+import RatingStrip from "../../components/Hero/RatingStrip.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import ProductPageBreadcrumb from "../../components/PatientExperience/ProductPageBreadcrumb.astro";
+import PxPillarCard from "../../components/PatientExperience/PxPillarCard.astro";
+import SectionHeader from "../../components/SectionHeader/SectionHeader.astro";
+import MarketingQuoteCard from "../../components/Marketing/MarketingQuoteCard.astro";
+import CaseStudyCard from "../../components/Cards/CaseStudyCard.astro";
+
+import heroRaw from "../../assets/BILLING-Hub-Billing-cos.webp";
+
+import { caseStudies } from "../../data/caseStudies";
+import {
+  fbcMeta,
+  fbcBreadcrumb,
+  fbcHero,
+  fbcPillarsIntro,
+  fbcPillars,
+  fbcOutcomesIntro,
+  fbcOutcomes,
+  fbcStats,
+  fbcReadiness,
+  fbcWorkflowsIntro,
+  fbcWorkflows,
+  fbcPartnerProgram,
+  fbcTestimonialsIntro,
+  fbcTestimonials,
+  fbcCaseStudiesIntro,
+  fbcCaseStudySlugs,
+} from "../../data/forBillingCompaniesPage";
+
+function src(img: { src: string } | string) {
+  return typeof img === "string" ? img : img.src;
+}
+
+const heroSrc = src(heroRaw);
+const featuredCaseStudies = fbcCaseStudySlugs
+  .map((slug) => caseStudies.find((c) => c.slug === slug))
+  .filter(Boolean);
 ---
-<BaseLayout
-  title="For Billing Companies | Tebra"
-  description="Billing and RCM solutions for billing companies."
->
-  <section class="page-section bg-white">
+<BaseLayout title={fbcMeta.title} description={fbcMeta.description}>
+  <span id="demo" class="sr-only" aria-hidden="true">Demo</span>
+
+  <FeatureSplitHero class="bg-white" pyClass="pt-8 pb-16 lg:pt-10 lg:pb-20">
+    <div slot="left" class="space-y-6">
+      <ProductPageBreadcrumb items={[...fbcBreadcrumb]} />
+      <RatingStrip />
+      <h1 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+        {fbcHero.title}
+      </h1>
+      <p class="max-w-xl text-lg leading-relaxed text-gray-600">{fbcHero.subtitle}</p>
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a
+          href={fbcHero.primaryCta.href}
+          class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {fbcHero.primaryCta.label}
+        </a>
+        <a
+          href={fbcHero.secondaryCta.href}
+          class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-hero-bg"
+        >
+          {fbcHero.secondaryCta.label}
+        </a>
+      </div>
+    </div>
+
+    <div slot="right" class="relative flex justify-center lg:justify-end">
+      <img
+        src={heroSrc}
+        alt="Billing company team using Tebra to manage claims and collections"
+        class="w-full max-w-lg rounded-2xl border border-gray-100 object-cover shadow-xl"
+        width="640"
+        height="480"
+        loading="eager"
+      />
+    </div>
+  </FeatureSplitHero>
+
+  <PageSection variant="default">
+    <h2 class="mx-auto mb-12 max-w-3xl text-center text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+      {fbcPillarsIntro.title}
+    </h2>
+    <div class="grid gap-6 lg:grid-cols-3">
+      {fbcPillars.map((p) => <PxPillarCard {...p} />)}
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted">
+    <SectionHeader centered title={fbcOutcomesIntro.title} titleClass="text-tebra-teal-dark" />
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {fbcOutcomes.map((o) => (
+        <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm lg:p-8">
+          <h3 class="text-lg font-semibold tracking-tight text-tebra-teal-dark">{o.title}</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gray-600">{o.description}</p>
+        </article>
+      ))}
+    </div>
+  </PageSection>
+
+  <section class="bg-white py-14 lg:py-20">
     <div class="page-container">
-      <h1 class="text-2xl font-semibold text-gray-900">For Billing Companies</h1>
-      <p class="mt-2 text-gray-600">Placeholder for hosting test.</p>
+      <div class="grid gap-6 rounded-3xl border border-gray-200 bg-tebra-section-alt p-6 shadow-sm sm:p-10 lg:grid-cols-3">
+        {fbcStats.map((s) => (
+          <div class="text-center">
+            <div class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{s.value}</div>
+            <div class="mt-2 text-sm leading-relaxed text-gray-600">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mx-auto mt-10 max-w-3xl text-center">
+        <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{fbcReadiness.title}</h2>
+        <p class="mt-3 text-base leading-relaxed text-gray-600">{fbcReadiness.description}</p>
+        <a
+          href={fbcReadiness.cta.href}
+          class="mt-7 inline-flex items-center justify-center rounded-full bg-tebra-orange px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {fbcReadiness.cta.label}
+        </a>
+      </div>
     </div>
   </section>
+
+  <PageSection variant="default">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-semibold uppercase tracking-wide text-tebra-orange">{fbcWorkflowsIntro.eyebrow}</p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{fbcWorkflowsIntro.title}</h2>
+      <p class="mt-4 text-lg leading-relaxed text-gray-600">{fbcWorkflowsIntro.description}</p>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {fbcWorkflows.map((w) => (
+        <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm lg:p-8">
+          <h3 class="text-lg font-semibold tracking-tight text-gray-900">{w.title}</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gray-600">{w.description}</p>
+        </article>
+      ))}
+    </div>
+  </PageSection>
+
+  <section id={fbcPartnerProgram.id} class="bg-[#F2F8F5] py-16 lg:py-24 scroll-mt-20">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="space-y-5">
+        <h2 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{fbcPartnerProgram.title}</h2>
+        <p class="text-lg leading-relaxed text-gray-600">{fbcPartnerProgram.description}</p>
+        <div class="pt-2">
+          <a
+            href={fbcPartnerProgram.cta.href}
+            class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-white/90"
+          >
+            {fbcPartnerProgram.cta.label}
+          </a>
+        </div>
+      </div>
+      <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-200 lg:p-8">
+        <h3 class="text-base font-semibold text-gray-900">Why billing companies partner with Tebra</h3>
+        <ul class="mt-5 space-y-3 text-sm text-gray-700">
+          <li class="flex gap-2">
+            <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-tebra-orange" aria-hidden="true" />
+            <span>Tailor-made pricing options built around your business size and needs</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-tebra-orange" aria-hidden="true" />
+            <span>Marketing and sales enablement resources to help expand your client base</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-tebra-orange" aria-hidden="true" />
+            <span>Enhanced support for both your billing team and the practices you serve</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-tebra-orange" aria-hidden="true" />
+            <span>Software provider that doesn’t compete for your billing services</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <PageSection variant="default">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-semibold uppercase tracking-wide text-tebra-orange">{fbcTestimonialsIntro.eyebrow}</p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{fbcTestimonialsIntro.title}</h2>
+    </div>
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {fbcTestimonials.map((t) => <MarketingQuoteCard {...t} />)}
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted">
+    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row sm:items-end">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-wide text-tebra-orange">{fbcCaseStudiesIntro.eyebrow}</p>
+        <h2 class="mt-2 text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{fbcCaseStudiesIntro.title}</h2>
+        <p class="mt-3 text-lg leading-relaxed text-gray-600">{fbcCaseStudiesIntro.description}</p>
+      </div>
+      <a
+        href={fbcCaseStudiesIntro.linkHref}
+        class="inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
+      >
+        {fbcCaseStudiesIntro.linkLabel}
+        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {featuredCaseStudies.map((c) => c && <CaseStudyCard caseStudy={c} />)}
+    </div>
+  </PageSection>
 </BaseLayout>

@@ -1,0 +1,110 @@
+---
+/**
+ * Common layout for wide testimonial/card slides.
+ * Supports:
+ * - image + content (image on left, content on right)
+ * - text-only (centered)
+ */
+interface Props {
+  imageSrc?: string;
+  imageAlt?: string;
+  title?: string;
+  body?: string;
+  author?: string;
+  org?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  /** When true, render text-only variant like the Trustpilot slide */
+  textOnly?: boolean;
+}
+
+const {
+  imageSrc,
+  imageAlt = "",
+  title,
+  body,
+  author,
+  org,
+  ctaLabel = "Read full case study",
+  ctaHref = "/case-studies",
+  textOnly = false,
+} = Astro.props as Props;
+---
+
+<article
+  class="min-w-[min(1100px,92vw)] snap-center rounded-[28px] bg-[#F4EFE8] p-3 shadow-[0_18px_50px_rgba(15,23,42,0.08)] ring-1 ring-black/5 sm:p-4 lg:p-6"
+>
+  {textOnly ? (
+    <div class="mx-auto flex max-w-4xl flex-col gap-6 p-4 text-tebra-teal-dark sm:p-6 lg:p-10">
+      <p class="text-[13px] font-semibold text-emerald-600">Trustpilot</p>
+      {title && (
+        <h3 class="text-2xl font-semibold leading-snug sm:text-[28px]">
+          {title}
+        </h3>
+      )}
+      {body && <p class="text-base text-gray-700 leading-relaxed">{body}</p>}
+      {(author || org) && (
+        <div class="text-sm text-gray-600">
+          {author && <p>{author}</p>}
+          {org && <p class="mt-0.5">{org}</p>}
+        </div>
+      )}
+      <div class="mt-2">
+        <a
+          href={ctaHref}
+          class="inline-flex items-center gap-1.5 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
+        >
+          Read more on Trustpilot
+          <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 8h7M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  ) : (
+    <div class="grid items-stretch gap-0 overflow-hidden rounded-[24px] bg-white lg:grid-cols-2">
+      <div class="relative">
+        {imageSrc && (
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        )}
+        <!-- Play button stub (decorative) -->
+        <div class="absolute left-4 top-4 hidden rounded-full bg-tebra-orange/90 p-2 shadow-md sm:block">
+          <svg class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+      <div class="relative flex flex-col justify-center gap-6 bg-[#F4EFE8] p-6 sm:p-8">
+        {title && (
+          <h3 class="text-2xl font-semibold leading-snug text-tebra-teal-dark sm:text-[28px]">
+            {title}
+          </h3>
+        )}
+        {body && <p class="text-base text-gray-700 leading-relaxed">{body}</p>}
+        {(author || org) && (
+          <div class="text-sm text-gray-600">
+            {author && <p>{author}</p>}
+            {org && <p class="mt-0.5">{org}</p>}
+          </div>
+        )}
+        <div class="mt-2 flex items-center justify-end">
+          <a
+            href={ctaHref}
+            class="inline-flex items-center gap-1.5 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
+          >
+            {ctaLabel}
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 8h7M8 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  )}
+</article>
+

@@ -1,0 +1,223 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FeatureSplitHero from "../../components/Layout/FeatureSplitHero.astro";
+import RatingStrip from "../../components/Hero/RatingStrip.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+import SectionHeader from "../../components/SectionHeader/SectionHeader.astro";
+import LinkWithArrow from "../../components/LinkWithArrow/LinkWithArrow.astro";
+
+import ProductPageBreadcrumb from "../../components/PatientExperience/ProductPageBreadcrumb.astro";
+import PxPillarCard from "../../components/PatientExperience/PxPillarCard.astro";
+import PxResourceCard from "../../components/PatientExperience/PxResourceCard.astro";
+import PxFaqSection from "../../components/PatientExperience/PxFaqSection.astro";
+
+import MarketingQuoteCard from "../../components/Marketing/MarketingQuoteCard.astro";
+import MarketingProcessStepsSection from "../../components/Marketing/MarketingProcessStepsSection.astro";
+
+import heroImage from "../../assets/marketing.webp";
+import resourcesThumb from "../../assets/Webinar-listing-resources-page-412x264-min.png";
+import videoPosterImage from "../../assets/thumbnail-w412-h264_2x_LP-1.png";
+
+import {
+  marketingMeta,
+  marketingBreadcrumb,
+  marketingHero,
+  marketingPillarsIntro,
+  marketingPillars,
+  marketingComparisonIntro,
+  marketingComparisonRows,
+  marketingProcessIntro,
+  marketingProcessSteps,
+  marketingTestimonialsIntro,
+  marketingTestimonials,
+  marketingResourcesIntro,
+  marketingResources,
+  marketingFaqs,
+  marketingClosingCta,
+} from "../../data/marketingPage";
+
+function src(img: { src: string } | string) {
+  return typeof img === "string" ? img : img.src;
+}
+
+const heroSrc = src(heroImage);
+const resourcesThumbSrc = src(resourcesThumb);
+const videoPosterSrc = src(videoPosterImage);
+
+function badge(kind: "full" | "limited" | "none") {
+  const base = "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold";
+  if (kind === "full") return `${base} bg-tebra-hero-bg text-tebra-teal-dark`;
+  if (kind === "limited") return `${base} bg-amber-50 text-amber-800`;
+  return `${base} bg-gray-100 text-gray-500`;
+}
+---
+
+<BaseLayout title={marketingMeta.title} description={marketingMeta.description}>
+  <FeatureSplitHero class="bg-white" pyClass="pt-8 pb-16 lg:pt-10 lg:pb-24">
+    <div slot="left" class="space-y-6">
+      <ProductPageBreadcrumb items={[...marketingBreadcrumb]} />
+      <RatingStrip />
+      <h1 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+        {marketingHero.title}
+      </h1>
+      <p class="max-w-xl text-lg leading-relaxed text-gray-600">{marketingHero.subtitle}</p>
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a
+          href={marketingHero.primaryCta.href}
+          class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {marketingHero.primaryCta.label}
+        </a>
+        <a
+          href={marketingHero.secondaryCta.href}
+          class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-hero-bg"
+        >
+          {marketingHero.secondaryCta.label}
+        </a>
+      </div>
+    </div>
+
+    <div slot="right" class="relative flex justify-center lg:justify-end">
+      <img
+        src={heroSrc}
+        alt="Tebra practice marketing — websites, SEO, reputation, social, and listings"
+        class="w-full max-w-lg rounded-2xl border border-gray-100 object-contain shadow-xl"
+        width="640"
+        height="480"
+        loading="eager"
+      />
+    </div>
+  </FeatureSplitHero>
+
+  <PageSection variant="default">
+    <h2 class="mx-auto mb-12 max-w-3xl text-center text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+      {marketingPillarsIntro.title}
+    </h2>
+    <div class="grid gap-6 lg:grid-cols-2">
+      {marketingPillars.map((p) => <PxPillarCard {...p} />)}
+    </div>
+  </PageSection>
+
+  <PageSection variant="alt" id="scan">
+    <SectionHeader
+      centered
+      title={marketingComparisonIntro.title}
+      description={marketingComparisonIntro.subtitle}
+      titleClass="text-tebra-teal-dark"
+    />
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a
+        href={marketingComparisonIntro.primaryCta.href}
+        class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+      >
+        {marketingComparisonIntro.primaryCta.label}
+      </a>
+      <a
+        href={marketingComparisonIntro.secondaryCta.href}
+        class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-hero-bg"
+      >
+        {marketingComparisonIntro.secondaryCta.label}
+      </a>
+    </div>
+
+    <div class="mt-12 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+      <div class="grid grid-cols-4 gap-0 border-b border-gray-200 bg-gray-50 text-sm font-semibold text-gray-700">
+        <div class="p-4">Feature</div>
+        <div class="p-4 text-center">Tebra</div>
+        <div class="p-4 text-center">Competitors</div>
+        <div class="p-4 text-center">Marketing Agencies</div>
+      </div>
+      {marketingComparisonRows.map((row) => (
+        <div class="grid grid-cols-4 gap-0 border-b border-gray-100 last:border-b-0">
+          <div class="p-4">
+            <div class="font-semibold text-gray-900">{row.title}</div>
+            <div class="mt-1 text-sm text-gray-600">{row.description}</div>
+          </div>
+          <div class="flex items-center justify-center p-4">
+            <span class={badge(row.tebra)}>{row.tebra === "full" ? "Fully integrated" : row.tebra === "limited" ? "Available with limitations" : "Not supported"}</span>
+          </div>
+          <div class="flex items-center justify-center p-4">
+            <span class={badge(row.competitors)}>{row.competitors === "full" ? "Fully integrated" : row.competitors === "limited" ? "Available with limitations" : "Not supported"}</span>
+          </div>
+          <div class="flex items-center justify-center p-4">
+            <span class={badge(row.agencies)}>{row.agencies === "full" ? "Fully integrated" : row.agencies === "limited" ? "Available with limitations" : "Not supported"}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </PageSection>
+
+  <MarketingProcessStepsSection
+    title={marketingProcessIntro.title}
+    description={marketingProcessIntro.description}
+    steps={[...marketingProcessSteps]}
+    primaryCta={{ ...marketingProcessIntro.primaryCta }}
+    secondaryCta={{ ...marketingProcessIntro.secondaryCta }}
+  />
+
+  <PageSection variant="default">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm font-semibold uppercase tracking-wide text-tebra-orange">{marketingTestimonialsIntro.eyebrow}</p>
+      <h2 class="mt-2 text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{marketingTestimonialsIntro.title}</h2>
+    </div>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-5">
+      <a
+        href="#"
+        class="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-900 shadow-sm lg:col-span-2"
+      >
+        <img
+          src={videoPosterSrc}
+          alt="Marketing testimonial video poster"
+          class="h-full w-full object-cover opacity-85"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-black/35" aria-hidden="true" />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <span class="flex h-16 w-16 items-center justify-center rounded-full bg-white/95 shadow-md ring-2 ring-tebra-orange/30">
+            <svg class="ml-1 h-8 w-8 text-tebra-orange" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <div class="grid gap-6 lg:col-span-3 md:grid-cols-2">
+        {marketingTestimonials.slice(0, 4).map((t) => <MarketingQuoteCard {...t} />)}
+      </div>
+    </div>
+
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      {marketingTestimonials.slice(4).map((t) => <MarketingQuoteCard {...t} />)}
+    </div>
+  </PageSection>
+
+  <PageSection variant="default">
+    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{marketingResourcesIntro.title}</h2>
+      <LinkWithArrow label={marketingResourcesIntro.linkLabel} href={marketingResourcesIntro.linkHref} external={false} />
+    </div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {marketingResources.map((r) => (
+        <PxResourceCard
+          {...r}
+          imageSrc={r.type === "Webinar" ? resourcesThumbSrc : videoPosterSrc}
+          imageAlt={r.title}
+        />
+      ))}
+    </div>
+  </PageSection>
+
+  <PxFaqSection faqs={[...marketingFaqs]} />
+
+  <CTASection
+    title={marketingClosingCta.title}
+    description={marketingClosingCta.description}
+    primaryCtaLabel={marketingClosingCta.primaryCtaLabel}
+    primaryCtaHref={marketingClosingCta.primaryCtaHref}
+    secondaryCtaLabel={marketingClosingCta.secondaryCtaLabel}
+    secondaryCtaHref={marketingClosingCta.secondaryCtaHref}
+  />
+</BaseLayout>
+

@@ -1,0 +1,60 @@
+---
+import FAQItem from "../FAQ/FAQItem.astro";
+import SectionHeader from "../SectionHeader/SectionHeader.astro";
+
+interface Faq {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: Faq[];
+  id?: string;
+  /** Omit FAQ eyebrow when false (e.g. billing-payments page) */
+  showEyebrow?: boolean;
+  centered?: boolean;
+}
+
+const { faqs, id: sectionId, showEyebrow = true, centered = false } = Astro.props as Props;
+---
+
+<section id={sectionId} class:list={["bg-tebra-section-warm py-16 lg:py-24", sectionId && "scroll-mt-20"]}>
+  <div class="page-container">
+    <SectionHeader
+      eyebrow={showEyebrow ? "FAQ" : undefined}
+      title="Frequently asked questions"
+      titleClass="text-tebra-teal-dark"
+      centered={centered}
+    />
+    <div class="mt-8 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+      {faqs.map((item, index) => (
+        <FAQItem
+          itemId={item.id}
+          question={item.question}
+          answer={item.answer}
+          isOpen={index === 0}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll<HTMLButtonElement>("[data-faq-trigger]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        if (!item) return;
+        const isOpen = item.classList.contains("is-open");
+        if (isOpen) {
+          item.classList.remove("is-open");
+          btn.setAttribute("aria-expanded", "false");
+        } else {
+          item.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  });
+</script>

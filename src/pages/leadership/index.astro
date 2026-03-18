@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import SectionHeader from "../../components/SectionHeader/SectionHeader.astro";
+import LinkWithArrow from "../../components/LinkWithArrow/LinkWithArrow.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+
+import LeaderCard from "../../components/Leadership/LeaderCard.astro";
+
+import bannerSvgRaw from "../../assets/leadership_ilust_banner.svg";
+import andreaRaw from "../../assets/Andrea-Weisz-Tebra_Headshot-75-scaled-e1771345476334.jpg";
+import kevinRaw from "../../assets/Kevin-Marasco-1.jpg";
+import kyleRaw from "../../assets/Kyle-Ryan-1.jpg";
+import colinRaw from "../../assets/Colin-Morris.jpg";
+import amandaRaw from "../../assets/Amanda-Piwonka-1.jpg";
+import arjunRaw from "../../assets/Arjun-scaled-e1761674709694.webp";
+import downloadRaw from "../../assets/download.png";
+
+import {
+  leadershipMeta,
+  leadershipHero,
+  leadershipLeaders,
+  leadershipStoryCta,
+} from "../../data/leadershipPage";
+
+function src(img: { src: string } | string) {
+  return typeof img === "string" ? img : img.src;
+}
+
+const images: Record<string, string> = {
+  banner: src(bannerSvgRaw),
+  andrea: src(andreaRaw),
+  kevin: src(kevinRaw),
+  kyle: src(kyleRaw),
+  colin: src(colinRaw),
+  amanda: src(amandaRaw),
+  arjun: src(arjunRaw),
+  download: src(downloadRaw),
+};
+---
+
+<BaseLayout title={leadershipMeta.title} description={leadershipMeta.description}>
+  <PageSection variant="default">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-xs font-bold uppercase tracking-[0.28em] text-gray-500 sm:text-sm">
+        {leadershipHero.eyebrow}
+      </p>
+      <h1 class="mt-4 font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[3rem] lg:leading-[1.1]">
+        Tebra Leadership
+      </h1>
+      <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
+        {leadershipHero.title}
+      </p>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" class="pt-0">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      {leadershipLeaders.map((l, index) => (
+        <div class="relative">
+          <LeaderCard id={l.id} name={l.name} title={l.title} imageSrc={images[l.imageKey]} />
+          {/* arrow separators like the reference (desktop only, first row) */}
+          {index < 4 && index % 4 !== 3 && (
+            <div class="pointer-events-none absolute right-[-18px] top-[74%] hidden lg:flex">
+              <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-gray-700 shadow-sm ring-1 ring-gray-200">
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path
+                    d="M6 12l4-4-4-4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection variant="warm">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div class="max-w-xl">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+          {leadershipStoryCta.title}
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-gray-600">{leadershipStoryCta.description}</p>
+        <div class="mt-8">
+          <a
+            href={leadershipStoryCta.ctaHref}
+            class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#ff5a49] transition-colors"
+          >
+            {leadershipStoryCta.ctaLabel}
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center lg:justify-end">
+        <img
+          src={images.banner}
+          alt=""
+          class="w-full max-w-lg"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </PageSection>
+
+  <CTASection
+    title="Automate, optimize, and thrive with Tebra"
+    description="The leading practice automation solution for independent practices."
+    primaryCtaLabel="Get a demo"
+    primaryCtaHref="/demo"
+    secondaryCtaLabel="Explore for Free"
+    secondaryCtaHref="/sign-up"
+  />
+</BaseLayout>
+

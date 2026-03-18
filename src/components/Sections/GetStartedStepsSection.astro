@@ -4,7 +4,7 @@ import Button from '../Button/Button.astro';
 import SectionHeader from '../SectionHeader/SectionHeader.astro';
 ---
 
-<section id="get-started" class="bg-[#F5F7F8] py-16 lg:py-24">
+<section id="get-started" class="bg-tebra-section-alt py-16 lg:py-24">
   <div class="page-container">
     <div class="grid gap-10 lg:grid-cols-[1fr,1fr] lg:items-center lg:gap-12">
       <div class="text-center lg:text-left">
@@ -12,9 +12,9 @@ import SectionHeader from '../SectionHeader/SectionHeader.astro';
           eyebrow="Step-by-step process"
           title="Get started with Tebra in 3 easy steps"
           description="Simple, supported, and designed to fit the way you work. From setup to go-live, we'll guide you every step so your practice sees value from day one."
-          eyebrowClass="text-[#777777]"
-          titleClass="font-bold text-[#00566C]"
-          descriptionClass="text-base text-[#777777] mx-auto max-w-lg lg:mx-0"
+          eyebrowClass="text-gray-600"
+          titleClass="font-bold text-tebra-teal"
+          descriptionClass="body-base-muted mx-auto max-w-lg lg:mx-0"
         />
         <div class="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
           <Button href="#demo" label="Get started today" variant="primary" size="md" />
@@ -30,22 +30,22 @@ import SectionHeader from '../SectionHeader/SectionHeader.astro';
               <!-- Vertical connecting line: orange -->
               {index < getStartedSteps.length - 1 && (
                 <span
-                  class="absolute left-[27px] top-16 bottom-0 w-0.5 bg-btn-primary lg:left-[31px] lg:top-[4.5rem]"
+                  class="absolute left-[27px] top-16 bottom-0 w-0.5 bg-tebra-orange lg:left-[31px] lg:top-[4.5rem]"
                   aria-hidden="true"
                 />
               )}
               <!-- Large number - bigger text -->
               <span
-                class="relative z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center text-3xl font-bold text-[#00566C] lg:h-16 lg:w-16 lg:text-4xl"
+                class="relative z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center text-3xl font-bold text-tebra-teal lg:h-16 lg:w-16 lg:text-4xl"
                 aria-hidden="true"
               >
                 {step.number}
               </span>
               <div class="min-w-0 flex-1 pt-1">
-                <h3 class="text-lg font-bold text-[#333333] lg:text-xl">
+                <h3 class="text-lg font-bold text-gray-900 lg:text-xl">
                   {step.title}
                 </h3>
-                <p class="mt-1.5 text-base leading-relaxed text-[#777777]">
+                <p class="body-base-muted mt-1.5">
                   {step.description}
                 </p>
               </div>

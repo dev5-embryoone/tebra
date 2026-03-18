@@ -1,0 +1,103 @@
+---
+import TestimonialCollageCard from "./TestimonialCollageCard.astro";
+import testimonial1 from "../../assets/testimonial1.webp";
+import testimonial5 from "../../assets/testimonial5.webp";
+import testimonial9 from "../../assets/testimonial9.webp";
+
+const t1 = typeof testimonial1 === "string" ? testimonial1 : testimonial1.src;
+const t5 = typeof testimonial5 === "string" ? testimonial5 : testimonial5.src;
+const t9 = typeof testimonial9 === "string" ? testimonial9 : testimonial9.src;
+---
+
+<div class="relative mx-auto w-full max-w-xl overflow-visible lg:max-w-none">
+  <!-- Decorative connector lines — contained so they don’t force odd overflow -->
+  <svg
+    class="pointer-events-none absolute left-0 top-0 z-0 hidden h-full w-full text-tebra-orange opacity-50 sm:block"
+    viewBox="0 0 400 520"
+    preserveAspectRatio="none"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M20 80 Q120 40 200 100 T380 140"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"></path>
+    <path
+      d="M40 200 Q180 160 280 220 T360 320"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"></path>
+    <path
+      d="M60 380 Q200 340 320 400"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"></path>
+  </svg>
+
+  <div
+    class="relative z-[1] grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:gap-5 lg:items-start"
+  >
+    <!-- Column A: hero photo + teal quote -->
+    <div class="flex min-w-0 flex-col gap-3 sm:gap-4">
+      <TestimonialCollageCard
+        variant="photo"
+        imageSrc={t1}
+        imageAlt="Healthcare professional"
+        class="aspect-[3/4] max-h-[220px] w-full sm:max-h-[240px] lg:max-h-[260px]"
+      />
+      <TestimonialCollageCard
+        variant="quote-teal"
+        quote="I have personally been with Tebra as a customer for over 13 years and I find their customer service to be excellent."
+        author="Traci N., MMS"
+        role="Records &amp; practice operations"
+        class="!p-4 sm:!p-5"
+      />
+    </div>
+
+    <!-- Column B: mosaic — tighter vertical rhythm -->
+    <div class="flex min-w-0 flex-col gap-3 sm:gap-4">
+      <TestimonialCollageCard
+        variant="quote-blue"
+        quote="Tebra helped us streamline workflows so our team spends less time on admin and more time with patients."
+        author="Practice manager"
+        role="Multi-location primary care"
+        class="!p-3.5 sm:!p-4"
+      />
+
+      <div class="grid grid-cols-2 gap-3 sm:gap-4">
+        <TestimonialCollageCard
+          variant="photo"
+          imageSrc={t5}
+          imageAlt="Physician with stethoscope"
+          class="aspect-[3/4] max-h-[160px] w-full sm:max-h-[180px]"
+        />
+        <TestimonialCollageCard
+          variant="quote-orange"
+          quote="Tebra has really helped me grow over time without any friction really from technology."
+          author="Fabio Santos, DNP"
+          role="Psychiatry &amp; wellness"
+          class="!p-4 sm:!p-5 [&_p]:text-sm"
+        />
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 sm:gap-4">
+        <TestimonialCollageCard
+          variant="photo"
+          imageSrc={t9}
+          imageAlt="Healthcare team member"
+          class="aspect-[4/3] max-h-[100px] w-full sm:max-h-[110px]"
+        />
+        <TestimonialCollageCard
+          variant="case-study"
+          caseStudyTitle="From one location to four — without doubling the back office"
+          caseStudyBody="See how this independent group used Tebra to open new practices while keeping billing and scheduling unified."
+          class="!p-4 sm:!p-5 [&_p]:mt-2 [&_p]:text-xs [&_h3]:text-sm"
+        />
+      </div>
+
+      <TestimonialCollageCard variant="trustpilot" />
+    </div>
+  </div>
+</div>

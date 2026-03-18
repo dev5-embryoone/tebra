@@ -1,0 +1,50 @@
+---
+import type { Leader, LeaderSocial } from "../../data/leadershipPage";
+
+interface Props {
+  leader: Leader;
+  imageSrc: string;
+}
+
+const { leader, imageSrc } = Astro.props as Props;
+
+function icon(type: LeaderSocial["type"]) {
+  const common = 'class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"';
+  if (type === "linkedin")
+    return `<svg ${common}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`;
+  if (type === "twitter")
+    return `<svg ${common}><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8C20.3 5 22 4 22 4z"/></svg>`;
+  return `<svg ${common}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`;
+}
+---
+
+<section id={leader.id} class="scroll-mt-24">
+  <div class="grid gap-10 lg:grid-cols-[320px_1fr] lg:gap-14">
+    <div>
+      <div class="overflow-hidden rounded-2xl bg-gray-50 ring-1 ring-gray-200">
+        <img src={imageSrc} alt={leader.name} class="h-full w-full object-cover" loading="lazy" />
+      </div>
+      {leader.socials && leader.socials.length > 0 && (
+        <div class="mt-4 flex items-center gap-3 text-gray-600">
+          {leader.socials.map((s) => (
+            <a
+              href={s.href}
+              class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white hover:border-tebra-teal hover:text-tebra-teal transition"
+              aria-label={s.type}
+              target="_blank"
+              rel="noopener noreferrer"
+              set:html={icon(s.type)}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{leader.name}</h2>
+      <p class="mt-2 text-sm font-semibold text-gray-600">{leader.title}</p>
+      <p class="mt-6 text-[15px] leading-relaxed text-gray-600">{leader.bio}</p>
+    </div>
+  </div>
+</section>
+

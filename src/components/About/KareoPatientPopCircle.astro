@@ -1,0 +1,214 @@
+---
+const R = 42;
+function pos(deg: number) {
+  const rad = (deg * Math.PI) / 180;
+  return { left: 50 + R * Math.cos(rad), top: 50 + R * Math.sin(rad) };
+}
+
+const nodes = [
+  { ...pos(-90), label: "Practice Growth", icon: "growth" as const },
+  { ...pos(-18), label: "Patient Experience", icon: "person" as const },
+  { ...pos(54), label: "Care Delivery", icon: "stethoscope" as const },
+  { ...pos(126), label: "Billing & Payments", icon: "billing" as const },
+  { ...pos(198), label: "Data & Insights", icon: "insights" as const },
+];
+---
+
+<section
+  class="mx-auto w-full max-w-[min(92vw,620px)] px-4 py-10 sm:py-14"
+  aria-labelledby="kareo-pp-heading"
+>
+  <h2 id="kareo-pp-heading" class="sr-only">
+    Tebra platform built on Kareo and PatientPop
+  </h2>
+  <div class="relative mx-auto aspect-square w-full max-w-[480px]">
+    <svg
+      class="absolute inset-0 h-full w-full text-tebra-teal-dark/80"
+      viewBox="0 0 100 100"
+      aria-hidden="true"
+    >
+      <defs>
+        <marker
+          id="tebraArrow"
+          markerWidth="6"
+          markerHeight="6"
+          refX="5"
+          refY="3"
+          orient="auto"
+          markerUnits="userSpaceOnUse"
+        >
+          <path d="M0,0 L6,3 L0,6 Z" fill="currentColor" opacity="0.6" />
+        </marker>
+      </defs>
+      <circle
+        cx="50"
+        cy="50"
+        r="46"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="0.4"
+        opacity="0.35"></circle>
+
+      <!-- subtle directional arrows along the ring -->
+      <path
+        d="M 50 4 A 46 46 0 0 1 96 50"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="0.35"
+        opacity="0.45"
+        marker-end="url(#tebraArrow)"
+      />
+      <path
+        d="M 96 50 A 46 46 0 0 1 50 96"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="0.35"
+        opacity="0.35"
+        marker-end="url(#tebraArrow)"
+      />
+      <path
+        d="M 50 96 A 46 46 0 0 1 4 50"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="0.35"
+        opacity="0.3"
+        marker-end="url(#tebraArrow)"
+      />
+    </svg>
+
+    {
+      nodes.map((node) => (
+        <div
+          class="absolute flex w-[6.5rem] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 text-center sm:w-32"
+          style={`left: ${node.left}%; top: ${node.top}%;`}
+        >
+          {node.icon === "growth" && (
+            <svg
+              class="h-9 w-9"
+              viewBox="0 0 40 40"
+              fill="none"
+              aria-hidden="true"
+            >
+              <rect
+                x="8"
+                y="18"
+                width="16"
+                height="14"
+                rx="1"
+                stroke="currentColor"
+                class="text-tebra-teal-dark"
+                stroke-width="1.5"></rect>
+              <rect
+                x="14"
+                y="22"
+                width="6"
+                height="6"
+                class="fill-tebra-orange"
+                opacity="0.85"></rect>
+              <path
+                d="M26 14v6h6"
+                stroke="currentColor"
+                class="text-tebra-teal-dark"
+                stroke-width="1.5"
+                stroke-linecap="round"></path>
+            </svg>
+          )}
+          {node.icon === "person" && (
+            <svg
+              class="h-9 w-9"
+              viewBox="0 0 40 40"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle cx="20" cy="14" r="5" class="fill-tebra-orange" opacity="0.9" />
+              <path
+                d="M10 32c0-5.5 4.5-10 10-10s10 4.5 10 10"
+                stroke="currentColor"
+                class="text-tebra-teal-dark"
+                stroke-width="1.5"
+                stroke-linecap="round"></path>
+            </svg>
+          )}
+          {node.icon === "stethoscope" && (
+            <svg
+              class="h-9 w-9 text-tebra-teal-dark"
+              viewBox="0 0 40 40"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 8v8a8 8 0 0 0 16 0V8M20 16v6M16 26a4 4 0 1 0 8 0"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"></path>
+            </svg>
+          )}
+          {node.icon === "billing" && (
+            <svg
+              class="h-9 w-9 text-tebra-teal-dark"
+              viewBox="0 0 40 40"
+              fill="none"
+              aria-hidden="true"
+            >
+              <text
+                x="20"
+                y="9"
+                text-anchor="middle"
+                font-size="9"
+                font-weight="700"
+                fill="currentColor"
+              >
+                $
+              </text>
+              <rect
+                x="12"
+                y="11"
+                width="14"
+                height="22"
+                rx="2"
+                stroke="currentColor"
+                stroke-width="1.5"></rect>
+              <path
+                d="M17 20h7M17 24h5"
+                stroke="currentColor"
+                stroke-width="1.2"></path>
+            </svg>
+          )}
+          {node.icon === "insights" && (
+            <svg
+              class="h-9 w-9 text-tebra-teal-dark"
+              viewBox="0 0 40 40"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle cx="18" cy="18" r="10" stroke="currentColor" stroke-width="1.5" />
+              <circle cx="18" cy="18" r="4" stroke="currentColor" stroke-width="1.2" />
+              <path
+                d="M25 25l8 8"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"></path>
+            </svg>
+          )}
+
+          <span class="text-[11px] font-medium leading-tight text-tebra-teal-dark sm:text-xs">
+            {node.label}
+          </span>
+        </div>
+      ))
+    }
+
+    <div
+      class="absolute left-1/2 top-1/2 flex h-[min(44vw,210px)] w-[min(44vw,210px)] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-tebra-teal-dark/10 bg-[#F4EFE8] px-5 text-center shadow-inner sm:h-[230px] sm:w-[230px]"
+    >
+      <div class="mb-2 flex items-center justify-center gap-2 text-tebra-teal-dark">
+        <span class="text-xl font-semibold tracking-tight sm:text-2xl">K</span>
+        <span class="text-base font-light text-gray-500">+</span>
+        <span class="text-xl font-semibold tracking-tight sm:text-2xl">P</span>
+      </div>
+      <p class="max-w-[11rem] text-xs font-medium leading-snug text-gray-700 sm:text-sm">
+        Built on the strength of Kareo and PatientPop
+      </p>
+    </div>
+  </div>
+</section>

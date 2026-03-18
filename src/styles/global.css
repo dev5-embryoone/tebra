@@ -25,6 +25,17 @@
   --color-btn-primary: 242 126 94;        /* #F27E5E */
   --color-btn-primary-hover: 224 109 77;  /* #E06D4D */
 
+  /* Section backgrounds (homepage / marketing) */
+  --color-section-alt: 245 247 248;       /* #F5F7F8 — steps band */
+  --color-section-warm: 251 249 244;     /* #FBF9F4 — FAQ band */
+  --color-cta-cream: 250 249 246;        /* #FAF9F6 — demo banners */
+  --color-cta-coral: 255 140 115;       /* #FF8C73 — pill CTAs */
+
+  /* Layout */
+  --content-max-width: 1200px;
+  --section-py-md: 4rem;
+  --section-py-lg: 6rem;
+
   /* Radii */
   --card-radius: 16px;
   --card-radius-lg: 24px;
@@ -51,16 +62,49 @@ body {
   padding: 0;
   margin: 0;
   border-width: 0;
+  overflow-x: hidden;
   @apply bg-white text-gray-900 antialiased;
+}
+
+@layer base {
+  h1 {
+    @apply text-5xl font-semibold tracking-tight leading-tight md:text-6xl lg:text-7xl;
+  }
+  h2 {
+    @apply text-4xl font-semibold tracking-tight leading-tight md:text-5xl lg:text-6xl;
+  }
+  h3 {
+    @apply text-3xl font-semibold tracking-tight leading-snug md:text-4xl;
+  }
+  h4 {
+    @apply text-2xl font-semibold leading-snug md:text-3xl;
+  }
+}
+
+/* Media should never cause horizontal overflow */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Avoid unbroken strings/URLs forcing overflow */
+p,
+a,
+li,
+span {
+  overflow-wrap: anywhere;
 }
 
 /* Common section/layout utilities */
 .page-section {
-  @apply py-24;
+  @apply py-14 sm:py-16 md:py-20 lg:py-24;
 }
 
 .page-container {
-  @apply max-w-[1200px] mx-auto px-6 lg:px-12;
+  @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12;
 }
 
 /* Base text - inherit common styling */
@@ -79,19 +123,19 @@ body {
 }
 
 .heading-xl {
-  @apply text-3xl font-semibold tracking-tight leading-tight md:text-4xl lg:text-5xl;
+  @apply text-5xl font-semibold tracking-tight leading-tight md:text-6xl lg:text-7xl;
 }
 
 .heading-lg {
-  @apply text-3xl font-semibold tracking-tight lg:text-4xl;
+  @apply text-4xl font-semibold tracking-tight leading-tight md:text-5xl lg:text-6xl;
 }
 
 .heading-md {
-  @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+  @apply text-3xl font-semibold tracking-tight leading-snug sm:text-4xl lg:text-5xl;
 }
 
 .heading-sm {
-  @apply text-xl font-semibold;
+  @apply text-2xl font-semibold leading-snug sm:text-3xl;
 }
 
 .body-lg-muted {
@@ -172,7 +216,7 @@ body {
 }
 
 .hero-rating-strip {
-  @apply flex items-center gap-4 text-xs text-tebra-teal;
+  @apply flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-tebra-teal;
 }
 
 .hero-rating-block {

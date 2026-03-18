@@ -1,71 +1,370 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import HeroSection from "../../components/Hero/HeroSection.astro";
+import FeatureSplitHero from "../../components/Layout/FeatureSplitHero.astro";
+import RatingStrip from "../../components/Hero/RatingStrip.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import ProductPageBreadcrumb from "../../components/PatientExperience/ProductPageBreadcrumb.astro";
+import MarketingQuoteCard from "../../components/Marketing/MarketingQuoteCard.astro";
+import PxResourceCard from "../../components/PatientExperience/PxResourceCard.astro";
+import PxFaqSection from "../../components/PatientExperience/PxFaqSection.astro";
+import LinkWithArrow from "../../components/LinkWithArrow/LinkWithArrow.astro";
 
-import paymentsHeroRaw from "../../assets/Payments-1-Hero-Image.webp";
+import heroRaw from "../../assets/BP-2-Hero-Images.webp";
+import imgInhouse from "../../assets/BILLING-Hub-In-house-billers.webp";
+import imgSoftware from "../../assets/BILLING-SOFTWARE-min.webp";
+import imgPayments from "../../assets/BILLING-PAYMENTS-min.webp";
+import imgSimplify from "../../assets/Simplify-operations.png";
+import imgBillingCos from "../../assets/BILLING-Hub-Billing-cos.webp";
+import imgOutsourced from "../../assets/BILLING-Hub-Outsourcing-billing.webp";
+import resourcesThumb from "../../assets/Webinar-listing-resources-page-412x264-min.png";
 
-const paymentsHero =
-  typeof paymentsHeroRaw === "string" ? paymentsHeroRaw : paymentsHeroRaw.src;
+import {
+  billingPaymentsMeta,
+  billingPaymentsBreadcrumb,
+  billingPaymentsHero,
+  billingPaymentsMatchIntro,
+  billingPaymentsPills,
+  billingFeaturesIntro,
+  billingFeatureRows,
+  billingAudienceInHouse,
+  billingAudienceOutsourced,
+  billingAudienceCompanies,
+  billingCalculatorBand,
+  billingStepsIntro,
+  billingSteps,
+  billingTestimonialsIntro,
+  billingTestimonials,
+  billingResourcesIntro,
+  billingResources,
+  billingPaymentsFaqs,
+} from "../../data/billingPaymentsPage";
+
+function src(img: { src: string } | string) {
+  return typeof img === "string" ? img : img.src;
+}
+
+const heroSrc = src(heroRaw);
+const imgMap = {
+  inhouse: src(imgInhouse),
+  software: src(imgSoftware),
+  payments: src(imgPayments),
+  simplify: src(imgSimplify),
+  billingcos: src(imgBillingCos),
+} as const;
+
+const outsourcedSrc = src(imgOutsourced);
+const thumbSrc = src(resourcesThumb);
 ---
 
-<BaseLayout
-  title="Healthcare payment solutions for private practices | Tebra"
-  description="Collect patient balances faster with fewer steps, less stress, and automated payment workflows your staff can rely on."
->
-  <HeroSection
-    eyebrow="Billing &amp; payments"
-    title="Healthcare payment solutions made for private practices"
-    subtitle="Collect patient balances faster with fewer steps, less stress, and automated payment workflows your staff can rely on."
-    supporting="We safeguard your practice with full security and HIPAA compliance."
-    primaryCtaLabel="Request a demo"
-    primaryCtaHref="#demo"
-    secondaryCtaLabel="Try our billing calculator"
-    secondaryCtaHref="/billing"
-    imageSrc={paymentsHero}
-    imageAlt="Tebra payments dashboard"
-  />
+<BaseLayout title={billingPaymentsMeta.title} description={billingPaymentsMeta.description}>
+  <span id="demo" class="sr-only" aria-hidden="true">Demo</span>
 
-  <section class="bg-white py-10 lg:py-14">
+  <FeatureSplitHero class="bg-white" pyClass="pt-8 pb-16 lg:pt-10 lg:pb-20">
+    <div slot="left" class="space-y-6">
+      <ProductPageBreadcrumb items={[...billingPaymentsBreadcrumb]} />
+      <RatingStrip />
+      <h1 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+        {billingPaymentsHero.title}
+      </h1>
+      <p class="max-w-xl text-lg leading-relaxed text-gray-600">{billingPaymentsHero.subtitle}</p>
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a
+          href={billingPaymentsHero.primaryCta.href}
+          class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {billingPaymentsHero.primaryCta.label}
+        </a>
+        <a
+          href={billingPaymentsHero.secondaryCta.href}
+          class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-hero-bg"
+        >
+          {billingPaymentsHero.secondaryCta.label}
+        </a>
+      </div>
+    </div>
+
+    <div slot="right" class="relative flex justify-center lg:justify-end">
+      <img
+        src={heroSrc}
+        alt="Tebra medical billing and revenue management"
+        class="w-full max-w-lg rounded-2xl border border-gray-100 object-contain shadow-xl"
+        width="640"
+        height="480"
+        loading="eager"
+      />
+    </div>
+  </FeatureSplitHero>
+
+  <!-- Get matched -->
+  <section class="border-t border-gray-100 bg-white py-10 lg:py-14">
+    <div class="page-container">
+      <h2 class="mx-auto max-w-3xl text-center text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+        {billingPaymentsMatchIntro.title}
+      </h2>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        {
+          billingPaymentsPills.map((p) => (
+            <a
+              href={p.href}
+              class="inline-flex items-center rounded-full bg-[#F2F5F6] px-5 py-2.5 text-sm font-semibold text-tebra-teal-dark transition hover:bg-[#E6ECEE]"
+            >
+              {p.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature rows -->
+  <PageSection variant="muted" class="!pt-8">
+    <h2 class="mx-auto mb-14 max-w-3xl text-center text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+      {billingFeaturesIntro.title}
+    </h2>
+
+    <div class="space-y-20 lg:space-y-24">
+      {
+        billingFeatureRows.map((row) => (
+          <div
+            class:list={[
+              "grid items-center gap-10 lg:gap-14",
+              row.reverse ? "lg:grid-cols-2" : "lg:grid-cols-2",
+            ]}
+          >
+            <div class:list={["space-y-5", row.reverse && "lg:order-2"]}>
+              <h3 class="text-xl font-semibold tracking-tight text-tebra-teal-dark sm:text-2xl">{row.title}</h3>
+              <p class="text-[15px] leading-relaxed text-gray-600 sm:text-base">{row.description}</p>
+              <ul class="space-y-2.5 text-sm text-gray-700">
+                {row.bullets.map((b) => (
+                  <li class="flex gap-2">
+                    <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-tebra-orange" aria-hidden="true" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <span class="inline-block rounded-full bg-tebra-hero-bg px-3 py-1 text-xs font-medium text-tebra-teal-dark">
+                {row.tag}
+              </span>
+            </div>
+            <figure class:list={["space-y-3", row.reverse && "lg:order-1"]}>
+              <img
+                src={imgMap[row.imageKey]}
+                alt={row.imageAlt}
+                class="w-full rounded-2xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.1)]"
+                loading="lazy"
+              />
+              <figcaption class="text-center text-sm text-gray-500">{row.caption}</figcaption>
+            </figure>
+          </div>
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <!-- In-house billers -->
+  <section id={billingAudienceInHouse.id} class="bg-white py-14 lg:py-20">
     <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
       <div class="space-y-5">
-        <h2 class="heading-lg text-tebra-teal-dark">
-          Reduce friction at every step of patient payments
+        <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+          {billingAudienceInHouse.title}
         </h2>
-        <p class="body-base-muted max-w-xl">
-          Tebra brings online payments, cards on file, and automated plans into one workflow, so patients can
-          pay how they want — and your team spends less time chasing balances.
-        </p>
+        <p class="max-w-xl text-base leading-relaxed text-gray-600">{billingAudienceInHouse.body}</p>
         <ul class="space-y-2 text-sm text-gray-700">
-          <li>✓ Let patients pay from any device with secure online payments</li>
-          <li>✓ Store cards on file to automatically collect remaining balances</li>
-          <li>✓ Offer flexible payment plans without manual tracking</li>
-          <li>✓ Keep staff in sync with real-time payment and posting dashboards</li>
+          {billingAudienceInHouse.bullets.map((b) => (
+            <li class="flex gap-2">
+              <span class="text-tebra-teal">•</span>
+              <span>{b}</span>
+            </li>
+          ))}
         </ul>
-        <div class="pt-3 flex flex-wrap gap-3">
+        <div class="pt-3">
           <a
-            href="#demo"
-            class="inline-flex items-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#ff5a49] transition"
+            href={billingAudienceInHouse.cta.href}
+            class="inline-flex items-center rounded-full border border-tebra-teal bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal transition hover:bg-tebra-hero-bg"
           >
-            Request a demo
-          </a>
-          <a
-            href="/billing"
-            class="inline-flex items-center rounded-full border border-tebra-teal bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal hover:bg-white transition"
-          >
-            Try our billing calculator
+            {billingAudienceInHouse.cta.label}
           </a>
         </div>
       </div>
-
       <div class="flex justify-center lg:justify-end">
         <img
-          src={paymentsHero}
-          alt="Payments dashboard showing automated collections"
+          src={imgMap.inhouse}
+          alt="In-house billing specialist using Tebra for eligibility and claims"
           class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
           loading="lazy"
         />
       </div>
     </div>
   </section>
-</BaseLayout>
 
+  <!-- Outsourced -->
+  <section id={billingAudienceOutsourced.id} class="bg-[#F2F8F5] py-14 lg:py-20">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="flex justify-center lg:order-2 lg:justify-end">
+        <img
+          src={outsourcedSrc}
+          alt="Healthcare staff reviewing outsourced billing results and collections in Tebra"
+          class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+          loading="lazy"
+        />
+      </div>
+      <div class="space-y-5 lg:order-1">
+        <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+          {billingAudienceOutsourced.title}
+        </h2>
+        <p class="max-w-xl text-base leading-relaxed text-gray-600">{billingAudienceOutsourced.intro}</p>
+        <p class="font-semibold text-tebra-teal-dark">{billingAudienceOutsourced.subhead}</p>
+        <ul class="space-y-2 text-sm text-gray-700">
+          {billingAudienceOutsourced.bullets.map((b) => (
+            <li class="flex gap-2">
+              <span class="text-tebra-teal">•</span>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="pt-3">
+          <a
+            href={billingAudienceOutsourced.cta.href}
+            class="inline-flex items-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition hover:bg-white/90"
+          >
+            {billingAudienceOutsourced.cta.label}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Billing companies -->
+  <section id={billingAudienceCompanies.id} class="bg-white py-14 lg:py-20">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="space-y-5">
+        <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+          {billingAudienceCompanies.title}
+        </h2>
+        <p class="max-w-xl text-base leading-relaxed text-gray-600">{billingAudienceCompanies.intro}</p>
+        <p class="font-semibold text-tebra-teal-dark">{billingAudienceCompanies.subhead}</p>
+        <ul class="space-y-2 text-sm text-gray-700">
+          {billingAudienceCompanies.bullets.map((b) => (
+            <li class="flex gap-2">
+              <span class="text-tebra-teal">•</span>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="pt-3">
+          <a
+            href={billingAudienceCompanies.cta.href}
+            class="inline-flex items-center rounded-full border border-tebra-teal bg-transparent px-6 py-3 text-sm font-semibold text-tebra-teal transition hover:bg-tebra-hero-bg"
+          >
+            {billingAudienceCompanies.cta.label}
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center lg:justify-end">
+        <img
+          src={imgMap.billingcos}
+          alt="Billing company team managing multiple clients in Tebra"
+          class="max-w-full rounded-3xl border border-gray-100 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator CTA -->
+  <section
+    id="billing-calculator"
+    class="bg-gradient-to-br from-tebra-teal-dark to-[#0d4a52] py-14 text-white lg:py-20"
+  >
+    <div class="page-container text-center">
+      <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{billingCalculatorBand.title}</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-base text-white/90 lg:text-lg">{billingCalculatorBand.description}</p>
+      <a
+        href={billingCalculatorBand.cta.href}
+        class="mt-8 inline-flex items-center justify-center rounded-full bg-tebra-orange px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-[#ff5a49]"
+      >
+        {billingCalculatorBand.cta.label}
+      </a>
+    </div>
+  </section>
+
+  <!-- 3 steps -->
+  <section class="bg-tebra-section-alt py-16 lg:py-24">
+    <div class="page-container">
+      <div class="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+        <div class="max-w-xl">
+          <h2 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{billingStepsIntro.title}</h2>
+          <p class="mt-4 text-lg leading-relaxed text-gray-600">{billingStepsIntro.description}</p>
+          <div class="mt-8">
+            <a
+              href={billingStepsIntro.cta.href}
+              class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+            >
+              {billingStepsIntro.cta.label}
+            </a>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-200 lg:p-8">
+          <ol class="space-y-6">
+            {
+              billingSteps.map((s) => (
+                <li class="grid grid-cols-[2.25rem_1fr] gap-4">
+                  <div class="text-2xl font-semibold leading-none text-tebra-teal-dark">{s.number}</div>
+                  <div>
+                    <div class="text-base font-semibold text-gray-900">{s.title}</div>
+                    <div class="mt-1 text-sm leading-relaxed text-gray-600">{s.description}</div>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <PageSection variant="default">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-lg font-medium text-tebra-teal-dark sm:text-xl">{billingTestimonialsIntro.line}</p>
+      <div class="mt-4 flex justify-center">
+        <LinkWithArrow
+          label={billingTestimonialsIntro.linkLabel}
+          href={billingTestimonialsIntro.linkHref}
+          external={false}
+        />
+      </div>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {billingTestimonials.map((t) => <MarketingQuoteCard {...t} />)}
+    </div>
+  </PageSection>
+
+  <PageSection variant="default">
+    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row sm:items-end">
+      <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">
+        {billingResourcesIntro.title}
+      </h2>
+      <LinkWithArrow
+        label={billingResourcesIntro.linkLabel}
+        href={billingResourcesIntro.linkHref}
+        external={false}
+      />
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {
+        billingResources.map((r, i) => (
+          <PxResourceCard
+            type={r.type}
+            title={r.title}
+            href={r.href}
+            imageSrc={i < 4 ? thumbSrc : undefined}
+            imageAlt={r.title}
+          />
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PxFaqSection faqs={[...billingPaymentsFaqs]} id="faq" showEyebrow={false} centered />
+</BaseLayout>

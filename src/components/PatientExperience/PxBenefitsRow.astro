@@ -1,0 +1,51 @@
+---
+/** Four-up icon row: Build trust, Win patients, etc. */
+export type PxBenefitIcon = "trust" | "patients" | "ops" | "retention";
+
+interface Item {
+  icon: PxBenefitIcon;
+  title: string;
+}
+
+interface Props {
+  items: Item[];
+  heading?: string;
+}
+
+const { items, heading = "How patient experience benefits your practice" } = Astro.props as Props;
+
+function iconSvg(kind: PxBenefitIcon) {
+  const common = 'class="h-10 w-10 text-tebra-teal" fill="none" stroke="currentColor" stroke-width="1.5"';
+  switch (kind) {
+    case "trust":
+      return `<svg ${common} viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`;
+    case "patients":
+      return `<svg ${common} viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+    case "ops":
+      return `<svg ${common} viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/></svg>`;
+    case "retention":
+      return `<svg ${common} viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+  }
+}
+---
+
+<section class="border-t border-gray-100 bg-tebra-section-alt py-14 lg:py-16">
+  <div class="page-container">
+    <h2 class="mx-auto mb-10 max-w-3xl text-center text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">
+      {heading}
+    </h2>
+    <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        items.map((item) => (
+          <li class="flex flex-col items-center text-center">
+            <div
+              class="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-gray-100"
+              set:html={iconSvg(item.icon)}
+            />
+            <span class="text-base font-semibold text-gray-900">{item.title}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

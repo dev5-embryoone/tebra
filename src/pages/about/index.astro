@@ -15,6 +15,14 @@ const cards = pageCards.about ?? [];
       <p class="mt-3 max-w-2xl text-gray-600">
         Learn about Tebra and our mission to help independent practices thrive with one connected platform.
       </p>
+      <p class="mt-4">
+        <a
+          href="/about/story"
+          class="text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
+        >
+          Read our story →
+        </a>
+      </p>
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((card) => (
           <ContentCard title={card.title} description={card.description} />

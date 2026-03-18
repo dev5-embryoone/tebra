@@ -1,0 +1,41 @@
+---
+interface Props {
+  type: string;
+  title: string;
+  href: string;
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
+const { type, title, href, imageSrc, imageAlt = title } = Astro.props as Props;
+---
+
+<a
+  href={href}
+  class="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+>
+  {imageSrc && (
+    <div class="relative aspect-[412/264] w-full bg-gray-50">
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        class="h-full w-full object-cover"
+        loading="lazy"
+        width="412"
+        height="264"
+      />
+    </div>
+  )}
+  <div class="flex flex-1 flex-col p-5">
+    <span class="text-xs font-semibold uppercase tracking-wide text-tebra-orange">{type}</span>
+    <span class="mt-2 flex-1 text-base font-semibold leading-snug text-gray-900 group-hover:text-tebra-teal">
+      {title}
+    </span>
+    <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal">
+      Read more
+      <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+  </div>
+</a>

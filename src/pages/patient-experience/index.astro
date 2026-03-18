@@ -1,0 +1,200 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FeatureSplitHero from "../../components/Layout/FeatureSplitHero.astro";
+import RatingStrip from "../../components/Hero/RatingStrip.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+import ProductPageBreadcrumb from "../../components/PatientExperience/ProductPageBreadcrumb.astro";
+import PxBenefitsRow from "../../components/PatientExperience/PxBenefitsRow.astro";
+import PxPillarCard from "../../components/PatientExperience/PxPillarCard.astro";
+import PxJourneyBand from "../../components/PatientExperience/PxJourneyBand.astro";
+import PxQuoteCard from "../../components/PatientExperience/PxQuoteCard.astro";
+import PxStepsSection from "../../components/PatientExperience/PxStepsSection.astro";
+import PxResourceCard from "../../components/PatientExperience/PxResourceCard.astro";
+import PxFaqSection from "../../components/PatientExperience/PxFaqSection.astro";
+
+import heroImage from "../../assets/LP-Campaign-Supporting-Asset-Hero-560x560234-1.png";
+import imgPx1 from "../../assets/Build-trust.webp";
+import imgPx2 from "../../assets/LP-Campaign-Photo-Carousel-Image-1200x1080-1.png";
+import imgPx3 from "../../assets/Simplify-operations.png";
+import imgPx4 from "../../assets/LP-PPS-Campaign-Premium-Asset-Landscape-Feature-Module34534.jpeg";
+import videoPosterImage from "../../assets/thumbnail-w412-h264_2x_LP-1.png";
+import webinarListingThumbImage from "../../assets/Webinar-listing-resources-page-412x264-min.png";
+
+import {
+  pxMeta,
+  pxBreadcrumb,
+  pxHero,
+  pxBenefits,
+  pxPillarsIntro,
+  pxPillars,
+  pxVideoSection,
+  pxJourneyBands,
+  pxTestimonialsIntro,
+  pxTestimonials,
+  pxStepsIntro,
+  pxSteps,
+  pxResourcesIntro,
+  pxResources,
+  pxFaqs,
+  pxClosingCta,
+} from "../../data/patientExperiencePage";
+
+function src(img: { src: string } | string) {
+  return typeof img === "string" ? img : img.src;
+}
+
+const heroSrc = src(heroImage);
+const videoPosterSrc = src(videoPosterImage);
+const webinarListingThumbSrc = src(webinarListingThumbImage);
+const journeySrc: Record<string, string> = {
+  px1: src(imgPx1),
+  px2: src(imgPx2),
+  px3: src(imgPx3),
+  px4: src(imgPx4),
+};
+---
+
+<BaseLayout title={pxMeta.title} description={pxMeta.description}>
+  <FeatureSplitHero class="bg-white" pyClass="pt-8 pb-16 lg:pt-10 lg:pb-24">
+    <div slot="left" class="space-y-6">
+      <ProductPageBreadcrumb items={[...pxBreadcrumb]} />
+      <RatingStrip />
+      <h1
+        class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-tight"
+      >
+        {pxHero.title}
+      </h1>
+      <p class="max-w-xl text-lg leading-relaxed text-gray-600">
+        {pxHero.subtitle}
+      </p>
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a
+          href={pxHero.primaryCta.href}
+          class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {pxHero.primaryCta.label}
+        </a>
+        <a
+          href={pxHero.secondaryCta.href}
+          class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-hero-bg"
+        >
+          {pxHero.secondaryCta.label}
+        </a>
+      </div>
+    </div>
+
+    <div slot="right" class="relative flex justify-center lg:justify-end">
+      <img
+        src={heroSrc}
+        alt="Tebra Patient Experience — scheduling, intake, reminders, and reputation"
+        class="w-full max-w-lg rounded-2xl border border-gray-100 object-contain shadow-xl"
+        width="640"
+        height="480"
+        loading="eager"
+      />
+    </div>
+  </FeatureSplitHero>
+
+  <PxBenefitsRow items={[...pxBenefits]} />
+
+  <PageSection variant="default">
+    <h2 class="mx-auto mb-12 max-w-3xl text-center text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+      {pxPillarsIntro.title}
+    </h2>
+    <div class="grid gap-6 lg:grid-cols-2">
+      {pxPillars.map((p) => <PxPillarCard {...p} />)}
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" id="how-it-works">
+    <h2 class="mx-auto mb-10 max-w-2xl text-center text-2xl font-semibold text-tebra-teal-dark sm:text-3xl">
+      {pxVideoSection.title}
+    </h2>
+    <div
+      class="relative mx-auto aspect-video max-w-4xl overflow-hidden rounded-2xl border border-gray-200 shadow-inner"
+      style={`background-image:url(${videoPosterSrc});background-size:cover;background-position:center;`}
+    >
+      <div class="absolute inset-0 bg-black/35" aria-hidden="true" />
+      <div class="relative z-10 flex flex-col items-center justify-center gap-4 p-8 text-center">
+        <span
+          class="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md ring-2 ring-tebra-orange/30"
+          aria-hidden="true"
+        >
+          <svg class="ml-1 h-8 w-8 text-tebra-orange" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+        <span class="text-sm font-semibold text-white">Product video — play when asset is available</span>
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" class="!py-0">
+    <div class="divide-y divide-gray-100">
+      {
+        pxJourneyBands.map((band) => (
+          <PxJourneyBand
+            eyebrow={band.eyebrow}
+            title={band.title}
+            bullets={[...band.bullets]}
+            ctaLabel={band.cta.label}
+            ctaHref={band.cta.href}
+            imageSrc={journeySrc[band.imageKey]}
+            imageAlt={`${band.eyebrow} — Tebra Patient Experience`}
+            imageOnRight={band.imageOnRight}
+          />
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="alt">
+    <p class="text-center text-sm font-semibold uppercase tracking-wide text-tebra-orange">
+      {pxTestimonialsIntro.eyebrow}
+    </p>
+    <h2 class="mx-auto mt-2 max-w-3xl text-center text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+      {pxTestimonialsIntro.title}
+    </h2>
+    <p class="mx-auto mt-4 max-w-2xl text-center text-lg text-gray-600">
+      {pxTestimonialsIntro.subtitle}
+    </p>
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {pxTestimonials.map((t) => <PxQuoteCard {...t} />)}
+    </div>
+  </PageSection>
+
+  <PxStepsSection
+    title={pxStepsIntro.title}
+    description={pxStepsIntro.description}
+    steps={[...pxSteps]}
+    primaryCta={{ ...pxStepsIntro.primaryCta }}
+    secondaryCta={{ ...pxStepsIntro.secondaryCta }}
+  />
+
+  <PageSection variant="default">
+    <h2 class="mx-auto mb-10 max-w-3xl text-center text-3xl font-semibold text-tebra-teal-dark sm:text-4xl">
+      {pxResourcesIntro.title}
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {pxResources.map((r) => (
+        <PxResourceCard
+          {...r}
+          imageSrc={r.type === "Webinar" ? webinarListingThumbSrc : videoPosterSrc}
+          imageAlt={r.title}
+        />
+      ))}
+    </div>
+  </PageSection>
+
+  <PxFaqSection faqs={[...pxFaqs]} />
+
+  <CTASection
+    title={pxClosingCta.title}
+    description={pxClosingCta.description}
+    primaryCtaLabel={pxClosingCta.primaryCtaLabel}
+    primaryCtaHref={pxClosingCta.primaryCtaHref}
+    secondaryCtaLabel={pxClosingCta.secondaryCtaLabel}
+    secondaryCtaHref={pxClosingCta.secondaryCtaHref}
+  />
+</BaseLayout>

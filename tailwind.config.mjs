@@ -13,7 +13,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-akkurat)', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        display: ['"Fraunces"', 'ui-serif', 'Georgia', 'serif'],
       },
       fontSize: {
         base: ['14px', { lineHeight: '24px' }],
@@ -35,6 +36,10 @@ export default {
           primary: withOpacity('--color-btn-primary'),
           'primary-hover': withOpacity('--color-btn-primary-hover'),
         },
+        'tebra-section-alt': withOpacity('--color-section-alt'),
+        'tebra-section-warm': withOpacity('--color-section-warm'),
+        'tebra-cta-cream': withOpacity('--color-cta-cream'),
+        'tebra-cta-coral': withOpacity('--color-cta-coral'),
       },
     },
   },

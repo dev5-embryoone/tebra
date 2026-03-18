@@ -1,0 +1,52 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  bullets: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  imageSrc: string;
+  imageAlt: string;
+  /** true = image on right (copy left) */
+  imageOnRight: boolean;
+}
+
+const { eyebrow, title, bullets, ctaLabel, ctaHref, imageSrc, imageAlt, imageOnRight } =
+  Astro.props as Props;
+
+const copyOrder = imageOnRight ? "lg:order-1" : "lg:order-2";
+const imgOrder = imageOnRight ? "lg:order-2" : "lg:order-1";
+---
+
+<div class="grid items-center gap-10 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
+  <div class:list={[copyOrder]}>
+    <p class="text-sm font-semibold uppercase tracking-wide text-tebra-orange">{eyebrow}</p>
+    <h2 class="mt-2 text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">
+      {title}
+    </h2>
+    <ul class="mt-6 space-y-3 text-[15px] leading-relaxed text-gray-600">
+      {bullets.map((b) => (
+        <li class="flex gap-3">
+          <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-tebra-teal" aria-hidden="true" />
+          <span>{b}</span>
+        </li>
+      ))}
+    </ul>
+    <a
+      href={ctaHref}
+      class="mt-8 inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+    >
+      {ctaLabel}
+    </a>
+  </div>
+  <div class:list={["flex justify-center", imgOrder]}>
+    <img
+      src={imageSrc}
+      alt={imageAlt}
+      class="w-full max-w-md rounded-2xl border border-gray-100 object-cover shadow-lg lg:max-w-lg"
+      loading="lazy"
+      width="560"
+      height="420"
+    />
+  </div>
+</div>

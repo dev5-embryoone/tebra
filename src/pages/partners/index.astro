@@ -1,25 +1,267 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ContentCard from "../../components/Cards/ContentCard.astro";
-import { pageCards } from "../../data/pageCards";
+import CTASection from "../../components/Sections/CTASection.astro";
+import MarketingQuoteCard from "../../components/Marketing/MarketingQuoteCard.astro";
+import hbmaLogo from "../../assets/hbma.webp";
 
-const cards = pageCards.partners ?? [];
+import {
+  partnersMeta,
+  partnersHero,
+  partnersCommitted,
+  partnerProgramTypesIntro,
+  partnerProgramTypes,
+  partnerBenefitsIntro,
+  partnerBenefits,
+  partnersTestimonialsIntro,
+  partnersTestimonials,
+  partnersBrandNote,
+  partnersProcessIntro,
+  partnersProcessSteps,
+  partnersClosingCta,
+} from "../../data/partnersPage";
+
+const hbmaSrc = typeof hbmaLogo === "string" ? hbmaLogo : hbmaLogo.src;
+
+/** Small decorative icons for program type cards */
+const typeIcon = (key: string) => {
+  const common = "h-12 w-12 shrink-0";
+  const icons: Record<string, string> = {
+    referral: `<svg class="${common}" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="18" r="6" stroke="#005A57" stroke-width="1.5"/><path d="M12 40v-2a8 8 0 018-8h8a8 8 0 018 8v2" stroke="#FF6B5B" stroke-width="1.5" stroke-linecap="round"/><path d="M36 12a4 4 0 11-8 0 4 4 0 018 0z" stroke="#005A57" stroke-width="1.2"/></svg>`,
+    affiliate: `<svg class="${common}" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M14 28l8 8 12-12" stroke="#FF6B5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 22l-4-4 4-4M30 22l4-4-4-4" stroke="#005A57" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    it: `<svg class="${common}" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2" stroke="#005A57" stroke-width="1.5"/><path d="M16 38h16M24 32v6" stroke="#005A57" stroke-width="1.5"/><rect x="14" y="16" width="8" height="5" rx="0.5" fill="#FF6B5B" opacity="0.35"/><rect x="26" y="16" width="8" height="5" rx="0.5" fill="#005A57" opacity="0.2"/></svg>`,
+    billing: `<svg class="${common}" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M12 38V14l8-4 8 4 8-4v24" stroke="#005A57" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 22h12M20 28h8" stroke="#FF6B5B" stroke-width="1.5" stroke-linecap="round"/><rect x="26" y="32" width="10" height="6" rx="1" stroke="#005A57" stroke-width="1.2"/></svg>`,
+    integrators: `<svg class="${common}" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="12" cy="24" r="3" fill="#FF6B5B" opacity="0.6"/><circle cx="36" cy="14" r="3" stroke="#005A57" stroke-width="1.5"/><circle cx="36" cy="34" r="3" stroke="#005A57" stroke-width="1.5"/><path d="M15 22l18-6M15 26l18 6" stroke="#005A57" stroke-width="1.2" stroke-dasharray="2 3"/></svg>`,
+    device: `<svg class="${common}" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="14" y="8" width="20" height="32" rx="3" stroke="#005A57" stroke-width="1.5"/><circle cx="24" cy="36" r="1.5" fill="#005A57"/><rect x="18" y="14" width="12" height="16" rx="1" stroke="#FF6B5B" stroke-width="1.2" opacity="0.7"/></svg>`,
+  };
+  return icons[key] ?? icons.referral;
+};
+
+const benefitIllustration = (key: string) => {
+  const w = "w-full max-w-[140px] mx-auto mb-4";
+  const illos: Record<string, string> = {
+    mutual: `<svg class="${w} h-24" viewBox="0 0 120 80" fill="none" aria-hidden="true"><path d="M30 55c-8-6-12-14-10-22 2-10 12-16 24-14" stroke="#005A57" stroke-width="1.2"/><path d="M90 55c8-6 12-14 10-22-2-10-12-16-24-14" stroke="#005A57" stroke-width="1.2"/><path d="M60 28l-8 12h16l-8-12z" fill="#FF6B5B" opacity="0.85"/><path d="M60 20v8M52 36h16" stroke="#005A57" stroke-width="1"/></svg>`,
+    sales: `<svg class="${w} h-24" viewBox="0 0 120 80" fill="none" aria-hidden="true"><rect x="25" y="45" width="18" height="22" rx="2" stroke="#005A57" stroke-width="1.2"/><rect x="48" y="38" width="18" height="29" rx="2" stroke="#005A57" stroke-width="1.2"/><rect x="71" y="30" width="18" height="37" rx="2" stroke="#FF6B5B" stroke-width="1.2"/><path d="M60 12v18M54 18h12" stroke="#005A57" stroke-width="1.5"/><circle cx="88" cy="18" r="8" stroke="#005A57" stroke-width="1.2"/><path d="M85 15h4a2 2 0 010 4h-2a2 2 0 000 4h4M87 15v12" stroke="#005A57" stroke-width="1" stroke-linecap="round"/></svg>`,
+    hub: `<svg class="${w} h-24" viewBox="0 0 120 80" fill="none" aria-hidden="true"><rect x="40" y="28" width="40" height="28" rx="2" stroke="#005A57" stroke-width="1.5"/><path d="M48 36h8v6h-8zM56 36h8v6h-8M64 36h8v6h-8" fill="#FF6B5B" opacity="0.4"/><circle cx="28" cy="42" r="4" stroke="#005A57" stroke-width="1"/><circle cx="92" cy="36" r="3" stroke="#005A57" stroke-width="1"/><path d="M32 42h8M76 40l12-4M76 44l12 4" stroke="#005A57" stroke-width="0.8" stroke-dasharray="2 2"/></svg>`,
+    marketing: `<svg class="${w} h-24" viewBox="0 0 120 80" fill="none" aria-hidden="true"><circle cx="60" cy="38" r="12" stroke="#005A57" stroke-width="1.5"/><circle cx="32" cy="24" r="5" stroke="#FF6B5B" stroke-width="1.2"/><rect x="82" y="18" width="14" height="10" rx="1" stroke="#005A57" stroke-width="1"/><path d="M37 27l18 8M88 28l-14 8" stroke="#005A57" stroke-width="0.8" stroke-dasharray="2 2"/></svg>`,
+    support: `<svg class="${w} h-24" viewBox="0 0 120 80" fill="none" aria-hidden="true"><circle cx="52" cy="32" r="14" stroke="#005A57" stroke-width="1.5"/><path d="M40 52h24" stroke="#005A57" stroke-width="1.5" stroke-linecap="round"/><path d="M46 28c0-4 3-6 6-6s6 2 6 6" stroke="#005A57" stroke-width="1.2"/><rect x="72" y="22" width="28" height="20" rx="3" stroke="#FF6B5B" stroke-width="1.2"/><path d="M78 32h16M86 26v12" stroke="#005A57" stroke-width="1"/></svg>`,
+  };
+  return illos[key] ?? illos.mutual;
+};
 ---
-<BaseLayout
-  title="Partners | Tebra"
-  description="Tebra partner program and technology partners."
->
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h1 class="text-3xl font-semibold text-gray-900">Partners</h1>
-      <p class="mt-3 max-w-2xl text-gray-600">
-        Technology partners, reseller program, and referral opportunities with Tebra.
-      </p>
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {cards.map((card) => (
-          <ContentCard title={card.title} description={card.description} />
+
+<BaseLayout title={partnersMeta.title} description={partnersMeta.description}>
+  <!-- Hero: dark teal + ecosystem visual -->
+  <section class="relative overflow-hidden bg-tebra-teal-dark text-white">
+    <div class="max-w-content mx-auto px-6 py-14 lg:flex lg:items-center lg:gap-12 lg:py-20 lg:px-12">
+      <div class="max-w-xl lg:flex-1">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+          {partnersHero.eyebrow}
+        </p>
+        <h1 class="mt-4 text-4xl font-light tracking-tight text-white sm:text-5xl lg:text-[3rem] lg:leading-tight">
+          {partnersHero.title}
+        </h1>
+        <p class="mt-6 text-base leading-relaxed text-white/85 sm:text-lg">
+          {partnersHero.body}
+        </p>
+        <a
+          href={partnersHero.cta.href}
+          class="mt-8 inline-flex items-center justify-center rounded-full bg-tebra-orange px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {partnersHero.cta.label}
+        </a>
+      </div>
+      <div class="relative mt-12 flex flex-1 justify-center lg:mt-0 lg:justify-end">
+        <div class="relative h-[280px] w-[280px] sm:h-[320px] sm:w-[320px]" aria-hidden="true">
+          <svg class="h-full w-full" viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="100" r="78" stroke="white" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.45" />
+            <!-- Orange spokes -->
+            <line x1="100" y1="100" x2="100" y2="22" stroke="#FF6B5B" stroke-width="1.2" opacity="0.85" />
+            <line x1="100" y1="100" x2="155" y2="45" stroke="#FF6B5B" stroke-width="1.2" opacity="0.85" />
+            <line x1="100" y1="100" x2="168" y2="100" stroke="#FF6B5B" stroke-width="1.2" opacity="0.85" />
+            <line x1="100" y1="100" x2="155" y2="155" stroke="#FF6B5B" stroke-width="1.2" opacity="0.85" />
+            <line x1="100" y1="100" x2="100" y2="178" stroke="#FF6B5B" stroke-width="1.2" opacity="0.85" />
+            <line x1="100" y1="100" x2="45" y2="155" stroke="#FF6B5B" stroke-width="1.2" opacity="0.85" />
+            <!-- Outer icon positions -->
+            <g stroke="white" stroke-width="1.2" fill="none">
+              <circle cx="100" cy="28" r="10" />
+              <path d="M100 24v8M96 28h8" stroke-linecap="round" />
+              <g transform="translate(150, 42)">
+                <path d="M-6 4l6 6 6-6" />
+                <path d="M-6 10h12" />
+              </g>
+              <rect x="158" y="94" width="14" height="12" rx="1" />
+              <path d="M161 100h8M165 96v8" stroke-linecap="round" />
+              <g transform="translate(100, 168)">
+                <path d="M-8-4h16v10h-16z" />
+                <path d="M-2 2h4M0 0v4" stroke-linecap="round" />
+              </g>
+              <path d="M52 148c4-8 12-4 8 4-4 8-12 4-8-4z" />
+              <rect x="38" y="88" width="16" height="12" rx="1" />
+              <path d="M42 94h8" />
+            </g>
+            <!-- Center mark -->
+            <circle cx="100" cy="100" r="22" fill="white" fill-opacity="0.12" stroke="white" stroke-width="1.5" />
+            <path
+              d="M100 88l4 8 8 2-8 4-2 8-2-8-8-4 8-2z"
+              fill="white"
+              fill-opacity="0.95"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Committed + partner logos -->
+  <section class="bg-white py-16 lg:py-24">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+          {partnersCommitted.title}
+        </h2>
+        <p class="mt-6 text-base leading-relaxed text-gray-600 sm:text-lg">
+          {partnersCommitted.body}
+        </p>
+        <h3 class="mt-14 text-sm font-semibold uppercase tracking-wider text-gray-500">
+          {partnersCommitted.logosTitle}
+        </h3>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-12 md:gap-16">
+          <div class="flex h-14 items-center justify-center px-4" title="American Academy of Family Physicians">
+            <span class="font-display text-2xl font-bold text-tebra-teal-dark">AAFP</span>
+          </div>
+          <div class="flex h-16 w-40 items-center justify-center">
+            <img src={hbmaSrc} alt="HBMA — Healthcare Billing &amp; Management Association" class="max-h-14 w-auto object-contain" loading="lazy" width="160" height="56" />
+          </div>
+          <div class="flex h-14 items-center justify-center">
+            <span class="text-xl font-bold tracking-tight text-[#1a365d]">Optimis<span class="text-tebra-teal">PT</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner program types -->
+  <section class="bg-[#f9f8f4] py-16 lg:py-24">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="mx-auto mb-12 max-w-2xl text-center">
+        <h2 class="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
+          {partnerProgramTypesIntro.title}
+        </h2>
+        <p class="mt-4 text-base text-gray-600 sm:text-lg">
+          {partnerProgramTypesIntro.subtitle}
+        </p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {partnerProgramTypes.map((p) => (
+          <article class="flex flex-col rounded-2xl bg-[#e8eef0] p-6 shadow-sm ring-1 ring-black/[0.04] lg:p-8">
+            <div class="mb-4" set:html={typeIcon(p.key)} />
+            <h3 class="text-lg font-bold text-gray-900">{p.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-gray-600">{p.description}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
+
+  <!-- Partner program benefits -->
+  <section class="bg-white py-16 lg:py-24">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="mx-auto mb-14 max-w-2xl text-center">
+        <h2 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+          {partnerBenefitsIntro.title}
+        </h2>
+        <p class="mt-4 text-base text-gray-600 sm:text-lg">
+          {partnerBenefitsIntro.subtitle}
+        </p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {partnerBenefits.slice(0, 3).map((b) => (
+          <article class="rounded-2xl bg-[#f0f2f3] p-6 text-center shadow-sm ring-1 ring-black/[0.04] lg:p-8">
+            <div set:html={benefitIllustration(b.icon)} />
+            <h3 class="text-lg font-semibold text-tebra-teal-dark">{b.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-gray-600 text-left">{b.description}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mx-auto mt-6 grid max-w-3xl gap-6 sm:grid-cols-2">
+        {partnerBenefits.slice(3).map((b) => (
+          <article class="rounded-2xl bg-[#f0f2f3] p-6 text-center shadow-sm ring-1 ring-black/[0.04] lg:p-8">
+            <div set:html={benefitIllustration(b.icon)} />
+            <h3 class="text-lg font-semibold text-tebra-teal-dark">{b.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-gray-600 text-left">{b.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-tebra-section-warm py-16 lg:py-24">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <p class="text-center text-xs font-semibold uppercase tracking-widest text-tebra-teal">
+        {partnersTestimonialsIntro.eyebrow}
+      </p>
+      <h2 class="mt-3 text-center text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+        {partnersTestimonialsIntro.title}
+      </h2>
+      <div class="mt-12 grid gap-8 lg:grid-cols-2">
+        {partnersTestimonials.map((t) => (
+          <MarketingQuoteCard quote={t.quote} author={t.author} org={t.org} />
+        ))}
+      </div>
+      <div class="mt-12 rounded-2xl border border-tebra-teal/15 bg-white/80 px-6 py-8 text-center shadow-sm">
+        <p class="font-display text-xl font-semibold text-tebra-teal-dark sm:text-2xl">
+          {partnersBrandNote.line1}
+        </p>
+        <p class="mt-3 text-lg text-gray-600">{partnersBrandNote.line2}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership process -->
+  <section class="bg-white py-16 lg:py-24">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+          {partnersProcessIntro.title}
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg">
+          {partnersProcessIntro.body}
+        </p>
+      </div>
+      <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {partnersProcessSteps.map((step) => (
+          <div class="relative rounded-2xl border border-gray-100 bg-tebra-hero-bg p-6 text-left">
+            <span class="text-3xl font-light text-tebra-teal-dark/40">{step.num}</span>
+            <h3 class="mt-2 text-base font-bold text-gray-900">{step.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-600">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA band -->
+  <section class="bg-tebra-section-warm py-16 lg:py-20">
+    <div class="max-w-content mx-auto px-6 text-center lg:px-12">
+      <h2 class="mx-auto max-w-2xl font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">
+        {partnersClosingCta.title}
+      </h2>
+      <a
+        href={partnersClosingCta.cta.href}
+        class="mt-8 inline-flex items-center justify-center rounded-full bg-tebra-orange px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+      >
+        {partnersClosingCta.cta.label}
+      </a>
+    </div>
+  </section>
+
+  <CTASection
+    title="Automate, optimize, and thrive with Tebra"
+    description="The leading practice automation solution for independent practices."
+    primaryCtaLabel="Get a demo"
+    primaryCtaHref="/demo"
+    secondaryCtaLabel="Explore for Free"
+    secondaryCtaHref="/sign-up"
+  />
 </BaseLayout>

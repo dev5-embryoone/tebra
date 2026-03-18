@@ -1,0 +1,62 @@
+---
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Cta {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  steps: Step[];
+  primaryCta: Cta;
+  secondaryCta: Cta;
+}
+
+const { title, description, steps, primaryCta, secondaryCta } = Astro.props as Props;
+---
+
+<section class="bg-tebra-section-alt py-16 lg:py-24">
+  <div class="page-container">
+    <div class="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+      <div class="max-w-xl">
+        <h2 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{title}</h2>
+        <p class="mt-4 text-lg leading-relaxed text-gray-600">{description}</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href={primaryCta.href}
+            class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#ff5a49] transition-colors"
+          >
+            {primaryCta.label}
+          </a>
+          <a
+            href={secondaryCta.href}
+            class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal hover:bg-tebra-hero-bg transition-colors"
+          >
+            {secondaryCta.label}
+          </a>
+        </div>
+      </div>
+
+      <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-200 lg:p-8">
+        <ol class="space-y-6">
+          {steps.map((s) => (
+            <li class="grid grid-cols-[2.25rem_1fr] gap-4">
+              <div class="text-2xl font-semibold leading-none text-tebra-teal-dark">{s.number}</div>
+              <div>
+                <div class="text-sm font-semibold text-gray-900">{s.title}</div>
+                <div class="mt-1 text-sm leading-relaxed text-gray-600">{s.description}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+

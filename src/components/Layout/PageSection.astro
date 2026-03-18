@@ -1,0 +1,45 @@
+---
+/**
+ * Standard marketing section wrapper — background + vertical padding from global tokens.
+ * Use across pages so section rhythm stays consistent.
+ */
+interface Props {
+  id?: string;
+  /** default: white | alt: steps gray | warm: FAQ cream | muted: gray-50 | dark: teal footer band */
+  variant?: "default" | "alt" | "warm" | "muted" | "dark";
+  class?: string;
+  containerClass?: string;
+  noContainer?: boolean;
+}
+
+const {
+  id,
+  variant = "default",
+  class: className = "",
+  containerClass = "",
+  noContainer = false,
+} = Astro.props as Props;
+
+const variants: Record<string, string> = {
+  default: "bg-white",
+  alt: "bg-tebra-section-alt",
+  warm: "bg-tebra-section-warm",
+  muted: "bg-gray-50",
+  dark: "bg-tebra-teal-dark text-white",
+};
+---
+
+<section
+  id={id}
+  class:list={[variants[variant] ?? variants.default, "py-16 lg:py-24", className]}
+>
+  {
+    noContainer ? (
+      <slot />
+    ) : (
+      <div class:list={["page-container", containerClass]}>
+        <slot />
+      </div>
+    )
+  }
+</section>
