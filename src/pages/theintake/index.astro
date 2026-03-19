@@ -1,0 +1,255 @@
+---
+import IntakeLayout from "../../layouts/IntakeLayout.astro";
+import IntakeHeroCeo from "../../components/Intake/IntakeHeroCeo.astro";
+import IntakeTrending from "../../components/Intake/IntakeTrending.astro";
+import IntakeArticleCard from "../../components/Intake/IntakeArticleCard.astro";
+import IntakeSectionHeader from "../../components/Intake/IntakeSectionHeader.astro";
+import IntakeSplitFeature from "../../components/Intake/IntakeSplitFeature.astro";
+import IntakeVideoPromo from "../../components/Intake/IntakeVideoPromo.astro";
+import IntakeEhrBand from "../../components/Intake/IntakeEhrBand.astro";
+import IntakeNewsletter from "../../components/Intake/IntakeNewsletter.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+import { intakeImage } from "../../lib/intakeImages";
+import {
+  intakeArticleHref,
+  intakeHeroFeatured,
+  intakeTopLeft,
+  intakeTrending,
+  intakeEhrBand,
+  intakeFilterPills,
+  intakeTebraNewsFeatured,
+  intakeTebraNewsRow,
+  intakePracticeGrowth,
+  intakeMedicalBilling,
+  intakePracticeOperations,
+  intakeLatestArticles,
+  intakeExperts,
+  intakeExpertSpotlight,
+  intakeSidebarArticles,
+  intakeNewsletter,
+  intakeResources,
+  intakeBottomCta,
+} from "../../data/theIntakePage";
+---
+
+<IntakeLayout
+  title="The Intake | News & resources for healthcare practices | Tebra"
+  description="Used by 30,000+ healthcare professionals — practice growth, operations, billing, patient experience, and Tebra news."
+>
+  <div class="max-w-content mx-auto px-4 py-8 sm:px-6 lg:px-12 lg:py-10">
+    <!-- Top: mobile order = hero, left column, trending -->
+    <!-- items-start: avoid stretching center hero to height of 3 stacked left cards -->
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-6 xl:gap-8">
+      <div class="order-2 min-w-0 space-y-8 lg:order-1 lg:col-span-3 lg:space-y-8">
+        {intakeTopLeft.map((article) => (
+          <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="sm" />
+        ))}
+      </div>
+      <div class="order-1 min-w-0 lg:order-2 lg:col-span-6">
+        <IntakeHeroCeo
+          href={intakeArticleHref(intakeHeroFeatured.slug)}
+          imageSrc={intakeImage(intakeHeroFeatured.imageKey)}
+          label={intakeHeroFeatured.label}
+          title={intakeHeroFeatured.title}
+          quote={intakeHeroFeatured.quote}
+          author={intakeHeroFeatured.author}
+        />
+      </div>
+      <div class="order-3 min-w-0 lg:col-span-3">
+        <IntakeTrending items={intakeTrending} />
+      </div>
+    </div>
+  </div>
+
+  <IntakeEhrBand
+    title={intakeEhrBand.title}
+    subtitle={intakeEhrBand.subtitle}
+    ctaLabel={intakeEhrBand.cta.label}
+    ctaHref={intakeEhrBand.cta.href}
+  />
+
+  <div id="search" class="border-b border-gray-100 bg-white py-4">
+    <div class="max-w-content mx-auto flex items-center gap-3 px-4 sm:px-6 lg:px-12">
+      <span
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-600"
+        aria-hidden="true"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-4-4" stroke-linecap="round" />
+        </svg>
+      </span>
+      <div class="scrollbar-hide flex flex-1 gap-2 overflow-x-auto pb-1">
+        {intakeFilterPills.map((pill) => (
+          <a
+            href={pill.href}
+            class="shrink-0 rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-tebra-teal-dark hover:border-tebra-teal hover:bg-gray-50"
+          >
+            {pill.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-content mx-auto px-4 py-12 sm:px-6 lg:px-12 lg:py-16">
+    <IntakeSectionHeader id="tebra-news" title="Tebra News" viewAllHref="/theintake" />
+    <div class="space-y-8 lg:space-y-10">
+      <IntakeSplitFeature
+        article={intakeTebraNewsFeatured}
+        imageSrc={intakeImage(intakeTebraNewsFeatured.imageKey)}
+      />
+      <div class="grid gap-6 lg:grid-cols-3 lg:items-stretch lg:gap-8">
+        <IntakeArticleCard
+          article={intakeTebraNewsRow[0]}
+          imageSrc={intakeImage(intakeTebraNewsRow[0].imageKey)}
+          size="md"
+        />
+        <IntakeArticleCard
+          article={intakeTebraNewsRow[1]}
+          imageSrc={intakeImage(intakeTebraNewsRow[1].imageKey)}
+          size="md"
+        />
+        <div class="lg:row-span-1">
+          <IntakeVideoPromo
+            href="/patient-experience"
+            imageSrc={intakeImage("videoThumb")}
+            title="Improve patient experience with Tebra"
+            description="Watch this quick demo to see how an all-in-one solution transforms your patient experience."
+          />
+        </div>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+        <IntakeArticleCard
+          article={intakeTebraNewsRow[2]}
+          imageSrc={intakeImage(intakeTebraNewsRow[2].imageKey)}
+          size="md"
+        />
+        <IntakeArticleCard
+          article={intakeTebraNewsRow[3]}
+          imageSrc={intakeImage(intakeTebraNewsRow[3].imageKey)}
+          size="md"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div id="practice-growth" class="bg-gray-50/80 py-12 lg:py-16">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
+      <IntakeSectionHeader title="Practice Growth" viewAllHref="/marketing" />
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        {intakePracticeGrowth.map((article) => (
+          <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="md" />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <IntakeNewsletter
+    title={intakeNewsletter.title}
+    bullets={intakeNewsletter.bullets}
+    privacyNote={intakeNewsletter.privacyNote}
+  />
+
+  <div id="medical-billing" class="py-12 lg:py-16">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
+      <IntakeSectionHeader title="Medical Billing" viewAllHref="/billing-payments" />
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        {intakeMedicalBilling.map((article) => (
+          <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="md" />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div id="practice-operations" class="border-t border-gray-100 bg-white py-12 lg:py-16">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
+      <IntakeSectionHeader title="Practice Operations" viewAllHref="/theintake" />
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        {intakePracticeOperations.map((article) => (
+          <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="md" />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div id="reports" class="border-t border-gray-100 bg-gray-50/50 py-12 lg:py-16">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
+      <IntakeSectionHeader title="Latest Articles" viewAllHref="/theintake" />
+      <div class="grid gap-10 lg:grid-cols-3 lg:gap-12">
+        <div class="grid gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-2">
+          {intakeLatestArticles.map((article) => (
+            <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="md" />
+          ))}
+        </div>
+        <aside class="space-y-8">
+          <div>
+            <p class="m-0 font-display text-lg font-bold text-tebra-teal-dark" role="heading" aria-level={3}>
+              Hear From Our Experts
+            </p>
+            <ul class="mt-4 space-y-4 border-b border-gray-200 pb-8">
+              {intakeExperts.map((ex) => (
+                <li>
+                  <p class="text-sm font-semibold text-gray-900">{ex.author}</p>
+                  <a href={ex.href} class="mt-0.5 block text-sm leading-snug text-tebra-teal-dark hover:underline">
+                    {ex.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <IntakeArticleCard
+            article={intakeExpertSpotlight}
+            imageSrc={intakeImage(intakeExpertSpotlight.imageKey)}
+            size="sm"
+          />
+          {intakeSidebarArticles.map((article) => (
+            <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="sm" />
+          ))}
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <section class="border-t border-gray-100 py-14 lg:py-16" aria-labelledby="intake-resources-heading">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
+      <IntakeSectionHeader id="intake-resources-heading" title="Resources" viewAllHref="/resources" />
+      <div class="grid gap-6 md:grid-cols-3">
+        {intakeResources.map((r) => (
+          <a
+            href={r.href}
+            class="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+          >
+            <div class="relative aspect-[412/264] min-h-[140px] w-full overflow-hidden bg-gray-50">
+              <img
+                src={intakeImage(r.imageKey)}
+                alt=""
+                class="intake-media-fill absolute inset-0"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <span class="text-xs font-semibold uppercase tracking-wide text-tebra-orange">{r.type}</span>
+              <p class="mt-2 text-base font-semibold leading-snug text-gray-900 group-hover:text-tebra-teal" role="heading" aria-level={3}>
+                {r.title}
+              </p>
+              <p class="mt-2 flex-1 text-sm text-gray-600">{r.blurb}</p>
+              <span class="mt-4 inline-flex text-sm font-semibold text-tebra-teal-dark group-hover:underline">
+                {r.cta} →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title={intakeBottomCta.title}
+    description={intakeBottomCta.subtitle}
+    primaryCtaLabel={intakeBottomCta.primary.label}
+    primaryCtaHref={intakeBottomCta.primary.href}
+    secondaryCtaLabel={intakeBottomCta.secondary.label}
+    secondaryCtaHref={intakeBottomCta.secondary.href}
+  />
+</IntakeLayout>

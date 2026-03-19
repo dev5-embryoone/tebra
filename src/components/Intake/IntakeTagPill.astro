@@ -1,0 +1,29 @@
+---
+import type { IntakeTagTone } from "../../data/theIntakePage";
+
+interface Props {
+  label: string;
+  tone?: IntakeTagTone;
+  class?: string;
+}
+
+const { label, tone = "gray", class: className = "" } = Astro.props;
+
+const tones: Record<IntakeTagTone, string> = {
+  peach: "bg-orange-100/80 text-tebra-teal-dark",
+  blue: "bg-sky-100 text-tebra-teal-dark",
+  beige: "bg-amber-50 text-tebra-teal-dark",
+  gray: "bg-gray-100 text-gray-700",
+  mint: "bg-emerald-50 text-tebra-teal-dark",
+};
+---
+
+<span
+  class:list={[
+    "inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide",
+    tones[tone],
+    className,
+  ]}
+>
+  {label}
+</span>

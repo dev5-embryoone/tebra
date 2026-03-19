@@ -1,0 +1,555 @@
+---
+import {
+  billingCalculatorForm as F,
+  billingCalculatorResults as R,
+} from "../../data/billingCalculatorPage";
+
+---
+
+<section
+  class="border-t border-gray-100 bg-gradient-to-b from-[#fff9f6] via-[#faf8f6] to-[#f0f4f3] py-12 sm:py-16 lg:py-20"
+  aria-label="Billing revenue calculator"
+>
+  <div class="page-container">
+    <div
+      class="mt-10 grid items-start gap-8 lg:gap-10 xl:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)] xl:gap-12"
+    >
+      <!-- Left: form -->
+      <div
+        class="rounded-3xl border border-gray-100 bg-white p-6 shadow-lg sm:p-8 lg:p-10"
+      >
+        <h2 class="text-xl font-bold text-tebra-teal-dark sm:text-2xl">
+          {F.title}
+        </h2>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600 sm:text-base">
+          {F.intro}
+        </p>
+
+        <form id="billing-calc-form" class="mt-8 space-y-8" novalidate>
+          <fieldset class="space-y-3">
+            <legend class="text-sm font-semibold text-tebra-teal-dark">
+              {F.workplaceLabel}
+            </legend>
+            <div class="flex flex-wrap gap-4">
+              {
+                F.workplaceOptions.map((opt, i) => (
+                  <label class="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-gray-700 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-tebra-teal">
+                    <input
+                      type="radio"
+                      name="workplace"
+                      value={opt.value}
+                      checked={i === 0}
+                      class="h-4 w-4 border-gray-300 text-tebra-teal focus:ring-tebra-teal"
+                    />
+                    {opt.label}
+                  </label>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <div class="space-y-2">
+            <label
+              for="bc-ar-days"
+              class="block text-sm font-semibold text-tebra-teal-dark"
+            >
+              {F.arLabel}
+            </label>
+            <select
+              id="bc-ar-days"
+              name="arDays"
+              class="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 shadow-sm focus:border-tebra-teal focus:outline-none focus:ring-2 focus:ring-tebra-teal/20"
+              aria-label={F.arLabel}
+            >
+              {F.arOptions.map((o) => (
+                <option value={o.value} selected={o.value === "21_30"}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label
+              for="bc-denial"
+              class="block text-sm font-semibold text-tebra-teal-dark"
+            >
+              {F.denialLabel}
+            </label>
+            <input
+              id="bc-denial"
+              name="denialPct"
+              type="number"
+              min="0"
+              max="100"
+              step="0.1"
+              placeholder={F.denialPlaceholder}
+              class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm placeholder:text-gray-400 focus:border-tebra-teal focus:outline-none focus:ring-2 focus:ring-tebra-teal/20"
+            />
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <label
+                for="bc-manual-steps"
+                class="text-sm font-semibold text-tebra-teal-dark"
+              >
+                {F.manualStepsLabel}
+              </label>
+              <span
+                class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-[10px] font-bold text-gray-500"
+                title={F.manualStepsHelp}
+                tabindex="0"
+                role="img"
+                aria-label={F.manualStepsHelp}>i</span>
+            </div>
+            <div class="px-0.5">
+              <input
+                id="bc-manual-steps"
+                name="manualSteps"
+                type="range"
+                min="1"
+                max="5"
+                step="1"
+                value="2"
+                class="bc-range h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 accent-tebra-teal"
+              />
+            </div>
+            <div
+              class="flex justify-between text-xs font-medium text-gray-400"
+              aria-hidden="true"
+            >
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+            </div>
+            <output
+              class="text-xs text-gray-500"
+              for="bc-manual-steps"
+              data-bc-steps-label
+            >
+              2 steps
+            </output>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <label
+                for="bc-upfront"
+                class="text-sm font-semibold text-tebra-teal-dark"
+              >
+                {F.upfrontLabel}
+              </label>
+              <span
+                class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-[10px] font-bold text-gray-500"
+                title={F.upfrontHelp}
+                tabindex="0"
+                role="img"
+                aria-label={F.upfrontHelp}>i</span>
+            </div>
+            <input
+              id="bc-upfront"
+              name="upfrontPct"
+              type="number"
+              min="0"
+              max="100"
+              step="1"
+              placeholder={F.upfrontPlaceholder}
+              class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm placeholder:text-gray-400 focus:border-tebra-teal focus:outline-none focus:ring-2 focus:ring-tebra-teal/20"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label
+              for="bc-claims"
+              class="block text-sm font-semibold text-tebra-teal-dark"
+            >
+              {F.claimsLabel}
+            </label>
+            <input
+              id="bc-claims"
+              name="claimsPerMonth"
+              type="number"
+              min="0"
+              step="1"
+              placeholder={F.claimsPlaceholder}
+              class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm placeholder:text-gray-400 focus:border-tebra-teal focus:outline-none focus:ring-2 focus:ring-tebra-teal/20"
+            />
+          </div>
+
+          <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
+            <button
+              type="button"
+              data-bc-see-savings
+              class="inline-flex flex-1 items-center justify-center rounded-full bg-btn-primary px-8 py-3.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-btn-primary-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-btn-primary focus-visible:ring-offset-2 sm:min-w-[11rem]"
+            >
+              {F.seeSavings}
+            </button>
+            <button
+              type="button"
+              data-bc-start-over-form
+              class="inline-flex flex-1 items-center justify-center rounded-full border-2 border-tebra-teal-dark bg-white px-8 py-3.5 text-sm font-semibold text-tebra-teal-dark transition-colors hover:bg-tebra-hero-bg focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal focus-visible:ring-offset-2 sm:min-w-[11rem]"
+            >
+              {F.startOver}
+            </button>
+          </div>
+
+          <p class="text-xs leading-relaxed text-gray-500">
+            {F.disclaimer}
+          </p>
+        </form>
+      </div>
+
+      <!-- Right: results -->
+      <div
+        id="billing-calc-results"
+        class="rounded-3xl border border-[#f5dcd4] bg-gradient-to-br from-[#fff0ea] via-[#fdeee8] to-[#f8e8e2] p-6 shadow-md sm:p-8 lg:p-10"
+      >
+        <h2 class="text-xl font-bold text-tebra-teal-dark sm:text-2xl">
+          {R.title}
+        </h2>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <span
+            class="inline-flex rounded-full bg-tebra-teal-dark px-5 py-2.5 text-lg font-bold text-white shadow-md sm:text-xl"
+            data-bc-total
+          >
+            $0/month
+          </span>
+        </div>
+
+        <p class="mt-4 text-sm leading-relaxed text-gray-700">
+          {R.subtitle}
+        </p>
+
+        <p class="mt-6 text-sm leading-relaxed text-gray-600">
+          {R.intro}
+        </p>
+
+        <ul class="mt-8 space-y-4">
+          <li
+            class="flex gap-4 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-sm"
+          >
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-tebra-hero-bg text-tebra-teal-dark"
+              aria-hidden="true"
+            >
+              <svg class="h-7 w-7" viewBox="0 0 32 32" fill="none">
+                <rect
+                  x="6"
+                  y="8"
+                  width="20"
+                  height="18"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.5"></rect>
+                <path
+                  d="M10 14h12M10 18h8"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+                <path
+                  d="M22 22l4 4"
+                  stroke="#e11d48"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1 text-sm">
+              <p class="font-bold text-tebra-teal-dark">{R.denialTitle}</p>
+              <p class="mt-1 leading-relaxed text-gray-700" data-bc-denial-text>
+              </p>
+            </div>
+          </li>
+
+          <li
+            class="flex gap-4 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-sm"
+          >
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-tebra-hero-bg text-tebra-teal-dark"
+              aria-hidden="true"
+            >
+              <svg class="h-7 w-7" viewBox="0 0 32 32" fill="none">
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="1.5"></circle>
+                <path
+                  d="M16 10v6l4 2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1 text-sm">
+              <p class="font-bold text-tebra-teal-dark">{R.timeTitle}</p>
+              <p class="mt-1 leading-relaxed text-gray-700" data-bc-time-text>
+              </p>
+            </div>
+          </li>
+
+          <li
+            class="flex gap-4 rounded-2xl border border-white/60 bg-white/90 p-4 shadow-sm"
+          >
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-tebra-hero-bg text-tebra-teal-dark"
+              aria-hidden="true"
+            >
+              <svg class="h-7 w-7" viewBox="0 0 32 32" fill="none">
+                <circle
+                  cx="16"
+                  cy="11"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.5"></circle>
+                <path
+                  d="M8 26c0-4 3.5-7 8-7s8 3 8 7"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1 text-sm">
+              <p class="font-bold text-tebra-teal-dark">{R.missedTitle}</p>
+              <p class="mt-1 leading-relaxed text-gray-700" data-bc-missed-text>
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a
+            href={R.nextStepsHref}
+            class="inline-flex flex-1 items-center justify-center rounded-full bg-btn-primary px-6 py-3.5 text-center text-sm font-semibold text-white shadow-md transition-colors hover:bg-btn-primary-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-btn-primary focus-visible:ring-offset-2"
+          >
+            {R.nextSteps}
+          </a>
+          <button
+            type="button"
+            data-bc-start-over-results
+            class="inline-flex flex-1 items-center justify-center rounded-full border-2 border-tebra-teal-dark bg-white/80 px-6 py-3.5 text-sm font-semibold text-tebra-teal-dark transition-colors hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal focus-visible:ring-offset-2"
+          >
+            {F.startOver}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bc-range::-webkit-slider-thumb {
+    height: 1.25rem;
+    width: 1.25rem;
+    appearance: none;
+    border-radius: 9999px;
+    border: 2px solid #fff;
+    background-color: rgb(0 90 87);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+    cursor: grab;
+  }
+  .bc-range::-moz-range-thumb {
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 9999px;
+    border: 2px solid #fff;
+    background-color: rgb(0 90 87);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+    cursor: grab;
+  }
+</style>
+
+<script define:vars={{ denialTpl: R.denialBody, timeTpl: R.timeBody, missedTpl: R.missedBody }}>
+  const money = (n) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }).format(Math.max(0, n));
+
+  function arMultiplier(ar) {
+    switch (ar) {
+      case "lt20":
+        return 0.88;
+      case "21_30":
+        return 1;
+      case "31_40":
+        return 1.12;
+      case "41p":
+        return 1.28;
+      default:
+        return 1;
+    }
+  }
+
+  function compute(state) {
+    const claims = Math.max(0, Number(state.claims) || 0);
+    if (claims <= 0) {
+      return {
+        denialMonthly: 0,
+        denialYearly: 0,
+        timeHours: 0,
+        missedFront: 0,
+        totalMonthly: 0,
+        hasInput: false,
+      };
+    }
+    const denialPct = Math.min(100, Math.max(0, Number(state.denial) || 0));
+    const upfrontPct = Math.min(100, Math.max(0, Number(state.upfront) || 0));
+    const steps = Math.min(5, Math.max(1, Number(state.manualSteps) || 1));
+    const ar = state.ar || "21_30";
+    const arM = arMultiplier(ar);
+    const isCompany = state.workplace === "company";
+    const avgPerClaim = isCompany ? 115 : 88;
+
+    const denialMonthly = Math.round(
+      claims * (denialPct / 100) * avgPerClaim * 0.42 * arM,
+    );
+    const denialYearly = denialMonthly * 12;
+
+    const timeHoursRaw = steps * (1.15 + claims / 380) * arM;
+    const timeHours = Math.round(timeHoursRaw * 10) / 10;
+
+    const gap = Math.max(0, 90 - upfrontPct);
+    const missedFront = Math.round(
+      claims * avgPerClaim * 0.11 * (gap / 90) * arM,
+    );
+
+    const totalMonthly = Math.min(
+      Math.round(denialMonthly + missedFront * 0.75 + timeHours * 40),
+      claims > 0 ? claims * 220 : 0,
+    );
+
+    return {
+      denialMonthly,
+      denialYearly,
+      timeHours,
+      missedFront,
+      totalMonthly,
+      hasInput: claims > 0,
+    };
+  }
+
+  function formatHours(h) {
+    const n = Number(h);
+    if (n === Math.floor(n)) return String(Math.floor(n));
+    return String(n);
+  }
+
+  function bind() {
+    const form = document.getElementById("billing-calc-form");
+    if (!form || !(form instanceof HTMLFormElement)) return;
+
+    const el = {
+      total: document.querySelector("[data-bc-total]"),
+      denial: document.querySelector("[data-bc-denial-text]"),
+      time: document.querySelector("[data-bc-time-text]"),
+      missed: document.querySelector("[data-bc-missed-text]"),
+      stepsLabel: document.querySelector("[data-bc-steps-label]"),
+    };
+
+    const manualInput = form.querySelector('[name="manualSteps"]');
+
+    function readState() {
+      const fd = new FormData(form);
+      const ar = String(fd.get("arDays") || "21_30");
+      return {
+        workplace: String(fd.get("workplace") || "practice"),
+        ar: ar === "" ? "21_30" : ar,
+        denial: fd.get("denialPct"),
+        manualSteps: fd.get("manualSteps"),
+        upfront: fd.get("upfrontPct"),
+        claims: fd.get("claimsPerMonth"),
+      };
+    }
+
+    function render() {
+      const s = readState();
+      const r = compute(s);
+
+      if (el.stepsLabel && manualInput instanceof HTMLInputElement) {
+        el.stepsLabel.textContent =
+          manualInput.value + " step" + (manualInput.value === "1" ? "" : "s");
+      }
+
+      const empty = !r.hasInput;
+      if (el.total) {
+        el.total.textContent = empty ? "—" : money(r.totalMonthly) + "/month";
+      }
+
+      const dash = "Enter monthly claims to see personalized estimates.";
+      if (el.denial) {
+        if (empty) {
+          el.denial.textContent = dash;
+        } else {
+          el.denial.innerHTML = denialTpl
+            .replace(
+              "{monthly}",
+              "<strong>" + money(r.denialMonthly) + "/month</strong>",
+            )
+            .replace(
+              "{yearly}",
+              "<strong>" + money(r.denialYearly) + "/year</strong>",
+            );
+        }
+      }
+      if (el.time) {
+        if (empty) {
+          el.time.textContent = dash;
+        } else {
+          const h = formatHours(r.timeHours);
+          el.time.innerHTML = timeTpl.replace(
+            "{hours}",
+            "<strong>" + h + " hours/month</strong>",
+          );
+        }
+      }
+      if (el.missed) {
+        if (empty) {
+          el.missed.textContent = dash;
+        } else {
+          el.missed.innerHTML = missedTpl.replace(
+            "{monthly}",
+            "<strong>" + money(r.missedFront) + "/month</strong>",
+          );
+        }
+      }
+    }
+
+    form.addEventListener("input", render);
+    form.addEventListener("change", render);
+
+    document.querySelector("[data-bc-see-savings]")?.addEventListener("click", () => {
+      render();
+      document
+        .getElementById("billing-calc-results")
+        ?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    function resetForm() {
+      form.reset();
+      const first = form.querySelector('input[name="workplace"]');
+      if (first instanceof HTMLInputElement) first.checked = true;
+      const sel = form.querySelector('select[name="arDays"]');
+      if (sel instanceof HTMLSelectElement) sel.value = "21_30";
+      const range = form.querySelector('[name="manualSteps"]');
+      if (range instanceof HTMLInputElement) range.value = "2";
+      render();
+    }
+
+    document
+      .querySelector("[data-bc-start-over-form]")
+      ?.addEventListener("click", resetForm);
+    document
+      .querySelector("[data-bc-start-over-results]")
+      ?.addEventListener("click", resetForm);
+
+    render();
+  }
+
+  bind();
+</script>

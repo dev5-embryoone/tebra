@@ -16,20 +16,20 @@ const practiceType = [
 const specialty = [
   { title: "Family Medicine", href: "/specialties/family-medicine", description: "Comprehensive tools to enhance care and streamline family medicine practices.", icon: "heart" },
   { title: "Primary Care", href: "/specialties/primary-care", description: "Optimize your primary care practice with solutions that improve patient outcomes.", icon: "people" },
-  { title: "Pediatrics", href: "#pediatrics", description: "Specialized tools to support the unique needs of pediatric care providers.", icon: "firstaid" },
-  { title: "Mental Health", href: "#mental-health", description: "Efficient management solutions designed specifically for mental health practices.", icon: "brain" },
-  { title: "Nurse Practitioners", href: "#nurse-practitioners", description: "A flexible EHR platform designed for nurse practitioners who do it all.", icon: "stethoscope" },
+  { title: "Pediatrics", href: "/specialties/pediatrics", description: "Specialized tools to support the unique needs of pediatric care providers.", icon: "firstaid" },
+  { title: "Mental Health", href: "/specialties/psychology", description: "Efficient management solutions designed specifically for mental health practices.", icon: "brain" },
+  { title: "Nurse Practitioners", href: "/specialties/nurse-practitioners", description: "A flexible EHR platform designed for nurse practitioners who do it all.", icon: "stethoscope" },
 ];
 
 const popularFeatures = [
-  { title: "Electronic Labs", href: "#electronic-labs", icon: "clipboard" },
+  { title: "Electronic Labs", href: "/ehr-software/electronic-labs", icon: "clipboard" },
   { title: "Patient Portal", href: "/patient-portal", icon: "person" },
   { title: "Online Scheduling", href: "/scheduling", icon: "calendar" },
   { title: "Telehealth", href: "/telehealth", icon: "monitor" },
-  { title: "Practice Websites", href: "#websites", icon: "monitor" },
-  { title: "AI Smart Staff", href: "#ai-smart-staff", icon: "robot" },
-  { title: "Electronic claims submission", href: "#claims", icon: "document" },
-  { title: "Robotic process automation (RPA)", href: "#rpa", icon: "gear" },
+  { title: "Practice Websites", href: "/marketing/practice-websites", icon: "monitor" },
+  { title: "AI Smart Staff", href: "/ai", icon: "robot" },
+  { title: "Electronic claims submission", href: "/billing-payments/electronic-claim-submission", icon: "document" },
+  { title: "Robotic process automation (RPA)", href: "/billing-payments/robotic-process-automation", icon: "gear" },
 ];
 
 function getIcon(name: string, size: "sm" | "md") {
@@ -76,7 +76,7 @@ function getIcon(name: string, size: "sm" | "md") {
     id="nav-dropdown-products"
     class="fixed left-0 right-0 top-[5.5rem] pt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50"
   >
-    <div class="w-full max-w-[1200px] mx-auto px-6 lg:px-12 bg-white border-t border-gray-100 rounded-b-2xl shadow-xl max-h-[85vh] overflow-y-auto">
+    <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 bg-white border-t border-gray-100 rounded-b-2xl shadow-xl max-h-[85vh] overflow-y-auto">
       <div class="py-8 lg:py-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
           <!-- Column 1: Products -->

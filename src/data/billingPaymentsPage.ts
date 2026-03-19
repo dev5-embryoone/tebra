@@ -16,7 +16,7 @@ export const billingPaymentsHero = {
   subtitle:
     "Billing in-house, outsourcing, or running a medical billing company? Tebra helps you reduce denials, improve collections, and take the chaos out of getting paid.",
   primaryCta: { label: "Request a demo", href: "#demo" },
-  secondaryCta: { label: "Try our billing calculator", href: "#billing-calculator" },
+  secondaryCta: { label: "Try our billing calculator", href: "/billing-payments/billing-calculator" },
 } as const;
 
 export const billingPaymentsMatchIntro = {
@@ -171,7 +171,7 @@ export const billingCalculatorBand = {
   title: "What’s holding back your revenue?",
   description:
     "Estimate your monthly revenue leaks in 90 seconds with the free Revenue Recovery calculator.",
-  cta: { label: "Try free billing calculator", href: "#billing-calculator" },
+  cta: { label: "Try free billing calculator", href: "/billing-payments/billing-calculator" },
 } as const;
 
 export const billingStepsIntro = {

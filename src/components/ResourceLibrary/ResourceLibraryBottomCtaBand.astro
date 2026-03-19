@@ -1,0 +1,149 @@
+---
+/**
+ * Resource library pre-footer — light rounded panel, three value props, dual CTAs,
+ * line-art people row (Tebra resource-library reference).
+ */
+export type BottomCtaIcon = "growth" | "presence" | "commitment";
+
+export interface BottomCtaBullet {
+  icon: BottomCtaIcon;
+  text: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  bullets: BottomCtaBullet[];
+  primary: { label: string; href: string };
+  secondary: { label: string; href: string };
+}
+
+const { title, subtitle, bullets, primary, secondary } = Astro.props as Props;
+
+const stroke = "#1D3533";
+const accent = "#FF8E73";
+---
+
+<section class="border-b border-[#E8E6E1] bg-white py-10 sm:py-12 lg:py-16">
+  <div class="page-container px-4 sm:px-6 lg:px-12">
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-[#F2F4F4] px-5 pb-0 pt-10 text-center sm:px-10 sm:pt-12 lg:px-14 lg:pt-14">
+      <h2 class="mx-auto max-w-3xl text-2xl font-semibold leading-snug tracking-tight text-[#1D3533] sm:text-3xl lg:text-[1.75rem] lg:leading-tight">
+        {title}
+      </h2>
+      <p class="mt-4 text-base font-medium text-[#1D3533]/80 sm:text-lg">{subtitle}</p>
+
+      <div class="mx-auto mt-10 grid max-w-3xl gap-8 sm:grid-cols-3 sm:gap-6 lg:mt-12">
+        {
+          bullets.map((b) => (
+            <div class="flex flex-col items-center gap-3 text-center">
+              <div class="flex h-14 w-14 shrink-0 items-center justify-center" aria-hidden="true">
+                {b.icon === "growth" && (
+                  <svg class="h-12 w-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M8 38V22l6-4 6 4 8-6 8 6v16"
+                      stroke={stroke}
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path d="M4 38h40" stroke={stroke} stroke-width="1.5" stroke-linecap="round" />
+                    <rect x="14" y="24" width="4" height="8" rx="0.5" fill={accent} />
+                    <rect x="20" y="20" width="4" height="12" rx="0.5" fill={accent} opacity="0.85" />
+                    <rect x="26" y="22" width="4" height="10" rx="0.5" fill={accent} opacity="0.7" />
+                  </svg>
+                )}
+                {b.icon === "presence" && (
+                  <svg class="h-12 w-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="22" cy="22" r="9" stroke={stroke} stroke-width="1.5" />
+                    <path d="M29 29l8 8" stroke={stroke} stroke-width="1.5" stroke-linecap="round" />
+                    <rect x="12" y="26" width="3" height="5" rx="0.4" fill={accent} />
+                    <rect x="16.5" y="23" width="3" height="8" rx="0.4" fill={accent} opacity="0.85" />
+                    <rect x="21" y="25" width="3" height="6" rx="0.4" fill={accent} opacity="0.7" />
+                  </svg>
+                )}
+                {b.icon === "commitment" && (
+                  <svg class="h-12 w-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M24 8c-4 4-8 8-8 14a8 8 0 1016 0c0-6-4-10-8-14z"
+                      stroke={stroke}
+                      stroke-width="1.5"
+                      stroke-linejoin="round"
+                    />
+                    <path d="M24 22v8M20 26h8" stroke={accent} stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M16 12l-2-2M32 12l2-2M12 20H9M39 20h-3" stroke={accent} stroke-width="1.25" stroke-linecap="round" opacity="0.8" />
+                  </svg>
+                )}
+              </div>
+              <p class="text-sm leading-snug text-[#5C6665] sm:text-[0.8125rem]">{b.text}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-3 lg:mt-12">
+        <a
+          href={primary.href}
+          class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#FF8E73] px-8 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-[1.03] active:brightness-95"
+        >
+          {primary.label}
+        </a>
+        <a
+          href={secondary.href}
+          class="inline-flex min-h-[44px] items-center justify-center rounded-full border border-[#C5CAC9] bg-white px-8 py-3 text-sm font-semibold text-[#1D3533] transition hover:bg-white/90"
+        >
+          {secondary.label}
+        </a>
+      </div>
+
+      <!-- Line-art people + geometric accents -->
+      <div class="relative mt-10 sm:mt-12" aria-hidden="true">
+        <svg
+          class="mx-auto h-auto w-full max-w-3xl text-[#1D3533]"
+          viewBox="0 0 720 160"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="92" cy="38" r="3" fill={accent} opacity="0.5" />
+          <path d="M120 28l4 6-6 2 2-8z" fill="#9CA3A2" opacity="0.45" />
+          <path d="M640 48h8v8h-8z" stroke={accent} stroke-width="1.2" opacity="0.6" />
+          <circle cx="668" cy="72" r="2.5" fill="#9CA3A2" opacity="0.5" />
+
+          <!-- Left: glasses + blazer -->
+          <g stroke={stroke} stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M108 118c0-18 10-32 28-32s28 14 28 32" />
+            <ellipse cx="136" cy="78" rx="11" ry="13" />
+            <path d="M124 78h6M142 78h6" opacity="0.9" />
+            <circle cx="130" cy="76" r="2.5" fill="none" />
+            <circle cx="142" cy="76" r="2.5" fill="none" />
+            <path d="M118 88l-8 30M154 88l8 30M110 118h52" />
+            <path d="M118 100l-6 18h64l-6-18" fill="none" />
+          </g>
+          <path d="M98 102l6-4M98 96l8 2" stroke={accent} stroke-width="1.2" opacity="0.75" />
+
+          <!-- Center: lab coat + stethoscope -->
+          <g stroke={stroke} stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="360" cy="76" rx="12" ry="14" />
+            <path d="M348 118c0-20 11-34 30-34s30 14 30 34" />
+            <path d="M318 92l-4 38h92l-4-38" />
+            <path d="M322 96h76" />
+            <path d="M388 88c8 0 14 6 14 14v8" />
+            <circle cx="402" cy="112" r="4" fill="none" />
+            <path d="M340 100h40" opacity="0.35" />
+          </g>
+          <path d="M330 52l4 8M402 44l-3 10" stroke={accent} stroke-width="1.2" opacity="0.65" />
+
+          <!-- Right: sweater + stethoscope -->
+          <g stroke={stroke} stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="584" cy="78" rx="11" ry="13" />
+            <path d="M572 120c0-18 9-32 26-32s26 14 26 32" />
+            <path d="M548 94l-6 34h84l-6-34" />
+            <path d="M556 100c0 0 12 8 28 8s28-8 28-8" />
+            <path d="M598 86c6 0 12 5 12 12v10" />
+            <circle cx="612" cy="110" r="3.5" fill="none" />
+          </g>
+          <path d="M520 68l-5 6M632 58l6 6" stroke="#9CA3A2" stroke-width="1.1" opacity="0.5" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

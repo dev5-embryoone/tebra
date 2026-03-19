@@ -1,0 +1,48 @@
+---
+/**
+ * Rounded “practice compare” promo — copy + CTA + image (responsive stack).
+ */
+interface Props {
+  title: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const { title, description, ctaLabel, ctaHref, imageSrc, imageAlt } = Astro.props as Props;
+---
+
+<div
+  class="overflow-hidden rounded-3xl border border-gray-200/80 bg-gradient-to-br from-gray-50 to-gray-100/90 shadow-inner"
+  role="region"
+  aria-labelledby="compare-promo-title"
+>
+  <div class="grid gap-8 p-8 lg:grid-cols-2 lg:items-center lg:gap-12 lg:p-12 xl:p-14">
+    <div class="space-y-5">
+      <h2 id="compare-promo-title" class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-[2rem] lg:leading-tight">
+        {title}
+      </h2>
+      <p class="max-w-lg text-base leading-relaxed text-gray-600 sm:text-lg">{description}</p>
+      <a
+        href={ctaHref}
+        class="inline-flex min-h-[48px] items-center justify-center rounded-full bg-tebra-orange px-8 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+    <div class="flex justify-center lg:justify-end">
+      <div class="relative w-full max-w-md">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class="h-auto w-full rounded-2xl object-cover shadow-lg ring-1 ring-black/5"
+          loading="lazy"
+          width={560}
+          height={420}
+        />
+      </div>
+    </div>
+  </div>
+</div>

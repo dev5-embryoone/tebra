@@ -1,0 +1,238 @@
+---
+import { Image } from "astro:assets";
+import g2logo from "../../assets/g2logo.36d61f52.svg";
+import awardUsersLoveUs from "../../assets/award3.9dad656e.svg";
+import productGraphic from "../../assets/sidebar-image.webp";
+import g2Easiest1 from "../../assets/G2-Easiest-to-Use-1.webp";
+import g2Easiest3 from "../../assets/G2-Easiest-to-Use-3.webp";
+
+const g2logoSrc = typeof g2logo === "string" ? g2logo : g2logo.src;
+const awardSrc =
+  typeof awardUsersLoveUs === "string" ? awardUsersLoveUs : awardUsersLoveUs.src;
+
+/** Copy aligned with https://www.tebra.com/product-tour/form */
+const tourBullets = [
+  "An interactive walk-throughs of all Tebra features",
+  "A user-friendly, self-paced experience",
+  "No commitment required",
+  "Access expert support when you're ready",
+];
+
+/** Match reference LP typography (sans, forest green) */
+const textGreen = "text-[#1a3d3f]";
+---
+
+<!--
+  Tebra product-tour style: flex 50/50 (reference), logo lives in ProductTourHeader only.
+  Min-height below single-row header: --nav-product-tour-offset
+-->
+<section
+  class="flex w-full min-h-[calc(100dvh-var(--nav-product-tour-offset))] flex-col bg-[#f0f3f2] lg:flex-row lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))]"
+>
+  <!-- Left: grey half — badges → copy → checklist; mockup anchored to bottom on desktop -->
+  <div
+    class="flex min-h-0 flex-1 flex-col justify-between gap-10 bg-[#f0f3f2] px-6 py-10 sm:px-8 sm:py-12 lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))] lg:gap-12 lg:px-12 lg:py-12 xl:px-16"
+  >
+    <div class="space-y-8">
+      <!-- G2 trust row -->
+      <div
+        class="flex flex-wrap items-end gap-3 sm:gap-4"
+        aria-label="G2 awards and ratings"
+      >
+        <div
+          class="flex max-w-[280px] items-center gap-3 rounded-xl border border-black/10 bg-white/90 px-4 py-3 shadow-sm"
+        >
+          <img
+            src={g2logoSrc}
+            alt=""
+            class="h-11 w-11 shrink-0"
+            width="53"
+            height="53"
+            aria-hidden="true"
+          />
+          <div class="min-w-0 leading-tight">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-600">
+              G2
+            </p>
+            <p class={`text-base font-semibold leading-snug sm:text-lg ${textGreen}`}>
+              2025 Practice
+              <br />
+              Management Leader
+            </p>
+          </div>
+        </div>
+
+        <img
+          src={awardSrc}
+          alt="G2 Users Love Us"
+          class="h-[4.5rem] w-auto shrink-0 sm:h-[5.25rem]"
+          width="52"
+          height="59"
+        />
+
+        <Image
+          src={g2Easiest1}
+          alt="G2 Easiest to Use"
+          class="h-16 w-auto shrink-0 object-contain sm:h-[4.75rem]"
+          widths={[120, 160]}
+          sizes="120px"
+        />
+        <Image
+          src={g2Easiest3}
+          alt="G2 Easiest Setup"
+          class="h-16 w-auto shrink-0 object-contain sm:h-[4.75rem]"
+          widths={[120, 160]}
+          sizes="120px"
+        />
+      </div>
+
+      <div>
+        <h1
+          class={`font-display text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.5rem] lg:leading-[1.12] ${textGreen}`}
+        >
+          See how Tebra works—<wbr />
+          <span class="inline-block">before you commit</span>
+        </h1>
+        <p
+          class={`mt-5 max-w-xl text-[15px] leading-relaxed sm:text-base ${textGreen} opacity-90`}
+        >
+          Dive into an interactive, self-guided tour and see exactly how Tebra can elevate
+          patient satisfaction, streamline operations, and support exceptional care—all
+          before you ever talk to sales.
+        </p>
+      </div>
+
+      <div>
+        <p class={`text-sm font-semibold ${textGreen}`}>What’s inside the tour:</p>
+        <ul class="mt-4 space-y-3 text-[15px] leading-snug text-gray-800">
+          {tourBullets.map((line) => (
+            <li class="flex gap-3">
+              <span
+                class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0d9488] text-white"
+                aria-hidden="true"
+              >
+                <svg class="h-3 w-3" viewBox="0 0 12 10" fill="none">
+                  <path
+                    d="M1 5l3.5 3.5L11 1"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <span>{line}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="relative mt-4 shrink-0 lg:mt-0">
+      <Image
+        src={productGraphic}
+        alt=""
+        role="presentation"
+        class="w-full max-w-lg rounded-2xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.22)] lg:max-w-none lg:rounded-xl"
+        widths={[400, 600, 800, 960]}
+        sizes="(max-width: 1023px) 90vw, 50vw"
+      />
+    </div>
+  </div>
+
+  <!-- Right: white half — form block centered horizontally + vertically -->
+  <div
+    class="flex min-h-0 flex-1 flex-col items-center justify-center bg-white px-6 py-12 sm:px-8 lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))] lg:px-12 lg:py-12 xl:px-16"
+  >
+    <div class="w-full max-w-[420px]">
+      <h2 class={`font-display text-2xl font-semibold sm:text-3xl ${textGreen}`}>
+        Start your tour
+      </h2>
+      <p class="mt-2 text-[15px] text-gray-600">
+        Answer a few quick questions to personalize your experience.
+      </p>
+
+      <form class="mt-8 space-y-5" action="#" method="post">
+        <div>
+          <label for="tour-email" class="sr-only">Email address</label>
+          <input
+            id="tour-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="Work email"
+            required
+            class="w-full rounded-md border border-gray-300 bg-white px-4 py-3.5 text-[15px] text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-[#396d70] focus:ring-2 focus:ring-[#396d70]/20"
+          />
+        </div>
+        <p class="text-xs leading-relaxed text-gray-500">
+          By submitting my email address above, I acknowledge that Tebra may use my
+          information as described in its{" "}
+          <a
+            href="/privacy"
+            class="text-[#396d70] underline underline-offset-2 hover:text-[#1a3d3f]"
+          >
+            Privacy Policy
+          </a>
+          .
+        </p>
+        <button
+          type="submit"
+          class="w-full rounded-md bg-[#f27e5e] px-6 py-3.5 text-center text-[15px] font-semibold text-white shadow-sm transition hover:bg-[#e06d4d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#396d70]"
+        >
+          Get started
+        </button>
+      </form>
+
+      <p class="mt-10 text-center text-sm text-gray-600">
+        Already use Tebra?{" "}
+        <a
+          href="#login"
+          class="font-semibold text-[#396d70] hover:text-[#1a3d3f] hover:underline"
+        >
+          Sign in →
+        </a>
+      </p>
+
+      <nav
+        class="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-xs text-gray-500"
+        aria-label="Legal"
+      >
+        <a
+          href="/terms"
+          class="text-[#396d70] underline underline-offset-2 hover:text-[#1a3d3f]"
+        >
+          Tebra Website Terms of Use
+        </a>
+        <a
+          href="/privacy"
+          class="text-[#396d70] underline underline-offset-2 hover:text-[#1a3d3f]"
+        >
+          Privacy Policy
+        </a>
+      </nav>
+
+      <p class="mt-6 text-center text-[11px] leading-relaxed text-gray-400">
+        This site is protected by reCAPTCHA and the Google{" "}
+        <a
+          class="underline underline-offset-1 hover:text-gray-600"
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a
+          class="underline underline-offset-1 hover:text-gray-600"
+          href="https://policies.google.com/terms"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Terms of Service
+        </a>{" "}
+        apply.
+      </p>
+    </div>
+  </div>
+</section>

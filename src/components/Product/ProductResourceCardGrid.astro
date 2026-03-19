@@ -1,0 +1,66 @@
+---
+export type ResourceKind = "Webinar" | "Workbook" | "Checklist";
+
+export type ResourceCardItem = {
+  kind: ResourceKind;
+  title: string;
+  href: string;
+};
+
+interface Props {
+  headline: string;
+  items: readonly ResourceCardItem[];
+}
+
+const { headline, items } = Astro.props as Props;
+
+const kindStyles: Record<ResourceKind, string> = {
+  Webinar: "bg-tebra-teal/10 text-tebra-teal-dark",
+  Workbook: "bg-amber-100/80 text-amber-900",
+  Checklist: "bg-sky-100/80 text-sky-900",
+};
+---
+
+<section class="bg-tebra-hero-bg py-14 lg:py-20" aria-labelledby="resource-grid-heading">
+  <div class="page-container">
+    <h2
+      id="resource-grid-heading"
+      class="mx-auto max-w-3xl text-center text-xl font-semibold leading-snug tracking-tight text-tebra-teal-dark sm:text-2xl lg:text-3xl"
+    >
+      {headline}
+    </h2>
+    <ul
+      class="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6"
+      role="list"
+    >
+      {
+        items.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="group flex h-full min-h-[44px] flex-col rounded-2xl border border-gray-200/90 bg-white p-5 shadow-sm transition-shadow hover:shadow-md sm:p-6"
+            >
+              <span
+                class:list={[
+                  "inline-flex w-fit rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider sm:text-xs",
+                  kindStyles[item.kind],
+                ]}
+              >
+                {item.kind}
+              </span>
+              <span class="mt-3 flex-1 text-base font-semibold leading-snug text-tebra-teal-dark group-hover:text-tebra-teal sm:text-lg">
+                {item.title}
+              </span>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-tebra-orange">
+                Read more
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M6 3h7v7M13 3L5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

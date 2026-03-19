@@ -2,15 +2,24 @@
 import "../styles/global.css";
 import Navbar from "../components/Navbar/Navbar.astro";
 import Footer from "../components/Footer/Footer.astro";
+import ProductTourHeader from "../components/ProductTour/ProductTourHeader.astro";
 
 interface Props {
   title?: string;
   description?: string;
+  /** Extra classes on `<main>` (merged with `min-w-0 w-full`). E.g. `main-full-bleed` from global.css. */
+  mainClass?: string;
+  /** `logo-only` = product-tour style bar (logo only). Default = full site navbar. */
+  navMode?: "default" | "logo-only";
+  showFooter?: boolean;
 }
 
 const {
   title = "Run your entire practice with one EHR+ platform | Tebra clone",
   description = "Tebra’s EHR+ platform connects care, billing, scheduling, and more with AI-powered tools for private practices.",
+  mainClass = "",
+  navMode = "default",
+  showFooter = true,
 } = Astro.props as Props;
 ---
 
@@ -30,11 +39,12 @@ const {
     />
   </head>
   <body class="font-sans bg-white text-gray-900">
-    <Navbar />
-    <main>
+    <slot name="before-navbar" />
+    {navMode === "logo-only" ? <ProductTourHeader /> : <Navbar />}
+    <main class:list={["min-w-0 w-full", mainClass]}>
       <slot />
     </main>
-    <Footer />
+    {showFooter ? <Footer /> : null}
   </body>
 </html>
 

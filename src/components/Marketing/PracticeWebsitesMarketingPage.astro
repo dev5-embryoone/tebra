@@ -1,0 +1,232 @@
+---
+import FeatureSplitHero from "../Layout/FeatureSplitHero.astro";
+import PageSection from "../Layout/PageSection.astro";
+import ProductPageBreadcrumb from "../PatientExperience/ProductPageBreadcrumb.astro";
+import PracticeWebsitesRatingStrip from "./PracticeWebsitesRatingStrip.astro";
+import ProductAlternatingFeature from "../Product/ProductAlternatingFeature.astro";
+import ProductComparePromoCard from "../Product/ProductComparePromoCard.astro";
+import ProductTrustBand from "../Product/ProductTrustBand.astro";
+import PracticeStatShowcaseGrid from "./PracticeStatShowcaseGrid.astro";
+import LinkWithArrow from "../LinkWithArrow/LinkWithArrow.astro";
+import CTASection from "../Sections/CTASection.astro";
+
+import heroImg from "../../assets/marketing.webp";
+import compareImg from "../../assets/Hero-2-scaled-v2.jpg";
+import feat0 from "../../assets/medical-practice-marketing-min.webp";
+import feat1 from "../../assets/marketing.webp";
+import feat2 from "../../assets/Product-Graphic@2x-768x768.webp";
+import feat3 from "../../assets/patient-experience.webp";
+import feat4 from "../../assets/ehrpage.webp";
+import g2Logo from "../../assets/G2-Easiest-to-Use-1.webp";
+import capterraLogo from "../../assets/capterra-logo.webp";
+
+import {
+  pwBreadcrumb,
+  pwHero,
+  pwRatings,
+  pwValueProps,
+  pwFeaturesIntro,
+  pwFeatures,
+  pwComparePromo,
+  pwTrust,
+  pwAllInOne,
+  pwImplementation,
+  pwCaseShowcase,
+  pwStatsCta,
+  pwBottomCta,
+} from "../../data/practiceWebsitesPage";
+
+const heroSrc = typeof heroImg === "string" ? heroImg : heroImg.src;
+const compareSrc = typeof compareImg === "string" ? compareImg : compareImg.src;
+const featureSrcs = [feat0, feat1, feat2, feat3, feat4].map((im) => (typeof im === "string" ? im : im.src));
+const g2Src = typeof g2Logo === "string" ? g2Logo : g2Logo.src;
+const capterraSrc = typeof capterraLogo === "string" ? capterraLogo : capterraLogo.src;
+
+const trustBadges = pwTrust.badges.map((b, i) => ({
+  title: b.title,
+  subtitle: b.subtitle,
+  logoSrc: i === 0 ? g2Src : i === 1 ? capterraSrc : undefined,
+  logoAlt: i === 0 ? "G2" : i === 1 ? "Capterra" : undefined,
+}));
+
+function valueIcon(kind: 0 | 1 | 2) {
+  const stroke =
+    'class="h-12 w-12 text-tebra-teal-dark" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"';
+  if (kind === 0) {
+    return `<svg ${stroke} viewBox="0 0 48 48"><path d="M24 8v6M24 34v6M8 24h6M34 24h6"/><circle cx="24" cy="24" r="10"/><path d="M18 18c2 2 4 4 6 6 2-2 4-4 6-6"/></svg>`;
+  }
+  if (kind === 1) {
+    return `<svg ${stroke} viewBox="0 0 48 48"><path d="M34 14a8 8 0 0 1 0 11.3l-11 11a8 8 0 0 1-11.3-11.3l2.8-2.8"/><path d="M14 34a8 8 0 0 1 0-11.3l11-11a8 8 0 0 1 11.3 11.3l-2.8 2.8"/></svg>`;
+  }
+  return `<svg ${stroke} viewBox="0 0 48 48"><circle cx="24" cy="14" r="3"/><circle cx="38" cy="24" r="3"/><circle cx="31" cy="38" r="3"/><circle cx="17" cy="38" r="3"/><circle cx="10" cy="24" r="3"/><path d="m16.5 22 5-5 5 5M26.5 26l5 5 5-5"/></svg>`;
+}
+---
+
+<div>
+  <FeatureSplitHero class="bg-white" align="center" pyClass="pb-16 pt-4 lg:pb-24 lg:pt-6">
+    <div slot="left" class="space-y-5 lg:space-y-6">
+      <ProductPageBreadcrumb items={[...pwBreadcrumb]} />
+      <PracticeWebsitesRatingStrip items={pwRatings} />
+      <h1 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-[1.12]">
+        {pwHero.title}
+      </h1>
+      <p class="max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
+        {pwHero.subtitle}
+      </p>
+      <div class="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+        <a
+          href={pwHero.primaryCta.href}
+          class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {pwHero.primaryCta.label}
+        </a>
+        <a
+          href={pwHero.secondaryCta.href}
+          class="inline-flex min-h-[44px] items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-hero-bg"
+        >
+          {pwHero.secondaryCta.label}
+        </a>
+      </div>
+    </div>
+    <div slot="right" class="flex justify-center lg:justify-end">
+      <div class="w-full max-w-xl rounded-3xl border border-gray-200/80 bg-gray-50/90 p-4 shadow-inner sm:p-6">
+        <img
+          src={heroSrc}
+          alt="Tebra practice website builder and medical site preview"
+          class="h-auto w-full rounded-2xl object-contain shadow-md"
+          loading="eager"
+          width={720}
+          height={540}
+        />
+      </div>
+    </div>
+  </FeatureSplitHero>
+
+  <PageSection variant="default" class="!py-14 lg:!py-20">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+      {
+        pwValueProps.map((v, i) => (
+          <article class="text-center sm:text-left">
+            <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center sm:mx-0">
+              <span class="inline-flex" set:html={valueIcon(i as 0 | 1 | 2)} />
+            </div>
+            <h2 class="text-lg font-semibold text-tebra-teal-dark">{v.title}</h2>
+            <p class="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">{v.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" class="!pt-6 !pb-14 lg:!pb-20">
+    <h2 class="mx-auto max-w-4xl text-center font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl lg:leading-tight">
+      {pwFeaturesIntro.title}
+    </h2>
+  </PageSection>
+
+  <PageSection variant="default" class="!pt-0 !pb-16 lg:!pb-24" id="features">
+    <div class="space-y-16 lg:space-y-24">
+      {
+        pwFeatures.map((f, i) => (
+          <ProductAlternatingFeature
+            title={f.title}
+            body={f.body}
+            imageSrc={featureSrcs[i] ?? featureSrcs[0]}
+            imageAlt={`${f.title} — Tebra practice websites`}
+            reverse={i % 2 === 1}
+          />
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" class="!py-14 lg:!py-20">
+    <ProductComparePromoCard
+      title={pwComparePromo.title}
+      description={pwComparePromo.description}
+      ctaLabel={pwComparePromo.ctaLabel}
+      ctaHref={pwComparePromo.ctaHref}
+      imageSrc={compareSrc}
+      imageAlt="Benchmark your practice’s online presence and marketing performance"
+    />
+  </PageSection>
+
+  <ProductTrustBand headline={pwTrust.headline} badges={trustBadges} />
+
+  <PageSection variant="default" class="!py-14 lg:!py-20">
+    <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-tebra-teal-dark/80">{pwAllInOne.eyebrow}</p>
+    <div class="text-center">
+      <h2 class="mt-3 font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{pwAllInOne.title}</h2>
+      <p class="mt-2 text-lg font-medium text-gray-800">{pwAllInOne.subtitle}</p>
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base">{pwAllInOne.description}</p>
+      <div class="mt-6 flex justify-center">
+        <LinkWithArrow label={pwAllInOne.ctaLabel} href={pwAllInOne.ctaHref} external={false} variant="tebra" />
+      </div>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        pwAllInOne.cards.map((c) => (
+          <a
+            href={c.href}
+            class="group flex min-h-[44px] flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <h3 class="text-lg font-semibold text-tebra-teal-dark group-hover:text-tebra-teal">{c.title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600">{c.description}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal">
+              Learn more
+              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" class="!py-14 lg:!py-16">
+    <div class="mx-auto max-w-3xl rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
+      <h2 class="text-xl font-semibold text-tebra-teal-dark sm:text-2xl">{pwImplementation.title}</h2>
+      <p class="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">{pwImplementation.description}</p>
+      <a
+        href={pwImplementation.ctaHref}
+        class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-full border border-tebra-teal px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-teal/5"
+      >
+        {pwImplementation.ctaLabel}
+      </a>
+    </div>
+  </PageSection>
+
+  <PracticeStatShowcaseGrid headline={pwCaseShowcase.headline} cases={pwCaseShowcase.cases} />
+
+  <PageSection variant="muted" class="!py-14 lg:!py-20">
+    <div class="mx-auto max-w-xl rounded-2xl border border-tebra-teal/20 bg-tebra-teal-dark px-6 py-8 text-center text-white sm:px-10">
+      <p class="text-base font-medium leading-snug sm:text-lg">{pwStatsCta.kicker}</p>
+      <ul class="mt-5 space-y-2 text-left text-sm text-white/90 sm:text-base">
+        {pwStatsCta.bullets.map((b) => (
+          <li class="flex gap-2">
+            <span class="text-tebra-orange" aria-hidden="true">
+              ✓
+            </span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={pwStatsCta.ctaHref}
+        class="mt-8 inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#ff5a49] sm:w-auto"
+      >
+        {pwStatsCta.ctaLabel}
+      </a>
+    </div>
+  </PageSection>
+
+  <CTASection
+    title={pwBottomCta.title}
+    description={pwBottomCta.description}
+    primaryCtaLabel={pwBottomCta.primaryCtaLabel}
+    primaryCtaHref={pwBottomCta.primaryCtaHref}
+    secondaryCtaLabel={pwBottomCta.secondaryCtaLabel}
+    secondaryCtaHref={pwBottomCta.secondaryCtaHref}
+  />
+</div>

@@ -1,0 +1,18 @@
+---
+import EhrCalculatorLayout from "../../../layouts/EhrCalculatorLayout.astro";
+import EhrCalculatorHeader from "../../../components/EhrCalculator/EhrCalculatorHeader.astro";
+import EhrCalculatorStepper from "../../../components/EhrCalculator/EhrCalculatorStepper.astro";
+import { ehrCalculatorMeta, ehrCalculatorSteps } from "../../../data/ehrCalculator";
+---
+
+<EhrCalculatorLayout title="EHR Calculator - Step 4 | Tebra" description={ehrCalculatorMeta.description}>
+  <div class="min-h-screen bg-[#eef4f1]">
+    <EhrCalculatorHeader />
+    <EhrCalculatorStepper steps={ehrCalculatorSteps} currentStep={4} />
+    <div class="page-container max-w-xl py-16 text-center sm:py-20">
+      <p class="text-lg font-semibold text-tebra-teal-dark">Patient retention</p>
+      <p class="mt-2 text-gray-600">Coming soon — placeholder for step 4.</p>
+      <a href="/ehr-calculator/step-1" class="mt-6 inline-block font-semibold text-tebra-teal hover:underline">Start over</a>
+    </div>
+  </div>
+</EhrCalculatorLayout>

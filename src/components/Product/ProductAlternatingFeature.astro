@@ -1,0 +1,51 @@
+---
+/**
+ * Image + copy row; `reverse` swaps columns on lg+ for zig-zag layout.
+ * Mobile: single column, image stacks above copy for visual-first scan.
+ */
+interface Props {
+  title: string;
+  body: string;
+  imageSrc: string;
+  imageAlt: string;
+  /** On lg screens, show image on the right (default) or left when true */
+  reverse?: boolean;
+  /** Optional pill CTA (e.g. Telehealth feature rows) */
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const { title, body, imageSrc, imageAlt, reverse = false, ctaLabel, ctaHref } = Astro.props as Props;
+
+const imgOrder = reverse ? "lg:order-1" : "lg:order-2";
+const textOrder = reverse ? "lg:order-2" : "lg:order-1";
+---
+
+<div class="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12 lg:gap-x-16">
+  <div class:list={["order-1", imgOrder]}>
+    <img
+      src={imageSrc}
+      alt={imageAlt}
+      class="w-full rounded-2xl border border-gray-200 bg-gray-50 shadow-lg object-cover"
+      loading="lazy"
+      width={800}
+      height={560}
+    />
+  </div>
+  <div class:list={["order-2 space-y-4", textOrder]}>
+    <h3 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{title}</h3>
+    <p class="text-base leading-relaxed text-gray-600 sm:text-lg">{body}</p>
+    {
+      ctaLabel && ctaHref ? (
+        <div class="pt-1">
+          <a
+            href={ctaHref}
+            class="inline-flex min-h-[44px] items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-2.5 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-teal/5"
+          >
+            {ctaLabel}
+          </a>
+        </div>
+      ) : null
+    }
+  </div>
+</div>

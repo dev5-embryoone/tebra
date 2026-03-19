@@ -1,21 +1,308 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ResourceLibraryCard from "../../components/ResourceLibrary/ResourceLibraryCard.astro";
+import ResourceLibraryCategoryCarousel from "../../components/ResourceLibrary/ResourceLibraryCategoryCarousel.astro";
+import ResourceLibraryFeaturedWorkbook from "../../components/ResourceLibrary/ResourceLibraryFeaturedWorkbook.astro";
+import ResourceLibraryEhrPromoTile from "../../components/ResourceLibrary/ResourceLibraryEhrPromoTile.astro";
+import ResourceLibraryPatientExperienceBand from "../../components/ResourceLibrary/ResourceLibraryPatientExperienceBand.astro";
+import ResourceLibraryDarkPortraitCard from "../../components/ResourceLibrary/ResourceLibraryDarkPortraitCard.astro";
+import ResourceLibraryViewAllLink from "../../components/ResourceLibrary/ResourceLibraryViewAllLink.astro";
+import ResourceLibraryBillingCalculatorBanner from "../../components/ResourceLibrary/ResourceLibraryBillingCalculatorBanner.astro";
+import ResourceLibraryLinkTiles from "../../components/ResourceLibrary/ResourceLibraryLinkTiles.astro";
+import ResourceLibraryBottomCtaBand from "../../components/ResourceLibrary/ResourceLibraryBottomCtaBand.astro";
+import webinarSvg from "../../assets/webinar-1.svg?url";
+import workbookSvg from "../../assets/workbook (1).svg?url";
+import webinarThumb from "../../assets/Webinar-listing-resources-page-412x264-min.png";
+import reportSimplify from "../../assets/Simplify-operations.png";
+import reportChallenge from "../../assets/Challenge-Solution-Results_1112x1112.webp";
+import imgAbout from "../../assets/about.webp";
+import imgMarketing from "../../assets/medical-practice-marketing-min.webp";
+import imgBilling from "../../assets/BILLING-SOFTWARE-min.webp";
+import imgEhr from "../../assets/EHR-min.webp";
+import portraitArjun from "../../assets/Arjun-scaled-e1761674709694.webp";
+import portraitColin from "../../assets/Colin-Morris.jpg";
+import portraitAndrea from "../../assets/Andrea-Weisz-Tebra_Headshot-75-scaled-e1771345476334.jpg";
+import portraitKevin from "../../assets/Kevin-Marasco-1.jpg";
+import portraitKyle from "../../assets/Kyle-Ryan-1.jpg";
+import portraitAmanda from "../../assets/Amanda-Piwonka-1.jpg";
+import portraitFabius from "../../assets/Fabius.webp";
+import portraitTestimonial from "../../assets/testimonial1.webp";
+import portraitInhouse from "../../assets/BILLING-Hub-In-house-billers.webp";
+import {
+  resourceLibraryMeta,
+  resourceLibraryHero,
+  resourceCategoryCarousel,
+  resourceTopicPills,
+  practiceFavoriteFeatured,
+  practiceFavoritesSecondary,
+  patientExperienceResources,
+  ehrResources,
+  billingPaymentsResources,
+  medicalBillingCompaniesResources,
+  resourceLibraryBillingCalculatorBanner,
+  resourceLibraryLinkTiles,
+  resourceLibraryMidCta,
+  resourceLibraryBottomCta,
+  type ResourceItem,
+  type ResourceDarkPortrait,
+} from "../../data/resourceLibraryPage";
+
+function src(img: { src: string } | string) {
+  return typeof img === "string" ? img : img.src;
+}
+
+const imageByKey: Record<NonNullable<ResourceItem["imageKey"]>, string> = {
+  webinarThumb: src(webinarThumb),
+  report1: src(reportSimplify),
+  report2: src(reportChallenge),
+  about: src(imgAbout),
+  marketing: src(imgMarketing),
+  billing: src(imgBilling),
+  ehr: src(imgEhr),
+};
+
+const portraitByKey: Record<ResourceDarkPortrait, string> = {
+  arjun: src(portraitArjun),
+  colin: src(portraitColin),
+  andrea: src(portraitAndrea),
+  kevin: src(portraitKevin),
+  kyle: src(portraitKyle),
+  amanda: src(portraitAmanda),
+  fabius: src(portraitFabius),
+  testimonial1: src(portraitTestimonial),
+  inhouseBiller: src(portraitInhouse),
+};
+
+function resolveItem(item: ResourceItem) {
+  const imageSrc = item.imageKey ? imageByKey[item.imageKey] : undefined;
+  const iconSrc = item.icon === "workbook" ? workbookSvg : item.icon === "webinar" ? webinarSvg : undefined;
+  const iconAlt = item.icon === "workbook" ? "Workbook" : item.icon === "webinar" ? "Webinar" : "";
+  return { ...item, imageSrc, iconSrc, iconAlt };
+}
 ---
-<BaseLayout
-  title="Resources | Tebra"
-  description="Guides, whitepapers, and resources for practice management."
->
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h1 class="text-2xl font-semibold text-gray-900">Resources</h1>
-      <p class="mt-2 text-gray-600">Guides, stories, and tools for your practice.</p>
-      <ul class="mt-6 space-y-2 text-tebra-teal font-medium">
-        <li>
-          <a href="/resources/testimonials" class="hover:text-tebra-teal-dark underline-offset-2 hover:underline"
-            >Testimonials</a
-          >
-        </li>
-      </ul>
+
+<BaseLayout title={resourceLibraryMeta.title} description={resourceLibraryMeta.description} mainClass="main-full-bleed">
+  <!-- Hero (cream) -->
+  <section class="border-b border-[#E8E6E1] bg-[#F9F8F4]">
+    <div class="page-container px-4 py-12 text-center sm:px-6 sm:py-14 lg:px-12 lg:py-16">
+      <h1 class="text-4xl font-semibold tracking-tight text-[#1D3533] sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
+        {resourceLibraryHero.title}
+      </h1>
+      <p class="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[#6B7280]">
+        {resourceLibraryHero.subtitle}
+      </p>
     </div>
   </section>
+
+  <ResourceLibraryCategoryCarousel items={resourceCategoryCarousel} webinarSrc={webinarSvg} workbookSrc={workbookSvg} />
+
+  <!-- Browse by topic -->
+  <section class="border-b border-[#E8E6E1] bg-white py-12 lg:py-14">
+    <div class="page-container px-4 sm:px-6 lg:px-12">
+      <h2 class="text-left text-2xl font-semibold text-[#1D3533] sm:text-3xl lg:text-4xl">Browse by topic</h2>
+      <div class="mt-8 flex flex-wrap gap-3">
+        {
+          resourceTopicPills.map((p) => (
+            <a
+              href={p.href}
+              class="inline-flex items-center rounded-full bg-[#EFEEED] px-6 py-3 text-sm font-semibold text-[#1D3533] transition hover:bg-[#E5E3E0] hover:text-[#005A57]"
+            >
+              {p.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Practice favorites -->
+  <section id="practice-favorites" class="scroll-mt-32 border-b border-[#E8E6E1] bg-white py-12 lg:py-16">
+    <div class="page-container px-4 sm:px-6 lg:px-12">
+      <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl lg:text-4xl">Practice favorites</h2>
+
+      <div class="mt-10">
+        <ResourceLibraryFeaturedWorkbook
+          type={practiceFavoriteFeatured.type}
+          title={practiceFavoriteFeatured.title}
+          href={practiceFavoriteFeatured.href}
+          cta={practiceFavoriteFeatured.cta}
+          workbookIconSrc={workbookSvg}
+        />
+      </div>
+
+      <div class="mt-8 grid gap-6 lg:grid-cols-3">
+        {
+          practiceFavoritesSecondary.map((item) => {
+            const r = resolveItem(item);
+            return (
+              <ResourceLibraryCard
+                type={r.type}
+                title={r.title}
+                href={r.href}
+                cta={r.cta}
+                imageSrc={r.imageSrc}
+                iconSrc={r.iconSrc}
+                iconAlt={r.iconAlt}
+              />
+            );
+          })
+        }
+        <ResourceLibraryEhrPromoTile />
+      </div>
+    </div>
+  </section>
+
+  <!-- Patient Experience -->
+  <section id="patient-experience" class="scroll-mt-32 border-b border-[#E8E6E1] bg-[#F9F8F4] py-12 lg:py-16">
+    <div class="page-container px-4 sm:px-6 lg:px-12">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">Patient Experience</h2>
+        <ResourceLibraryViewAllLink href="/patient-experience" />
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {
+          patientExperienceResources.map((item) => {
+            const r = resolveItem(item);
+            return (
+              <ResourceLibraryCard
+                type={r.type}
+                title={r.title}
+                href={r.href}
+                cta={r.cta}
+                imageSrc={r.imageSrc}
+                iconSrc={r.iconSrc}
+                iconAlt={r.iconAlt}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- EHR -->
+  <section id="ehr" class="scroll-mt-32 border-b border-[#E8E6E1] bg-white py-12 lg:py-16">
+    <div class="page-container px-4 sm:px-6 lg:px-12">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">EHR</h2>
+        <ResourceLibraryViewAllLink href="/ehr" />
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {
+          ehrResources.map((item) => {
+            const r = resolveItem(item);
+            return (
+              <ResourceLibraryCard
+                type={r.type}
+                title={r.title}
+                href={r.href}
+                cta={r.cta}
+                imageSrc={r.imageSrc}
+                iconSrc={r.iconSrc}
+                iconAlt={r.iconAlt}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Patient experience promo band (gray rounded) -->
+  <ResourceLibraryPatientExperienceBand
+    title={resourceLibraryMidCta.title}
+    tourHref={resourceLibraryMidCta.href}
+    tourLabel={resourceLibraryMidCta.ctaLabel}
+  />
+
+  <!-- Billing & Payments — dark portrait cards -->
+  <section id="billing-payments" class="scroll-mt-32 border-b border-[#E8E6E1] bg-white py-12 lg:py-16">
+    <div class="page-container px-4 sm:px-6 lg:px-12">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">Billing &amp; Payments</h2>
+        <ResourceLibraryViewAllLink href="/billing-payments" />
+      </div>
+      <div
+        class="scrollbar-hide mt-10 flex gap-5 overflow-x-auto pb-2 lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:pb-0 xl:grid-cols-4"
+      >
+        {
+          billingPaymentsResources.map((item) => {
+            const portrait = item.darkPortrait ? portraitByKey[item.darkPortrait] : imageByKey.billing;
+            return (
+              <ResourceLibraryDarkPortraitCard
+                type={item.type}
+                title={item.title}
+                href={item.href}
+                imageSrc={portrait}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Medical Billing Companies -->
+  <section id="medical-billing-companies" class="scroll-mt-32 border-b border-[#E8E6E1] bg-[#F9F8F4] py-12 lg:py-16">
+    <div class="page-container px-4 sm:px-6 lg:px-12">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">Medical Billing Companies</h2>
+        <ResourceLibraryViewAllLink href="/for-billing-companies" />
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          medicalBillingCompaniesResources.map((item) => {
+            const r = resolveItem(item);
+            return (
+              <ResourceLibraryCard
+                type={r.type}
+                title={r.title}
+                href={r.href}
+                cta={r.cta}
+                imageSrc={r.imageSrc}
+                iconSrc={r.iconSrc}
+                iconAlt={r.iconAlt}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- More ways: billing calculator + 3 tiles -->
+  <section class="border-b border-[#E8E6E1] bg-white py-14 lg:py-16">
+    <div class="page-container px-4 sm:px-6 lg:px-12">
+      <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">More ways to support your practice</h2>
+      <div class="mt-10">
+        <ResourceLibraryBillingCalculatorBanner
+          eyebrow={resourceLibraryBillingCalculatorBanner.eyebrow}
+          title={resourceLibraryBillingCalculatorBanner.title}
+          description={resourceLibraryBillingCalculatorBanner.description}
+          cta={resourceLibraryBillingCalculatorBanner.cta}
+          href={resourceLibraryBillingCalculatorBanner.href}
+        />
+      </div>
+      <ResourceLibraryLinkTiles tiles={[...resourceLibraryLinkTiles]} />
+    </div>
+  </section>
+
+  <!-- Pre-footer CTA (Tebra resource-library style) -->
+  <ResourceLibraryBottomCtaBand
+    title={resourceLibraryBottomCta.title}
+    subtitle={resourceLibraryBottomCta.subtitle}
+    bullets={[...resourceLibraryBottomCta.bullets]}
+    primary={resourceLibraryBottomCta.primary}
+    secondary={resourceLibraryBottomCta.secondary}
+  />
 </BaseLayout>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>

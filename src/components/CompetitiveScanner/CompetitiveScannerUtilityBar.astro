@@ -1,0 +1,29 @@
+---
+interface Props {
+  phone: string;
+  phoneHref: string;
+  demoLabel: string;
+  demoHref: string;
+}
+
+const { phone, phoneHref, demoLabel, demoHref } = Astro.props as Props;
+---
+
+<div class="border-b border-gray-100 bg-white">
+  <div
+    class="page-container flex flex-wrap items-center justify-end gap-4 py-2.5 text-sm"
+  >
+    <a
+      href={phoneHref}
+      class="font-medium text-gray-700 transition hover:text-tebra-teal-dark"
+    >
+      {phone}
+    </a>
+    <a
+      href={demoHref}
+      class="inline-flex items-center rounded-full border-2 border-tebra-teal-dark px-5 py-2 text-xs font-semibold text-tebra-teal-dark transition hover:bg-tebra-hero-bg sm:text-sm"
+    >
+      {demoLabel}
+    </a>
+  </div>
+</div>

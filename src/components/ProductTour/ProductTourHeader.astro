@@ -1,0 +1,29 @@
+---
+/**
+ * Minimal header matching Tebra product-tour LP: full-width white bar, logo only.
+ */
+import logoTebraRaw from "../../assets/tebra navbar.svg";
+
+const logoTebra =
+  typeof logoTebraRaw === "string" ? logoTebraRaw : logoTebraRaw.src;
+---
+
+<header
+  class="sticky top-0 z-50 w-full border-b border-[#E8EEED] bg-white"
+  role="banner"
+>
+  <div
+    class="mx-auto flex w-full max-w-none items-center px-6 py-4 sm:px-8 lg:px-12 lg:py-5"
+  >
+    <a href="/" class="inline-flex shrink-0 items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#396d70] focus-visible:ring-offset-2">
+      <img
+        src={logoTebra}
+        alt="Tebra"
+        class="h-7 w-auto sm:h-8"
+        width="120"
+        height="32"
+        loading="eager"
+      />
+    </a>
+  </div>
+</header>

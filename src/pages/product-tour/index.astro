@@ -1,14 +1,14 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProductTourFormPage from "../../components/ProductTour/ProductTourFormPage.astro";
 ---
+
 <BaseLayout
   title="Product Tour | Tebra"
-  description="Take a tour of the Tebra EHR+ platform."
+  description="See how Tebra works in a self-guided, interactive tour—before you commit."
+  navMode="logo-only"
+  showFooter={false}
+  mainClass="main-full-bleed"
 >
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h1 class="text-2xl font-semibold text-gray-900">Product Tour</h1>
-      <p class="mt-2 text-gray-600">Placeholder for hosting test.</p>
-    </div>
-  </section>
+  <ProductTourFormPage />
 </BaseLayout>

@@ -46,7 +46,8 @@ const resourcesThumbSrc = src(resourcesThumb);
 const videoPosterSrc = src(videoPosterImage);
 
 function badge(kind: "full" | "limited" | "none") {
-  const base = "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold";
+  const base =
+    "inline-flex max-w-full items-center justify-center rounded-full px-2 py-1 text-center text-[10px] font-semibold leading-tight whitespace-normal sm:px-2.5 sm:text-xs";
   if (kind === "full") return `${base} bg-tebra-hero-bg text-tebra-teal-dark`;
   if (kind === "limited") return `${base} bg-amber-50 text-amber-800`;
   return `${base} bg-gray-100 text-gray-500`;
@@ -121,30 +122,34 @@ function badge(kind: "full" | "limited" | "none") {
       </a>
     </div>
 
-    <div class="mt-12 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-      <div class="grid grid-cols-4 gap-0 border-b border-gray-200 bg-gray-50 text-sm font-semibold text-gray-700">
-        <div class="p-4">Feature</div>
-        <div class="p-4 text-center">Tebra</div>
-        <div class="p-4 text-center">Competitors</div>
-        <div class="p-4 text-center">Marketing Agencies</div>
-      </div>
-      {marketingComparisonRows.map((row) => (
-        <div class="grid grid-cols-4 gap-0 border-b border-gray-100 last:border-b-0">
-          <div class="p-4">
-            <div class="font-semibold text-gray-900">{row.title}</div>
-            <div class="mt-1 text-sm text-gray-600">{row.description}</div>
+    <div class="mt-12 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:overflow-x-visible sm:px-0">
+      <div class="min-w-[36rem] sm:min-w-0">
+        <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+          <div class="grid grid-cols-4 gap-0 border-b border-gray-200 bg-gray-50 text-xs font-semibold text-gray-700 sm:text-sm">
+            <div class="p-3 sm:p-4">Feature</div>
+            <div class="p-3 text-center sm:p-4">Tebra</div>
+            <div class="p-3 text-center sm:p-4">Competitors</div>
+            <div class="p-3 text-center sm:p-4">Marketing Agencies</div>
           </div>
-          <div class="flex items-center justify-center p-4">
-            <span class={badge(row.tebra)}>{row.tebra === "full" ? "Fully integrated" : row.tebra === "limited" ? "Available with limitations" : "Not supported"}</span>
-          </div>
-          <div class="flex items-center justify-center p-4">
-            <span class={badge(row.competitors)}>{row.competitors === "full" ? "Fully integrated" : row.competitors === "limited" ? "Available with limitations" : "Not supported"}</span>
-          </div>
-          <div class="flex items-center justify-center p-4">
-            <span class={badge(row.agencies)}>{row.agencies === "full" ? "Fully integrated" : row.agencies === "limited" ? "Available with limitations" : "Not supported"}</span>
-          </div>
+          {marketingComparisonRows.map((row) => (
+            <div class="grid grid-cols-4 gap-0 border-b border-gray-100 last:border-b-0">
+              <div class="p-3 sm:p-4">
+                <div class="font-semibold text-gray-900">{row.title}</div>
+                <div class="mt-1 text-xs text-gray-600 sm:text-sm">{row.description}</div>
+              </div>
+              <div class="flex items-center justify-center p-3 sm:p-4">
+                <span class:list={[badge(row.tebra), "text-center"]}>{row.tebra === "full" ? "Fully integrated" : row.tebra === "limited" ? "Available with limitations" : "Not supported"}</span>
+              </div>
+              <div class="flex items-center justify-center p-3 sm:p-4">
+                <span class:list={[badge(row.competitors), "text-center"]}>{row.competitors === "full" ? "Fully integrated" : row.competitors === "limited" ? "Available with limitations" : "Not supported"}</span>
+              </div>
+              <div class="flex items-center justify-center p-3 sm:p-4">
+                <span class:list={[badge(row.agencies), "text-center"]}>{row.agencies === "full" ? "Fully integrated" : row.agencies === "limited" ? "Available with limitations" : "Not supported"}</span>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   </PageSection>
 
@@ -165,12 +170,12 @@ function badge(kind: "full" | "limited" | "none") {
     <div class="mt-10 grid gap-6 lg:grid-cols-5">
       <a
         href="#"
-        class="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-900 shadow-sm lg:col-span-2"
+        class="relative block min-h-[14rem] overflow-hidden rounded-2xl border border-gray-200 bg-gray-900 shadow-sm sm:min-h-[16rem] lg:col-span-2 lg:min-h-[18rem]"
       >
         <img
           src={videoPosterSrc}
           alt="Marketing testimonial video poster"
-          class="h-full w-full object-cover opacity-85"
+          class="h-full min-h-[14rem] w-full object-cover opacity-85 sm:min-h-[16rem] lg:min-h-[18rem]"
           loading="lazy"
         />
         <div class="absolute inset-0 bg-black/35" aria-hidden="true" />

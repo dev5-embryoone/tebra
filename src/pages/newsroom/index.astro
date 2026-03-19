@@ -1,0 +1,164 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+import NewsroomSubNav from "../../components/Newsroom/NewsroomSubNav.astro";
+import NewsroomPressCard from "../../components/Newsroom/NewsroomPressCard.astro";
+import NewsroomInNewsCard from "../../components/Newsroom/NewsroomInNewsCard.astro";
+import NewsroomResourcesBand from "../../components/Newsroom/NewsroomResourcesBand.astro";
+import {
+  newsroomMeta,
+  pressReleases,
+  inTheNews,
+  pressPageSize,
+  newsPageSize,
+} from "../../data/newsroomPage";
+import pressIllustration from "../../assets/Revenue_map_png.webp";
+import inNewsIllustration from "../../assets/banner-illustration-03.svg";
+---
+
+<BaseLayout title={newsroomMeta.title} description={newsroomMeta.description}>
+  <header class="bg-white pb-8 pt-12 text-center md:pb-10 md:pt-16">
+    <div class="page-container max-w-3xl">
+      <h1 class="font-display text-4xl font-semibold tracking-tight text-tebra-teal-dark md:text-5xl lg:text-6xl">
+        {newsroomMeta.heroTitle}
+      </h1>
+      <p class="mt-4 text-base text-gray-600 md:text-lg">
+        {newsroomMeta.heroSubtitle}
+      </p>
+    </div>
+  </header>
+
+  <NewsroomSubNav />
+
+  <section
+    id="press-releases"
+    class="scroll-mt-32 bg-tebra-cta-cream py-14 lg:scroll-mt-36 lg:py-20"
+    aria-labelledby="press-releases-heading"
+  >
+    <div class="page-container">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+        <div class="lg:col-span-4 xl:col-span-3">
+          <h2
+            id="press-releases-heading"
+            class="font-display text-3xl font-semibold text-tebra-teal-dark md:text-4xl"
+          >
+            Press releases
+          </h2>
+          <div class="mt-8 max-w-xs lg:max-w-none">
+            <Image
+              src={pressIllustration}
+              alt=""
+              class="w-full object-contain"
+              widths={[320, 480, 640]}
+              sizes="(max-width: 1024px) 280px, 360px"
+            />
+          </div>
+        </div>
+        <div class="lg:col-span-8 xl:col-span-9">
+          <div class="grid gap-6 sm:grid-cols-2">
+            {pressReleases.map((item, i) => (
+              <div class:list={[i >= pressPageSize && "hidden"]} data-press-card>
+                <NewsroomPressCard title={item.title} href={item.href} />
+              </div>
+            ))}
+          </div>
+          {pressReleases.length > pressPageSize && (
+            <div class="mt-10 flex justify-center">
+              <button
+                type="button"
+                data-load-press
+                class="rounded-full border-2 border-tebra-teal-dark bg-white px-8 py-3 text-sm font-semibold text-tebra-teal-dark transition-colors hover:bg-tebra-hero-bg focus:outline-none focus:ring-2 focus:ring-tebra-teal focus:ring-offset-2"
+              >
+                Load more
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="in-the-news"
+    class="scroll-mt-32 bg-tebra-cta-cream py-14 lg:scroll-mt-36 lg:py-20"
+    aria-labelledby="in-the-news-heading"
+  >
+    <div class="page-container">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+        <div class="lg:col-span-4 xl:col-span-3">
+          <h2
+            id="in-the-news-heading"
+            class="font-display text-3xl font-semibold text-gray-900 md:text-4xl"
+          >
+            Tebra in the news
+          </h2>
+          <div class="mt-8 max-w-xs lg:max-w-none">
+            <Image
+              src={inNewsIllustration}
+              alt=""
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+        <div class="lg:col-span-8 xl:col-span-9">
+          <div class="grid gap-6 sm:grid-cols-2">
+            {inTheNews.map((item, i) => (
+              <div class:list={[i >= newsPageSize && "hidden"]} data-news-card>
+                <NewsroomInNewsCard title={item.title} source={item.source} href={item.href} />
+              </div>
+            ))}
+          </div>
+          {inTheNews.length > newsPageSize && (
+            <div class="mt-10 flex justify-center">
+              <button
+                type="button"
+                data-load-news
+                class="rounded-full border-2 border-tebra-teal-dark bg-white px-8 py-3 text-sm font-semibold text-tebra-teal-dark transition-colors hover:bg-tebra-hero-bg focus:outline-none focus:ring-2 focus:ring-tebra-teal focus:ring-offset-2"
+              >
+                Load more
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <NewsroomResourcesBand />
+
+  <CTASection
+    title="Automate, optimize, and thrive with Tebra"
+    description="The leading practice automation solution for independent practices."
+    primaryCtaLabel="Get a demo"
+    primaryCtaHref="#demo"
+    secondaryCtaLabel="Explore for Free"
+    secondaryCtaHref="/pricing"
+  />
+</BaseLayout>
+
+<script>
+  const BATCH = 4;
+
+  function revealNextHidden(selector, btn) {
+    if (!btn) return;
+    const nodes = document.querySelectorAll(selector);
+    let count = 0;
+    nodes.forEach((el) => {
+      if (count >= BATCH) return;
+      if (el.classList.contains("hidden")) {
+        el.classList.remove("hidden");
+        count++;
+      }
+    });
+    const stillHidden = document.querySelectorAll(selector + ".hidden").length;
+    if (stillHidden === 0) btn.closest("div")?.classList.add("hidden");
+  }
+
+  document.querySelector("[data-load-press]")?.addEventListener("click", (e) => {
+    revealNextHidden("[data-press-card]", e.currentTarget);
+  });
+  document.querySelector("[data-load-news]")?.addEventListener("click", (e) => {
+    revealNextHidden("[data-news-card]", e.currentTarget);
+  });
+</script>

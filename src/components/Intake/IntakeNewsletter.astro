@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  bullets: string[];
+  privacyNote: string;
+}
+
+const { title, bullets, privacyNote } = Astro.props;
+---
+
+<section class="border-t border-gray-100 bg-gray-50 py-14" aria-labelledby="intake-newsletter-title">
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
+    <p
+      id="intake-newsletter-title"
+      class="m-0 max-w-3xl font-display text-2xl font-bold text-tebra-teal-dark sm:text-3xl"
+      role="heading"
+      aria-level={2}
+    >
+      {title}
+    </p>
+    <ul class="mt-6 max-w-3xl list-disc space-y-3 pl-5 text-gray-700">
+      {bullets.map((b) => (
+        <li class="leading-relaxed">{b}</li>
+      ))}
+    </ul>
+    <form class="mt-8 flex max-w-lg flex-col gap-3 sm:flex-row sm:items-end" action="#" method="get">
+      <label class="flex-1 text-sm font-medium text-gray-700">
+        Email<span class="text-red-500">*</span>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@practice.com"
+          class="mt-1.5 w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 shadow-sm focus:border-tebra-teal focus:outline-none focus:ring-2 focus:ring-tebra-teal/30"
+        />
+      </label>
+      <button
+        type="submit"
+        class="rounded-md bg-tebra-teal-dark px-5 py-2.5 text-sm font-bold text-white hover:opacity-95 sm:shrink-0 sm:py-3"
+      >
+        Subscribe & get free insights
+      </button>
+    </form>
+    <p class="mt-4 max-w-2xl text-xs leading-relaxed text-gray-500">{privacyNote}</p>
+  </div>
+</section>

@@ -23,6 +23,10 @@ interface Props {
   imageAlt?: string;
   /** Show floating vertical feature images behind hero copy (features page only) */
   featureFloating?: boolean;
+  /** G2-style rating strip above eyebrow (specialty pages often hide this) */
+  showRatingStrip?: boolean;
+  /** HIPAA / compliance logo strip below hero */
+  showComplianceStrip?: boolean;
 }
 
 const {
@@ -37,6 +41,8 @@ const {
   imageSrc,
   imageAlt,
   featureFloating = false,
+  showRatingStrip = true,
+  showComplianceStrip = true,
 } = Astro.props as Props;
 
 const defaultHeroImage =
@@ -64,21 +70,23 @@ const heroImageAlt = imageAlt ?? "Tebra EHR+ platform hero";
 <section class="page-section bg-tebra-hero-bg">
   <div class="page-container grid gap-12 lg:grid-cols-2 lg:items-center">
     <div class="space-y-6">
-      <div class="hero-rating-strip">
-        <div class="hero-rating-block">
-          <span class="hero-rating-star">★</span>
-          <span class="hero-rating-score">4.5</span>
-          <span class="text-gray-300">|</span>
-          <span class="hero-rating-text">★★★★★</span>
+      {showRatingStrip && (
+        <div class="hero-rating-strip">
+          <div class="hero-rating-block">
+            <span class="hero-rating-star">★</span>
+            <span class="hero-rating-score">4.5</span>
+            <span class="text-gray-300">|</span>
+            <span class="hero-rating-text">★★★★★</span>
+          </div>
+          <div class="hero-rating-divider" />
+          <div class="hero-rating-block">
+            <span class="hero-rating-star">★</span>
+            <span class="hero-rating-score">4.1</span>
+            <span class="text-gray-300">|</span>
+            <span class="hero-rating-text">★★★★☆</span>
+          </div>
         </div>
-        <div class="hero-rating-divider" />
-        <div class="hero-rating-block">
-          <span class="hero-rating-star">★</span>
-          <span class="hero-rating-score">4.1</span>
-          <span class="text-gray-300">|</span>
-          <span class="hero-rating-text">★★★★☆</span>
-        </div>
-      </div>
+      )}
       <div class="hero-eyebrow-pill">
         <span class="h-1.5 w-1.5 rounded-full bg-tebra-teal" />
         <span>{eyebrow}</span>
@@ -86,12 +94,14 @@ const heroImageAlt = imageAlt ?? "Tebra EHR+ platform hero";
       <h1 class="hero-heading">
         {title}
       </h1>
-      <p class="max-w-xl text-lg text-gray-600">
+      <p class="max-w-xl text-base text-gray-600 sm:text-lg">
         {subtitle}
       </p>
-      <p class="max-w-xl text-sm text-gray-500">
-        {supporting}
-      </p>
+      {supporting ? (
+        <p class="max-w-xl text-sm text-gray-500">
+          {supporting}
+        </p>
+      ) : null}
 
       <div class="flex flex-wrap items-center gap-4 pt-2">
         <a
@@ -163,17 +173,19 @@ const heroImageAlt = imageAlt ?? "Tebra EHR+ platform hero";
   </div>
 </section>
 
-<section class="hero-compliance-strip">
-  <div class="hero-compliance-inner">
-    <p class="hero-compliance-text">
-      We safeguard your practice with full security and HIPAA compliance.
-    </p>
-    <div class="hero-compliance-logos">
-      <img src={hipaa} alt="HIPAA compliant" class="h-14 md:h-16 w-auto" loading="lazy" />
-      <img src={hitrust} alt="HITRUST certified" class="h-14 md:h-16 w-auto" loading="lazy" />
-      <img src={aipca} alt="AICPA SOC" class="h-14 md:h-16 w-auto" loading="lazy" />
-      <img src={pci} alt="PCI compliant" class="h-14 md:h-16 w-auto" loading="lazy" />
+{showComplianceStrip ? (
+  <section class="hero-compliance-strip">
+    <div class="hero-compliance-inner">
+      <p class="hero-compliance-text">
+        We safeguard your practice with full security and HIPAA compliance.
+      </p>
+      <div class="hero-compliance-logos">
+        <img src={hipaa} alt="HIPAA compliant" class="h-14 md:h-16 w-auto" loading="lazy" />
+        <img src={hitrust} alt="HITRUST certified" class="h-14 md:h-16 w-auto" loading="lazy" />
+        <img src={aipca} alt="AICPA SOC" class="h-14 md:h-16 w-auto" loading="lazy" />
+        <img src={pci} alt="PCI compliant" class="h-14 md:h-16 w-auto" loading="lazy" />
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+) : null}
 

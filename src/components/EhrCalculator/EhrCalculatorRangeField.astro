@@ -1,0 +1,110 @@
+---
+type EhrRangeOutputFormat = "currency" | "percent" | "hours";
+
+interface Props {
+  label: string;
+  name: string;
+  id?: string;
+  min: number;
+  max: number;
+  step?: number;
+  value?: number;
+  /** Tick labels left → right (e.g. $0 … $150) */
+  ticks: string[];
+  /** Display format for the current value (default: currency with $) */
+  outputFormat?: EhrRangeOutputFormat;
+}
+
+const {
+  label,
+  name,
+  id = name,
+  min,
+  max,
+  step = 1,
+  value = min,
+  ticks,
+  outputFormat = "currency",
+} = Astro.props as Props;
+
+function formatStatic(v: number, fmt: EhrRangeOutputFormat) {
+  const s = String(v);
+  if (fmt === "percent") return `${s}%`;
+  if (fmt === "hours") return `${s} h`;
+  return `$${s}`;
+}
+
+const initialOutput = formatStatic(value, outputFormat);
+---
+
+<div class="space-y-3">
+  <div class="flex items-baseline justify-between gap-2">
+    <label for={id} class="text-sm font-semibold text-tebra-teal-dark">
+      {label}
+    </label>
+    <output
+      class="text-sm font-semibold tabular-nums text-tebra-teal-dark"
+      for={id}
+      data-range-output={id}
+    >
+      {initialOutput}
+    </output>
+  </div>
+  <div class="px-0.5">
+    <input
+      type="range"
+      name={name}
+      id={id}
+      min={min}
+      max={max}
+      step={step}
+      value={value}
+      class="ehr-calc-range h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 accent-tebra-teal focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal focus-visible:ring-offset-2"
+    />
+  </div>
+  <div
+    class="flex justify-between text-[11px] font-medium text-gray-400 sm:text-xs"
+    aria-hidden="true"
+  >
+    {ticks.map((t) => <span>{t}</span>)}
+  </div>
+</div>
+
+<script define:vars={{ outputId: id, outputFormat }}>
+  const input = document.getElementById(outputId);
+  const out = document.querySelector('[data-range-output="' + outputId + '"]');
+  function formatVal(v) {
+    if (outputFormat === "percent") return v + "%";
+    if (outputFormat === "hours") return v + " h";
+    return "$" + v;
+  }
+  if (input && out && input instanceof HTMLInputElement) {
+    const sync = () => {
+      out.textContent = formatVal(input.value);
+    };
+    input.addEventListener("input", sync);
+    sync();
+  }
+</script>
+
+<style>
+  .ehr-calc-range::-webkit-slider-thumb {
+    height: 1.25rem;
+    width: 1.25rem;
+    cursor: grab;
+    appearance: none;
+    border-radius: 9999px;
+    border: 2px solid #fff;
+    background-color: rgb(0 90 87);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+  }
+  .ehr-calc-range::-moz-range-thumb {
+    height: 1.25rem;
+    width: 1.25rem;
+    cursor: grab;
+    border-radius: 9999px;
+    border: 2px solid #fff;
+    background-color: rgb(0 90 87);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+  }
+</style>

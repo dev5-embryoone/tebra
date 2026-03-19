@@ -1,0 +1,35 @@
+---
+interface Props {
+  message: string;
+}
+
+const { message } = Astro.props as Props;
+---
+
+<div
+  class="flex gap-4 rounded-xl border border-tebra-teal/10 bg-[#e8f2f0] p-4 sm:p-5"
+  role="note"
+>
+  <div class="shrink-0 pt-0.5 text-tebra-teal-dark" aria-hidden="true">
+    <svg class="h-10 w-10 sm:h-12 sm:w-12" viewBox="0 0 48 48" fill="none">
+      <path
+        d="M14 38c0-4 2-8 6-10l2-12c-2-1-3-3-3-5 0-3 2-5 5-5s5 2 5 5c0 2-1 4-3 5l2 12c4 2 6 6 6 10"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <rect x="22" y="8" width="10" height="14" rx="2" fill="#F27E5E" opacity="0.9" />
+      <path
+        d="M24 12h6M24 16h6"
+        stroke="white"
+        stroke-width="1.2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+  <p class="text-sm font-medium leading-relaxed text-tebra-teal-dark sm:text-[15px]">
+    <span class="mr-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-tebra-teal-dark/10 text-xs font-bold text-tebra-teal-dark" aria-hidden="true">i</span>
+    {message}
+  </p>
+</div>

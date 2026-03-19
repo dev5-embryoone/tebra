@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+import CompetitiveScannerUtilityBar from "../../components/CompetitiveScanner/CompetitiveScannerUtilityBar.astro";
+import CompetitiveScannerHero from "../../components/CompetitiveScanner/CompetitiveScannerHero.astro";
+import PracticeCompareForm from "../../components/CompetitiveScanner/PracticeCompareForm.astro";
+import ScannerCubesIllustration from "../../components/CompetitiveScanner/ScannerCubesIllustration.astro";
+import ScannerBarComparisonSection from "../../components/CompetitiveScanner/ScannerBarComparisonSection.astro";
+import CompetitiveScannerFeaturesGrid from "../../components/CompetitiveScanner/CompetitiveScannerFeaturesGrid.astro";
+import {
+  competitiveScannerMeta,
+  competitiveScannerHeader,
+  competitiveScannerHero,
+  competitiveScannerForm,
+  competitiveScannerCubes,
+  competitiveScannerBarSection,
+  competitiveScannerFeatures,
+} from "../../data/competitiveScannerPage";
+import illusGoogle from "../../assets/Illus-Google-Rank.b13a5b4.svg";
+import illusReputation from "../../assets/Illus-Reputation.8b1ac4e.svg";
+import illusWebPresence from "../../assets/Illus-Web-Presence.svg";
+import illusWebsite from "../../assets/Illus-Website.58ce41e.svg";
+
+function assetSrc(mod: string | { src: string }) {
+  return typeof mod === "string" ? mod : mod.src;
+}
+
+const illoByKey = {
+  googleRank: assetSrc(illusGoogle),
+  reputation: assetSrc(illusReputation),
+  webPresence: assetSrc(illusWebPresence),
+  website: assetSrc(illusWebsite),
+} as const;
+
+const featureItems = competitiveScannerFeatures.map((f) => ({
+  title: f.title,
+  description: f.description,
+  imageSrc: illoByKey[f.illustration],
+  imageAlt: "",
+}));
+---
+
+<BaseLayout
+  title={competitiveScannerMeta.title}
+  description={competitiveScannerMeta.description}
+>
+  <span id="demo" class="sr-only" aria-hidden="true">Demo</span>
+
+  <CompetitiveScannerUtilityBar
+    phone={competitiveScannerHeader.phone}
+    phoneHref={competitiveScannerHeader.phoneHref}
+    demoLabel={competitiveScannerHeader.demoLabel}
+    demoHref={competitiveScannerHeader.demoHref}
+  />
+
+  <section class="bg-white pb-6 pt-10 sm:pb-8 sm:pt-14 lg:pt-16">
+    <CompetitiveScannerHero
+      eyebrow={competitiveScannerHero.eyebrow}
+      title={competitiveScannerHero.title}
+      subtitle={competitiveScannerHero.subtitle}
+    />
+    <PracticeCompareForm
+      practiceNamePlaceholder={competitiveScannerForm.practiceNamePlaceholder}
+      specialtyPlaceholder={competitiveScannerForm.specialtyPlaceholder}
+      providerCountLabel={competitiveScannerForm.providerCountLabel}
+      submitLabel={competitiveScannerForm.submitLabel}
+      action={competitiveScannerForm.action}
+      method={competitiveScannerForm.method}
+    />
+    <ScannerCubesIllustration
+      yourPractice={competitiveScannerCubes.yourPractice}
+      competitor2={competitiveScannerCubes.competitor2}
+      competitor3={competitiveScannerCubes.competitor3}
+    />
+  </section>
+
+  <ScannerBarComparisonSection
+    bars={competitiveScannerBarSection.competitors}
+    title={competitiveScannerBarSection.title}
+    body={competitiveScannerBarSection.body}
+    footnote={competitiveScannerBarSection.footnote}
+  />
+
+  <CompetitiveScannerFeaturesGrid items={featureItems} />
+
+  <CTASection
+    title="Automate, optimize, and thrive with Tebra"
+    description="The leading practice automation solution for independent practices."
+    primaryCtaLabel="Get a demo"
+    primaryCtaHref="#demo"
+    secondaryCtaLabel="Explore for Free"
+    secondaryCtaHref="/pricing"
+  />
+</BaseLayout>

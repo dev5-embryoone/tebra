@@ -1,0 +1,101 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Badge {
+  text: string;
+  position: "top-left" | "top-right";
+}
+
+interface Props {
+  badges: Badge[];
+  screenshotSrc: ImageMetadata;
+  screenshotAlt?: string;
+  /** Background donut palette */
+  chartVariant?: "software" | "billing";
+  /** Corner trend icon on the screenshot card */
+  showTrendBadge?: boolean;
+}
+
+const {
+  badges,
+  screenshotSrc,
+  screenshotAlt = "",
+  chartVariant = "software",
+  showTrendBadge = true,
+} = Astro.props as Props;
+
+const donutStyle =
+  chartVariant === "billing"
+    ? `background: conic-gradient(
+      from 165deg,
+      #f8a88c 0deg 88deg,
+      #fbc8b8 88deg 175deg,
+      #f5e4dc 175deg 265deg,
+      #e5ddd5 265deg 360deg
+    );`
+    : `background: conic-gradient(
+      from 200deg,
+      #f5d0c8 0deg 95deg,
+      #f3e6dc 95deg 185deg,
+      #ebe3d9 185deg 270deg,
+      #d9d9d9 270deg 360deg
+    );`;
+
+const badgeClass = (pos: Badge["position"]) =>
+  pos === "top-left"
+    ? "left-2 top-4 sm:left-4 sm:top-8"
+    : "right-2 top-16 sm:right-6 sm:top-20";
+---
+
+<div class="relative mx-auto w-full max-w-lg lg:max-w-none">
+  <!-- Soft donut / chart backdrop -->
+  <div
+    class="pointer-events-none absolute left-1/2 top-8 aspect-square w-[min(100%,22rem)] -translate-x-1/2 rounded-full opacity-90 sm:w-[26rem] lg:left-auto lg:right-0 lg:top-12 lg:translate-x-0 xl:w-[28rem]"
+    style={donutStyle}
+    aria-hidden="true"
+  />
+
+  {
+    badges.map((b) => (
+      <span
+        class:list={[
+          "pointer-events-none absolute z-20 inline-flex rounded-full bg-tebra-teal-dark px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-md sm:text-xs",
+          badgeClass(b.position),
+        ]}
+      >
+        {b.text}
+      </span>
+    ))
+  }
+
+  <div
+    class="relative z-10 mx-auto mt-4 w-[88%] max-w-sm sm:mt-8 lg:mr-0 lg:ml-auto lg:max-w-md"
+  >
+    <div class="relative rounded-2xl border border-white/60 bg-white/95 p-1 shadow-xl ring-1 ring-black/5">
+      <Image
+        src={screenshotSrc}
+        alt={screenshotAlt}
+        class="rounded-xl object-cover object-top"
+        widths={[320, 400, 480]}
+        sizes="(max-width: 1024px) 90vw, 400px"
+      />
+      {showTrendBadge && (
+        <div
+          class="absolute -right-2 -top-2 flex h-10 w-10 items-center justify-center rounded-full border border-gray-100 bg-white shadow-md"
+          aria-hidden="true"
+        >
+          <svg class="h-5 w-5 text-red-500" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M7 17L17 7M17 7H9M17 7V15"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      )}
+    </div>
+  </div>
+</div>

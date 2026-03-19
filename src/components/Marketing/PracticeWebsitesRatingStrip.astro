@@ -1,0 +1,60 @@
+---
+/**
+ * Trustpilot + G2 scores row (Practice Websites hero) — props-driven.
+ */
+export type RatingSource = "Trustpilot" | "G2";
+
+export type RatingItem = {
+  source: RatingSource;
+  score: string;
+  /** Filled stars out of 5 (Tebra shows 4 filled + outline) */
+  filledStars?: number;
+};
+
+interface Props {
+  items: readonly RatingItem[];
+  class?: string;
+}
+
+const { items, class: className = "" } = Astro.props as Props;
+
+function stars(filled: number) {
+  const f = Math.min(5, Math.max(0, filled));
+  const empty = 5 - f;
+  return { f, empty };
+}
+---
+
+<div
+  class:list={["flex flex-wrap items-center gap-6 text-sm text-gray-600 sm:gap-8", className]}
+  role="list"
+>
+  {
+    items.map((item) => {
+      const { f, empty } = stars(item.filledStars ?? 4);
+      return (
+        <div class="flex items-center gap-2" role="listitem">
+          {item.source === "Trustpilot" ? (
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#00b67a]" aria-hidden="true">
+              <svg class="h-4 w-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z" />
+              </svg>
+            </span>
+          ) : (
+            <span class="text-xs font-bold tracking-tight text-[#ff492c]" aria-hidden="true">
+              G2
+            </span>
+          )}
+          <div class="flex flex-col gap-0.5 sm:flex-row sm:items-center sm:gap-2">
+            <span class="text-xs font-semibold uppercase tracking-wide text-gray-500">{item.source}</span>
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="text-amber-400" aria-hidden="true">{"★".repeat(f)}</span>
+              {empty > 0 ? <span class="text-gray-300" aria-hidden="true">{"★".repeat(empty)}</span> : null}
+              <span class="font-semibold text-tebra-teal-dark">{item.score}</span>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>

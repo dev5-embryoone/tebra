@@ -1,0 +1,53 @@
+---
+import FeatureSplitHero from "../Layout/FeatureSplitHero.astro";
+/** EHR savings band illustration — @/src/assets/Revenue_map_png.webp */
+import revenueMapSrc from "../../assets/Revenue_map_png.webp?url";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { title, subtitle, ctaLabel, ctaHref } = Astro.props;
+---
+
+<FeatureSplitHero
+  class="border-y border-gray-100 bg-tebra-cta-cream"
+  pyClass="py-12 sm:py-14 lg:py-16"
+  align="center"
+>
+  <div slot="left" class="max-w-xl lg:max-w-none">
+    <p
+      id="intake-ehr-band-title"
+      class="m-0 text-2xl font-bold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-[2rem] lg:leading-tight"
+      role="heading"
+      aria-level={2}
+    >
+      {title}
+    </p>
+    <p class="mt-3 text-base leading-relaxed text-gray-700 sm:text-lg">{subtitle}</p>
+    <a
+      href={ctaHref}
+      class="mt-6 inline-flex items-center justify-center rounded-md bg-tebra-cta-coral px-6 py-3 text-base font-bold text-white shadow-sm transition-opacity hover:opacity-95"
+    >
+      {ctaLabel}
+    </a>
+  </div>
+
+  <div slot="right" class="relative flex justify-center lg:justify-end">
+    <!-- Dark frame matches editorial illustration (map + path + coin on near-black) -->
+    <div class="relative w-full max-w-md overflow-hidden rounded-2xl bg-[#0a0c0f] shadow-xl ring-1 ring-black/10 sm:max-w-lg">
+      <img
+        src={revenueMapSrc}
+        alt="Stylized revenue map: savings path across data panels toward a goal — EHR cost calculator"
+        class="block w-full object-contain object-center"
+        width="800"
+        height="600"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </div>
+</FeatureSplitHero>

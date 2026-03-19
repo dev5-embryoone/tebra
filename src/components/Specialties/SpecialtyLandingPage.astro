@@ -1,0 +1,259 @@
+---
+/**
+ * Shared layout for Tebra-style specialty pages (family medicine, primary care, pediatrics, …).
+ * Each route supplies a `SpecialtyLandingConfig` built from its `*Page.ts` data + resolved assets.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSection from "../Hero/HeroSection.astro";
+import PageSection from "../Layout/PageSection.astro";
+import SectionHeader from "../SectionHeader/SectionHeader.astro";
+import CTASection from "../Sections/CTASection.astro";
+import ProductPageBreadcrumb from "../PatientExperience/ProductPageBreadcrumb.astro";
+import MarketingQuoteCard from "../Marketing/MarketingQuoteCard.astro";
+import CaseStudyCard from "../Cards/CaseStudyCard.astro";
+import SpecialtyWhyAccordion from "./SpecialtyWhyAccordion.astro";
+import { specialtyWhyIconForIndex, specialtyWhyIconSvg } from "./specialtyWhyIcons";
+import type { SpecialtyLandingConfig } from "../../data/specialtyPageTypes";
+
+interface Props {
+  config: SpecialtyLandingConfig;
+}
+
+const { config } = Astro.props as Props;
+
+const {
+  meta,
+  breadcrumb,
+  hero,
+  valueSection,
+  whyTebra,
+  challenges,
+  platform,
+  testimonials,
+  caseStudies,
+  bottomCta,
+} = config;
+
+const midStyle = challenges.midCtaStyle ?? "overlay";
+const isOverlayMidCta = midStyle === "overlay";
+const challengesPadding = challenges.sectionPaddingClass ?? (isOverlayMidCta ? "relative py-16 lg:py-20" : "py-14 lg:py-16");
+
+const whyTitleClass =
+  whyTebra.titleStyle === "serif"
+    ? "text-tebra-teal-dark font-serif text-3xl sm:text-4xl"
+    : "text-tebra-teal-dark";
+
+const whyEyebrowClass =
+  whyTebra.titleStyle === "serif"
+    ? "text-xs font-semibold uppercase tracking-[0.2em] text-tebra-teal-dark/80"
+    : undefined;
+
+const whyGridClass =
+  whyTebra.gridVariant === "spacious" ? "mt-14 grid gap-12 lg:grid-cols-3 lg:gap-10" : "mt-12 grid gap-10 lg:grid-cols-3 lg:gap-12";
+
+const whyIconWrapClass =
+  whyTebra.gridVariant === "spacious" ? "mx-auto mb-6 flex min-h-[5rem] items-center justify-center" : "mx-auto mb-5 flex h-20 w-20 items-center justify-center";
+
+const whyHeadingClass = whyTebra.gridVariant === "spacious" ? "text-lg font-semibold text-gray-900" : "text-base font-semibold text-gray-900";
+
+const whyBodyClass = whyTebra.gridVariant === "spacious" ? "mt-4 text-sm leading-relaxed text-gray-600" : "mt-3 text-sm leading-relaxed text-gray-600";
+
+const platformEyebrowClass =
+  platform.eyebrowClass ?? "text-xs font-semibold uppercase tracking-[0.18em] text-tebra-teal-dark/80";
+---
+
+<BaseLayout title={meta.title} description={meta.description}>
+  <div class="bg-tebra-hero-bg">
+    <div class="page-container pt-8">
+      <ProductPageBreadcrumb items={[...breadcrumb]} />
+    </div>
+  </div>
+
+  <HeroSection
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    subtitle={hero.subtitle}
+    supporting=""
+    primaryCtaLabel={hero.primaryCta.label}
+    primaryCtaHref={hero.primaryCta.href}
+    secondaryCtaLabel={hero.secondaryCta.label}
+    secondaryCtaHref={hero.secondaryCta.href}
+    imageSrc={hero.imageSrc}
+    imageAlt={hero.imageAlt}
+    showRatingStrip={hero.showRatingStrip ?? true}
+    showComplianceStrip={hero.showComplianceStrip ?? true}
+  />
+
+  <PageSection variant="default">
+    {
+      valueSection.mode === "accordion" ? (
+        <SpecialtyWhyAccordion
+          sectionTitle={valueSection.sectionTitle}
+          items={valueSection.items}
+          accordionName={valueSection.accordionName}
+        />
+      ) : (
+        <>
+          <SectionHeader title={valueSection.sectionTitle} centered titleClass="text-tebra-teal-dark" />
+          <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {valueSection.items.map((f) => (
+              <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                <h3 class="text-lg font-semibold text-tebra-teal-dark">{f.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-gray-600">{f.description}</p>
+              </article>
+            ))}
+          </div>
+        </>
+      )
+    }
+  </PageSection>
+
+  <PageSection variant="alt">
+    <SectionHeader
+      eyebrow={whyTebra.eyebrow}
+      title={whyTebra.title}
+      description={whyTebra.description}
+      centered
+      titleClass={whyTitleClass}
+      eyebrowClass={whyEyebrowClass}
+    />
+    <div class={whyGridClass}>
+      {
+        whyTebra.blocks.map((b, i) => (
+          <article class="text-center">
+            <div class={whyIconWrapClass}>
+              <div class="opacity-90" set:html={specialtyWhyIconSvg(specialtyWhyIconForIndex(i))} />
+            </div>
+            <h3 class={whyHeadingClass}>{b.title}</h3>
+            <p class={whyBodyClass}>{b.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="dark" noContainer class={challengesPadding}>
+    <div class="page-container">
+      <div class={isOverlayMidCta ? "mb-12 text-center" : "mb-10 text-center"}>
+        <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">{challenges.title}</h2>
+      </div>
+      <div class={isOverlayMidCta ? "grid gap-12 sm:grid-cols-3 sm:gap-8" : "grid gap-10 sm:grid-cols-3 sm:gap-6"}>
+        {
+          challenges.stats.map((s) => (
+            <div class="text-center">
+              <div
+                class:list={[
+                  "font-semibold tabular-nums tracking-tight text-white",
+                  isOverlayMidCta ? "text-4xl sm:text-5xl" : "text-4xl",
+                ]}
+              >
+                {s.value}
+              </div>
+              <div class:list={["text-sm leading-relaxed", isOverlayMidCta ? "mt-3 text-white/85" : "mt-2 text-white/80"]}>
+                {s.label}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      {
+        isOverlayMidCta ? (
+          <div class="relative z-10 mx-auto -mb-24 mt-14 max-w-4xl rounded-2xl border border-white/10 bg-[#FDF8F3] px-6 py-8 text-center shadow-xl sm:px-10 sm:py-10 lg:-mb-28">
+            <p class="text-base font-semibold text-tebra-teal-dark">{challenges.midCta.kicker}</p>
+            <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-gray-700 sm:text-base">{challenges.midCta.title}</p>
+            <a
+              href={challenges.midCta.ctaHref}
+              class="mt-6 inline-flex items-center justify-center rounded-full bg-tebra-orange px-8 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+            >
+              {challenges.midCta.ctaLabel}
+            </a>
+          </div>
+        ) : (
+          <div class="mx-auto mt-12 max-w-3xl rounded-2xl bg-white/10 p-6 text-center ring-1 ring-white/15 sm:p-8">
+            <p class="text-sm font-semibold uppercase tracking-wide text-white/80">{challenges.midCta.kicker}</p>
+            <p class="mt-3 text-lg font-medium leading-relaxed text-white">{challenges.midCta.title}</p>
+            <a
+              href={challenges.midCta.ctaHref}
+              class="mt-6 inline-flex items-center justify-center rounded-full bg-tebra-orange px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+            >
+              {challenges.midCta.ctaLabel}
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" class={isOverlayMidCta ? "pt-28 lg:pt-36" : undefined}>
+    <SectionHeader
+      eyebrow={platform.eyebrow}
+      title={platform.title}
+      description={platform.subtitle}
+      centered
+      titleClass="text-tebra-teal-dark"
+      eyebrowClass={platformEyebrowClass}
+    />
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {
+        platform.cards.map((c) => (
+          <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h3 class="text-lg font-semibold text-tebra-teal-dark">{c.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-gray-600">{c.description}</p>
+            <div class="mt-5">
+              <a
+                href={c.href}
+                class="inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
+              >
+                {c.cta}
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="default">
+    <SectionHeader
+      eyebrow={testimonials.eyebrow}
+      title={testimonials.title}
+      centered
+      titleClass="text-tebra-teal-dark"
+      eyebrowClass="text-xs font-semibold uppercase tracking-[0.2em] text-tebra-teal-dark/80"
+    />
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {testimonials.items.map((t) => <MarketingQuoteCard {...t} />)}
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted">
+    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{caseStudies.title}</h2>
+      <a
+        href={caseStudies.ctaHref}
+        class="inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
+      >
+        {caseStudies.ctaLabel}
+        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {caseStudies.studies.map((c) => c && <CaseStudyCard caseStudy={c} />)}
+    </div>
+  </PageSection>
+
+  <CTASection
+    title={bottomCta.title}
+    description={bottomCta.description ?? ""}
+    primaryCtaLabel={bottomCta.primaryCtaLabel}
+    primaryCtaHref={bottomCta.primaryCtaHref}
+    secondaryCtaLabel={bottomCta.secondaryCtaLabel}
+    secondaryCtaHref={bottomCta.secondaryCtaHref}
+  />
+</BaseLayout>

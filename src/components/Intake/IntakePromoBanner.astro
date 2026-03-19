@@ -1,0 +1,45 @@
+---
+import { intakePromo } from "../../data/theIntakePage";
+---
+
+<div
+  id="intake-promo"
+  class="relative z-[60] flex items-center justify-center gap-3 bg-tebra-teal px-4 py-2.5 text-center text-sm font-medium text-white"
+  role="region"
+  aria-label="Announcement"
+>
+  <a href={intakePromo.href} class="hover:underline">
+    {intakePromo.text}
+    <span aria-hidden="true"> →</span>
+  </a>
+  <button
+    type="button"
+    class="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-white/90 hover:bg-white/10 hover:text-white"
+    aria-label="Dismiss announcement"
+    data-intake-promo-close
+  >
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" />
+    </svg>
+  </button>
+</div>
+
+<script>
+  const bar = document.getElementById("intake-promo");
+  const btn = document.querySelector("[data-intake-promo-close]");
+  if (bar && btn) {
+    btn.addEventListener("click", () => {
+      bar.classList.add("hidden");
+      try {
+        sessionStorage.setItem("intake-promo-dismissed", "1");
+      } catch {
+        /* ignore */
+      }
+    });
+    try {
+      if (sessionStorage.getItem("intake-promo-dismissed")) bar.classList.add("hidden");
+    } catch {
+      /* ignore */
+    }
+  }
+</script>

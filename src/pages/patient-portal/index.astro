@@ -1,14 +1,241 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import FeatureSplitHero from "../../components/Layout/FeatureSplitHero.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import ProductPageBreadcrumb from "../../components/PatientExperience/ProductPageBreadcrumb.astro";
+import ProductFeatureBulletsRow from "../../components/Product/ProductFeatureBulletsRow.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+
+import heroImg from "../../assets/PATIEN-EXPERIENCE-min.webp";
+import feat1 from "../../assets/ehrpage.webp";
+import feat2 from "../../assets/Payments-1-Hero-Image.webp";
+import feat3 from "../../assets/patient-experience.webp";
+
+import {
+  ppMeta,
+  ppBreadcrumb,
+  ppHero,
+  ppPlatformIntro,
+  ppCommunicateBand,
+  ppEmpower,
+  ppFeatures,
+  ppCompleteOs,
+  ppTestimonials,
+  ppExplore,
+  ppJoinBand,
+  ppBottomCta,
+} from "../../data/patientPortalPage";
+
+const heroSrc = typeof heroImg === "string" ? heroImg : heroImg.src;
+const featSrcs = [feat1, feat2, feat3].map((im) => (typeof im === "string" ? im : im.src));
+
+const userIconSvg = `<svg class="h-12 w-12 text-tebra-teal-dark" fill="none" stroke="currentColor" stroke-width="1.35" viewBox="0 0 48 48" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="18" r="8"/><path d="M12 40c0-8 5.4-14 12-14s12 6 12 14"/></svg>`;
 ---
-<BaseLayout
-  title="Patient Portal | Tebra"
-  description="Engage patients with a secure online portal."
->
-  <section class="page-section bg-white">
+
+<BaseLayout title={ppMeta.title} description={ppMeta.description}>
+  <a
+    href="/ehr#calculator"
+    class="block bg-[#FFF5F0] border-b border-[#FFE4DC] py-2.5 text-center text-sm font-medium text-[#8B4513] transition-colors hover:bg-[#FFEDE6]"
+  >
+    Stuck with an expensive EHR? | Discover your cost savings in minutes →
+  </a>
+
+  <div class="bg-tebra-hero-bg">
+    <div class="page-container pt-8 pb-2">
+      <ProductPageBreadcrumb items={[...ppBreadcrumb]} />
+    </div>
+  </div>
+
+  <FeatureSplitHero class="bg-tebra-hero-bg" align="center" pyClass="pb-16 pt-4 lg:pb-24 lg:pt-2">
+    <div slot="left" class="space-y-5 lg:space-y-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">{ppHero.eyebrow}</p>
+      <h1 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+        {ppHero.title}
+      </h1>
+      <p class="max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
+        {ppHero.subtitle}
+      </p>
+      <div class="flex flex-wrap gap-3 pt-1 sm:gap-4">
+        <a
+          href={ppHero.primaryCta.href}
+          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {ppHero.primaryCta.label}
+        </a>
+        <a
+          href={ppHero.secondaryCta.href}
+          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-white/80"
+        >
+          {ppHero.secondaryCta.label}
+        </a>
+      </div>
+    </div>
+    <div slot="right" class="flex justify-center lg:justify-end">
+      <div class="w-full max-w-xl rounded-3xl border border-gray-200/80 bg-gray-100/80 p-4 shadow-inner sm:p-6">
+        <img
+          src={heroSrc}
+          alt="Patient using Tebra patient portal on a phone — health records, payments, and documents"
+          class="h-auto w-full rounded-2xl object-contain shadow-md"
+          loading="eager"
+          width={720}
+          height={540}
+        />
+      </div>
+    </div>
+  </FeatureSplitHero>
+
+  <PageSection variant="muted" class="!py-14 lg:!py-20">
+    <div class="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+      <div class="space-y-5">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">{ppPlatformIntro.overline}</p>
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+          <span class="inline-flex shrink-0" set:html={userIconSvg} />
+          <p class="text-lg font-semibold text-tebra-teal-dark sm:text-xl">{ppPlatformIntro.label}</p>
+        </div>
+        <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-[1.75rem] lg:leading-snug">
+          {ppPlatformIntro.headline}
+        </h2>
+      </div>
+      <ul class="space-y-4 rounded-2xl border border-gray-200/80 bg-white p-6 shadow-sm sm:p-8">
+        {
+          ppPlatformIntro.checklist.map((item) => (
+            <li class="flex gap-3 text-sm leading-relaxed text-gray-700 sm:text-base">
+              <span class="mt-0.5 shrink-0 text-tebra-teal" aria-hidden="true">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </PageSection>
+
+  <PageSection variant="dark" noContainer class="!py-14 lg:!py-20">
     <div class="page-container">
-      <h1 class="text-2xl font-semibold text-gray-900">Patient Portal</h1>
-      <p class="mt-2 text-gray-600">Placeholder for hosting test.</p>
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">
+          {ppCommunicateBand.title}
+        </h2>
+        <p class="text-base leading-relaxed text-white/90 sm:text-lg">{ppCommunicateBand.body}</p>
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" class="!py-14 lg:!py-20">
+    <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-tebra-teal-dark">{ppEmpower.eyebrow}</p>
+    <h2 class="mx-auto mt-4 max-w-4xl text-center font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+      {ppEmpower.title}
+    </h2>
+  </PageSection>
+
+  <PageSection variant="default" class="!pt-0 !pb-16 lg:!pb-24">
+    <div class="space-y-16 lg:space-y-24">
+      {
+        ppFeatures.map((f, i) => (
+          <ProductFeatureBulletsRow
+            title={f.title}
+            subtitle={f.subtitle}
+            bullets={[...f.bullets]}
+            imageSrc={featSrcs[i] ?? featSrcs[0]}
+            imageAlt={`${f.title} — Tebra patient portal`}
+            reverse={i % 2 === 1}
+          />
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" class="!py-14 lg:!py-20">
+    <div class="mx-auto max-w-3xl rounded-2xl border border-gray-200 bg-white px-6 py-10 text-center shadow-sm sm:px-10">
+      <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{ppCompleteOs.title}</h2>
+      <p class="mt-4 text-sm leading-relaxed text-gray-600 sm:text-base">{ppCompleteOs.description}</p>
+      <a
+        href={ppCompleteOs.ctaHref}
+        class="mt-8 inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-orange px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#ff5a49]"
+      >
+        {ppCompleteOs.ctaLabel}
+      </a>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" class="!py-14 lg:!py-20">
+    <div class="grid gap-8 md:grid-cols-2">
+      {
+        ppTestimonials.map((t) => (
+          <blockquote class="flex h-full flex-col rounded-2xl border border-gray-100 bg-tebra-hero-bg p-6 shadow-sm sm:p-8">
+            <p class="flex-1 text-base font-medium leading-relaxed text-tebra-teal-dark sm:text-lg">&ldquo;{t.quote}&rdquo;</p>
+            <footer class="mt-6 border-t border-gray-200/80 pt-4">
+              <cite class="not-italic">
+                <span class="block font-semibold text-gray-900">{t.author}</span>
+                <span class="mt-0.5 block text-sm text-gray-500">{t.org}</span>
+              </cite>
+            </footer>
+          </blockquote>
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" class="!py-14 lg:!py-16">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+      <h2 class="text-xl font-semibold text-tebra-teal-dark sm:text-2xl">{ppExplore.title}</h2>
+    </div>
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        ppExplore.links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="flex min-h-[44px] flex-col rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+            >
+              <span class="font-semibold text-tebra-teal-dark">{link.label}</span>
+              <span class="mt-1 text-sm text-gray-600">{link.description}</span>
+              <span class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal">
+                Learn more
+                <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </PageSection>
+
+  <section class="bg-tebra-teal-dark py-14 text-white lg:py-16">
+    <div class="page-container text-center">
+      <h2 class="mx-auto max-w-2xl text-xl font-semibold leading-snug sm:text-2xl lg:text-3xl">{ppJoinBand.title}</h2>
+      <div class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap">
+        <a
+          href={ppJoinBand.primaryCta.href}
+          class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-orange px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#ff5a49]"
+        >
+          {ppJoinBand.primaryCta.label}
+        </a>
+        <a
+          href={ppJoinBand.secondaryCta.href}
+          class="inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/80 bg-transparent px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+        >
+          {ppJoinBand.secondaryCta.label}
+        </a>
+      </div>
     </div>
   </section>
+
+  <CTASection
+    title={ppBottomCta.title}
+    description={ppBottomCta.description}
+    primaryCtaLabel={ppBottomCta.primaryCtaLabel}
+    primaryCtaHref={ppBottomCta.primaryCtaHref}
+    secondaryCtaLabel={ppBottomCta.secondaryCtaLabel}
+    secondaryCtaHref={ppBottomCta.secondaryCtaHref}
+  />
 </BaseLayout>

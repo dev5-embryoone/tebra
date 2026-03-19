@@ -1,0 +1,42 @@
+---
+import logoTebraRaw from "../../assets/tebra navbar.svg";
+
+interface Props {
+  /** Link for the logo */
+  homeHref?: string;
+  /** Outline CTA (e.g. schedule demo) */
+  scheduleDemoLabel?: string;
+  scheduleDemoHref?: string;
+}
+
+const {
+  homeHref = "/",
+  scheduleDemoLabel = "Schedule a demo",
+  scheduleDemoHref = "/demo",
+} = Astro.props as Props;
+
+const logoSrc = typeof logoTebraRaw === "string" ? logoTebraRaw : logoTebraRaw.src;
+---
+
+<header
+  class="border-b border-gray-200/80 bg-white/90 backdrop-blur-sm"
+  role="banner"
+>
+  <div
+    class="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-12"
+  >
+    <a
+      href={homeHref}
+      class="inline-flex shrink-0 items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal focus-visible:ring-offset-2"
+      aria-label="Tebra home"
+    >
+      <img src={logoSrc} alt="Tebra" class="h-8 w-auto sm:h-9" width="120" height="36" />
+    </a>
+    <a
+      href={scheduleDemoHref}
+      class="inline-flex shrink-0 items-center rounded-full border-2 border-tebra-teal-dark px-4 py-2 text-xs font-semibold text-tebra-teal-dark transition-colors hover:bg-tebra-hero-bg focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal focus-visible:ring-offset-2 sm:px-6 sm:text-sm"
+    >
+      {scheduleDemoLabel}
+    </a>
+  </div>
+</header>

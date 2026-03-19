@@ -13,7 +13,7 @@ export const practiceTools: PracticeTool[] = [
     title: 'EHR calculator',
     description: 'Estimate the time and money your practice could save with a more efficient, AI-powered EHR.',
     ctaLabel: 'Try the calculator',
-    ctaHref: '#ehr-calculator',
+    ctaHref: '/ehr-calculator/step-1',
     variant: 'white',
   },
   {
@@ -21,7 +21,7 @@ export const practiceTools: PracticeTool[] = [
     title: 'Billing calculator',
     description: 'Find out how much revenue your practice might be missing — and how better billing could improve your collections.',
     ctaLabel: 'Run the numbers',
-    ctaHref: '#billing-calculator',
+    ctaHref: '/billing-payments/billing-calculator',
     variant: 'coral',
   },
   {
@@ -29,7 +29,7 @@ export const practiceTools: PracticeTool[] = [
     title: 'Competitive scanner',
     description: 'See how your practice stacks up online. Check your listings across major directories and spot missing or incorrect information.',
     ctaLabel: 'Run my scan',
-    ctaHref: '#competitive-scanner',
+    ctaHref: '/competitive-scanner',
     variant: 'teal',
   },
 ];

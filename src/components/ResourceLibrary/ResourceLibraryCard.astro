@@ -1,0 +1,54 @@
+---
+/**
+ * Resource library tile — image thumb, SVG icon (workbook/webinar), type, title, CTA.
+ */
+interface Props {
+  type: string;
+  title: string;
+  href: string;
+  cta: string;
+  imageSrc?: string;
+  iconSrc?: string;
+  iconAlt?: string;
+}
+
+const { type, title, href, cta, imageSrc, iconSrc, iconAlt = "" } = Astro.props as Props;
+---
+
+<a
+  href={href}
+  class="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#E8E6E1] bg-white shadow-sm transition-shadow hover:border-[#1D3533]/15 hover:shadow-md"
+>
+  <div class="relative aspect-[412/264] w-full bg-gradient-to-br from-[#F3F2F0] to-[#EFEEED]">
+    {
+      imageSrc ? (
+        <img
+          src={imageSrc}
+          alt=""
+          class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          loading="lazy"
+          width="412"
+          height="264"
+        />
+      ) : iconSrc ? (
+        <div class="flex h-full w-full flex-col items-center justify-center gap-3 p-8">
+          <div class="flex h-24 w-24 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 sm:h-28 sm:w-28">
+            <img src={iconSrc} alt={iconAlt} class="max-h-[4.5rem] max-w-[4.5rem] object-contain" width="120" height="120" loading="lazy" />
+          </div>
+        </div>
+      ) : (
+        <div class="flex h-full items-center justify-center text-sm font-medium text-gray-400">Resource</div>
+      )
+    }
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <span class="text-xs font-semibold uppercase tracking-wide text-[#F08463]">{type}</span>
+    <p class="mt-2 flex-1 text-base font-semibold leading-snug text-[#1D3533] group-hover:text-[#005A57]">{title}</p>
+    <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#1D3533] group-hover:underline">
+      {cta}
+      <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+  </div>
+</a>

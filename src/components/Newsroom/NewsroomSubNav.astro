@@ -1,0 +1,39 @@
+---
+import { newsroomTabs } from "../../data/newsroomPage";
+---
+
+<nav
+  class="border-b border-gray-200 bg-white"
+  aria-label="Newsroom sections"
+  data-newsroom-subnav
+>
+  <div class="max-w-content mx-auto flex flex-wrap justify-center gap-6 px-4 py-4 sm:gap-10 lg:px-12">
+    {newsroomTabs.map((tab) => (
+      <a
+        href={`/newsroom#${tab.id}`}
+        data-newsroom-tab={tab.id}
+        class="newsroom-tab border-b-2 border-transparent pb-1 text-sm font-semibold text-gray-500 transition-colors hover:text-tebra-teal-dark"
+      >
+        {tab.label}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<script>
+  function syncNewsroomTabs() {
+    const hash = (window.location.hash || "#press-releases").slice(1);
+    document.querySelectorAll("[data-newsroom-tab]").forEach((el) => {
+      const id = el.getAttribute("data-newsroom-tab");
+      const active = id === hash;
+      el.classList.toggle("border-tebra-teal", active);
+      el.classList.toggle("text-tebra-teal-dark", active);
+      el.classList.toggle("font-bold", active);
+      el.classList.toggle("text-gray-500", !active);
+      if (active) el.setAttribute("aria-current", "page");
+      else el.removeAttribute("aria-current");
+    });
+  }
+  syncNewsroomTabs();
+  window.addEventListener("hashchange", syncNewsroomTabs);
+</script>

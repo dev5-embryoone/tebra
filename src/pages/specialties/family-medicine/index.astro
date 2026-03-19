@@ -1,15 +1,6 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import HeroSection from "../../../components/Hero/HeroSection.astro";
-import PageSection from "../../../components/Layout/PageSection.astro";
-import SectionHeader from "../../../components/SectionHeader/SectionHeader.astro";
-import CTASection from "../../../components/Sections/CTASection.astro";
-import ProductPageBreadcrumb from "../../../components/PatientExperience/ProductPageBreadcrumb.astro";
-import MarketingQuoteCard from "../../../components/Marketing/MarketingQuoteCard.astro";
-import CaseStudyCard from "../../../components/Cards/CaseStudyCard.astro";
-
+import SpecialtyLandingPage from "../../../components/Specialties/SpecialtyLandingPage.astro";
 import heroImageRaw from "../../../assets/Banner_Illo.svg";
-
 import {
   fmMeta,
   fmBreadcrumb,
@@ -29,169 +20,64 @@ import {
   fmCaseStudySlugs,
   fmBottomCta,
 } from "../../../data/familyMedicinePage";
-
-import { caseStudies } from "../../../data/caseStudies";
+import { caseStudies, type CaseStudy } from "../../../data/caseStudies";
+import type { SpecialtyLandingConfig } from "../../../data/specialtyPageTypes";
 
 const heroImage = typeof heroImageRaw === "string" ? heroImageRaw : heroImageRaw.src;
+
 const featuredCaseStudies = fmCaseStudySlugs
   .map((slug) => caseStudies.find((c) => c.slug === slug))
-  .filter(Boolean);
+  .filter((c): c is CaseStudy => Boolean(c));
 
-function whyIconSvg(kind: "platform" | "automation" | "insights") {
-  const base =
-    'class="h-16 w-16 text-tebra-teal-dark/80" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"';
-  switch (kind) {
-    case "platform":
-      return `<svg ${base}><circle cx="32" cy="32" r="18"/><path d="M32 10v8M32 46v8M10 32h8M46 32h8"/><circle cx="32" cy="10" r="3"/><circle cx="32" cy="54" r="3"/><circle cx="10" cy="32" r="3"/><circle cx="54" cy="32" r="3"/><path d="M23 23l-6-6"/><path d="M41 41l6 6"/><path d="M41 23l6-6"/><path d="M23 41l-6 6"/></svg>`;
-    case "automation":
-      return `<svg ${base}><rect x="14" y="18" width="36" height="28" rx="8"/><path d="M22 32h20"/><path d="M22 26h8"/><path d="M44 26h0"/><circle cx="44" cy="26" r="2"/><path d="M22 38h12"/><path d="M50 46l4 4"/><path d="M14 18l-4-4"/></svg>`;
-    case "insights":
-      return `<svg ${base}><path d="M14 46V18"/><path d="M14 46h36"/><path d="M22 40l8-10 7 6 9-14"/><circle cx="30" cy="30" r="2"/><circle cx="37" cy="36" r="2"/><circle cx="46" cy="22" r="2"/><path d="M46 22l8 0"/><path d="M54 22l0 8"/></svg>`;
-  }
-}
+const config: SpecialtyLandingConfig = {
+  meta: { ...fmMeta },
+  breadcrumb: [...fmBreadcrumb],
+  hero: {
+    eyebrow: fmHero.eyebrow,
+    title: fmHero.title,
+    subtitle: fmHero.subtitle,
+    primaryCta: { ...fmHero.primaryCta },
+    secondaryCta: { ...fmHero.secondaryCta },
+    imageSrc: heroImage,
+    imageAlt: "Tebra platform for family medicine practices",
+  },
+  valueSection: {
+    mode: "grid",
+    sectionTitle: fmFeaturesIntro.title,
+    items: fmFeatures.map((f) => ({ title: f.title, description: f.description })),
+  },
+  whyTebra: {
+    eyebrow: fmWhyIntro.eyebrow,
+    title: fmWhyIntro.title,
+    description: fmWhyIntro.subtitle,
+    blocks: fmWhyBlocks.map((b) => ({ title: b.title, description: b.description })),
+    titleStyle: "default",
+    gridVariant: "default",
+  },
+  challenges: {
+    title: fmChallengesIntro.title,
+    stats: fmStats.map((s) => ({ ...s })),
+    midCta: { ...fmMidCta },
+    midCtaStyle: "inline",
+  },
+  platform: {
+    eyebrow: fmPlatformIntro.eyebrow,
+    title: fmPlatformIntro.title,
+    subtitle: fmPlatformIntro.subtitle,
+    cards: fmPlatformCards.map((c) => ({ ...c })),
+  },
+  testimonials: {
+    title: fmTestimonialsIntro.title,
+    items: fmTestimonials.map((t) => ({ ...t })),
+  },
+  caseStudies: {
+    title: fmCaseStudiesIntro.title,
+    ctaLabel: fmCaseStudiesIntro.ctaLabel,
+    ctaHref: fmCaseStudiesIntro.ctaHref,
+    studies: featuredCaseStudies,
+  },
+  bottomCta: { ...fmBottomCta },
+};
 ---
 
-<BaseLayout title={fmMeta.title} description={fmMeta.description}>
-  <div class="bg-tebra-hero-bg">
-    <div class="page-container pt-8">
-      <ProductPageBreadcrumb items={[...fmBreadcrumb]} />
-    </div>
-  </div>
-
-  <HeroSection
-    eyebrow={fmHero.eyebrow}
-    title={fmHero.title}
-    subtitle={fmHero.subtitle}
-    supporting=""
-    primaryCtaLabel={fmHero.primaryCta.label}
-    primaryCtaHref={fmHero.primaryCta.href}
-    secondaryCtaLabel={fmHero.secondaryCta.label}
-    secondaryCtaHref={fmHero.secondaryCta.href}
-    imageSrc={heroImage}
-    imageAlt="Tebra platform for family medicine practices"
-  />
-
-  <PageSection variant="default">
-    <SectionHeader title={fmFeaturesIntro.title} centered titleClass="text-tebra-teal-dark" />
-    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {fmFeatures.map((f) => (
-        <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h3 class="text-lg font-semibold text-tebra-teal-dark">{f.title}</h3>
-          <p class="mt-3 text-sm leading-relaxed text-gray-600">{f.description}</p>
-        </article>
-      ))}
-    </div>
-  </PageSection>
-
-  <PageSection variant="alt">
-    <SectionHeader
-      eyebrow={fmWhyIntro.eyebrow}
-      title={fmWhyIntro.title}
-      description={fmWhyIntro.subtitle}
-      centered
-      titleClass="text-tebra-teal-dark"
-    />
-    <div class="mt-12 grid gap-10 lg:grid-cols-3 lg:gap-12">
-      {fmWhyBlocks.map((b, i) => (
-        <article class="text-center">
-          <div class="mx-auto mb-5 flex h-20 w-20 items-center justify-center">
-            <div class="opacity-90" set:html={whyIconSvg(i === 0 ? "platform" : i === 1 ? "automation" : "insights")} />
-          </div>
-          <h3 class="text-base font-semibold text-gray-900">{b.title}</h3>
-          <p class="mt-3 text-sm leading-relaxed text-gray-600">{b.description}</p>
-        </article>
-      ))}
-    </div>
-  </PageSection>
-
-  <PageSection variant="dark" noContainer class="py-14 lg:py-16">
-    <div class="page-container">
-      <div class="mb-10 text-center">
-        <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{fmChallengesIntro.title}</h2>
-      </div>
-      <div class="grid gap-10 sm:grid-cols-3 sm:gap-6">
-        {fmStats.map((s) => (
-          <div class="text-center">
-            <div class="text-4xl font-semibold tracking-tight text-white">{s.value}</div>
-            <div class="mt-2 text-sm leading-relaxed text-white/80">{s.label}</div>
-          </div>
-        ))}
-      </div>
-
-      <div class="mx-auto mt-12 max-w-3xl rounded-2xl bg-white/10 p-6 text-center ring-1 ring-white/15 sm:p-8">
-        <p class="text-sm font-semibold uppercase tracking-wide text-white/80">{fmMidCta.kicker}</p>
-        <p class="mt-3 text-lg font-medium leading-relaxed text-white">{fmMidCta.title}</p>
-        <a
-          href={fmMidCta.ctaHref}
-          class="mt-6 inline-flex items-center justify-center rounded-full bg-tebra-orange px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
-        >
-          {fmMidCta.ctaLabel}
-        </a>
-      </div>
-    </div>
-  </PageSection>
-
-  <PageSection variant="default">
-    <SectionHeader
-      eyebrow={fmPlatformIntro.eyebrow}
-      title={fmPlatformIntro.title}
-      description={fmPlatformIntro.subtitle}
-      centered
-      titleClass="text-tebra-teal-dark"
-    />
-    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-      {fmPlatformCards.map((c) => (
-        <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h3 class="text-lg font-semibold text-tebra-teal-dark">{c.title}</h3>
-          <p class="mt-3 text-sm leading-relaxed text-gray-600">{c.description}</p>
-          <div class="mt-5">
-            <a
-              href={c.href}
-              class="inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
-            >
-              {c.cta}
-              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-          </div>
-        </article>
-      ))}
-    </div>
-  </PageSection>
-
-  <PageSection variant="default">
-    <SectionHeader title={fmTestimonialsIntro.title} centered titleClass="text-tebra-teal-dark" />
-    <div class="mt-12 grid gap-6 lg:grid-cols-3">
-      {fmTestimonials.map((t) => <MarketingQuoteCard {...t} />)}
-    </div>
-  </PageSection>
-
-  <PageSection variant="muted">
-    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-      <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{fmCaseStudiesIntro.title}</h2>
-      <a
-        href={fmCaseStudiesIntro.ctaHref}
-        class="inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark"
-      >
-        {fmCaseStudiesIntro.ctaLabel}
-        <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </a>
-    </div>
-    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {featuredCaseStudies.map((c) => c && <CaseStudyCard caseStudy={c} />)}
-    </div>
-  </PageSection>
-
-  <CTASection
-    title={fmBottomCta.title}
-    description=""
-    primaryCtaLabel={fmBottomCta.primaryCtaLabel}
-    primaryCtaHref={fmBottomCta.primaryCtaHref}
-    secondaryCtaLabel={fmBottomCta.secondaryCtaLabel}
-    secondaryCtaHref={fmBottomCta.secondaryCtaHref}
-  />
-</BaseLayout>
-
+<SpecialtyLandingPage config={config} />

@@ -1,0 +1,123 @@
+---
+import EhrCalculatorLayout from "../../../layouts/EhrCalculatorLayout.astro";
+import EhrCalculatorHeader from "../../../components/EhrCalculator/EhrCalculatorHeader.astro";
+import EhrCalculatorStepper from "../../../components/EhrCalculator/EhrCalculatorStepper.astro";
+import EhrCalculatorFormCard from "../../../components/EhrCalculator/EhrCalculatorFormCard.astro";
+import EhrCalculatorTextField from "../../../components/EhrCalculator/EhrCalculatorTextField.astro";
+import EhrCalculatorSegmentedToggle from "../../../components/EhrCalculator/EhrCalculatorSegmentedToggle.astro";
+import EhrCalculatorRangeField from "../../../components/EhrCalculator/EhrCalculatorRangeField.astro";
+import EhrCalculatorVisualPanel from "../../../components/EhrCalculator/EhrCalculatorVisualPanel.astro";
+import EhrCalculatorInfoCallout from "../../../components/EhrCalculator/EhrCalculatorInfoCallout.astro";
+import Button from "../../../components/Button/Button.astro";
+import {
+  ehrCalculatorMeta,
+  ehrCalculatorSteps,
+  ehrCalculatorStep1,
+} from "../../../data/ehrCalculator";
+import ehrScreenshot from "../../../assets/ehrpage.webp";
+
+const f = ehrCalculatorStep1.fields;
+const prescribeDefault =
+  f.prescribe.defaultValue === "yes" ? "right" : "left";
+---
+
+<EhrCalculatorLayout
+  title={ehrCalculatorMeta.title}
+  description={ehrCalculatorMeta.description}
+>
+  <div class="min-h-screen bg-[#eef4f1]">
+    <EhrCalculatorHeader />
+    <EhrCalculatorStepper steps={ehrCalculatorSteps} currentStep={1} />
+
+    <div class="page-container py-8 sm:py-10 lg:py-14">
+      <div
+        class="grid items-start gap-10 lg:grid-cols-2 lg:gap-12 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] xl:gap-16"
+      >
+        <!-- Form first on mobile; left column on desktop -->
+        <div class="order-1 lg:order-none">
+          <form
+            method={ehrCalculatorStep1.formMethod}
+            action={ehrCalculatorStep1.formAction}
+            class="block"
+          >
+            <EhrCalculatorFormCard
+              title={ehrCalculatorStep1.heading}
+              subtitle={ehrCalculatorStep1.subheading}
+              innerProgressPercent={14}
+            >
+              <EhrCalculatorTextField
+                label={f.providers.label}
+                name={f.providers.name}
+                placeholder={f.providers.placeholder}
+                type={f.providers.type}
+                min={f.providers.min}
+                required={f.providers.required}
+              />
+              <EhrCalculatorSegmentedToggle
+                label={f.prescribe.label}
+                name={f.prescribe.name}
+                leftOption={f.prescribe.leftOption}
+                rightOption={f.prescribe.rightOption}
+                defaultValue={prescribeDefault}
+              />
+              <EhrCalculatorTextField
+                label={f.ehrCost.label}
+                name={f.ehrCost.name}
+                placeholder={f.ehrCost.placeholder}
+                type="text"
+                required={f.ehrCost.required}
+              />
+              <EhrCalculatorTextField
+                label={f.billingCost.label}
+                name={f.billingCost.name}
+                placeholder={f.billingCost.placeholder}
+                type="text"
+                required={f.billingCost.required}
+              />
+              <EhrCalculatorRangeField
+                label={f.elabs.label}
+                name={f.elabs.name}
+                min={f.elabs.min}
+                max={f.elabs.max}
+                step={f.elabs.step}
+                value={f.elabs.defaultValue}
+                ticks={f.elabs.ticks}
+              />
+              <EhrCalculatorRangeField
+                label={f.erx.label}
+                name={f.erx.name}
+                min={f.erx.min}
+                max={f.erx.max}
+                step={f.erx.step}
+                value={f.erx.defaultValue}
+                ticks={f.erx.ticks}
+              />
+
+              <div class="pt-2">
+                <Button
+                  type="submit"
+                  label={ehrCalculatorStep1.submitLabel}
+                  variant="primary"
+                  size="lg"
+                  class="w-full rounded-xl py-4 text-base shadow-lg shadow-btn-primary/25"
+                />
+              </div>
+            </EhrCalculatorFormCard>
+          </form>
+        </div>
+
+        <!-- Visual column: below form on mobile -->
+        <div class="order-2 space-y-8 lg:order-none lg:pt-4">
+          <EhrCalculatorVisualPanel
+            badges={ehrCalculatorStep1.visual.badges}
+            screenshotSrc={ehrScreenshot}
+            screenshotAlt=""
+          />
+          <EhrCalculatorInfoCallout
+            message={ehrCalculatorStep1.infoCallout.message}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</EhrCalculatorLayout>

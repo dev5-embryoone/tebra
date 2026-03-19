@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PracticeWebsitesMarketingPage from "../../../components/Marketing/PracticeWebsitesMarketingPage.astro";
+import { pwMeta } from "../../../data/practiceWebsitesPage";
+---
+
+<BaseLayout title={pwMeta.title} description={pwMeta.description}>
+  <PracticeWebsitesMarketingPage />
+</BaseLayout>

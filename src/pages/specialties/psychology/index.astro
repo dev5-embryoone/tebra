@@ -1,0 +1,104 @@
+---
+import SpecialtyLandingPage from "../../../components/Specialties/SpecialtyLandingPage.astro";
+import heroImageRaw from "../../../assets/Arjun-scaled-e1761674709694.webp";
+import accMarketing from "../../../assets/medical-practice-marketing-min.webp";
+import accPx from "../../../assets/patient-experience.webp";
+import accBilling from "../../../assets/BILLING-PAYMENTS-min.webp";
+import accInsights from "../../../assets/Challenge-Solution-Results_1112x1112.webp";
+import accImpl from "../../../assets/Simplify-operations.png";
+import {
+  psychologyMeta,
+  psychologyBreadcrumb,
+  psychologyHero,
+  psychologyAccordionIntro,
+  psychologyAccordionItems,
+  psychologyWhyIntro,
+  psychologyWhyBlocks,
+  psychologyChallengesIntro,
+  psychologyStats,
+  psychologyMidCta,
+  psychologyPlatformIntro,
+  psychologyPlatformCards,
+  psychologyTestimonials,
+  psychologyCaseStudiesIntro,
+  psychologyCaseStudySlugs,
+  psychologyBottomCta,
+} from "../../../data/psychologyPage";
+import { caseStudies, type CaseStudy } from "../../../data/caseStudies";
+import type { SpecialtyLandingConfig } from "../../../data/specialtyPageTypes";
+
+const heroImage = typeof heroImageRaw === "string" ? heroImageRaw : heroImageRaw.src;
+const accordionImages = [
+  typeof accMarketing === "string" ? accMarketing : accMarketing.src,
+  typeof accPx === "string" ? accPx : accPx.src,
+  typeof accBilling === "string" ? accBilling : accBilling.src,
+  typeof accInsights === "string" ? accInsights : accInsights.src,
+  typeof accImpl === "string" ? accImpl : accImpl.src,
+];
+
+const accordionItems = psychologyAccordionItems.map((item, i) => ({
+  title: item.title,
+  body: item.body,
+  image: accordionImages[i] ?? accordionImages[0],
+  imageAlt: `${item.title} — Tebra for mental health & psychology`,
+}));
+
+const featuredCaseStudies = psychologyCaseStudySlugs
+  .map((slug) => caseStudies.find((c) => c.slug === slug))
+  .filter((c): c is CaseStudy => Boolean(c));
+
+const config: SpecialtyLandingConfig = {
+  meta: { ...psychologyMeta },
+  breadcrumb: [...psychologyBreadcrumb],
+  hero: {
+    eyebrow: psychologyHero.eyebrow,
+    title: psychologyHero.title,
+    subtitle: psychologyHero.subtitle,
+    primaryCta: { ...psychologyHero.primaryCta },
+    secondaryCta: { ...psychologyHero.secondaryCta },
+    imageSrc: heroImage,
+    imageAlt: "Mental health provider with patient in a modern care setting",
+    showRatingStrip: true,
+    showComplianceStrip: true,
+  },
+  valueSection: {
+    mode: "accordion",
+    accordionName: "psychology-why",
+    sectionTitle: psychologyAccordionIntro.title,
+    items: accordionItems,
+  },
+  whyTebra: {
+    eyebrow: psychologyWhyIntro.eyebrow,
+    title: psychologyWhyIntro.title,
+    blocks: psychologyWhyBlocks.map((b) => ({ title: b.title, description: b.description })),
+    titleStyle: "serif",
+    gridVariant: "spacious",
+  },
+  challenges: {
+    title: psychologyChallengesIntro.title,
+    stats: psychologyStats.map((s) => ({ ...s })),
+    midCta: { ...psychologyMidCta },
+    midCtaStyle: "overlay",
+  },
+  platform: {
+    eyebrow: psychologyPlatformIntro.eyebrow,
+    title: psychologyPlatformIntro.title,
+    subtitle: psychologyPlatformIntro.subtitle,
+    cards: psychologyPlatformCards.map((c) => ({ ...c })),
+  },
+  testimonials: {
+    eyebrow: psychologyTestimonials.eyebrow,
+    title: psychologyTestimonials.title,
+    items: psychologyTestimonials.items.map((t) => ({ ...t })),
+  },
+  caseStudies: {
+    title: psychologyCaseStudiesIntro.title,
+    ctaLabel: psychologyCaseStudiesIntro.ctaLabel,
+    ctaHref: psychologyCaseStudiesIntro.ctaHref,
+    studies: featuredCaseStudies,
+  },
+  bottomCta: { ...psychologyBottomCta },
+};
+---
+
+<SpecialtyLandingPage config={config} />

@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import TelehealthMarketingPage from "../../../components/Product/TelehealthMarketingPage.astro";
+import { thMeta } from "../../../data/telehealthPage";
+---
+
+<BaseLayout title={thMeta.title} description={thMeta.description}>
+  <TelehealthMarketingPage />
+</BaseLayout>

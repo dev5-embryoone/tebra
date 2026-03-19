@@ -1,0 +1,55 @@
+---
+interface Props {
+  label: string;
+  name: string;
+  leftOption?: string;
+  rightOption?: string;
+  /** Which side is selected by default */
+  defaultValue?: "left" | "right";
+}
+
+const {
+  label,
+  name,
+  leftOption = "No",
+  rightOption = "Yes",
+  defaultValue = "left",
+} = Astro.props as Props;
+
+const leftChecked = defaultValue === "left";
+const rightChecked = defaultValue === "right";
+---
+
+<fieldset class="space-y-3">
+  <legend class="text-sm font-semibold text-tebra-teal-dark">{label}</legend>
+  <div
+    class="inline-flex w-full max-w-xs rounded-full border border-gray-200 bg-gray-100 p-1 sm:max-w-sm"
+    role="group"
+    aria-label={label}
+  >
+    <label
+      class="flex flex-1 cursor-pointer items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition-all has-[:checked]:bg-white has-[:checked]:text-tebra-teal-dark has-[:checked]:shadow-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-tebra-teal text-gray-500"
+    >
+      <input
+        type="radio"
+        name={name}
+        value="no"
+        checked={leftChecked}
+        class="sr-only"
+      />
+      {leftOption}
+    </label>
+    <label
+      class="flex flex-1 cursor-pointer items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition-all has-[:checked]:bg-white has-[:checked]:text-tebra-teal-dark has-[:checked]:shadow-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-tebra-teal text-gray-500"
+    >
+      <input
+        type="radio"
+        name={name}
+        value="yes"
+        checked={rightChecked}
+        class="sr-only"
+      />
+      {rightOption}
+    </label>
+  </div>
+</fieldset>

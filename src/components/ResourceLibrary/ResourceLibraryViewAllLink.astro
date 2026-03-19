@@ -1,0 +1,20 @@
+---
+interface Props {
+  label?: string;
+  href: string;
+}
+
+const { label = "View all", href } = Astro.props;
+
+const box =
+  "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[#1D3533]/25 text-[#1D3533]";
+---
+
+<a href={href} class="group inline-flex items-center gap-2.5 text-sm font-semibold text-[#1D3533] hover:text-[#005A57]">
+  <span>{label}</span>
+  <span class={box} aria-hidden="true">
+    <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none">
+      <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </span>
+</a>

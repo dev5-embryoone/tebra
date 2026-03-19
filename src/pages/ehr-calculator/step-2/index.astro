@@ -1,0 +1,131 @@
+---
+import EhrCalculatorLayout from "../../../layouts/EhrCalculatorLayout.astro";
+import EhrCalculatorHeader from "../../../components/EhrCalculator/EhrCalculatorHeader.astro";
+import EhrCalculatorStepper from "../../../components/EhrCalculator/EhrCalculatorStepper.astro";
+import EhrCalculatorFormCard from "../../../components/EhrCalculator/EhrCalculatorFormCard.astro";
+import EhrCalculatorTextField from "../../../components/EhrCalculator/EhrCalculatorTextField.astro";
+import EhrCalculatorRangeField from "../../../components/EhrCalculator/EhrCalculatorRangeField.astro";
+import EhrCalculatorVisualPanel from "../../../components/EhrCalculator/EhrCalculatorVisualPanel.astro";
+import EhrCalculatorInfoCallout from "../../../components/EhrCalculator/EhrCalculatorInfoCallout.astro";
+import Button from "../../../components/Button/Button.astro";
+import {
+  ehrCalculatorMeta,
+  ehrCalculatorSteps,
+  ehrCalculatorStep2,
+  ehrCalculatorStep1QueryKeys,
+} from "../../../data/ehrCalculator";
+import billingScreenshot from "../../../assets/EHR-min.webp";
+
+const f = ehrCalculatorStep2.fields;
+const step1Keys = [...ehrCalculatorStep1QueryKeys];
+---
+
+<EhrCalculatorLayout
+  title="EHR Calculator - Step 2 | Tebra"
+  description={ehrCalculatorMeta.description}
+>
+  <div class="min-h-screen bg-[#eef4f1]">
+    <EhrCalculatorHeader />
+    <EhrCalculatorStepper steps={ehrCalculatorSteps} currentStep={2} />
+
+    <div class="page-container py-8 sm:py-10 lg:py-14">
+      <div
+        class="grid items-start gap-10 lg:grid-cols-2 lg:gap-12 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] xl:gap-16"
+      >
+        <div class="order-1 lg:order-none">
+          <form
+            id="ehr-calc-step2-form"
+            method={ehrCalculatorStep2.formMethod}
+            action={ehrCalculatorStep2.formAction}
+            class="block"
+          >
+            <EhrCalculatorFormCard
+              title={ehrCalculatorStep2.heading}
+              subtitle={ehrCalculatorStep2.subheading}
+              innerProgressPercent={ehrCalculatorStep2.innerProgressPercent}
+            >
+              <EhrCalculatorRangeField
+                label={f.arOver120.label}
+                name={f.arOver120.name}
+                min={f.arOver120.min}
+                max={f.arOver120.max}
+                step={f.arOver120.step}
+                value={f.arOver120.defaultValue}
+                ticks={f.arOver120.ticks}
+                outputFormat={f.arOver120.outputFormat}
+              />
+              <EhrCalculatorRangeField
+                label={f.insurancePaid45.label}
+                name={f.insurancePaid45.name}
+                min={f.insurancePaid45.min}
+                max={f.insurancePaid45.max}
+                step={f.insurancePaid45.step}
+                value={f.insurancePaid45.defaultValue}
+                ticks={f.insurancePaid45.ticks}
+                outputFormat={f.insurancePaid45.outputFormat}
+              />
+              <EhrCalculatorRangeField
+                label={f.manualBillingHours.label}
+                name={f.manualBillingHours.name}
+                min={f.manualBillingHours.min}
+                max={f.manualBillingHours.max}
+                step={f.manualBillingHours.step}
+                value={f.manualBillingHours.defaultValue}
+                ticks={f.manualBillingHours.ticks}
+                outputFormat={f.manualBillingHours.outputFormat}
+              />
+              <EhrCalculatorTextField
+                label={f.staffCostPerHour.label}
+                name={f.staffCostPerHour.name}
+                placeholder={f.staffCostPerHour.placeholder}
+                type="text"
+                required={f.staffCostPerHour.required}
+              />
+
+              <div class="pt-2">
+                <Button
+                  type="submit"
+                  label={ehrCalculatorStep2.submitLabel}
+                  variant="primary"
+                  size="lg"
+                  class="w-full rounded-xl py-4 text-base shadow-lg shadow-btn-primary/25"
+                />
+              </div>
+            </EhrCalculatorFormCard>
+          </form>
+        </div>
+
+        <div class="order-2 space-y-8 lg:order-none lg:pt-4">
+          <EhrCalculatorVisualPanel
+            badges={ehrCalculatorStep2.visual.badges}
+            screenshotSrc={billingScreenshot}
+            screenshotAlt=""
+            chartVariant="billing"
+          />
+          <EhrCalculatorInfoCallout
+            message={ehrCalculatorStep2.infoCallout.message}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</EhrCalculatorLayout>
+
+<script define:vars={{ step1Keys }}>
+  function injectStep1Params() {
+    const form = document.getElementById("ehr-calc-step2-form");
+    if (!form) return;
+    const params = new URLSearchParams(window.location.search);
+    for (const k of step1Keys) {
+      const v = params.get(k);
+      if (v === null || v === "") continue;
+      if (form.querySelector('input[type="hidden"][name="' + k + '"]')) continue;
+      const inp = document.createElement("input");
+      inp.type = "hidden";
+      inp.name = k;
+      inp.value = v;
+      form.insertBefore(inp, form.firstChild);
+    }
+  }
+  injectStep1Params();
+</script>

@@ -1,0 +1,41 @@
+---
+import { aiPromoBanner } from "../../data/aiPage";
+---
+
+<div
+  id="ai-promo-banner"
+  class="relative z-[60] border-b border-orange-200/60 bg-[#FFE8DF] py-2.5 text-center text-sm text-[#003F3B]"
+  role="region"
+  aria-label="Promotion"
+>
+  <a href={aiPromoBanner.linkHref} class="inline-flex flex-wrap items-center justify-center gap-x-1 font-medium hover:underline">
+    <span>{aiPromoBanner.text}</span>
+    <span class="text-tebra-teal-dark/70" aria-hidden="true">|</span>
+    <span class="font-semibold text-tebra-teal">{aiPromoBanner.linkLabel} →</span>
+  </a>
+  <button
+    type="button"
+    id="ai-promo-banner-close"
+    class="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-[#003F3B]/70 transition hover:bg-black/5 hover:text-[#003F3B]"
+    aria-label="Dismiss promotion"
+  >
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M18 6L6 18M6 6l12 12" />
+    </svg>
+  </button>
+</div>
+
+<script>
+  const STORAGE_KEY = "tebra-ai-promo-dismissed";
+  const banner = document.getElementById("ai-promo-banner");
+  const closeBtn = document.getElementById("ai-promo-banner-close");
+
+  if (banner && localStorage.getItem(STORAGE_KEY) === "1") {
+    banner.remove();
+  }
+
+  closeBtn?.addEventListener("click", () => {
+    localStorage.setItem(STORAGE_KEY, "1");
+    banner?.remove();
+  });
+</script>

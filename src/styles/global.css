@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Horizontal scroll areas (e.g. mobile testimonial carousel) */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Common base typography and layout - applied globally via layout */
 :root {
   /* Base font family (Inter from <BaseLayout> head) */
@@ -33,12 +44,23 @@
 
   /* Layout */
   --content-max-width: 1200px;
+  /* Sticky navbar (utility bar + main row) — used by full-bleed heroes */
+  --nav-sticky-offset: 5rem;
+  /* Product tour: single-row logo header (see ProductTourHeader) */
+  --nav-product-tour-offset: 4.75rem;
   --section-py-md: 4rem;
   --section-py-lg: 6rem;
 
   /* Radii */
   --card-radius: 16px;
   --card-radius-lg: 24px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-sticky-offset: 6.5rem;
+    --nav-product-tour-offset: 5rem;
+  }
 }
 
 *,
@@ -68,16 +90,16 @@ body {
 
 @layer base {
   h1 {
-    @apply text-5xl font-semibold tracking-tight leading-tight md:text-6xl lg:text-7xl;
+    @apply text-4xl font-semibold tracking-tight leading-tight sm:text-5xl md:text-6xl lg:text-7xl;
   }
   h2 {
-    @apply text-4xl font-semibold tracking-tight leading-tight md:text-5xl lg:text-6xl;
+    @apply text-3xl font-semibold tracking-tight leading-tight sm:text-4xl md:text-5xl lg:text-6xl;
   }
   h3 {
-    @apply text-3xl font-semibold tracking-tight leading-snug md:text-4xl;
+    @apply text-2xl font-semibold tracking-tight leading-snug sm:text-3xl md:text-4xl;
   }
   h4 {
-    @apply text-2xl font-semibold leading-snug md:text-3xl;
+    @apply text-xl font-semibold leading-snug sm:text-2xl md:text-3xl;
   }
 }
 
@@ -88,6 +110,17 @@ video,
 canvas {
   max-width: 100%;
   height: auto;
+}
+
+/*
+ * Absolute / aspect-ratio cover images (Intake cards, heroes, etc.)
+ * Unlayered + !important so this wins over the img rule above and Tailwind @layer order.
+ */
+img.intake-media-fill {
+  max-width: none !important;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
 }
 
 /* Avoid unbroken strings/URLs forcing overflow */
@@ -107,6 +140,18 @@ span {
   @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12;
 }
 
+/**
+ * Use on BaseLayout as `mainClass="main-full-bleed"` so heroes span the full
+ * viewport width under the navbar (matches sticky nav + .page-container math).
+ */
+.main-full-bleed {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* Base text - inherit common styling */
 .text-base-copy {
   font-family: var(--font-sans);
@@ -123,19 +168,19 @@ span {
 }
 
 .heading-xl {
-  @apply text-5xl font-semibold tracking-tight leading-tight md:text-6xl lg:text-7xl;
+  @apply text-4xl font-semibold tracking-tight leading-tight sm:text-5xl md:text-6xl lg:text-7xl;
 }
 
 .heading-lg {
-  @apply text-4xl font-semibold tracking-tight leading-tight md:text-5xl lg:text-6xl;
+  @apply text-3xl font-semibold tracking-tight leading-tight sm:text-4xl md:text-5xl lg:text-6xl;
 }
 
 .heading-md {
-  @apply text-3xl font-semibold tracking-tight leading-snug sm:text-4xl lg:text-5xl;
+  @apply text-2xl font-semibold tracking-tight leading-snug sm:text-3xl lg:text-4xl xl:text-5xl;
 }
 
 .heading-sm {
-  @apply text-2xl font-semibold leading-snug sm:text-3xl;
+  @apply text-xl font-semibold leading-snug sm:text-2xl md:text-3xl;
 }
 
 .body-lg-muted {

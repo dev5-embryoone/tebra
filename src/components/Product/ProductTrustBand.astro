@@ -1,0 +1,43 @@
+---
+/**
+ * Dark teal trust / social proof band — reusable for EHR subpages (Electronic Labs, etc.).
+ */
+export type TrustBadge = {
+  title: string;
+  subtitle: string;
+  /** Optional small logo above title */
+  logoSrc?: string;
+  logoAlt?: string;
+};
+
+interface Props {
+  headline: string;
+  badges: TrustBadge[];
+}
+
+const { headline, badges } = Astro.props as Props;
+---
+
+<section class="bg-tebra-teal-dark py-12 text-white lg:py-16" aria-labelledby="trust-band-heading">
+  <div class="page-container">
+    <h2 id="trust-band-heading" class="mx-auto max-w-4xl text-center text-lg font-medium leading-relaxed sm:text-xl lg:text-2xl">
+      {headline}
+    </h2>
+    <ul
+      class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-5"
+      role="list"
+    >
+      {
+        badges.map((b) => (
+          <li class="rounded-xl border border-white/15 bg-white/10 p-4 text-center backdrop-blur-sm">
+            {b.logoSrc ? (
+              <img src={b.logoSrc} alt={b.logoAlt ?? ""} class="mx-auto mb-3 h-9 w-auto max-w-[100px] object-contain opacity-95" loading="lazy" />
+            ) : null}
+            <p class="text-xs font-semibold leading-snug text-white sm:text-sm">{b.title}</p>
+            <p class="mt-2 text-[10px] leading-snug text-white/75 sm:text-xs">{b.subtitle}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

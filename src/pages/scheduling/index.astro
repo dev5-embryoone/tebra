@@ -1,14 +1,334 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import FeatureSplitHero from "../../components/Layout/FeatureSplitHero.astro";
+import PageSection from "../../components/Layout/PageSection.astro";
+import ProductPageBreadcrumb from "../../components/PatientExperience/ProductPageBreadcrumb.astro";
+import ProductTrustBand from "../../components/Product/ProductTrustBand.astro";
+import ProductAlternatingFeature from "../../components/Product/ProductAlternatingFeature.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+
+import heroImg from "../../assets/TBR_Micro_Illo_Take_The_Complexity_Out_Of_Scheduling.webp";
+import tourImg from "../../assets/ehrpage.webp";
+import feat0 from "../../assets/TBR_Micro_Illo_Take_The_Complexity_Out_Of_Scheduling.webp";
+import feat1 from "../../assets/ehrpage.webp";
+import feat2 from "../../assets/patient-experience.webp";
+import feat3 from "../../assets/medical-practice-marketing-min.webp";
+import feat4 from "../../assets/Payments-1-Hero-Image.webp";
+import g2Logo from "../../assets/G2-Easiest-to-Use-1.webp";
+import capterraLogo from "../../assets/capterra-logo.webp";
+
+import {
+  osMeta,
+  osBreadcrumb,
+  osHero,
+  osValueProps,
+  osHowItWorks,
+  osTrust,
+  osFeaturesIntro,
+  osFeatures,
+  osPatientExperienceCta,
+  osAllInOne,
+  osImplementation,
+  osTestimonial,
+  osFaq,
+  osRankCta,
+  osStatsCta,
+  osBottomCta,
+} from "../../data/onlineSchedulingPage";
+
+const heroSrc = typeof heroImg === "string" ? heroImg : heroImg.src;
+const tourSrc = typeof tourImg === "string" ? tourImg : tourImg.src;
+const featureSrcs = [feat0, feat1, feat2, feat3, feat4].map((im) => (typeof im === "string" ? im : im.src));
+const g2Src = typeof g2Logo === "string" ? g2Logo : g2Logo.src;
+const capterraSrc = typeof capterraLogo === "string" ? capterraLogo : capterraLogo.src;
+
+const trustBadges = osTrust.badges.map((b, i) => ({
+  title: b.title,
+  subtitle: b.subtitle,
+  logoSrc: i === 0 ? g2Src : i === 1 ? capterraSrc : undefined,
+  logoAlt: i === 0 ? "G2" : i === 1 ? "Capterra" : undefined,
+}));
+
+function valueIcon(kind: 0 | 1 | 2) {
+  const stroke =
+    'class="h-12 w-12 text-tebra-teal-dark" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"';
+  if (kind === 0) {
+    return `<svg ${stroke} viewBox="0 0 48 48"><path d="M24 8v6M24 34v6M8 24h6M34 24h6"/><circle cx="24" cy="24" r="10"/><path d="M18 18c2 2 4 4 6 6 2-2 4-4 6-6"/></svg>`;
+  }
+  if (kind === 1) {
+    return `<svg ${stroke} viewBox="0 0 48 48"><path d="M34 14a8 8 0 0 1 0 11.3l-11 11a8 8 0 0 1-11.3-11.3l2.8-2.8"/><path d="M14 34a8 8 0 0 1 0-11.3l11-11a8 8 0 0 1 11.3 11.3l-2.8 2.8"/></svg>`;
+  }
+  return `<svg ${stroke} viewBox="0 0 48 48"><circle cx="24" cy="14" r="3"/><circle cx="38" cy="24" r="3"/><circle cx="31" cy="38" r="3"/><circle cx="17" cy="38" r="3"/><circle cx="10" cy="24" r="3"/><path d="m16.5 22 5-5 5 5M26.5 26l5 5 5-5"/></svg>`;
+}
 ---
-<BaseLayout
-  title="Scheduling | Tebra"
-  description="Patient scheduling and appointment management."
->
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h1 class="text-2xl font-semibold text-gray-900">Scheduling</h1>
-      <p class="mt-2 text-gray-600">Placeholder for hosting test.</p>
+
+<BaseLayout title={osMeta.title} description={osMeta.description}>
+  <div class="bg-tebra-hero-bg">
+    <div class="page-container pt-8 pb-2">
+      <ProductPageBreadcrumb items={[...osBreadcrumb]} />
     </div>
-  </section>
+  </div>
+
+  <FeatureSplitHero class="bg-tebra-hero-bg" align="center" pyClass="pb-16 pt-4 lg:pb-24 lg:pt-2">
+    <div slot="left" class="space-y-5 lg:space-y-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">{osHero.eyebrow}</p>
+      <h1 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-[1.12]">
+        {osHero.title}
+      </h1>
+      <p class="max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
+        {osHero.subtitle}
+      </p>
+      <div class="flex flex-col gap-4 pt-1 sm:flex-row sm:flex-wrap sm:items-center">
+        <a
+          href={osHero.primaryCta.href}
+          class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
+        >
+          {osHero.primaryCta.label}
+        </a>
+        <a
+          href={osHero.exploreLink.href}
+          class="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-tebra-teal-dark underline-offset-4 hover:text-tebra-teal hover:underline"
+        >
+          {osHero.exploreLink.label}
+          <svg class="h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path
+              d="M6 3h7v7M13 3L5 11"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div slot="right" class="flex justify-center lg:justify-end">
+      <div class="w-full max-w-xl rounded-3xl border border-gray-200/80 bg-white/90 p-4 shadow-inner sm:p-6">
+        <img
+          src={heroSrc}
+          alt="Tebra online scheduling — calendar and patient booking interface"
+          class="h-auto w-full rounded-2xl object-contain shadow-md"
+          loading="eager"
+          width={720}
+          height={540}
+        />
+      </div>
+    </div>
+  </FeatureSplitHero>
+
+  <PageSection variant="default" class="!py-14 lg:!py-20">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+      {
+        osValueProps.map((v, i) => (
+          <article class="text-center sm:text-left">
+            <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center sm:mx-0">
+              <span class="inline-flex" set:html={valueIcon(i as 0 | 1 | 2)} />
+            </div>
+            <h2 class="text-lg font-semibold text-tebra-teal-dark">{v.title}</h2>
+            <p class="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">{v.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" class="!py-14 lg:!py-20">
+    <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-tebra-teal-dark/85">{osHowItWorks.eyebrow}</p>
+    <h2 class="mx-auto mt-3 max-w-3xl text-center font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+      {osHowItWorks.title}
+    </h2>
+    <div class="mx-auto mt-10 max-w-5xl overflow-hidden rounded-2xl border border-gray-200 bg-white p-3 shadow-lg sm:p-4 lg:mt-12">
+      <div class="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gray-100">
+        <img
+          src={tourSrc}
+          alt="Tebra calendar and online scheduling workflow"
+          class="h-full w-full object-cover object-top"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 flex items-center justify-center bg-tebra-teal-dark/25 p-4">
+          <a
+            href={osHowItWorks.modalCta.href}
+            class="inline-flex max-w-sm flex-col items-center gap-3 rounded-2xl bg-[#FDF8F3] px-6 py-6 text-center shadow-xl ring-1 ring-black/5 sm:px-8"
+          >
+            <span class="text-base font-semibold text-tebra-teal-dark sm:text-lg">{osHowItWorks.modalTitle}</span>
+            <span class="text-sm text-gray-600">{osHowItWorks.modalBody}</span>
+            <span
+              class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-teal px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-tebra-teal-dark"
+            >
+              {osHowItWorks.modalCta.label}
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-gray-600 sm:text-base">{osHowItWorks.subcopy}</p>
+    <div class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+      <a
+        href={osHowItWorks.primaryCta.href}
+        class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#ff5a49]"
+      >
+        {osHowItWorks.primaryCta.label}
+      </a>
+      <a
+        href={osHowItWorks.secondaryCta.href}
+        class="inline-flex min-h-[44px] items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-gray-50"
+      >
+        {osHowItWorks.secondaryCta.label}
+      </a>
+    </div>
+  </PageSection>
+
+  <ProductTrustBand headline={osTrust.headline} badges={trustBadges} />
+
+  <PageSection variant="default" class="!py-16 lg:!py-24" id="features">
+    <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">{osFeaturesIntro.eyebrow}</p>
+    <h2 class="mx-auto mt-3 max-w-4xl text-center text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+      {osFeaturesIntro.title}
+    </h2>
+    <div class="mt-14 space-y-16 lg:mt-20 lg:space-y-24">
+      {
+        osFeatures.map((f, i) => (
+          <ProductAlternatingFeature
+            title={f.title}
+            body={f.body}
+            imageSrc={featureSrcs[i] ?? featureSrcs[0]}
+            imageAlt={`${f.title} — Tebra online scheduling`}
+            reverse={i % 2 === 1}
+          />
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" class="!py-14 lg:!py-20">
+    <div class="mx-auto max-w-3xl rounded-2xl border border-gray-200 bg-white px-6 py-10 text-center shadow-sm sm:px-10">
+      <p class="text-lg font-semibold leading-snug text-tebra-teal-dark sm:text-xl">{osPatientExperienceCta.title}</p>
+      <a
+        href={osPatientExperienceCta.ctaHref}
+        class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-orange px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#ff5a49]"
+      >
+        {osPatientExperienceCta.ctaLabel}
+      </a>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" class="!py-14 lg:!py-20">
+    <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-tebra-teal-dark/80">{osAllInOne.eyebrow}</p>
+    <div class="text-center">
+      <h2 class="mt-3 text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl">{osAllInOne.title}</h2>
+      <p class="mt-2 text-lg font-medium text-gray-800">{osAllInOne.subtitle}</p>
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base">{osAllInOne.description}</p>
+      <a
+        href={osAllInOne.ctaHref}
+        class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-orange px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#ff5a49]"
+      >
+        {osAllInOne.ctaLabel}
+      </a>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        osAllInOne.cards.map((c) => (
+          <a
+            href={c.href}
+            class="group flex min-h-[44px] flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+          >
+            <h3 class="text-lg font-semibold text-tebra-teal-dark group-hover:text-tebra-teal">{c.title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600">{c.description}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-tebra-teal">
+              Learn more
+              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </PageSection>
+
+  <PageSection variant="muted" class="!py-14 lg:!py-16">
+    <div class="mx-auto max-w-3xl rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
+      <h2 class="text-xl font-semibold text-tebra-teal-dark sm:text-2xl">{osImplementation.title}</h2>
+      <p class="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">{osImplementation.description}</p>
+      <a
+        href={osImplementation.ctaHref}
+        class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-full border border-tebra-teal px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-teal/5"
+      >
+        {osImplementation.ctaLabel}
+      </a>
+    </div>
+  </PageSection>
+
+  <PageSection variant="default" class="!py-14 lg:!py-20">
+    <blockquote class="mx-auto max-w-3xl rounded-2xl border border-gray-100 bg-tebra-hero-bg px-6 py-8 sm:px-10 sm:py-10">
+      <p class="text-lg font-medium leading-relaxed text-tebra-teal-dark sm:text-xl">&ldquo;{osTestimonial.quote}&rdquo;</p>
+      <footer class="mt-6 border-t border-gray-200/80 pt-4">
+        <cite class="not-italic">
+          <span class="block font-semibold text-gray-900">{osTestimonial.author}</span>
+          <span class="mt-0.5 block text-sm text-gray-500">{osTestimonial.org}</span>
+        </cite>
+      </footer>
+    </blockquote>
+
+    <div class="mx-auto mt-14 w-full max-w-2xl">
+      <h2 class="text-center text-xl font-semibold text-tebra-teal-dark sm:text-2xl">Frequently asked questions</h2>
+      <div class="mt-8 space-y-3">
+        {
+          osFaq.map((item) => (
+            <details class="group rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm open:shadow-md sm:px-5 sm:py-4">
+              <summary class="cursor-pointer list-none text-left text-sm font-semibold text-tebra-teal-dark sm:text-base [&::-webkit-details-marker]:hidden">
+                <span class="flex items-center justify-between gap-2">
+                  {item.q}
+                  <span class="text-tebra-orange transition-transform group-open:rotate-45" aria-hidden="true">
+                    +
+                  </span>
+                </span>
+              </summary>
+              <p class="mt-3 border-t border-gray-100 pt-3 text-sm leading-relaxed text-gray-600">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mx-auto mt-14 max-w-xl rounded-2xl border border-gray-200 bg-gray-50 px-6 py-8 text-center sm:px-10">
+      <h3 class="text-lg font-semibold text-tebra-teal-dark sm:text-xl">{osRankCta.title}</h3>
+      <p class="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">{osRankCta.description}</p>
+      <a
+        href={osRankCta.ctaHref}
+        class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-full bg-tebra-teal px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-tebra-teal-dark"
+      >
+        {osRankCta.ctaLabel}
+      </a>
+    </div>
+
+    <div class="mx-auto mt-10 max-w-xl rounded-2xl border border-tebra-teal/20 bg-tebra-teal-dark px-6 py-8 text-center text-white sm:px-10">
+      <p class="text-base font-medium leading-snug sm:text-lg">{osStatsCta.kicker}</p>
+      <ul class="mt-5 space-y-2 text-left text-sm text-white/90 sm:text-base">
+        {osStatsCta.bullets.map((b) => (
+          <li class="flex gap-2">
+            <span class="text-tebra-orange" aria-hidden="true">
+              ✓
+            </span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={osStatsCta.ctaHref}
+        class="mt-8 inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#ff5a49] sm:w-auto"
+      >
+        {osStatsCta.ctaLabel}
+      </a>
+    </div>
+  </PageSection>
+
+  <CTASection
+    title={osBottomCta.title}
+    description={osBottomCta.description}
+    primaryCtaLabel={osBottomCta.primaryCtaLabel}
+    primaryCtaHref={osBottomCta.primaryCtaHref}
+    secondaryCtaLabel={osBottomCta.secondaryCtaLabel}
+    secondaryCtaHref={osBottomCta.secondaryCtaHref}
+  />
 </BaseLayout>

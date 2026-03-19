@@ -1,0 +1,114 @@
+---
+/**
+ * Left column: exclusive accordion (details name=). Right: swaps image to match selection.
+ * Matches tebra.com specialty “Why … thrives with Tebra” pattern.
+ */
+export type SpecialtyAccordionItem = {
+  title: string;
+  body: string;
+  image: string;
+  imageAlt: string;
+};
+
+interface Props {
+  sectionTitle: string;
+  items: SpecialtyAccordionItem[];
+  /** Unique name for exclusive <details> behavior */
+  accordionName?: string;
+}
+
+const { sectionTitle, items, accordionName = "specialty-why-accordion" } = Astro.props as Props;
+
+if (!items.length) {
+  throw new Error("SpecialtyWhyAccordion requires at least one item");
+}
+
+const visualId = `acc-vis-${accordionName.replace(/[^a-z0-9-]/gi, "")}`;
+---
+
+<div class="specialty-why-accordion grid items-start gap-12 lg:grid-cols-2 lg:gap-16" data-specialty-accordion={visualId}>
+  <div>
+    <h2 class="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-tight">
+      {sectionTitle}
+    </h2>
+    <div class="mt-8 border-t border-gray-200">
+      {
+        items.map((item, i) => (
+          <details
+            name={accordionName}
+            open={i === 0}
+            class="group border-b border-gray-200 bg-white transition-colors open:bg-gray-50"
+            data-image-src={item.image}
+            data-image-alt={item.imageAlt}
+          >
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 pl-1 pr-2 text-left [&::-webkit-details-marker]:hidden">
+              <span class="text-base font-medium text-slate-900">{item.title}</span>
+              <span
+                class="flex h-8 w-8 shrink-0 items-center justify-center text-xl font-light text-tebra-orange transition-transform duration-200 group-open:rotate-45"
+                aria-hidden="true"
+              >
+                +
+              </span>
+            </summary>
+            <div class="border-t border-gray-100 px-1 pb-6 pt-4 text-sm leading-relaxed text-gray-600">
+              {item.body}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+
+  <div
+    class="relative flex min-h-[280px] items-center justify-center rounded-3xl bg-gray-100 p-6 sm:min-h-[360px] lg:min-h-[420px] lg:p-10"
+  >
+    <img
+      id={visualId}
+      src={items[0].image}
+      alt={items[0].imageAlt}
+      class="max-h-[340px] w-full max-w-md rounded-2xl object-contain shadow-sm transition-opacity duration-300"
+      width={560}
+      height={420}
+      loading="eager"
+      data-accordion-visual
+    />
+  </div>
+</div>
+
+<script is:inline define:vars={{ visualId, accordionName }}>
+  (function () {
+    const root = document.querySelector("[data-specialty-accordion='" + visualId + "']");
+    if (!root) return;
+    const img = root.querySelector("[data-accordion-visual]");
+    const all = root.querySelectorAll('details[name="' + accordionName + '"]');
+    function syncFromOpen() {
+      for (let i = 0; i < all.length; i++) {
+        const d = all[i];
+        if (d.open && img) {
+          const src = d.getAttribute("data-image-src");
+          const alt = d.getAttribute("data-image-alt") || "";
+          if (src) {
+            img.style.opacity = "0.88";
+            window.setTimeout(function () {
+              img.src = src;
+              img.alt = alt;
+              img.style.opacity = "1";
+            }, 100);
+          }
+          break;
+        }
+      }
+    }
+    all.forEach(function (d) {
+      d.addEventListener("toggle", function () {
+        if (d.open) {
+          all.forEach(function (other) {
+            if (other !== d) other.removeAttribute("open");
+          });
+          syncFromOpen();
+        }
+      });
+    });
+    syncFromOpen();
+  })();
+</script>

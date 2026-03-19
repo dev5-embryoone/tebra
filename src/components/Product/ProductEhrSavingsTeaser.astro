@@ -1,0 +1,108 @@
+---
+/**
+ * Interactive-style EHR spend teaser — range + CTA (props-driven, responsive).
+ */
+interface Props {
+  title: string;
+  subtitle: string;
+  /** e.g. ["$100", "$300", "$600", "$900", "$1200+"] */
+  tickLabels: readonly string[];
+  ctaLabel: string;
+  ctaHref: string;
+  /** Unique id for the range input (a11y) */
+  id?: string;
+}
+
+const { title, subtitle, tickLabels, ctaLabel, ctaHref, id = "ehr-savings-range" } = Astro.props as Props;
+const max = Math.max(0, tickLabels.length - 1);
+---
+
+<section class="bg-white py-14 lg:py-20" aria-labelledby={`${id}-heading`}>
+  <div class="page-container">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 id={`${id}-heading`} class="font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
+        {title}
+      </h2>
+      <p class="mt-3 text-base text-gray-600 sm:text-lg">{subtitle}</p>
+    </div>
+
+    <div class="mx-auto mt-10 max-w-xl px-1 sm:mt-12">
+      <div class="relative pt-2">
+        <label class="sr-only" for={id}>Estimated monthly software spend</label>
+        <input
+          type="range"
+          id={id}
+          name={id}
+          min="0"
+          max={max}
+          value="2"
+          class="ehr-savings-range h-3 w-full cursor-pointer appearance-none rounded-full bg-[#c5d4d4] accent-tebra-orange"
+        />
+        <div
+          class="mt-4 flex justify-between gap-1 text-[11px] font-medium text-gray-500 sm:text-xs"
+          aria-hidden="true"
+        >
+          {tickLabels.map((label) => <span class="min-w-0 flex-1 text-center first:text-left last:text-right">{label}</span>)}
+        </div>
+      </div>
+      <div class="mt-10 flex justify-center">
+        <a
+          href={ctaHref}
+          class="inline-flex min-h-[48px] min-w-[44px] items-center justify-center rounded-full border-2 border-tebra-teal-dark bg-white px-8 py-3 text-sm font-semibold text-tebra-teal-dark transition-colors hover:bg-tebra-teal-dark hover:text-white"
+        >
+          {ctaLabel}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ehr-savings-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+    background: #0d4f52;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.2);
+    margin-top: -0.35rem;
+  }
+  .ehr-savings-range::-webkit-slider-runnable-track {
+    height: 0.35rem;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      #ff8267 0%,
+      #ff8267 var(--pct, 50%),
+      #c5d4d4 var(--pct, 50%),
+      #c5d4d4 100%
+    );
+  }
+  .ehr-savings-range::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+    background: #0d4f52;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.2);
+  }
+  .ehr-savings-range::-moz-range-track {
+    height: 0.35rem;
+    border-radius: 9999px;
+    background: #c5d4d4;
+  }
+</style>
+
+<script define:vars={{ id, max }}>
+  function syncTrack(el) {
+    const v = Number(el.value);
+    const pct = max <= 0 ? 0 : (v / max) * 100;
+    el.style.setProperty("--pct", pct + "%");
+  }
+  const el = document.getElementById(id);
+  if (el && el instanceof HTMLInputElement) {
+    syncTrack(el);
+    el.addEventListener("input", () => syncTrack(el));
+  }
+</script>

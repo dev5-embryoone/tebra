@@ -1,0 +1,56 @@
+---
+/**
+ * Billing-style resource card: portrait + teal→warm gradient, white title, footer type + Read more.
+ */
+interface Props {
+  type: string;
+  title: string;
+  href: string;
+  imageSrc: string;
+}
+
+const { type, title, href, imageSrc } = Astro.props;
+
+const extBox =
+  "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded border border-white/40 text-white/95";
+---
+
+<a
+  href={href}
+  class="group relative flex w-[min(85vw,280px)] shrink-0 snap-center flex-col overflow-hidden rounded-[20px] shadow-md transition hover:shadow-xl md:w-auto md:min-w-0 md:snap-none lg:rounded-[24px]"
+>
+  <div class="relative aspect-[3/4] min-h-[300px] w-full sm:min-h-[320px] lg:aspect-[10/13] lg:min-h-[360px]">
+    <img
+      src={imageSrc}
+      alt=""
+      class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+      loading="lazy"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-[#0a2321] via-[#0d3331]/75 to-[#F08463]/35"
+      aria-hidden="true"
+    />
+    <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-5 pt-24 sm:p-6">
+      <p class="text-base font-semibold leading-snug text-white drop-shadow-sm line-clamp-4 sm:text-lg">{title}</p>
+    </div>
+  </div>
+  <div
+    class="flex items-center justify-between gap-3 border-t border-white/10 bg-[#0d3331]/95 px-5 py-4 backdrop-blur-sm sm:px-6"
+  >
+    <span class="text-[11px] font-bold uppercase tracking-[0.12em] text-white/80">{type}</span>
+    <span class="flex items-center gap-2 text-sm font-semibold text-white">
+      Read more
+      <span class={extBox} aria-hidden="true">
+        <svg class="h-3.5 w-3.5" viewBox="0 0 14 14" fill="none">
+          <path
+            d="M5 3h6v6M11 3L3 11"
+            stroke="currentColor"
+            stroke-width="1.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </span>
+  </div>
+</a>

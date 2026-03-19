@@ -1,0 +1,97 @@
+---
+import logoSrc from "../../assets/logo_tebra.ad466dee.svg?url";
+import { intakeFooter } from "../../data/theIntakePage";
+---
+
+<footer class="border-t border-gray-200 bg-tebra-teal-dark text-white">
+  <div class="max-w-content mx-auto px-4 py-12 sm:px-6 lg:px-12">
+    <div class="mb-10 flex flex-col gap-4 border-b border-white/15 pb-10 md:flex-row md:items-start md:justify-between">
+      <div>
+        <p class="font-display text-xl font-semibold">The Intake</p>
+        <p class="mt-2 max-w-md text-sm leading-relaxed text-white/85">{intakeFooter.blurb}</p>
+      </div>
+      <a
+        href="/"
+        class="inline-flex h-8 w-[100px] shrink-0 items-center brightness-0 invert"
+        aria-label="Tebra homepage"
+      >
+        <img src={logoSrc} alt="" width="100" height="24" class="h-6 w-auto" />
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-white/70">About The Intake</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          {intakeFooter.about.map((l) => (
+            <li>
+              <a href={l.href} class="text-white/90 hover:text-white hover:underline">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-white/70">Top Topics</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          {intakeFooter.topics.map((l) => (
+            <li>
+              <a href={l.href} class="text-white/90 hover:text-white hover:underline">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-white/70">Guides and Resources</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          {intakeFooter.guides.map((l) => (
+            <li>
+              <a href={l.href} class="text-white/90 hover:text-white hover:underline">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-white/70">About Tebra</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          {intakeFooter.aboutTebra.map((l) => (
+            <li>
+              <a href={l.href} class="text-white/90 hover:text-white hover:underline">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wide text-white/70">What We Do</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          {intakeFooter.whatWeDo.map((l) => (
+            <li>
+              <a href={l.href} class="text-white/90 hover:text-white hover:underline">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/15">
+    <div
+      class="max-w-content mx-auto flex flex-col gap-4 px-6 py-6 text-sm text-white/80 lg:flex-row lg:items-center lg:justify-between lg:px-12"
+    >
+      <p>Copyright © {new Date().getFullYear()} Tebra Technologies, Inc</p>
+      <div class="flex flex-wrap gap-x-6 gap-y-1">
+        <a href="/terms" class="hover:text-white hover:underline">Terms & Conditions</a>
+        <a href="/privacy" class="hover:text-white hover:underline">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>

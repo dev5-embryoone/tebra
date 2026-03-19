@@ -1,0 +1,31 @@
+---
+import LinkWithArrow from "../LinkWithArrow/LinkWithArrow.astro";
+
+interface Props {
+  id?: string;
+  title: string;
+  viewAllHref?: string;
+  viewAllLabel?: string;
+}
+
+const {
+  id,
+  title,
+  viewAllHref = "/theintake",
+  viewAllLabel = "View all",
+} = Astro.props;
+---
+
+<div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between" id={id}>
+  <div class="flex min-w-0 flex-1 items-center gap-3">
+    <p
+      class="m-0 font-display text-2xl font-bold text-tebra-teal-dark sm:text-[1.75rem]"
+      role="heading"
+      aria-level={2}
+    >
+      {title}
+    </p>
+    <span class="hidden h-px flex-1 bg-gray-200 sm:block" aria-hidden="true" />
+  </div>
+  <LinkWithArrow label={viewAllLabel} href={viewAllHref} external={false} variant="tebra" class="shrink-0 text-sm sm:text-base" />
+</div>

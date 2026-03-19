@@ -1,8 +1,8 @@
 ---
 const resourcesCol1 = [
-  { title: "The Intake", href: "/resources#intake", description: "Insights for those starting, managing and growing independent healthcare practices.", icon: "monitor" },
+  { title: "The Intake", href: "/theintake", description: "Insights for those starting, managing and growing independent healthcare practices.", icon: "monitor" },
   { title: "Resource Library", href: "/resources", description: "Access valuable guides, tools, and insights in Tebra's resource library.", icon: "document" },
-  { title: "News Room", href: "/press", description: "Stay up to date with what's new and notable in the world of Tebra.", icon: "newspaper" },
+  { title: "News Room", href: "/newsroom", description: "Stay up to date with what's new and notable in the world of Tebra.", icon: "newspaper" },
 ];
 const resourcesCol2 = [
   { title: "Testimonials", href: "/resources/testimonials", description: "Discover why healthcare businesses trust Tebra time and time again.", icon: "star" },
@@ -12,10 +12,10 @@ const resourcesCol2 = [
 
 const interactiveTools = [
   { title: "Product Tour", href: "/product-tour", description: "Explore Tebra's platform features in an interactive walkthrough.", icon: "play" },
-  { title: "EHR Calculator", href: "#ehr-calculator", description: "Estimate your savings with Tebra's EHR cost calculator.", icon: "calculator" },
-  { title: "Billing Calculator", href: "#billing-calculator", description: "See how much revenue your practice could recover.", icon: "billing" },
-  { title: "Competitive Scanner", href: "#competitive-scanner", description: "Compare your practice against local peers and discover opportunities.", icon: "chart" },
-  { title: "Efficiency Grader", href: "#efficiency-grader", description: "Assess your workflows and uncover ways to improve efficiency.", icon: "gear" },
+  { title: "EHR Calculator", href: "/ehr-calculator/step-1", description: "Estimate your savings with Tebra's EHR cost calculator.", icon: "calculator" },
+  { title: "Billing Calculator", href: "/billing-payments/billing-calculator", description: "See how much revenue your practice could recover.", icon: "billing" },
+  { title: "Competitive Scanner", href: "/competitive-scanner", description: "Compare your practice against local peers and discover opportunities.", icon: "chart" },
+  { title: "Efficiency Grader", href: "/practice-efficiency-grader", description: "Assess your workflows and uncover ways to improve efficiency.", icon: "gear" },
 ];
 
 function getIcon(name: string) {
@@ -55,7 +55,7 @@ function getIcon(name: string) {
     id="nav-dropdown-resources"
     class="fixed left-0 right-0 top-[5.5rem] pt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50"
   >
-    <div class="w-full max-w-[1200px] mx-auto px-6 lg:px-12 bg-white border-t border-gray-100 rounded-b-2xl shadow-xl">
+    <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 bg-white border-t border-gray-100 rounded-b-2xl shadow-xl">
       <div class="py-8 lg:py-10">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0">
           <!-- Column 1: Resources (first 3 items) -->

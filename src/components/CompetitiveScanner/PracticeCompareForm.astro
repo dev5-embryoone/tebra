@@ -1,0 +1,150 @@
+---
+interface Props {
+  practiceNamePlaceholder: string;
+  specialtyPlaceholder: string;
+  providerCountLabel: string;
+  submitLabel: string;
+  action: string;
+  method?: "get" | "post";
+}
+
+const {
+  practiceNamePlaceholder,
+  specialtyPlaceholder,
+  providerCountLabel,
+  submitLabel,
+  action,
+  method = "get",
+} = Astro.props as Props;
+---
+
+<form
+  method={method}
+  action={action}
+  class="mx-auto mt-10 max-w-5xl px-4 sm:mt-12 sm:px-6"
+  id="practice-compare-form"
+  data-scanner-form
+>
+  <div
+    class="flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_12px_40px_rgba(15,23,42,0.08)] lg:flex-row lg:items-stretch lg:rounded-full lg:p-1"
+  >
+    <!-- Practice name -->
+    <label
+      class="group flex min-h-[3.5rem] flex-1 cursor-text items-center gap-3 border-b border-gray-100 px-4 py-3 lg:border-b-0 lg:border-r lg:py-2 lg:pl-6"
+    >
+      <span class="text-tebra-teal-dark/80" aria-hidden="true">
+        <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 21V8l8-5 8 5v13" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <input
+        type="text"
+        name="practiceName"
+        placeholder={practiceNamePlaceholder}
+        autocomplete="organization"
+        class="min-w-0 flex-1 border-0 bg-transparent text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0"
+      />
+    </label>
+
+    <!-- Specialty -->
+    <label
+      class="group flex min-h-[3.5rem] flex-1 cursor-text items-center gap-3 border-b border-gray-100 px-4 py-3 lg:border-b-0 lg:border-r lg:py-2"
+    >
+      <span class="text-tebra-teal-dark/80" aria-hidden="true">
+        <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path
+            d="M8 4h2v3a4 4 0 008 0V4h2M10 4v3M14 4v3M9 20h6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path d="M12 10v10" stroke-linecap="round" />
+        </svg>
+      </span>
+      <input
+        type="text"
+        name="specialty"
+        placeholder={specialtyPlaceholder}
+        class="min-w-0 flex-1 border-0 bg-transparent text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0"
+      />
+    </label>
+
+    <!-- Provider count -->
+    <div
+      class="flex min-h-[3.5rem] flex-1 items-center justify-between gap-2 border-b border-gray-100 px-4 py-3 lg:border-b-0 lg:border-r lg:py-2"
+    >
+      <span class="flex items-center gap-3 text-tebra-teal-dark/80">
+        <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="12" cy="8" r="3" />
+          <path d="M5 20v-1a5 5 0 0110 0v1" stroke-linecap="round" />
+        </svg>
+        <span class="sr-only">{providerCountLabel}</span>
+      </span>
+      <div class="flex flex-1 items-center justify-end gap-1 sm:justify-center">
+        <input
+          type="number"
+          name="providerCount"
+          id="scanner-provider-count"
+          min="1"
+          max="999"
+          value="1"
+          class="w-12 border-0 bg-transparent text-center text-sm font-semibold text-gray-900 focus:outline-none focus:ring-0"
+          aria-label={providerCountLabel}
+        />
+        <div class="flex flex-col gap-0.5">
+          <button
+            type="button"
+            class="flex h-6 w-7 items-center justify-center rounded border border-gray-200 text-tebra-teal-dark transition hover:bg-gray-50"
+            data-scanner-inc
+            aria-label="Increase provider count"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            class="flex h-6 w-7 items-center justify-center rounded border border-gray-200 text-tebra-teal-dark transition hover:bg-gray-50"
+            data-scanner-dec
+            aria-label="Decrease provider count"
+          >
+            −
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="p-2 lg:flex lg:items-center lg:pr-2">
+      <button
+        type="submit"
+        class="flex h-12 w-full items-center justify-center rounded-xl bg-btn-primary text-lg font-semibold text-white shadow-md transition hover:bg-btn-primary-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-btn-primary focus-visible:ring-offset-2 lg:h-11 lg:w-14 lg:rounded-full lg:text-xl"
+        aria-label={submitLabel}
+      >
+        <span class="lg:sr-only">{submitLabel}</span>
+        <span aria-hidden="true" class="lg:inline">→</span>
+      </button>
+    </div>
+  </div>
+</form>
+
+<script>
+  const input = document.getElementById("scanner-provider-count");
+  const inc = document.querySelector("[data-scanner-inc]");
+  const dec = document.querySelector("[data-scanner-dec]");
+  if (input instanceof HTMLInputElement && inc && dec) {
+    const clamp = () => {
+      let n = parseInt(input.value, 10) || 1;
+      n = Math.min(999, Math.max(1, n));
+      input.value = String(n);
+    };
+    inc.addEventListener("click", () => {
+      let n = parseInt(input.value, 10) || 1;
+      input.value = String(Math.min(999, n + 1));
+    });
+    dec.addEventListener("click", () => {
+      let n = parseInt(input.value, 10) || 1;
+      input.value = String(Math.max(1, n - 1));
+    });
+    input.addEventListener("change", clamp);
+    input.addEventListener("blur", clamp);
+  }
+</script>
