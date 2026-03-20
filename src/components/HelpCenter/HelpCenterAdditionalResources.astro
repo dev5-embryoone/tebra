@@ -1,0 +1,80 @@
+---
+import { helpCenterResourceColumns } from "../../data/helpCenterPage";
+---
+
+<section class="border-t border-neutral-100 bg-white px-4 py-14 sm:py-16" aria-labelledby="additional-resources-heading">
+  <div class="mx-auto max-w-6xl">
+    <h2 id="additional-resources-heading" class="text-center font-serif text-2xl font-bold text-[#004b50] sm:text-3xl">
+      Additional Resources
+    </h2>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      {
+        helpCenterResourceColumns.map((col) => (
+          <article class="flex flex-col overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-md">
+            <div class:list={["h-24 shrink-0 rounded-t-2xl", col.headerClass]} aria-hidden="true">
+              <div class="flex h-full items-center justify-center opacity-40">
+                <svg class="h-14 w-14 text-white" viewBox="0 0 64 64" fill="none">
+                  <path d="M12 20h40M12 32h28M12 44h36" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="48" cy="24" r="6" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="font-serif text-xl font-bold text-[#004b50]">{col.title}</h3>
+              {col.links && (
+                <ul class="mt-4 flex flex-col gap-2">
+                  {col.links.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        class="inline-flex items-center gap-1.5 text-sm text-neutral-600 underline-offset-2 hover:text-[#004b50] hover:underline"
+                        {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      >
+                        {link.label}
+                        <svg class="h-3.5 w-3.5 shrink-0 text-neutral-400" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                          <path
+                            d="M2 10L10 2M10 2H4M10 2v6"
+                            stroke="currentColor"
+                            stroke-width="1.2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {col.bullets && (
+                <ul class="mt-4 list-disc space-y-1 pl-5 text-sm text-neutral-600">
+                  {col.bullets.map((b) => (
+                    <li>{b}</li>
+                  ))}
+                </ul>
+              )}
+              {col.footerLink && (
+                <a
+                  href={col.footerLink.href}
+                  class="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-[#004b50] hover:underline"
+                  {...(col.footerLink.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  {col.footerLink.label}
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path
+                      d="M2 10L10 2M10 2H4M10 2v6"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

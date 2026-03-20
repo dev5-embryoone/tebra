@@ -1,0 +1,42 @@
+---
+const placeholder = "Enter a keyword, topic, or question to search";
+---
+
+<section class="bg-[#004b50] px-4 py-14 text-white sm:py-20" aria-labelledby="help-hero-heading">
+  <div class="mx-auto max-w-3xl text-center">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/90">Tebra Help Center</p>
+    <h1 id="help-hero-heading" class="font-serif text-3xl font-bold sm:text-4xl md:text-5xl">
+      How can we help you?
+    </h1>
+
+    <form
+      class="mx-auto mt-10 flex max-w-xl overflow-hidden rounded-full border-2 border-white/20 bg-white shadow-lg"
+      role="search"
+      action="https://helpme.tebra.com/"
+      method="get"
+    >
+      <label for="help-search" class="sr-only">Search help center</label>
+      <input
+        id="help-search"
+        type="search"
+        name="q"
+        placeholder={placeholder}
+        class="min-w-0 flex-1 border-0 bg-transparent px-5 py-3.5 text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-0"
+      />
+      <button
+        type="submit"
+        class="flex h-12 w-14 shrink-0 items-center justify-center bg-[#F07C65] text-[#004b50] transition hover:bg-[#e86b52] sm:h-auto sm:w-16"
+        aria-label="Search"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-4-4" stroke-linecap="round" />
+        </svg>
+      </button>
+    </form>
+    <p class="mt-4 text-xs text-white/70">
+      Search opens the live Tebra Help Center at{" "}
+      <a href="https://helpme.tebra.com/" class="underline hover:text-white">helpme.tebra.com</a>.
+    </p>
+  </div>
+</section>

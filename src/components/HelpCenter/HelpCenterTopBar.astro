@@ -1,0 +1,66 @@
+---
+import { helpCenterAnnouncement, helpCenterNav } from "../../data/helpCenterPage";
+import logoTebraRaw from "../../assets/tebra navbar.svg";
+
+const logoTebra = typeof logoTebraRaw === "string" ? logoTebraRaw : logoTebraRaw.src;
+---
+
+<div class="border-b border-neutral-200 bg-[#f7f9f9] text-sm text-neutral-800">
+  <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+    <p class="leading-snug">{helpCenterAnnouncement.text}</p>
+    <a
+      href={helpCenterAnnouncement.href}
+      class="shrink-0 font-semibold text-[#004b50] underline decoration-2 underline-offset-2 hover:text-[#003a3e]"
+    >
+      {helpCenterAnnouncement.cta}
+    </a>
+  </div>
+</div>
+
+<header class="sticky top-0 z-30 border-b border-neutral-200 bg-white">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+    <a href="/" class="flex items-center gap-2" aria-label="Tebra home">
+      <img src={logoTebra} alt="Tebra" class="h-8 w-auto" width="120" height="32" />
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Help center">
+      {
+        helpCenterNav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              "text-sm font-medium transition-colors",
+              item.current ? "text-[#004b50] font-semibold" : "text-neutral-700 hover:text-[#004b50]",
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href="/sign-in"
+        class="rounded-full border-2 border-[#004b50] px-4 py-1.5 text-sm font-semibold text-[#004b50] transition-colors hover:bg-[#004b50] hover:text-white"
+      >
+        Sign in
+      </a>
+    </nav>
+
+    <details class="relative md:hidden">
+      <summary class="cursor-pointer list-none rounded-lg border border-neutral-300 px-3 py-2 text-sm font-semibold text-[#004b50]">
+        Menu
+      </summary>
+      <div class="absolute right-0 mt-2 w-52 rounded-lg border border-neutral-200 bg-white py-2 shadow-lg">
+        {
+          helpCenterNav.map((item) => (
+            <a href={item.href} class="block px-4 py-2 text-sm text-neutral-800 hover:bg-neutral-50">
+              {item.label}
+            </a>
+          ))
+        }
+        <a href="/sign-in" class="block px-4 py-2 text-sm font-semibold text-[#004b50] hover:bg-neutral-50">
+          Sign in
+        </a>
+      </div>
+    </details>
+  </div>
+</header>

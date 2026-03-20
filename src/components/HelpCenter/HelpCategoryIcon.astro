@@ -1,0 +1,96 @@
+---
+/** Line-art icons — teal strokes + coral accents (Tebra Help Center style) */
+interface Props {
+  name: "platform" | "clinical" | "billing" | "engage" | "telehealth" | "growth";
+}
+
+const { name } = Astro.props;
+const teal = "#004b50";
+const coral = "#F07C65";
+---
+
+{
+  name === "platform" && (
+    <svg class="h-20 w-20 sm:h-24 sm:w-24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <path d="M16 52V28l24-14 24 14v24" stroke={teal} stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M12 52h56" stroke={teal} stroke-width="1.8" stroke-linecap="round" />
+      <rect x="30" y="36" width="6" height="10" rx="1" fill={coral} />
+      <rect x="38" y="32" width="6" height="14" rx="1" fill={coral} opacity="0.85" />
+    </svg>
+  )
+}
+
+{
+  name === "clinical" && (
+    <svg class="h-20 w-20 sm:h-24 sm:w-24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <rect x="18" y="14" width="44" height="52" rx="3" stroke={teal} stroke-width="1.8" />
+      <path d="M26 26h28M26 34h20M26 42h24" stroke={teal} stroke-width="1.4" stroke-linecap="round" />
+      <path d="M44 48v10M39 53h10" stroke={coral} stroke-width="2" stroke-linecap="round" />
+      <path d="M52 20l4 4-4 4" stroke={teal} stroke-width="1.4" stroke-linecap="round" />
+    </svg>
+  )
+}
+
+{
+  name === "billing" && (
+    <svg class="h-20 w-20 sm:h-24 sm:w-24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <path d="M22 18h36a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4V22a4 4 0 0 1 4-4z" stroke={teal} stroke-width="1.8" />
+      <path d="M26 22h12v8H26z" fill={coral} opacity="0.9" />
+      <path
+        d="M38 44c0 4.4 3.6 8 8 8h6M38 44c0-4.4 3.6-8 8-8h6"
+        stroke={teal}
+        stroke-width="1.6"
+        stroke-linecap="round"
+      />
+      <path
+        d="M40 38v16M36.5 40.5h5.5a3 3 0 0 1 0 6h-5a3 3 0 0 0 0 6h6"
+        stroke={coral}
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  )
+}
+
+{
+  name === "engage" && (
+    <svg class="h-20 w-20 sm:h-24 sm:w-24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <path
+        d="M22 48c-4-6-2-14 4-18s14-2 18 4c4-6 12-8 18-4s8 12 4 18c-3 4.5-8 7-14 7H28c-6 0-11-2.5-14-7z"
+        stroke={teal}
+        stroke-width="1.8"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M40 22c-2 2-4 5-4 8 0 3 2 4 4 2 2 2 4 1 4-2 0-3-2-6-4-8z"
+        fill={coral}
+      />
+    </svg>
+  )
+}
+
+{
+  name === "telehealth" && (
+    <svg class="h-20 w-20 sm:h-24 sm:w-24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <rect x="14" y="22" width="36" height="26" rx="3" stroke={teal} stroke-width="1.8" />
+      <path d="M22 30h20M22 36h14" stroke={teal} stroke-width="1.4" stroke-linecap="round" />
+      <path d="M48 32l14-8v28l-14-8V32z" stroke={teal} stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M52 58l-8-6h-6l-4-6" stroke={teal} stroke-width="1.4" stroke-linecap="round" />
+      <circle cx="58" cy="54" r="3" fill={coral} />
+    </svg>
+  )
+}
+
+{
+  name === "growth" && (
+    <svg class="h-20 w-20 sm:h-24 sm:w-24" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+      <rect x="14" y="16" width="52" height="40" rx="3" stroke={teal} stroke-width="1.8" />
+      <path d="M14 24h52" stroke={teal} stroke-width="1.4" />
+      <circle cx="28" cy="44" r="6" stroke={teal} stroke-width="1.6" />
+      <path d="M36 44l8-6 8 10 10-14" stroke={teal} stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M24 62l4-6h8l4 6" fill={coral} />
+      <path d="M34 56l2 4 2-4 2 4 2-4" stroke={coral} stroke-width="1.2" stroke-linecap="round" />
+    </svg>
+  )
+}

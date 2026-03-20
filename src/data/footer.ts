@@ -45,7 +45,7 @@ export const footerColumns: FooterColumnData[] = [
       { label: "Blog", href: "#" },
       { label: "Partner Marketplace", href: "/partners" },
       { label: "Newsroom", href: "/newsroom" },
-      { label: "Help Center", href: "/support" },
+      { label: "Help Center", href: "/help" },
       { label: "Quality Programs & Regulatory Support", href: "#" },
     ],
   },

@@ -42,7 +42,7 @@ export const kareoStyleLogin = {
   patientPortalLabel: "Patient Portal",
   patientPortalHref: "/patient-portal",
   troubleLabel: "Trouble signing in?",
-  troubleHref: "/support",
+  troubleHref: "/help",
   promo: {
     title: "Cut Documentation Time by 70% with ",
     titleAccent: "Tebra AI Note Assist",
