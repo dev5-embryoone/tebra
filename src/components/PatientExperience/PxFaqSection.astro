@@ -27,7 +27,12 @@ const { faqs, id: sectionId, showEyebrow = true, centered = false } = Astro.prop
       titleClass="text-tebra-teal-dark"
       centered={centered}
     />
-    <div class="mt-8 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+    <div
+      class:list={[
+        "mt-8 overflow-hidden rounded-xl border border-gray-200 bg-white p-1 shadow-sm",
+        centered && "mx-auto max-w-2xl",
+      ]}
+    >
       {faqs.map((item, index) => (
         <FAQItem
           itemId={item.id}
