@@ -93,7 +93,7 @@ import {
   </div>
 
   <div class="max-w-content mx-auto px-4 py-12 sm:px-6 lg:px-12 lg:py-16">
-    <IntakeSectionHeader id="tebra-news" title="Tebra News" viewAllHref="/theintake" />
+    <IntakeSectionHeader id="tebra-news" title="Tebra News" viewAllHref="/theintake/tebra-news" />
     <div class="space-y-8 lg:space-y-10">
       <IntakeSplitFeature
         article={intakeTebraNewsFeatured}
@@ -136,7 +136,7 @@ import {
 
   <div id="practice-growth" class="bg-gray-50/80 py-12 lg:py-16">
     <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
-      <IntakeSectionHeader title="Practice Growth" viewAllHref="/marketing" />
+      <IntakeSectionHeader title="Practice Growth" viewAllHref="/theintake/practice-growth" />
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
         {intakePracticeGrowth.map((article) => (
           <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="md" />
@@ -153,7 +153,7 @@ import {
 
   <div id="medical-billing" class="py-12 lg:py-16">
     <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
-      <IntakeSectionHeader title="Medical Billing" viewAllHref="/billing-payments" />
+      <IntakeSectionHeader title="Medical Billing" viewAllHref="/theintake/medical-billing" />
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
         {intakeMedicalBilling.map((article) => (
           <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="md" />
@@ -164,7 +164,7 @@ import {
 
   <div id="practice-operations" class="border-t border-gray-100 bg-white py-12 lg:py-16">
     <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
-      <IntakeSectionHeader title="Practice Operations" viewAllHref="/theintake" />
+      <IntakeSectionHeader title="Practice Operations" viewAllHref="/theintake/practice-operations" />
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
         {intakePracticeOperations.map((article) => (
           <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="md" />
@@ -175,7 +175,7 @@ import {
 
   <div id="reports" class="border-t border-gray-100 bg-gray-50/50 py-12 lg:py-16">
     <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
-      <IntakeSectionHeader title="Latest Articles" viewAllHref="/theintake" />
+      <IntakeSectionHeader title="Latest Articles" viewAllHref="/theintake/reports" />
       <div class="grid gap-10 lg:grid-cols-3 lg:gap-12">
         <div class="grid gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-2">
           {intakeLatestArticles.map((article) => (

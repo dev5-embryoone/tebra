@@ -13,18 +13,18 @@ export const intakeTagline =
 
 export const intakeNav = {
   categories: [
-    { label: "Practice Growth", href: "/theintake#practice-growth" },
-    { label: "Practice Operations", href: "/theintake#practice-operations" },
-    { label: "Patient Experience", href: "/patient-experience" },
-    { label: "Medical Billing", href: "/theintake#medical-billing" },
-    { label: "Deep Dives", href: "/guides" },
-    { label: "Checklists and Guides", href: "/guides" },
-    { label: "Staffing Solutions", href: "/careers" },
-    { label: "Tebra News", href: "/theintake#tebra-news" },
+    { label: "Practice Growth", href: "/theintake/practice-growth" },
+    { label: "Practice Operations", href: "/theintake/practice-operations" },
+    { label: "Patient Experience", href: "/theintake/patient-experience" },
+    { label: "Medical Billing", href: "/theintake/medical-billing" },
+    { label: "Deep Dives", href: "/theintake/deep-dives" },
+    { label: "Checklists and Guides", href: "/theintake/checklists-and-guides" },
+    { label: "Staffing Solutions", href: "/theintake/staffing-solutions" },
+    { label: "Tebra News", href: "/theintake/tebra-news" },
   ],
   tools: [
-    { label: "EHR Calculator", href: "/ehr-calculator" },
-    { label: "ICD Code Glossary", href: "/documentation" },
+    { label: "EHR Calculator", href: "/ehr-calculator/step-1" },
+    { label: "ICD Code Glossary", href: "/theintake/icd-code-glossary" },
     { label: "Practice Efficiency Grader", href: "/practice-efficiency-grader" },
     { label: "Competitor Scanner", href: "/competitive-scanner" },
     { label: "Revenue Recovery Calculator", href: "/billing-payments/billing-calculator" },
@@ -166,13 +166,13 @@ export const intakeEhrBand = {
 
 /** Topic shortcuts — each points to a real route or in-page anchor */
 export const intakeFilterPills: Array<{ label: string; href: string }> = [
-  { label: "EHR", href: "/ehr-calculator" },
-  { label: "Patient Experience", href: "/patient-experience" },
-  { label: "Reports", href: "/theintake#reports" },
-  { label: "News", href: "/theintake#tebra-news" },
+  { label: "EHR", href: "/ehr-calculator/step-1" },
+  { label: "Patient Experience", href: "/theintake/patient-experience" },
+  { label: "Reports", href: "/theintake/reports" },
+  { label: "News", href: "/theintake/news" },
   { label: "Primary Care", href: "/specialties/primary-care" },
   { label: "Mental Health", href: "/specialties/psychology" },
-  { label: "Vital Signs", href: "/theintake#medical-billing" },
+  { label: "Vital Signs", href: "/theintake/medical-billing" },
 ];
 
 export const intakeTebraNewsFeatured: IntakeArticle = {
@@ -493,13 +493,13 @@ export const intakeFooter = {
     { label: "Editorial Standards", href: "/theintake/editorial-standards" },
   ],
   topics: [
-    { label: "Practice Operations", href: "/theintake#practice-operations" },
-    { label: "Practice Growth", href: "/theintake#practice-growth" },
-    { label: "Staffing Solutions", href: "/careers" },
-    { label: "Patient Experience", href: "/patient-experience" },
-    { label: "Getting Paid", href: "/billing-payments" },
-    { label: "Deep Dives", href: "/guides" },
-    { label: "Checklists and Guides", href: "/guides" },
+    { label: "Practice Operations", href: "/theintake/practice-operations" },
+    { label: "Practice Growth", href: "/theintake/practice-growth" },
+    { label: "Staffing Solutions", href: "/theintake/staffing-solutions" },
+    { label: "Patient Experience", href: "/theintake/patient-experience" },
+    { label: "Getting Paid", href: "/theintake/medical-billing" },
+    { label: "Deep Dives", href: "/theintake/deep-dives" },
+    { label: "Checklists and Guides", href: "/theintake/checklists-and-guides" },
   ],
   guides: [
     { label: "How to Start a Medical Practice", href: "/independent-practices" },
@@ -588,3 +588,232 @@ export function getAllIntakeArticleSlugs(): string[] {
   }
   return [...set];
 }
+
+/** Reserved paths handled as category / tool hubs (not article detail). */
+export const INTAKE_HUB_SLUGS = [
+  "practice-growth",
+  "billing-company",
+  "practice-operations",
+  "patient-experience",
+  "medical-billing",
+  "deep-dives",
+  "checklists-and-guides",
+  "staffing-solutions",
+  "tebra-news",
+  "news",
+  "reports",
+  "icd-code-glossary",
+] as const;
+
+export type IntakeHubSlug = (typeof INTAKE_HUB_SLUGS)[number];
+
+export function isIntakeHubSlug(slug: string): slug is IntakeHubSlug {
+  return (INTAKE_HUB_SLUGS as readonly string[]).includes(slug);
+}
+
+function trendingToArticle(t: IntakeTrendingItem): IntakeArticle {
+  return {
+    slug: t.slug,
+    imageKey: t.imageKey,
+    tag: t.tag,
+    readTime: t.readTime,
+    title: t.title,
+    author: t.author,
+  };
+}
+
+/** Deduplicated articles for hub filtering. */
+export function getAllIntakeArticlesFlat(): IntakeArticle[] {
+  const bySlug = new Map<string, IntakeArticle>();
+  const add = (a: IntakeArticle) => {
+    if (!bySlug.has(a.slug)) bySlug.set(a.slug, a);
+  };
+  intakeTopLeft.forEach(add);
+  add(intakeTebraNewsFeatured);
+  intakeTebraNewsRow.forEach(add);
+  intakePracticeGrowth.forEach(add);
+  intakeMedicalBilling.forEach(add);
+  intakePracticeOperations.forEach(add);
+  intakeLatestArticles.forEach(add);
+  add(intakeExpertSpotlight);
+  intakeSidebarArticles.forEach(add);
+  intakeTrending.forEach((t) => add(trendingToArticle(t)));
+  return [...bySlug.values()];
+}
+
+export type IntakeHubKind = "category" | "news" | "reports" | "icd";
+
+export function getIntakeHubMeta(slug: string): {
+  kind: IntakeHubKind;
+  title: string;
+  description: string;
+  viewAllHref?: string;
+} | null {
+  const meta: Record<
+    string,
+    { kind: IntakeHubKind; title: string; description: string; viewAllHref?: string }
+  > = {
+    "practice-growth": {
+      kind: "category",
+      title: "Practice Growth",
+      description:
+        "Achieve growth for your medical practice with a strong online presence. Explore proven strategies for building an effective website, leveraging social media, optimizing search marketing, and managing your reputation to attract more patients.",
+      viewAllHref: "/theintake",
+    },
+    "billing-company": {
+      kind: "category",
+      title: "Medical Billing",
+      description:
+        "Insights and strategies to launch, run, and scale your billing business — from payer trends and RCM news to tools for billing companies.",
+      viewAllHref: "/theintake/medical-billing",
+    },
+    "practice-operations": {
+      kind: "category",
+      title: "Practice Operations",
+      description:
+        "Streamline workflows, adopt technology responsibly, and run a more efficient independent practice.",
+      viewAllHref: "/theintake",
+    },
+    "patient-experience": {
+      kind: "category",
+      title: "Patient Experience",
+      description:
+        "Ideas and guidance to improve scheduling, communication, digital intake, and every touchpoint patients have with your practice.",
+      viewAllHref: "/patient-experience",
+    },
+    "medical-billing": {
+      kind: "category",
+      title: "Medical Billing",
+      description:
+        "Stay current on coding updates, payer policy, revenue cycle management, and getting paid faster.",
+      viewAllHref: "/billing-payments",
+    },
+    "deep-dives": {
+      kind: "category",
+      title: "Deep Dives",
+      description:
+        "Longer reads and analysis on trends, policy, and strategy for independent healthcare practices.",
+      viewAllHref: "/theintake/reports",
+    },
+    "checklists-and-guides": {
+      kind: "category",
+      title: "Checklists and Guides",
+      description:
+        "Practical checklists, templates, and step-by-step guides you can use in your practice or billing company.",
+      viewAllHref: "/guides",
+    },
+    "staffing-solutions": {
+      kind: "category",
+      title: "Staffing Solutions",
+      description:
+        "Burnout, hiring, retention, and workforce strategies for clinicians and practice leaders.",
+      viewAllHref: "/careers",
+    },
+    "tebra-news": {
+      kind: "category",
+      title: "Tebra News",
+      description: "Product updates, partnerships, and stories from Tebra.",
+      viewAllHref: "/theintake",
+    },
+    news: {
+      kind: "news",
+      title: "News",
+      description:
+        "Stay informed about healthcare news, emergent trends, and issues that impact independent healthcare providers, patients, and policymakers.",
+      viewAllHref: "/theintake/news",
+    },
+    reports: {
+      kind: "reports",
+      title: "Reports",
+      description:
+        "Data-driven reports and analysis on patient behavior, digital care, and practice performance.",
+      viewAllHref: "/theintake/reports",
+    },
+    "icd-code-glossary": {
+      kind: "icd",
+      title: "Top ICD-10-CM codes for independent medical practices",
+      description:
+        "A library dedicated to ICD-10-CM codes for independent healthcare providers to simplify billing, streamline documentation, and enhance patient care.",
+      viewAllHref: "/theintake/icd-code-glossary",
+    },
+  };
+  return meta[slug] ?? null;
+}
+
+export function getIntakeHubArticles(slug: string): IntakeArticle[] {
+  const all = getAllIntakeArticlesFlat();
+
+  switch (slug) {
+    case "practice-growth":
+      return intakePracticeGrowth;
+    case "practice-operations":
+      return intakePracticeOperations;
+    case "medical-billing":
+      return intakeMedicalBilling;
+    case "billing-company": {
+      const want = new Set(
+        intakeMedicalBilling.map((a) => a.slug).concat([
+          "start-medical-billing-company",
+          "medical-billing-clients-tebra-scale",
+        ])
+      );
+      return all.filter((a) => want.has(a.slug) || a.tag.label === "Medical Billing");
+    }
+    case "patient-experience":
+      return all.filter((a) => a.tag.label === "Patient Experience");
+    case "tebra-news":
+      return [intakeTebraNewsFeatured, ...intakeTebraNewsRow];
+    case "checklists-and-guides":
+      return all.filter((a) => a.tag.label === "Checklists and Guides");
+    case "staffing-solutions":
+      return all.filter(
+        (a) =>
+          a.tag.label === "Staffing Solutions" ||
+          a.slug.includes("burnout") ||
+          a.slug === "nurse-practitioner-authority-state-laws"
+      );
+    case "deep-dives":
+      return all.filter(
+        (a) =>
+          a.kind === "report" ||
+          a.tag.label === "Report" ||
+          ["personalization-strategies-practice-growth", "automate-medical-practice-beginners-guide"].includes(
+            a.slug
+          )
+      );
+    case "news": {
+      const featuredSlug = "em-code-updates-2026";
+      return all.filter((a) => a.slug !== featuredSlug);
+    }
+    case "reports":
+      return all.filter((a) => a.kind === "report" || a.tag.label === "Report");
+    default:
+      return [];
+  }
+}
+
+/** Featured story on /theintake/news (CMS ICD updates). */
+export function getIntakeNewsFeaturedArticle(): IntakeArticle | undefined {
+  return getIntakeArticleBySlug("em-code-updates-2026");
+}
+
+export const intakeIcdSampleCategories = [
+  {
+    id: "a00-b99",
+    title: "A00-B99: Certain infectious and parasitic diseases category",
+    codes: [
+      { code: "A41.9", href: "/theintake/em-code-updates-2026" },
+      { code: "B20", href: "/theintake/em-code-updates-2026" },
+      { code: "B18.3", href: "/theintake/em-code-updates-2026" },
+      { code: "B35.1", href: "/theintake/em-code-updates-2026" },
+    ],
+  },
+  {
+    id: "c00-d49",
+    title: "C00-D49: Neoplasms (sample)",
+    codes: [
+      { code: "C50.911", href: "/theintake/em-code-updates-2026" },
+      { code: "D64.9", href: "/theintake/em-code-updates-2026" },
+    ],
+  },
+] as const;

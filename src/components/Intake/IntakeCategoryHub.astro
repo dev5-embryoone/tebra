@@ -1,0 +1,50 @@
+---
+import IntakeArticleCard from "./IntakeArticleCard.astro";
+import IntakeSectionHeader from "./IntakeSectionHeader.astro";
+import type { IntakeArticle } from "../../data/theIntakePage";
+import { intakeImage } from "../../lib/intakeImages";
+
+interface Props {
+  title: string;
+  description: string;
+  articles: IntakeArticle[];
+  viewAllHref?: string;
+  /** Optional eyebrow above title */
+  eyebrow?: string;
+}
+
+const { title, description, articles, viewAllHref = "/theintake", eyebrow } = Astro.props as Props;
+---
+
+<section class="border-b border-gray-100 bg-white">
+  <div class="max-w-content mx-auto px-4 py-10 sm:px-6 sm:py-12 lg:px-12 lg:py-14">
+    <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
+      <a href="/theintake" class="font-medium text-tebra-teal-dark hover:underline">The Intake</a>
+      <span class="mx-2" aria-hidden="true">/</span>
+      <span class="text-gray-700">{title}</span>
+    </nav>
+
+    <header class="mt-8 max-w-3xl">
+      {eyebrow ? (
+        <p class="text-xs font-bold uppercase tracking-[0.15em] text-tebra-orange">{eyebrow}</p>
+      ) : null}
+      <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
+        {title}
+      </h1>
+      <p class="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg">{description}</p>
+    </header>
+
+    <div class="mt-12">
+      <IntakeSectionHeader title="Latest articles" viewAllHref={viewAllHref} />
+      {articles.length ? (
+        <div class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {articles.map((article) => (
+            <IntakeArticleCard article={article} imageSrc={intakeImage(article.imageKey)} size="md" />
+          ))}
+        </div>
+      ) : (
+        <p class="mt-8 text-gray-600">More articles are on the way. Browse the hub for related topics.</p>
+      )}
+    </div>
+  </div>
+</section>

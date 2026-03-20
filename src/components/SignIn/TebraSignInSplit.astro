@@ -1,0 +1,135 @@
+---
+import logoTebraRaw from "../../assets/tebra navbar.svg";
+import { tebraSignInLanding } from "../../data/signInPage";
+
+const logoSrc = typeof logoTebraRaw === "string" ? logoTebraRaw : logoTebraRaw.src;
+const d = tebraSignInLanding;
+---
+
+<div class="flex min-h-[calc(100dvh-var(--nav-sticky-offset))] flex-col lg:min-h-[min(100dvh,calc(100dvh-var(--nav-sticky-offset)))] lg:flex-row">
+  <!-- Left: cream panel -->
+  <div class="flex flex-1 flex-col bg-[#F8F7F2] px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-20">
+    <a href="/" class="mb-10 inline-flex w-fit shrink-0 items-center gap-2 lg:mb-14">
+      <img src={logoSrc} alt="Tebra" class="h-7 w-auto sm:h-8" loading="eager" />
+    </a>
+
+    <div class="flex flex-1 flex-col justify-center">
+      <h1 class="font-display text-3xl font-semibold tracking-tight text-[#1a2e2e] sm:text-4xl lg:text-[2.35rem]">
+        {d.welcomeTitle}
+      </h1>
+      <p class="mt-3 text-base text-gray-600 sm:text-lg">{d.welcomeSubtitle}</p>
+
+      <div class="mt-10 grid max-w-xl gap-4 sm:grid-cols-2 sm:gap-5">
+        {
+          d.cards.map((card) => (
+            <a
+              href={card.href}
+              class="group flex flex-col rounded-xl border border-gray-200/80 bg-white p-5 shadow-sm transition-shadow hover:border-tebra-teal/25 hover:shadow-md sm:p-6"
+            >
+              <p class="text-lg font-bold text-tebra-teal-dark">{card.title}</p>
+              <p class="mt-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400">
+                {card.legacyLabel}
+              </p>
+              <span class="mt-6 inline-flex items-center text-sm font-semibold text-tebra-teal group-hover:underline">
+                {card.cta}
+                <svg class="ml-1 inline h-3.5 w-3.5 shrink-0" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path
+                    d="M10 2H6v1h2.59L4.5 7.09l.71.71L9.3 3.71V6h1V2zM2 4v6h6V7H7v2H3V5h2V4H2z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+
+      <p class="mt-10 text-sm text-gray-600">
+        {d.noAccountCta}{" "}
+        <a href={d.requestDemoHref} class="font-semibold text-tebra-teal hover:text-tebra-teal-dark hover:underline">
+          {d.requestDemoLabel}
+        </a>
+      </p>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-3 border-t border-gray-200/80 pt-6 text-xs text-gray-600 sm:flex-row sm:items-center sm:justify-between lg:mt-16"
+    >
+      <span>{d.footerCopyright}</span>
+      <div class="flex flex-wrap gap-4">
+        <a href="/terms" class="font-medium hover:text-tebra-teal-dark hover:underline">
+          Terms &amp; Conditions
+        </a>
+        <a href="/privacy" class="font-medium hover:text-tebra-teal-dark hover:underline">
+          Privacy Policy
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: dark teal brand panel -->
+  <div
+    class="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-[#00454E] px-8 py-14 text-center text-white sm:py-16 lg:min-h-[520px] lg:py-20"
+  >
+    <div class="relative mx-auto flex max-w-md flex-col items-center">
+      <!-- Decorative ring + logo -->
+      <div class="relative flex h-56 w-56 items-center justify-center sm:h-64 sm:w-64">
+        <div
+          class="absolute inset-0 rounded-full border-2 border-[#FF8E6E]"
+          aria-hidden="true"
+        />
+        <!-- Orbiting icon positions -->
+        <span class="absolute left-1/2 top-0 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <path d="M9 22V12h6v10M12 5v3" stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="absolute right-0 top-1/2 flex h-9 w-9 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </span>
+        <span class="absolute bottom-0 right-8 flex h-9 w-9 translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4.8 12a8 8 0 0 1 8-8V2m0 0v4m0-4h4M4.8 12H2m2.8 0a8 8 0 0 0 8 8V22m0 0v-4m0 4h4" stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="absolute bottom-0 left-8 flex h-9 w-9 translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="5" y="2" width="14" height="20" rx="2" />
+            <path d="M12 18h.01" stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="absolute left-0 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <img
+          src={logoSrc}
+          alt=""
+          class="relative z-10 h-16 w-auto brightness-0 invert sm:h-20"
+          width="120"
+          height="48"
+        />
+      </div>
+
+      <h2 class="mt-10 text-xl font-bold leading-snug sm:text-2xl">{d.brandPanel.headline}</h2>
+      <p class="mt-3 max-w-sm text-sm leading-relaxed text-white/85 sm:text-base">{d.brandPanel.body}</p>
+      <a
+        href={d.brandPanel.learnMoreHref}
+        class="mt-6 inline-flex items-center text-sm font-semibold text-white hover:underline"
+      >
+        {d.brandPanel.learnMoreLabel}
+        <svg class="ml-1 h-3.5 w-3.5" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path
+            d="M10 2H6v1h2.59L4.5 7.09l.71.71L9.3 3.71V6h1V2zM2 4v6h6V7H7v2H3V5h2V4H2z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

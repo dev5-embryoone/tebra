@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { kareoStyleLogin } from "../../../data/signInPage";
+import aiPromoRaw from "../../../assets/hero-short.webp";
+
+const promoImg = typeof aiPromoRaw === "string" ? aiPromoRaw : aiPromoRaw.src;
+const c = kareoStyleLogin;
+---
+
+<BaseLayout
+  title="Login | Tebra"
+  description="Sign in to Tebra with your username and password."
+  navMode="logo-only"
+  showFooter={false}
+  mainClass="min-h-[calc(100dvh-var(--nav-product-tour-offset))] bg-white"
+>
+  <div class="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-8 sm:px-6 lg:flex-row lg:items-start lg:justify-center lg:gap-12 lg:px-8 lg:py-12 xl:max-w-6xl xl:gap-16">
+    <div class="min-w-0 flex-1 lg:max-w-md">
+      <p class="text-center lg:text-left">
+        <a href="/sign-in" class="text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark hover:underline">
+          ← Back to sign-in options
+        </a>
+      </p>
+
+      <h1 class="mt-6 text-center text-2xl font-bold text-gray-900 lg:text-left">{c.title}</h1>
+      <p class="mt-2 text-center text-sm text-gray-600 lg:text-left">{c.subtitle}</p>
+
+      <form id="tebra-login-form" class="mt-8 space-y-5" novalidate>
+        <div>
+          <label for="login-email" class="block text-sm font-medium text-gray-600">{c.emailLabel}</label>
+          <input
+            id="login-email"
+            name="email"
+            type="email"
+            autocomplete="username"
+            class="mt-1.5 w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 outline-none ring-tebra-teal/20 focus:border-tebra-teal focus:ring-2"
+          />
+          <p id="login-email-err" class="mt-1 hidden text-xs text-red-600" role="alert">Required</p>
+        </div>
+        <div>
+          <label for="login-password" class="block text-sm font-medium text-gray-600">{c.passwordLabel}</label>
+          <div class="relative mt-1.5">
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              class="w-full rounded-lg border border-gray-300 py-2.5 pl-3 pr-11 text-sm text-gray-900 outline-none ring-tebra-teal/20 focus:border-tebra-teal focus:ring-2"
+            />
+            <button
+              type="button"
+              id="toggle-password"
+              class="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+              aria-label="Show password"
+              aria-pressed="false"
+            >
+              <svg class="h-5 w-5" data-eye-open viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <svg class="hidden h-5 w-5" data-eye-shut viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 3l18 18M10.5 10.5a3 3 0 0 0 4 4M9.9 5.1A10.3 10.3 0 0 1 12 5c6 0 10 7 10 7a18.3 18.3 0 0 1-2.7 3.6M6.2 6.2A18.1 18.1 0 0 0 2 12s4 7 10 7a9.7 9.7 0 0 0 4.2-.9" />
+              </svg>
+            </button>
+          </div>
+          <p id="login-password-err" class="mt-1 hidden text-xs text-red-600" role="alert">Required</p>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <button
+            type="submit"
+            class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-[#FF8C73] px-6 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
+          >
+            {c.submitLabel}
+          </button>
+          <a
+            href={c.signUpHref}
+            class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full border-2 border-[#FF8C73] px-6 text-sm font-semibold text-[#e0785c] transition hover:bg-orange-50"
+          >
+            {c.signUpLabel}
+          </a>
+        </div>
+
+        <div class="flex flex-col gap-2 text-sm sm:flex-row sm:justify-between">
+          <a href={c.patientPortalHref} class="font-semibold text-tebra-teal hover:underline">
+            {c.patientPortalLabel}
+          </a>
+          <a href={c.troubleHref} class="font-semibold text-tebra-teal hover:underline">
+            {c.troubleLabel}
+          </a>
+        </div>
+      </form>
+    </div>
+
+    <aside class="min-w-0 flex-1 rounded-2xl border border-gray-100 bg-[#F9F9F7] p-6 shadow-sm sm:p-8 lg:max-w-md">
+      <h2 class="text-lg font-bold leading-snug text-gray-900 sm:text-xl">
+        {c.promo.title}
+        <span class="text-tebra-teal-dark">{c.promo.titleAccent}</span>
+      </h2>
+      <p class="mt-3 text-sm leading-relaxed text-gray-800">{c.promo.description}</p>
+      <a
+        href={c.promo.learnMoreHref}
+        class="mt-4 inline-flex items-center text-sm font-semibold text-tebra-teal hover:underline"
+      >
+        {c.promo.learnMoreLabel}
+        <svg class="ml-1 h-3.5 w-3.5" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path
+            d="M10 2H6v1h2.59L4.5 7.09l.71.71L9.3 3.71V6h1V2zM2 4v6h6V7H7v2H3V5h2V4H2z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+      <div class="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-gray-100">
+        <img src={promoImg} alt="" class="h-auto w-full object-cover" loading="lazy" width={800} height={500} />
+      </div>
+      <p class="mt-3 text-center text-xs text-gray-500">Product preview — connect to Tebra AI Note Assist in a live demo.</p>
+    </aside>
+  </div>
+
+  <footer class="border-t border-gray-100 py-6 text-center text-xs text-gray-500">
+    <a href="/terms" class="font-medium hover:text-tebra-teal">Terms of Service</a>
+    <span class="mx-3 text-gray-300">|</span>
+    <a href="/privacy" class="font-medium hover:text-tebra-teal">Privacy Policy</a>
+  </footer>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById("tebra-login-form");
+      var email = document.getElementById("login-email");
+      var password = document.getElementById("login-password");
+      var errE = document.getElementById("login-email-err");
+      var errP = document.getElementById("login-password-err");
+      var toggle = document.getElementById("toggle-password");
+      if (!form || !email || !password || !toggle) return;
+
+      function syncEyeIcons() {
+        var isHidden = password.getAttribute("type") === "password";
+        var open = toggle.querySelector("[data-eye-open]");
+        var shut = toggle.querySelector("[data-eye-shut]");
+        if (open && shut) {
+          open.classList.toggle("hidden", !isHidden);
+          shut.classList.toggle("hidden", isHidden);
+        }
+        toggle.setAttribute("aria-label", isHidden ? "Show password" : "Hide password");
+        toggle.setAttribute("aria-pressed", isHidden ? "false" : "true");
+      }
+
+      toggle.addEventListener("click", function () {
+        var isPwd = password.getAttribute("type") === "password";
+        password.setAttribute("type", isPwd ? "text" : "password");
+        syncEyeIcons();
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var ok = true;
+        if (!email.value || !String(email.value).trim()) {
+          errE.classList.remove("hidden");
+          ok = false;
+        } else errE.classList.add("hidden");
+        if (!password.value) {
+          errP.classList.remove("hidden");
+          ok = false;
+        } else errP.classList.add("hidden");
+        if (ok) {
+          alert("This is a static demo. In production this would sign in via Tebra.");
+        }
+      });
+
+      email.addEventListener("input", function () {
+        errE.classList.add("hidden");
+      });
+      password.addEventListener("input", function () {
+        errP.classList.add("hidden");
+      });
+    })();
+  </script>
+</BaseLayout>
