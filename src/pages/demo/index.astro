@@ -1,14 +1,60 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import DemoHero from "../../components/Demo/DemoHero.astro";
+import DemoHowItWorksBand from "../../components/Demo/DemoHowItWorksBand.astro";
+import DemoTourCardsGrid from "../../components/Demo/DemoTourCardsGrid.astro";
+import DemoPillarsSection from "../../components/Demo/DemoPillarsSection.astro";
+import DemoTrustStatsSection from "../../components/Demo/DemoTrustStatsSection.astro";
+import ResourceLibraryBottomCtaBand from "../../components/ResourceLibrary/ResourceLibraryBottomCtaBand.astro";
+import CTASection from "../../components/Sections/CTASection.astro";
+import {
+  demoPageMeta,
+  demoHero,
+  demoHowItWorks,
+  demoTourCards,
+  demoPillars,
+  demoTrustSection,
+  demoBottomCta,
+  demoClosingCta,
+} from "../../data/demoPage";
 ---
-<BaseLayout
-  title="Request a Demo | Tebra"
-  description="See Tebra in action. Schedule a personalized demo."
->
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h1 class="text-2xl font-semibold text-gray-900">Request a Demo</h1>
-      <p class="mt-2 text-gray-600">Placeholder for hosting test.</p>
-    </div>
-  </section>
+
+<BaseLayout title={demoPageMeta.title} description={demoPageMeta.description}>
+  <DemoHero
+    trustLines={demoHero.trustLines}
+    title={demoHero.title}
+    subtitle={demoHero.subtitle}
+    bullets={demoHero.bullets}
+    primaryCta={demoHero.primaryCta}
+    leadForm={demoHero.leadForm}
+  />
+
+  <DemoHowItWorksBand
+    eyebrow={demoHowItWorks.eyebrow}
+    title={demoHowItWorks.title}
+    description={demoHowItWorks.description}
+  />
+
+  <DemoTourCardsGrid cards={[...demoTourCards]} />
+
+  <DemoPillarsSection title={demoPillars.title} items={[...demoPillars.items]} />
+
+  <DemoTrustStatsSection title={demoTrustSection.title} cards={[...demoTrustSection.cards]} />
+
+  <ResourceLibraryBottomCtaBand
+    title={demoBottomCta.title}
+    subtitle={demoBottomCta.subtitle}
+    bullets={[...demoBottomCta.bullets]}
+    primary={demoBottomCta.primary}
+    secondary={demoBottomCta.secondary}
+  />
+
+  <CTASection
+    title={demoClosingCta.title}
+    description={demoClosingCta.description}
+    primaryCtaLabel={demoClosingCta.primaryCtaLabel}
+    primaryCtaHref={demoClosingCta.primaryCtaHref}
+    secondaryCtaLabel={demoClosingCta.secondaryCtaLabel}
+    secondaryCtaHref={demoClosingCta.secondaryCtaHref}
+  />
 </BaseLayout>

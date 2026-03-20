@@ -1,0 +1,42 @@
+---
+export interface DemoTrustCard {
+  brand: string;
+  statBig: string;
+  statSub: string;
+  specialty: string;
+  location: string;
+  providers: string;
+}
+
+interface Props {
+  title: string;
+  cards: readonly DemoTrustCard[];
+}
+
+const { title, cards } = Astro.props as Props;
+---
+
+<section class="border-t border-gray-100 bg-tebra-section-warm py-14 sm:py-16 md:py-20 lg:py-24">
+  <div class="page-container">
+    <h2 class="heading-md mx-auto max-w-4xl text-center text-tebra-teal-dark">{title}</h2>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+      {
+        cards.map((card) => (
+          <article class="flex flex-col rounded-2xl border border-gray-200/60 bg-white p-6 shadow-sm sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">{card.brand}</p>
+            <div class="mt-6">
+              <p class="text-4xl font-bold tracking-tight text-tebra-teal-dark sm:text-5xl">{card.statBig}</p>
+              <p class="mt-2 text-base font-semibold capitalize text-gray-800 sm:text-lg">{card.statSub}</p>
+            </div>
+            <div class="mt-8 space-y-1 border-t border-gray-100 pt-6 text-sm text-gray-600">
+              <p class="font-medium text-tebra-teal-dark">{card.specialty}</p>
+              <p>{card.location}</p>
+              <p class="text-gray-500">{card.providers}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

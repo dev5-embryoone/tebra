@@ -1,0 +1,139 @@
+---
+import Button from "../Button/Button.astro";
+
+export interface DemoLeadField {
+  name: string;
+  label: string;
+  type: "text" | "email" | "tel";
+  autocomplete?: string;
+}
+
+interface Props {
+  trustLines: readonly string[];
+  title: string;
+  subtitle: string;
+  bullets: readonly string[];
+  primaryCta: { label: string; href: string };
+  leadForm: {
+    heading: string;
+    subheading?: string;
+    fields: readonly DemoLeadField[];
+    submitLabel: string;
+    footnote?: string;
+  };
+}
+
+const { trustLines, title, subtitle, bullets, primaryCta, leadForm } = Astro.props as Props;
+---
+
+<section class="bg-tebra-hero-bg pt-8 pb-14 sm:pt-10 sm:pb-16 md:pb-20 lg:pt-12 lg:pb-24">
+  <div class="page-container">
+    <div class="grid items-start gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+      <div class="lg:col-span-6 xl:col-span-6">
+        <div class="space-y-3 border-b border-tebra-teal/10 pb-6">
+          {
+            trustLines.map((line) => (
+              <p class="text-xs font-semibold uppercase tracking-[0.12em] text-tebra-teal sm:text-[13px]">
+                {line}
+              </p>
+            ))
+          }
+        </div>
+
+        <h1 class="mt-6 text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl md:text-5xl lg:text-[2.75rem] lg:leading-[1.1]">
+          {title}
+        </h1>
+        <p class="mt-4 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
+          {subtitle}
+        </p>
+
+        <ul class="mt-8 space-y-4" role="list">
+          {
+            bullets.map((text) => (
+              <li class="flex gap-3 text-sm text-gray-700 sm:text-base">
+                <span
+                  class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-tebra-teal/10 text-tebra-teal"
+                  aria-hidden="true"
+                >
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 12 12" fill="none">
+                    <path
+                      d="M2.5 6l2.5 2.5L9.5 3.5"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="leading-snug">{text}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <Button href={primaryCta.href} label={primaryCta.label} variant="primary" size="lg" class="rounded-full px-8" />
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 xl:col-span-6">
+        <div
+          class="rounded-2xl border border-gray-200/80 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] sm:p-8 lg:sticky lg:top-[calc(var(--nav-sticky-offset)+1rem)]"
+        >
+          <h2 class="text-lg font-semibold text-tebra-teal-dark sm:text-xl">{leadForm.heading}</h2>
+          {leadForm.subheading ? (
+            <p class="mt-2 text-sm text-gray-600">{leadForm.subheading}</p>
+          ) : null}
+
+          <form id="demo-form" class="mt-6 space-y-4" novalidate>
+            <div class="grid gap-4 sm:grid-cols-2">
+              {
+                leadForm.fields.slice(0, 2).map((field) => (
+                  <label class="block text-left">
+                    <span class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      {field.label}
+                    </span>
+                    <input
+                      name={field.name}
+                      type={field.type}
+                      autocomplete={field.autocomplete}
+                      class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none ring-tebra-teal/30 transition placeholder:text-gray-400 focus:border-tebra-teal focus:ring-2"
+                      placeholder={field.label}
+                    />
+                  </label>
+                ))
+              }
+            </div>
+            {
+              leadForm.fields.slice(2).map((field) => (
+                <label class="block text-left">
+                  <span class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-500">
+                    {field.label}
+                  </span>
+                  <input
+                    name={field.name}
+                    type={field.type}
+                    autocomplete={field.autocomplete}
+                    class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none ring-tebra-teal/30 transition placeholder:text-gray-400 focus:border-tebra-teal focus:ring-2"
+                    placeholder={field.label}
+                  />
+                </label>
+              ))
+            }
+
+            <!-- type="button": static marketing clone; wire to HubSpot etc. when backend exists -->
+            <button
+              type="button"
+              class="w-full rounded-full bg-tebra-orange py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-btn-primary-hover focus:outline-none focus:ring-2 focus:ring-tebra-orange focus:ring-offset-2"
+            >
+              {leadForm.submitLabel}
+            </button>
+            {leadForm.footnote ? (
+              <p class="text-center text-[11px] leading-relaxed text-gray-500">{leadForm.footnote}</p>
+            ) : null}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
