@@ -10,7 +10,8 @@ const { caseStudy } = Astro.props as Props;
 
 <div class="flex-shrink-0 w-full sm:w-[280px] md:w-[320px] rounded-2xl bg-white border border-gray-200 shadow-md overflow-hidden hover:shadow-lg transition-shadow">
   <div class="p-5">
-    <p class="text-sm font-semibold text-tebra-600">{caseStudy.metric}</p>
+    <p class="text-sm font-semibold text-tebra-600">{caseStudy.metricValue ?? caseStudy.metric}</p>
+    {caseStudy.metricLabel && <p class="mt-1 text-sm text-gray-600">{caseStudy.metricLabel}</p>}
     <p class="mt-1 text-base font-semibold text-gray-900">{caseStudy.company}</p>
   </div>
 </div>

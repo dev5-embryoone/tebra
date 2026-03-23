@@ -4,22 +4,30 @@
 export type CaseStudy = {
   slug: string;
   title: string;
+  excerpt?: string;
   company: string;
   author: string;
   role: string;
   quote: string;
   /** Short metric e.g. "195K Saved in provider time" */
   metric: string;
+  /** Split metric for Tebra-like cards */
+  metricValue?: string;
   /** Optional longer label for cards */
   metricLabel?: string;
   /** Product/category: EHR, Billing & Payments, Patient Experience, RPA, Practice Growth */
   product: string;
+  /** article or video card style */
+  storyType?: "video" | "article";
   /** For filtering */
   challenges: string[];
   roles: string[];
   hasVideo?: boolean;
+  ctaLabel?: string;
+  videoUrl?: string;
   /** Optional image URL — CMS can provide */
   imageUrl?: string;
+  logoUrl?: string;
   /** Featured on hero carousel */
   featured?: boolean;
   /** Highlight in "Real Stories" section */

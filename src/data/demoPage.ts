@@ -128,7 +128,7 @@ export const demoBottomCta = {
     { icon: "presence" as const, text: "Spot gaps in your online presence" },
     { icon: "commitment" as const, text: "No pressure, no commitment" },
   ],
-  primary: { label: "Get a demo", href: "#demo-form" },
+  primary: { label: "Get a demo", href: "/demo#demo-form" },
   secondary: { label: "Explore for free", href: "/sign-up" },
 } as const;
 
@@ -136,7 +136,7 @@ export const demoClosingCta = {
   title: "Automate, optimize, and thrive with Tebra",
   description: "The leading practice automation solution for independent practices.",
   primaryCtaLabel: "Get Demo",
-  primaryCtaHref: "#demo-form",
+  primaryCtaHref: "/demo#demo-form",
   secondaryCtaLabel: "Explore for Free",
   secondaryCtaHref: "/sign-up",
 } as const;

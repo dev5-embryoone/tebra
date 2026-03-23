@@ -18,17 +18,17 @@ const { bars, title, body, footnote } = Astro.props as Props;
 ---
 
 <section
-  class="border-t border-gray-100 bg-[#f9f8f4] py-14 sm:py-16 lg:py-24"
+  class="border-t border-gray-100 bg-gray-50 py-14 sm:py-16 lg:py-24"
   aria-labelledby="scanner-bar-heading"
 >
   <div class="page-container">
     <div
-      class="mx-auto flex max-w-4xl flex-wrap items-end justify-center gap-3 px-2 sm:gap-4 md:gap-6 lg:gap-10"
+      class="mx-auto grid w-full max-w-4xl grid-cols-2 items-end justify-items-center gap-x-6 gap-y-6 px-2 sm:grid-cols-4 sm:gap-x-8 md:gap-x-10 lg:gap-x-12"
       role="presentation"
     >
       {
         bars.map((b) => (
-          <div class="flex w-[20%] min-w-[4.5rem] max-w-[7rem] flex-col items-center gap-2 sm:min-w-[5.5rem]">
+          <div class="flex w-full max-w-[7rem] flex-col items-center gap-2">
             <span
               class:list={[
                 "whitespace-nowrap rounded-lg px-2 py-1 text-center text-[9px] font-semibold shadow-sm sm:text-[10px] md:text-xs",
@@ -41,7 +41,7 @@ const { bars, title, body, footnote } = Astro.props as Props;
             </span>
             <div class="relative flex h-40 w-full flex-col items-center justify-end sm:h-44">
               <div
-                class="w-[72%] max-w-[4.5rem] rounded-t-md shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
+                class="w-[70%] max-w-[4.5rem] rounded-t-md shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
                 style={`height: ${b.heightPct}%; background: linear-gradient(to bottom, #ffffff 0%, #ffffff 52%, ${b.capColor} 52%, ${b.capColor} 100%); min-height: 2.5rem;`}
               />
             </div>

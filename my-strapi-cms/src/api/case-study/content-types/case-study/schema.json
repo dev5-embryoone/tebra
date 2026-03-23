@@ -20,6 +20,9 @@
       "type": "string",
       "required": true
     },
+    "excerpt": {
+      "type": "text"
+    },
     "company": {
       "type": "string",
       "required": true
@@ -40,6 +43,9 @@
       "type": "string",
       "required": true
     },
+    "metricValue": {
+      "type": "string"
+    },
     "metricLabel": {
       "type": "string"
     },
@@ -52,6 +58,14 @@
         "RPA",
         "Practice Growth"
       ]
+    },
+    "storyType": {
+      "type": "enumeration",
+      "enum": [
+        "video",
+        "article"
+      ],
+      "default": "article"
     },
     "challenges": {
       "type": "json"
@@ -71,14 +85,25 @@
       "type": "boolean",
       "default": false
     },
+    "ctaLabel": {
+      "type": "string",
+      "default": "Read the full story"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
     "image": {
       "type": "media",
       "multiple": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "audios",
-        "videos"
+        "images"
+      ]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
       ]
     }
   }

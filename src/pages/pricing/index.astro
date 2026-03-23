@@ -24,24 +24,24 @@ import hbmaLogo from "../../assets/hbma.webp";
       </p>
 
       <!-- Main headline: dark teal -->
-      <h1 class="text-center text-[1.75rem] font-semibold leading-tight tracking-tight text-[#396d70] sm:text-3xl lg:text-4xl lg:leading-snug">
+      <h1 class="text-center text-[1.75rem] font-semibold leading-tight tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl lg:leading-snug">
         See your pricing in 2 minutes, tailored to your practice
       </h1>
 
       <!-- Step indicator: uppercase, small, muted grey -->
-      <p class="text-center text-xs font-normal uppercase tracking-wide text-[#6c757d] mt-8 mb-2 sm:text-[13px]">
+      <p class="text-center text-xs font-normal uppercase tracking-wide text-gray-500 mt-8 mb-2 sm:text-[13px]">
         Step 1/5
       </p>
 
       <!-- Description: two lines, dark grey, then progress bar below -->
-      <p class="text-center text-[15px] font-normal leading-relaxed text-[#495057] sm:text-base">
+      <p class="text-center text-[15px] font-normal leading-relaxed text-gray-600 sm:text-base">
         Tell us about your practice and get a custom price in under two minutes.<br />
         No commitment, no surprises.
       </p>
 
       <!-- Progress bar: same width as inputs, teal fill -->
       <div class="h-1.5 w-full rounded-full bg-gray-200 overflow-hidden mt-4 mb-6">
-        <div class="h-full w-1/5 rounded-full bg-[#396d70]" aria-hidden="true" />
+        <div class="h-full w-1/5 rounded-full bg-tebra-teal-dark" aria-hidden="true" />
       </div>
 
       <!-- Form: inputs full width; button slightly narrower, pill-shaped -->
@@ -54,7 +54,7 @@ import hbmaLogo from "../../assets/hbma.webp";
             name="fullName"
             required
             placeholder="Full name*"
-            class="h-12 w-full rounded-md border border-[#cbd5e1] bg-white px-4 text-[15px] text-gray-900 placeholder-[#64748b] focus:border-[#396d70] focus:ring-1 focus:ring-[#396d70] outline-none transition-colors sm:h-14 sm:text-base"
+            class="h-12 w-full rounded-md border border-gray-300 bg-white px-4 text-[15px] text-gray-900 placeholder:text-gray-500 focus:border-tebra-teal-dark focus:ring-1 focus:ring-tebra-teal-dark outline-none transition-colors sm:h-14 sm:text-base"
             autocomplete="name"
           />
         </div>
@@ -66,7 +66,7 @@ import hbmaLogo from "../../assets/hbma.webp";
             name="companyName"
             required
             placeholder="Company name*"
-            class="h-12 w-full rounded-md border border-[#cbd5e1] bg-white px-4 text-[15px] text-gray-900 placeholder-[#64748b] focus:border-[#396d70] focus:ring-1 focus:ring-[#396d70] outline-none transition-colors sm:h-14 sm:text-base"
+            class="h-12 w-full rounded-md border border-gray-300 bg-white px-4 text-[15px] text-gray-900 placeholder:text-gray-500 focus:border-tebra-teal-dark focus:ring-1 focus:ring-tebra-teal-dark outline-none transition-colors sm:h-14 sm:text-base"
             autocomplete="organization"
           />
         </div>
@@ -78,7 +78,7 @@ import hbmaLogo from "../../assets/hbma.webp";
             name="email"
             required
             placeholder="Email*"
-            class="h-12 w-full rounded-md border border-[#cbd5e1] bg-white px-4 text-[15px] text-gray-900 placeholder-[#64748b] focus:border-[#396d70] focus:ring-1 focus:ring-[#396d70] outline-none transition-colors sm:h-14 sm:text-base"
+            class="h-12 w-full rounded-md border border-gray-300 bg-white px-4 text-[15px] text-gray-900 placeholder:text-gray-500 focus:border-tebra-teal-dark focus:ring-1 focus:ring-tebra-teal-dark outline-none transition-colors sm:h-14 sm:text-base"
             autocomplete="email"
           />
         </div>
@@ -90,14 +90,14 @@ import hbmaLogo from "../../assets/hbma.webp";
             name="phone"
             required
             placeholder="Phone*"
-            class="h-12 w-full rounded-md border border-[#cbd5e1] bg-white px-4 text-[15px] text-gray-900 placeholder-[#64748b] focus:border-[#396d70] focus:ring-1 focus:ring-[#396d70] outline-none transition-colors sm:h-14 sm:text-base"
+            class="h-12 w-full rounded-md border border-gray-300 bg-white px-4 text-[15px] text-gray-900 placeholder:text-gray-500 focus:border-tebra-teal-dark focus:ring-1 focus:ring-tebra-teal-dark outline-none transition-colors sm:h-14 sm:text-base"
             autocomplete="tel"
           />
         </div>
         <div class="pt-2 flex justify-center">
           <button
             type="submit"
-            class="h-12 w-full max-w-[280px] rounded-full bg-[#f97316] px-6 text-[15px] font-semibold text-white shadow-sm hover:bg-[#ea580c] transition-colors focus:outline-none focus:ring-2 focus:ring-[#396d70] focus:ring-offset-2 sm:h-14 sm:text-base"
+            class="h-12 w-full max-w-[280px] rounded-full bg-btn-primary px-6 text-[15px] font-semibold text-white shadow-sm hover:bg-btn-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-tebra-teal-dark focus:ring-offset-2 sm:h-14 sm:text-base"
           >
             Continue
           </button>
@@ -107,10 +107,10 @@ import hbmaLogo from "../../assets/hbma.webp";
   </section>
 
   <!-- Testimonial: Value for Money -->
-  <section class="bg-[#f5f7f7] py-10 lg:py-14">
+  <section class="bg-gray-50 py-10 lg:py-14">
     <div class="page-container flex justify-center">
-      <div class="w-full max-w-4xl rounded-2xl bg-[#fafaf9] px-8 py-6 text-center shadow-lg sm:px-12 sm:py-8">
-        <div class="inline-flex items-center gap-2 rounded-full bg-[#f5f0eb] px-4 py-2 text-sm font-medium text-gray-700">
+      <div class="w-full max-w-4xl rounded-2xl bg-white px-8 py-6 text-center shadow-lg sm:px-12 sm:py-8">
+        <div class="inline-flex items-center gap-2 rounded-full bg-tebra-hero-bg px-4 py-2 text-sm font-medium text-gray-700">
           <span>Value for Money</span>
           <span class="flex items-center gap-0.5" aria-label="5 out of 5 stars">
             <span class="text-amber-400">★★★★★</span>
@@ -139,7 +139,7 @@ import hbmaLogo from "../../assets/hbma.webp";
   </section>
 
   <!-- Capterra quote banner (dark teal, arrow left, large quote right) -->
-  <section class="bg-[#1c5c5b] py-16 lg:py-24">
+  <section class="bg-tebra-teal-dark py-16 lg:py-24">
     <div class="page-container">
       <div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
         <!-- Left: decorative winding line + arrow -->
@@ -191,7 +191,7 @@ import hbmaLogo from "../../assets/hbma.webp";
   </section>
 
   <!-- Awards and accolades -->
-  <section class="bg-[#396d70] py-14 lg:py-20">
+  <section class="bg-tebra-teal py-14 lg:py-20">
     <div class="page-container text-center">
       <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
         Awards and accolades from industry leaders

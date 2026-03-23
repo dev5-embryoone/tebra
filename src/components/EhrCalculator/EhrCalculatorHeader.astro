@@ -1,5 +1,6 @@
 ---
-import logoTebraRaw from "../../assets/tebra navbar.svg";
+import logoPng from "../../assets/logo.png?url";
+import logoSvg from "../../assets/logo.svg?url";
 
 interface Props {
   /** Link for the logo */
@@ -15,7 +16,6 @@ const {
   scheduleDemoHref = "/demo",
 } = Astro.props as Props;
 
-const logoSrc = typeof logoTebraRaw === "string" ? logoTebraRaw : logoTebraRaw.src;
 ---
 
 <header
@@ -30,7 +30,10 @@ const logoSrc = typeof logoTebraRaw === "string" ? logoTebraRaw : logoTebraRaw.s
       class="inline-flex shrink-0 items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal focus-visible:ring-offset-2"
       aria-label="Tebra home"
     >
-      <img src={logoSrc} alt="Tebra" class="h-8 w-auto sm:h-9" width="120" height="36" />
+        <picture>
+          <source srcSet={logoSvg} type="image/svg+xml" />
+          <img src={logoPng} alt="Tebra" class="h-8 w-auto object-contain sm:h-9" />
+        </picture>
     </a>
     <a
       href={scheduleDemoHref}

@@ -18,8 +18,8 @@ const tourBullets = [
   "Access expert support when you're ready",
 ];
 
-/** Match reference LP typography (sans, forest green) */
-const textGreen = "text-[#1a3d3f]";
+/** Use global theme token for heading/body green */
+const textGreen = "text-tebra-teal-dark";
 ---
 
 <!--
@@ -27,11 +27,11 @@ const textGreen = "text-[#1a3d3f]";
   Min-height below single-row header: --nav-product-tour-offset
 -->
 <section
-  class="flex w-full min-h-[calc(100dvh-var(--nav-product-tour-offset))] flex-col bg-[#f0f3f2] lg:flex-row lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))]"
+  class="flex w-full min-h-[calc(100dvh-var(--nav-product-tour-offset))] flex-col bg-gray-50 lg:flex-row lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))]"
 >
   <!-- Left: grey half — badges → copy → checklist; mockup anchored to bottom on desktop -->
   <div
-    class="flex min-h-0 flex-1 flex-col justify-between gap-10 bg-[#f0f3f2] px-6 py-10 sm:px-8 sm:py-12 lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))] lg:gap-12 lg:px-12 lg:py-12 xl:px-16"
+    class="flex min-h-0 flex-1 flex-col justify-between gap-10 bg-gray-50 px-6 py-10 sm:px-8 sm:py-12 lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))] lg:gap-12 lg:px-12 lg:py-12 xl:px-16"
   >
     <div class="space-y-8">
       <!-- G2 trust row -->
@@ -108,7 +108,7 @@ const textGreen = "text-[#1a3d3f]";
           {tourBullets.map((line) => (
             <li class="flex gap-3">
               <span
-                class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0d9488] text-white"
+                class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-tebra-teal text-white"
                 aria-hidden="true"
               >
                 <svg class="h-3 w-3" viewBox="0 0 12 10" fill="none">
@@ -162,7 +162,7 @@ const textGreen = "text-[#1a3d3f]";
             autocomplete="email"
             placeholder="Work email"
             required
-            class="w-full rounded-md border border-gray-300 bg-white px-4 py-3.5 text-[15px] text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-[#396d70] focus:ring-2 focus:ring-[#396d70]/20"
+            class="w-full rounded-md border border-gray-300 bg-white px-4 py-3.5 text-[15px] text-gray-900 shadow-sm outline-none transition placeholder:text-gray-400 focus:border-tebra-teal-dark focus:ring-2 focus:ring-tebra-teal-dark/20"
           />
         </div>
         <p class="text-xs leading-relaxed text-gray-500">
@@ -170,7 +170,7 @@ const textGreen = "text-[#1a3d3f]";
           information as described in its{" "}
           <a
             href="/privacy"
-            class="text-[#396d70] underline underline-offset-2 hover:text-[#1a3d3f]"
+            class="text-tebra-teal underline underline-offset-2 hover:text-tebra-teal-dark"
           >
             Privacy Policy
           </a>
@@ -178,7 +178,7 @@ const textGreen = "text-[#1a3d3f]";
         </p>
         <button
           type="submit"
-          class="w-full rounded-md bg-[#f27e5e] px-6 py-3.5 text-center text-[15px] font-semibold text-white shadow-sm transition hover:bg-[#e06d4d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#396d70]"
+          class="w-full rounded-md bg-btn-primary px-6 py-3.5 text-center text-[15px] font-semibold text-white shadow-sm transition hover:bg-btn-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tebra-teal-dark"
         >
           Get started
         </button>
@@ -188,7 +188,7 @@ const textGreen = "text-[#1a3d3f]";
         Already use Tebra?{" "}
         <a
           href="/sign-in"
-          class="font-semibold text-[#396d70] hover:text-[#1a3d3f] hover:underline"
+          class="font-semibold text-tebra-teal hover:text-tebra-teal-dark hover:underline"
         >
           Sign in →
         </a>
@@ -200,13 +200,13 @@ const textGreen = "text-[#1a3d3f]";
       >
         <a
           href="/terms"
-          class="text-[#396d70] underline underline-offset-2 hover:text-[#1a3d3f]"
+          class="text-tebra-teal underline underline-offset-2 hover:text-tebra-teal-dark"
         >
           Tebra Website Terms of Use
         </a>
         <a
           href="/privacy"
-          class="text-[#396d70] underline underline-offset-2 hover:text-[#1a3d3f]"
+          class="text-tebra-teal underline underline-offset-2 hover:text-tebra-teal-dark"
         >
           Privacy Policy
         </a>

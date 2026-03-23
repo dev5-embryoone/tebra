@@ -64,7 +64,7 @@ export const helpCenterResourceColumns: Array<{
 }> = [
   {
     title: "Training",
-    headerClass: "bg-[#5E8B8E]",
+    headerClass: "bg-tebra-teal",
     links: [
       { label: "Tebra University", href: "/documentation" },
       { label: "Professional Services", href: "/implementation" },
@@ -75,7 +75,7 @@ export const helpCenterResourceColumns: Array<{
   },
   {
     title: "Quick Links",
-    headerClass: "bg-[#FAD2C1]",
+    headerClass: "bg-gray-100",
     links: [
       { label: "Getting Started", href: "/independent-practices" },
       { label: "Download PM", href: "/billing-payments" },
@@ -86,13 +86,13 @@ export const helpCenterResourceColumns: Array<{
   },
   {
     title: "Billing Companies",
-    headerClass: "bg-[#E2D6C5]",
+    headerClass: "bg-tebra-hero-bg",
     bullets: ["Information", "Training", "Support"],
     footerLink: { label: "Learn More", href: "/for-billing-companies" },
   },
   {
     title: "CMS Incentive Programs",
-    headerClass: "bg-[#D1D9D9]",
+    headerClass: "bg-gray-200",
     links: [
       { label: "MACRA", href: "/compliance" },
       { label: "Quality Measures", href: "/reporting" },

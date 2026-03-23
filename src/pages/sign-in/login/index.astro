@@ -69,13 +69,13 @@ const c = kareoStyleLogin;
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
           <button
             type="submit"
-            class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-[#FF8C73] px-6 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
+            class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-btn-primary px-6 text-sm font-semibold text-white shadow-sm transition hover:bg-btn-primary-hover"
           >
             {c.submitLabel}
           </button>
           <a
             href={c.signUpHref}
-            class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full border-2 border-[#FF8C73] px-6 text-sm font-semibold text-[#e0785c] transition hover:bg-orange-50"
+            class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full border-2 border-btn-primary px-6 text-sm font-semibold text-btn-primary transition hover:bg-btn-primary-hover/10"
           >
             {c.signUpLabel}
           </a>
@@ -92,7 +92,7 @@ const c = kareoStyleLogin;
       </form>
     </div>
 
-    <aside class="min-w-0 flex-1 rounded-2xl border border-gray-100 bg-[#F9F9F7] p-6 shadow-sm sm:p-8 lg:max-w-md">
+    <aside class="min-w-0 flex-1 rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-sm sm:p-8 lg:max-w-md">
       <h2 class="text-lg font-bold leading-snug text-gray-900 sm:text-xl">
         {c.promo.title}
         <span class="text-tebra-teal-dark">{c.promo.titleAccent}</span>

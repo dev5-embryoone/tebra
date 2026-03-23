@@ -3,7 +3,8 @@ import NavItem from "./NavItem.astro";
 import ProductsDropdown from "./ProductsDropdown.astro";
 import AboutDropdown from "./AboutDropdown.astro";
 import ResourcesDropdown from "./ResourcesDropdown.astro";
-import logoTebraRaw from "../../assets/tebra navbar.svg";
+import logoPng from "../../assets/logo.png?url";
+import logoSvg from "../../assets/logo.svg?url";
 import {
   mobileProductSections,
   mobileAboutLinks,
@@ -19,8 +20,6 @@ const navItems = [
   { label: "Resources", href: "/resources", hasDropdown: true },
 ];
 
-const logoTebra =
-  typeof logoTebraRaw === "string" ? logoTebraRaw : logoTebraRaw.src;
 ---
 
 <nav class="sticky top-0 z-50 bg-white shadow-sm" aria-label="Main">
@@ -39,7 +38,10 @@ const logoTebra =
   <div class="relative border-b border-[#E1EBEB] bg-white">
     <div class="page-container flex items-center justify-between gap-4 py-3 sm:gap-6">
       <a href="/" class="flex min-w-0 shrink-0 items-center gap-3">
-        <img src={logoTebra} alt="Tebra" class="h-6 w-auto" loading="lazy" />
+        <picture>
+          <source srcSet={logoSvg} type="image/svg+xml" />
+          <img src={logoPng} alt="Tebra" class="h-6 w-auto object-contain" loading="lazy" />
+        </picture>
       </a>
 
       <!-- Desktop nav links (center) -->
@@ -135,7 +137,7 @@ const logoTebra =
           <a href="tel:+18889383272" class="hover:text-tebra-teal">Call sales</a>
         </div>
 
-        <details name="main-nav" class="group rounded-xl border border-gray-100 bg-white open:bg-gray-50/80 open:shadow-sm">
+        <details name="main-nav" class="group rounded-xl bg-white open:bg-gray-50/80 open:shadow-sm">
           <summary
             class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none ring-tebra-teal/30 marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50"
           >
@@ -155,7 +157,7 @@ const logoTebra =
               />
             </svg>
           </summary>
-          <div class="border-t border-gray-100 px-2 pb-3 pt-1">
+          <div class="px-2 pb-3 pt-1">
             {
               mobileProductSections.map((section) => (
                 <div class="mt-3 first:mt-2">
@@ -199,7 +201,7 @@ const logoTebra =
             ))
         }
 
-        <details name="main-nav" class="group rounded-xl border border-gray-100 bg-white open:bg-gray-50/80 open:shadow-sm">
+        <details name="main-nav" class="group rounded-xl bg-white open:bg-gray-50/80 open:shadow-sm">
           <summary
             class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50"
           >
@@ -219,7 +221,7 @@ const logoTebra =
               />
             </svg>
           </summary>
-          <div class="border-t border-gray-100 px-2 pb-3 pt-1">
+          <div class="px-2 pb-3 pt-1">
             <ul class="flex flex-col gap-0.5 py-1" role="list">
               {
                 mobileAboutLinks.map((link) => (
@@ -244,7 +246,7 @@ const logoTebra =
           Case Studies
         </a>
 
-        <details name="main-nav" class="group rounded-xl border border-gray-100 bg-white open:bg-gray-50/80 open:shadow-sm">
+        <details name="main-nav" class="group rounded-xl bg-white open:bg-gray-50/80 open:shadow-sm">
           <summary
             class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50"
           >
@@ -264,7 +266,7 @@ const logoTebra =
               />
             </svg>
           </summary>
-          <div class="border-t border-gray-100 px-2 pb-3 pt-1">
+          <div class="px-2 pb-3 pt-1">
             {
               mobileResourceSections.map((section) => (
                 <div class="mt-3 first:mt-2">

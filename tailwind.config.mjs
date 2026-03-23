@@ -30,6 +30,11 @@ export default {
         'tebra-teal': withOpacity('--color-tebra-teal'),
         'tebra-teal-dark': withOpacity('--color-tebra-teal-dark'),
         'tebra-orange': withOpacity('--color-tebra-orange'),
+        /* Back-compat / scale tokens used across components. */
+        'tebra-50': withOpacity('--color-tebra-hero-bg'),
+        'tebra-500': withOpacity('--color-tebra-teal'),
+        'tebra-600': withOpacity('--color-tebra-teal'),
+        'tebra-700': withOpacity('--color-tebra-teal-dark'),
         card: withOpacity('--color-card'),
         'border-subtle': withOpacity('--color-border-subtle'),
         'border-muted': withOpacity('--color-border-muted'),

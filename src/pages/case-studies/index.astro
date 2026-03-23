@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CaseStudiesHeroSection from "../../components/Sections/CaseStudiesHeroSection.astro";
-import CaseStudiesFeaturedStrip from "../../components/Sections/CaseStudiesFeaturedStrip.astro";
 import CaseStudiesRealStoriesSection from "../../components/Sections/CaseStudiesRealStoriesSection.astro";
 import CaseStudiesFilterSection from "../../components/Sections/CaseStudiesFilterSection.astro";
 import CTASection from "../../components/Sections/CTASection.astro";
@@ -16,8 +15,7 @@ const realStoryCaseStudies = caseStudies.filter((c) => c.realStory);
   title="Case Studies - How practices and billing companies grow with Tebra"
   description="Discover real success stories from private practices and billing companies using Tebra to work smarter, grow faster, and deliver better patient care."
 >
-  <CaseStudiesHeroSection />
-  <CaseStudiesFeaturedStrip caseStudies={featuredCaseStudies} />
+  <CaseStudiesHeroSection featuredCaseStudies={featuredCaseStudies} />
 
   <!-- Trusted strip -->
   <section class="py-6 border-b border-gray-200 bg-white">
