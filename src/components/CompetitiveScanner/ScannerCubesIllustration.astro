@@ -12,35 +12,26 @@ const { yourPractice, competitor2, competitor3 } = Astro.props as Props;
   class="relative mx-auto mt-8 max-w-3xl px-4 sm:mt-12 sm:px-6"
   aria-hidden="true"
 >
-  <div class="relative flex h-48 items-end justify-center gap-6 sm:h-56 sm:gap-10 md:gap-14">
-    <!-- Competitor 2 column -->
-    <div class="flex flex-col items-center gap-2">
-      <span
-        class="rounded-lg border border-gray-200 bg-white px-2 py-1 text-[10px] font-semibold text-gray-600 shadow-sm sm:text-xs"
-      >
-        {competitor2}
-      </span>
-      <div class="h-16 w-12 rounded-t-md bg-gradient-to-b from-[#b8a8d8] to-[#8b6bb8] shadow-lg sm:h-20 sm:w-14" />
+  <div class="scanner-preview-wrap">
+    <div class="scanner-preview-item">
+      <span class="scanner-preview-label">{competitor2}</span>
+      <div class="scanner-preview-meter">
+        <span class="scanner-preview-fill scanner-preview-fill--purple" style="width: 52%;"></span>
+      </div>
     </div>
 
-    <!-- Your practice (center, highlighted) -->
-    <div class="flex flex-col items-center gap-2">
-      <span
-        class="rounded-lg bg-tebra-teal-dark px-3 py-1.5 text-[10px] font-bold text-white shadow-md sm:text-xs"
-      >
-        {yourPractice}
-      </span>
-      <div class="h-24 w-14 rounded-t-md bg-gradient-to-b from-[#f5e6a8] to-[#e8c547] shadow-xl sm:h-28 sm:w-16" />
+    <div class="scanner-preview-item scanner-preview-item--highlight">
+      <span class="scanner-preview-label scanner-preview-label--highlight">{yourPractice}</span>
+      <div class="scanner-preview-meter">
+        <span class="scanner-preview-fill scanner-preview-fill--gold" style="width: 68%;"></span>
+      </div>
     </div>
 
-    <!-- Competitor 3 column -->
-    <div class="flex flex-col items-center gap-2">
-      <span
-        class="rounded-lg border border-gray-200 bg-white px-2 py-1 text-[10px] font-semibold text-gray-600 shadow-sm sm:text-xs"
-      >
-        {competitor3}
-      </span>
-      <div class="h-20 w-12 rounded-t-md bg-gradient-to-b from-[#7dcea0] to-[#5cb87a] shadow-lg sm:h-24 sm:w-14" />
+    <div class="scanner-preview-item">
+      <span class="scanner-preview-label">{competitor3}</span>
+      <div class="scanner-preview-meter">
+        <span class="scanner-preview-fill scanner-preview-fill--green" style="width: 81%;"></span>
+      </div>
     </div>
   </div>
 </div>

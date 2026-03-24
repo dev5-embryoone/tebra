@@ -16,12 +16,25 @@ const fixedLabels: Record<string, string> = {
   rcm: "RCM",
 };
 
+const hiddenSegments = new Set(["product", "practice-type", "specialties"]);
+
 const virtualParentByRootSegment: Record<string, { label: string; href: string }> = {
+  // About group
   careers: { label: "About", href: "/about" },
   leadership: { label: "About", href: "/about" },
-  partners: { label: "About", href: "/about" },
   investors: { label: "About", href: "/about" },
   "diversity-equity-and-inclusion": { label: "About", href: "/about" },
+  // Resources group
+  partners: { label: "Resources", href: "/resources" },
+  "case-studies": { label: "Resources", href: "/resources" },
+  theintake: { label: "Resources", href: "/resources" },
+  newsroom: { label: "Resources", href: "/resources" },
+  "resource-library": { label: "Resources", href: "/resources" },
+  "product-tour": { label: "Resources", href: "/resources" },
+  "competitive-scanner": { label: "Resources", href: "/resources" },
+  "practice-efficiency-grader": { label: "Resources", href: "/resources" },
+  "efficiency-grader": { label: "Resources", href: "/resources" },
+  "ehr-calculator": { label: "Resources", href: "/resources" },
 };
 
 const toLabel = (segment: string) => {
@@ -32,10 +45,14 @@ const toLabel = (segment: string) => {
     .replace(/\b\w/g, (char) => char.toUpperCase());
 };
 
-const crumbs = segments.map((segment, index) => ({
-  label: toLabel(segment),
-  href: `/${segments.slice(0, index + 1).join("/")}`,
-}));
+const crumbs = segments.reduce<{ label: string; href: string }[]>((acc, segment, index) => {
+  if (hiddenSegments.has(segment.toLowerCase())) return acc;
+  acc.push({
+    label: toLabel(segment),
+    href: `/${segments.slice(0, index + 1).join("/")}`,
+  });
+  return acc;
+}, []);
 
 const rootSegment = segments[0]?.toLowerCase();
 const virtualParent = rootSegment ? virtualParentByRootSegment[rootSegment] : undefined;

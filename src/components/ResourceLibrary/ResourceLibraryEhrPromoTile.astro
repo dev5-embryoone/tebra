@@ -10,26 +10,26 @@ const ehrSrc = typeof imgEhr === "string" ? imgEhr : imgEhr.src;
 <a
   href="/ehr-calculator"
   id="interactive-tools"
-  class="scroll-mt-32 group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#E8E6E1] bg-[#EFEEED] shadow-sm transition hover:border-[#1D3533]/20 hover:shadow-md"
+  class="scroll-mt-32 group flex h-full flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-gray-100 shadow-sm transition hover:border-gray-400 hover:shadow-md"
 >
-  <div class="relative aspect-[16/10] w-full overflow-hidden bg-[#0d3331]/10">
+  <div class="relative aspect-[16/10] w-full overflow-hidden bg-tebra-teal-dark/10">
     <img
       src={ehrSrc}
       alt=""
       class="h-full w-full object-cover object-center opacity-95 transition duration-300 group-hover:scale-[1.03]"
       loading="lazy"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0d3331]/25 to-transparent" aria-hidden="true" />
+    <div class="absolute inset-0 bg-gradient-to-t from-tebra-teal-dark/25 to-transparent" aria-hidden="true" />
   </div>
   <div class="flex flex-1 flex-col p-6">
     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-sky-800">EHR Calculator</p>
-    <h3 class="mt-2 font-display text-lg font-bold leading-snug text-[#1D3533] sm:text-xl">
+    <h3 class="mt-2 font-display text-lg font-bold leading-snug text-gray-900 sm:text-xl">
       Calculate your EHR’s true cost — and potential return
     </h3>
-    <p class="mt-3 flex-1 text-sm leading-relaxed text-[#6B7280]">
+    <p class="mt-3 flex-1 text-sm leading-relaxed text-gray-600">
       Estimate the time and money your practice could gain with a more efficient EHR.
     </p>
-    <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#1D3533] group-hover:underline">
+    <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-gray-900 group-hover:underline">
       Calculate savings
       <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

@@ -1,7 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HeroSection from "../components/Hero/HeroSection.astro";
-import LogosSection from "../components/Sections/LogosSection.astro";
 import FeaturesSection from "../components/Sections/FeaturesSection.astro";
 import PlatformSection from "../components/Sections/PlatformSection.astro";
 import TestimonialsSection from "../components/Sections/TestimonialsSection.astro";
@@ -10,22 +8,34 @@ import TourBannerSection from "../components/Sections/TourBannerSection.astro";
 import FAQSection from "../components/Sections/FAQSection.astro";
 import PracticeManagementToolsSection from "../components/Sections/PracticeManagementToolsSection.astro";
 import CTASection from "../components/Sections/CTASection.astro";
-import { homeHero, homeClosingCta } from "../data/homePage";
+import { homeClosingCta } from "../data/homePage";
+import dashboardHeroImage from "../assets/image.png";
 ---
 
 <BaseLayout
   title="Run your entire practice with one EHR+ platform | Tebra"
   description="Tebra’s EHR+ platform connects care, billing, scheduling, and more. Built-in AI speeds up notes, handles reviews, and automates repetitive admin work."
 >
-  <HeroSection
-    title={homeHero.title}
-    subtitle={homeHero.subtitle}
-    primaryCtaLabel={homeHero.primaryCtaLabel}
-    primaryCtaHref={homeHero.primaryCtaHref}
-    secondaryCtaLabel={homeHero.secondaryCtaLabel}
-    secondaryCtaHref={homeHero.secondaryCtaHref}
-  />
-  <LogosSection />
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-10 sm:py-12 lg:py-14">
+    <div class="page-container relative z-10">
+      <p class="text-center text-xs font-medium tracking-wide text-tebra-teal sm:text-sm">
+        An AI-powered, all-in-one solution that enables exceptional care
+      </p>
+      <h1 class="mt-3 text-center text-5xl font-semibold tracking-tight text-tebra-teal-dark sm:text-6xl lg:text-7xl">
+        Embryo One
+      </h1>
+
+      <div class="mx-auto mt-8 w-full max-w-6xl">
+        <img
+          src={dashboardHeroImage.src}
+          alt="EmbryoOne dashboard preview"
+          class="w-full object-cover object-top"
+          loading="eager"
+        />
+        <div class="mx-auto h-3 w-[92%] rounded-b-[999px] bg-tebra-teal-dark/25 blur-[1px]"></div>
+      </div>
+    </div>
+  </section>
   <FeaturesSection />
   <PlatformSection />
   <TestimonialsSection />

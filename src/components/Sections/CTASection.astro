@@ -14,13 +14,18 @@ const {
   title,
   description,
   primaryCtaLabel,
-  primaryCtaHref = "#demo",
+  primaryCtaHref = "/demo",
   secondaryCtaLabel,
   secondaryCtaHref = "#",
 } = Astro.props as Props;
 
+const normalizedPrimaryLabel = primaryCtaLabel.trim().toLowerCase();
 const resolvedPrimaryCtaHref =
-  primaryCtaLabel.trim().toLowerCase() === "book a demo" ? "/demo" : primaryCtaHref;
+  normalizedPrimaryLabel === "book a demo" ||
+  normalizedPrimaryLabel === "get demo" ||
+  normalizedPrimaryLabel === "get a demo"
+    ? "/demo"
+    : primaryCtaHref;
 
 const resolvedSecondaryCtaHref =
   secondaryCtaLabel?.trim().toLowerCase() === "explore for free" ? "/product-tour" : secondaryCtaHref;

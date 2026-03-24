@@ -11,25 +11,25 @@ const focusAreas = [
 ];
 ---
 
-<section class="w-full bg-[#f0f3f2]">
+<section class="w-full bg-tebra-hero-bg">
   <div class="mx-auto flex min-h-[calc(100dvh-var(--nav-product-tour-offset))] max-w-[1280px] flex-col justify-between gap-10 px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:flex-row lg:items-end lg:gap-16 lg:px-12 lg:py-14 xl:px-16">
     <div class="w-full max-w-[660px]">
-      <h1 class="font-display text-4xl font-semibold leading-[1.12] tracking-tight text-[#1a5d5f] sm:text-5xl lg:text-[4rem]">
+      <h1 class="font-display text-4xl font-semibold leading-[1.12] tracking-tight text-tebra-teal-dark sm:text-5xl lg:text-[4rem]">
         Assess your practice efficiency with our automation quiz
       </h1>
 
-      <p class="mt-6 text-lg leading-relaxed text-[#294b4d] sm:mt-8 sm:text-xl">
+      <p class="mt-6 text-lg leading-relaxed text-gray-600 sm:mt-8 sm:text-xl">
         Does the software your practice runs on make life easier or harder for you and your patients?
       </p>
 
-      <p class="mt-5 max-w-[620px] text-lg leading-relaxed text-[#294b4d] sm:mt-6 sm:text-xl">
+      <p class="mt-5 max-w-[620px] text-lg leading-relaxed text-gray-600 sm:mt-6 sm:text-xl">
         The following 10 questions measure the efficiency and automation across your practice relative to your peers - and what you can do to improve things. Find out how you're performing across areas like:
       </p>
 
-      <ul class="mt-6 space-y-3 text-base leading-snug text-[#294b4d] sm:mt-7 sm:space-y-4 sm:text-lg lg:text-xl">
+      <ul class="mt-6 space-y-3 text-base leading-snug text-gray-600 sm:mt-7 sm:space-y-4 sm:text-lg lg:text-xl">
         {focusAreas.map((item) => (
           <li class="flex items-start gap-3">
-            <span class="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#f2a390] text-[#f2a390]" aria-hidden="true">
+            <span class="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-tebra-orange text-tebra-orange" aria-hidden="true">
               <svg class="h-3.5 w-3.5" viewBox="0 0 12 10" fill="none">
                 <path d="M1 5l3.5 3.5L11 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -41,7 +41,7 @@ const focusAreas = [
 
       <button
         type="button"
-        class="mt-9 inline-flex rounded-full bg-[#f58f73] px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#e57d61] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1a5d5f]"
+        class="mt-9 inline-flex rounded-full bg-btn-primary px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-btn-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tebra-teal-dark"
       >
         Evaluate your practice now
       </button>

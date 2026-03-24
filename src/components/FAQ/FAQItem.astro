@@ -1,4 +1,6 @@
 ---
+import { Minus, Plus } from "@lucide/astro";
+
 interface Props {
   itemId: string;
   question: string;
@@ -21,14 +23,10 @@ const { itemId, question, answer, isOpen = false } = Astro.props as Props;
     <span class="text-base font-medium leading-6 text-gray-900">{question}</span>
     <span class="faq-icon flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-gray-900 mt-0.5" aria-hidden="true">
       <span class="faq-icon-plus">
-        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-        </svg>
+        <Plus class="h-5 w-5" aria-hidden="true" />
       </span>
       <span class="faq-icon-minus hidden">
-        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
-        </svg>
+        <Minus class="h-5 w-5" aria-hidden="true" />
       </span>
     </span>
   </button>

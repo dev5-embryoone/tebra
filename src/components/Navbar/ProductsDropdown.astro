@@ -1,58 +1,92 @@
 ---
-// Products mega-menu: three columns as per design
-const products = [
-  { title: "EHR", href: "/ehr", description: "Streamline e-prescribing, labs, charting, and AI-powered documentation.", icon: "stethoscope" },
-  { title: "Billing", href: "/billing-payments", description: "Manage claims, eligibility, and denials with integrated medical billing.", icon: "billing" },
-  { title: "Payments", href: "/billing-payments", description: "Collect patient payments with online pay, card-on-file, and automated statements.", icon: "card" },
-  { title: "Patient Experience", href: "/patient-experience", description: "Simplify scheduling, digital intake, reminders, and patient messaging.", icon: "patient" },
-  { title: "Practice Marketing", href: "/marketing", description: "Grow your practice with custom websites, SEO, and reputation management.", icon: "house" },
-];
+import {
+  CalendarDays,
+  ChevronDown,
+  ClipboardList,
+  CreditCard,
+  FileText,
+  Heart,
+  Home,
+  Microscope,
+  Monitor,
+  Stethoscope,
+  UserRound,
+  UserRoundPlus,
+  UserRoundSearch,
+  UsersRound,
+} from "@lucide/astro";
 
-const practiceType = [
-  { title: "Independent Practices", href: "/independent-practices", description: "Experience digital tools and support built to help independent practices.", icon: "house" },
-  { title: "Billing Companies", href: "/for-billing-companies", description: "Advanced billing solutions to optimize your company's revenue cycle.", icon: "house" },
-];
+const menuSections = [
+  {
+    id: "products-core",
+    title: "Core products",
+    subtitle: "Platform capabilities that run your practice end-to-end.",
+    links: [
+      { title: "Overview", href: "/features", description: "Get a quick look at the full product suite and what each tool offers.", icon: "house" },
+      { title: "Workflow Automation", href: "/billing-payments/robotic-process-automation", description: "Automate repetitive workflows to save staff time and reduce manual steps.", icon: "clipboard" },
+      { title: "Witness", href: "/compliance", description: "Capture and review key events and records with an auditable workflow.", icon: "clipboard" },
+      { title: "Lab Health", href: "/ehr-software/electronic-labs", description: "Monitor lab operations, status, and outcomes from a single view.", icon: "heart" },
+      { title: "Consumption", href: "/billing-payments", description: "Track usage patterns and operational consumption metrics across workflows.", icon: "billing" },
+      { title: "Cryo Tracker", href: "/reporting", description: "Track cryo inventory, storage locations, and lifecycle updates in real time.", icon: "monitor" },
+      { title: "Embryo Capture", href: "/documentation", description: "Record and organize embryo-related data and media efficiently.", icon: "clipboard" },
+      { title: "AI Grading", href: "/ai", description: "Use AI-assisted scoring to standardize evaluation and improve consistency.", icon: "embryo" },
+      { title: "People", href: "/for-providers", description: "Manage team and patient-related profiles, access, and collaboration.", icon: "people" },
+      { title: "EHR", href: "/ehr", description: "Streamline e-prescribing, labs, charting, and AI-powered documentation.", icon: "stethoscope" },
+      { title: "Patient Experience", href: "/patient-experience", description: "Simplify scheduling, digital intake, reminders, and patient messaging.", icon: "patient" },
+      { title: "Practise Growth", href: "/marketing", description: "Support growth initiatives with tools that improve visibility and performance.", icon: "house" },
+    ],
+  },
+  {
+    id: "products-practice",
+    title: "Practice type",
+    subtitle: "Solutions tailored to your business model and workflows.",
+    links: [
+      { title: "Independent Practices", href: "/independent-practices", description: "Experience digital tools and support built to help independent practices.", icon: "house" },
+      { title: "Billing Companies", href: "/for-billing-companies", description: "Advanced billing solutions to optimize your company's revenue cycle.", icon: "billing" },
+    ],
+  },
+  {
+    id: "products-specialty",
+    title: "Specialty",
+    subtitle: "Purpose-built workflows for every care model.",
+    links: [
+      { title: "Family Medicine", href: "/specialties/family-medicine", description: "Comprehensive tools to enhance care and streamline family medicine practices.", icon: "heart" },
+      { title: "Primary Care", href: "/specialties/primary-care", description: "Optimize your primary care practice with solutions that improve patient outcomes.", icon: "people" },
+      { title: "Pediatrics", href: "/specialties/pediatrics", description: "Specialized tools to support the unique needs of pediatric care providers.", icon: "firstaid" },
+      { title: "Mental Health", href: "/specialties/psychology", description: "Efficient management solutions designed specifically for mental health practices.", icon: "heart" },
+      { title: "Nurse Practitioners", href: "/specialties/nurse-practitioners", description: "A flexible EHR platform designed for nurse practitioners who do it all.", icon: "stethoscope" },
+    ],
+  },
+  {
+    id: "products-popular",
+    title: "Popular features",
+    subtitle: "Frequently used tools teams rely on every day.",
+    links: [
+      { title: "Electronic Labs", href: "/ehr-software/electronic-labs", description: "Order and review lab results in one integrated flow.", icon: "clipboard" },
+      { title: "Patient Portal", href: "/patient-portal", description: "Enable secure messaging, billing, and chart access for patients.", icon: "person" },
+      { title: "Online Scheduling", href: "/scheduling", description: "Let patients book online and reduce no-shows with automation.", icon: "calendar" },
+      { title: "Telehealth", href: "/telehealth", description: "Deliver virtual care with built-in scheduling and charting.", icon: "monitor" },
+      { title: "AI Smart Staff", href: "/ai", description: "Automate repetitive tasks and speed up front-office workflows.", icon: "monitor" },
+    ],
+  },
+] as const;
 
-const specialty = [
-  { title: "Family Medicine", href: "/specialties/family-medicine", description: "Comprehensive tools to enhance care and streamline family medicine practices.", icon: "heart" },
-  { title: "Primary Care", href: "/specialties/primary-care", description: "Optimize your primary care practice with solutions that improve patient outcomes.", icon: "people" },
-  { title: "Pediatrics", href: "/specialties/pediatrics", description: "Specialized tools to support the unique needs of pediatric care providers.", icon: "firstaid" },
-  { title: "Mental Health", href: "/specialties/psychology", description: "Efficient management solutions designed specifically for mental health practices.", icon: "brain" },
-  { title: "Nurse Practitioners", href: "/specialties/nurse-practitioners", description: "A flexible EHR platform designed for nurse practitioners who do it all.", icon: "stethoscope" },
-];
-
-const popularFeatures = [
-  { title: "Electronic Labs", href: "/ehr-software/electronic-labs", icon: "clipboard" },
-  { title: "Patient Portal", href: "/patient-portal", icon: "person" },
-  { title: "Online Scheduling", href: "/scheduling", icon: "calendar" },
-  { title: "Telehealth", href: "/telehealth", icon: "monitor" },
-  { title: "Practice Websites", href: "/marketing/practice-websites", icon: "monitor" },
-  { title: "AI Smart Staff", href: "/ai", icon: "robot" },
-  { title: "Electronic claims submission", href: "/billing-payments/electronic-claim-submission", icon: "document" },
-  { title: "Robotic process automation (RPA)", href: "/billing-payments/robotic-process-automation", icon: "gear" },
-];
-
-function getIcon(name: string, size: "sm" | "md") {
-  const c = size === "sm" ? "w-4 h-4" : "w-5 h-5";
-  const icons: Record<string, string> = {
-    stethoscope: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11.2 5.2a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8l-1.5 1.5a2 2 0 0 1-2.8 0L9.7 9.5a2 2 0 0 1 0-2.8z"/><path d="M6 18.5l-1-1"/><path d="M5 14.5l-1-1"/><path d="M4 10.5H3"/><path d="M6 18a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V14"/></svg>`,
-    billing: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>`,
-    card: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>`,
-    patient: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 14v4"/><path d="M10 18h4"/></svg>`,
-    house: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>`,
-    heart: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
-    people: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
-    firstaid: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/><path d="M2 12h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/><path d="M12 2v4a2 2 0 0 1 2 2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2 2v4a2 2 0 0 1-2-2v-4a2 2 0 0 1-2-2H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2-2z"/><path d="M12 10v4"/><path d="M10 12h4"/></svg>`,
-    brain: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.472 3.958 4 4 0 0 0 2 3.917V16a2 2 0 0 0 4 0v-3a2 2 0 0 1 4 0v3a2 2 0 0 0 4 0V12.917a4 4 0 0 0 2-3.834 4 4 0 0 0-2.472-3.958A3 3 0 1 0 12 5z"/></svg>`,
-    clipboard: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14h6"/><path d="M9 18h6"/></svg>`,
-    person: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
-    calendar: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>`,
-    monitor: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>`,
-    robot: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/><path d="M8 15h.01"/><path d="M16 15h.01"/><path d="M12 7V5c0-1.1.9-2 2-2h2"/><path d="M12 7h4"/><path d="M12 7V5c0-1.1-.9-2-2-2H8"/><path d="M8 7h4"/></svg>`,
-    document: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>`,
-    gear: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
-    tour: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M16 9l2 2-2 2"/><path d="M8 13l-2-2 2-2"/></svg>`,
-  };
+function getIcon(name: string) {
+  const icons = {
+    stethoscope: Stethoscope,
+    billing: CreditCard,
+    card: FileText,
+    patient: UserRoundPlus,
+    house: Home,
+    heart: Heart,
+    people: UsersRound,
+    firstaid: UserRoundSearch,
+    clipboard: ClipboardList,
+    person: UserRound,
+    calendar: CalendarDays,
+    monitor: Monitor,
+    embryo: Microscope,
+  } as const;
   return icons[name] || icons.house;
 }
 ---
@@ -60,108 +94,128 @@ function getIcon(name: string, size: "sm" | "md") {
 <div class="products-dropdown relative group">
   <button
     type="button"
-    class="products-dropdown-trigger inline-flex items-center gap-1 rounded px-2 py-1.5 text-sm font-medium text-[#1a1a1a] hover:bg-[#f5f0eb] hover:text-tebra-teal transition-colors cursor-pointer bg-transparent border-0 group-hover:bg-[#f5f0eb]"
+    class="products-dropdown-trigger inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-2 text-sm font-semibold text-tebra-teal-dark cursor-pointer bg-transparent hover:border-[#E8DAF8] hover:bg-white hover:text-[#5E2A84] group-hover:border-[#E8DAF8] group-hover:bg-white group-hover:text-[#5E2A84]"
     aria-haspopup="true"
     aria-expanded="false"
     aria-controls="nav-dropdown-products"
     id="nav-trigger-products"
   >
     Products
-    <svg class="h-3.5 w-3.5 text-gray-500 group-hover:rotate-180 transition-transform" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
+    <ChevronDown class="h-3.5 w-3.5 text-[#7E57A0]/80" aria-hidden="true" />
   </button>
 
   <div
     id="nav-dropdown-products"
-    class="fixed left-0 right-0 top-[5.5rem] pt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50"
+    class="pointer-events-none fixed left-0 right-0 top-[5.5rem] z-50 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
   >
-    <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 bg-white border-t border-gray-100 rounded-b-2xl shadow-xl max-h-[85vh] overflow-y-auto">
-      <div class="py-8 lg:py-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          <!-- Column 1: Products -->
-          <div class="lg:col-span-5">
-            <h3 class="text-sm font-bold text-[#1a1a1a] mb-5">Products</h3>
-            <ul class="space-y-5">
-              {products.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item flex gap-4 text-left py-0.5">
-                    <span class="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#374151]">
-                      <Fragment set:html={getIcon(item.icon, "md")} />
-                    </span>
-                    <span class="min-w-0">
-                      <span class="block text-sm font-semibold text-[#1a1a1a] group-hover/item:text-tebra-teal transition-colors">{item.title}</span>
-                      <span class="block text-[13px] text-gray-500 mt-1 leading-snug">{item.description}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="/product-tour"
-              class="mt-6 inline-flex items-center gap-2.5 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark transition-colors"
-            >
-              <span class="flex-shrink-0 w-5 h-5 flex items-center justify-center text-tebra-teal">
-                <Fragment set:html={getIcon("tour", "md")} />
-              </span>
-              Take product tour
-            </a>
-          </div>
-
-          <!-- Column 2: Practice Type + Specialty -->
-          <div class="lg:col-span-4 border-l border-gray-200 pl-8 lg:pl-10">
-            <h3 class="text-sm font-bold text-[#1a1a1a] mb-4">Practice Type</h3>
-            <ul class="space-y-4 mb-8">
-              {practiceType.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item flex gap-4 text-left py-0.5">
-                    <span class="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[#374151] mt-0.5">
-                      <Fragment set:html={getIcon(item.icon, "sm")} />
-                    </span>
-                    <span class="min-w-0">
-                      <span class="block text-sm font-semibold text-[#1a1a1a] group-hover/item:text-tebra-teal transition-colors">{item.title}</span>
-                      <span class="block text-[13px] text-gray-500 mt-1 leading-snug">{item.description}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <h3 class="text-sm font-bold text-[#1a1a1a] mb-4">Specialty</h3>
-            <ul class="space-y-4">
-              {specialty.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item flex gap-4 text-left py-0.5">
-                    <span class="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[#374151] mt-0.5">
-                      <Fragment set:html={getIcon(item.icon, "sm")} />
-                    </span>
-                    <span class="min-w-0">
-                      <span class="block text-sm font-semibold text-[#1a1a1a] group-hover/item:text-tebra-teal transition-colors">{item.title}</span>
-                      <span class="block text-[13px] text-gray-500 mt-1 leading-snug">{item.description}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Column 3: Popular Features -->
-          <div class="lg:col-span-3 border-l border-gray-200 pl-8 lg:pl-10">
-            <h3 class="text-sm font-bold text-[#1a1a1a] mb-5">Popular Features</h3>
-            <ul class="space-y-3">
-              {popularFeatures.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item flex items-center gap-3 text-sm font-medium text-[#374151] hover:text-tebra-teal transition-colors py-1">
-                    <span class="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[#374151]">
-                      <Fragment set:html={getIcon(item.icon, "sm")} />
-                    </span>
-                    {item.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
+    <div class="mx-auto w-full max-w-[1060px] px-4 sm:px-6 lg:px-8">
+      <div class="max-h-[74vh] overflow-y-auto rounded-2xl border border-[#ECE5F8] bg-white shadow-[0_20px_60px_-38px_rgba(94,42,132,0.45)]">
+        <div class="bg-white px-3.5 py-4 sm:px-5 lg:px-6">
+          <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-4 lg:gap-2">
+            {menuSections.map((section) => (
+              <section class="min-w-0 px-0 py-1 md:px-1.5 lg:px-2">
+                <h3 class="px-1.5 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#6F3E95]">
+                  {section.title}
+                </h3>
+                <ul role="list">
+                  {section.links.map((item) => (
+                    <li>
+                      {(() => {
+                        const Icon = getIcon(item.icon);
+                        return (
+                          <a
+                            href={item.href}
+                            class="group/item flex items-center gap-2 rounded-md bg-white px-1.5 py-1.5 text-left hover:bg-gray-50"
+                          >
+                            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-[#6E3F87] group-hover/item:bg-white">
+                              <Icon class="h-3.5 w-3.5" aria-hidden="true" />
+                            </span>
+                            <span class="min-w-0 text-[13px] font-medium leading-[1.25] text-[#40324F] group-hover/item:text-[#5E2A84]">
+                              {item.title}
+                            </span>
+                          </a>
+                        );
+                      })()}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  (() => {
+    const dropdownId = "products";
+    const root = document.querySelector(".products-dropdown");
+    const trigger = document.querySelector("#nav-trigger-products");
+    const panel = document.querySelector("#nav-dropdown-products");
+    if (!root || !trigger || !panel) return;
+
+    let closeTimer;
+
+    const openMenu = () => {
+      window.clearTimeout(closeTimer);
+      window.dispatchEvent(new CustomEvent("nav:dropdown-open", { detail: { id: dropdownId } }));
+      panel.classList.remove("pointer-events-none", "opacity-0", "invisible");
+      panel.classList.add("pointer-events-auto", "opacity-100", "visible");
+      trigger.setAttribute("aria-expanded", "true");
+    };
+
+    const closeMenu = () => {
+      panel.classList.remove("pointer-events-auto", "opacity-100", "visible");
+      panel.classList.add("pointer-events-none", "opacity-0", "invisible");
+      trigger.setAttribute("aria-expanded", "false");
+    };
+
+    const scheduleClose = () => {
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(() => {
+        const active = document.activeElement;
+        if (
+          root.matches(":hover") ||
+          panel.matches(":hover") ||
+          (active instanceof Node && (trigger.contains(active) || panel.contains(active)))
+        ) {
+          return;
+        }
+        closeMenu();
+      }, 120);
+    };
+
+    trigger.addEventListener("mouseenter", openMenu);
+    trigger.addEventListener("focus", openMenu);
+    panel.addEventListener("mouseenter", openMenu);
+    panel.addEventListener("focusin", openMenu);
+
+    trigger.addEventListener("mouseleave", scheduleClose);
+    panel.addEventListener("mouseleave", scheduleClose);
+    panel.addEventListener("focusout", scheduleClose);
+    panel.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof HTMLElement && t.closest("a[href]")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof Node && !root.contains(t) && !panel.contains(t)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("nav:dropdown-open", (e) => {
+      if (!(e instanceof CustomEvent)) return;
+      if (e.detail?.id !== dropdownId) closeMenu();
+    });
+  })();
+</script>

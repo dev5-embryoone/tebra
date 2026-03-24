@@ -1,4 +1,5 @@
 ---
+import { ChevronDown, Menu, X } from "@lucide/astro";
 import NavItem from "./NavItem.astro";
 import ProductsDropdown from "./ProductsDropdown.astro";
 import AboutDropdown from "./AboutDropdown.astro";
@@ -22,20 +23,20 @@ const navItems = [
 
 ---
 
-<nav class="sticky top-0 z-50 bg-white shadow-sm" aria-label="Main">
+<nav class="sticky top-0 z-50 glass-surface" aria-label="Main">
   <!-- Top utility bar: Sign In, Help Center, Call sales -->
-  <div class="hidden lg:block border-b border-gray-100 bg-white">
+  <div class="hidden lg:block bg-transparent">
     <div class="page-container flex justify-end">
-      <div class="flex items-center gap-6 py-2 text-xs font-medium text-gray-600">
-        <a href="/sign-in" class="transition-colors hover:text-tebra-teal">Sign In</a>
-        <a href="/help" class="transition-colors hover:text-tebra-teal">Help Center</a>
-        <a href="tel:+18889383272" class="transition-colors hover:text-tebra-teal">Call sales (888) 938-3272</a>
+      <div class="flex items-center gap-6 py-3 text-xs font-medium text-gray-600">
+        <a href="/sign-in" class="hover:text-tebra-teal">Sign In</a>
+        <a href="/help" class="hover:text-tebra-teal">Help Center</a>
+        <a href="tel:+18889383272" class="hover:text-tebra-teal">Call sales (888) 938-3272</a>
       </div>
     </div>
   </div>
 
   <!-- Main row + mobile panel (panel absolutely positioned below this block) -->
-  <div class="relative border-b border-[#E1EBEB] bg-white">
+  <div class="relative bg-transparent">
     <div class="page-container flex items-center justify-between gap-4 py-3 sm:gap-6">
       <a href="/" class="flex min-w-0 shrink-0 items-center gap-3">
         <picture>
@@ -68,16 +69,10 @@ const navItems = [
 
       <!-- Desktop: Take a tour + Get a demo -->
       <div class="hidden shrink-0 items-center gap-3 lg:flex">
-        <a
-          href="/product-tour"
-          class="inline-flex items-center rounded-full border border-tebra-teal bg-white px-5 py-2 text-xs font-semibold text-tebra-teal transition-colors hover:bg-tebra-hero-bg"
-        >
+        <a href="/product-tour" class="btn-pill-outline">
           Take a tour
         </a>
-        <a
-          href="/demo"
-          class="inline-flex items-center rounded-full bg-tebra-orange px-5 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
-        >
+        <a href="/demo" class="btn-pill-solid">
           Get a demo
         </a>
       </div>
@@ -86,76 +81,40 @@ const navItems = [
       <button
         type="button"
         id="mobile-menu-button"
-        class="inline-flex shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white p-2.5 text-gray-700 transition-colors hover:bg-gray-50 lg:hidden"
+        class="inline-flex shrink-0 items-center justify-center rounded-full border border-gray-200/30 bg-white/80 p-2.5 text-gray-700 hover:bg-white lg:hidden"
         aria-label="Open main menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <svg
-          id="mobile-menu-icon-open"
-          class="h-5 w-5"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M4 7h16M4 12h16M4 17h16"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-          />
-        </svg>
-        <svg
-          id="mobile-menu-icon-close"
-          class="hidden h-5 w-5"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M6 6l12 12M18 6L6 18"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-          />
-        </svg>
+        <Menu id="mobile-menu-icon-open" class="h-5 w-5" aria-hidden="true" />
+        <X id="mobile-menu-icon-close" class="hidden h-5 w-5" aria-hidden="true" />
       </button>
     </div>
 
     <!-- Mobile menu: same order as desktop; exclusive accordion (details name) where supported -->
     <div
       id="mobile-menu"
-      class="absolute left-0 right-0 top-full z-50 hidden max-h-[min(75vh,calc(100dvh-3.5rem))] overflow-y-auto overscroll-contain border-t border-gray-100 bg-white shadow-lg lg:hidden"
+      class="absolute left-0 right-0 top-full z-50 hidden max-h-[min(75vh,calc(100dvh-3.5rem))] overflow-y-auto overscroll-contain bg-white/95 shadow-[0_10px_40px_rgba(72,37,88,0.06)] backdrop-blur-xl lg:hidden"
       role="navigation"
       aria-label="Mobile primary navigation"
     >
       <div class="page-container flex flex-col gap-1 px-4 py-4 sm:px-6">
         <!-- Mobile utilities (match desktop bar) -->
-        <div class="mb-3 flex flex-wrap gap-x-5 gap-y-2 border-b border-gray-100 pb-3 text-xs font-medium text-gray-600">
+        <div class="mb-3 flex flex-wrap gap-x-5 gap-y-2 pb-3 text-xs font-medium text-gray-600">
           <a href="/sign-in" class="hover:text-tebra-teal">Sign In</a>
           <a href="/help" class="hover:text-tebra-teal">Help Center</a>
           <a href="tel:+18889383272" class="hover:text-tebra-teal">Call sales</a>
         </div>
 
-        <details name="main-nav" class="group rounded-xl bg-white open:bg-gray-50/80 open:shadow-sm">
+        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
           <summary
-            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none ring-tebra-teal/30 marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50"
+            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none ring-tebra-teal/30 marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
           >
             <span>Products</span>
-            <svg
-              class="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200 group-open:rotate-180"
-              viewBox="0 0 16 16"
-              fill="none"
+            <ChevronDown
+              class="h-4 w-4 shrink-0 text-gray-400"
               aria-hidden="true"
-            >
-              <path
-                d="M4 6l4 4 4-4"
-                stroke="currentColor"
-                stroke-width="1.3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            />
           </summary>
           <div class="px-2 pb-3 pt-1">
             {
@@ -169,7 +128,7 @@ const navItems = [
                       <li>
                         <a
                           href={link.href}
-                          class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-white hover:text-tebra-teal"
+                          class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
                         >
                           {link.label}
                         </a>
@@ -194,32 +153,22 @@ const navItems = [
             .map((item) => (
               <a
                 href={item.href}
-                class="rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark transition-colors hover:bg-gray-50"
+                class="rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark hover:bg-gray-50"
               >
                 {item.label}
               </a>
             ))
         }
 
-        <details name="main-nav" class="group rounded-xl bg-white open:bg-gray-50/80 open:shadow-sm">
+        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
           <summary
-            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50"
+            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
           >
             <span>About</span>
-            <svg
-              class="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200 group-open:rotate-180"
-              viewBox="0 0 16 16"
-              fill="none"
+            <ChevronDown
+              class="h-4 w-4 shrink-0 text-gray-400"
               aria-hidden="true"
-            >
-              <path
-                d="M4 6l4 4 4-4"
-                stroke="currentColor"
-                stroke-width="1.3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            />
           </summary>
           <div class="px-2 pb-3 pt-1">
             <ul class="flex flex-col gap-0.5 py-1" role="list">
@@ -228,7 +177,7 @@ const navItems = [
                   <li>
                     <a
                       href={link.href}
-                      class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-white hover:text-tebra-teal"
+                      class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
                     >
                       {link.label}
                     </a>
@@ -241,30 +190,20 @@ const navItems = [
 
         <a
           href="/case-studies"
-          class="rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark transition-colors hover:bg-gray-50"
+          class="rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark hover:bg-gray-50"
         >
           Case Studies
         </a>
 
-        <details name="main-nav" class="group rounded-xl bg-white open:bg-gray-50/80 open:shadow-sm">
+        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
           <summary
-            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50"
+            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
           >
             <span>Resources</span>
-            <svg
-              class="h-4 w-4 shrink-0 text-gray-400 transition-transform duration-200 group-open:rotate-180"
-              viewBox="0 0 16 16"
-              fill="none"
+            <ChevronDown
+              class="h-4 w-4 shrink-0 text-gray-400"
               aria-hidden="true"
-            >
-              <path
-                d="M4 6l4 4 4-4"
-                stroke="currentColor"
-                stroke-width="1.3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            />
           </summary>
           <div class="px-2 pb-3 pt-1">
             {
@@ -278,7 +217,7 @@ const navItems = [
                       <li>
                         <a
                           href={link.href}
-                          class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-white hover:text-tebra-teal"
+                          class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
                         >
                           {link.label}
                         </a>
@@ -291,17 +230,11 @@ const navItems = [
           </div>
         </details>
 
-        <div class="mt-4 flex flex-col gap-3 border-t border-gray-100 pt-4">
-          <a
-            href="/product-tour"
-            class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition-colors hover:bg-tebra-hero-bg"
-          >
+        <div class="mt-4 flex flex-col gap-3 pt-4">
+          <a href="/product-tour" class="btn-pill-outline">
             Take a tour
           </a>
-          <a
-            href="/demo"
-            class="inline-flex items-center justify-center rounded-full bg-tebra-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#ff5a49]"
-          >
+          <a href="/demo" class="btn-pill-solid">
             Get a demo
           </a>
         </div>

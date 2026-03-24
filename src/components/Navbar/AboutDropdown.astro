@@ -1,99 +1,190 @@
 ---
+import {
+  Briefcase,
+  Building2,
+  ChevronDown,
+  Handshake,
+  HeartHandshake,
+  Users,
+} from "@lucide/astro";
 import aboutImage from "../../assets/about.webp";
 const aboutSrc = typeof aboutImage === "string" ? aboutImage : aboutImage.src;
 
-const leftLinks = [
-  { title: "Our Story", href: "/about/story", description: "We're redefining practice success at the crossroads of compassion and connectivity." },
-  { title: "Leadership", href: "/leadership", description: "Meet the team leading the charge to bring complete well-being to practices, providers, and patients." },
-  { title: "Partners", href: "/partners", description: "Market best-in-class healthcare solutions for providers and practices nationwide." },
-];
+const menuSections = [
+  {
+    id: "about-company",
+    title: "Company",
+    subtitle: "Learn who we are and where we are headed.",
+    links: [
+      { title: "Our Story", href: "/about/story", description: "We're redefining practice success at the crossroads of compassion and connectivity.", icon: "story" },
+      { title: "Leadership", href: "/leadership", description: "Meet the team leading the charge to bring complete well-being to practices, providers, and patients.", icon: "leadership" },
+      { title: "Investors", href: "/investors", description: "The Tebra investment partners fuel our commitment to unlocking better healthcare.", icon: "investors" },
+    ],
+  },
+  {
+    id: "about-ecosystem",
+    title: "Ecosystem",
+    subtitle: "See how we collaborate and build for impact.",
+    links: [
+      { title: "Partners", href: "/partners", description: "Market best-in-class healthcare solutions for providers and practices nationwide.", icon: "partners" },
+      { title: "DEI", href: "/diversity-equity-and-inclusion", description: "We're committed to celebrating diverse personalities, backgrounds, and experiences.", icon: "dei" },
+      { title: "Careers", href: "/careers", description: "At Tebra, we're building the future of well-being together.", icon: "careers" },
+    ],
+  },
+] as const;
 
-const middleLinks = [
-  { title: "Investors", href: "/investors", description: "The Tebra investment partners fuel our commitment to unlocking better healthcare." },
-  { title: "DEI", href: "/diversity-equity-and-inclusion", description: "We're committed to celebrating diverse personalities, backgrounds, and experiences." },
-  { title: "Careers", href: "/careers", description: "At Tebra, we're building the future of well-being together." },
-];
+function getIcon(name: string) {
+  const icons = {
+    story: Building2,
+    leadership: Users,
+    investors: Briefcase,
+    partners: Handshake,
+    dei: HeartHandshake,
+    careers: Briefcase,
+  } as const;
+  return icons[name] || icons.story;
+}
 ---
 
 <div class="about-dropdown relative group">
   <button
     type="button"
-    class="about-dropdown-trigger inline-flex items-center gap-1 rounded px-2 py-1.5 text-sm font-medium text-[#1a1a1a] hover:bg-[#f5f0eb] hover:text-tebra-teal transition-colors cursor-pointer bg-transparent border-0 group-hover:bg-[#f5f0eb]"
+    class="about-dropdown-trigger inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-2 text-sm font-semibold text-tebra-teal-dark cursor-pointer bg-transparent hover:border-[#E8DAF8] hover:bg-white hover:text-[#5E2A84] group-hover:border-[#E8DAF8] group-hover:bg-white group-hover:text-[#5E2A84]"
     aria-haspopup="true"
     aria-expanded="false"
     aria-controls="nav-dropdown-about"
     id="nav-trigger-about"
   >
     About
-    <svg class="h-3.5 w-3.5 text-gray-500 group-hover:rotate-180 transition-transform" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
+    <ChevronDown class="h-3.5 w-3.5 text-[#7E57A0]/80" aria-hidden="true" />
   </button>
 
   <div
     id="nav-dropdown-about"
-    class="fixed left-0 right-0 top-[5.5rem] pt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50"
+    class="pointer-events-none fixed left-0 right-0 top-[5.5rem] z-50 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
   >
-    <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 bg-white border-t border-gray-100 rounded-b-2xl shadow-xl">
-      <div class="py-8 lg:py-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          <!-- Left column: About -->
-          <div class="lg:col-span-4">
-            <h3 class="text-sm font-bold text-[#1a1a1a] mb-5">About</h3>
-            <ul class="space-y-5">
-              {leftLinks.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item block text-left">
-                    <span class="block text-sm font-semibold text-[#1a1a1a] group-hover/item:text-tebra-teal transition-colors">{item.title}</span>
-                    <span class="block text-sm text-gray-600 mt-1 leading-snug">{item.description}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Middle column -->
-          <div class="lg:col-span-4 border-l border-gray-200 pl-8">
-            <ul class="space-y-5">
-              {middleLinks.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item block text-left">
-                    <span class="block text-sm font-semibold text-[#1a1a1a] group-hover/item:text-tebra-teal transition-colors">{item.title}</span>
-                    <span class="block text-sm text-gray-600 mt-1 leading-snug">{item.description}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Right column: CTA panel -->
-          <div class="lg:col-span-4 border-l border-gray-200 pl-8">
-            <div class="rounded-xl bg-tebra-50/80 p-5">
+    <div class="mx-auto w-full max-w-[1060px] px-4 sm:px-6 lg:px-8">
+      <div class="max-h-[74vh] overflow-y-auto rounded-2xl border border-[#ECE5F8] bg-white shadow-[0_20px_60px_-38px_rgba(94,42,132,0.45)]">
+        <div class="bg-white px-3.5 py-4 sm:px-5 lg:px-6">
+          <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-3 lg:gap-2">
+            {menuSections.map((section) => (
+              <section class="min-w-0 px-0 py-1 md:px-1.5 lg:px-2">
+                <h3 class="px-1.5 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#6F3E95]">
+                  {section.title}
+                </h3>
+                <ul role="list">
+                  {section.links.map((item) => (
+                    <li>
+                      <a
+                        href={item.href}
+                        class="group/item flex items-center gap-2 rounded-md bg-white px-1.5 py-1.5 text-left hover:bg-gray-50"
+                      >
+                        {(() => {
+                          const Icon = getIcon(item.icon);
+                          return <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-[#6E3F87] group-hover/item:bg-white"><Icon class="h-3.5 w-3.5" aria-hidden="true" /></span>;
+                        })()}
+                        <span class="block text-[13px] font-medium leading-[1.25] text-[#40324F] group-hover/item:text-[#5E2A84]">
+                          {item.title}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+            <aside class="min-w-0 rounded-xl border border-[#ECE5F8] bg-gray-50 p-3.5">
               <img
                 src={aboutSrc}
                 alt="Explore Tebra's all-in-one platform"
-                class="w-full max-w-[200px] mx-auto rounded-full aspect-square object-cover mb-4"
+                class="mx-auto mb-2.5 w-full max-w-[96px] rounded-full aspect-square object-cover"
                 loading="lazy"
               />
-              <h4 class="text-base font-bold text-[#1a1a1a] mb-2">Explore our all-in-one platform</h4>
-              <p class="text-sm text-gray-600 leading-snug mb-4">
+              <h4 class="text-[13px] font-bold text-[#4D236D]">Explore our all-in-one platform</h4>
+              <p class="mt-1 text-[12px] leading-[1.35] text-[#726781]">
                 Tebra's products come together to form the complete operating system for practice success.
               </p>
               <a
                 href="/product-tour"
-                class="inline-flex items-center gap-2 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark transition-colors"
+                class="mt-2 inline-flex items-center gap-2 text-[12px] font-semibold text-[#6E3F87] hover:text-[#4D236D]"
               >
                 Take product tour
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                  <polyline points="15 3 21 3 21 9"/>
-                  <line x1="10" y1="14" x2="21" y2="3"/>
-                </svg>
               </a>
-            </div>
+            </aside>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  (() => {
+    const dropdownId = "about";
+    const root = document.querySelector(".about-dropdown");
+    const trigger = document.querySelector("#nav-trigger-about");
+    const panel = document.querySelector("#nav-dropdown-about");
+    if (!root || !trigger || !panel) return;
+
+    let closeTimer;
+
+    const openMenu = () => {
+      window.clearTimeout(closeTimer);
+      window.dispatchEvent(new CustomEvent("nav:dropdown-open", { detail: { id: dropdownId } }));
+      panel.classList.remove("pointer-events-none", "opacity-0", "invisible");
+      panel.classList.add("pointer-events-auto", "opacity-100", "visible");
+      trigger.setAttribute("aria-expanded", "true");
+    };
+
+    const closeMenu = () => {
+      panel.classList.remove("pointer-events-auto", "opacity-100", "visible");
+      panel.classList.add("pointer-events-none", "opacity-0", "invisible");
+      trigger.setAttribute("aria-expanded", "false");
+    };
+
+    const scheduleClose = () => {
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(() => {
+        const active = document.activeElement;
+        if (
+          root.matches(":hover") ||
+          panel.matches(":hover") ||
+          (active instanceof Node && (trigger.contains(active) || panel.contains(active)))
+        ) {
+          return;
+        }
+        closeMenu();
+      }, 120);
+    };
+
+    trigger.addEventListener("mouseenter", openMenu);
+    trigger.addEventListener("focus", openMenu);
+    panel.addEventListener("mouseenter", openMenu);
+    panel.addEventListener("focusin", openMenu);
+
+    trigger.addEventListener("mouseleave", scheduleClose);
+    panel.addEventListener("mouseleave", scheduleClose);
+    panel.addEventListener("focusout", scheduleClose);
+    panel.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof HTMLElement && t.closest("a[href]")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof Node && !root.contains(t) && !panel.contains(t)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("nav:dropdown-open", (e) => {
+      if (!(e instanceof CustomEvent)) return;
+      if (e.detail?.id !== dropdownId) closeMenu();
+    });
+  })();
+</script>

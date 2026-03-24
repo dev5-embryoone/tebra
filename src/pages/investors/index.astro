@@ -11,8 +11,6 @@ import transformationRaw from "../../assets/testimonial_logo_transformation.svg"
 import tobaRaw from "../../assets/testimonial_logo_tobacapital.svg";
 import stepstoneRaw from "../../assets/testimonial_logo_stepstone.svg";
 
-import illoLeftRaw from "../../assets/investors_ilustration-01.svg";
-import illoRightRaw from "../../assets/investors_ilustration-02.svg";
 import bannerIlloRaw from "../../assets/Banner_Illo.svg";
 
 type Img = { src: string } | string;
@@ -77,8 +75,6 @@ const investors = [
   },
 ];
 
-const illoLeft = src(illoLeftRaw);
-const illoRight = src(illoRightRaw);
 const bannerIllo = src(bannerIlloRaw);
 ---
 
@@ -100,20 +96,6 @@ const bannerIllo = src(bannerIlloRaw);
 
   <PageSection variant="default" class="pt-0">
     <div class="relative">
-      <!-- Side illustrations (desktop), aligned with the grid like the reference -->
-      <img
-        src={illoLeft}
-        alt=""
-        class="pointer-events-none absolute left-0 top-1/2 hidden w-[190px] -translate-x-[110%] -translate-y-1/2 select-none lg:block"
-        loading="lazy"
-      />
-      <img
-        src={illoRight}
-        alt=""
-        class="pointer-events-none absolute right-0 top-1/2 hidden w-[190px] translate-x-[110%] -translate-y-1/2 select-none lg:block"
-        loading="lazy"
-      />
-
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
       {investors.map((inv) => (
         <article class="group rounded-2xl border border-gray-100 bg-[#FBF9F4] p-6 shadow-sm transition-shadow hover:shadow-md">
@@ -132,11 +114,9 @@ const bannerIllo = src(bannerIlloRaw);
 
           <div class="mt-5">
             <a
-              href={inv.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
               class="inline-flex items-center gap-2 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark transition-colors"
-              aria-label={`Read more about ${inv.name} (opens in a new tab)`}
+              aria-label={`Read more about ${inv.name}`}
             >
               Read more
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">

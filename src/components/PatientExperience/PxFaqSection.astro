@@ -19,7 +19,7 @@ interface Props {
 const { faqs, id: sectionId, showEyebrow = true, centered = false } = Astro.props as Props;
 ---
 
-<section id={sectionId} class:list={["bg-tebra-section-warm py-16 lg:py-24", sectionId && "scroll-mt-20"]}>
+<section id={sectionId} class:list={["bg-tebra-section-alt py-16 lg:py-24", sectionId && "scroll-mt-20"]}>
   <div class="page-container">
     <SectionHeader
       eyebrow={showEyebrow ? "FAQ" : undefined}

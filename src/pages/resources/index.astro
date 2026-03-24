@@ -83,12 +83,12 @@ function resolveItem(item: ResourceItem) {
 
 <BaseLayout title={resourceLibraryMeta.title} description={resourceLibraryMeta.description} mainClass="main-full-bleed">
   <!-- Hero (cream) -->
-  <section class="border-b border-[#E8E6E1] bg-[#F9F8F4]">
+  <section class="border-b border-gray-200 bg-gray-50">
     <div class="page-container px-4 py-12 text-center sm:px-6 sm:py-14 lg:px-12 lg:py-16">
-      <h1 class="text-4xl font-semibold tracking-tight text-[#1D3533] sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
+      <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
         {resourceLibraryHero.title}
       </h1>
-      <p class="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[#6B7280]">
+      <p class="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-600">
         {resourceLibraryHero.subtitle}
       </p>
     </div>
@@ -97,15 +97,15 @@ function resolveItem(item: ResourceItem) {
   <ResourceLibraryCategoryCarousel items={resourceCategoryCarousel} webinarSrc={webinarSvg} workbookSrc={workbookSvg} />
 
   <!-- Browse by topic -->
-  <section class="border-b border-[#E8E6E1] bg-white py-12 lg:py-14">
+  <section class="border-b border-gray-200 bg-white py-12 lg:py-14">
     <div class="page-container px-4 sm:px-6 lg:px-12">
-      <h2 class="text-left text-2xl font-semibold text-[#1D3533] sm:text-3xl lg:text-4xl">Browse by topic</h2>
+      <h2 class="text-left text-2xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl">Browse by topic</h2>
       <div class="mt-8 flex flex-wrap gap-3">
         {
           resourceTopicPills.map((p) => (
             <a
               href={p.href}
-              class="inline-flex items-center rounded-full bg-[#EFEEED] px-6 py-3 text-sm font-semibold text-[#1D3533] transition hover:bg-[#E5E3E0] hover:text-[#005A57]"
+              class="inline-flex items-center rounded-full bg-gray-100 px-6 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-50 hover:text-tebra-teal"
             >
               {p.label}
             </a>
@@ -116,9 +116,9 @@ function resolveItem(item: ResourceItem) {
   </section>
 
   <!-- Practice favorites -->
-  <section id="practice-favorites" class="scroll-mt-32 border-b border-[#E8E6E1] bg-white py-12 lg:py-16">
+  <section id="practice-favorites" class="scroll-mt-32 border-b border-gray-200 bg-white py-12 lg:py-16">
     <div class="page-container px-4 sm:px-6 lg:px-12">
-      <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl lg:text-4xl">Practice favorites</h2>
+      <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl">Practice favorites</h2>
 
       <div class="mt-10">
         <ResourceLibraryFeaturedWorkbook
@@ -153,10 +153,10 @@ function resolveItem(item: ResourceItem) {
   </section>
 
   <!-- Patient Experience -->
-  <section id="patient-experience" class="scroll-mt-32 border-b border-[#E8E6E1] bg-[#F9F8F4] py-12 lg:py-16">
+  <section id="patient-experience" class="scroll-mt-32 border-b border-gray-200 bg-gray-50 py-12 lg:py-16">
     <div class="page-container px-4 sm:px-6 lg:px-12">
       <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-        <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">Patient Experience</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">Patient Experience</h2>
         <ResourceLibraryViewAllLink href="/patient-experience" />
       </div>
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -181,10 +181,10 @@ function resolveItem(item: ResourceItem) {
   </section>
 
   <!-- EHR -->
-  <section id="ehr" class="scroll-mt-32 border-b border-[#E8E6E1] bg-white py-12 lg:py-16">
+  <section id="ehr" class="scroll-mt-32 border-b border-gray-200 bg-white py-12 lg:py-16">
     <div class="page-container px-4 sm:px-6 lg:px-12">
       <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-        <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">EHR</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">EHR</h2>
         <ResourceLibraryViewAllLink href="/ehr" />
       </div>
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -216,10 +216,10 @@ function resolveItem(item: ResourceItem) {
   />
 
   <!-- Billing & Payments — dark portrait cards -->
-  <section id="billing-payments" class="scroll-mt-32 border-b border-[#E8E6E1] bg-white py-12 lg:py-16">
+  <section id="billing-payments" class="scroll-mt-32 border-b border-gray-200 bg-white py-12 lg:py-16">
     <div class="page-container px-4 sm:px-6 lg:px-12">
       <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-        <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">Billing &amp; Payments</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">Billing &amp; Payments</h2>
         <ResourceLibraryViewAllLink href="/billing-payments" />
       </div>
       <div
@@ -243,10 +243,10 @@ function resolveItem(item: ResourceItem) {
   </section>
 
   <!-- Medical Billing Companies -->
-  <section id="medical-billing-companies" class="scroll-mt-32 border-b border-[#E8E6E1] bg-[#F9F8F4] py-12 lg:py-16">
+  <section id="medical-billing-companies" class="scroll-mt-32 border-b border-gray-200 bg-gray-50 py-12 lg:py-16">
     <div class="page-container px-4 sm:px-6 lg:px-12">
       <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-        <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">Medical Billing Companies</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">Medical Billing Companies</h2>
         <ResourceLibraryViewAllLink href="/for-billing-companies" />
       </div>
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -271,9 +271,9 @@ function resolveItem(item: ResourceItem) {
   </section>
 
   <!-- More ways: billing calculator + 3 tiles -->
-  <section class="border-b border-[#E8E6E1] bg-white py-14 lg:py-16">
+  <section class="border-b border-gray-200 bg-white py-14 lg:py-16">
     <div class="page-container px-4 sm:px-6 lg:px-12">
-      <h2 class="text-2xl font-semibold text-[#1D3533] sm:text-3xl">More ways to support your practice</h2>
+      <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">More ways to support your practice</h2>
       <div class="mt-10">
         <ResourceLibraryBillingCalculatorBanner
           eyebrow={resourceLibraryBillingCalculatorBanner.eyebrow}

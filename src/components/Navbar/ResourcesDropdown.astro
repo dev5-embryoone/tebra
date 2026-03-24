@@ -1,37 +1,59 @@
 ---
-const resourcesCol1 = [
-  { title: "The Intake", href: "/theintake", description: "Insights for those starting, managing and growing independent healthcare practices.", icon: "monitor" },
-  { title: "Resource Library", href: "/resources", description: "Access valuable guides, tools, and insights in Tebra's resource library.", icon: "document" },
-  { title: "News Room", href: "/newsroom", description: "Stay up to date with what's new and notable in the world of Tebra.", icon: "newspaper" },
-];
-const resourcesCol2 = [
-  { title: "Testimonials", href: "/resources/testimonials", description: "Discover why healthcare businesses trust Tebra time and time again.", icon: "star" },
-  { title: "Case Studies", href: "/case-studies", description: "Get inspired by industry leaders, learn from experts.", icon: "chart" },
-  { title: "Partner Marketplace", href: "/partners", description: "Find trusted partners and explore curated solutions to meet your business needs.", icon: "network" },
-];
+import {
+  BadgeDollarSign,
+  Calculator,
+  ChevronDown,
+  CirclePlay,
+  FileText,
+  Gauge,
+  LineChart,
+  Monitor,
+  Network,
+  Newspaper,
+  Star,
+} from "@lucide/astro";
 
-const interactiveTools = [
-  { title: "Product Tour", href: "/product-tour", description: "Explore Tebra's platform features in an interactive walkthrough.", icon: "play" },
-  { title: "EHR Calculator", href: "/ehr-calculator/step-1", description: "Estimate your savings with Tebra's EHR cost calculator.", icon: "calculator" },
-  { title: "Billing Calculator", href: "/billing-payments/billing-calculator", description: "See how much revenue your practice could recover.", icon: "billing" },
-  { title: "Competitive Scanner", href: "/competitive-scanner", description: "Compare your practice against local peers and discover opportunities.", icon: "chart" },
-  { title: "Efficiency Grader", href: "/practice-efficiency-grader", description: "Assess your workflows and uncover ways to improve efficiency.", icon: "gear" },
-];
+const menuSections = [
+  {
+    id: "resources-core",
+    title: "Resources",
+    subtitle: "Educational and strategic content for independent practices.",
+    links: [
+      { title: "The Intake", href: "/theintake", description: "Insights for those starting, managing and growing independent healthcare practices.", icon: "monitor" },
+      { title: "Resource Library", href: "/resources", description: "Access valuable guides, tools, and insights in Tebra's resource library.", icon: "document" },
+      { title: "News Room", href: "/newsroom", description: "Stay up to date with what's new and notable in the world of Tebra.", icon: "newspaper" },
+      { title: "Testimonials", href: "/resources/testimonials", description: "Discover why healthcare businesses trust Tebra time and time again.", icon: "star" },
+      { title: "Case Studies", href: "/case-studies", description: "Get inspired by industry leaders, learn from experts.", icon: "chart" },
+      { title: "Partner Marketplace", href: "/partners", description: "Find trusted partners and explore curated solutions to meet your business needs.", icon: "network" },
+    ],
+  },
+  {
+    id: "resources-tools",
+    title: "Interactive tools",
+    subtitle: "Hands-on calculators and assessments for quick insights.",
+    links: [
+      { title: "Product Tour", href: "/product-tour", description: "Explore Tebra's platform features in an interactive walkthrough.", icon: "play" },
+      { title: "EHR Calculator", href: "/ehr-calculator/step-1", description: "Estimate your savings with Tebra's EHR cost calculator.", icon: "calculator" },
+      { title: "Billing Calculator", href: "/billing-payments/billing-calculator", description: "See how much revenue your practice could recover.", icon: "billing" },
+      { title: "Competitive Scanner", href: "/competitive-scanner", description: "Compare your practice against local peers and discover opportunities.", icon: "chart" },
+      { title: "Efficiency Grader", href: "/practice-efficiency-grader", description: "Assess your workflows and uncover ways to improve efficiency.", icon: "gear" },
+    ],
+  },
+] as const;
 
 function getIcon(name: string) {
-  const c = "w-5 h-5 text-tebra-teal-dark shrink-0";
-  const icons: Record<string, string> = {
-    monitor: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>`,
-    document: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>`,
-    newspaper: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 12h8"/></svg>`,
-    star: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l3-3H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/></svg>`,
-    chart: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>`,
-    network: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="M12 8v3M9.5 19l2.5-5 2.5 5M12 11l-5 8M12 11l5 8"/></svg>`,
-    play: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M10 8l6 4-6 4V8z"/></svg>`,
-    calculator: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h1M12 10h1M16 10h1M8 14h1M12 14h1M16 14h1M8 18h1M12 18h1M16 18h1"/></svg>`,
-    billing: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M7 15h.01"/><path d="M12 15h.01"/></svg>`,
-    gear: `<svg class="${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
-  };
+  const icons = {
+    monitor: Monitor,
+    document: FileText,
+    newspaper: Newspaper,
+    star: Star,
+    chart: LineChart,
+    network: Network,
+    play: CirclePlay,
+    calculator: Calculator,
+    billing: BadgeDollarSign,
+    gear: Gauge,
+  } as const;
   return icons[name] || icons.document;
 }
 ---
@@ -39,85 +61,128 @@ function getIcon(name: string) {
 <div class="resources-dropdown relative group">
   <button
     type="button"
-    class="resources-dropdown-trigger inline-flex items-center gap-1 rounded px-2 py-1.5 text-sm font-medium text-[#1a1a1a] hover:bg-[#f5f0eb] hover:text-tebra-teal transition-colors cursor-pointer bg-transparent border-0 group-hover:bg-[#f5f0eb]"
+    class="resources-dropdown-trigger inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-2 text-sm font-semibold text-tebra-teal-dark cursor-pointer bg-transparent hover:border-[#E8DAF8] hover:bg-white hover:text-[#5E2A84] group-hover:border-[#E8DAF8] group-hover:bg-white group-hover:text-[#5E2A84]"
     aria-haspopup="true"
     aria-expanded="false"
     aria-controls="nav-dropdown-resources"
     id="nav-trigger-resources"
   >
     Resources
-    <svg class="h-3.5 w-3.5 text-gray-500 group-hover:rotate-180 transition-transform" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
+    <ChevronDown class="h-3.5 w-3.5 text-[#7E57A0]/80" aria-hidden="true" />
   </button>
 
   <div
     id="nav-dropdown-resources"
-    class="fixed left-0 right-0 top-[5.5rem] pt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50"
+    class="pointer-events-none fixed left-0 right-0 top-[5.5rem] z-50 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
   >
-    <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 bg-white border-t border-gray-100 rounded-b-2xl shadow-xl">
-      <div class="py-8 lg:py-10">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0">
-          <!-- Column 1: Resources (first 3 items) -->
-          <div class="lg:pr-8">
-            <h3 class="text-sm font-bold text-[#1a1a1a] mb-5">Resources</h3>
-            <ul class="space-y-5">
-              {resourcesCol1.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item flex gap-4 text-left">
-                    <span class="flex-shrink-0 mt-0.5">
-                      <Fragment set:html={getIcon(item.icon)} />
-                    </span>
-                    <span class="min-w-0">
-                      <span class="block text-sm font-semibold text-[#1a1a1a] group-hover/item:text-tebra-teal transition-colors">{item.title}</span>
-                      <span class="block text-sm text-gray-600 mt-1 leading-snug">{item.description}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Column 2: Resources (next 3 items) - no header, same section -->
-          <div class="lg:border-l lg:border-gray-200 lg:pl-8 lg:pr-8 pt-0 lg:pt-[2.25rem]">
-            <ul class="space-y-5">
-              {resourcesCol2.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item flex gap-4 text-left">
-                    <span class="flex-shrink-0 mt-0.5">
-                      <Fragment set:html={getIcon(item.icon)} />
-                    </span>
-                    <span class="min-w-0">
-                      <span class="block text-sm font-semibold text-[#1a1a1a] group-hover/item:text-tebra-teal transition-colors">{item.title}</span>
-                      <span class="block text-sm text-gray-600 mt-1 leading-snug">{item.description}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Column 3: Interactive Tools (single column, divider before) -->
-          <div class="lg:border-l lg:border-gray-200 lg:pl-8">
-            <h3 class="text-sm font-bold text-[#1a1a1a] mb-5">Interactive Tools</h3>
-            <ul class="space-y-5">
-              {interactiveTools.map((item) => (
-                <li>
-                  <a href={item.href} class="group/item flex gap-4 text-left">
-                    <span class="flex-shrink-0 mt-0.5">
-                      <Fragment set:html={getIcon(item.icon)} />
-                    </span>
-                    <span class="min-w-0">
-                      <span class="block text-sm font-semibold text-[#1a1a1a] group-hover/item:text-tebra-teal transition-colors">{item.title}</span>
-                      <span class="block text-sm text-gray-600 mt-1 leading-snug">{item.description}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+    <div class="mx-auto w-full max-w-[1060px] px-4 sm:px-6 lg:px-8">
+      <div class="max-h-[74vh] overflow-y-auto rounded-2xl border border-[#ECE5F8] bg-white shadow-[0_20px_60px_-38px_rgba(94,42,132,0.45)]">
+        <div class="bg-white px-3.5 py-4 sm:px-5 lg:px-6">
+          <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:gap-2">
+            {menuSections.map((section) => (
+              <section class="min-w-0 px-0 py-1 md:px-1.5 lg:px-2">
+                <h3 class="px-1.5 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#6F3E95]">
+                  {section.title}
+                </h3>
+                <ul role="list">
+                  {section.links.map((item) => (
+                    <li>
+                      {(() => {
+                        const Icon = getIcon(item.icon);
+                        return (
+                          <a
+                            href={item.href}
+                            class="group/item flex items-center gap-2 rounded-md bg-white px-1.5 py-1.5 text-left hover:bg-gray-50"
+                          >
+                            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-[#6E3F87] group-hover/item:bg-white">
+                              <Icon class="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                            </span>
+                            <span class="min-w-0 text-[13px] font-medium leading-[1.25] text-[#40324F] group-hover/item:text-[#5E2A84]">
+                              {item.title}
+                            </span>
+                          </a>
+                        );
+                      })()}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  (() => {
+    const dropdownId = "resources";
+    const root = document.querySelector(".resources-dropdown");
+    const trigger = document.querySelector("#nav-trigger-resources");
+    const panel = document.querySelector("#nav-dropdown-resources");
+    if (!root || !trigger || !panel) return;
+
+    let closeTimer;
+
+    const openMenu = () => {
+      window.clearTimeout(closeTimer);
+      window.dispatchEvent(new CustomEvent("nav:dropdown-open", { detail: { id: dropdownId } }));
+      panel.classList.remove("pointer-events-none", "opacity-0", "invisible");
+      panel.classList.add("pointer-events-auto", "opacity-100", "visible");
+      trigger.setAttribute("aria-expanded", "true");
+    };
+
+    const closeMenu = () => {
+      panel.classList.remove("pointer-events-auto", "opacity-100", "visible");
+      panel.classList.add("pointer-events-none", "opacity-0", "invisible");
+      trigger.setAttribute("aria-expanded", "false");
+    };
+
+    const scheduleClose = () => {
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(() => {
+        const active = document.activeElement;
+        if (
+          root.matches(":hover") ||
+          panel.matches(":hover") ||
+          (active instanceof Node && (trigger.contains(active) || panel.contains(active)))
+        ) {
+          return;
+        }
+        closeMenu();
+      }, 120);
+    };
+
+    trigger.addEventListener("mouseenter", openMenu);
+    trigger.addEventListener("focus", openMenu);
+    panel.addEventListener("mouseenter", openMenu);
+    panel.addEventListener("focusin", openMenu);
+
+    trigger.addEventListener("mouseleave", scheduleClose);
+    panel.addEventListener("mouseleave", scheduleClose);
+    panel.addEventListener("focusout", scheduleClose);
+    panel.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof HTMLElement && t.closest("a[href]")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof Node && !root.contains(t) && !panel.contains(t)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("nav:dropdown-open", (e) => {
+      if (!(e instanceof CustomEvent)) return;
+      if (e.detail?.id !== dropdownId) closeMenu();
+    });
+  })();
+</script>

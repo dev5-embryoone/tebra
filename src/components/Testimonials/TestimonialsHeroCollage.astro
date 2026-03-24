@@ -2,17 +2,15 @@
 import TestimonialCollageCard from "./TestimonialCollageCard.astro";
 import testimonial1 from "../../assets/testimonial1.webp";
 import testimonial5 from "../../assets/testimonial5.webp";
-import testimonial9 from "../../assets/testimonial9.webp";
 
 const t1 = typeof testimonial1 === "string" ? testimonial1 : testimonial1.src;
 const t5 = typeof testimonial5 === "string" ? testimonial5 : testimonial5.src;
-const t9 = typeof testimonial9 === "string" ? testimonial9 : testimonial9.src;
 ---
 
-<div class="relative mx-auto w-full max-w-xl overflow-visible lg:max-w-none">
+<div class="relative mx-auto w-full max-w-xl overflow-visible lg:max-w-[520px]">
   <!-- Decorative connector lines — contained so they don’t force odd overflow -->
   <svg
-    class="pointer-events-none absolute left-0 top-0 z-0 hidden h-full w-full text-tebra-orange opacity-50 sm:block"
+    class="pointer-events-none absolute left-0 top-0 z-0 hidden h-full w-full text-tebra-orange opacity-50 lg:block"
     viewBox="0 0 400 520"
     preserveAspectRatio="none"
     fill="none"
@@ -37,7 +35,7 @@ const t9 = typeof testimonial9 === "string" ? testimonial9 : testimonial9.src;
   </svg>
 
   <div
-    class="relative z-[1] grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:gap-5 lg:items-start"
+    class="relative z-[1] grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2 lg:gap-5 lg:items-start"
   >
     <!-- Column A: hero photo + teal quote -->
     <div class="flex min-w-0 flex-col gap-3 sm:gap-4">
@@ -79,21 +77,6 @@ const t9 = typeof testimonial9 === "string" ? testimonial9 : testimonial9.src;
           author="Fabio Santos, DNP"
           role="Psychiatry &amp; wellness"
           class="!p-4 sm:!p-5 [&_p]:text-sm"
-        />
-      </div>
-
-      <div class="grid grid-cols-2 gap-3 sm:gap-4">
-        <TestimonialCollageCard
-          variant="photo"
-          imageSrc={t9}
-          imageAlt="Healthcare team member"
-          class="aspect-[4/3] max-h-[100px] w-full sm:max-h-[110px]"
-        />
-        <TestimonialCollageCard
-          variant="case-study"
-          caseStudyTitle="From one location to four — without doubling the back office"
-          caseStudyBody="See how this independent group used Tebra to open new practices while keeping billing and scheduling unified."
-          class="!p-4 sm:!p-5 [&_p]:mt-2 [&_p]:text-xs [&_h3]:text-sm"
         />
       </div>
 

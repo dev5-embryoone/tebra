@@ -1,4 +1,4 @@
-  {
+{
   "name": "",
   "type": "module",
   "version": "0.0.1",
@@ -15,5 +15,8 @@
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
     "tailwindcss": "^3.4.13"
+  },
+  "dependencies": {
+    "@lucide/astro": "^1.0.1"
   }
 }

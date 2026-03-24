@@ -17,9 +17,9 @@ const { type, title, href, cta, imageSrc, iconSrc, iconAlt = "" } = Astro.props 
 
 <a
   href={href}
-  class="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#E8E6E1] bg-white shadow-sm transition-shadow hover:border-[#1D3533]/15 hover:shadow-md"
+  class="group flex h-full flex-col overflow-hidden rounded-[20px] border border-gray-200 bg-white shadow-sm transition-shadow hover:border-gray-400 hover:shadow-md"
 >
-  <div class="relative aspect-[412/264] w-full bg-gradient-to-br from-[#F3F2F0] to-[#EFEEED]">
+  <div class="relative aspect-[412/264] w-full bg-gradient-to-br from-gray-100 to-gray-50">
     {
       imageSrc ? (
         <img
@@ -42,9 +42,9 @@ const { type, title, href, cta, imageSrc, iconSrc, iconAlt = "" } = Astro.props 
     }
   </div>
   <div class="flex flex-1 flex-col p-5">
-    <span class="text-xs font-semibold uppercase tracking-wide text-[#F08463]">{type}</span>
-    <p class="mt-2 flex-1 text-base font-semibold leading-snug text-[#1D3533] group-hover:text-[#005A57]">{title}</p>
-    <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#1D3533] group-hover:underline">
+    <span class="text-xs font-semibold uppercase tracking-wide text-accent-500">{type}</span>
+    <p class="mt-2 flex-1 text-base font-semibold leading-snug text-gray-900 group-hover:text-tebra-teal">{title}</p>
+    <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gray-900 group-hover:underline">
       {cta}
       <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

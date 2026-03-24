@@ -6,7 +6,7 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
 
 <header
   id="intake-site-header"
-  class="sticky top-0 z-[80] border-b border-gray-200/80 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/90"
+  class="sticky top-0 z-[80] border-b-0 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/90 lg:border-b lg:border-gray-200/80"
 >
   <div class="max-w-content mx-auto px-3 sm:px-6 lg:px-12">
     <div
@@ -153,7 +153,7 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
         <button
           type="button"
           id="intake-menu-toggle"
-          class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm sm:h-10 sm:w-10"
+          class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-gray-800 shadow-sm sm:h-10 sm:w-10"
           aria-expanded="false"
           aria-controls="intake-mobile-nav"
           aria-label="Open menu"
@@ -168,7 +168,7 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
       </div>
     </div>
 
-    <p class="border-t border-gray-100 pb-2 pt-2 text-[11px] leading-snug text-gray-500 sm:text-xs">
+    <p class="border-t-0 pb-2 pt-2 text-[11px] leading-snug text-gray-500 sm:text-xs lg:border-t lg:border-gray-100">
       {intakeTagline}
     </p>
   </div>
@@ -180,15 +180,15 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
 -->
 <div
   id="intake-mobile-nav"
-  class="fixed left-0 right-0 top-[var(--intake-mobile-menu-top,0px)] z-[200] hidden max-h-[min(78dvh,calc(100dvh-var(--intake-mobile-menu-top,0px)-0.5rem))] w-full flex-col overflow-y-auto overscroll-y-contain border-t border-gray-100 bg-white shadow-xl lg:hidden"
+  class="fixed left-0 right-0 top-[var(--intake-mobile-menu-top,0px)] z-[200] hidden max-h-[min(78dvh,calc(100dvh-var(--intake-mobile-menu-top,0px)-0.5rem))] w-full flex-col overflow-y-auto overscroll-y-contain bg-white shadow-xl lg:hidden"
   aria-hidden="true"
 >
-  <div class="flex shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3">
+  <div class="flex shrink-0 items-center justify-between px-4 py-3">
     <span class="font-display text-lg font-semibold text-tebra-teal-dark">Menu</span>
     <button
       type="button"
       id="intake-menu-close"
-      class="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200"
+      class="flex h-10 w-10 items-center justify-center rounded-lg"
       aria-label="Close menu"
     >
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -204,14 +204,14 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
       Tebra
     </a>
 
-    <details class="mt-1 rounded-xl border border-gray-100 open:bg-gray-50/80">
+    <details class="mt-1 rounded-xl open:bg-gray-50/80">
       <summary class="flex cursor-pointer list-none items-center justify-between px-3 py-3 text-base font-semibold text-tebra-teal-dark marker:content-none [&::-webkit-details-marker]:hidden">
         Categories
         <svg class="h-4 w-4 text-gray-400" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
         </svg>
       </summary>
-      <ul class="space-y-0.5 border-t border-gray-100 pb-3 pt-1">
+      <ul class="space-y-0.5 pb-3 pt-1">
         {intakeNav.categories.map((c) => (
           <li>
             <a href={c.href} class="block rounded-lg px-5 py-2.5 text-sm text-gray-800 hover:bg-white hover:text-tebra-teal">
@@ -229,14 +229,14 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
       Reports
     </a>
 
-    <details class="mt-1 rounded-xl border border-gray-100 open:bg-gray-50/80">
+    <details class="mt-1 rounded-xl open:bg-gray-50/80">
       <summary class="flex cursor-pointer list-none items-center justify-between px-3 py-3 text-base font-semibold text-tebra-teal-dark marker:content-none [&::-webkit-details-marker]:hidden">
         Tools and Resources
         <svg class="h-4 w-4 text-gray-400" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
         </svg>
       </summary>
-      <ul class="space-y-0.5 border-t border-gray-100 pb-3 pt-1">
+      <ul class="space-y-0.5 pb-3 pt-1">
         {intakeNav.tools.map((t) => (
           <li>
             <a href={t.href} class="block rounded-lg px-5 py-2.5 text-sm text-gray-800 hover:bg-white hover:text-tebra-teal">
@@ -247,20 +247,17 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
       </ul>
     </details>
 
-    <div class="mt-6 flex flex-col gap-2 border-t border-gray-100 pt-6 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))]">
+    <div class="mt-6 flex flex-col gap-2 pt-6 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))]">
       <a
         href="/for-billing-companies"
         class="rounded-full bg-sky-100 py-3 text-center text-sm font-semibold text-tebra-teal-dark"
       >
         For Billing Companies
       </a>
-      <a href="/theintake#search" class="rounded-lg border border-gray-200 py-3 text-center text-sm font-semibold text-tebra-teal-dark">
+      <a href="/theintake#search" class="rounded-lg py-3 text-center text-sm font-semibold text-tebra-teal-dark">
         Search hub
       </a>
-      <a
-        href="/"
-        class="rounded-lg border border-gray-300 py-3 text-center text-sm font-semibold text-tebra-teal-dark"
-      >
+      <a href="/" class="rounded-lg py-3 text-center text-sm font-semibold text-tebra-teal-dark">
         Explore Tebra
       </a>
       <a href="/demo" class="rounded-lg bg-tebra-cta-coral py-3 text-center text-sm font-semibold text-white">

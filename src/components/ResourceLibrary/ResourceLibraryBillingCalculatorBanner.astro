@@ -10,23 +10,23 @@ interface Props {
 const { eyebrow, title, description, cta, href } = Astro.props;
 
 const extBox =
-  "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded border border-[#1D3533]/30 text-[#1D3533]";
+  "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded border border-gray-400 text-gray-900";
 ---
 
 <div
-  class="overflow-hidden rounded-[24px] bg-[#F4B5A0] shadow-sm ring-1 ring-[#1D3533]/5 lg:rounded-[28px]"
+  class="overflow-hidden rounded-[24px] bg-[#F4B5A0] shadow-sm ring-1 ring-gray-900/5 lg:rounded-[28px]"
   style="background: linear-gradient(135deg, #f8c4b0 0%, #f0a68c 45%, #eba082 100%);"
 >
   <div class="grid items-stretch gap-8 p-8 lg:grid-cols-2 lg:gap-12 lg:p-12">
     <div class="flex flex-col justify-center">
-      <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-[#1D3533]/85">{eyebrow}</p>
-      <h3 class="mt-4 font-display text-3xl font-bold leading-tight text-[#1D3533] sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
+      <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-gray-900/85">{eyebrow}</p>
+      <h3 class="mt-4 font-display text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
         {title}
       </h3>
-      <p class="mt-5 max-w-lg text-base leading-relaxed text-[#1D3533]/80">{description}</p>
+      <p class="mt-5 max-w-lg text-base leading-relaxed text-gray-900/80">{description}</p>
       <a
         href={href}
-        class="mt-8 inline-flex w-fit items-center gap-3 text-base font-semibold text-[#1D3533] underline-offset-4 hover:underline"
+        class="mt-8 inline-flex w-fit items-center gap-3 text-base font-semibold text-gray-900 underline-offset-4 hover:underline"
       >
         {cta}
         <span class={extBox} aria-hidden="true">
@@ -43,7 +43,7 @@ const extBox =
       </a>
     </div>
     <div class="flex min-h-[200px] items-center justify-center lg:min-h-[260px]">
-      <svg class="max-h-[220px] w-full max-w-[280px] text-[#1D3533]" viewBox="0 0 280 240" fill="none" aria-hidden="true">
+      <svg class="max-h-[220px] w-full max-w-[280px] text-gray-900" viewBox="0 0 280 240" fill="none" aria-hidden="true">
         <rect x="48" y="32" width="184" height="176" rx="12" fill="white" fill-opacity="0.55" stroke="currentColor" stroke-width="1.5" />
         <rect x="72" y="56" width="136" height="20" rx="4" fill="currentColor" opacity="0.12" />
         <rect x="72" y="88" width="96" height="12" rx="3" fill="currentColor" opacity="0.1" />

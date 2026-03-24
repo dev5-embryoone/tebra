@@ -27,13 +27,13 @@ const textGreen = "text-tebra-teal-dark";
   Min-height below single-row header: --nav-product-tour-offset
 -->
 <section
-  class="flex w-full min-h-[calc(100dvh-var(--nav-product-tour-offset))] flex-col bg-gray-50 lg:flex-row lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))]"
+  class="flex w-full min-h-[calc(100dvh-var(--nav-product-tour-offset))] flex-col bg-gray-50 lg:h-[calc(100dvh-var(--nav-product-tour-offset))] lg:min-h-0 lg:flex-row lg:overflow-hidden"
 >
   <!-- Left: grey half — badges → copy → checklist; mockup anchored to bottom on desktop -->
   <div
-    class="flex min-h-0 flex-1 flex-col justify-between gap-10 bg-gray-50 px-6 py-10 sm:px-8 sm:py-12 lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))] lg:gap-12 lg:px-12 lg:py-12 xl:px-16"
+    class="flex min-h-0 flex-1 flex-col justify-between gap-10 bg-gray-50 px-6 py-10 sm:px-8 sm:py-12 lg:gap-7 lg:px-10 lg:py-6 xl:px-12"
   >
-    <div class="space-y-8">
+    <div class="space-y-6">
       <!-- G2 trust row -->
       <div
         class="flex flex-wrap items-end gap-3 sm:gap-4"
@@ -88,13 +88,13 @@ const textGreen = "text-tebra-teal-dark";
 
       <div>
         <h1
-          class={`font-display text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.5rem] lg:leading-[1.12] ${textGreen}`}
+          class={`font-display text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.1rem] lg:leading-[1.1] ${textGreen}`}
         >
           See how Tebra works—<wbr />
           <span class="inline-block">before you commit</span>
         </h1>
         <p
-          class={`mt-5 max-w-xl text-[15px] leading-relaxed sm:text-base ${textGreen} opacity-90`}
+          class={`mt-3 max-w-xl text-[15px] leading-relaxed sm:text-base ${textGreen} opacity-90`}
         >
           Dive into an interactive, self-guided tour and see exactly how Tebra can elevate
           patient satisfaction, streamline operations, and support exceptional care—all
@@ -104,7 +104,7 @@ const textGreen = "text-tebra-teal-dark";
 
       <div>
         <p class={`text-sm font-semibold ${textGreen}`}>What’s inside the tour:</p>
-        <ul class="mt-4 space-y-3 text-[15px] leading-snug text-gray-800">
+        <ul class="mt-3 space-y-2 text-[14px] leading-snug text-gray-800 lg:text-[13px]">
           {tourBullets.map((line) => (
             <li class="flex gap-3">
               <span
@@ -133,7 +133,7 @@ const textGreen = "text-tebra-teal-dark";
         src={productGraphic}
         alt=""
         role="presentation"
-        class="w-full max-w-lg rounded-2xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.22)] lg:max-w-none lg:rounded-xl"
+        class="w-full max-w-lg rounded-2xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.22)] lg:max-w-[92%] lg:rounded-xl xl:max-w-none"
         widths={[400, 600, 800, 960]}
         sizes="(max-width: 1023px) 90vw, 50vw"
       />
@@ -142,17 +142,17 @@ const textGreen = "text-tebra-teal-dark";
 
   <!-- Right: white half — form block centered horizontally + vertically -->
   <div
-    class="flex min-h-0 flex-1 flex-col items-center justify-center bg-white px-6 py-12 sm:px-8 lg:min-h-[calc(100dvh-var(--nav-product-tour-offset))] lg:px-12 lg:py-12 xl:px-16"
+    class="flex min-h-0 flex-1 flex-col items-center justify-center bg-white px-6 py-12 sm:px-8 lg:px-10 lg:py-6 xl:px-12"
   >
-    <div class="w-full max-w-[420px]">
-      <h2 class={`font-display text-2xl font-semibold sm:text-3xl ${textGreen}`}>
+    <div class="w-full max-w-[400px]">
+      <h2 class={`font-display text-2xl font-semibold sm:text-3xl lg:text-[1.7rem] ${textGreen}`}>
         Start your tour
       </h2>
-      <p class="mt-2 text-[15px] text-gray-600">
+      <p class="mt-2 text-[15px] text-gray-600 lg:text-[14px]">
         Answer a few quick questions to personalize your experience.
       </p>
 
-      <form class="mt-8 space-y-5" action="#" method="post">
+      <form class="mt-6 space-y-4" action="#" method="post">
         <div>
           <label for="tour-email" class="sr-only">Email address</label>
           <input
@@ -184,7 +184,7 @@ const textGreen = "text-tebra-teal-dark";
         </button>
       </form>
 
-      <p class="mt-10 text-center text-sm text-gray-600">
+      <p class="mt-6 text-center text-sm text-gray-600 lg:text-[13px]">
         Already use Tebra?{" "}
         <a
           href="/sign-in"
@@ -195,7 +195,7 @@ const textGreen = "text-tebra-teal-dark";
       </p>
 
       <nav
-        class="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-xs text-gray-500"
+        class="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-xs text-gray-500"
         aria-label="Legal"
       >
         <a
@@ -212,7 +212,7 @@ const textGreen = "text-tebra-teal-dark";
         </a>
       </nav>
 
-      <p class="mt-6 text-center text-[11px] leading-relaxed text-gray-400">
+      <p class="mt-4 text-center text-[10px] leading-relaxed text-gray-400">
         This site is protected by reCAPTCHA and the Google{" "}
         <a
           class="underline underline-offset-1 hover:text-gray-600"
