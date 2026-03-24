@@ -1,5 +1,6 @@
 ---
-import logoSrc from "../../assets/logo_tebra.ad466dee.svg?url";
+import logoPng from "../../assets/logo.png?url";
+import logoSvg from "../../assets/logo.svg?url";
 import { intakeFooter } from "../../data/theIntakePage";
 ---
 
@@ -12,10 +13,19 @@ import { intakeFooter } from "../../data/theIntakePage";
       </div>
       <a
         href="/"
-        class="inline-flex h-8 w-[100px] shrink-0 items-center brightness-0 invert"
+        class="inline-flex h-8 w-[100px] shrink-0 items-center"
         aria-label="Tebra homepage"
       >
-        <img src={logoSrc} alt="" width="100" height="24" class="h-6 w-auto" />
+        <picture>
+          <source srcSet={logoSvg} type="image/svg+xml" />
+          <img
+            src={logoPng}
+            alt=""
+            width="100"
+            height="24"
+            class="h-6 w-auto object-contain"
+          />
+        </picture>
       </a>
     </div>
 

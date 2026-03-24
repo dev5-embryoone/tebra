@@ -15,7 +15,7 @@ if (!caseStudy) return Astro.redirect("/case-studies");
 
 <BaseLayout
   title={`${caseStudy.company} - Case Study | Tebra`}
-  description={caseStudy.quote}
+  description={caseStudy.excerpt ?? caseStudy.quote}
 >
   <section class="page-section bg-tebra-hero-bg">
     <div class="page-container max-w-3xl">
@@ -29,7 +29,14 @@ if (!caseStudy) return Astro.redirect("/case-studies");
       <h1 class="mt-2 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">
         {caseStudy.title}
       </h1>
-      <p class="mt-4 text-lg font-semibold text-tebra-700">{caseStudy.metric}</p>
+      <p class="mt-4 text-lg font-semibold text-tebra-700">{caseStudy.metricValue ?? caseStudy.metric}</p>
+      {caseStudy.metricLabel && <p class="mt-1 text-sm text-gray-600">{caseStudy.metricLabel}</p>}
+
+      {caseStudy.imageUrl && (
+        <div class="mt-8 overflow-hidden rounded-2xl border border-gray-200">
+          <img src={caseStudy.imageUrl} alt={caseStudy.company} class="h-full w-full object-cover" />
+        </div>
+      )}
       <div class="mt-6 flex items-center gap-3">
         <div class="flex h-12 w-12 items-center justify-center rounded-full bg-tebra-500 text-sm font-semibold text-white">
           {caseStudy.author.split(" ").map((n) => n[0]).join("").slice(0, 2)}
@@ -42,9 +49,36 @@ if (!caseStudy) return Astro.redirect("/case-studies");
       <blockquote class="mt-8 text-xl text-gray-700 leading-relaxed border-l-4 border-tebra-500 pl-6">
         "{caseStudy.quote}"
       </blockquote>
-      <p class="mt-8 text-sm text-gray-500">
-        Full case study content will be managed by CMS. This page is a placeholder for slug: <code class="bg-gray-100 px-1 rounded">{caseStudy.slug}</code>.
-      </p>
+
+      {caseStudy.excerpt && (
+        <p class="mt-8 text-base leading-relaxed text-gray-700">{caseStudy.excerpt}</p>
+      )}
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="rounded-full bg-tebra-50 px-3 py-1 text-xs font-semibold text-tebra-700">{caseStudy.product}</span>
+        {caseStudy.challenges.map((challenge) => (
+          <span class="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">{challenge}</span>
+        ))}
+        {caseStudy.roles.map((item) => (
+          <span class="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">{item}</span>
+        ))}
+      </div>
+
+      <div class="mt-10 rounded-2xl border border-tebra-200 bg-white p-6">
+        <h2 class="text-lg font-semibold text-gray-900">Want results like this?</h2>
+        <p class="mt-2 text-sm text-gray-600">
+          Explore how your practice can improve operations, patient experience, and growth with the same workflow model.
+        </p>
+        <a
+          href="/demo"
+          class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-tebra-600 hover:text-tebra-700"
+        >
+          Book a demo
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>

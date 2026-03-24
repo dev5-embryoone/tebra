@@ -447,20 +447,22 @@ export interface ApiCaseStudyCaseStudy extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    ctaLabel: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Read the full story'>;
+    excerpt: Schema.Attribute.Text;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     hasVideo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    image: Schema.Attribute.Media<
-      'images' | 'files' | 'audios' | 'videos',
-      true
-    >;
+    image: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::case-study.case-study'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'>;
     metric: Schema.Attribute.String & Schema.Attribute.Required;
     metricLabel: Schema.Attribute.String;
+    metricValue: Schema.Attribute.String;
     product: Schema.Attribute.Enumeration<
       [
         'EHR',
@@ -478,10 +480,13 @@ export interface ApiCaseStudyCaseStudy extends Struct.CollectionTypeSchema {
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    storyType: Schema.Attribute.Enumeration<['video', 'article']> &
+      Schema.Attribute.DefaultTo<'article'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    videoUrl: Schema.Attribute.String;
   };
 }
 

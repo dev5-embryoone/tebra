@@ -11,15 +11,20 @@ const { caseStudies } = Astro.props as Props;
 
 <section class="page-section bg-tebra-hero-bg">
   <div class="page-container">
-    <div class="mx-auto max-w-2xl text-center">
-      <h2 class="heading-lg text-gray-900">
-        Real Stories, Real Results
+    <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500">Real stories, real results</p>
+    <div class="mt-2 max-w-2xl">
+      <h2 class="text-4xl font-semibold tracking-tight text-tebra-teal-dark md:text-5xl">
+        Real people, real impact
       </h2>
-      <p class="mt-4 body-lg-muted">
+      <p class="mt-4 max-w-[62ch] text-base leading-7 text-gray-600">
         Hear from others who've faced the same challenges you do. Their stories show our clients don't just use Tebra—they grow with it, building stronger practices and better patient relationships.
       </p>
     </div>
-    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+  </div>
+
+  <!-- Full-width (not constrained by page-container) card strip -->
+  <div class="w-full mt-10 overflow-x-auto px-4 sm:px-6 lg:px-12 pb-4">
+    <div class="flex gap-6">
       {caseStudies.map((cs) => (
         <RealStoryCard caseStudy={cs} />
       ))}

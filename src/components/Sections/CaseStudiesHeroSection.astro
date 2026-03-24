@@ -1,18 +1,49 @@
 ---
 import Button from "../Button/Button.astro";
+import type { CaseStudy } from "../../data/caseStudies";
+
+interface Props {
+  featuredCaseStudies: CaseStudy[];
+}
+
+const { featuredCaseStudies } = Astro.props as Props;
+const collageCards = featuredCaseStudies.slice(0, 4);
 ---
 
-<section class="bg-tebra-hero-bg py-16 md:py-20">
-  <div class="page-container text-center">
-    <h1 class="heading-xl text-gray-900">
-      How practices and billing companies grow with Tebra
-    </h1>
-    <p class="mt-4 max-w-2xl mx-auto body-lg-muted">
-      Discover real success stories from private practices and billing companies using Tebra to work smarter, grow faster, and deliver better patient care.
-    </p>
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-      <Button href="#case-studies-grid" label="Browse All Case Studies" variant="primary" size="lg" class="rounded-full" />
-      <Button href="#demo" label="See Tebra in action" variant="secondary" size="lg" class="rounded-full" />
+<section class="bg-tebra-hero-bg py-14 md:py-16">
+  <div class="page-container grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+    <div>
+      <h1 class="max-w-[16ch] text-4xl font-semibold leading-tight tracking-tight text-tebra-teal-dark md:text-5xl">
+        How practices and billing companies grow with Tebra
+      </h1>
+      <p class="mt-4 max-w-[54ch] text-base leading-7 text-gray-600 md:text-lg">
+        Discover real success stories from private practices and billing companies using Tebra to work smarter, grow faster, and deliver better patient care.
+      </p>
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <Button href="#case-studies-grid" label="Browse All Case Studies" variant="primary" size="lg" class="rounded-full" />
+        <Button href="#demo" label="See Tebra in action" variant="secondary" size="lg" class="rounded-full border-gray-300" />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3 md:gap-4">
+      {collageCards.map((card, index) => (
+        <a
+          href={`/case-studies/${card.slug}`}
+          class="group relative block overflow-hidden rounded-2xl border border-gray-200 bg-white min-h-[140px] md:min-h-[190px]"
+        >
+          {card.imageUrl ? (
+            <img src={card.imageUrl} alt={card.company} class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+          ) : (
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200" />
+          )}
+          <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
+          <div class="absolute inset-x-0 bottom-0 p-3 text-white">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-white/85">{card.company}</p>
+            <p class="mt-1 line-clamp-2 text-sm font-semibold">{card.metricValue ?? card.metric}</p>
+          </div>
+          {index === 0 && <span class="sr-only">Featured case study</span>}
+        </a>
+      ))}
     </div>
   </div>
 </section>

@@ -1,5 +1,5 @@
 ---
-import logoSrc from "../../assets/logo_tebra.ad466dee.svg?url";
+import logoPng from "../../assets/logo.png?url";
 import FooterColumn from "./FooterColumn.astro";
 import { footerColumns, footerContact } from "../../data/footer";
 ---
@@ -16,14 +16,19 @@ import { footerColumns, footerContact } from "../../data/footer";
   <div class="border-t border-white/15">
     <div class="max-w-content mx-auto flex flex-col gap-6 px-4 py-6 sm:px-6 lg:px-12 md:flex-row md:items-start md:justify-between">
       <div class="flex flex-col gap-3">
-        <a href="/" class="inline-block h-6 w-[100px] shrink-0" aria-label="Tebra homepage">
+        <a
+          href="/"
+          class="inline-flex items-center"
+          aria-label="Tebra homepage"
+        >
           <img
-            src={logoSrc}
+            src={logoPng}
             alt=""
-            width="100"
+            width="24"
             height="24"
-            class="block h-6 w-auto brightness-0 invert"
+            class="block h-6 w-6 object-contain"
           />
+          <span class="ml-2 text-[14px] font-semibold text-white">Embryo One</span>
         </a>
         <p class="mt-1 text-[11px] font-bold uppercase tracking-wide text-white/90">
           Contact Us

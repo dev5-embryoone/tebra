@@ -1,20 +1,24 @@
 ---
-import logoSrc from "../../assets/logo_tebra.ad466dee.svg?url";
+import logoPng from "../../assets/logo.png?url";
+import logoSvg from "../../assets/logo.svg?url";
 import { helpCenterFooter } from "../../data/helpCenterPage";
 ---
 
-<footer class="bg-[#003d42] text-white">
+<footer class="bg-tebra-teal-dark text-white">
   <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-14">
     <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
       <div>
         <a href="/" class="inline-block" aria-label="Tebra homepage">
-          <img
-            src={logoSrc}
-            alt=""
-            width="120"
-            height="28"
-            class="h-7 w-auto brightness-0 invert"
-          />
+          <picture>
+            <source srcSet={logoSvg} type="image/svg+xml" />
+            <img
+              src={logoPng}
+              alt=""
+              width="120"
+              height="28"
+              class="h-7 w-auto object-contain"
+            />
+          </picture>
         </a>
         <p class="mt-6 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/85">
           {helpCenterFooter.tagline}
