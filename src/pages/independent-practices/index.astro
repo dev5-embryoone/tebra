@@ -49,7 +49,7 @@ function whyIconSvg(kind: "platform" | "automation" | "insights") {
 }
 ---
 
-<BaseLayout title={ipMeta.title} description={ipMeta.description}>
+<BaseLayout title={ipMeta.title} description={ipMeta.description} showBreadcrumb={false}>
   <div class="bg-tebra-hero-bg">
     <div class="page-container pt-8">
       <ProductPageBreadcrumb items={[...ipBreadcrumb]} />

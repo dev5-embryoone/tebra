@@ -136,6 +136,12 @@ body {
   color: var(--text-primary);
 }
 
+/* Intake: avoid clipping the sticky header row (logo + hamburger) on narrow viewports.
+   `clip` contains paint without the same sticky pitfalls as `hidden` in some engines. */
+body.intake-layout {
+  overflow-x: clip;
+}
+
 @layer base {
   h1 {
     @apply text-4xl font-semibold tracking-tight leading-tight sm:text-5xl md:text-6xl lg:text-7xl;
@@ -158,6 +164,12 @@ video,
 canvas {
   max-width: 100%;
   height: auto;
+}
+
+/* Global image reset: remove any drop shadow effects from images */
+img {
+  box-shadow: none !important;
+  filter: none !important;
 }
 
 /*

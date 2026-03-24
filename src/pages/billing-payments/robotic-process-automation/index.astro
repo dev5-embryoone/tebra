@@ -43,7 +43,7 @@ const featuredCaseStudies = rpaCaseStudySlugs
   .filter(Boolean);
 ---
 
-<BaseLayout title={rpaMeta.title} description={rpaMeta.description}>
+<BaseLayout title={rpaMeta.title} description={rpaMeta.description} showBreadcrumb={false}>
   <div class="bg-[#FDF8F5]">
     <div class="page-container pb-2 pt-8">
       <ProductPageBreadcrumb items={[...rpaBreadcrumb]} />

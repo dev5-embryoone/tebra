@@ -20,6 +20,9 @@ interface Props {
 
 const { title, subtitle, bullets, primary, secondary } = Astro.props as Props;
 
+const resolvedSecondaryHref =
+  secondary.label.trim().toLowerCase() === "explore for free" ? "/product-tour" : secondary.href;
+
 const stroke = "#1D3533";
 const accent = "#FF8E73";
 ---
@@ -88,7 +91,7 @@ const accent = "#FF8E73";
           {primary.label}
         </a>
         <a
-          href={secondary.href}
+          href={resolvedSecondaryHref}
           class="inline-flex min-h-[44px] items-center justify-center rounded-full border border-[#C5CAC9] bg-white px-8 py-3 text-sm font-semibold text-[#1D3533] transition hover:bg-white/90"
         >
           {secondary.label}

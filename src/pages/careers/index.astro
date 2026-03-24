@@ -90,21 +90,21 @@ const featuredJobs = [
     deptIcon: "box" as const,
     location: "United States - Remote",
     title: "Senior Business Analyst",
-    href: "https://www.tebra.com/careers",
+    href: "/careers",
   },
   {
     dept: "Technology",
     deptIcon: "gear" as const,
     location: "United States - Remote",
     title: "Senior Business Analyst",
-    href: "https://www.tebra.com/careers",
+    href: "/careers",
   },
   {
     dept: "Technology",
     deptIcon: "gear" as const,
     location: "Heredia, Heredia, Costa Rica",
     title: "Staff Backend Software Engineer",
-    href: "https://www.tebra.com/careers",
+    href: "/careers",
   },
 ];
 
@@ -354,9 +354,7 @@ const totalValues = coreValues.length;
           Join Team Tebra
         </h2>
         <a
-          href="https://www.tebra.com/careers"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/careers"
           class="inline-flex w-fit shrink-0 items-center justify-center rounded-full border border-tebra-teal-dark bg-white px-6 py-2.5 text-sm font-semibold text-tebra-teal-dark transition hover:bg-tebra-hero-bg"
         >
           View more jobs
@@ -367,8 +365,6 @@ const totalValues = coreValues.length;
         {featuredJobs.map((job) => (
           <a
             href={job.href}
-            target="_blank"
-            rel="noopener noreferrer"
             class="group flex flex-col rounded-2xl bg-tebra-hero-bg p-6 shadow-sm ring-1 ring-black/[0.04] transition hover:shadow-md"
           >
             <div class="flex flex-wrap gap-2">

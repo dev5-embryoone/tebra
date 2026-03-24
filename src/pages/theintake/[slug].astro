@@ -56,7 +56,7 @@ if (article) {
 }
 ---
 
-<IntakeLayout title={layoutTitle} description={layoutDescription}>
+<IntakeLayout title={layoutTitle} description={layoutDescription} showBreadcrumb={false}>
   {
     hubMeta?.kind === "icd" ? (
       <IntakeIcdGlossary />

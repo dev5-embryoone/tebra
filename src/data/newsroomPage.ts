@@ -22,48 +22,48 @@ export type PressRelease = {
 export const pressReleases: PressRelease[] = [
   {
     title: "Private practice platform Tebra secures $250M to accelerate AI innovation",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title: "Tebra partners with DrFirst to improve medication adherence",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title:
       "Tebra Launches Industry-First AI Review Replies and AI Review Insights as Part of EHR+ Patient Experience Package",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title:
       "Tebra partners with WoundZoom to simplify wound care management for independent practices",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title:
       "Tebra Launches AI Note Assist, Reducing Clinical Documentation Time by 50% for Independent Practices",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title: "Kareo is now Tebra – website transition effective December 5",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title:
       "Tebra releases new product enhancements to give independent healthcare providers more time with patients",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title: "PatientPop completes final step in transformation to Tebra: A new era begins April 2",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title: "New report shows patient no-shows and cancellations are costing doctors big",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title:
       "Report identifies the top marketing developments and tools that healthcare providers need to know now",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
 ];
 
@@ -117,12 +117,12 @@ export const inTheNews: InTheNewsItem[] = [
   {
     title: "Tebra survey assesses the CFPB’s 2023 Initiative’s impact on medical debt",
     source: "Meditech Today",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
   {
     title: "Kaiser Permanente strikes: Study reveals which states affected most by low staffing levels",
     source: "AS Diario",
-    href: "https://www.tebra.com",
+    href: "/newsroom",
   },
 ];
 

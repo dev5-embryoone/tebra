@@ -46,7 +46,7 @@ const featuredCaseStudies = ecsCaseStudySlugs
   .filter(Boolean);
 ---
 
-<BaseLayout title={ecsMeta.title} description={ecsMeta.description}>
+<BaseLayout title={ecsMeta.title} description={ecsMeta.description} showBreadcrumb={false}>
   <div class="bg-[#FDF8F5]">
     <div class="page-container pt-8 pb-2">
       <ProductPageBreadcrumb items={[...ecsBreadcrumb]} />

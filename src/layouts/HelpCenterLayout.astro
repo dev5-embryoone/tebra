@@ -3,15 +3,18 @@ import "../styles/global.css";
 import HelpCenterTopBar from "../components/HelpCenter/HelpCenterTopBar.astro";
 import HelpCenterFooter from "../components/HelpCenter/HelpCenterFooter.astro";
 import HelpCenterFloating from "../components/HelpCenter/HelpCenterFloating.astro";
+import AutoBreadcrumb from "../components/Common/AutoBreadcrumb.astro";
 
 interface Props {
   title?: string;
   description?: string;
+  showBreadcrumb?: boolean;
 }
 
 const {
   title = "Tebra Help Center",
   description = "Find answers, training, and resources for Tebra—EHR, billing, Engage, telehealth, and practice growth.",
+  showBreadcrumb = true,
 } = Astro.props;
 ---
 
@@ -31,6 +34,7 @@ const {
   </head>
   <body class="bg-white font-sans text-gray-900 antialiased">
     <HelpCenterTopBar />
+    {showBreadcrumb ? <AutoBreadcrumb /> : null}
     <slot />
     <HelpCenterFooter />
     <HelpCenterFloating />

@@ -54,7 +54,7 @@ function badge(kind: "full" | "limited" | "none") {
 }
 ---
 
-<BaseLayout title={marketingMeta.title} description={marketingMeta.description}>
+<BaseLayout title={marketingMeta.title} description={marketingMeta.description} showBreadcrumb={false}>
   <FeatureSplitHero class="bg-white" pyClass="pt-8 pb-16 lg:pt-10 lg:pb-24">
     <div slot="left" class="space-y-6">
       <ProductPageBreadcrumb items={[...marketingBreadcrumb]} />

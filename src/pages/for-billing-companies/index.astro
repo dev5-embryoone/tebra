@@ -40,7 +40,7 @@ const featuredCaseStudies = fbcCaseStudySlugs
   .map((slug) => caseStudies.find((c) => c.slug === slug))
   .filter(Boolean);
 ---
-<BaseLayout title={fbcMeta.title} description={fbcMeta.description}>
+<BaseLayout title={fbcMeta.title} description={fbcMeta.description} showBreadcrumb={false}>
   <span id="demo" class="sr-only" aria-hidden="true">Demo</span>
 
   <FeatureSplitHero class="bg-white" pyClass="pt-8 pb-16 lg:pt-10 lg:pb-20">

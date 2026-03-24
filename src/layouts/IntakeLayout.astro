@@ -3,16 +3,19 @@ import "../styles/global.css";
 import IntakePromoBanner from "../components/Intake/IntakePromoBanner.astro";
 import IntakeHeader from "../components/Intake/IntakeHeader.astro";
 import IntakeFooter from "../components/Intake/IntakeFooter.astro";
+import AutoBreadcrumb from "../components/Common/AutoBreadcrumb.astro";
 
 interface Props {
   title?: string;
   description?: string;
+  showBreadcrumb?: boolean;
 }
 
 const {
   title = "The Intake | Tebra",
   description =
     "Insights, news, and resources for independent healthcare practices — powered by Tebra.",
+  showBreadcrumb = true,
 } = Astro.props as Props;
 ---
 
@@ -30,10 +33,11 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body class="font-sans bg-white text-gray-900 antialiased">
+  <body class="intake-layout font-sans bg-white text-gray-900 antialiased">
     <IntakePromoBanner />
     <IntakeHeader />
     <main id="intake-main" class="relative z-0 isolate">
+      {showBreadcrumb ? <AutoBreadcrumb className="bg-white" /> : null}
       <slot />
     </main>
     <IntakeFooter />

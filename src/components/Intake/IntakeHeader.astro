@@ -8,14 +8,16 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
   id="intake-site-header"
   class="sticky top-0 z-[80] border-b border-gray-200/80 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/90"
 >
-  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12">
-    <div class="flex min-h-[3.25rem] w-full flex-nowrap items-center gap-2 py-2 sm:min-h-[3.5rem] sm:gap-4">
+  <div class="max-w-content mx-auto px-3 sm:px-6 lg:px-12">
+    <div
+      class="flex min-h-[3.25rem] w-full min-w-0 flex-nowrap items-center gap-1.5 py-2 sm:min-h-[3.5rem] sm:gap-4"
+    >
       <a
         href="/theintake"
-        class="flex min-w-0 shrink-0 items-center gap-2 sm:gap-2.5"
+        class="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden sm:gap-2.5 lg:flex-none lg:overflow-visible"
         aria-label="The Intake home"
       >
-        <picture>
+        <picture class="shrink-0">
           <source srcSet={logoSvg} type="image/svg+xml" />
           <img
             src={logoPng}
@@ -23,9 +25,10 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
             class="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10"
           />
         </picture>
-        <span class="font-display text-[15px] font-semibold tracking-tight text-tebra-teal-dark sm:text-lg lg:text-xl">
-          <span class="uppercase">The</span>{" "}
-          <span class="whitespace-nowrap">intake</span>
+        <span
+          class="font-display min-w-0 truncate text-[14px] font-semibold tracking-tight text-tebra-teal-dark sm:text-[15px] sm:text-lg lg:text-xl"
+        >
+          <span class="uppercase">The</span> <span>intake</span>
         </span>
       </a>
 
@@ -137,18 +140,20 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
         </a>
       </div>
 
-      <!-- Mobile: hamburger + primary CTA -->
-      <div class="ml-auto flex shrink-0 flex-nowrap items-center gap-2 lg:hidden">
+      <!-- Mobile: primary CTA + hamburger (shrink-0 so they are never clipped) -->
+      <div class="flex shrink-0 flex-nowrap items-center gap-1.5 sm:gap-2 lg:hidden">
         <a
           href="/demo"
-          class="inline-flex h-9 max-w-[7.5rem] items-center truncate rounded-md bg-tebra-cta-coral px-2 text-[11px] font-semibold leading-none text-white sm:max-w-none sm:px-3 sm:text-xs"
+          class="inline-flex h-9 min-w-0 max-w-[5.25rem] items-center justify-center truncate rounded-md bg-tebra-cta-coral px-2 text-[11px] font-semibold leading-none text-white sm:max-w-none sm:px-3 sm:text-xs"
+          aria-label="Get a demo"
         >
-          Get a Demo
+          <span class="sm:hidden">Demo</span>
+          <span class="hidden sm:inline">Get a Demo</span>
         </a>
         <button
           type="button"
           id="intake-menu-toggle"
-          class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-gray-800 sm:h-10 sm:w-10"
+          class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm sm:h-10 sm:w-10"
           aria-expanded="false"
           aria-controls="intake-mobile-nav"
           aria-label="Open menu"
@@ -167,97 +172,103 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
       {intakeTagline}
     </p>
   </div>
-
-  <!-- Mobile full-screen panel -->
-  <div
-    id="intake-mobile-nav"
-    class="fixed inset-0 z-[100] hidden flex-col bg-white lg:hidden"
-    aria-hidden="true"
-  >
-    <div class="flex items-center justify-between border-b border-gray-100 px-4 py-3">
-      <span class="font-display text-lg font-semibold text-tebra-teal-dark">Menu</span>
-      <button
-        type="button"
-        id="intake-menu-close"
-        class="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200"
-        aria-label="Close menu"
-      >
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" />
-        </svg>
-      </button>
-    </div>
-    <nav class="flex-1 overflow-y-auto overscroll-contain px-4 py-4" aria-label="Mobile">
-      <a href="/" class="block rounded-lg px-3 py-3 text-base font-medium text-tebra-teal-dark hover:bg-gray-50">
-        Tebra
-      </a>
-
-      <details class="mt-1 rounded-xl border border-gray-100 open:bg-gray-50/80">
-        <summary class="flex cursor-pointer list-none items-center justify-between px-3 py-3 text-base font-semibold text-tebra-teal-dark marker:content-none [&::-webkit-details-marker]:hidden">
-          Categories
-          <svg class="h-4 w-4 text-gray-400" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-          </svg>
-        </summary>
-        <ul class="space-y-0.5 border-t border-gray-100 pb-3 pt-1">
-          {intakeNav.categories.map((c) => (
-            <li>
-              <a href={c.href} class="block rounded-lg px-5 py-2.5 text-sm text-gray-800 hover:bg-white hover:text-tebra-teal">
-                {c.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </details>
-
-      <a href="/theintake/news" class="mt-2 block rounded-lg px-3 py-3 text-base font-medium text-tebra-teal-dark hover:bg-gray-50">
-        News
-      </a>
-      <a href="/theintake/reports" class="block rounded-lg px-3 py-3 text-base font-medium text-tebra-teal-dark hover:bg-gray-50">
-        Reports
-      </a>
-
-      <details class="mt-1 rounded-xl border border-gray-100 open:bg-gray-50/80">
-        <summary class="flex cursor-pointer list-none items-center justify-between px-3 py-3 text-base font-semibold text-tebra-teal-dark marker:content-none [&::-webkit-details-marker]:hidden">
-          Tools and Resources
-          <svg class="h-4 w-4 text-gray-400" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-          </svg>
-        </summary>
-        <ul class="space-y-0.5 border-t border-gray-100 pb-3 pt-1">
-          {intakeNav.tools.map((t) => (
-            <li>
-              <a href={t.href} class="block rounded-lg px-5 py-2.5 text-sm text-gray-800 hover:bg-white hover:text-tebra-teal">
-                {t.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </details>
-
-      <div class="mt-6 flex flex-col gap-2 border-t border-gray-100 pt-6">
-        <a
-          href="/for-billing-companies"
-          class="rounded-full bg-sky-100 py-3 text-center text-sm font-semibold text-tebra-teal-dark"
-        >
-          For Billing Companies
-        </a>
-        <a href="/theintake#search" class="rounded-lg border border-gray-200 py-3 text-center text-sm font-semibold text-tebra-teal-dark">
-          Search hub
-        </a>
-        <a
-          href="/"
-          class="rounded-lg border border-gray-300 py-3 text-center text-sm font-semibold text-tebra-teal-dark"
-        >
-          Explore Tebra
-        </a>
-        <a href="/demo" class="rounded-lg bg-tebra-cta-coral py-3 text-center text-sm font-semibold text-white">
-          Get a Demo
-        </a>
-      </div>
-    </nav>
-  </div>
 </header>
+
+<!--
+  Mobile menu MUST be a sibling of <header>, not a child. The header uses backdrop-blur,
+  which creates a containing block: fixed inset-0 would otherwise size to the header only.
+-->
+<div
+  id="intake-mobile-nav"
+  class="fixed left-0 right-0 top-[var(--intake-mobile-menu-top,0px)] z-[200] hidden max-h-[min(78dvh,calc(100dvh-var(--intake-mobile-menu-top,0px)-0.5rem))] w-full flex-col overflow-y-auto overscroll-y-contain border-t border-gray-100 bg-white shadow-xl lg:hidden"
+  aria-hidden="true"
+>
+  <div class="flex shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3">
+    <span class="font-display text-lg font-semibold text-tebra-teal-dark">Menu</span>
+    <button
+      type="button"
+      id="intake-menu-close"
+      class="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200"
+      aria-label="Close menu"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <nav
+    class="min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-4 py-4 [-webkit-overflow-scrolling:touch]"
+    aria-label="Mobile"
+  >
+    <a href="/" class="block rounded-lg px-3 py-3 text-base font-medium text-tebra-teal-dark hover:bg-gray-50">
+      Tebra
+    </a>
+
+    <details class="mt-1 rounded-xl border border-gray-100 open:bg-gray-50/80">
+      <summary class="flex cursor-pointer list-none items-center justify-between px-3 py-3 text-base font-semibold text-tebra-teal-dark marker:content-none [&::-webkit-details-marker]:hidden">
+        Categories
+        <svg class="h-4 w-4 text-gray-400" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        </svg>
+      </summary>
+      <ul class="space-y-0.5 border-t border-gray-100 pb-3 pt-1">
+        {intakeNav.categories.map((c) => (
+          <li>
+            <a href={c.href} class="block rounded-lg px-5 py-2.5 text-sm text-gray-800 hover:bg-white hover:text-tebra-teal">
+              {c.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+
+    <a href="/theintake/news" class="mt-2 block rounded-lg px-3 py-3 text-base font-medium text-tebra-teal-dark hover:bg-gray-50">
+      News
+    </a>
+    <a href="/theintake/reports" class="block rounded-lg px-3 py-3 text-base font-medium text-tebra-teal-dark hover:bg-gray-50">
+      Reports
+    </a>
+
+    <details class="mt-1 rounded-xl border border-gray-100 open:bg-gray-50/80">
+      <summary class="flex cursor-pointer list-none items-center justify-between px-3 py-3 text-base font-semibold text-tebra-teal-dark marker:content-none [&::-webkit-details-marker]:hidden">
+        Tools and Resources
+        <svg class="h-4 w-4 text-gray-400" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        </svg>
+      </summary>
+      <ul class="space-y-0.5 border-t border-gray-100 pb-3 pt-1">
+        {intakeNav.tools.map((t) => (
+          <li>
+            <a href={t.href} class="block rounded-lg px-5 py-2.5 text-sm text-gray-800 hover:bg-white hover:text-tebra-teal">
+              {t.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+
+    <div class="mt-6 flex flex-col gap-2 border-t border-gray-100 pt-6 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))]">
+      <a
+        href="/for-billing-companies"
+        class="rounded-full bg-sky-100 py-3 text-center text-sm font-semibold text-tebra-teal-dark"
+      >
+        For Billing Companies
+      </a>
+      <a href="/theintake#search" class="rounded-lg border border-gray-200 py-3 text-center text-sm font-semibold text-tebra-teal-dark">
+        Search hub
+      </a>
+      <a
+        href="/"
+        class="rounded-lg border border-gray-300 py-3 text-center text-sm font-semibold text-tebra-teal-dark"
+      >
+        Explore Tebra
+      </a>
+      <a href="/demo" class="rounded-lg bg-tebra-cta-coral py-3 text-center text-sm font-semibold text-white">
+        Get a Demo
+      </a>
+    </div>
+  </nav>
+</div>
 
 <script is:inline>
   (function () {
@@ -272,6 +283,8 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
       var iconClose = toggle.querySelector("[data-icon-close]");
 
       function openMenu() {
+        var top = root.getBoundingClientRect().bottom;
+        panel.style.setProperty("--intake-mobile-menu-top", top + "px");
         panel.classList.remove("hidden");
         panel.classList.add("flex");
         panel.setAttribute("aria-hidden", "false");
@@ -297,6 +310,13 @@ import { intakeNav, intakeTagline } from "../../data/theIntakePage";
         else closeMenu();
       });
       if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+
+      window.addEventListener("resize", function () {
+        if (!panel.classList.contains("hidden")) {
+          var top = root.getBoundingClientRect().bottom;
+          panel.style.setProperty("--intake-mobile-menu-top", top + "px");
+        }
+      });
 
       panel.querySelectorAll("a").forEach(function (a) {
         a.addEventListener("click", closeMenu);

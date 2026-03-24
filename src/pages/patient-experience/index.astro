@@ -55,7 +55,7 @@ const journeySrc: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={pxMeta.title} description={pxMeta.description}>
+<BaseLayout title={pxMeta.title} description={pxMeta.description} showBreadcrumb={false}>
   <FeatureSplitHero class="bg-white" pyClass="pt-8 pb-16 lg:pt-10 lg:pb-24">
     <div slot="left" class="space-y-6">
       <ProductPageBreadcrumb items={[...pxBreadcrumb]} />

@@ -32,7 +32,7 @@ const featSrcs = [feat1, feat2, feat3].map((im) => (typeof im === "string" ? im 
 const userIconSvg = `<svg class="h-12 w-12 text-tebra-teal-dark" fill="none" stroke="currentColor" stroke-width="1.35" viewBox="0 0 48 48" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="18" r="8"/><path d="M12 40c0-8 5.4-14 12-14s12 6 12 14"/></svg>`;
 ---
 
-<BaseLayout title={ppMeta.title} description={ppMeta.description}>
+<BaseLayout title={ppMeta.title} description={ppMeta.description} showBreadcrumb={false}>
   <a
     href="/ehr#calculator"
     class="block bg-[#FFF5F0] border-b border-[#FFE4DC] py-2.5 text-center text-sm font-medium text-[#8B4513] transition-colors hover:bg-[#FFEDE6]"

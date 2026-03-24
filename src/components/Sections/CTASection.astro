@@ -18,6 +18,12 @@ const {
   secondaryCtaLabel,
   secondaryCtaHref = "#",
 } = Astro.props as Props;
+
+const resolvedPrimaryCtaHref =
+  primaryCtaLabel.trim().toLowerCase() === "book a demo" ? "/demo" : primaryCtaHref;
+
+const resolvedSecondaryCtaHref =
+  secondaryCtaLabel?.trim().toLowerCase() === "explore for free" ? "/product-tour" : secondaryCtaHref;
 ---
 
 <!-- CTA above footer: uses global dark teal token, centered heading + two buttons -->
@@ -27,13 +33,13 @@ const {
       <h2 class="heading-xl text-white">
         {title}
       </h2>
-      <p class="body-base-muted text-white/90">
+      <p class="text-base leading-relaxed text-white">
         {description}
       </p>
       <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-        <Button href={primaryCtaHref} label={primaryCtaLabel} variant="primary" size="lg" class="rounded-full" />
+        <Button href={resolvedPrimaryCtaHref} label={primaryCtaLabel} variant="primary" size="lg" class="rounded-full" />
         {secondaryCtaLabel && (
-          <Button href={secondaryCtaHref} label={secondaryCtaLabel} variant="outline-light" size="lg" class="rounded-full" />
+          <Button href={resolvedSecondaryCtaHref} label={secondaryCtaLabel} variant="outline-light" size="lg" class="rounded-full" />
         )}
       </div>
     </div>

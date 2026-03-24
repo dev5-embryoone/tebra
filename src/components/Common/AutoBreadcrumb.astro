@@ -1,0 +1,73 @@
+---
+interface Props {
+  pathname?: string;
+  className?: string;
+}
+
+const { pathname = Astro.url.pathname, className = "" } = Astro.props as Props;
+
+const cleanedPath = pathname.replace(/\/+$/, "") || "/";
+const segments = cleanedPath === "/" ? [] : cleanedPath.split("/").filter(Boolean);
+
+const fixedLabels: Record<string, string> = {
+  ai: "AI",
+  ehr: "EHR",
+  hipaa: "HIPAA",
+  rcm: "RCM",
+};
+
+const virtualParentByRootSegment: Record<string, { label: string; href: string }> = {
+  careers: { label: "About", href: "/about" },
+  leadership: { label: "About", href: "/about" },
+  partners: { label: "About", href: "/about" },
+  investors: { label: "About", href: "/about" },
+  "diversity-equity-and-inclusion": { label: "About", href: "/about" },
+};
+
+const toLabel = (segment: string) => {
+  const normalized = segment.toLowerCase();
+  if (fixedLabels[normalized]) return fixedLabels[normalized];
+  return segment
+    .replace(/[-_]+/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
+const crumbs = segments.map((segment, index) => ({
+  label: toLabel(segment),
+  href: `/${segments.slice(0, index + 1).join("/")}`,
+}));
+
+const rootSegment = segments[0]?.toLowerCase();
+const virtualParent = rootSegment ? virtualParentByRootSegment[rootSegment] : undefined;
+const displayCrumbs = virtualParent ? [virtualParent, ...crumbs] : crumbs;
+---
+
+{
+  displayCrumbs.length > 0 && (
+    <nav aria-label="Breadcrumb" class:list={["py-4", className]}>
+      <div class="mx-auto w-full max-w-7xl px-6 lg:px-10">
+        <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gray-500">
+          <li class="flex items-center gap-2">
+            <a href="/" class="transition-colors hover:text-tebra-teal">
+              Home
+            </a>
+          </li>
+          {displayCrumbs.map((crumb, index) => (
+            <li class="flex items-center gap-2">
+              <span class="text-gray-300" aria-hidden="true">
+                /
+              </span>
+              {index === displayCrumbs.length - 1 ? (
+                <span class="font-medium text-gray-900">{crumb.label}</span>
+              ) : (
+                <a href={crumb.href} class="transition-colors hover:text-tebra-teal">
+                  {crumb.label}
+                </a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </nav>
+  )
+}

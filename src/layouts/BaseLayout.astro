@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar/Navbar.astro";
 import Footer from "../components/Footer/Footer.astro";
 import ProductTourHeader from "../components/ProductTour/ProductTourHeader.astro";
+import AutoBreadcrumb from "../components/Common/AutoBreadcrumb.astro";
 
 interface Props {
   title?: string;
@@ -12,6 +13,7 @@ interface Props {
   /** `logo-only` = product-tour style bar (logo only). Default = full site navbar. */
   navMode?: "default" | "logo-only";
   showFooter?: boolean;
+  showBreadcrumb?: boolean;
 }
 
 const {
@@ -20,6 +22,7 @@ const {
   mainClass = "",
   navMode = "default",
   showFooter = true,
+  showBreadcrumb = true,
 } = Astro.props as Props;
 ---
 
@@ -42,6 +45,7 @@ const {
     <slot name="before-navbar" />
     {navMode === "logo-only" ? <ProductTourHeader /> : <Navbar />}
     <main class:list={["min-w-0 w-full", mainClass]}>
+      {showBreadcrumb ? <AutoBreadcrumb /> : null}
       <slot />
     </main>
     {showFooter ? <Footer /> : null}
