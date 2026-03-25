@@ -62,7 +62,7 @@ export const footerColumns: FooterColumnData[] = [
     ],
   },
   {
-    title: "Why Tebra",
+    title: "Why EmbryoOne",
     links: [
       { label: "Attract More Patients", href: "#" },
       { label: "Manage Your Reputation", href: "#" },
@@ -77,9 +77,9 @@ export const footerColumns: FooterColumnData[] = [
 
 export const footerContact = {
   addressLines: ["1111 Bayside Drive", "Suite 270", "Corona Del Mar, CA 92625"] as const,
-  phoneDisplay: "(866) 93-TEBRA (83272)",
+  phoneDisplay: "(866) 938-3272",
   phoneHref: "tel:8669383272",
-  copyright: "Copyright © 2026 Tebra Technologies, Inc",
+  copyright: "Copyright © 2026 EmbryoOne Technologies, Inc",
   legal: [
     { label: "Terms & Conditions", href: "/terms" },
     { label: "Privacy Policy", href: "/privacy" },

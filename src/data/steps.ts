@@ -9,7 +9,7 @@ export const getStartedSteps: StepItem[] = [
     number: 1,
     title: "Discover your practice's potential",
     description:
-      "See how Tebra connects EHR, billing, scheduling, and reputation in one platform with a personalized demo.",
+      "See how EmbryoOne connects EHR, billing, scheduling, and reputation in one platform with a personalized demo.",
   },
   {
     number: 2,
@@ -19,7 +19,7 @@ export const getStartedSteps: StepItem[] = [
   },
   {
     number: 3,
-    title: "Grow with Tebra",
+    title: "Grow with EmbryoOne",
     description:
       "Use AI-powered tools and connected workflows to save time, get paid faster, and attract new patients.",
   },

@@ -33,7 +33,7 @@ const {
   title,
   eyebrow = "EHR+ for private practices",
   subtitle,
-  supporting = "We safeguard your practice with full security and HIPAA compliance.",
+  supporting,
   primaryCtaLabel,
   primaryCtaHref = "#demo",
   secondaryCtaLabel = "Take a quick tour",
@@ -42,7 +42,7 @@ const {
   imageAlt,
   featureFloating = false,
   showRatingStrip = true,
-  showComplianceStrip = true,
+  showComplianceStrip = false,
 } = Astro.props as Props;
 
 const defaultHeroImage =
@@ -64,7 +64,7 @@ const patientExperience =
     : patientExperienceRaw.src;
 
 const heroImage = imageSrc ?? defaultHeroImage;
-const heroImageAlt = imageAlt ?? "Tebra EHR+ platform hero";
+const heroImageAlt = imageAlt ?? "EmbryoOne EHR+ platform hero";
 ---
 
 <section class="page-section bg-tebra-hero-bg">

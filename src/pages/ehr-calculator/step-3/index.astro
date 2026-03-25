@@ -2,17 +2,61 @@
 import EhrCalculatorLayout from "../../../layouts/EhrCalculatorLayout.astro";
 import EhrCalculatorHeader from "../../../components/EhrCalculator/EhrCalculatorHeader.astro";
 import EhrCalculatorStepper from "../../../components/EhrCalculator/EhrCalculatorStepper.astro";
-import { ehrCalculatorMeta, ehrCalculatorSteps } from "../../../data/ehrCalculator";
+import EhrCalculatorFormCard from "../../../components/EhrCalculator/EhrCalculatorFormCard.astro";
+import EhrCalculatorVisualPanel from "../../../components/EhrCalculator/EhrCalculatorVisualPanel.astro";
+import EhrCalculatorInfoCallout from "../../../components/EhrCalculator/EhrCalculatorInfoCallout.astro";
+import Button from "../../../components/Button/Button.astro";
+import {
+  ehrCalculatorMeta,
+  ehrCalculatorSteps,
+  ehrCalculatorStep1,
+} from "../../../data/ehrCalculator";
+import ehrScreenshot from "../../../assets/ehrpage.webp";
 ---
 
 <EhrCalculatorLayout title="EHR Calculator - Step 3 | Tebra" description={ehrCalculatorMeta.description}>
   <div class="min-h-screen bg-[#eef4f1]">
     <EhrCalculatorHeader />
     <EhrCalculatorStepper steps={ehrCalculatorSteps} currentStep={3} />
-    <div class="page-container max-w-xl py-16 text-center sm:py-20">
-      <p class="text-lg font-semibold text-tebra-teal-dark">Staff time</p>
-      <p class="mt-2 text-gray-600">Coming soon — placeholder for step 3.</p>
-      <a href="/ehr-calculator/step-1" class="mt-6 inline-block font-semibold text-tebra-teal hover:underline">Start over</a>
+    <div class="page-container py-8 sm:py-10 lg:py-14">
+      <div
+        class="grid items-start gap-10 lg:grid-cols-2 lg:gap-12 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] xl:gap-16"
+      >
+        <!-- Form first on mobile; left column on desktop -->
+        <div class="order-1 lg:order-none">
+          <EhrCalculatorFormCard
+            title="Staff time"
+            subtitle="Coming soon — placeholder for step 3."
+            innerProgressPercent={60}
+          >
+            <p class="text-sm leading-relaxed text-gray-600">
+              We are working on this step to estimate how staff time impacts your overall savings.
+            </p>
+
+            <div class="pt-2">
+              <Button
+                href="/ehr-calculator/step-1"
+                label="Start over"
+                variant="primary"
+                size="lg"
+                class="w-full rounded-xl py-4 text-base shadow-lg shadow-btn-primary/25"
+              />
+            </div>
+          </EhrCalculatorFormCard>
+        </div>
+
+        <!-- Visual column: below form on mobile -->
+        <div class="order-2 space-y-8 lg:order-none lg:pt-4">
+          <EhrCalculatorVisualPanel
+            badges={ehrCalculatorStep1.visual.badges}
+            screenshotSrc={ehrScreenshot}
+            screenshotAlt=""
+          />
+          <EhrCalculatorInfoCallout
+            message="When this step is ready, we'll estimate staff-time savings based on the inputs you provide."
+          />
+        </div>
+      </div>
     </div>
   </div>
 </EhrCalculatorLayout>

@@ -1,19 +1,19 @@
 /** Family Medicine specialty page — mirrors tebra.com/specialties/family-medicine */
 
 export const fmMeta = {
-  title: "Family Medicine - Tebra",
+  title: "Family Medicine - EmbryoOne",
   description:
     "Attract new patients, deliver the best care, and get paid quickly with one comprehensive platform for family medicine practices.",
 } as const;
 
 export const fmBreadcrumb = [
-  { label: "Tebra", href: "/" },
+  { label: "EmbryoOne", href: "/" },
   { label: "Specialties", href: "/specialties/family-medicine" },
   { label: "Family Medicine", href: "/specialties/family-medicine" },
 ] as const;
 
 export const fmHero = {
-  eyebrow: "Tebra for family medicine practices",
+  eyebrow: "EmbryoOne for family medicine practices",
   title: "One family of products for your practice needs",
   subtitle:
     "Attract new patients, deliver the best care, and get paid quickly with one comprehensive platform.",
@@ -27,7 +27,7 @@ export type FmFeature = {
 };
 
 export const fmFeaturesIntro = {
-  title: "Why family medicine succeeds with Tebra",
+  title: "Why family medicine succeeds with EmbryoOne",
 } as const;
 
 export const fmFeatures: FmFeature[] = [
@@ -49,7 +49,7 @@ export const fmFeatures: FmFeature[] = [
   {
     title: "Get paid, the easy way",
     description:
-      "Remove frustration from medical billing and payments. Patients can understand and pay bills easily with Tebra’s billing and payments solutions. Save time with automation and improve your revenue cycle.",
+      "Remove frustration from medical billing and payments. Patients can understand and pay bills easily with EmbryoOne’s billing and payments solutions. Save time with automation and improve your revenue cycle.",
   },
   {
     title: "Dive into your data",
@@ -59,12 +59,12 @@ export const fmFeatures: FmFeature[] = [
   {
     title: "Easy implementation",
     description:
-      "Make the switch without slowing your practice down. Tebra makes it easy to get started with no IT knowledge or heavy lifting. Our onboarding, training, and ongoing support will be with you every step of the way.",
+      "Make the switch without slowing your practice down. EmbryoOne makes it easy to get started with no IT knowledge or heavy lifting. Our onboarding, training, and ongoing support will be with you every step of the way.",
   },
 ] as const;
 
 export const fmWhyIntro = {
-  eyebrow: "Why Tebra?",
+  eyebrow: "Why EmbryoOne?",
   title: "All parts of your family medicine practice in one platform",
   subtitle: "One solution for everything",
 } as const;
@@ -73,7 +73,7 @@ export const fmWhyBlocks: FmFeature[] = [
   {
     title: "One solution for everything",
     description:
-      "Stop juggling multiple marketing, communications, care delivery, billing, and payment tools. With Tebra, deliver better care to more clients with all your practice operations and growth tools in one place.",
+      "Stop juggling multiple marketing, communications, care delivery, billing, and payment tools. With EmbryoOne, deliver better care to more clients with all your practice operations and growth tools in one place.",
   },
   {
     title: "Workflows automated and quickly implemented",
@@ -88,7 +88,7 @@ export const fmWhyBlocks: FmFeature[] = [
 ] as const;
 
 export const fmChallengesIntro = {
-  title: "Tebra understands your toughest challenges",
+  title: "EmbryoOne understands your toughest challenges",
 } as const;
 
 export const fmStats = [
@@ -99,7 +99,7 @@ export const fmStats = [
 
 export const fmMidCta = {
   kicker: "Family medicine needs it all",
-  title: "See how Tebra can help your practice grow and transform in our new era of healthcare.",
+  title: "See how EmbryoOne can help your practice grow and transform in our new era of healthcare.",
   ctaLabel: "Show me now",
   ctaHref: "/demo",
 } as const;
@@ -149,7 +149,7 @@ export const fmTestimonialsIntro = {
 export const fmTestimonials = [
   {
     quote:
-      "Part of my success is because of Tebra. It's just the way that they give me the support, with everything, every step of the way.",
+      "Part of my success is because of EmbryoOne. It's just the way that they give me the support, with everything, every step of the way.",
     author: "Paul Ordonez, CEO",
     org: "Elite Medical Revenue Service",
   },
@@ -176,7 +176,7 @@ export const fmCaseStudiesIntro = {
 export const fmCaseStudySlugs = ["optimal-psychiatry", "celebrations-speech-group", "advantum-health"] as const;
 
 export const fmBottomCta = {
-  title: "See why Tebra is the choice for family medicine",
+  title: "See why EmbryoOne is the choice for family medicine",
   primaryCtaLabel: "Get a demo",
   primaryCtaHref: "/demo",
   secondaryCtaLabel: "Explore for Free",

@@ -4,9 +4,11 @@ import TebraSignInSplit from "../../components/SignIn/TebraSignInSplit.astro";
 ---
 
 <BaseLayout
-  title="Sign in - Tebra"
-  description="Sign in to your Tebra accounts — Practice Operations (Kareo) and Practice Growth (PatientPop)."
-  mainClass="!p-0"
+  title="Sign in - EmbryoOne"
+  description="Sign in to your EmbryoOne accounts — Practice Operations (Kareo) and Practice Growth (PatientPop)."
+  mainClass="!p-0 flex min-h-[calc(100dvh-var(--nav-sticky-offset))] flex-col"
+  showFooter={false}
+  showBreadcrumb={false}
 >
   <TebraSignInSplit />
 </BaseLayout>

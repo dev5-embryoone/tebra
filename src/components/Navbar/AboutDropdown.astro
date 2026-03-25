@@ -18,7 +18,7 @@ const menuSections = [
     links: [
       { title: "Our Story", href: "/about/story", description: "We're redefining practice success at the crossroads of compassion and connectivity.", icon: "story" },
       { title: "Leadership", href: "/leadership", description: "Meet the team leading the charge to bring complete well-being to practices, providers, and patients.", icon: "leadership" },
-      { title: "Investors", href: "/investors", description: "The Tebra investment partners fuel our commitment to unlocking better healthcare.", icon: "investors" },
+      { title: "Investors", href: "/investors", description: "The EmbryoOne investment partners fuel our commitment to unlocking better healthcare.", icon: "investors" },
     ],
   },
   {
@@ -28,7 +28,7 @@ const menuSections = [
     links: [
       { title: "Partners", href: "/partners", description: "Market best-in-class healthcare solutions for providers and practices nationwide.", icon: "partners" },
       { title: "DEI", href: "/diversity-equity-and-inclusion", description: "We're committed to celebrating diverse personalities, backgrounds, and experiences.", icon: "dei" },
-      { title: "Careers", href: "/careers", description: "At Tebra, we're building the future of well-being together.", icon: "careers" },
+      { title: "Careers", href: "/careers", description: "At EmbryoOne, we're building the future of well-being together.", icon: "careers" },
     ],
   },
 ] as const;
@@ -61,7 +61,7 @@ function getIcon(name: string) {
 
   <div
     id="nav-dropdown-about"
-    class="pointer-events-none fixed left-0 right-0 top-[5.5rem] z-50 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
+    class="pointer-events-none fixed inset-x-0 top-[var(--nav-sticky-offset)] z-[100] pt-2 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
   >
     <div class="mx-auto w-full max-w-[1060px] px-4 sm:px-6 lg:px-8">
       <div class="max-h-[74vh] overflow-y-auto rounded-2xl border border-[#ECE5F8] bg-white shadow-[0_20px_60px_-38px_rgba(94,42,132,0.45)]">
@@ -95,13 +95,13 @@ function getIcon(name: string) {
             <aside class="min-w-0 rounded-xl border border-[#ECE5F8] bg-gray-50 p-3.5">
               <img
                 src={aboutSrc}
-                alt="Explore Tebra's all-in-one platform"
+                alt="Explore EmbryoOne's all-in-one platform"
                 class="mx-auto mb-2.5 w-full max-w-[96px] rounded-full aspect-square object-cover"
                 loading="lazy"
               />
               <h4 class="text-[13px] font-bold text-[#4D236D]">Explore our all-in-one platform</h4>
               <p class="mt-1 text-[12px] leading-[1.35] text-[#726781]">
-                Tebra's products come together to form the complete operating system for practice success.
+                EmbryoOne's products come together to form the complete operating system for practice success.
               </p>
               <a
                 href="/product-tour"

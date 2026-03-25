@@ -1,28 +1,28 @@
 /** Psychology / Mental Health specialty — mirrors https://www.tebra.com/specialties/psychology */
 
 export const psychologyMeta = {
-  title: "Mental Health & Psychology Practices - EHR - Tebra",
+  title: "Mental Health & Psychology Practices - EHR - EmbryoOne",
   description:
     "Attract new patients, deliver the best care, and get paid quickly with one comprehensive platform built for independent mental health and psychology practices.",
 } as const;
 
 export const psychologyBreadcrumb = [
-  { label: "Tebra", href: "/" },
+  { label: "EmbryoOne", href: "/" },
   { label: "Specialties", href: "/specialties/family-medicine" },
   { label: "Mental Health", href: "/specialties/psychology" },
 ] as const;
 
 export const psychologyHero = {
-  eyebrow: "Tebra for mental health & psychology",
+  eyebrow: "EmbryoOne for mental health & psychology",
   title: "The all-in-one platform for practice well-being",
   subtitle:
     "Attract new patients, deliver the best care, and get paid quickly with one comprehensive platform.",
-  primaryCta: { label: "See Tebra in action", href: "/product-tour" },
+  primaryCta: { label: "See EmbryoOne in action", href: "/product-tour" },
   secondaryCta: { label: "Request a demo", href: "/demo" },
 } as const;
 
 export const psychologyAccordionIntro = {
-  title: "Grow your independent psychology practice with Tebra",
+  title: "Grow your independent psychology practice with EmbryoOne",
 } as const;
 
 export const psychologyAccordionItems = [
@@ -34,27 +34,27 @@ export const psychologyAccordionItems = [
   {
     title: "Connect with patients",
     body:
-      "Quality care is a given, and today’s clients want more. Nearly 80% would switch doctors for more convenience. With Tebra, back-end automation leads to front-end convenience with no extra effort from you. Patients can book and remember appointments, get answers to questions, review records, and pay bills — all in one connected experience supported by your EHR.",
+      "Quality care is a given, and today’s clients want more. Nearly 80% would switch doctors for more convenience. With EmbryoOne, back-end automation leads to front-end convenience with no extra effort from you. Patients can book and remember appointments, get answers to questions, review records, and pay bills — all in one connected experience supported by your EHR.",
   },
   {
     title: "Get paid",
     body:
-      "Medical billing and payments can be frustrating for both providers and patients. Make it easy for patients to understand and pay their bills — and improve your profitability in the process — with Tebra’s billing and payments: intuitive practice management, time-saving automation, and stronger revenue cycle management. Learn more on Billing & Payments.",
+      "Medical billing and payments can be frustrating for both providers and patients. Make it easy for patients to understand and pay their bills — and improve your profitability in the process — with EmbryoOne’s billing and payments: intuitive practice management, time-saving automation, and stronger revenue cycle management. Learn more on Billing & Payments.",
   },
   {
     title: "Complete data control",
     body:
-      "You need good data to make good decisions. Tebra gives you data and insights into every area of your practice, including growth and revenue. Stay secure with HIPAA-compliant cloud storage, explore your data your way, and integrate with third-party applications through APIs.",
+      "You need good data to make good decisions. EmbryoOne gives you data and insights into every area of your practice, including growth and revenue. Stay secure with HIPAA-compliant cloud storage, explore your data your way, and integrate with third-party applications through APIs.",
   },
   {
     title: "Easy implementation",
     body:
-      "Feeling overwhelmed by your current systems, but also by making a change? With Tebra, you can get started in minutes, not weeks, with no IT knowledge or heavy lifting. Our onboarding, training, and ongoing support will be with you every step of the way so your practice won’t miss a beat.",
+      "Feeling overwhelmed by your current systems, but also by making a change? With EmbryoOne, you can get started in minutes, not weeks, with no IT knowledge or heavy lifting. Our onboarding, training, and ongoing support will be with you every step of the way so your practice won’t miss a beat.",
   },
 ] as const;
 
 export const psychologyWhyIntro = {
-  eyebrow: "Why Tebra?",
+  eyebrow: "Why EmbryoOne?",
   title: "Connect your psychology practice from end to end",
 } as const;
 
@@ -62,7 +62,7 @@ export const psychologyWhyBlocks = [
   {
     title: "Everything you need in an elegant, unified platform",
     description:
-      "Stop juggling multiple marketing, communications, care delivery, billing, and payment tools. With Tebra, deliver better care to more clients with practice operations, patient care, and growth tools in one place.",
+      "Stop juggling multiple marketing, communications, care delivery, billing, and payment tools. With EmbryoOne, deliver better care to more clients with practice operations, patient care, and growth tools in one place.",
   },
   {
     title: "Automated end-to-end workflows, easily implemented",
@@ -88,7 +88,7 @@ export const psychologyStats = [
 
 export const psychologyMidCta = {
   kicker: "Ready to grow with confidence?",
-  title: "See how Tebra can help your practice attract patients, streamline care, and get paid — in one platform.",
+  title: "See how EmbryoOne can help your practice attract patients, streamline care, and get paid — in one platform.",
   ctaLabel: "Request a demo",
   ctaHref: "/demo",
 } as const;
@@ -133,23 +133,23 @@ export const psychologyPlatformCards = [
 
 export const psychologyTestimonials = {
   eyebrow: "Real stories, real results",
-  title: "What success looks like with Tebra",
+  title: "What success looks like with EmbryoOne",
   items: [
     {
       quote:
-        "Tebra helps my private practice grow by being easily scalable with an EHR platform that is easy to navigate.",
+        "EmbryoOne helps my private practice grow by being easily scalable with an EHR platform that is easy to navigate.",
       author: "Dr. Fabius Santos",
       org: "Optimal Psychiatry and Wellness",
     },
     {
       quote:
-        "Tebra’s practice growth solution helped us simplify how patients provide feedback and build a stronger reputation online.",
+        "EmbryoOne’s practice growth solution helped us simplify how patients provide feedback and build a stronger reputation online.",
       author: "DeNova Team",
       org: "DeNova Behavioral Health",
     },
     {
       quote:
-        "I don’t know of any competitor with all the features that Tebra’s platform does and is presented with this level of clarity.",
+        "I don’t know of any competitor with all the features that EmbryoOne’s platform does and is presented with this level of clarity.",
       author: "Practice Owner",
       org: "Mind Body and Spirit Counseling Services",
     },
@@ -165,8 +165,8 @@ export const psychologyCaseStudiesIntro = {
 export const psychologyCaseStudySlugs = ["optimal-psychiatry", "denova-behavioral-health", "mind-body-spirit"] as const;
 
 export const psychologyBottomCta = {
-  title: "Discover how Tebra can transform your practice.",
-  description: "Experience the full potential of Tebra with a personalized demo.",
+  title: "Discover how EmbryoOne can transform your practice.",
+  description: "Experience the full potential of EmbryoOne with a personalized demo.",
   primaryCtaLabel: "Get a demo",
   primaryCtaHref: "/demo",
   secondaryCtaLabel: "Take a self-guided tour",

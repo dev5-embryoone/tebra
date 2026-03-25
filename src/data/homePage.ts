@@ -4,7 +4,7 @@
 export const homeHero = {
   title: "Run your entire practice with one EHR+ platform",
   subtitle:
-    "Tebra’s EHR+ platform connects care, billing, scheduling, and more. Built‑in AI speeds up notes, handles reviews, and automates repetitive admin work.",
+    "EmbryoOne’s EHR+ platform connects care, billing, scheduling, and more. Built‑in AI speeds up notes, handles reviews, and automates repetitive admin work.",
   primaryCtaLabel: "Get a demo",
   primaryCtaHref: "/demo",
   secondaryCtaLabel: "Take a quick tour",
@@ -12,7 +12,7 @@ export const homeHero = {
 } as const;
 
 export const homeClosingCta = {
-  title: "Automate, optimize, and thrive with Tebra",
+  title: "Automate, optimize, and thrive with EmbryoOne",
   description: "The leading practice automation solution for independent practices.",
   primaryCtaLabel: "Get Demo",
   primaryCtaHref: "/demo",

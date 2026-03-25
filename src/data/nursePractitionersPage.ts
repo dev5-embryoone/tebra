@@ -1,70 +1,70 @@
 /** Nurse Practitioners specialty — mirrors https://www.tebra.com/specialties/nurse-practitioners */
 
 export const npMeta = {
-  title: "EHR software for nurse practitioner | Run and grow your NP practice | Tebra",
+  title: "EHR software for nurse practitioner | Run and grow your NP practice | EmbryoOne",
   description:
-    "Tebra combines intuitive documentation, automated billing, and built-in telehealth in one flexible EHR platform for nurse practitioners who do it all.",
+    "EmbryoOne combines intuitive documentation, automated billing, and built-in telehealth in one flexible EHR platform for nurse practitioners who do it all.",
 } as const;
 
 export const npBreadcrumb = [
-  { label: "Tebra", href: "/" },
+  { label: "EmbryoOne", href: "/" },
   { label: "Specialties", href: "/specialties/family-medicine" },
   { label: "Nurse Practitioner", href: "/specialties/nurse-practitioners" },
 ] as const;
 
 export const npHero = {
-  eyebrow: "Tebra for nurse practitioners",
+  eyebrow: "EmbryoOne for nurse practitioners",
   title: "Run and grow your nurse practitioner practice with a smart EHR platform",
   subtitle:
-    "Tebra combines intuitive documentation, automated billing, and built-in telehealth in one flexible EHR platform. Designed for nurse practitioners who do it all, without the IT team or admin staff.",
+    "EmbryoOne combines intuitive documentation, automated billing, and built-in telehealth in one flexible EHR platform. Designed for nurse practitioners who do it all, without the IT team or admin staff.",
   primaryCta: { label: "Request a demo", href: "/demo" },
   secondaryCta: { label: "Take a self-guided tour", href: "/product-tour" },
 } as const;
 
 export const npAccordionIntro = {
-  title: "Why nurse practitioners thrive with Tebra",
+  title: "Why nurse practitioners thrive with EmbryoOne",
 } as const;
 
 export const npAccordionItems = [
   {
     title: "Start your NP practice with an all-in-one EHR",
     body:
-      "Starting from scratch? Tebra helps you open your doors faster with scheduling, charting, intake, and billing all in one platform. No IT team or complex setup required.",
+      "Starting from scratch? EmbryoOne helps you open your doors faster with scheduling, charting, intake, and billing all in one platform. No IT team or complex setup required.",
   },
   {
     title: "Automate admin, focus on care",
     body:
-      "Administrative work shouldn’t ruin your day. Tebra automates the busywork, from note-taking to charting, reminders, and intake, so you can reclaim your time and reduce burnout.",
+      "Administrative work shouldn’t ruin your day. EmbryoOne automates the busywork, from note-taking to charting, reminders, and intake, so you can reclaim your time and reduce burnout.",
   },
   {
     title: "Flexible billing options",
     body:
-      "Whether you bill insurance, offer memberships, or direct pay models, Tebra adapts to how you run your business. Submit clean claims, track payments, and manage revenue, all from one platform.",
+      "Whether you bill insurance, offer memberships, or direct pay models, EmbryoOne adapts to how you run your business. Submit clean claims, track payments, and manage revenue, all from one platform.",
   },
   {
-    title: "Chart faster with Tebra’s AI Note Assist",
+    title: "Chart faster with EmbryoOne’s AI Note Assist",
     body:
-      "Say goodbye to late-night charting. With customizable templates, SOAP notes, and AI-powered tools like Note Assist built into your EHR, Tebra helps you finish documentation faster, without cutting corners.",
+      "Say goodbye to late-night charting. With customizable templates, SOAP notes, and AI-powered tools like Note Assist built into your EHR, EmbryoOne helps you finish documentation faster, without cutting corners.",
   },
   {
     title: "Increase patient visibility",
     body:
-      "Your practice can’t grow if patients can’t find you. Tebra helps you stand out with online booking, automated review replies, and accurate web profiles that build trust and increase practice visibility without extra work.",
+      "Your practice can’t grow if patients can’t find you. EmbryoOne helps you stand out with online booking, automated review replies, and accurate web profiles that build trust and increase practice visibility without extra work.",
   },
   {
     title: "Scale your NP practice, not your stress",
     body:
-      "As your practice grows, your tools should keep up, not get in the way. Tebra makes it easy to add staff, locations, and services without changing systems or increasing overhead.",
+      "As your practice grows, your tools should keep up, not get in the way. EmbryoOne makes it easy to add staff, locations, and services without changing systems or increasing overhead.",
   },
   {
     title: "Collaborate and stay compliant",
     body:
-      "Working with other providers? Tebra helps you stay compliant in collaborative care settings with built-in co-signature tools, with no extra fees or complicated permissions.",
+      "Working with other providers? EmbryoOne helps you stay compliant in collaborative care settings with built-in co-signature tools, with no extra fees or complicated permissions.",
   },
 ] as const;
 
 export const npWhyIntro = {
-  eyebrow: "Why Tebra?",
+  eyebrow: "Why EmbryoOne?",
   title: "EHR software built to support your whole NP practice, not just your charting",
 } as const;
 
@@ -72,12 +72,12 @@ export const npWhyBlocks = [
   {
     title: "Stay focused on care",
     description:
-      "Tebra lightens your workload with smart tools that automate charting, scheduling, billing, and intake, so you can spend more time with patients and less time on admin.",
+      "EmbryoOne lightens your workload with smart tools that automate charting, scheduling, billing, and intake, so you can spend more time with patients and less time on admin.",
   },
   {
     title: "Grow without the guesswork",
     description:
-      "From flexible billing to real-time revenue insights, Tebra helps you make smart business decisions, even if you don’t have a billing team or office manager.",
+      "From flexible billing to real-time revenue insights, EmbryoOne helps you make smart business decisions, even if you don’t have a billing team or office manager.",
   },
   {
     title: "Protect your reputation, effortlessly",
@@ -99,7 +99,7 @@ export const npStats = [
 export const npMidCta = {
   kicker: "Private practice doesn’t have to mean doing it solo",
   title:
-    "You’re doing the work of a provider, a biller, and a business owner. Tebra is here to make it easier, so your practice can grow without burning you out.",
+    "You’re doing the work of a provider, a biller, and a business owner. EmbryoOne is here to make it easier, so your practice can grow without burning you out.",
   ctaLabel: "Take a self-guided tour",
   ctaHref: "/product-tour",
 } as const;
@@ -108,52 +108,52 @@ export const npPlatformIntro = {
   eyebrow: "The all-in-one EHR built for nurse practitioners",
   title: "The EHR platform powering the future of independent NP practices",
   subtitle:
-    "From patient acquisition and virtual care to smarter documentation, engagement, billing, and payments, Tebra’s EHR+ platform gives you everything you need to run and grow your practice in one place.",
+    "From patient acquisition and virtual care to smarter documentation, engagement, billing, and payments, EmbryoOne’s EHR+ platform gives you everything you need to run and grow your practice in one place.",
 } as const;
 
 export const npPlatformCards = [
   {
     title: "Medical Practice Marketing",
     description:
-      "Make it easy for patients to find and book with you. Tebra’s AI-powered tools for reviews, online scheduling, and custom websites help you build trust and visibility without adding to your workload.",
+      "Make it easy for patients to find and book with you. EmbryoOne’s AI-powered tools for reviews, online scheduling, and custom websites help you build trust and visibility without adding to your workload.",
     href: "/marketing",
     cta: "Explore marketing tools",
   },
   {
     title: "Patient Experience",
     description:
-      "Make it easier for patients to show up, stay engaged, and return for follow-up care. Tebra supports you with digital intake, appointment reminders, and a patient portal that works for everyone.",
+      "Make it easier for patients to show up, stay engaged, and return for follow-up care. EmbryoOne supports you with digital intake, appointment reminders, and a patient portal that works for everyone.",
     href: "/patient-experience",
     cta: "Learn how",
   },
   {
     title: "EHR",
     description:
-      "Spend less time on your EHR and more time with patients. With AI Note Assist, customizable SOAP templates, and built-in telehealth, Tebra helps you chart faster and stay focused on care.",
+      "Spend less time on your EHR and more time with patients. With AI Note Assist, customizable SOAP templates, and built-in telehealth, EmbryoOne helps you chart faster and stay focused on care.",
     href: "/ehr",
     cta: "Explore the EHR",
   },
   {
     title: "Billing Software",
     description:
-      "Stay in control of your revenue without adding overhead. Tebra makes it easy to submit claims, manage billing, and track payments, without extra staff or vendors required.",
+      "Stay in control of your revenue without adding overhead. EmbryoOne makes it easy to submit claims, manage billing, and track payments, without extra staff or vendors required.",
     href: "/billing-payments",
     cta: "Explore billing tools",
   },
 ] as const;
 
 export const npTestimonials = {
-  title: "What NPs are saying about Tebra",
+  title: "What NPs are saying about EmbryoOne",
   items: [
     {
       quote:
-        "If you have an EHR that's efficient, easy to use, and intuitive, like Tebra, you can just figure it out as you go.",
+        "If you have an EHR that's efficient, easy to use, and intuitive, like EmbryoOne, you can just figure it out as you go.",
       author: "Dr. Arjun Reyes",
       org: "Arjun Reyes MD and Associates",
     },
     {
       quote:
-        "We wanted something comprehensive that could grow with us, because we're never done growing. Tebra gave us that.",
+        "We wanted something comprehensive that could grow with us, because we're never done growing. EmbryoOne gave us that.",
       author: "Brandi Tanasescu",
       org: "Balance Point Wellness",
     },
@@ -176,7 +176,7 @@ export const npCaseStudySlugs = ["arjun-reyes-md", "balance-point-wellness", "ce
 export const npBottomCta = {
   title: "Ready to run your NP practice with less admin and more freedom?",
   description:
-    "With AI-powered tools and a platform built for independent NPs, Tebra helps you get more done, stay organized, and finally log off on time.",
+    "With AI-powered tools and a platform built for independent NPs, EmbryoOne helps you get more done, stay organized, and finally log off on time.",
   primaryCtaLabel: "Request a demo",
   primaryCtaHref: "/demo",
   secondaryCtaLabel: "Take a self-guided tour",

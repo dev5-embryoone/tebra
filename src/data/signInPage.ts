@@ -1,10 +1,10 @@
 /**
- * Copy + links for /sign-in (Tebra marketing) and /sign-in/login (app-style).
+ * Copy + links for /sign-in (EmbryoOne marketing) and /sign-in/login (app-style).
  * Reference: https://www.tebra.com/sign-in and app.kareo.com sign-in.
  */
 export const tebraSignInLanding = {
   welcomeTitle: "Welcome back!",
-  welcomeSubtitle: "Sign in to your Tebra accounts",
+  welcomeSubtitle: "Sign in to your EmbryoOne accounts",
   cards: [
     {
       title: "Practice Operations",
@@ -23,20 +23,20 @@ export const tebraSignInLanding = {
   requestDemoLabel: "Request a demo",
   requestDemoHref: "/demo",
   brandPanel: {
-    headline: "Kareo and PatientPop are now Tebra",
+    headline: "Kareo and PatientPop are now EmbryoOne",
     body: "A new era of healthcare, a new world of practice well-being.",
     learnMoreLabel: "Learn More",
     learnMoreHref: "/about",
   },
-  footerCopyright: "Copyright © 2026 Tebra Technologies, Inc",
+  footerCopyright: "Copyright © 2026 EmbryoOne Technologies, Inc",
 } as const;
 
 export const kareoStyleLogin = {
   title: "Login",
-  subtitle: "Enter your Tebra username and password.",
+  subtitle: "Enter your EmbryoOne username and password.",
   emailLabel: "Email:",
   passwordLabel: "Password:",
-  submitLabel: "Login to Tebra",
+  submitLabel: "Login to EmbryoOne",
   signUpLabel: "Sign up today",
   signUpHref: "/sign-up",
   patientPortalLabel: "Patient Portal",
@@ -45,7 +45,7 @@ export const kareoStyleLogin = {
   troubleHref: "/help",
   promo: {
     title: "Cut Documentation Time by 70% with ",
-    titleAccent: "Tebra AI Note Assist",
+    titleAccent: "EmbryoOne AI Note Assist",
     description: "AI-powered notes that improve accuracy and keep you HIPAA compliant.",
     learnMoreLabel: "Learn More",
     learnMoreHref: "/ai",

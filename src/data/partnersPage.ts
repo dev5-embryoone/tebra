@@ -1,30 +1,30 @@
 /** Content for /partners — aligned with tebra.com/partners */
 
 export const partnersMeta = {
-  title: "Healthcare Affiliate, Channel, & Strategic Partner Programs | Tebra",
+  title: "Healthcare Affiliate, Channel, & Strategic Partner Programs | EmbryoOne",
   description:
-    "Tebra's healthcare partner program empowers you to market and promote best-in-class healthcare solutions for providers and practices nationwide.",
+    "EmbryoOne's healthcare partner program empowers you to market and promote best-in-class healthcare solutions for providers and practices nationwide.",
 };
 
 export const partnersHero = {
-  eyebrow: "Tebra partner program",
-  title: "Become a Tebra partner",
+  eyebrow: "EmbryoOne partner program",
+  title: "Become an EmbryoOne partner",
   body:
-    "Tebra's healthcare partner program empowers you to market and promote best-in-class healthcare solutions for providers and practices nationwide.",
+    "EmbryoOne's healthcare partner program empowers you to market and promote best-in-class healthcare solutions for providers and practices nationwide.",
   cta: { label: "Apply now", href: "/contact" },
 };
 
 export const partnersCommitted = {
   title: "Committed to our joint success",
   body:
-    "We believe that unlocking better healthcare is best done together. Our partners are invested in Tebra, and Tebra is equally invested in helping them succeed. Bolstered by the joint strength of Kareo and PatientPop, Tebra is here to support your business's objectives and growth.",
+    "We believe that unlocking better healthcare is best done together. Our partners are invested in EmbryoOne, and EmbryoOne is equally invested in helping them succeed. Bolstered by the joint strength of Kareo and PatientPop, EmbryoOne is here to support your business's objectives and growth.",
   logosTitle: "A few of our current partners",
 };
 
 export const partnerProgramTypesIntro = {
   title: "Partner program types",
   subtitle:
-    "Tebra offers a variety of partnership opportunities designed to meet the unique needs of your business.",
+    "EmbryoOne offers a variety of partnership opportunities designed to meet the unique needs of your business.",
 };
 
 export const partnerProgramTypes = [
@@ -32,7 +32,7 @@ export const partnerProgramTypes = [
     key: "referral",
     title: "Referral partners",
     description:
-      "Collaborate with Tebra's expert marketing, sales, and operations teams for a mutually beneficial relationship that helps everyone grow.",
+      "Collaborate with EmbryoOne's expert marketing, sales, and operations teams for a mutually beneficial relationship that helps everyone grow.",
     icon: "referral" as const,
   },
   {
@@ -53,21 +53,21 @@ export const partnerProgramTypes = [
     key: "billing",
     title: "Billing companies",
     description:
-      "We are fully committed to our billing company partners and their future growth. Receive exclusive benefits as you grow with Tebra.",
+      "We are fully committed to our billing company partners and their future growth. Receive exclusive benefits as you grow with EmbryoOne.",
     icon: "billing" as const,
   },
   {
     key: "integrators",
     title: "Integrators & EHR platforms",
     description:
-      "Expand your product offerings with Tebra. We offer solutions that encompass every step in the patient journey.",
+      "Expand your product offerings with EmbryoOne. We offer solutions that encompass every step in the patient journey.",
     icon: "integrators" as const,
   },
   {
     key: "device",
     title: "Device partners",
     description:
-      "Win more business when you leverage Tebra to expand your overall value and offerings to clients.",
+      "Win more business when you leverage EmbryoOne to expand your overall value and offerings to clients.",
     icon: "device" as const,
   },
 ];
@@ -75,7 +75,7 @@ export const partnerProgramTypes = [
 export const partnerBenefitsIntro = {
   title: "Partner program benefits",
   subtitle:
-    "As a Tebra partner, you'll have the support and tools to expand your client offerings and unlock new levels of business performance.",
+    "As a EmbryoOne partner, you'll have the support and tools to expand your client offerings and unlock new levels of business performance.",
 };
 
 export const partnerBenefits = [
@@ -88,7 +88,7 @@ export const partnerBenefits = [
   {
     title: "Seasoned sales team",
     description:
-      "Tebra's sales professionals help you drive revenue and meet mutual goals with support along the way.",
+      "EmbryoOne's sales professionals help you drive revenue and meet mutual goals with support along the way.",
     icon: "sales" as const,
   },
   {
@@ -100,7 +100,7 @@ export const partnerBenefits = [
   {
     title: "Marketing resources",
     description:
-      "Tebra is focused on providing the marketing and sales enablement resources needed to expand your business.",
+      "EmbryoOne is focused on providing the marketing and sales enablement resources needed to expand your business.",
     icon: "marketing" as const,
   },
   {
@@ -132,14 +132,14 @@ export const partnersTestimonials = [
 ];
 
 export const partnersBrandNote = {
-  line1: "Kareo and PatientPop are now Tebra",
+  line1: "Kareo and PatientPop are now EmbryoOne",
   line2: "We set our partners up for success",
 };
 
 export const partnersProcessIntro = {
   title: "Partnership process",
   body:
-    "Tebra gives our partners the same time and attention as the independent providers we serve. Your needs are top of mind across the entire partnership lifecycle.",
+    "EmbryoOne gives our partners the same time and attention as the independent providers we serve. Your needs are top of mind across the entire partnership lifecycle.",
 };
 
 export const partnersProcessSteps = [
@@ -159,7 +159,7 @@ export const partnersProcessSteps = [
     num: "03",
     title: "Connected launch",
     description:
-      "You'll work with a dedicated Tebra representative, who will be there with training and enablement resources along the way.",
+      "You'll work with a dedicated EmbryoOne representative, who will be there with training and enablement resources along the way.",
   },
   {
     num: "04",
@@ -170,6 +170,6 @@ export const partnersProcessSteps = [
 ];
 
 export const partnersClosingCta = {
-  title: "Become a Tebra partner and take your business to the next level",
+  title: "Become an EmbryoOne partner and take your business to the next level",
   cta: { label: "Apply now", href: "/contact" },
 };

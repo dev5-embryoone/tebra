@@ -1,19 +1,19 @@
 /** Pediatrics specialty — mirrors https://www.tebra.com/specialties/pediatrics */
 
 export const pediatricsMeta = {
-  title: "Pediatrics - Tebra",
+  title: "Pediatrics - EmbryoOne",
   description:
     "Attract new patients, deliver the best care, and get paid quickly with one comprehensive platform for pediatric practices.",
 } as const;
 
 export const pediatricsBreadcrumb = [
-  { label: "Tebra", href: "/" },
+  { label: "EmbryoOne", href: "/" },
   { label: "Specialties", href: "/specialties/family-medicine" },
   { label: "Pediatrics", href: "/specialties/pediatrics" },
 ] as const;
 
 export const pediatricsHero = {
-  eyebrow: "Tebra for pediatricians",
+  eyebrow: "EmbryoOne for pediatricians",
   title: "The platform for all your practice needs",
   subtitle:
     "Attract new patients, deliver the best care, and get paid quickly with one comprehensive platform.",
@@ -22,44 +22,44 @@ export const pediatricsHero = {
 } as const;
 
 export const pediatricsAccordionIntro = {
-  title: "Why pediatricians pick Tebra",
+  title: "Why pediatricians pick EmbryoOne",
 } as const;
 
 export const pediatricsAccordionItems = [
   {
     title: "Reach new patients",
     body:
-      "Make it easy for patients’ parents and caregivers to find you — and choose your practice — with Tebra. Get search engine optimization and marketing so prospective patients can find you online, automated reputation management so they like what they see, and refined profiles so they can connect with your practice.",
+      "Make it easy for patients’ parents and caregivers to find you — and choose your practice — with EmbryoOne. Get search engine optimization and marketing so prospective patients can find you online, automated reputation management so they like what they see, and refined profiles so they can connect with your practice.",
   },
   {
     title: "Stay connected with patients",
     body:
-      "Caring for kids is everything. But almost 80% of patients would switch doctors for greater convenience. Tebra delivers it by making it a cinch for parents to book and remember appointments, get answers to their questions, review their records, and pay their bills. Back-end automation leads to front-end convenience with no extra effort from you.",
+      "Caring for kids is everything. But almost 80% of patients would switch doctors for greater convenience. EmbryoOne delivers it by making it a cinch for parents to book and remember appointments, get answers to their questions, review their records, and pay their bills. Back-end automation leads to front-end convenience with no extra effort from you.",
   },
   {
     title: "Deliver custom care",
     body:
-      "Spend less time on tools and more time with patients with Tebra. Our certified, cloud-based EHR integrates provider scheduling, clinical notes, flowsheets, growth charts, eRx, eLabs, telehealth, and more — all in one place. Plus, use our mobile app to deliver secure, on-the-go care.",
+      "Spend less time on tools and more time with patients with EmbryoOne. Our certified, cloud-based EHR integrates provider scheduling, clinical notes, flowsheets, growth charts, eRx, eLabs, telehealth, and more — all in one place. Plus, use our mobile app to deliver secure, on-the-go care.",
   },
   {
     title: "Get paid",
     body:
-      "Medical billing and payments can be frustrating for both providers and caregivers. Make it easy for the families you support to navigate their bills — and improve your profitability in the process — with Tebra’s billing and payments. Manage your pediatric practice intuitively, save time with automation, and improve your revenue cycle.",
+      "Medical billing and payments can be frustrating for both providers and caregivers. Make it easy for the families you support to navigate their bills — and improve your profitability in the process — with EmbryoOne’s billing and payments. Manage your pediatric practice intuitively, save time with automation, and improve your revenue cycle.",
   },
   {
     title: "Dive into your data",
     body:
-      "You need good data to make good decisions. Tebra gives you data and insights into every area of your practice, including practice growth and revenue. Stay secure with HIPAA-compliant cloud storage and explore your data your way through APIs that integrate with third-party applications.",
+      "You need good data to make good decisions. EmbryoOne gives you data and insights into every area of your practice, including practice growth and revenue. Stay secure with HIPAA-compliant cloud storage and explore your data your way through APIs that integrate with third-party applications.",
   },
   {
     title: "Easy implementation",
     body:
-      "Feeling overwhelmed by your current systems, but also by making a change? With Tebra, you can get started in minutes, not weeks, with no IT knowledge or heavy lifting. Our onboarding, training, and ongoing support will be with you every step of the way and mean your practice won’t miss a beat.",
+      "Feeling overwhelmed by your current systems, but also by making a change? With EmbryoOne, you can get started in minutes, not weeks, with no IT knowledge or heavy lifting. Our onboarding, training, and ongoing support will be with you every step of the way and mean your practice won’t miss a beat.",
   },
 ] as const;
 
 export const pediatricsWhyIntro = {
-  eyebrow: "Why Tebra?",
+  eyebrow: "Why EmbryoOne?",
   title: "Pediatricians don’t have time for piecemeal solutions",
 } as const;
 
@@ -93,7 +93,7 @@ export const pediatricsStats = [
 
 export const pediatricsMidCta = {
   kicker: "Set up your practice for long haul",
-  title: "See how Tebra can help your practice grow and transform in our new era of healthcare.",
+  title: "See how EmbryoOne can help your practice grow and transform in our new era of healthcare.",
   ctaLabel: "Schedule a consultation",
   ctaHref: "/demo",
 } as const;
@@ -143,7 +143,7 @@ export const pediatricsTestimonialsIntro = {
 export const pediatricsTestimonials = [
   {
     quote:
-      "Part of my success is because of Tebra. It's just the way that they give me the support, with everything, every step of the way.",
+      "Part of my success is because of EmbryoOne. It's just the way that they give me the support, with everything, every step of the way.",
     author: "Paul Ordonez, CEO",
     org: "Elite Medical Revenue Service",
   },

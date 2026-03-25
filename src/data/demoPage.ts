@@ -3,9 +3,9 @@
  */
 
 export const demoPageMeta = {
-  title: "Experience the All-in-One EHR Platform for Private Practices | Tebra",
+  title: "Experience the All-in-One EHR Platform for Private Practices | EmbryoOne",
   description:
-    "Get a personalized demo of Tebra. Streamline practice operations, enhance patient care, and boost your bottom line.",
+    "Get a personalized demo of EmbryoOne. Streamline practice operations, enhance patient care, and boost your bottom line.",
 } as const;
 
 export const demoHero = {
@@ -13,7 +13,7 @@ export const demoHero = {
     "Leader in Medical Practice Management and Billing",
     "Trusted by 150,000 providers",
   ] as const,
-  title: "Get a personalized demo of Tebra",
+  title: "Get a personalized demo of EmbryoOne",
   subtitle:
     "Streamline practice operations, enhance patient care, and boost your bottom line.",
   bullets: [
@@ -34,7 +34,7 @@ export const demoHero = {
     ] as const,
     submitLabel: "Schedule my demo",
     footnote:
-      "By submitting, you agree to be contacted about Tebra products. You can unsubscribe anytime.",
+      "By submitting, you agree to be contacted about EmbryoOne products. You can unsubscribe anytime.",
   } as const,
 } as const;
 
@@ -42,7 +42,7 @@ export const demoHowItWorks = {
   eyebrow: "HOW IT WORKS",
   title: "See key features in action",
   description:
-    "See how some of Tebra’s key features work in these self-guided tours.",
+    "See how some of EmbryoOne’s key features work in these self-guided tours.",
 } as const;
 
 export const demoTourCards = [
@@ -73,7 +73,7 @@ export const demoPillars = {
       badge: "EHR",
       title: "Deliver quality care",
       description:
-        "Tebra's EHR gives you a clear view of complete patient histories and prescriptions. You'll spend less time searching and more time caring, enhancing both practice efficiency and patient satisfaction.",
+        "EmbryoOne's EHR gives you a clear view of complete patient histories and prescriptions. You'll spend less time searching and more time caring, enhancing both practice efficiency and patient satisfaction.",
     },
     {
       badge: "EHR",
@@ -91,7 +91,7 @@ export const demoPillars = {
 } as const;
 
 export const demoTrustSection = {
-  title: "This is why thousands of small — and medium-sized practices trust Tebra",
+  title: "This is why thousands of small — and medium-sized practices trust EmbryoOne",
   cards: [
     {
       brand: "beverly hills optometry",
@@ -121,7 +121,7 @@ export const demoTrustSection = {
 } as const;
 
 export const demoBottomCta = {
-  title: "More than 42,000 practices in the United States are growing with Tebra. Now it's your turn.",
+  title: "More than 42,000 practices in the United States are growing with EmbryoOne. Now it's your turn.",
   subtitle: "Schedule a customized demo",
   bullets: [
     { icon: "growth" as const, text: "Pinpoint growth opportunities" },
@@ -133,7 +133,7 @@ export const demoBottomCta = {
 } as const;
 
 export const demoClosingCta = {
-  title: "Automate, optimize, and thrive with Tebra",
+  title: "Automate, optimize, and thrive with EmbryoOne",
   description: "The leading practice automation solution for independent practices.",
   primaryCtaLabel: "Get Demo",
   primaryCtaHref: "/demo#demo-form",

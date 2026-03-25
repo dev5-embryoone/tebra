@@ -5,12 +5,12 @@ import SectionHeader from '../SectionHeader/SectionHeader.astro';
 ---
 
 <section id="get-started" class="bg-tebra-section-alt py-16 lg:py-24">
-  <div class="page-container">
-    <div class="grid gap-10 lg:grid-cols-[1fr,1fr] lg:items-center lg:gap-12">
-      <div class="text-center lg:text-left">
+  <div class="page-container relative">
+    <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16 lg:items-center">
+      <div class="lg:col-span-7 text-center lg:text-left">
         <SectionHeader
           eyebrow="Step-by-step process"
-          title="Get started with Tebra in 3 easy steps"
+          title="Get started with EmbryoOne in 3 easy steps"
           description="Simple, supported, and designed to fit the way you work. From setup to go-live, we'll guide you every step so your practice sees value from day one."
           eyebrowClass="text-gray-600"
           titleClass="font-bold text-tebra-teal"
@@ -22,8 +22,22 @@ import SectionHeader from '../SectionHeader/SectionHeader.astro';
         </div>
       </div>
 
-      <!-- Right column: steps card -->
-      <div class="card-radius bg-card mx-auto w-full max-w-xl overflow-hidden border border-gray-200/80 p-8 shadow-sm lg:p-10">
+      <!-- Steps card (offset with subtle decorative background) -->
+      <div class="relative mx-auto w-full max-w-xl lg:col-span-5 lg:translate-x-2 lg:-translate-y-2">
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute -inset-4 -z-10 rounded-[2rem] bg-tebra-hero-bg/70 blur-[12px]"
+        />
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute -left-6 top-6 h-16 w-16 rounded-full bg-tebra-teal/10"
+        />
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute -right-8 -bottom-6 h-24 w-24 rounded-full bg-tebra-orange/10"
+        />
+
+        <div class="card-radius bg-card w-full overflow-hidden border border-gray-200/80 p-8 shadow-sm lg:p-10">
         <ul class="flex flex-col gap-0">
           {getStartedSteps.map((step, index) => (
             <li class="relative flex gap-6 pb-8 last:pb-0">
@@ -52,6 +66,7 @@ import SectionHeader from '../SectionHeader/SectionHeader.astro';
             </li>
           ))}
         </ul>
+        </div>
       </div>
     </div>
   </div>
