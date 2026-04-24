@@ -1,110 +1,455 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Button from "../../../components/Button/Button.astro";
-import ehrHeroImage from "../../../assets/clinic.png";
-import patientRecordsImage from "../../../assets/patients1.png";
-import cycleTrackingImage from "../../../assets/session.png";
-import clinicalWorkflowImage from "../../../assets/live1.png";
-import reportingImage from "../../../assets/operatorlog1.png";
+import todayDashboardImage from "../../../assets/ehr-today-dashboard.png";
+import providerCalendarImage from "../../../assets/ehr-provider-calendar.png";
+import cycleBoardImage from "../../../assets/ehr-cycle-board.png";
+import patientChartImage from "../../../assets/ehr-patient-chart.png";
+import encountersImage from "../../../assets/ehr-encounters.png";
+import orderDetailsImage from "../../../assets/ehr-order-details.png";
+import clinicalDecisionQueueImage from "../../../assets/ehr-clinical-decision-queue.png";
 
-const valuePoints = [
-  "Unified records and lab data",
-  "Better cycle coordination",
-  "Operational and clinical clarity",
+const commandCenterPoints = [
+  "IVF cycle queue by stage",
+  "Real-time patient status updates",
+  "Critical alerts and pending decisions",
+  "Worklist and inbox integration",
+];
+
+const schedulingPoints = [
+  "Weekly and daily scheduling views",
+  "Drag-and-drop rescheduling",
+  "Multi-provider coordination",
+  "Real-time availability tracking",
+];
+
+const cycleManagementPoints = [
+  "Stage-based workflow tracking",
+  "Real-time cycle progression",
+  "Clear task visibility per stage",
+  "Action-driven patient cards",
+];
+
+const patientChartPoints = [
+  "IVF summary with cycle progression",
+  "Upcoming appointments and next actions",
+  "Labs, notes, medications, timeline",
+  "Quick clinical actions (order, prescribe, document)",
+];
+
+const documentationPoints = [
+  "Encounter-based documentation",
+  "Draft, signed, and completed states",
+  "Easy editing and review workflows",
+  "Structured clinical data capture",
+];
+
+const labOrdersPoints = [
+  "Lab order lifecycle tracking",
+  "Critical result alerts",
+  "Integrated review workflows",
+  "Full audit trail for every order",
+];
+
+const decisionQueuePoints = [
+  "Decision-based patient queue",
+  "Prioritized clinical actions",
+  "Stage-aware alerts",
+  "Faster decision-making",
+];
+
+const ehrComparisonRows = [
+  {
+    title: "One connected IVF platform",
+    description:
+      "Scheduling, cycle management, charting, labs, and decisions work in one unified system.",
+    embryoOne: "full",
+    standalone: "partial",
+    disconnected: "none",
+  },
+  {
+    title: "Built for IVF care pathways",
+    description:
+      "Designed around stimulation, OPU, lab, transfer, and follow-up instead of generic clinic flows.",
+    embryoOne: "full",
+    standalone: "partial",
+    disconnected: "none",
+  },
+  {
+    title: "Decision-first clinical operations",
+    description:
+      "Critical actions, stage-aware alerts, and queue-based decisions are embedded into daily workflow.",
+    embryoOne: "full",
+    standalone: "partial",
+    disconnected: "none",
+  },
+  {
+    title: "Integrated with lab and AI modules",
+    description:
+      "Works seamlessly with EmbryoOne lab workflows, AI grading, and cryo systems.",
+    embryoOne: "full",
+    standalone: "partial",
+    disconnected: "none",
+  },
+];
+
+const ehrFaqs = [
+  {
+    question: "How is EmbryoOne EHR different from a general healthcare EHR?",
+    answer:
+      "EmbryoOne is designed specifically for IVF workflows, including cycle stages, lab coordination, decision queues, and outcome-focused actions instead of generic outpatient templates.",
+  },
+  {
+    question: "Can teams coordinate scheduling, cycle progress, and documentation in one place?",
+    answer:
+      "Yes. Scheduling, cycle management, patient charting, encounters, and lab workflows live in one connected system so teams stay aligned in real time.",
+  },
+  {
+    question: "Does the EHR support decision alerts for critical clinical moments?",
+    answer:
+      "Yes. The clinical decision queue surfaces urgent items like trigger decisions, lab reviews, and pending confirmations so action happens at the right time.",
+  },
+  {
+    question: "Can EmbryoOne EHR integrate with lab, AI grading, and cryo workflows?",
+    answer:
+      "Yes. The platform is built to work across IVF operations, connecting clinical records with lab activity, AI grading outputs, and cryo processes.",
+  },
 ];
 ---
 
 <BaseLayout
-  title="EHR | Unified IVF workflow management"
-  description="Manage IVF cycles, patient records, and clinical workflows in one connected system across clinic and lab."
+  title="EHR | Connected IVF practice management"
+  description="EmbryoOne EHR unifies scheduling, cycle tracking, documentation, labs, and decision workflows in one connected IVF system."
 >
   <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
-    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-10">
       <div>
         <p class="eyebrow">Products • EHR</p>
         <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
-          Manage IVF cycles, records, and workflows
+          Run your entire IVF practice from one connected system
         </h1>
         <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
-          EmbryoOne connects lab and clinical workflows into one unified system.
+          EmbryoOne EHR brings together scheduling, cycle tracking, clinical documentation, labs,
+          and decision workflows so your team can move faster, stay aligned, and deliver better
+          outcomes.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <Button href="/product-tour" label="Explore EHR" variant="primary" size="md" />
-          <Button href="/demo" label="Book a demo" variant="secondary" size="md" />
+          <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+          <Button href="/product-tour" label="Explore workflows" variant="secondary" size="md" />
         </div>
       </div>
-      <img src={ehrHeroImage.src} alt="Unified IVF dashboard with clinical and lab workflow data" class="w-full" loading="eager" />
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:col-span-2">
+          <h3 class="text-xl font-semibold text-tebra-teal-dark">Today queue and decisions in one view</h3>
+          <p class="mt-2 text-sm text-gray-600">
+            Track cycle stage, pending actions, and critical items from a single operational panel.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Scheduling</p>
+          <p class="mt-2 text-2xl font-semibold text-tebra-teal-dark">Multi-provider</p>
+          <p class="mt-1 text-sm text-gray-600">Calendar coordination across visits and procedures.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Cycle Progress</p>
+          <p class="mt-2 text-2xl font-semibold text-tebra-teal-dark">Stage-aware</p>
+          <p class="mt-1 text-sm text-gray-600">Baseline to transfer visibility for every patient.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Documentation</p>
+          <p class="mt-2 text-2xl font-semibold text-tebra-teal-dark">Structured</p>
+          <p class="mt-1 text-sm text-gray-600">Encounter workflows with draft-to-sign review states.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Lab Actions</p>
+          <p class="mt-2 text-2xl font-semibold text-tebra-teal-dark">Critical alerts</p>
+          <p class="mt-1 text-sm text-gray-600">Fast review and follow-up for protocol-sensitive results.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="page-section bg-white">
-    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
-      <div>
-        <h2 class="heading-md text-tebra-teal-dark">Patient Records</h2>
-        <p class="mt-4 text-base text-gray-600">
-          Keep complete, structured patient records accessible across clinical and lab teams.
+  <section class="py-16 sm:py-20 bg-tebra-teal-dark">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl">
+        <p class="eyebrow !text-gray-200">EHR FAQ</p>
+        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-4 text-base text-gray-200">
+          Quick answers about how EmbryoOne EHR supports IVF workflows, team coordination, and
+          decision-ready care.
         </p>
+        <div class="mt-8 space-y-3">
+          {ehrFaqs.map((item, index) => (
+            <details
+              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
+              open={index === 0}
+            >
+              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
+                {item.question}
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
+            </details>
+          ))}
+        </div>
       </div>
-      <img src={patientRecordsImage.src} alt="Patient records and profile management interface" class="w-full" loading="lazy" />
-    </div>
-  </section>
-
-  <section class="page-section bg-gray-50">
-    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
-      <div class="md:order-2">
-        <h2 class="heading-md text-tebra-teal-dark">Cycle Tracking</h2>
-        <p class="mt-4 text-base text-gray-600">
-          Track cycle milestones, updates, and statuses in real time with clear visibility for every
-          stakeholder.
-        </p>
-      </div>
-      <img src={cycleTrackingImage.src} alt="Cycle tracking timeline and status workflow interface" class="w-full md:order-1" loading="lazy" />
-    </div>
-  </section>
-
-  <section class="page-section bg-white">
-    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
-      <div>
-        <h2 class="heading-md text-tebra-teal-dark">Clinical Workflows</h2>
-        <p class="mt-4 text-base text-gray-600">
-          Coordinate clinical tasks, lab handoffs, and protocol steps within one connected workflow.
-        </p>
-      </div>
-      <img src={clinicalWorkflowImage.src} alt="Clinical workflow management across lab and care teams" class="w-full" loading="lazy" />
-    </div>
-  </section>
-
-  <section class="page-section bg-gray-50">
-    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
-      <div class="md:order-2">
-        <h2 class="heading-md text-tebra-teal-dark">Reporting</h2>
-        <p class="mt-4 text-base text-gray-600">
-          Generate actionable reports to monitor performance, compliance, and outcomes across IVF
-          operations.
-        </p>
-      </div>
-      <img src={reportingImage.src} alt="Reporting and analytics dashboard for IVF operations" class="w-full md:order-1" loading="lazy" />
     </div>
   </section>
 
   <section class="page-section bg-white">
     <div class="page-container">
-      <h2 class="heading-md text-center text-tebra-teal-dark">Built for connected IVF care</h2>
-      <div class="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-3">
-        {valuePoints.map((point) => (
-          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-center text-sm font-semibold text-tebra-teal-dark">
-            {point}
-          </div>
-        ))}
+      <h2 class="heading-md text-tebra-teal-dark md:whitespace-nowrap">
+        Start your day with complete clinical clarity
+      </h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+        <p class="mt-4 text-base text-gray-600">
+          The Today view brings together your IVF queue, patient stages, and urgent actions in one
+          place so nothing is missed and every decision happens on time.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {commandCenterPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+        </div>
+        <img src={todayDashboardImage.src} alt="Today dashboard with IVF queue, patient stages, and worklist panel" class="w-full rounded-2xl border border-gray-200" loading="lazy" />
       </div>
     </div>
   </section>
 
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">
+        Built for IVF practices. Designed to work as one system.
+      </h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-gray-600">
+        Compare EmbryoOne EHR with standalone systems and disconnected tools to see how an
+        integrated IVF platform supports daily clinical, lab, and operational workflows.
+      </p>
+
+      <div class="mt-6 flex justify-end gap-4 text-xs text-gray-500">
+        <span>✓ Fully integrated</span>
+        <span>△ Available with limitations</span>
+        <span>× Not supported</span>
+      </div>
+
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-gray-200">
+        <table class="min-w-[860px] w-full border-collapse bg-white">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="w-[44%] border-b border-gray-200 px-5 py-4 text-left text-sm font-semibold text-tebra-teal-dark">
+                Capability
+              </th>
+              <th class="w-[18%] border-b border-x border-tebra-teal-dark bg-tebra-teal-dark/5 px-5 py-4 text-center text-sm font-semibold text-tebra-teal-dark">
+                EmbryoOne EHR
+              </th>
+              <th class="w-[19%] border-b border-gray-200 px-5 py-4 text-center text-sm font-semibold text-gray-700">
+                Standalone EHRs
+              </th>
+              <th class="w-[19%] border-b border-gray-200 px-5 py-4 text-center text-sm font-semibold text-gray-700">
+                Disconnected tools
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {ehrComparisonRows.map((row, index) => (
+              <tr class={index % 2 === 0 ? "bg-white" : "bg-gray-50/60"}>
+                <td class="border-b border-gray-200 px-5 py-4 align-top">
+                  <p class="text-sm font-semibold text-tebra-teal-dark">{row.title}</p>
+                  <p class="mt-1 text-xs text-gray-600">{row.description}</p>
+                </td>
+                <td class="border-b border-x border-tebra-teal-dark bg-tebra-teal-dark/5 px-5 py-4 text-center text-base font-semibold text-tebra-teal-dark">
+                  {row.embryoOne === "full" ? "✓" : row.embryoOne === "partial" ? "△" : "×"}
+                </td>
+                <td class="border-b border-gray-200 px-5 py-4 text-center text-base font-semibold text-gray-600">
+                  {row.standalone === "full" ? "✓" : row.standalone === "partial" ? "△" : "×"}
+                </td>
+                <td class="border-b border-gray-200 px-5 py-4 text-center text-base font-semibold text-gray-600">
+                  {row.disconnected === "full" ? "✓" : row.disconnected === "partial" ? "△" : "×"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="mx-auto mt-4 max-w-3xl rounded-xl bg-tebra-teal-dark/5 px-4 py-3 text-center text-sm text-tebra-teal-dark">
+        EmbryoOne EHR is purpose-built for IVF teams that need clinical speed, lab coordination,
+        and decision clarity in one platform.
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Schedule with precision across every provider</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Manage appointments, procedures, and follow-ups with a flexible calendar built for IVF
+          workflows. Coordinate across providers and ensure smooth patient flow every day.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {schedulingPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <img src={providerCalendarImage.src} alt="Provider calendar with weekly schedule and multi-provider appointment management" class="w-full rounded-2xl border border-gray-200 md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark md:whitespace-nowrap">
+        Track every patient across the IVF journey
+      </h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+        <p class="mt-4 text-base text-gray-600">
+          Visualize patient progress from baseline to transfer with a structured cycle board. Keep
+          your team aligned across stimulation, OPU, lab, and follow-up stages.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {cycleManagementPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+        </div>
+        <img src={cycleBoardImage.src} alt="Cycle board screen with stage columns and action-oriented patient cards" class="w-full rounded-2xl border border-gray-200" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Everything about the patient, in one place</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Access complete patient records, upcoming appointments, lab results, medications, and
+          clinical notes all in a unified chart designed for IVF workflows.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {patientChartPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <img src={patientChartImage.src} alt="Patient chart with IVF summary, next actions, labs, and quick clinical actions" class="w-full rounded-2xl border border-gray-200 md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Document faster, with structured workflows</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Capture every patient interaction with structured encounter records. Maintain compliance,
+          improve documentation quality, and ensure complete clinical history.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {documentationPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <img src={encountersImage.src} alt="Encounters table for structured clinical documentation and status tracking" class="w-full rounded-2xl border border-gray-200" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Order, track, and act on lab results instantly</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Manage lab orders from request to result in a single workflow. Receive alerts for
+          critical values and ensure timely clinical decisions.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          EmbryoOne keeps each order tied to patient context, current cycle stage, and review
+          status so teams can move from result interpretation to action without handoff delays or
+          disconnected notes.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {labOrdersPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-7 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-xl border border-gray-200 bg-white px-4 py-3">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Turnaround</p>
+            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Reduce time from result to decision</p>
+          </div>
+          <div class="rounded-xl border border-gray-200 bg-white px-4 py-3">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Safety</p>
+            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Escalate protocol-critical findings quickly</p>
+          </div>
+        </div>
+      </div>
+      <img src={orderDetailsImage.src} alt="Order details panel with lab result lifecycle, alerts, and review actions" class="w-full rounded-2xl border border-gray-200 md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Never miss a critical decision</h2>
+        <p class="mt-4 text-base text-gray-600">
+          The decision queue highlights patients who need attention trigger decisions, lab reviews,
+          or outcome confirmations so your team acts at the right moment.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          Instead of searching across multiple screens, clinicians can review urgency, context, and
+          patient status in one focused queue. This helps teams prioritize what matters now, reduce
+          delays in follow-up, and keep care progression on track throughout the cycle.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {decisionQueuePoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-7 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Clinical Focus</p>
+            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Surface high-impact decisions first</p>
+          </div>
+          <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Team Visibility</p>
+            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Share queue status across roles in real time</p>
+          </div>
+        </div>
+      </div>
+      <img src={clinicalDecisionQueueImage.src} alt="Clinical decision queue with prioritized actions, stage-aware context, and critical alerts" class="w-full rounded-2xl border border-gray-200" loading="lazy" />
+    </div>
+  </section>
+
   <section class="py-16 sm:py-20">
-    <div class="page-container rounded-3xl border border-gray-200 bg-gray-50 px-6 py-10 sm:px-10">
-      <h2 class="text-3xl font-semibold text-tebra-teal-dark sm:text-4xl">Bring clinic and lab into one system</h2>
-      <p class="mt-4 max-w-3xl text-base text-gray-600">
-        Centralize records, cycles, and workflows in one EHR designed specifically for IVF teams.
+    <div class="page-container rounded-3xl bg-tebra-teal-dark px-6 py-10 sm:px-10">
+      <h2 class="text-3xl font-semibold text-white sm:text-4xl">Move faster. Decide better. Deliver better outcomes.</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-100">
+        Bring your entire IVF practice into one system designed for precision, coordination, and
+        growth.
       </p>
       <div class="mt-7 flex flex-wrap gap-3">
         <Button href="/demo" label="Book a demo" variant="primary" size="md" />

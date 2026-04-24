@@ -2,6 +2,15 @@
 import PlatformFeature from "./PlatformFeature.astro";
 import SectionHeader from "../SectionHeader/SectionHeader.astro";
 import { platformItems } from "../../data/platform";
+import platformLabOperationsImage from "../../assets/platform-lab-operations.png";
+import platformInventoryConsumptionImage from "../../assets/platform-inventory-consumption.png";
+import platformCryoIntegratedImage from "../../assets/platform-cryo-integrated.png";
+
+const platformImages = [
+  platformLabOperationsImage,
+  platformInventoryConsumptionImage,
+  platformCryoIntegratedImage,
+];
 ---
 
 <section id="platform" class="page-section bg-white">
@@ -17,6 +26,7 @@ import { platformItems } from "../../data/platform";
         title={item.title}
         description={item.description}
         imageAlt={item.title}
+        imageSrc={platformImages[index]?.src}
         reverse={index % 2 === 1}
       />
     ))}

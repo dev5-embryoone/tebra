@@ -2,11 +2,12 @@
 interface Props {
   title: string;
   description: string;
+  imageSrc?: string;
   imageAlt?: string;
   reverse?: boolean;
 }
 
-const { title, description, imageAlt = "", reverse = false } = Astro.props as Props;
+const { title, description, imageSrc, imageAlt = "", reverse = false } = Astro.props as Props;
 ---
 
 <div
@@ -18,7 +19,18 @@ const { title, description, imageAlt = "", reverse = false } = Astro.props as Pr
     <div
       class="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-[0_20px_50px_rgba(15,23,42,0.10)]"
     >
-      <div class="h-52 w-full bg-gradient-to-br from-indigo-500 via-purple-500 to-tebra-500 sm:h-64 lg:h-72" />
+      {
+        imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={imageAlt || title}
+            class="h-52 w-full object-cover sm:h-64 lg:h-72"
+            loading="lazy"
+          />
+        ) : (
+          <div class="h-52 w-full bg-gradient-to-br from-indigo-500 via-purple-500 to-tebra-500 sm:h-64 lg:h-72" />
+        )
+      }
       <div class="pointer-events-none absolute inset-x-5 bottom-5 rounded-2xl bg-white/95 p-4 shadow-lg backdrop-blur">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
           Platform view
