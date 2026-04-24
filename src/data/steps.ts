@@ -7,20 +7,20 @@ export interface StepItem {
 export const getStartedSteps: StepItem[] = [
   {
     number: 1,
-    title: "Discover your practice's potential",
+    title: "Discover your lab workflows",
     description:
-      "See how EmbryoOne connects EHR, billing, scheduling, and reputation in one platform with a personalized demo.",
+      "Understand how EmbryoOne connects lab, embryo, and clinical systems.",
   },
   {
     number: 2,
-    title: "Launch with confidence",
+    title: "Set up and integrate systems",
     description:
-      "Your onboarding manager helps with setup, data migration, and training so your team is ready to go in days, not months.",
+      "Configure lab tracking, cryo systems, and clinical workflows quickly.",
   },
   {
     number: 3,
-    title: "Grow with EmbryoOne",
+    title: "Run and optimize workflows",
     description:
-      "Use AI-powered tools and connected workflows to save time, get paid faster, and attract new patients.",
+      "Track, analyze, and improve IVF operations across every cycle.",
   },
 ];

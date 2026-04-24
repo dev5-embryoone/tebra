@@ -5,19 +5,19 @@ export type PlatformItem = {
 
 export const platformItems: PlatformItem[] = [
   {
-    title: "EHR at the center of your workflows",
+    title: "Lab system at the core of operations",
     description:
-      "Streamline documentation with cloud-based charting, AI-supported notes, electronic prescriptions, and lab ordering — all from a single screen so providers can stay present with patients.",
+      "Track witness activity, monitor lab conditions, and manage workflows across all stations with full traceability.",
   },
   {
-    title: "Patient experience that feels modern",
+    title: "Inventory and consumption tracking",
     description:
-      "Online scheduling, digital intake, two-way messaging, and automated reminders make it easy for patients to book, show up, and stay engaged with your practice.",
+      "Track usage of lab consumables and maintain accurate inventory across workflows.",
   },
   {
-    title: "Billing and payments built into every step",
+    title: "Cryo systems fully integrated",
     description:
-      "Eligibility checks, claims management, and simplified patient payments are deeply integrated, reducing denials and helping you get paid faster with less manual work.",
+      "Manage embryo storage, locations, and lifecycle with real-time tracking and alerts.",
   },
 ];
 

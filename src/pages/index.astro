@@ -1,29 +1,36 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button/Button.astro";
 import FeaturesSection from "../components/Sections/FeaturesSection.astro";
 import PlatformSection from "../components/Sections/PlatformSection.astro";
 import TestimonialsSection from "../components/Sections/TestimonialsSection.astro";
 import GetStartedStepsSection from "../components/Sections/GetStartedStepsSection.astro";
 import TourBannerSection from "../components/Sections/TourBannerSection.astro";
 import FAQSection from "../components/Sections/FAQSection.astro";
-import PracticeManagementToolsSection from "../components/Sections/PracticeManagementToolsSection.astro";
 import CTASection from "../components/Sections/CTASection.astro";
 import { homeClosingCta } from "../data/homePage";
 import dashboardHeroImage from "../assets/image.png";
 ---
 
 <BaseLayout
-  title="Run your entire practice with one EHR+ platform | EmbryoOne"
-  description="EmbryoOne’s EHR+ platform connects care, billing, scheduling, and more. Built-in AI speeds up notes, handles reviews, and automates repetitive admin work."
+  title="EmbryoOne | Integrated IVF lab and clinical platform"
+  description="Track lab activity, manage embryo data, and support clinical decisions in one connected system."
 >
   <section class="relative overflow-hidden bg-tebra-hero-bg py-10 sm:py-12 lg:py-14">
     <div class="page-container relative z-10">
       <p class="text-center text-xs font-medium tracking-wide text-tebra-teal sm:text-sm">
-        An AI-powered, all-in-one solution that enables exceptional care
+        An integrated platform for IVF lab and clinical workflows
       </p>
       <h1 class="mt-3 text-center text-5xl font-semibold tracking-tight text-tebra-teal-dark sm:text-6xl lg:text-7xl">
-        Embryo One
+        EmbryoOne
       </h1>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-sm text-gray-700 sm:text-base">
+        Track lab activity, manage embryo data, and support clinical decisions in one connected system
+      </p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <Button href="/demo" label="Get a Demo" variant="primary" size="md" />
+        <Button href="/product-tour" label="Take a Product Tour" variant="secondary" size="md" />
+      </div>
 
       <div class="mx-auto mt-8 w-full max-w-6xl">
         <img
@@ -42,7 +49,6 @@ import dashboardHeroImage from "../assets/image.png";
   <GetStartedStepsSection />
   <TourBannerSection />
   <FAQSection />
-  <PracticeManagementToolsSection />
   <CTASection
     title={homeClosingCta.title}
     description={homeClosingCta.description}

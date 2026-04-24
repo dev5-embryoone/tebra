@@ -1,0 +1,428 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Button from "../../../components/Button/Button.astro";
+import labSection1Image from "../../../assets/lab1.png";
+import labSection2Image from "../../../assets/lab2.png";
+import labSection3Image from "../../../assets/lab3.png";
+import labSection4Image from "../../../assets/lab4.png";
+import labSection5Image from "../../../assets/lab5.png";
+import labCardPressureImage from "../../../assets/lab-card-pressure.png";
+import labCardTempBlueImage from "../../../assets/lab-card-temp-blue.png";
+import labCardTempGoldImage from "../../../assets/lab-card-temp-gold.png";
+
+const labEnvPoints = [
+  "Monitor temperature, humidity, pressure, and air quality in real time",
+  "Detect deviations early with continuous data tracking",
+  "Maintain consistent lab conditions across all workstations",
+  "Reduce manual monitoring and improve operational reliability",
+];
+
+const incubatorPoints = [
+  "Monitor temperature, CO2, and airflow across incubators",
+  "View performance across multiple units in one dashboard",
+  "Detect deviations before they affect embryo development",
+  "Ensure consistent conditions across all incubation stages",
+];
+
+const cryoPoints = [
+  "Monitor cryo storage temperature continuously",
+  "Ensure stability across all storage units",
+  "Detect anomalies before they impact samples",
+  "Maintain safe storage conditions at all times",
+];
+
+const alertsPoints = [
+  "Get alerts when conditions exceed defined thresholds",
+  "Visualize trends across time to identify patterns",
+  "Track min, max, and average values for each parameter",
+  "Support compliance with historical data and logs",
+];
+
+const labHealthFaqs = [
+  {
+    question: "What parameters can Lab Health monitor in real time?",
+    answer:
+      "Lab Health continuously monitors temperature, humidity, pressure, air quality, CO2, and airflow across key IVF lab environments including incubators and cryo storage units.",
+  },
+  {
+    question: "How are teams notified when lab conditions move out of range?",
+    answer:
+      "You can define safe thresholds for each parameter. When values move outside those thresholds, EmbryoOne surfaces alerts so teams can respond quickly and reduce risk.",
+  },
+  {
+    question: "Can we review historical trends for audits and compliance?",
+    answer:
+      "Yes. Lab Health stores historical monitoring data so teams can review trends over time, support audits, and document environmental stability across workflows.",
+  },
+  {
+    question: "Does Lab Health reduce manual checks in the lab?",
+    answer:
+      "Yes. Continuous automated tracking reduces reliance on manual checks, improves consistency, and gives the team a single source of truth for lab condition monitoring.",
+  },
+];
+
+const setupSteps = [
+  {
+    number: "1",
+    icon: "🔌",
+    label: "Connect",
+    title: "Connect your lab systems",
+    description:
+      "Integrate incubators, cryo storage units, and lab sensors into a single monitoring platform. Start collecting real-time environmental data across all critical systems.",
+  },
+  {
+    number: "2",
+    icon: "⚙️",
+    label: "Configure",
+    title: "Define thresholds and alerts",
+    description:
+      "Set safe ranges for temperature, CO2, humidity, and airflow. EmbryoOne automatically monitors conditions and notifies your team when values move outside optimal ranges.",
+  },
+  {
+    number: "3",
+    icon: "📊",
+    label: "Monitor",
+    title: "Monitor, analyze, and respond",
+    description:
+      "Track live data, review trends, and take action instantly. Your team stays informed, aligned, and in control of lab conditions at all times.",
+  },
+];
+
+const valuePoints = [
+  {
+    title: "Prevent condition-related risks before they escalate.",
+    description:
+      "Real-time alerts and continuous monitoring help teams respond instantly to environmental deviations.",
+  },
+  {
+    title: "Maintain consistent lab conditions across all stations.",
+    description:
+      "Standardized monitoring ensures uniform conditions across incubators, cryo systems, and lab environments.",
+  },
+  {
+    title: "Improve visibility into lab performance over time.",
+    description: "Trend data helps identify patterns and optimize environmental stability.",
+  },
+  {
+    title: "Reduce manual monitoring and human error.",
+    description: "Automated tracking replaces manual checks and improves operational efficiency.",
+  },
+];
+---
+
+<BaseLayout
+  title="Lab Health | Real-time IVF lab condition monitoring"
+  description="Monitor temperature, humidity, air quality, and critical lab conditions in real time to protect IVF workflows and improve lab stability."
+>
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
+    <div class="page-container max-w-[1360px]">
+      <div class="grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.75fr)_minmax(0,1.25fr)] lg:[grid-template-columns:minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-10">
+        <div>
+          <p class="eyebrow">Products • Lab Health</p>
+          <h1 class="mt-3 max-w-2xl text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+            Monitor every lab condition in real time
+          </h1>
+          <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+            EmbryoOne continuously tracks temperature, air quality, and critical lab parameters
+            across incubators, cryo systems, and lab environments — so your team can act fast and
+            maintain optimal conditions at every step.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <Button href="/product-tour" label="Monitor your lab" variant="primary" size="md" />
+            <Button href="/demo" label="Book a demo" variant="secondary" size="md" />
+          </div>
+        </div>
+
+        <div class="relative">
+          <img
+            src={labSection1Image.src}
+            alt="Lab monitoring dashboard with humidity, pressure, temperature, and air quality cards"
+            class="w-full"
+            loading="eager"
+          />
+          <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-tebra-teal-dark shadow-md">
+            Real-time monitoring
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12">
+      <div>
+        <h2 class="max-w-xl text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Set up lab monitoring in 3 simple steps
+        </h2>
+        <p class="mt-4 text-base text-gray-600">
+          EmbryoOne is designed to integrate quickly into your lab. From setup to real-time
+          monitoring, your team gets full visibility without disrupting workflows.
+        </p>
+        <div class="mt-7">
+          <Button href="/products/lab-health" label="Get started with Lab Health" variant="primary" size="md" />
+        </div>
+      </div>
+      <div class="rounded-3xl border border-[#DCE4E4] bg-[#F6F8F8] p-6 shadow-[0_24px_44px_-34px_rgba(15,23,42,0.45)] sm:p-8">
+        <div class="relative space-y-6">
+          <div class="pointer-events-none absolute left-[1.15rem] top-6 h-[calc(100%-7.25rem)] w-px bg-[#F39A7B]"></div>
+          {setupSteps.map((step, index) => (
+            <div class="relative">
+              <div class="flex items-start gap-4">
+                <div class="relative z-[1] mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F6F8F8] text-[42px] font-semibold leading-none text-tebra-teal-dark">
+                  {step.number}
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-tebra-teal-dark/70">
+                    <span class="mr-1" aria-hidden="true">{step.icon}</span>{step.label}
+                  </p>
+                  <h3 class="mt-1 text-base font-semibold text-tebra-teal-dark">{step.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-gray-600">{step.description}</p>
+                </div>
+              </div>
+              {index < setupSteps.length - 1 && <div class="mt-1"></div>}
+            </div>
+          ))}
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
+          <span class="rounded-full border border-[#D7E4E4] bg-[#EAF2F2] px-3 py-1 text-tebra-teal-dark">real-time</span>
+          <span class="rounded-full border border-[#D7E4E4] bg-[#EAF2F2] px-3 py-1 text-tebra-teal-dark">alerts</span>
+          <span class="rounded-full border border-[#D7E4E4] bg-[#EAF2F2] px-3 py-1 text-tebra-teal-dark">thresholds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-tebra-teal-dark">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl">
+        <p class="eyebrow !text-gray-200">Lab Health FAQ</p>
+        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base text-gray-200">
+          Common questions about real-time lab monitoring, alerts, and trend visibility with Lab
+          Health.
+        </p>
+        <div class="mt-8 space-y-3">
+          {labHealthFaqs.map((item, index) => (
+            <details
+              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
+              open={index === 0}
+            >
+              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
+                {item.question}
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+      <div class="lg:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Keep lab conditions stable and visible</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Embryo development depends on stable environmental conditions. EmbryoOne provides a
+          real-time view of key lab parameters — including temperature, humidity, pressure, and air
+          quality — so your team can quickly detect fluctuations and maintain consistent lab
+          performance.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          Continuous monitoring reduces manual checks, improves response time, and ensures your lab
+          operates within safe thresholds at all times.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {labEnvPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="lg:order-1">
+        <img
+          src={labSection2Image.src}
+          alt="Humidity, pressure, temperature, and TVOC cards in lab environment dashboard"
+          class="w-full"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Track incubator performance without interruption</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Incubators are critical to embryo development, and even small fluctuations can impact
+          outcomes. EmbryoOne continuously monitors temperature, CO2, and airflow across each
+          incubator, giving your team full visibility into performance and stability.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          With structured monitoring and alerts, teams can quickly respond to deviations and ensure
+          optimal conditions are maintained throughout the culture process.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {incubatorPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="relative">
+        <img
+          src={labSection3Image.src}
+          alt="Grouped incubator monitoring cards showing temperature, CO2, and airflow"
+          class="w-full"
+          loading="lazy"
+        />
+        <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-tebra-teal-dark/95 px-3 py-1 text-xs font-semibold text-white shadow-md">
+          Incubator tracking
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+      <div class="lg:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Protect cryo storage with continuous monitoring</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Cryo storage requires precise temperature control to preserve embryo viability. EmbryoOne
+          tracks cryo conditions in real time, ensuring that storage units remain within safe ranges
+          and any deviations are immediately visible.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          This reduces risk, improves oversight, and ensures that every stored sample is protected
+          with reliable environmental monitoring.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {cryoPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="relative lg:order-1">
+        <img
+          src={labSection4Image.src}
+          alt="Cryo storage cards with low-temperature unit monitoring"
+          class="w-full"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Detect issues early with alerts and trends</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Real-time monitoring is only effective when paired with actionable insights. EmbryoOne
+          provides alerts for threshold breaches and visual trends over time, helping teams
+          identify patterns, anticipate risks, and take proactive action.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          Historical data and trend analysis make it easier to maintain compliance, audit
+          performance, and continuously improve lab stability.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {alertsPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="relative">
+        <img
+          src={labSection5Image.src}
+          alt="Temperature trend graph modal with threshold alerts and historical values"
+          class="w-full"
+          loading="lazy"
+        />
+        <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-tebra-teal-dark shadow-md">
+          Trend insights
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="heading-md text-tebra-teal-dark">Built for high-performance IVF labs</h2>
+        <p class="mt-4 text-base text-gray-600">
+          EmbryoOne helps labs move from reactive monitoring to proactive control. By centralizing
+          environmental data and automating tracking, teams can reduce risk, improve response times,
+          and maintain consistent lab conditions across every stage of the IVF workflow.
+        </p>
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        {valuePoints.map((item) => (
+          <article class="rounded-2xl border border-gray-200 bg-gray-50 p-5">
+            <h3 class="text-base font-semibold text-tebra-teal-dark">{item.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-600">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-16">
+    <div class="page-container">
+      <div class="relative overflow-hidden rounded-[2rem] border border-[#DCE2E2] bg-[#ECF1F1] px-6 pt-10 sm:px-10 sm:pt-12">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+            See every lab condition before it becomes a risk
+          </h2>
+          <p class="mx-auto mt-4 max-w-3xl text-base text-gray-600">
+            Get real-time visibility into temperature, air quality, and incubator performance across
+            your IVF lab. EmbryoOne helps your team detect deviations early, respond faster, and
+            maintain optimal conditions at every stage.
+          </p>
+          <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <Button href="/product-tour" label="Monitor your lab" variant="primary" size="md" />
+            <Button href="/product-tour" label="Take a quick product tour" variant="secondary" size="md" />
+          </div>
+        </div>
+        <div class="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-3">
+          <div class="overflow-hidden rounded-2xl border border-[#D9E3E3] bg-white p-2">
+            <img
+              src={labCardPressureImage.src}
+              alt="Pressure monitoring card with live status indicator"
+              class="h-36 w-full rounded-xl object-contain"
+              loading="lazy"
+            />
+          </div>
+          <div class="overflow-hidden rounded-2xl border border-[#D9E3E3] bg-white p-2">
+            <img
+              src={labCardTempBlueImage.src}
+              alt="Blue temperature monitoring card showing cryo values"
+              class="h-36 w-full rounded-xl object-contain"
+              loading="lazy"
+            />
+          </div>
+          <div class="overflow-hidden rounded-2xl border border-[#D9E3E3] bg-white p-2">
+            <img
+              src={labCardTempGoldImage.src}
+              alt="Temperature monitoring card with stable trend"
+              class="h-36 w-full rounded-xl object-contain"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

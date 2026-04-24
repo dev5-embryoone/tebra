@@ -1,0 +1,321 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Button from "../../../components/Button/Button.astro";
+import witnessSessionImage from "../../../assets/witness101.png";
+import witnessLogsImage from "../../../assets/witness102.png";
+import witnessMismatchImage from "../../../assets/mismatch1.png";
+import witnessOperatorImage from "../../../assets/operators1.png";
+import operatorLogImage from "../../../assets/operatorlog1.png";
+import liveSessionImage from "../../../assets/session.png";
+
+const coreValuePoints = [
+  "Track every action across lab workflows in real time",
+  "Prevent mismatches with structured verification steps",
+  "Maintain complete audit logs for every procedure",
+];
+
+const workflowPoints = [
+  "View all active sessions across lab stations",
+  "Track progress across each procedure step",
+  "Access patient, operator, and environment data instantly",
+];
+
+const traceabilityPoints = [
+  "Log every event across IVF workflows",
+  "Track timestamps, operators, and procedure types",
+  "Access complete audit trails for review and compliance",
+];
+
+const mismatchPoints = [
+  "Detect mismatches across samples and workflows",
+  "Track severity levels and resolution status",
+  "Reduce risk with structured verification processes",
+];
+
+const operatorPoints = [
+  "Monitor efficiency across procedures and steps",
+  "Track mismatch rates by operator",
+  "Compare performance across lab teams",
+];
+
+const witnessFaqs = [
+  {
+    question: "How does Witness help prevent mismatches in IVF labs?",
+    answer:
+      "Witness verifies each action in the workflow with structured checkpoints, so sample and patient data remain aligned throughout every procedure.",
+  },
+  {
+    question: "What kind of events are tracked in real time?",
+    answer:
+      "EmbryoOne logs all major lab events, including procedure steps, timestamps, operators, and status updates across active sessions.",
+  },
+  {
+    question: "Can teams review historical actions for compliance audits?",
+    answer:
+      "Yes. Every action is recorded in an audit-ready timeline so labs can review, validate, and document procedures whenever needed.",
+  },
+  {
+    question: "Does Witness support operator-level performance visibility?",
+    answer:
+      "Yes. Teams can compare operator efficiency, mismatch rates, and step-level timing to improve consistency across the lab.",
+  },
+];
+---
+
+<BaseLayout
+  title="Witness | Real-time IVF lab traceability"
+  description="Track every lab action in real time, detect mismatches early, and maintain complete IVF workflow traceability with Witness."
+>
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
+    <div class="page-container max-w-[1360px]">
+      <div class="grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.75fr)_minmax(0,1.25fr)] lg:[grid-template-columns:minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-10">
+        <div>
+          <p class="eyebrow">Products • Witness</p>
+          <h1 class="mt-3 max-w-2xl text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+            Real-Time Witness Tracking for IVF Labs
+          </h1>
+          <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+            Track every lab action, prevent mismatches, and maintain full traceability across IVF
+            workflows. EmbryoOne ensures every step is recorded, verified, and accessible in real
+            time.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <Button href="/demo" label="Request Demo" variant="primary" size="md" />
+            <Button href="/product-tour" label="See How It Works" variant="secondary" size="md" />
+          </div>
+        </div>
+
+        <div>
+          <img
+            src={witnessSessionImage.src}
+            alt="Witness session dashboard with in-progress cards and progress bars"
+            class="w-full"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-tebra-teal-dark">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl">
+        <p class="eyebrow !text-gray-200">Witness FAQ</p>
+        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base text-gray-200">
+          Quick answers about how Witness supports traceability, verification, and compliance across
+          IVF lab workflows.
+        </p>
+        <div class="mt-8 space-y-3">
+          {witnessFaqs.map((item, index) => (
+            <details
+              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
+              open={index === 0}
+            >
+              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
+                {item.question}
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+      <div class="lg:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Control Every Step Inside the Lab</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Witness tracking ensures that every action inside the IVF lab is verified and recorded.
+          From sample handling to embryo transfer, each step follows a structured workflow that
+          reduces risk and improves accountability.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {coreValuePoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="lg:order-1">
+        <img
+          src={operatorLogImage.src}
+          alt="Operator log table showing actions, procedures, status, and timestamps"
+          class="w-full"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-stretch md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Stay in Sync with Live Lab Activity</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Monitor all active lab sessions as they happen. EmbryoOne provides a real-time view of
+          procedures, helping teams stay aligned, identify delays, and maintain consistency across
+          workflows.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {workflowPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 text-base text-gray-600">
+          Each session card surfaces the most critical live signals so embryologists can make
+          faster decisions without leaving the active workflow view.
+        </p>
+        <ul class="mt-4 space-y-2">
+          <li class="flex items-start gap-3 text-gray-600">
+            <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+            <span>Follow session progression with clear step-by-step indicators</span>
+          </li>
+          <li class="flex items-start gap-3 text-gray-600">
+            <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+            <span>Track environment stability alongside procedural progress in one view</span>
+          </li>
+        </ul>
+        <div class="mt-6 grid gap-3 sm:grid-cols-3">
+          <div class="rounded-xl border border-gray-200 bg-white px-4 py-3">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Live Status</p>
+            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">In Progress</p>
+          </div>
+          <div class="rounded-xl border border-gray-200 bg-white px-4 py-3">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Current Step</p>
+            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Step 3 of 5</p>
+          </div>
+          <div class="rounded-xl border border-gray-200 bg-white px-4 py-3">
+            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Lab Environment</p>
+            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">37 C / CO2 6%</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative h-full">
+        <img
+          src={liveSessionImage.src}
+          alt="Live lab session cards showing progress bars, step indicators, and environment data"
+          class="h-full w-full object-contain"
+          loading="lazy"
+        />
+        <div class="pointer-events-none absolute left-3 top-3 rounded-full bg-emerald-500/95 px-3 py-1 text-xs font-semibold text-white shadow-md">
+          In Progress
+        </div>
+        <div class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-tebra-teal-dark/95 px-3 py-1 text-xs font-semibold text-white shadow-md">
+          Step 3 of 5
+        </div>
+        <div class="pointer-events-none absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-tebra-teal-dark shadow-md">
+          37 C / CO2 6%
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+      <div class="lg:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Full Traceability Across Every Procedure</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Every lab action is automatically logged, creating a complete history of events. From
+          fertilization to transfer, EmbryoOne ensures that each step is traceable, reviewable, and
+          compliant with lab standards.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {traceabilityPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="lg:order-1">
+        <img
+          src={witnessLogsImage.src}
+          alt="Event logs and traceability table showing type, timestamp, operator, and status"
+          class="w-full"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#FFF7F7]">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-stretch md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Detect and Resolve Lab Mismatches Early</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Identify mismatches before they impact outcomes. EmbryoOne highlights inconsistencies
+          across samples and workflows, allowing teams to resolve issues quickly and maintain lab
+          safety.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {mismatchPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="h-full">
+        <img
+          src={witnessMismatchImage.src}
+          alt="Mismatch analytics with severity breakdown and operator mismatch rates"
+          class="h-full w-full object-contain"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Measure Performance Across Lab Teams</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Understand how your lab operates at a team level. Track operator efficiency, identify
+          patterns in mismatches, and ensure consistent performance across all procedures.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {operatorPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="mt-8">
+        <img
+          src={witnessOperatorImage.src}
+          alt="Operator performance dashboard with average time and workload charts"
+          class="w-full"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container">
+      <div class="rounded-3xl bg-tebra-teal-dark px-6 py-12 text-center text-white sm:px-10">
+        <h2 class="text-3xl font-semibold text-white sm:text-4xl">Bring Traceability to Every Lab Step</h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base text-gray-100">
+          See how EmbryoOne helps your lab reduce risk, improve workflows, and maintain full
+          control across every IVF cycle
+        </p>
+        <div class="mt-7">
+          <Button href="/demo" label="Book a Demo" variant="primary" size="md" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

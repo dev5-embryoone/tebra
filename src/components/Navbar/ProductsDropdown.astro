@@ -1,94 +1,119 @@
 ---
 import {
-  CalendarDays,
+  Blocks,
+  Camera,
   ChevronDown,
-  ClipboardList,
-  CreditCard,
-  FileText,
+  Gauge,
   Heart,
   Home,
   Microscope,
-  Monitor,
+  ShieldCheck,
+  Snowflake,
+  Sparkles,
   Stethoscope,
-  UserRound,
   UserRoundPlus,
-  UserRoundSearch,
   UsersRound,
 } from "@lucide/astro";
 
 const menuSections = [
   {
-    id: "products-core",
-    title: "Core products",
-    subtitle: "Platform capabilities that run your practice end-to-end.",
+    id: "products-lab-system",
+    title: "Lab System",
     links: [
-      { title: "Overview", href: "/features", description: "Get a quick look at the full product suite and what each tool offers.", icon: "house" },
-      { title: "Workflow Automation", href: "/billing-payments/robotic-process-automation", description: "Automate repetitive workflows to save staff time and reduce manual steps.", icon: "clipboard" },
-      { title: "Witness", href: "/compliance", description: "Capture and review key events and records with an auditable workflow.", icon: "clipboard" },
-      { title: "Lab Health", href: "/ehr-software/electronic-labs", description: "Monitor lab operations, status, and outcomes from a single view.", icon: "heart" },
-      { title: "Consumption", href: "/billing-payments", description: "Track usage patterns and operational consumption metrics across workflows.", icon: "billing" },
-      { title: "Cryo Tracker", href: "/reporting", description: "Track cryo inventory, storage locations, and lifecycle updates in real time.", icon: "monitor" },
-      { title: "Embryo Capture", href: "/documentation", description: "Record and organize embryo-related data and media efficiently.", icon: "clipboard" },
-      { title: "AI Grading", href: "/ai", description: "Use AI-assisted scoring to standardize evaluation and improve consistency.", icon: "embryo" },
-      { title: "People", href: "/for-providers", description: "Manage team and patient-related profiles, access, and collaboration.", icon: "people" },
-      { title: "EHR", href: "/ehr", description: "Streamline e-prescribing, labs, charting, and AI-powered documentation.", icon: "stethoscope" },
-      { title: "Patient Experience", href: "/patient-experience", description: "Simplify scheduling, digital intake, reminders, and patient messaging.", icon: "patient" },
-      { title: "Practise Growth", href: "/marketing", description: "Support growth initiatives with tools that improve visibility and performance.", icon: "house" },
+      {
+        title: "Witness",
+        href: "/products/witness",
+        description: "Track every lab action and prevent mismatches in real time",
+        icon: "witness",
+      },
+      {
+        title: "Lab Health",
+        href: "/products/lab-health",
+        description: "Monitor temperature, air quality, and lab conditions continuously",
+        icon: "labHealth",
+      },
+      {
+        title: "Consumption",
+        href: "/products/consumption",
+        description: "Track inventory usage and reduce manual errors in the lab",
+        icon: "consumption",
+      },
+      {
+        title: "Cryo Tracker",
+        href: "/products/cryo-tracker",
+        description: "Manage embryo storage, location, and lifecycle with precision",
+        icon: "cryo",
+      },
     ],
   },
   {
-    id: "products-practice",
-    title: "Practice type",
-    subtitle: "Solutions tailored to your business model and workflows.",
+    id: "products-embryo-intelligence",
+    title: "Embryo Intelligence",
     links: [
-      { title: "Independent Practices", href: "/independent-practices", description: "Experience digital tools and support built to help independent practices.", icon: "house" },
-      { title: "Billing Companies", href: "/for-billing-companies", description: "Advanced billing solutions to optimize your company's revenue cycle.", icon: "billing" },
+      {
+        title: "Embryo Intelligence",
+        href: "/products/embryo-intelligence",
+        description: "Connect embryo data, imaging, and analysis in one workflow",
+        icon: "embryoIntelligence",
+      },
+      {
+        title: "Embryo Capture",
+        href: "/products/embryo-capture",
+        description: "Capture high-resolution embryo images directly from the workstation",
+        icon: "embryoCapture",
+      },
+      {
+        title: "AI Grading",
+        href: "/products/ai-grading",
+        description: "Standardize embryo assessment with AI-assisted grading",
+        icon: "aiGrading",
+      },
     ],
   },
   {
-    id: "products-specialty",
-    title: "Specialty",
-    subtitle: "Purpose-built workflows for every care model.",
+    id: "products-clinical-patient",
+    title: "Clinical & Patient",
     links: [
-      { title: "Family Medicine", href: "/specialties/family-medicine", description: "Comprehensive tools to enhance care and streamline family medicine practices.", icon: "heart" },
-      { title: "Primary Care", href: "/specialties/primary-care", description: "Optimize your primary care practice with solutions that improve patient outcomes.", icon: "people" },
-      { title: "Pediatrics", href: "/specialties/pediatrics", description: "Specialized tools to support the unique needs of pediatric care providers.", icon: "firstaid" },
-      { title: "Mental Health", href: "/specialties/psychology", description: "Efficient management solutions designed specifically for mental health practices.", icon: "heart" },
-      { title: "Nurse Practitioners", href: "/specialties/nurse-practitioners", description: "A flexible EHR platform designed for nurse practitioners who do it all.", icon: "stethoscope" },
-    ],
-  },
-  {
-    id: "products-popular",
-    title: "Popular features",
-    subtitle: "Frequently used tools teams rely on every day.",
-    links: [
-      { title: "Electronic Labs", href: "/ehr-software/electronic-labs", description: "Order and review lab results in one integrated flow.", icon: "clipboard" },
-      { title: "Patient Portal", href: "/patient-portal", description: "Enable secure messaging, billing, and chart access for patients.", icon: "person" },
-      { title: "Online Scheduling", href: "/scheduling", description: "Let patients book online and reduce no-shows with automation.", icon: "calendar" },
-      { title: "Telehealth", href: "/telehealth", description: "Deliver virtual care with built-in scheduling and charting.", icon: "monitor" },
-      { title: "AI Smart Staff", href: "/ai", description: "Automate repetitive tasks and speed up front-office workflows.", icon: "monitor" },
+      {
+        title: "EHR",
+        href: "/products/ehr",
+        description: "Manage IVF cycles, records, and clinical workflows in one system",
+        icon: "ehr",
+      },
+      {
+        title: "Patient Experience",
+        href: "/products/patient-experience",
+        description: "Give patients real-time visibility into their treatment journey",
+        icon: "patientExperience",
+      },
+      {
+        title: "People",
+        href: "/products/people",
+        description: "Coordinate staff roles, tasks, and lab responsibilities efficiently",
+        icon: "people",
+      },
     ],
   },
 ] as const;
 
 function getIcon(name: string) {
   const icons = {
-    stethoscope: Stethoscope,
-    billing: CreditCard,
-    card: FileText,
-    patient: UserRoundPlus,
-    house: Home,
-    heart: Heart,
+    labSystem: Blocks,
+    witness: ShieldCheck,
+    labHealth: Heart,
+    consumption: Gauge,
+    cryo: Snowflake,
+    embryoIntelligence: Microscope,
+    embryoCapture: Camera,
+    aiGrading: Sparkles,
+    ehr: Stethoscope,
+    patientExperience: UserRoundPlus,
     people: UsersRound,
-    firstaid: UserRoundSearch,
-    clipboard: ClipboardList,
-    person: UserRound,
-    calendar: CalendarDays,
-    monitor: Monitor,
-    embryo: Microscope,
+    home: Home,
   } as const;
-  return icons[name] || icons.house;
+  return icons[name] || icons.home;
 }
+
 ---
 
 <div class="products-dropdown relative group">
@@ -106,43 +131,44 @@ function getIcon(name: string) {
 
   <div
     id="nav-dropdown-products"
-    class="pointer-events-none fixed inset-x-0 top-[var(--nav-sticky-offset)] z-[100] pt-2 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
+    class="pointer-events-none absolute left-1/2 top-full z-[100] w-[1040px] max-w-[min(1040px,calc(100vw-2rem))] -translate-x-1/2 pt-3 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
   >
-    <div class="mx-auto w-full max-w-[1060px] px-4 sm:px-6 lg:px-8">
-      <div class="max-h-[74vh] overflow-y-auto rounded-2xl border border-[#ECE5F8] bg-white shadow-[0_20px_60px_-38px_rgba(94,42,132,0.45)]">
-        <div class="bg-white px-3.5 py-4 sm:px-5 lg:px-6">
-          <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-4 lg:gap-2">
-            {menuSections.map((section) => (
-              <section class="min-w-0 px-0 py-1 md:px-1.5 lg:px-2">
-                <h3 class="px-1.5 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#6F3E95]">
-                  {section.title}
-                </h3>
-                <ul role="list">
-                  {section.links.map((item) => (
-                    <li>
-                      {(() => {
-                        const Icon = getIcon(item.icon);
-                        return (
-                          <a
-                            href={item.href}
-                            class="group/item flex items-center gap-2 rounded-md bg-white px-1.5 py-1.5 text-left hover:bg-gray-50"
-                          >
-                            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-[#6E3F87] group-hover/item:bg-white">
-                              <Icon class="h-3.5 w-3.5" aria-hidden="true" />
-                            </span>
-                            <span class="min-w-0 text-[13px] font-medium leading-[1.25] text-[#40324F] group-hover/item:text-[#5E2A84]">
-                              {item.title}
-                            </span>
-                          </a>
-                        );
-                      })()}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </div>
+    <div class="max-h-[74vh] overflow-y-auto rounded-2xl border border-[#ECE5F8] bg-white p-4 shadow-[0_20px_60px_-38px_rgba(94,42,132,0.45)] sm:p-5">
+      <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-3 lg:gap-2">
+        {menuSections.map((section) => (
+          <section class="min-w-0 px-0 py-1 md:px-1.5 lg:px-2">
+            <h3 class="px-1.5 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#6F3E95]">
+              {section.title}
+            </h3>
+            <ul role="list">
+              {section.links.map((item) => (
+                <li>
+                  {(() => {
+                    const Icon = getIcon(item.icon);
+                    return (
+                      <a
+                        href={item.href}
+                        class="group/item flex items-start gap-2 rounded-md bg-white px-1.5 py-1.5 text-left hover:bg-gray-50"
+                      >
+                        <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-[#6E3F87] group-hover/item:bg-white">
+                          <Icon class="h-3.5 w-3.5" aria-hidden="true" />
+                        </span>
+                        <span class="min-w-0">
+                          <span class="block text-[13px] font-semibold leading-[1.2] text-[#40324F] group-hover/item:text-[#5E2A84]">
+                            {item.title}
+                          </span>
+                          <span class="mt-0.5 block whitespace-normal break-words text-[11px] leading-[1.25] text-[#726781]">
+                            {item.description}
+                          </span>
+                        </span>
+                      </a>
+                    );
+                  })()}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
       </div>
     </div>
   </div>
@@ -155,7 +181,6 @@ function getIcon(name: string) {
     const trigger = document.querySelector("#nav-trigger-products");
     const panel = document.querySelector("#nav-dropdown-products");
     if (!root || !trigger || !panel) return;
-
     let closeTimer;
 
     const openMenu = () => {
@@ -195,6 +220,7 @@ function getIcon(name: string) {
     trigger.addEventListener("mouseleave", scheduleClose);
     panel.addEventListener("mouseleave", scheduleClose);
     panel.addEventListener("focusout", scheduleClose);
+
     panel.addEventListener("click", (e) => {
       const t = e.target;
       if (t instanceof HTMLElement && t.closest("a[href]")) {

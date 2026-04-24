@@ -1,24 +1,29 @@
 ---
 import { ChevronDown, Menu, X } from "@lucide/astro";
-import NavItem from "./NavItem.astro";
+import PlatformDropdown from "./PlatformDropdown.astro";
 import ProductsDropdown from "./ProductsDropdown.astro";
-import AboutDropdown from "./AboutDropdown.astro";
+import SolutionsDropdown from "./SolutionsDropdown.astro";
+import AIDropdown from "./AIDropdown.astro";
 import ResourcesDropdown from "./ResourcesDropdown.astro";
+import CompanyDropdown from "./CompanyDropdown.astro";
 import logoPng from "../../assets/logo.png?url";
 import logoSvg from "../../assets/logo.svg?url";
 import {
+  mobileAiLinks,
+  mobileCompanyLinks,
+  mobilePlatformLinks,
   mobileProductSections,
-  mobileAboutLinks,
-  mobileResourceSections,
+  mobileResourceLinks,
+  mobileSolutionSections,
 } from "../../data/navbarMobile";
 
 const navItems = [
+  { label: "Platform", href: "#", hasDropdown: true },
   { label: "Products", href: "#", hasDropdown: true },
-  { label: "Features", href: "/features" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "About", href: "/about", hasDropdown: true },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Resources", href: "/resources", hasDropdown: true },
+  { label: "Solutions", href: "#", hasDropdown: true },
+  { label: "AI", href: "#", hasDropdown: true },
+  { label: "Resources", href: "#", hasDropdown: true },
+  { label: "Company", href: "#", hasDropdown: true },
 ];
 
 ---
@@ -37,8 +42,8 @@ const navItems = [
 
   <!-- Main row + mobile panel (panel absolutely positioned below this block) -->
   <div class="relative overflow-visible bg-transparent">
-    <div class="page-container flex items-center justify-between gap-4 overflow-visible py-3 sm:gap-6">
-      <a href="/" class="flex min-w-0 shrink-0 items-center gap-3">
+    <div class="page-container flex items-center justify-between gap-4 overflow-visible py-3 sm:gap-6 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center">
+      <a href="/" class="flex min-w-0 shrink-0 items-center gap-3 lg:justify-self-start">
         <picture>
           <source srcSet={logoSvg} type="image/svg+xml" />
           <img src={logoPng} alt="EmbryoOne" class="h-6 w-auto object-contain" loading="lazy" />
@@ -46,34 +51,35 @@ const navItems = [
       </a>
 
       <!-- Desktop nav links (center) -->
-      <div class="hidden flex-1 items-center justify-center overflow-visible lg:flex">
-        <div class="flex items-center gap-8 overflow-visible">
+      <div class="hidden overflow-visible lg:flex lg:justify-center lg:justify-self-center">
+        <div class="flex items-center gap-6 overflow-visible xl:gap-8">
           {navItems.map((item) =>
-            item.label === "Products" ? (
+            item.label === "Platform" ? (
+              <PlatformDropdown />
+            ) : item.label === "Products" ? (
               <ProductsDropdown />
-            ) : item.label === "About" ? (
-              <AboutDropdown />
+            ) : item.label === "Solutions" ? (
+              <SolutionsDropdown />
+            ) : item.label === "AI" ? (
+              <AIDropdown />
             ) : item.label === "Resources" ? (
               <ResourcesDropdown />
+            ) : item.label === "Company" ? (
+              <CompanyDropdown />
             ) : (
-              <NavItem
-                label={item.label}
-                href={item.href}
-                hasDropdown={item.hasDropdown}
-                dropdownLinks={item.dropdownLinks}
-              />
+              <a href={item.href}>{item.label}</a>
             )
           )}
         </div>
       </div>
 
-      <!-- Desktop: Take a tour + Get a demo -->
-      <div class="hidden shrink-0 items-center gap-3 lg:flex">
-        <a href="/product-tour" class="btn-pill-outline">
-          Take a tour
-        </a>
+      <!-- Desktop: Book a demo + login -->
+      <div class="hidden shrink-0 items-center gap-3 lg:flex lg:justify-self-end">
         <a href="/demo" class="btn-pill-solid">
-          Get a demo
+          Book a Demo
+        </a>
+        <a href="/sign-in" class="btn-pill-outline">
+          Login
         </a>
       </div>
 
@@ -110,6 +116,34 @@ const navItems = [
           <summary
             class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none ring-tebra-teal/30 marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
           >
+            <span>Platform</span>
+            <ChevronDown
+              class="h-4 w-4 shrink-0 text-gray-400"
+              aria-hidden="true"
+            />
+          </summary>
+          <div class="px-2 pb-3 pt-1">
+            <ul class="flex flex-col gap-0.5 py-1" role="list">
+              {
+                mobilePlatformLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </details>
+
+        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none ring-tebra-teal/30 marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
+          >
             <span>Products</span>
             <ChevronDown
               class="h-4 w-4 shrink-0 text-gray-400"
@@ -138,68 +172,14 @@ const navItems = [
                 </div>
               ))
             }
-            <a
-              href="/product-tour"
-              class="mx-2 mt-4 flex items-center gap-2 rounded-lg border border-tebra-teal/20 bg-tebra-hero-bg px-3 py-2.5 text-sm font-semibold text-tebra-teal hover:bg-white"
-            >
-              Take product tour
-            </a>
           </div>
         </details>
-
-        {
-          navItems
-            .filter((i) => i.label === "Features" || i.label === "Pricing")
-            .map((item) => (
-              <a
-                href={item.href}
-                class="rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark hover:bg-gray-50"
-              >
-                {item.label}
-              </a>
-            ))
-        }
 
         <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
           <summary
             class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
           >
-            <span>About</span>
-            <ChevronDown
-              class="h-4 w-4 shrink-0 text-gray-400"
-              aria-hidden="true"
-            />
-          </summary>
-          <div class="px-2 pb-3 pt-1">
-            <ul class="flex flex-col gap-0.5 py-1" role="list">
-              {
-                mobileAboutLinks.map((link) => (
-                  <li>
-                    <a
-                      href={link.href}
-                      class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </details>
-
-        <a
-          href="/case-studies"
-          class="rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark hover:bg-gray-50"
-        >
-          Case Studies
-        </a>
-
-        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
-          <summary
-            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
-          >
-            <span>Resources</span>
+            <span>Solutions</span>
             <ChevronDown
               class="h-4 w-4 shrink-0 text-gray-400"
               aria-hidden="true"
@@ -207,7 +187,7 @@ const navItems = [
           </summary>
           <div class="px-2 pb-3 pt-1">
             {
-              mobileResourceSections.map((section) => (
+              mobileSolutionSections.map((section) => (
                 <div class="mt-3 first:mt-2">
                   <p class="px-2 pb-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-gray-500">
                     {section.heading}
@@ -230,12 +210,96 @@ const navItems = [
           </div>
         </details>
 
+        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
+          >
+            <span>AI</span>
+            <ChevronDown
+              class="h-4 w-4 shrink-0 text-gray-400"
+              aria-hidden="true"
+            />
+          </summary>
+          <div class="px-2 pb-3 pt-1">
+            <ul class="flex flex-col gap-0.5 py-1" role="list">
+              {
+                mobileAiLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </details>
+
+        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
+          >
+            <span>Resources</span>
+            <ChevronDown
+              class="h-4 w-4 shrink-0 text-gray-400"
+              aria-hidden="true"
+            />
+          </summary>
+          <div class="px-2 pb-3 pt-1">
+            <ul class="flex flex-col gap-0.5 py-1" role="list">
+              {
+                mobileResourceLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </details>
+
+        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
+          >
+            <span>Company</span>
+            <ChevronDown
+              class="h-4 w-4 shrink-0 text-gray-400"
+              aria-hidden="true"
+            />
+          </summary>
+          <div class="px-2 pb-3 pt-1">
+            <ul class="flex flex-col gap-0.5 py-1" role="list">
+              {
+                mobileCompanyLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </details>
+
         <div class="mt-4 flex flex-col gap-3 pt-4">
-          <a href="/product-tour" class="btn-pill-outline">
-            Take a tour
-          </a>
           <a href="/demo" class="btn-pill-solid">
-            Get a demo
+            Book a Demo
+          </a>
+          <a href="/sign-in" class="btn-pill-outline">
+            Login
           </a>
         </div>
       </div>

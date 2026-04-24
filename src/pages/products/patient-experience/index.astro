@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Button from "../../../components/Button/Button.astro";
+import patientHeroImage from "../../../assets/patients1.png";
+import cycleTrackingImage from "../../../assets/session.png";
+import remindersImage from "../../../assets/live1.png";
+import communicationImage from "../../../assets/operatorlog.png";
+import transparencyImage from "../../../assets/witness103.png";
+
+const valuePoints = [
+  "Higher patient engagement",
+  "Better adherence to care plans",
+  "Clearer communication",
+];
+---
+
+<BaseLayout
+  title="Patient Experience | IVF journey visibility"
+  description="Give patients a mobile-first IVF experience with cycle tracking, reminders, communication, and progress visibility."
+>
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow">Products • Patient Experience</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Keep patients informed and engaged
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          A mobile-first experience where patients can track cycles, tasks, and progress.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/product-tour" label="Explore Patient Experience" variant="primary" size="md" />
+          <Button href="/demo" label="Book a demo" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img src={patientHeroImage.src} alt="Mobile patient dashboard for IVF journey tracking" class="w-full" loading="eager" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Cycle Tracking</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Help patients follow cycle progress with clear milestones and real-time updates.
+        </p>
+      </div>
+      <img src={cycleTrackingImage.src} alt="Patient-facing cycle tracking timeline and progress view" class="w-full" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Task Reminders</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Support adherence with reminders for tasks such as medications, wellness routines, and
+          key appointments.
+        </p>
+      </div>
+      <img src={remindersImage.src} alt="Task reminder interface for medication and daily IVF activities" class="w-full md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Communication</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Keep patients aligned through secure updates, instructions, and shared context across the
+          care team.
+        </p>
+      </div>
+      <img src={communicationImage.src} alt="Patient communication and update log interface" class="w-full" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Transparency</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Give patients clear visibility into progress, next steps, and responsibilities throughout
+          treatment.
+        </p>
+      </div>
+      <img src={transparencyImage.src} alt="Transparency dashboard showing treatment progress and next actions" class="w-full md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Built for connected patient journeys</h2>
+      <div class="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-3">
+        {valuePoints.map((point) => (
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-center text-sm font-semibold text-tebra-teal-dark">
+            {point}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl border border-gray-200 bg-gray-50 px-6 py-10 sm:px-10">
+      <h2 class="text-3xl font-semibold text-tebra-teal-dark sm:text-4xl">Launch patient visibility quickly</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-600">
+        Configure cycle updates, reminders, and communication flows so patients stay informed and
+        engaged from start to finish.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+        <Button href="/product-tour" label="Take a quick product tour" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

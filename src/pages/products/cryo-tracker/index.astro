@@ -1,0 +1,357 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Button from "../../../components/Button/Button.astro";
+import cryoDashboardImage from "../../../assets/cryo-dashboard-monitoring.png";
+import cryoTankMonitoringCardImage from "../../../assets/cryo-tank-monitoring-card.png";
+import cryoStorageMapImage from "../../../assets/cryo-storage-map-detailed.png";
+import cryoMovementLogImage from "../../../assets/cryo-movement-log.png";
+import cryoPatientStorageImage from "../../../assets/cryo-patient-care-detail.png";
+import cryoRiskAlertsImage from "../../../assets/cryo-risk-alerts-banner.png";
+import labCardTempBlueImage from "../../../assets/lab-card-temp-blue.png";
+import labCardTempGoldImage from "../../../assets/lab-card-temp-gold.png";
+import labCardPressureImage from "../../../assets/lab-card-pressure.png";
+
+const monitoringPoints = [
+  "Monitor LN2 levels and temperature continuously",
+  "Get instant alerts for threshold deviations",
+  "Track tank performance across all storage units",
+  "Detect issues early with live system insights",
+];
+
+const storageMapPoints = [
+  "View tank -> canister -> goblet hierarchy",
+  "Instantly locate embryos by ID or patient",
+  "Identify empty slots and available capacity",
+  "Maintain structured, error-free storage mapping",
+];
+
+const movementTraceabilityPoints = [
+  "Log every cryo movement event automatically",
+  "Track operator actions and timestamps",
+  "Maintain complete chain-of-custody records",
+  "Enable audit-ready reporting and compliance",
+];
+
+const patientCentricPoints = [
+  "View embryos grouped by patient",
+  "Track consent validity and storage timelines",
+  "Monitor patient-level storage activity",
+  "Simplify retrieval for transfer procedures",
+];
+
+const alertRiskPoints = [
+  "Real-time alerts for temperature fluctuations",
+  "LN2 level threshold monitoring",
+  "Consent expiration tracking",
+  "Actionable notifications for staff",
+];
+
+const integrationPoints = [
+  "Sensor-based LN2 and temperature tracking",
+  "Mobile device support for lab workflows",
+  "Real-time sync across systems",
+  "Reduce manual logging and human error",
+];
+
+const operationalValueCards = [
+  {
+    code: "CS",
+    title: "Cryo Safety",
+    description: "Prevent storage failures with real-time monitoring and alerts.",
+  },
+  {
+    code: "TL",
+    title: "Tank Lifecycle",
+    description: "Track tank health, refill cycles, and performance over time.",
+  },
+  {
+    code: "ET",
+    title: "Embryo Traceability",
+    description: "Maintain full visibility of every embryo across storage stages.",
+  },
+  {
+    code: "RC",
+    title: "Risk Control",
+    description: "Identify and resolve issues before they impact outcomes.",
+  },
+];
+---
+
+<BaseLayout
+  title="Cryo Tracker | Real-time cryostorage monitoring and traceability"
+  description="Monitor cryostorage systems, map embryo locations, track every movement, and stay ahead of cryo risk with complete real-time visibility."
+>
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-10">
+      <div>
+        <p class="eyebrow">Products • Cryo Tracker</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Know exactly where every embryo is-at any moment
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          Cryo Tracker gives IVF labs real-time visibility into cryostorage systems, tank health,
+          and embryo locations. From LN2 monitoring to precise storage mapping, every movement is
+          tracked, verified, and instantly accessible.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/demo" label="Monitor cryostorage" variant="primary" size="md" />
+          <Button href="/product-tour" label="Take product tour" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img
+        src={cryoDashboardImage.src}
+        alt="Cryo management dashboard showing tank status, temperature, LN2 levels, and alerts"
+        class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
+      <img
+        src={cryoTankMonitoringCardImage.src}
+        alt="Live cryo dashboard with tank cards, monitoring metrics, and active alert states"
+        class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
+        loading="lazy"
+      />
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Stay ahead of risk with real-time tank monitoring</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Cryo systems are only as reliable as their monitoring. EmbryoOne continuously tracks
+          temperature, LN2 levels, and tank activity-so your team can act before conditions become
+          critical.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {monitoringPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-tebra-teal-dark py-16 sm:py-20">
+    <div class="page-container">
+      <h2 class="mx-auto max-w-4xl text-center text-3xl font-semibold text-white sm:text-5xl">
+        How does Cryo Tracker keep storage safe and traceable?
+      </h2>
+      <div class="mx-auto mt-10 max-w-4xl space-y-3">
+          <details class="rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-white" open>
+            <summary class="flex cursor-pointer list-none items-center justify-between text-base font-semibold marker:content-none">
+              What happens when tank conditions cross safe thresholds?
+              <span class="ml-3 text-lg leading-none">-</span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-gray-200">
+              Cryo Tracker triggers real-time alerts for LN2 and temperature deviations, so your team
+              can respond immediately before storage conditions become critical.
+            </p>
+          </details>
+          <details class="rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-base font-semibold marker:content-none">
+              Can we see exactly where each embryo is stored?
+              <span class="ml-3 text-lg leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-gray-200">
+              Yes. Storage is mapped from tank to canister to goblet, so teams can locate embryos
+              instantly and avoid placement errors.
+            </p>
+          </details>
+          <details class="rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-base font-semibold marker:content-none">
+              Is every cryo movement audit-ready?
+              <span class="ml-3 text-lg leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-gray-200">
+              Every movement is logged with timestamp, operator, and location history to support full
+              traceability and compliance.
+            </p>
+          </details>
+          <details class="rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-base font-semibold marker:content-none">
+              Does it connect to real lab workflows?
+              <span class="ml-3 text-lg leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-gray-200">
+              Cryo Tracker integrates with operational workflows and monitoring signals so updates
+              reflect what is happening in the lab in real time.
+            </p>
+          </details>
+          <details class="rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-base font-semibold marker:content-none">
+              How does Cryo Tracker support hardware-driven monitoring?
+              <span class="ml-3 text-lg leading-none">+</span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-gray-200">
+              Cryo Tracker integrates with lab hardware and mobile devices, ensuring every storage
+              interaction is tracked in real time-directly from the source.
+            </p>
+            <ul class="mt-3 space-y-2">
+              <li class="flex items-start gap-2 text-sm text-gray-200">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-white"></span>
+                <span>Sensor-based LN2 and temperature tracking</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-200">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-white"></span>
+                <span>Mobile device support for lab workflows</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-200">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-white"></span>
+                <span>Real-time sync across systems</span>
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-200">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-white"></span>
+                <span>Reduce manual logging and human error</span>
+              </li>
+            </ul>
+          </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">See exactly where every embryo is stored</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Navigate your cryostorage with precision. From tank to canister to goblet, Cryo Tracker
+          provides a clear, structured view of embryo locations-reducing search time and eliminating
+          placement errors.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {storageMapPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <img
+        src={cryoStorageMapImage.src}
+        alt="Tank storage map showing canisters, goblets, occupied positions, and capacity"
+        class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm md:order-1"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md whitespace-nowrap text-tebra-teal-dark">Track every movement across the cryo lifecycle</h2>
+      <div class="mt-6 grid gap-8 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
+        <div>
+        <p class="mt-4 text-base text-gray-600">
+          Every embryo movement is recorded automatically-from freezing to transfer. Cryo Tracker
+          creates a complete audit trail with timestamps, operators, and storage changes.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {movementTraceabilityPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+        <img
+          src={cryoMovementLogImage.src}
+          alt="Movement log table with embryo IDs, action history, operators, and timestamps"
+          class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Connect cryostorage directly to patient care</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Cryo Tracker links stored embryos to patient records, giving clinics full visibility into
+          storage duration, consent timelines, and treatment readiness-all in one place.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {patientCentricPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <img
+        src={cryoPatientStorageImage.src}
+        alt="Patient-centric cryo dashboard with grouped embryos, consent timelines, and storage status"
+        class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm md:order-1"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-[#FFF9EA]">
+    <div class="page-container">
+      <h2 class="heading-md whitespace-nowrap text-tebra-teal-dark">Get notified before problems become critical</h2>
+      <div class="mt-6 grid gap-8 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
+        <div>
+        <p class="mt-4 text-base text-gray-600">
+          From temperature deviations to LN2 refill thresholds, Cryo Tracker ensures your team is
+          always aware of potential risks-so action happens before damage occurs.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {alertRiskPoints.map((point) => (
+            <li class="flex items-start gap-3 text-gray-600">
+              <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+        </div>
+        <img
+          src={cryoRiskAlertsImage.src}
+          alt="Cryo storage management alerts for temperature, LN2, and consent risks"
+          class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container">
+      <p class="text-xs font-semibold uppercase tracking-[0.14em] text-tebra-teal-dark/70">Operational Value</p>
+      <h2 class="mt-3 heading-md text-tebra-teal-dark">Designed for safe, scalable cryostorage management</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        {operationalValueCards.map((card) => (
+          <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-tebra-teal-dark/70">{card.code}</p>
+            <h3 class="mt-2 text-lg font-semibold text-tebra-teal-dark">{card.title}</h3>
+            <p class="mt-2 text-sm text-gray-600">{card.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container">
+      <div class="rounded-3xl bg-tebra-teal-dark px-6 py-12 text-center text-white sm:px-10">
+        <h2 class="text-3xl font-semibold text-white sm:text-4xl">
+          Take control of your cryostorage operations
+        </h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base text-gray-100">
+          From tank monitoring to embryo traceability, Cryo Tracker gives your lab complete
+          visibility and control over cryopreservation workflows.
+        </p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <Button href="/demo" label="Schedule a demo" variant="primary" size="md" />
+          <Button href="/product-tour" label="Explore platform" variant="secondary" size="md" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -16,9 +16,10 @@
 /* Common base typography and layout - applied globally via layout */
 :root {
   /* Editorial compassion typography */
-  --font-sans: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-    Arial, sans-serif;
-  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "Google Sans Flex", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
+  --font-display: "Google Sans Flex", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
   --font-size-base: 14px;
   --font-weight-base: 400;
   --line-height-base: 1.7;

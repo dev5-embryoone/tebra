@@ -1,18 +1,29 @@
 ---
 interface Props {
   quote: string;
+  points?: string[];
   author: string;
   company: string;
   avatarInitials?: string;
 }
 
-const { quote, author, company, avatarInitials = "T" } = Astro.props as Props;
+const { quote, points = [], author, company, avatarInitials = "T" } = Astro.props as Props;
 ---
 
 <figure class="flex h-full flex-col justify-between rounded-2xl bg-white p-6 shadow-md shadow-slate-200">
-  <blockquote class="text-sm text-gray-700 leading-relaxed">
+  <blockquote class="text-sm font-semibold text-gray-900 leading-relaxed">
     “{quote}”
   </blockquote>
+  {points.length > 0 && (
+    <ul class="mt-4 space-y-2 text-sm text-gray-700">
+      {points.map((point) => (
+        <li class="flex items-start gap-2">
+          <span class="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-tebra-500"></span>
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+  )}
   <figcaption class="mt-5 flex items-center gap-3">
     <div class="flex h-10 w-10 items-center justify-center rounded-full bg-tebra-500 text-sm font-semibold text-white">
       {avatarInitials}

@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Button from "../../../components/Button/Button.astro";
+import aiHeroImage from "../../../assets/dashboard2.png";
+import gradingOutputImage from "../../../assets/lab5.png";
+import assessmentImage from "../../../assets/operators1.png";
+import decisionSupportImage from "../../../assets/mismatch1.png";
+import integratedWorkflowImage from "../../../assets/embryo1.png";
+
+const valuePoints = [
+  "Improve selection accuracy",
+  "Reduce variability",
+  "Enhance outcomes",
+];
+---
+
+<BaseLayout
+  title="AI Grading | Standardized embryo assessment"
+  description="Use AI-assisted embryo grading based on Gardner criteria to standardize assessments and support selection decisions."
+>
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow">Products • AI Grading</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Make embryo grading consistent and data-driven
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          EmbryoOne uses AI-assisted grading based on Gardner criteria to support better embryo
+          selection decisions.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/product-tour" label="Explore AI grading" variant="primary" size="md" />
+          <Button href="/demo" label="Book a demo" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img src={aiHeroImage.src} alt="AI grading dashboard with embryo scoring insights" class="w-full" loading="eager" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Automated Grading</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Analyze embryo images and generate standardized grading results.
+        </p>
+      </div>
+      <img src={gradingOutputImage.src} alt="Automated grading output with standardized scoring" class="w-full" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Consistent Assessments</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Reduce subjectivity and ensure consistent grading across embryologists.
+        </p>
+      </div>
+      <img src={assessmentImage.src} alt="Assessment dashboard comparing grading consistency across users" class="w-full md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Decision Support</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Support clinical decisions with data-backed insights.
+        </p>
+      </div>
+      <img src={decisionSupportImage.src} alt="Decision support analytics for embryo selection" class="w-full" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Integrated Workflow</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Works seamlessly with embryo capture and lab workflows.
+        </p>
+      </div>
+      <img src={integratedWorkflowImage.src} alt="Integrated capture and AI grading workflow screen" class="w-full md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Built for confident embryo selection</h2>
+      <div class="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-3">
+        {valuePoints.map((point) => (
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-center text-sm font-semibold text-tebra-teal-dark">
+            {point}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl border border-gray-200 bg-gray-50 px-6 py-10 sm:px-10">
+      <h2 class="text-3xl font-semibold text-tebra-teal-dark sm:text-4xl">Enable AI grading in minutes</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-600">
+        Connect capture inputs, review model-assisted grades, and keep decisions transparent across
+        teams and procedures.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+        <Button href="/product-tour" label="See how it works" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

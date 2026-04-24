@@ -1,19 +1,19 @@
 ---
 import { practiceTools, intakeArticles } from '../../data/practiceTools';
-import ehrImage from '../../assets/ehr.webp';
-import graderImage from '../../assets/grader.webp';
-import competitiveImage from '../../assets/competitive.webp';
+import labToolImage from '../../assets/clinic.png';
+import embryoToolImage from '../../assets/embryo1.png';
+import cryoToolImage from '../../assets/Product-Graphic-1@2x-768x768.webp';
 import SectionHeader from '../SectionHeader/SectionHeader.astro';
 
 const toolImages: Record<string, ImageMetadata> = {
-  'ehr-calculator': ehrImage,
-  'billing-calculator': graderImage,
-  'competitive-scanner': competitiveImage,
+  'lab-efficiency-calculator': labToolImage,
+  'cryo-utilization-insights': cryoToolImage,
+  'embryo-data-insights': embryoToolImage,
 };
 ---
 <section id="practice-tools" class="bg-white py-16 lg:py-24">
   <div class="page-container space-y-10 lg:space-y-14">
-    <SectionHeader title="Practice Management Tools" centered class="max-w-4xl" />
+    <SectionHeader title="Tools to improve IVF operations" centered class="max-w-4xl" />
 
     <!-- Tools accordion (replaces card-style tiles) -->
     <div class="space-y-0">

@@ -1,0 +1,656 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Button from "../../../components/Button/Button.astro";
+import itemMasterImage from "../../../assets/consumption-item-master.png";
+import procedureTraceabilityImage from "../../../assets/consumption-traceability.png";
+import transactionAuditImage from "../../../assets/consumption-traceability.png";
+import procurementPrImage from "../../../assets/consumption-procurement-pr.png";
+import procurementPoImage from "../../../assets/consumption-procurement-po.png";
+import receivingImage from "../../../assets/consumption-grn.png";
+import locationsImage from "../../../assets/consumption-locations.png";
+import locationStorageFocusImage from "../../../assets/consumption-location-storage-focus.png";
+import inventoryControlImage from "../../../assets/consumption-inventory-control.png";
+import compositeKitImage from "../../../assets/consumption-icsi-kit.png";
+import approvalsImage from "../../../assets/consumption-approvals.png";
+import vendorImage from "../../../assets/consumption-vendor.png";
+import firstSectionInventoryImage from "../../../assets/consumption-first-section-inventory-management.png";
+import vendorManagementImage from "../../../assets/consumption-vendor-management.png";
+
+const inventoryHeroCards = [
+  {
+    title: "Item Master",
+    content:
+      "Centralize all lab inventory across media, consumables, reagents, and cryo supplies with structured tracking.",
+    tag: "Core System",
+    tone: "teal",
+  },
+  {
+    title: "Live Consumption Tracking",
+    content: "Automatically log every item used during procedures—no manual entry required.",
+    tag: "Real-time",
+    tone: "green",
+  },
+  {
+    title: "Transaction Traceability",
+    content: "Track every stock movement with timestamps, operators, and location history.",
+    tag: "Audit-ready",
+    tone: "orange",
+  },
+  {
+    title: "Procurement Workflow",
+    content: "Manage purchase requisitions, orders, and receiving in one connected system.",
+    tag: "PR • PO • GRN",
+    tone: "blue",
+  },
+  {
+    title: "Inventory Control Hub",
+    content: "Manage adjustments, transfers, and stock visibility from a single dashboard.",
+    tag: "Operations",
+    tone: "teal",
+  },
+  {
+    title: "Location Intelligence",
+    content:
+      "Track items across lab cabinets, storage units, warehouses, and cold rooms.",
+    tag: "Multi-location",
+    tone: "green",
+  },
+  {
+    title: "Procedure Kits",
+    content: "Bundle items into standardized kits for faster, consistent workflows.",
+    tag: "ICSI • OPU • ET",
+    tone: "orange",
+  },
+  {
+    title: "Approval System",
+    content:
+      "Review and approve inventory actions with structured workflows and accountability.",
+    tag: "Governance",
+    tone: "blue",
+  },
+];
+---
+
+<BaseLayout
+  title="Consumption | IVF inventory and usage control"
+  description="Track inventory, consumption, procurement, approvals, and storage intelligence in one connected IVF inventory system."
+>
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Products • Consumption</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Take control of everything used inside your IVF lab
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          Inventory in IVF labs is dynamic—items move across procedures, storage locations, and
+          workflows constantly. EmbryoOne gives your team a real-time system to track usage, manage
+          stock, and maintain full visibility without slowing down lab operations.
+        </p>
+        <p class="mt-4 max-w-xl text-base text-gray-600">
+          Instead of relying on manual logs or disconnected systems, your inventory becomes a live
+          reflection of what is happening inside the lab.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/product-tour" label="Track inventory" variant="primary" size="md" />
+          <Button href="/demo" label="Book a demo" variant="secondary" size="md" />
+        </div>
+      </div>
+
+      <div class="hero-cards-shell hidden lg:block">
+        <div class="hero-cards-track">
+          {[...inventoryHeroCards, ...inventoryHeroCards].map((card, index) => (
+            <article class={`hero-card hero-card-${card.tone} ${index % 2 === 1 ? "hero-card-offset" : ""}`}>
+              <p class="hero-card-tag">{card.tag}</p>
+              <h3 class="mt-2 text-lg font-semibold text-tebra-teal-dark">{card.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-gray-600">{card.content}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <div class="rounded-3xl border border-[#DFE7E7] bg-[#F5F8F8] p-6 sm:p-8">
+        <div class="grid gap-8 md:grid-cols-2 md:items-center">
+          <div>
+            <h2 class="heading-md text-tebra-teal-dark">Inventory should not be reactive—it should be operational</h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-600">
+              Most labs do not realize how much time is lost managing inventory. Teams manually
+              update stock, reconcile discrepancies after procedures, and react to shortages instead
+              of preventing them.
+            </p>
+            <div class="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+              <p class="text-sm font-semibold text-tebra-teal-dark">This creates friction across workflows:</p>
+              <ul class="mt-4 space-y-3">
+                <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Items go missing or are overused without tracking</span></li>
+                <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Procurement decisions are delayed or inaccurate</span></li>
+                <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Teams lose confidence in inventory data</span></li>
+              </ul>
+            </div>
+            <p class="mt-6 text-base leading-relaxed text-gray-600">
+              EmbryoOne transforms inventory into a connected system that operates alongside your lab
+              and not behind it.
+            </p>
+          </div>
+          <div class="relative">
+            <img
+              src={firstSectionInventoryImage.src}
+              alt="Inventory management dashboard with alerts, stock levels, and category filters"
+              class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <div class="max-w-4xl">
+        <h2 class="heading-md whitespace-nowrap text-tebra-teal-dark">Everything starts with a single source of truth</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Maintain a structured, centralized inventory across all item categories—media,
+          consumables, reagents, and cryo supplies.
+        </p>
+        <div class="mt-4 grid gap-5 sm:grid-cols-2">
+          <div>
+            <p class="text-base text-gray-600">Each item is tracked with:</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Batch and vendor details</span></li>
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Stock levels and status</span></li>
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Category and usage classification</span></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-base font-semibold text-tebra-teal-dark">What this enables</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Faster item search and filtering</span></li>
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Accurate stock visibility</span></li>
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Better vendor and batch tracking</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="mt-4 text-base text-gray-600">
+          This eliminates fragmented spreadsheets and ensures your entire lab works from the same
+          dataset.
+        </p>
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Visibility</p>
+          <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Unified categories and statuses</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Accuracy</p>
+          <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Live stock levels and alerts</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Traceability</p>
+          <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Vendor and batch metadata</p>
+        </div>
+      </div>
+      <div class="mt-6 rounded-2xl border border-gray-200 bg-white p-3 shadow-sm">
+        <img src={itemMasterImage.src} alt="Item Master table UI for centralized inventory data" class="w-full rounded-xl" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark">Consumption tracking that happens automatically</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+        <p class="mt-4 text-base text-gray-600">
+          Inventory should update as work happens and not after.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          EmbryoOne links inventory directly to lab workflows. As procedures are performed, items
+          used are automatically recorded in real time.
+        </p>
+        <p class="mt-4 text-base text-gray-600">This removes the need for:</p>
+        <ul class="mt-4 space-y-3">
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Manual logging</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>End-of-day reconciliation</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Guesswork around usage</span></li>
+        </ul>
+        <p class="mt-4 text-base text-gray-600">
+          Every entry reflects actual usage, ensuring accuracy across your system.
+        </p>
+        <p class="mt-4 text-base font-semibold text-tebra-teal-dark">Key outcomes</p>
+        <ul class="mt-4 space-y-3">
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Real-time stock updates</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Reduced manual effort</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Accurate usage tracking</span></li>
+        </ul>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm">
+          <img
+            src={procedureTraceabilityImage.src}
+            alt="Transaction Traceability screen showing consumption entries"
+            class="w-full rounded-xl"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-tebra-teal-dark py-16 sm:py-20">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="heading-md text-white">Track every movement across your lab</h2>
+        <p class="mt-4 text-base text-gray-200">
+          From stock-in to transfers and consumption, every transaction is logged with complete
+          context.
+        </p>
+        <p class="mt-4 text-base text-gray-200">Each record includes:</p>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+          <li class="rounded-full bg-white/10 px-4 py-2 text-sm text-gray-100">Timestamp</li>
+          <li class="rounded-full bg-white/10 px-4 py-2 text-sm text-gray-100">User or operator</li>
+          <li class="rounded-full bg-white/10 px-4 py-2 text-sm text-gray-100">Location changes</li>
+          <li class="rounded-full bg-white/10 px-4 py-2 text-sm text-gray-100">Transaction type</li>
+        </ul>
+        <p class="mt-4 text-base text-gray-200">
+          This creates a fully traceable inventory system that helps labs maintain compliance and
+          investigate discrepancies quickly.
+        </p>
+      </div>
+      <div class="mx-auto mt-8 max-w-5xl rounded-2xl border border-white/20 bg-white/10 p-3">
+        <img src={transactionAuditImage.src} alt="Transaction traceability showing stock movement history" class="w-full rounded-xl" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container" id="consumption-procurement-tabs">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Keep your inventory replenished without disruption</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-gray-600">
+        Procurement in IVF labs needs to be fast, accurate, and controlled. EmbryoOne connects
+        requests, orders, and receiving into one continuous workflow.
+      </p>
+
+      <div class="mt-6 flex flex-wrap justify-center gap-2">
+        <button type="button" class="proc-tab rounded-full border border-[#D7E4E4] bg-[#EAF2F2] px-4 py-2 text-sm font-semibold text-tebra-teal-dark" data-proc-tab="pr">Purchase Requisitions (PR)</button>
+        <button type="button" class="proc-tab rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-600" data-proc-tab="po">Purchase Orders (PO)</button>
+        <button type="button" class="proc-tab rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-600" data-proc-tab="grn">Goods Receiving (GRN)</button>
+      </div>
+
+      <div class="proc-panel mt-8 grid gap-6 md:grid-cols-2 md:items-center" data-proc-panel="pr">
+        <div>
+          <h3 class="text-2xl font-semibold text-tebra-teal-dark">Plan demand based on real usage</h3>
+          <p class="mt-4 text-base text-gray-600">
+            Create requisitions based on actual lab consumption, not assumptions.
+          </p>
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Submit requests with priority levels</span></li>
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Route approvals automatically</span></li>
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Track pending and approved requests</span></li>
+          </ul>
+          <p class="mt-4 text-base text-gray-600">
+            This ensures procurement starts with real demand, reducing overstocking and shortages.
+          </p>
+        </div>
+        <img src={procurementPrImage.src} alt="PR dashboard with requisition status and priorities" class="w-full" loading="lazy" />
+      </div>
+
+      <div class="proc-panel mt-8 hidden grid gap-6 md:grid-cols-2 md:items-center" data-proc-panel="po">
+        <div>
+          <h3 class="text-2xl font-semibold text-tebra-teal-dark">Convert requests into structured orders</h3>
+          <p class="mt-4 text-base text-gray-600">
+            Once approved, requisitions turn into purchase orders with full vendor tracking.
+          </p>
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Manage vendor relationships</span></li>
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Track order status (draft → approved → received)</span></li>
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Monitor order value and delivery timelines</span></li>
+          </ul>
+          <p class="mt-4 text-base text-gray-600">This keeps procurement structured and traceable.</p>
+        </div>
+        <img src={procurementPoImage.src} alt="PO table with vendors, totals, and order statuses" class="w-full" loading="lazy" />
+      </div>
+
+      <div class="proc-panel mt-8 hidden grid gap-6 md:grid-cols-2 md:items-center" data-proc-panel="grn">
+        <div>
+          <h3 class="text-2xl font-semibold text-tebra-teal-dark">Close the loop with accurate receiving</h3>
+          <p class="mt-4 text-base text-gray-600">
+            When items arrive, goods receipt entries update inventory instantly.
+          </p>
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Match deliveries to purchase orders</span></li>
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Validate quantities received</span></li>
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Update stock in real time</span></li>
+          </ul>
+          <p class="mt-4 text-base text-gray-600">
+            This ensures no mismatch between ordered and received items.
+          </p>
+        </div>
+        <img src={receivingImage.src} alt="GRN and Receiving dashboard with goods receipt records" class="w-full" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center">
+      <div class="grid gap-4">
+        <img src={locationStorageFocusImage.src} alt="Location hierarchy with warehouse shelves and cold storage units" class="w-full rounded-2xl border border-gray-200" loading="lazy" />
+      </div>
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Inventory is only useful if you know where it is</h2>
+        <p class="mt-4 text-base text-gray-600">
+          EmbryoOne maps inventory across physical locations, allowing you to track not just what
+          you have—but where it is stored.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          From warehouses to lab cabinets and cold storage units, every item is tied to a
+          structured location hierarchy.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Warehouse → shelves → bins</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Lab → cabinets → stations</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Cold storage → rooms → units</span></li>
+        </ul>
+        <p class="mt-4 text-base text-gray-600">
+          This enables precise tracking and faster retrieval during procedures.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Manage all inventory actions from one place</h2>
+        <p class="mt-4 text-base text-gray-600">
+          The Inventory Control hub centralizes all movements—adjustments, transfers, consumption,
+          and stock monitoring.
+        </p>
+        <p class="mt-4 text-base text-gray-600">
+          Instead of navigating multiple systems, teams can:
+        </p>
+        <ul class="mt-4 space-y-3">
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Initiate stock adjustments</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Track transfers between locations</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Monitor pending actions</span></li>
+        </ul>
+        <p class="mt-4 text-base text-gray-600">
+          This creates a single operational center for inventory management.
+        </p>
+      </div>
+      <img src={inventoryControlImage.src} alt="Inventory Control dashboard for centralized stock actions" class="w-full" loading="lazy" />
+    </div>
+    <div class="page-container mt-8">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold text-tebra-teal-dark">Adjustments</h3>
+          <p class="mt-1 text-sm text-gray-600">Track and approve stock corrections quickly.</p>
+        </article>
+        <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold text-tebra-teal-dark">Internal Transfers</h3>
+          <p class="mt-1 text-sm text-gray-600">Move items between storage points with visibility.</p>
+        </article>
+        <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold text-tebra-teal-dark">Branch Transfers</h3>
+          <p class="mt-1 text-sm text-gray-600">Coordinate transfer requests across facilities.</p>
+        </article>
+        <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold text-tebra-teal-dark">Return to Vendor</h3>
+          <p class="mt-1 text-sm text-gray-600">Log returns and maintain vendor-linked traceability.</p>
+        </article>
+        <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold text-tebra-teal-dark">Consumption</h3>
+          <p class="mt-1 text-sm text-gray-600">Monitor usage events tied to active procedures.</p>
+        </article>
+        <article class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold text-tebra-teal-dark">Inventory Stock</h3>
+          <p class="mt-1 text-sm text-gray-600">View stock status and pending updates in one place.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark">Standardize procedures with predefined kits</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+        <p class="mt-4 text-base text-gray-600">
+          Procedures like ICSI require multiple items. EmbryoOne allows you to bundle these into
+          composite kits for consistency and efficiency.
+        </p>
+        <div class="mt-4 grid gap-5 sm:grid-cols-2">
+          <div>
+            <p class="text-base text-gray-600">Each kit defines:</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Required items</span></li>
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Quantity per item</span></li>
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Procedure linkage</span></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-base text-gray-600">This ensures:</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Faster preparation</span></li>
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Reduced errors</span></li>
+              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Accurate consumption tracking</span></li>
+            </ul>
+          </div>
+        </div>
+        </div>
+        <img src={compositeKitImage.src} alt="ICSI Procedure Kit UI with grouped item quantities" class="w-full" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="grid gap-4">
+        <img src={vendorImage.src} alt="Vendor Detail UI with payment terms and compliance fields" class="w-full" loading="lazy" />
+        <img src={vendorManagementImage.src} alt="Vendor Management list with status, contact, and actions" class="w-full" loading="lazy" />
+      </div>
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Manage vendors with complete visibility</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Track vendor relationships, contact details, and procurement history in one place.
+        </p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Vendor profiles with key details</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Payment terms and compliance data</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Purchase history tracking</span></li>
+        </ul>
+        <p class="mt-4 text-base text-gray-600">
+          This allows labs to make informed procurement decisions and maintain reliable supplier
+          relationships.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark">Ensure accountability without slowing workflows</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2 md:items-center">
+        <div>
+        <p class="mt-4 text-base text-gray-600">
+          Approvals provide structure across procurement, inventory movements, and adjustments.
+        </p>
+        <p class="mt-4 text-base text-gray-600">Teams can:</p>
+        <ul class="mt-4 space-y-3">
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Review pending actions</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Approve or reject requests</span></li>
+          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Track approval history</span></li>
+        </ul>
+        <p class="mt-4 text-base text-gray-600">
+          This adds control without introducing friction into lab operations.
+        </p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm">
+          <img src={approvalsImage.src} alt="Approvals UI with pending, approved, and rejected actions" class="w-full rounded-xl" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <div class="rounded-3xl border border-[#DCE6E6] bg-gradient-to-br from-[#F6FAFA] to-[#EEF4F4] p-6 sm:p-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-tebra-teal-dark/70">Operational Value</p>
+        <h2 class="mt-3 heading-md text-tebra-teal-dark">Turn inventory into a system you can trust</h2>
+        <p class="mt-4 max-w-4xl text-base leading-relaxed text-gray-600">
+          Inventory management in IVF labs is not just about tracking items—it is about ensuring every
+          procedure runs smoothly, without delays or uncertainty.
+        </p>
+        <p class="mt-4 max-w-4xl text-base leading-relaxed text-gray-600">
+          EmbryoOne connects inventory directly to lab workflows, creating a system where every item
+          is tracked, every movement is recorded, and every decision is backed by real data.
+        </p>
+        <p class="mt-4 max-w-4xl text-base leading-relaxed text-gray-600">
+          With better visibility, structured processes, and real-time updates, your team can focus on
+          what matters most—delivering consistent outcomes without operational friction.
+        </p>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+          <article class="rounded-2xl border border-white bg-white/80 p-4 shadow-sm">
+            <p class="text-sm font-semibold text-tebra-teal-dark">Fewer Stock Gaps</p>
+            <p class="mt-1 text-sm text-gray-600">Real-time updates reduce delays caused by missing materials.</p>
+          </article>
+          <article class="rounded-2xl border border-white bg-white/80 p-4 shadow-sm">
+            <p class="text-sm font-semibold text-tebra-teal-dark">Higher Data Confidence</p>
+            <p class="mt-1 text-sm text-gray-600">Structured workflows keep inventory records accurate and current.</p>
+          </article>
+          <article class="rounded-2xl border border-white bg-white/80 p-4 shadow-sm">
+            <p class="text-sm font-semibold text-tebra-teal-dark">Better Team Focus</p>
+            <p class="mt-1 text-sm text-gray-600">Less manual reconciliation means more time for patient-critical work.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-cards-shell {
+    position: relative;
+    height: 540px;
+    overflow: hidden;
+    border-radius: 24px;
+    padding: 8px;
+    background: linear-gradient(180deg, rgba(245, 248, 248, 0.2) 0%, rgba(245, 248, 248, 0.75) 100%);
+  }
+
+  .hero-cards-track {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: heroCardsScroll 36s linear infinite;
+  }
+
+  .hero-cards-shell:hover .hero-cards-track {
+    animation-play-state: paused;
+  }
+
+  .hero-card {
+    border-radius: 16px;
+    border: 1px solid #dbe6e6;
+    background: #ffffff;
+    padding: 14px 16px;
+    box-shadow: 0 10px 24px -20px rgba(15, 23, 42, 0.5);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: heroCardFade 500ms ease forwards;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .hero-card:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 20px 30px -20px rgba(15, 23, 42, 0.45);
+  }
+
+  .hero-card-offset {
+    margin-left: 0;
+  }
+
+  .hero-card-tag {
+    display: inline-flex;
+    border-radius: 9999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-card-teal .hero-card-tag {
+    background: #e7f3f3;
+    color: #0f4f4f;
+  }
+
+  .hero-card-green .hero-card-tag {
+    background: #e6f6ef;
+    color: #0f6b47;
+  }
+
+  .hero-card-orange .hero-card-tag {
+    background: #fff1e7;
+    color: #9a4b14;
+  }
+
+  .hero-card-blue .hero-card-tag {
+    background: #e9f1ff;
+    color: #1d4ea5;
+  }
+
+  @keyframes heroCardsScroll {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes heroCardFade {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const root = document.querySelector("#consumption-procurement-tabs");
+    if (!root) return;
+
+    const tabs = Array.from(root.querySelectorAll(".proc-tab"));
+    const panels = Array.from(root.querySelectorAll(".proc-panel"));
+
+    const activate = (tabId) => {
+      tabs.forEach((tab) => {
+        const isActive = tab.getAttribute("data-proc-tab") === tabId;
+        tab.classList.toggle("bg-[#EAF2F2]", isActive);
+        tab.classList.toggle("border-[#D7E4E4]", isActive);
+        tab.classList.toggle("text-tebra-teal-dark", isActive);
+        tab.classList.toggle("bg-white", !isActive);
+        tab.classList.toggle("border-gray-200", !isActive);
+        tab.classList.toggle("text-gray-600", !isActive);
+      });
+
+      panels.forEach((panel) => {
+        const isActive = panel.getAttribute("data-proc-panel") === tabId;
+        panel.classList.toggle("hidden", !isActive);
+      });
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const tabId = tab.getAttribute("data-proc-tab");
+        if (tabId) activate(tabId);
+      });
+    });
+
+    activate("pr");
+  })();
+</script>

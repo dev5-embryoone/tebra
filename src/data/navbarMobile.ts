@@ -1,78 +1,79 @@
 /**
- * Mobile nav structure — mirrors desktop Products / About / Resources mega-menus
- * (no duplicate “all pages” list).
+ * Mobile nav structure for final 6-tab IA:
+ * Platform / Products / Solutions / AI / Resources / Company
  */
+export const mobilePlatformLinks = [
+  { label: "Overview", href: "/platform/overview" },
+  { label: "How It Works", href: "/platform/how-it-works" },
+  { label: "Architecture", href: "/platform/architecture" },
+  { label: "Security", href: "/platform/security" },
+] as const;
+
 export const mobileProductSections = [
   {
-    heading: "Products",
+    heading: "Lab System",
     links: [
-      { label: "EHR", href: "/ehr" },
-      { label: "Billing & payments", href: "/billing-payments" },
-      { label: "Patient experience", href: "/patient-experience" },
-      { label: "Practice marketing", href: "/marketing" },
+      { label: "Witness", href: "/products/witness" },
+      { label: "Lab Health", href: "/products/lab-health" },
+      { label: "Consumption", href: "/products/consumption" },
+      { label: "Cryo Tracker", href: "/products/cryo-tracker" },
     ],
   },
   {
-    heading: "Practice type",
+    heading: "Embryo Intelligence",
     links: [
-      { label: "Independent practices", href: "/independent-practices" },
-      { label: "Billing companies", href: "/for-billing-companies" },
+      { label: "Embryo Intelligence", href: "/products/embryo-intelligence" },
+      { label: "Embryo Capture", href: "/products/embryo-capture" },
+      { label: "AI Grading", href: "/products/ai-grading" },
     ],
   },
   {
-    heading: "Specialty",
+    heading: "Clinical & Patient",
     links: [
-      { label: "Family medicine", href: "/specialties/family-medicine" },
-      { label: "Primary care", href: "/specialties/primary-care" },
-      { label: "Pediatrics", href: "/specialties/pediatrics" },
-      { label: "Mental health", href: "/specialties/psychology" },
-      { label: "Nurse practitioners", href: "/specialties/nurse-practitioners" },
-    ],
-  },
-  {
-    heading: "Popular features",
-    links: [
-      { label: "Electronic labs", href: "/ehr-software/electronic-labs" },
-      { label: "Patient portal", href: "/patient-portal" },
-      { label: "Online scheduling", href: "/scheduling" },
-      { label: "Telehealth", href: "/telehealth" },
-      { label: "Practice websites", href: "/marketing/practice-websites" },
-      { label: "AI Smart Staff", href: "/ai" },
-      { label: "Electronic claims submission", href: "/billing-payments/electronic-claim-submission" },
-      { label: "Robotic process automation (RPA)", href: "/billing-payments/robotic-process-automation" },
+      { label: "EHR", href: "/products/ehr" },
+      { label: "Patient Experience", href: "/products/patient-experience" },
+      { label: "People", href: "/products/people" },
     ],
   },
 ] as const;
 
-export const mobileAboutLinks = [
-  { label: "Our Story", href: "/about/story" },
-  { label: "Leadership", href: "/leadership" },
-  { label: "Partners", href: "/partners" },
-  { label: "Investors", href: "/investors" },
-  { label: "DEI", href: "/diversity-equity-and-inclusion" },
-  { label: "Careers", href: "/careers" },
+export const mobileSolutionSections = [
+  {
+    heading: "By Role",
+    links: [
+      { label: "Embryologists", href: "/solutions/embryologists" },
+      { label: "Lab Directors", href: "/solutions/lab-directors" },
+      { label: "Doctors", href: "/solutions/doctors" },
+      { label: "Clinic Admin", href: "/solutions/clinic-admin" },
+    ],
+  },
+  {
+    heading: "By Workflow",
+    links: [
+      { label: "Lab Traceability", href: "/solutions/lab-traceability" },
+      { label: "Embryo Selection", href: "/solutions/embryo-selection" },
+      { label: "Cryo Management", href: "/solutions/cryo-management" },
+      { label: "Inventory Tracking", href: "/solutions/inventory-tracking" },
+    ],
+  },
 ] as const;
 
-export const mobileResourceSections = [
-  {
-    heading: "Resources",
-    links: [
-      { label: "The Intake", href: "/theintake" },
-      { label: "Resource Library", href: "/resources" },
-      { label: "News Room", href: "/newsroom" },
-      { label: "Testimonials", href: "/resources/testimonials" },
-      { label: "Case Studies", href: "/case-studies" },
-      { label: "Partner Marketplace", href: "/partners" },
-    ],
-  },
-  {
-    heading: "Interactive tools",
-    links: [
-      { label: "Product Tour", href: "/product-tour" },
-      { label: "EHR Calculator", href: "/ehr-calculator/step-1" },
-      { label: "Billing Calculator", href: "/billing-payments/billing-calculator" },
-      { label: "Competitive Scanner", href: "/competitive-scanner" },
-      { label: "Efficiency Grader", href: "/practice-efficiency-grader" },
-    ],
-  },
+export const mobileAiLinks = [
+  { label: "AI Grading Overview", href: "/ai/overview" },
+  { label: "Accuracy & Validation", href: "/ai/accuracy-validation" },
+  { label: "Clinical Use Cases", href: "/ai/clinical-use-cases" },
+  { label: "Roadmap", href: "/ai/roadmap" },
+] as const;
+
+export const mobileResourceLinks = [
+  { label: "Case Studies", href: "/resources/case-studies" },
+  { label: "Blog / Insights", href: "/resources/blog" },
+  { label: "Documentation", href: "/resources/documentation" },
+  { label: "Help Center", href: "/resources/help-center" },
+] as const;
+
+export const mobileCompanyLinks = [
+  { label: "About", href: "/company/about" },
+  { label: "Careers", href: "/company/careers" },
+  { label: "Contact", href: "/company/contact" },
 ] as const;

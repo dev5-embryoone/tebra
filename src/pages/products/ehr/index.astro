@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Button from "../../../components/Button/Button.astro";
+import ehrHeroImage from "../../../assets/clinic.png";
+import patientRecordsImage from "../../../assets/patients1.png";
+import cycleTrackingImage from "../../../assets/session.png";
+import clinicalWorkflowImage from "../../../assets/live1.png";
+import reportingImage from "../../../assets/operatorlog1.png";
+
+const valuePoints = [
+  "Unified records and lab data",
+  "Better cycle coordination",
+  "Operational and clinical clarity",
+];
+---
+
+<BaseLayout
+  title="EHR | Unified IVF workflow management"
+  description="Manage IVF cycles, patient records, and clinical workflows in one connected system across clinic and lab."
+>
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow">Products • EHR</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Manage IVF cycles, records, and workflows
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          EmbryoOne connects lab and clinical workflows into one unified system.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/product-tour" label="Explore EHR" variant="primary" size="md" />
+          <Button href="/demo" label="Book a demo" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img src={ehrHeroImage.src} alt="Unified IVF dashboard with clinical and lab workflow data" class="w-full" loading="eager" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Patient Records</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Keep complete, structured patient records accessible across clinical and lab teams.
+        </p>
+      </div>
+      <img src={patientRecordsImage.src} alt="Patient records and profile management interface" class="w-full" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Cycle Tracking</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Track cycle milestones, updates, and statuses in real time with clear visibility for every
+          stakeholder.
+        </p>
+      </div>
+      <img src={cycleTrackingImage.src} alt="Cycle tracking timeline and status workflow interface" class="w-full md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Clinical Workflows</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Coordinate clinical tasks, lab handoffs, and protocol steps within one connected workflow.
+        </p>
+      </div>
+      <img src={clinicalWorkflowImage.src} alt="Clinical workflow management across lab and care teams" class="w-full" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Reporting</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Generate actionable reports to monitor performance, compliance, and outcomes across IVF
+          operations.
+        </p>
+      </div>
+      <img src={reportingImage.src} alt="Reporting and analytics dashboard for IVF operations" class="w-full md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Built for connected IVF care</h2>
+      <div class="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-3">
+        {valuePoints.map((point) => (
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-center text-sm font-semibold text-tebra-teal-dark">
+            {point}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl border border-gray-200 bg-gray-50 px-6 py-10 sm:px-10">
+      <h2 class="text-3xl font-semibold text-tebra-teal-dark sm:text-4xl">Bring clinic and lab into one system</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-600">
+        Centralize records, cycles, and workflows in one EHR designed specifically for IVF teams.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+        <Button href="/product-tour" label="See how it works" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

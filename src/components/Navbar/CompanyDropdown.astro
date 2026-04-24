@@ -1,0 +1,155 @@
+---
+import { BriefcaseBusiness, Building2, ChevronDown, Mail } from "@lucide/astro";
+
+const links = [
+  {
+    title: "About",
+    href: "/company/about",
+    description: "Building infrastructure for modern IVF clinics",
+    icon: "about",
+  },
+  {
+    title: "Careers",
+    href: "/company/careers",
+    description: "Join us in transforming IVF workflows",
+    icon: "careers",
+  },
+  {
+    title: "Contact",
+    href: "/company/contact",
+    description: "Connect with our team for support or partnerships",
+    icon: "contact",
+  },
+] as const;
+
+function getIcon(name: string) {
+  const icons = {
+    about: Building2,
+    careers: BriefcaseBusiness,
+    contact: Mail,
+  } as const;
+  return icons[name] || icons.about;
+}
+---
+
+<div class="company-dropdown relative group">
+  <button
+    type="button"
+    class="company-dropdown-trigger inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-2 text-sm font-semibold text-tebra-teal-dark cursor-pointer bg-transparent hover:border-[#E8DAF8] hover:bg-white hover:text-[#5E2A84] group-hover:border-[#E8DAF8] group-hover:bg-white group-hover:text-[#5E2A84]"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-controls="nav-dropdown-company"
+    id="nav-trigger-company"
+  >
+    Company
+    <ChevronDown class="h-3.5 w-3.5 text-[#7E57A0]/80" aria-hidden="true" />
+  </button>
+
+  <div
+    id="nav-dropdown-company"
+    class="pointer-events-none absolute left-1/2 top-full z-[100] w-[420px] max-w-[min(420px,calc(100vw-2rem))] -translate-x-1/2 pt-3 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
+  >
+    <div class="rounded-2xl border border-[#ECE5F8] bg-white p-4 shadow-[0_20px_60px_-38px_rgba(94,42,132,0.45)] sm:p-5">
+      <h3 class="px-1.5 pb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#6F3E95]">Company</h3>
+      <ul class="grid grid-cols-1 gap-1.5" role="list">
+        {links.map((item) => (
+          <li>
+            {(() => {
+              const Icon = getIcon(item.icon);
+              return (
+                <a
+                  href={item.href}
+                  class="group/item flex items-start gap-2 rounded-md bg-white px-2 py-2 text-left hover:bg-gray-50"
+                >
+                  <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gray-100 text-[#6E3F87] group-hover/item:bg-white">
+                    <Icon class="h-3.5 w-3.5" aria-hidden="true" />
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-[13px] font-semibold leading-[1.2] text-[#40324F] group-hover/item:text-[#5E2A84]">
+                      {item.title}
+                    </span>
+                    <span class="mt-0.5 block whitespace-normal break-words text-[11px] leading-[1.25] text-[#726781]">
+                      {item.description}
+                    </span>
+                  </span>
+                </a>
+              );
+            })()}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const dropdownId = "company";
+    const root = document.querySelector(".company-dropdown");
+    const trigger = document.querySelector("#nav-trigger-company");
+    const panel = document.querySelector("#nav-dropdown-company");
+    if (!root || !trigger || !panel) return;
+
+    let closeTimer;
+
+    const openMenu = () => {
+      window.clearTimeout(closeTimer);
+      window.dispatchEvent(new CustomEvent("nav:dropdown-open", { detail: { id: dropdownId } }));
+      panel.classList.remove("pointer-events-none", "opacity-0", "invisible");
+      panel.classList.add("pointer-events-auto", "opacity-100", "visible");
+      trigger.setAttribute("aria-expanded", "true");
+    };
+
+    const closeMenu = () => {
+      panel.classList.remove("pointer-events-auto", "opacity-100", "visible");
+      panel.classList.add("pointer-events-none", "opacity-0", "invisible");
+      trigger.setAttribute("aria-expanded", "false");
+    };
+
+    const scheduleClose = () => {
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(() => {
+        const active = document.activeElement;
+        if (
+          root.matches(":hover") ||
+          panel.matches(":hover") ||
+          (active instanceof Node && (trigger.contains(active) || panel.contains(active)))
+        ) {
+          return;
+        }
+        closeMenu();
+      }, 120);
+    };
+
+    trigger.addEventListener("mouseenter", openMenu);
+    trigger.addEventListener("focus", openMenu);
+    panel.addEventListener("mouseenter", openMenu);
+    panel.addEventListener("focusin", openMenu);
+
+    trigger.addEventListener("mouseleave", scheduleClose);
+    panel.addEventListener("mouseleave", scheduleClose);
+    panel.addEventListener("focusout", scheduleClose);
+    panel.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof HTMLElement && t.closest("a[href]")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    document.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t instanceof Node && !root.contains(t) && !panel.contains(t)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("nav:dropdown-open", (e) => {
+      if (!(e instanceof CustomEvent)) return;
+      if (e.detail?.id !== dropdownId) closeMenu();
+    });
+  })();
+</script>

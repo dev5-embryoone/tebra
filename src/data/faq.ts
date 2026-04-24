@@ -6,33 +6,33 @@ export interface FAQItem {
 
 export const faqItems: FAQItem[] = [
   {
-    id: 'hipaa',
-    question: "Is Tebra's software HIPAA-compliant?",
+    id: 'compliance',
+    question: "Is EmbryoOne compliant with lab and clinical data standards?",
     answer:
-      "Yes. All of Tebra's products, including the EHR, billing software, and AI features, are built with HIPAA compliance at the core. Patient data is stored securely, handled according to strict privacy protocols, and protected through encrypted workflows.",
+      "Yes. EmbryoOne is built with secure data handling, full traceability, and compliance-focused workflows across both lab and clinical operations. Access controls, activity logging, and structured records help teams maintain accountability at every step. This gives clinics confidence that sensitive embryo and patient data is protected and auditable.",
   },
   {
-    id: 'grow',
-    question: 'How does Tebra help private practices grow?',
+    id: 'lab-errors',
+    question: "How does EmbryoOne reduce lab errors?",
     answer:
-      "Tebra gives private practices the tools they need to operate efficiently and grow sustainably. With all-in-one practice management software for charting, billing, scheduling, patient engagement, and marketing, Tebra reduces administrative work and helps practices improve cash flow, attract new patients, and provide better care, all without switching between disconnected systems.",
+      "EmbryoOne reduces errors through witness tracking, verification checkpoints, and standardized task flows across procedures. Each action is recorded in real time so teams can catch mismatches early and respond quickly. This creates a safer, more consistent lab process with stronger accountability.",
   },
   {
-    id: 'different',
-    question: 'What makes Tebra different from other healthcare platforms?',
+    id: 'integrations',
+    question: "Can EmbryoOne integrate with existing lab processes?",
     answer:
-      'Tebra offers an all-in-one solution built specifically for independent practices. Unlike other platforms that require multiple vendors or have "surprise" fees, Tebra combines clinical, financial, and growth tools in a single platform with transparent pricing. That means fewer logins, less manual work, and better coordination across your team.',
+      "Yes. EmbryoOne is designed to fit into existing IVF workflows and align with current lab procedures. The platform supports structured adoption so teams can transition without disrupting day-to-day operations. This helps clinics modernize systems while preserving proven process standards.",
   },
   {
-    id: 'switch',
-    question: 'Is it easy to switch to Tebra from another system?',
+    id: 'ai-support',
+    question: "How does AI grading support embryologists?",
     answer:
-      "Yes. Tebra offers hands-on support to make switching as smooth as possible. A dedicated onboarding team helps you transfer data, customize your setup, and train your staff. Most practices can go live quickly with minimal disruption to daily workflows, no IT team required.",
+      "AI grading offers consistent scoring guidance using structured embryo data and image-based analysis. It helps embryologists compare assessments faster and reduce variability in interpretation. Final decisions always remain with the clinical team, with AI serving as decision support rather than replacement.",
   },
   {
-    id: 'specialties',
-    question: 'What types of specialties does Tebra support?',
+    id: 'clinic-sizes',
+    question: "Is EmbryoOne suitable for different clinic sizes?",
     answer:
-      'Tebra is used by a wide range of specialties including primary care, mental health, pediatrics, dermatology, chiropractic, podiatry, and more. The system includes specialty-specific templates, codes, and workflows to help providers document visits faster and bill accurately. It\'s designed to work for both generalists and niche specialties.',
+      "Yes. EmbryoOne scales from single-site IVF labs to multi-center clinic networks with shared standards. Teams can manage local workflows while maintaining visibility across locations and cycles. This makes it practical for clinics at different growth stages without needing separate systems.",
   },
 ];

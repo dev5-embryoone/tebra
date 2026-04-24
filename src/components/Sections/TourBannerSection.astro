@@ -1,5 +1,5 @@
 ---
-import bannerImage from '../../assets/banner-img.webp';
+import bannerImage from '../../assets/dashboard2.png';
 import Button from '../Button/Button.astro';
 
 const bannerSrc = typeof bannerImage === 'string' ? bannerImage : bannerImage.src;
@@ -13,20 +13,20 @@ const bannerHeight = typeof bannerImage === 'object' && 'height' in bannerImage 
       <div class="grid min-h-[420px] grid-cols-1 items-stretch lg:min-h-[480px] lg:grid-cols-[1fr,1.15fr]">
         <div class="flex flex-col justify-center gap-4 p-6 sm:p-8 lg:p-12">
           <h2 class="heading-md text-tebra-teal-dark">
-            Take a quick tour of Tebra's EHR+ platform
+            Take a closer look at the EmbryoOne platform
           </h2>
           <p class="max-w-lg body-base-muted">
-            See how our all-in-one EHR+ platform helps you save time, get paid faster, and grow your practice.
+            Explore how EmbryoOne supports lab workflows, embryo tracking, and clinical operations.
           </p>
-          <Button href="#demo" label="Take a tour" variant="primary" size="md" class="mt-2 w-fit" />
+          <Button href="/product-tour" label="Take a Product Tour" variant="primary" size="md" class="mt-2 w-fit" />
         </div>
-        <div class="tour-banner-card__image-wrap flex min-h-[280px] items-center justify-end lg:min-h-0">
+        <div class="tour-banner-card__image-wrap flex min-h-[280px] items-center justify-center bg-gradient-to-br from-[#f7f5ff] via-white to-[#eef6ff] p-4 sm:p-5 lg:min-h-0 lg:p-6">
           <img
             src={bannerSrc}
-            alt="Tebra EHR+ platform dashboard"
+            alt="EmbryoOne platform dashboard"
             width={bannerWidth}
             height={bannerHeight}
-            class="h-full w-full object-cover object-right"
+            class="h-full w-full rounded-2xl border border-[#e8e2f5] bg-white object-contain object-center shadow-[0_18px_50px_-30px_rgba(62,33,95,0.45)]"
             loading="lazy"
           />
         </div>

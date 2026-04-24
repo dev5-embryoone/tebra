@@ -6,40 +6,40 @@ export type Feature = {
 
 export const features: Feature[] = [
   {
-    title: "Clinical workflows that save time",
-    icon: "⚕️",
+    title: "Lab workflows that stay controlled",
+    icon: "🧪",
     description:
-      "Streamlined charting, templates, and AI-assisted notes help you document faster so you can focus on patients.",
+      "Track every lab action with real-time logs and built-in verification.",
   },
   {
-    title: "Built-in billing and claims",
-    icon: "💳",
+    title: "Embryo data that stays structured",
+    icon: "🧬",
     description:
-      "Integrated billing tools reduce denials, speed up reimbursements, and keep your cash flow predictable.",
+      "Capture, store, and access embryo images and grading data consistently.",
   },
   {
-    title: "Smart scheduling that stays full",
-    icon: "📅",
+    title: "Cryo management that stays accurate",
+    icon: "❄️",
     description:
-      "Online booking, waitlists, and automated reminders keep your schedule optimized and reduce no‑shows.",
+      "Track embryo storage, movement, and status across cryo systems.",
   },
   {
-    title: "Reputation tools that grow reach",
-    icon: "⭐",
+    title: "Inventory that stays visible",
+    icon: "📦",
     description:
-      "Automated review requests and listings management help you attract new patients and keep them coming back.",
+      "Monitor lab consumption and maintain accurate inventory levels.",
   },
   {
-    title: "Connected patient experience",
-    icon: "💬",
+    title: "AI-assisted embryo grading",
+    icon: "🤖",
     description:
-      "Messaging, digital intake, and telehealth are tightly integrated with clinical and billing workflows.",
+      "Support consistent embryo assessment with structured AI insights.",
   },
   {
-    title: "One login, one platform",
+    title: "One system, full traceability",
     icon: "🔐",
     description:
-      "Run your entire practice with a single EHR+ platform instead of juggling disconnected point solutions.",
+      "Maintain complete visibility across lab, embryo, and clinical workflows.",
   },
 ];
 

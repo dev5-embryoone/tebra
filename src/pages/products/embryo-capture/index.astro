@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Button from "../../../components/Button/Button.astro";
+import captureHeroImage from "../../../assets/embryo1.png";
+import integratedCaptureImage from "../../../assets/witness1.png";
+import highResImage from "../../../assets/embryo1.png";
+import imageLibraryImage from "../../../assets/patients1.png";
+import captureAiFlowImage from "../../../assets/dashboard2.png";
+
+const valuePoints = [
+  "Standardized imaging",
+  "Faster documentation",
+  "AI-ready data",
+];
+---
+
+<BaseLayout
+  title="Embryo Capture | High-resolution IVF imaging"
+  description="Capture high-quality embryo images directly from workstations and organize imaging data for review and AI workflows."
+>
+  <section class="relative overflow-hidden bg-tebra-hero-bg py-14 sm:py-16 lg:py-20">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow">Products • Embryo Capture</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Capture high-quality embryo images at the source
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          EmbryoOne integrates directly with microscopes and workstations to capture 2K-resolution
+          images seamlessly.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/product-tour" label="Capture embryos" variant="primary" size="md" />
+          <Button href="/product-tour" label="See how it works" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img src={captureHeroImage.src} alt="Embryo capture interface with high-resolution imaging panel" class="w-full" loading="eager" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Integrated Capture</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Capture images directly from the workstation without switching tools.
+        </p>
+      </div>
+      <img src={integratedCaptureImage.src} alt="Embryo capture interface embedded in workstation workflow" class="w-full" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">High-Resolution Imaging</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Consistent 2K imaging ensures accurate documentation and analysis.
+        </p>
+      </div>
+      <img src={highResImage.src} alt="High-resolution embryo image view for detailed analysis" class="w-full md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Organized Image Library</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Automatically store and organize images by patient, cycle, and stage.
+        </p>
+      </div>
+      <img src={imageLibraryImage.src} alt="Image library interface organized by patient and cycle stage" class="w-full" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-gray-50">
+    <div class="page-container grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="md:order-2">
+        <h2 class="heading-md text-tebra-teal-dark">Ready for AI</h2>
+        <p class="mt-4 text-base text-gray-600">
+          Captured images flow directly into AI grading workflows.
+        </p>
+      </div>
+      <img src={captureAiFlowImage.src} alt="Capture to AI grading workflow interface" class="w-full md:order-1" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Built for consistent image quality</h2>
+      <div class="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-3">
+        {valuePoints.map((point) => (
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 text-center text-sm font-semibold text-tebra-teal-dark">
+            {point}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl border border-gray-200 bg-gray-50 px-6 py-10 sm:px-10">
+      <h2 class="text-3xl font-semibold text-tebra-teal-dark sm:text-4xl">Deploy capture in your existing workflow</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-600">
+        Connect microscope workstations, standardize capture settings, and deliver structured image
+        data ready for review and AI grading.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+        <Button href="/product-tour" label="Take a quick product tour" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
