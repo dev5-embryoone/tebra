@@ -1,12 +1,14 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Button from "../../../components/Button/Button.astro";
-import opsDashboardImage from "../../../assets/people-ops-dashboard.png";
-import taskBoardImage from "../../../assets/people-task-board.png";
-import taskCalendarImage from "../../../assets/people-task-calendar.png";
+import peopleHeroOrgChartImage from "../../../assets/people-hero-org-chart.png";
+import peopleOpsSnapshotImage from "../../../assets/people-ops-snapshot-overview.png";
+import peopleTaskListImage from "../../../assets/people-task-list.png";
+import peopleTaskKanbanImage from "../../../assets/people-task-kanban.png";
+import peopleTaskCalendarAprilImage from "../../../assets/people-task-calendar-april.png";
 import teamDirectoryImage from "../../../assets/people-directory.png";
-import teamStructureImage from "../../../assets/people-team-structure.png";
-import orgFlowImage from "../../../assets/people-org-flow.png";
+import peopleClinicOrgChartImage from "../../../assets/people-clinic-org-chart.png";
+import peopleTeamDashboardImage from "../../../assets/people-team-dashboard.png";
 import teamChatImage from "../../../assets/people-chat.png";
 import expensesImage from "../../../assets/people-expenses.png";
 
@@ -30,10 +32,26 @@ const opsSnapshotPoints = [
 ];
 
 const taskHighlights = [
-  "Kanban Workflow: Drag and move tasks across Pending, In Progress, and Completed.",
-  "Calendar Sync: See deadlines, audits, and procedures on one timeline.",
-  "Automated Tracking: No manual follow-ups - system highlights delays instantly.",
-  "Role-Based Assignment: Assign by role, department, and case.",
+  {
+    title: "Kanban workflow",
+    description:
+      "Move work across Pending, In Progress, and Completed so embryology, lab, and nursing always share the same picture of what is blocked and what is done.",
+  },
+  {
+    title: "Calendar sync",
+    description:
+      "Lay procedures, audits, and deadlines on one timeline so room prep, lab checks, and patient milestones never drift out of alignment.",
+  },
+  {
+    title: "Automated tracking",
+    description:
+      "Overdue and priority states surface automatically so managers are not chasing spreadsheets or side channels for status updates.",
+  },
+  {
+    title: "Role-based assignment",
+    description:
+      "Route tasks by role, department, branch, or case so the right person owns each step from ICSI prep through transfer readiness.",
+  },
 ];
 
 const directoryPoints = [
@@ -54,12 +72,27 @@ const expensePoints = [
   "Financial visibility into real operational spending",
 ];
 
-const outcomePoints = [
-  "Reduce missed tasks",
-  "Improve lab coordination",
-  "Increase accountability",
-  "Standardize workflows",
-  "Eliminate communication gaps",
+const peopleFaqs = [
+  {
+    question: "How is EmbryoOne People different from generic HR software?",
+    answer:
+      "People is built for IVF operations: tasks, departments, branches, lab workflows, and in-app communication live together so clinics run as one team, not as disconnected HR records.",
+  },
+  {
+    question: "Can tasks be assigned by role, department, and branch?",
+    answer:
+      "Yes. You can route work by role, team, clinic location, and case context so embryology, nursing, lab operations, and admin each see the right queue.",
+  },
+  {
+    question: "Do list, board, and calendar views stay in sync?",
+    answer:
+      "Yes. The same underlying tasks appear across views so updates in one place reflect everywhere without duplicate entry.",
+  },
+  {
+    question: "Is team chat tied to clinical and operational work?",
+    answer:
+      "Built-in messaging keeps discussions in context with tasks and teams, so coordination does not depend on external apps.",
+  },
 ];
 ---
 
@@ -91,20 +124,12 @@ const outcomePoints = [
         </div>
       </div>
 
-      <div class="relative min-h-[320px]">
-        <div class="floating-card absolute left-2 top-0 w-[82%] rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-          <p class="text-sm font-semibold text-tebra-teal-dark">👩‍⚕️ Embryology Team - 8 members</p>
-        </div>
-        <div class="floating-card absolute right-0 top-16 w-[70%] rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-          <p class="text-sm font-semibold text-tebra-teal-dark">📋 Tasks overdue: 14</p>
-        </div>
-        <div class="floating-card absolute left-8 top-36 w-[75%] rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-          <p class="text-sm font-semibold text-tebra-teal-dark">🧪 Lab Operations - Active</p>
-        </div>
-        <div class="floating-card absolute right-4 top-56 w-[74%] rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-          <p class="text-sm font-semibold text-tebra-teal-dark">💬 6 unread team messages</p>
-        </div>
-      </div>
+      <img
+        src={peopleHeroOrgChartImage.src}
+        alt="EmbryoOne organizational chart with clinic locations, departments, leads, and team members"
+        class="w-full rounded-2xl border border-gray-200 shadow-sm"
+        loading="eager"
+      />
     </div>
   </section>
 
@@ -124,7 +149,32 @@ const outcomePoints = [
           ))}
         </div>
       </div>
-      <img src={opsDashboardImage.src} alt="Operations snapshot dashboard with task and workload metrics" class="w-full rounded-2xl border border-gray-200" loading="lazy" />
+      <img src={peopleOpsSnapshotImage.src} alt="Task overview dashboard with metrics, filters, and task status breakdown" class="w-full rounded-2xl border border-gray-200" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-tebra-teal-dark">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl">
+        <p class="eyebrow !text-gray-200">People FAQ</p>
+        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base text-gray-200">
+          Answers about EmbryoOne People for IVF team coordination, tasks, and in-app communication.
+        </p>
+        <div class="mt-8 space-y-3">
+          {peopleFaqs.map((item, index) => (
+            <details
+              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
+              open={index === 0}
+            >
+              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
+                {item.question}
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
@@ -132,25 +182,106 @@ const outcomePoints = [
     <div class="page-container">
       <div>
         <h2 class="heading-md text-tebra-teal-dark">From lab prep to patient readiness every task accounted for</h2>
-        <p class="mt-4 text-base text-gray-600">
-          EmbryoOne turns IVF operations into structured workflows.
+        <p class="mt-4 max-w-4xl text-base text-gray-600">
+          EmbryoOne turns IVF operations into structured workflows. Whether it is cryo reconciliation,
+          ICSI dish prep, incubator checks, or ET room readiness, every item lives in one task layer
+          tied to branch, assignee, and priority so nothing depends on memory or informal handoffs.
         </p>
-        <div class="mt-6 inline-flex rounded-xl border border-gray-200 bg-white p-1 text-sm">
-          <span class="rounded-lg bg-tebra-teal px-4 py-2 font-semibold text-white">Overview</span>
-          <span class="px-4 py-2 text-gray-600">List</span>
-          <span class="px-4 py-2 text-gray-600">Board</span>
-          <span class="px-4 py-2 text-gray-600">Calendar</span>
+        <p class="mt-4 max-w-4xl text-base text-gray-600">
+          Switch between list, board, and calendar views without losing context. Search and filters
+          keep large teams focused on their queue while leaders still see clinic-wide workload and
+          risk at a glance.
+        </p>
+        <div
+          id="people-task-tabs"
+          class="mt-6 inline-flex flex-wrap rounded-xl border border-gray-200 bg-white p-1 text-sm"
+          role="tablist"
+          aria-label="Task view tabs"
+        >
+          <button
+            type="button"
+            class="task-tab rounded-lg bg-tebra-teal px-4 py-2 font-semibold text-white"
+            data-tab="overview"
+            role="tab"
+            aria-selected="true"
+          >
+            Overview
+          </button>
+          <button
+            type="button"
+            class="task-tab px-4 py-2 text-gray-600"
+            data-tab="list"
+            role="tab"
+            aria-selected="false"
+          >
+            List
+          </button>
+          <button
+            type="button"
+            class="task-tab px-4 py-2 text-gray-600"
+            data-tab="board"
+            role="tab"
+            aria-selected="false"
+          >
+            Board
+          </button>
+          <button
+            type="button"
+            class="task-tab px-4 py-2 text-gray-600"
+            data-tab="calendar"
+            role="tab"
+            aria-selected="false"
+          >
+            Calendar
+          </button>
         </div>
       </div>
-      <div class="mt-8 grid gap-4 md:grid-cols-3">
-        <img src={opsDashboardImage.src} alt="Task overview analytics with status and priority cards" class="w-full rounded-2xl border border-gray-200 bg-white" loading="lazy" />
-        <img src={taskBoardImage.src} alt="Kanban board showing pending in progress and completed tasks" class="w-full rounded-2xl border border-gray-200 bg-white" loading="lazy" />
-        <img src={taskCalendarImage.src} alt="Task calendar showing due dates audits and procedures" class="w-full rounded-2xl border border-gray-200 bg-white" loading="lazy" />
+      <div class="mt-8 grid gap-6 md:grid-cols-3 md:items-stretch">
+        <figure class="task-panel m-0 flex h-full flex-col ring-2 ring-tebra-teal/40 ring-offset-2 rounded-2xl" data-panel="list">
+          <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <img
+              src={peopleTaskListImage.src}
+              alt="Task list table with search and filters, showing IVF clinic tasks by branch, assignee, priority, status, and due dates"
+              class="absolute left-0 top-0 h-full w-full object-contain object-top"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-2 flex-none text-center text-xs font-semibold uppercase tracking-wide text-gray-500">
+            List
+          </figcaption>
+        </figure>
+        <figure class="task-panel m-0 flex h-full flex-col opacity-60 transition-opacity" data-panel="board">
+          <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <img
+              src={peopleTaskKanbanImage.src}
+              alt="Kanban board with Pending, In Progress, and Completed columns for IVF tasks"
+              class="absolute left-0 top-0 h-full w-full object-contain object-top"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-2 flex-none text-center text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Board
+          </figcaption>
+        </figure>
+        <figure class="task-panel m-0 flex h-full flex-col opacity-60 transition-opacity" data-panel="calendar">
+          <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <img
+              src={peopleTaskCalendarAprilImage.src}
+              alt="Monthly task calendar with deadlines and overdue indicators across the clinic"
+              class="absolute left-0 top-0 h-full w-full object-contain object-top"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-2 flex-none text-center text-xs font-semibold uppercase tracking-wide text-gray-500">
+            Calendar
+          </figcaption>
+        </figure>
       </div>
-      <ul class="mt-8 grid gap-3 md:grid-cols-2">
+      <ul class="mt-8 grid gap-4 md:grid-cols-2">
         {taskHighlights.map((item) => (
-          <li class="rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600">
-            <span class="font-semibold text-tebra-teal-dark">{item.split(":")[0]}:</span>{item.split(":")[1]}
+          <li class="rounded-xl border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600">
+            <span class="font-semibold text-tebra-teal-dark">{item.title}</span>
+            <p class="mt-2 leading-relaxed">{item.description}</p>
           </li>
         ))}
       </ul>
@@ -183,21 +314,65 @@ const outcomePoints = [
   <section class="page-section bg-gray-50">
     <div class="page-container">
       <h2 class="heading-md text-tebra-teal-dark">Your clinic structured the way it actually works</h2>
-      <p class="mt-4 max-w-4xl text-base text-gray-600">
+
+      <p
+        class="mx-auto mt-4 max-w-6xl text-center text-base text-gray-600 text-balance xl:whitespace-nowrap"
+      >
         Visualize how your teams operate not just who exists. Each department has defined roles,
         assigned responsibilities, and workflow ownership. No overlap. No ambiguity.
       </p>
-      <div class="mt-8 grid gap-4 md:grid-cols-2">
-        <img src={teamStructureImage.src} alt="Department team cards for embryology lab nursing and quality teams" class="w-full rounded-2xl border border-gray-200 bg-white" loading="lazy" />
-        <img src={orgFlowImage.src} alt="Organization structure and reporting flow across branches and departments" class="w-full rounded-2xl border border-gray-200 bg-white" loading="lazy" />
+
+      <div class="mt-8 grid gap-8 md:grid-cols-2 md:items-start lg:gap-12">
+        <div class="text-base text-gray-600">
+          <h3 class="text-xl font-semibold text-tebra-teal-dark">From organization to branch to department</h3>
+          <p class="mt-3">
+            The org view mirrors how clinics actually run: one organization, multiple locations,
+            and clear department charters under each branch. Leads and member counts stay visible so
+            accountability stays tied to structure, not tribal knowledge.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm">
+            <li class="flex gap-2">
+              <span class="text-tebra-teal">•</span>
+              <span>Color-coded paths for Andrology, Culture Lab, Clinic Operations, and more</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-tebra-teal">•</span>
+              <span>Lead role and responsibility line on every department card</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-tebra-teal">•</span>
+              <span>Team member strip under each unit for quick who-is-where context</span>
+            </li>
+          </ul>
+        </div>
+        <div class="text-base text-gray-600">
+          <h3 class="text-xl font-semibold text-tebra-teal-dark">Department cards with live team signals</h3>
+          <p class="mt-3">
+            The Team view surfaces Embryology, Lab Operations, Nursing, Andrology, and other groups
+            in one grid: people per team, branch, named lead, and a short charter for what that
+            group owns day to day from retrieval and culture through witness checks and patient flow.
+          </p>
+          <p class="mt-4">
+            Search teams, open hierarchy, or jump into details when you need to add members, align
+            on coverage, or connect operational work to the right owner before it becomes a delay on
+            the floor.
+          </p>
+        </div>
       </div>
-      <div class="mt-6 flex flex-wrap gap-2">
-        <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-tebra-teal-dark border border-gray-200">Embryology</span>
-        <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-tebra-teal-dark border border-gray-200">Lab Operations</span>
-        <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-tebra-teal-dark border border-gray-200">Nursing</span>
-        <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-tebra-teal-dark border border-gray-200">Andrology</span>
-        <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-tebra-teal-dark border border-gray-200">QA & Compliance</span>
-        <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-tebra-teal-dark border border-gray-200">Admin / Front Desk</span>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:gap-8">
+        <img
+          src={peopleClinicOrgChartImage.src}
+          alt="Embryo One organizational chart from organization through branches, departments, leads, and team members"
+          class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
+          loading="lazy"
+        />
+        <img
+          src={peopleTeamDashboardImage.src}
+          alt="Team dashboard with department cards, headcount, leads, and branch locations"
+          class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
@@ -248,21 +423,6 @@ const outcomePoints = [
     </div>
   </section>
 
-  <section class="page-section bg-white">
-    <div class="page-container">
-      <h2 class="heading-md text-center text-tebra-teal-dark">
-        This is not HR software it is IVF operations infrastructure
-      </h2>
-      <div class="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-5">
-        {outcomePoints.map((point) => (
-          <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-5 text-center text-sm font-semibold text-tebra-teal-dark">
-            ✓ {point}
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section class="py-16 sm:py-20">
     <div class="page-container rounded-3xl bg-tebra-teal-dark px-6 py-10 sm:px-10">
       <h2 class="text-3xl font-semibold text-white sm:text-4xl">Bring your entire team onto one system</h2>
@@ -276,35 +436,45 @@ const outcomePoints = [
     </div>
   </section>
 
-  <style>
-    .floating-card {
-      animation: float-card 5.4s ease-in-out infinite;
-    }
+  <script>
+    const tabsRoot = document.getElementById("people-task-tabs");
+    const tabButtons = tabsRoot ? Array.from(tabsRoot.querySelectorAll(".task-tab")) : [];
+    const taskPanels = Array.from(document.querySelectorAll(".task-panel"));
 
-    .floating-card:nth-child(2) {
-      animation-delay: 0.8s;
-    }
-    .floating-card:nth-child(3) {
-      animation-delay: 1.5s;
-    }
-    .floating-card:nth-child(4) {
-      animation-delay: 2.2s;
-    }
+    const setActiveTab = (tabName) => {
+      tabButtons.forEach((btn) => {
+        const isActive = btn.dataset.tab === tabName;
+        btn.setAttribute("aria-selected", String(isActive));
+        btn.classList.toggle("bg-tebra-teal", isActive);
+        btn.classList.toggle("text-white", isActive);
+        btn.classList.toggle("rounded-lg", isActive);
+        btn.classList.toggle("font-semibold", isActive);
+        btn.classList.toggle("text-gray-600", !isActive);
+      });
 
-    @keyframes float-card {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-8px);
-      }
-    }
+      taskPanels.forEach((panel) => {
+        if (tabName === "overview") {
+          panel.classList.remove("opacity-60", "ring-2", "ring-tebra-teal/40", "ring-offset-2");
+          return;
+        }
+        const matches = panel.dataset.panel === tabName;
+        panel.classList.toggle("opacity-60", !matches);
+        panel.classList.toggle("ring-2", matches);
+        panel.classList.toggle("ring-tebra-teal/40", matches);
+        panel.classList.toggle("ring-offset-2", matches);
+      });
+    };
 
-    @media (prefers-reduced-motion: reduce) {
-      .floating-card {
-        animation: none;
-      }
+    if (tabButtons.length && taskPanels.length) {
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tabName = btn.dataset.tab;
+          if (!tabName) return;
+          setActiveTab(tabName);
+        });
+      });
+
+      setActiveTab("overview");
     }
-  </style>
+  </script>
 </BaseLayout>
