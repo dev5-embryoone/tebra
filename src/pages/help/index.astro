@@ -4,14 +4,16 @@ import HelpCenterHero from "../../components/HelpCenter/HelpCenterHero.astro";
 import HelpCenterCategoryGrid from "../../components/HelpCenter/HelpCenterCategoryGrid.astro";
 import HelpCenterAdditionalResources from "../../components/HelpCenter/HelpCenterAdditionalResources.astro";
 import HelpCenterLegalStrip from "../../components/HelpCenter/HelpCenterLegalStrip.astro";
+
+const searchQuery = Astro.url.searchParams.get("q")?.trim() ?? "";
 ---
 
 <HelpCenterLayout
   title="Home - EmbryoOne Help Center | EmbryoOne"
   description="How can we help you? Search the EmbryoOne Help Center, browse IVF lab, clinical workflow, reporting, billing, integrations, and onboarding topics."
 >
-  <HelpCenterHero />
-  <HelpCenterCategoryGrid />
-  <HelpCenterAdditionalResources />
+  <HelpCenterHero query={searchQuery} />
+  <HelpCenterCategoryGrid query={searchQuery} />
+  <HelpCenterAdditionalResources query={searchQuery} />
   <HelpCenterLegalStrip />
 </HelpCenterLayout>

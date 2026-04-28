@@ -150,51 +150,35 @@ const inventoryHeroCards = [
 
   <section class="page-section bg-white">
     <div class="page-container">
-      <div class="max-w-4xl">
-        <h2 class="heading-md whitespace-nowrap text-tebra-teal-dark">Everything starts with a single source of truth</h2>
-        <p class="mt-4 text-base text-gray-600">
-          Maintain a structured, centralized inventory across all item categories—media,
-          consumables, reagents, and cryo supplies.
-        </p>
-        <div class="mt-4 grid gap-5 sm:grid-cols-2">
-          <div>
-            <p class="text-base text-gray-600">Each item is tracked with:</p>
-            <ul class="mt-4 space-y-3">
-              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Batch and vendor details</span></li>
-              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Stock levels and status</span></li>
-              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Category and usage classification</span></li>
-            </ul>
+      <div class="grid gap-8 md:grid-cols-2 md:items-center">
+        <div>
+          <h2 class="heading-md text-tebra-teal-dark">Everything starts with a single source of truth</h2>
+          <p class="mt-4 text-base text-gray-600">
+            EmbryoOne centralizes inventory data across categories so every team works from accurate, live stock information.
+          </p>
+          <ul class="mt-5 space-y-3">
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Track batch, vendor, and stock status in one place</span></li>
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Search faster with structured categories</span></li>
+            <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Reduce manual reconciliation and spreadsheet dependency</span></li>
+          </ul>
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Visibility</p>
+              <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Unified categories and statuses</p>
+            </div>
+            <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Accuracy</p>
+              <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Live stock levels and alerts</p>
+            </div>
+            <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Traceability</p>
+              <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Vendor and batch metadata</p>
+            </div>
           </div>
-          <div>
-            <p class="text-base font-semibold text-tebra-teal-dark">What this enables</p>
-            <ul class="mt-4 space-y-3">
-              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Faster item search and filtering</span></li>
-              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Accurate stock visibility</span></li>
-              <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Better vendor and batch tracking</span></li>
-            </ul>
-          </div>
         </div>
-        <p class="mt-4 text-base text-gray-600">
-          This eliminates fragmented spreadsheets and ensures your entire lab works from the same
-          dataset.
-        </p>
-      </div>
-      <div class="mt-8 grid gap-4 sm:grid-cols-3">
-        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Visibility</p>
-          <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Unified categories and statuses</p>
+        <div class="rounded-2xl border border-gray-200 bg-white p-3 shadow-sm">
+          <img src={itemMasterImage.src} alt="Item Master table UI for centralized inventory data" class="w-full rounded-xl" loading="lazy" />
         </div>
-        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Accuracy</p>
-          <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Live stock levels and alerts</p>
-        </div>
-        <div class="rounded-2xl border border-gray-200 bg-gray-50 p-4">
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Traceability</p>
-          <p class="mt-2 text-sm font-semibold text-tebra-teal-dark">Vendor and batch metadata</p>
-        </div>
-      </div>
-      <div class="mt-6 rounded-2xl border border-gray-200 bg-white p-3 shadow-sm">
-        <img src={itemMasterImage.src} alt="Item Master table UI for centralized inventory data" class="w-full rounded-xl" loading="lazy" />
       </div>
     </div>
   </section>
@@ -205,20 +189,7 @@ const inventoryHeroCards = [
       <div class="mt-6 grid gap-6 md:grid-cols-2 md:items-center">
         <div>
         <p class="mt-4 text-base text-gray-600">
-          Inventory should update as work happens and not after.
-        </p>
-        <p class="mt-4 text-base text-gray-600">
-          EmbryoOne links inventory directly to lab workflows. As procedures are performed, items
-          used are automatically recorded in real time.
-        </p>
-        <p class="mt-4 text-base text-gray-600">This removes the need for:</p>
-        <ul class="mt-4 space-y-3">
-          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Manual logging</span></li>
-          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>End-of-day reconciliation</span></li>
-          <li class="flex items-start gap-3 text-gray-600"><span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span><span>Guesswork around usage</span></li>
-        </ul>
-        <p class="mt-4 text-base text-gray-600">
-          Every entry reflects actual usage, ensuring accuracy across your system.
+          EmbryoOne links inventory to live lab workflows, so usage is captured automatically as work happens.
         </p>
         <p class="mt-4 text-base font-semibold text-tebra-teal-dark">Key outcomes</p>
         <ul class="mt-4 space-y-3">

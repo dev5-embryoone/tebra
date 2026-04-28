@@ -12,16 +12,14 @@ import labCardTempGoldImage from "../../../assets/lab-card-temp-gold.png";
 
 const labEnvPoints = [
   "Monitor temperature, humidity, pressure, and air quality in real time",
-  "Detect deviations early with continuous data tracking",
-  "Maintain consistent lab conditions across all workstations",
-  "Reduce manual monitoring and improve operational reliability",
+  "Detect deviations early with continuous tracking",
+  "Maintain stable conditions across workstations",
 ];
 
 const incubatorPoints = [
   "Monitor temperature, CO2, and airflow across incubators",
-  "View performance across multiple units in one dashboard",
+  "View all units in one dashboard",
   "Detect deviations before they affect embryo development",
-  "Ensure consistent conditions across all incubation stages",
 ];
 
 const cryoPoints = [
@@ -228,14 +226,7 @@ const valuePoints = [
       <div class="lg:order-2">
         <h2 class="heading-md text-tebra-teal-dark">Keep lab conditions stable and visible</h2>
         <p class="mt-4 text-base text-gray-600">
-          Embryo development depends on stable environmental conditions. EmbryoOne provides a
-          real-time view of key lab parameters — including temperature, humidity, pressure, and air
-          quality — so your team can quickly detect fluctuations and maintain consistent lab
-          performance.
-        </p>
-        <p class="mt-4 text-base text-gray-600">
-          Continuous monitoring reduces manual checks, improves response time, and ensures your lab
-          operates within safe thresholds at all times.
+          EmbryoOne gives your team a live view of key lab conditions so deviations are detected early and stability is maintained.
         </p>
         <ul class="mt-6 space-y-3">
           {labEnvPoints.map((point) => (
@@ -262,13 +253,7 @@ const valuePoints = [
       <div>
         <h2 class="heading-md text-tebra-teal-dark">Track incubator performance without interruption</h2>
         <p class="mt-4 text-base text-gray-600">
-          Incubators are critical to embryo development, and even small fluctuations can impact
-          outcomes. EmbryoOne continuously monitors temperature, CO2, and airflow across each
-          incubator, giving your team full visibility into performance and stability.
-        </p>
-        <p class="mt-4 text-base text-gray-600">
-          With structured monitoring and alerts, teams can quickly respond to deviations and ensure
-          optimal conditions are maintained throughout the culture process.
+          EmbryoOne continuously monitors incubator performance and surfaces deviations early so teams can respond quickly and protect culture conditions.
         </p>
         <ul class="mt-6 space-y-3">
           {incubatorPoints.map((point) => (

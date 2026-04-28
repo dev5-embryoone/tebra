@@ -5,126 +5,137 @@ import CTASection from "../../components/Sections/CTASection.astro";
 
 import heroRaw from "../../assets/Hero-2-scaled-v2.jpg";
 import bannerRaw from "../../assets/Banner-1-768x768.jpg";
+import cultureRaw from "../../assets/about.webp";
+import testimonialRaw from "../../assets/lab3.png";
 
 const heroSrc = typeof heroRaw === "string" ? heroRaw : heroRaw.src;
 const bannerSrc = typeof bannerRaw === "string" ? bannerRaw : bannerRaw.src;
+const cultureSrc = typeof cultureRaw === "string" ? cultureRaw : cultureRaw.src;
+const testimonialSrc = typeof testimonialRaw === "string" ? testimonialRaw : testimonialRaw.src;
 
 const coreValues = [
   {
-    title: "Start with the customer",
+    title: "Start with the patient",
     description:
-      "We get to know our customers—and their patients—and look at the world through their lens.",
+      "We design every workflow around patient outcomes and clinical impact.",
   },
   {
-    title: "Keep it simple",
+    title: "Precision matters",
     description:
-      "Healthcare is too complex. We aim to simplify it for everyone.",
+      "In IVF, small differences matter. We build systems that reduce variability and improve consistency.",
   },
   {
-    title: "Stay entrepreneurial",
+    title: "Build for real workflows",
     description:
-      "We reject the status quo and solve problems with creativity, perseverance, and a bias to action.",
+      "We do not guess. We work closely with embryologists and clinicians to solve actual workflow challenges.",
   },
   {
-    title: "Better together",
+    title: "Move fast, responsibly",
     description:
-      "We are diverse, humble, and collaborative. We put the team first and win together.",
+      "We innovate quickly while maintaining clinical-grade reliability.",
   },
   {
-    title: "Celebrate success",
+    title: "Own the outcome",
     description:
-      "Life is short and joy is underrated. We take time to have fun and celebrate success.",
+      "Every team member contributes directly to real-world healthcare impact.",
   },
 ];
 
 const perks = [
   {
     title: "Compensation",
-    items: ["Competitive compensation packages", "Employee referral program", "Stock options"],
+    items: ["Competitive salary packages", "Performance-based bonuses", "Equity opportunities"],
   },
   {
     title: "Hybrid work model",
-    items: ["Equipment stipend when hired", "Monthly work-from-home subsidy", "Indoor-outdoor workspaces"],
+    items: ["Flexible work arrangements", "Work-from-home stipend", "Modern collaborative workspaces"],
   },
   {
     title: "Time off",
-    items: ["Flexible, paid time off", "10 paid holidays", "Employee recharge days"],
+    items: ["Flexible PTO policy", "Paid holidays", "Wellness recharge days"],
   },
   {
     title: "Physical well-being",
-    items: ["Financial health tools", "Gympass", "Annual fitness challenge"],
+    items: ["Health & fitness benefits", "Wellness programs", "Annual fitness initiatives"],
   },
   {
     title: "Benefits",
-    items: [
-      "Competitive medical, dental, and vision insurance",
-      "401k",
-      "Employer-funded HSA",
-      "Life and disability insurance",
-      "Employee assistance program",
-    ],
+    items: ["Medical, dental, and vision coverage", "Insurance plans", "Mental health support"],
   },
   {
-    title: "Learning",
-    items: ["Mentorship program", "Professional development training", "Employee resource groups", "Special events and speakers"],
+    title: "Learning & growth",
+    items: ["Continuous learning programs", "Mentorship opportunities", "Career growth pathways"],
   },
   {
-    title: "Team building",
-    items: ["Community volunteer events", "Sponsored team events and sports", "Recognition program", "Anniversary program"],
+    title: "Team & community",
+    items: ["Team events", "Offsites & meetups", "Community initiatives"],
   },
 ];
 
-const recognition = [
-  { label: "Tebra", detail: "Named to Built In Los Angeles: Best Places to Work 2024" },
-  { label: "Tebra", detail: "Named a National Top Workplace for 2023" },
-  { label: "CEO", detail: "Recognized for executive leadership in SaaS" },
-  { label: "CTO", detail: "Recognized for technology leadership" },
+const testimonials = [
+  {
+    quote:
+      "Working at EmbryoOne means building something that truly impacts patient outcomes. Every feature we ship improves real clinical decisions.",
+    name: "Product Engineer, EmbryoOne",
+    image: testimonialSrc,
+  },
+  {
+    quote:
+      "The best part of working here is seeing clinicians and embryologists use what we build to create faster, more confident workflows every day.",
+    name: "Clinical Product Specialist, EmbryoOne",
+    image: cultureSrc,
+  },
+  {
+    quote:
+      "EmbryoOne combines deep healthcare purpose with strong technical ambition. You can feel the impact of your work across the whole IVF journey.",
+    name: "Frontend Engineer, EmbryoOne",
+    image: heroSrc,
+  },
 ];
-
-const recruitmentNotice =
-  "Tebra only initiates contact with candidates via email from an official Tebra email address (@tebra.com, @patientpop.com, or @kareo.com) or through our applicant tracking system, Greenhouse. We will only ask for information through those channels.";
 
 const featuredJobs = [
   {
-    dept: "Product",
+    dept: "Clinical",
     deptIcon: "box" as const,
-    location: "United States - Remote",
-    title: "Senior Business Analyst",
+    location: "Remote / India",
+    title: "Clinical Product Specialist",
+    summary:
+      "Partner directly with embryologists, doctors, and clinic teams to map IVF workflows, identify friction points, and translate real lab needs into practical product improvements.",
     href: "/careers",
   },
   {
-    dept: "Technology",
+    dept: "AI / ML",
     deptIcon: "gear" as const,
-    location: "United States - Remote",
-    title: "Senior Business Analyst",
+    location: "Remote",
+    title: "AI/ML Engineer",
+    summary:
+      "Build and optimize embryo analysis models that support grading consistency, confidence scoring, and clinically reliable decision support across high-volume IVF environments.",
     href: "/careers",
   },
   {
-    dept: "Technology",
+    dept: "Engineering",
     deptIcon: "gear" as const,
-    location: "Heredia, Heredia, Costa Rica",
-    title: "Staff Backend Software Engineer",
+    location: "Hybrid",
+    title: "Frontend Engineer",
+    summary:
+      "Design and ship intuitive interfaces for cycle management, lab traceability, and operational dashboards so IVF teams can move faster with clarity and confidence.",
     href: "/careers",
   },
 ];
-
-const totalValues = coreValues.length;
 ---
 
 <BaseLayout
-  title="Careers | Tebra"
-  description="Join the Tebra team and help transform healthcare for independent practices."
+  title="Careers | EmbryoOne"
+  description="Join EmbryoOne and help build the future of IVF care with precision, intelligence, and real clinical impact."
 >
-  <!-- Hero: copy + Hero-2 lifestyle image -->
   <PageSection variant="default" class="!py-12 lg:!py-16">
     <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
       <div class="order-2 lg:order-1">
         <h1 class="font-display text-4xl font-semibold tracking-tight text-tebra-teal-dark sm:text-5xl lg:text-[2.75rem] lg:leading-[1.12]">
-          Redefining workplace well-being
+          Build the future of IVF care
         </h1>
         <p class="mt-6 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg">
-          At Tebra, we’re building the future of well-being together. And that shared vision for tomorrow begins
-          with compassion and humanity today.
+          At EmbryoOne, we&rsquo;re transforming how fertility clinics operate, bringing precision, intelligence, and simplicity to every step of the IVF journey.
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
@@ -134,17 +145,17 @@ const totalValues = coreValues.length;
             View open roles
           </a>
           <a
-            href="/about"
+            href="#mission"
             class="inline-flex items-center justify-center rounded-full border border-tebra-teal bg-white px-6 py-3 text-sm font-semibold text-tebra-teal transition hover:bg-tebra-hero-bg"
           >
-            Learn about Tebra
+            Join our mission
           </a>
         </div>
       </div>
       <div class="order-1 lg:order-2">
         <img
           src={heroSrc}
-          alt="Tebra team members collaborating in a bright office"
+          alt="EmbryoOne team collaborating on modern IVF workflows"
           class="h-[280px] w-full rounded-2xl object-cover shadow-sm ring-1 ring-gray-100 sm:h-[360px] lg:h-[min(480px,55vh)] lg:min-h-[400px]"
           width="1200"
           height="800"
@@ -155,67 +166,30 @@ const totalValues = coreValues.length;
     </div>
   </PageSection>
 
-  <!-- Mission: two columns, teal typography like reference -->
-  <PageSection variant="alt" class="py-14 lg:py-20">
-    <div class="grid gap-8 lg:grid-cols-2 lg:gap-16 lg:items-start">
-      <div>
-        <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal sm:text-3xl lg:text-4xl">
-          Tebra’s mission
-        </h2>
-      </div>
-      <div>
-        <p class="text-base leading-relaxed text-tebra-teal sm:text-lg">
-          Tebrans share a passion for unlocking better healthcare by helping independent practices bring
-          modernized care to patients everywhere. We also share common values and beliefs that anchor our
-          culture of workplace well-being.
-        </p>
-      </div>
+  <PageSection variant="alt" class="py-14 lg:py-20" id="mission">
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="text-2xl font-semibold tracking-tight text-tebra-teal sm:text-3xl lg:text-4xl">
+        Our mission
+      </h2>
+      <p class="mt-5 text-base leading-relaxed text-tebra-teal sm:text-lg">
+          We empower IVF clinics with technology that brings clarity to complexity. From embryo grading to lab traceability, our platform ensures every decision is informed, consistent, and measurable.
+      </p>
+      <p class="mt-5 text-base leading-relaxed text-tebra-teal-dark/80 sm:text-lg">
+        Our team is united by a belief: better systems create better outcomes for clinicians, labs, and patients.
+      </p>
     </div>
   </PageSection>
 
-  <!-- Core values carousel: Hero-2 left, Banner-1 right -->
   <PageSection variant="warm" class="relative overflow-hidden py-14 lg:py-20" id="core-values">
-    <div class="careers-values-root mx-auto grid max-w-6xl gap-8 lg:grid-cols-12 lg:items-center lg:gap-6">
-      <div class="hidden lg:col-span-3 lg:block">
-        <img
-          src={heroSrc}
-          alt=""
-          class="h-[220px] w-full rounded-2xl object-cover shadow-sm ring-1 ring-black/5"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="relative text-center lg:col-span-6">
-        <p
-          class="careers-values-index mb-2 text-sm font-medium tabular-nums text-tebra-teal-dark"
-          aria-live="polite"
-        >
-          01 / {String(totalValues).padStart(2, "0")}
-        </p>
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tebra-teal">Core values</p>
-        <h3 class="careers-values-title mt-4 font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl lg:text-[2.25rem]">
-          {coreValues[0].title}
-        </h3>
-        <p class="careers-values-desc mx-auto mt-4 max-w-lg text-base leading-relaxed text-gray-600 sm:text-lg">
-          {coreValues[0].description}
-        </p>
-
-        <div class="careers-values-dots mt-8 flex justify-center gap-2" role="tablist" aria-label="Core value">
-          {coreValues.map((_, i) => (
-            <button
-              type="button"
-              class:list={[
-                "h-2 w-2 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal",
-                i === 0 ? "bg-tebra-teal" : "bg-gray-300 hover:bg-gray-400",
-              ]}
-              data-dot={i}
-              aria-label={`Show value ${i + 1}`}
-              aria-selected={i === 0 ? "true" : "false"}
-            />
-          ))}
+    <div class="careers-values-root mx-auto max-w-6xl">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-tebra-teal">Core values</p>
+          <h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
+            What drives our team
+          </h2>
         </div>
-
-        <div class="mt-8 flex items-center justify-between gap-4 px-2 sm:px-8 lg:px-0">
+        <div class="hidden items-center gap-3 md:flex">
           <button
             type="button"
             class="careers-values-prev flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gray-200/90 text-tebra-teal-dark transition hover:bg-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal"
@@ -237,64 +211,79 @@ const totalValues = coreValues.length;
         </div>
       </div>
 
-      <div class="hidden lg:col-span-3 lg:block">
-        <img
-          src={bannerSrc}
-          alt=""
-          class="ml-auto h-[180px] w-full max-w-[280px] rounded-2xl object-cover shadow-sm ring-1 ring-black/5"
-          loading="lazy"
-        />
+      <div class="mt-8 overflow-hidden">
+        <div class="careers-values-track flex gap-4 overflow-x-auto pb-3" role="tablist" aria-label="Core value slides">
+          {coreValues.map((value, i) => (
+            <article
+              class:list={[
+                "careers-value-card min-w-[85%] snap-start rounded-3xl border border-white/60 bg-white/85 p-6 shadow-sm transition-all duration-300 md:min-w-[48%] lg:min-w-[32%]",
+                i === 0 ? "is-active" : "",
+              ]}
+              data-slide={i}
+            >
+              <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-tebra-teal">
+                Value {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 class="mt-4 text-2xl font-semibold text-tebra-teal-dark">{value.title}</h3>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">{value.description}</p>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
 
-    <!-- Mobile: show banner under carousel -->
-    <div class="mt-8 flex justify-center lg:hidden">
-      <img
-        src={bannerSrc}
-        alt=""
-        class="h-48 w-full max-w-sm rounded-2xl object-cover shadow-sm ring-1 ring-black/5"
-        loading="lazy"
-      />
+      <div class="mt-6 flex items-center justify-between gap-4">
+        <div class="careers-values-dots flex gap-2" role="tablist" aria-label="Core value pagination">
+          {coreValues.map((_, i) => (
+            <button
+              type="button"
+              class:list={[
+                "h-2.5 w-2.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal",
+                i === 0 ? "bg-tebra-teal w-6" : "bg-gray-300 hover:bg-gray-400",
+              ]}
+              data-dot={i}
+              aria-label={`Show value ${i + 1}`}
+              aria-selected={i === 0 ? "true" : "false"}
+            />
+          ))}
+        </div>
+        <div class="flex items-center gap-3 md:hidden">
+          <button
+            type="button"
+            class="careers-values-prev flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-200/90 text-tebra-teal-dark transition hover:bg-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal"
+            aria-label="Previous value"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="careers-values-next flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-btn-primary text-white shadow-sm transition hover:bg-btn-primary-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-btn-primary"
+            aria-label="Next value"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </PageSection>
 
-  <!-- DEI: text + Banner-1 large rounded -->
   <PageSection variant="warm" class="border-t border-gray-100/80 py-14 lg:py-20">
     <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
       <div class="max-w-xl">
         <h2 class="font-display text-2xl font-semibold tracking-tight text-tebra-teal-dark sm:text-3xl lg:text-4xl">
-          Our commitment to building a diverse, equitable, and inclusive culture
+          A culture built on collaboration and impact
         </h2>
         <p class="mt-5 text-base leading-relaxed text-tebra-teal-dark/90 sm:text-lg">
-          Diversity, Equity, and Inclusion are at the core of our success at Tebra. We foster an environment that
-          welcomes diversity of thought, perspective, and lived experiences. We want everyone to feel valued and
-          respected, and be able to bring their whole, authentic self to Tebra. This helps us cultivate our
-          innovation and creativity when solving challenges for our customers and understanding the communities we
-          serve. From employee resource groups to community partnerships, Tebrans take an active role in creating
-          and amplifying DE&amp;I in all that we do.
+          We bring together clinicians, engineers, and operators to solve some of the most complex challenges in reproductive healthcare. Every voice matters, and every idea can shape the future of IVF.
         </p>
-        <div class="mt-7">
-          <a
-            href="/diversity-equity-and-inclusion"
-            class="inline-flex items-center gap-2 text-sm font-semibold text-tebra-teal hover:text-tebra-teal-dark transition-colors"
-          >
-            Learn more about DEI
-            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path
-                d="M6 12l4-4-4-4"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </a>
-        </div>
       </div>
       <div class="flex justify-center lg:justify-end">
         <img
-          src={bannerSrc}
-          alt="Tebra team members collaborating at work"
+          src={cultureSrc}
+          alt="EmbryoOne team culture focused on collaboration and impact"
           class="w-full max-w-lg rounded-3xl object-cover shadow-md ring-1 ring-black/5"
           width="768"
           height="768"
@@ -305,44 +294,100 @@ const totalValues = coreValues.length;
   </PageSection>
 
   <PageSection variant="default">
-    <div class="mx-auto max-w-5xl">
+    <div class="mx-auto max-w-6xl">
       <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
-        Perks and benefits
+        Perks and benefits at EmbryoOne
       </h2>
       <p class="mt-4 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
-        Benefits offered to all Tebrans—designed to support life and work, together.
+        Designed to support ambitious work, healthy teams, and long-term growth.
       </p>
 
-      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {perks.map((p) => (
-          <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <h3 class="text-base font-bold text-gray-900">{p.title}</h3>
-            <ul class="mt-4 space-y-2 text-sm leading-relaxed text-gray-600">
-              {p.items.map((item) => (
-                <li class="flex gap-2">
-                  <span class="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-tebra-teal" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+      <div class="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="lg:sticky lg:top-28 lg:self-start">
+          <img
+            src={bannerSrc}
+            alt="EmbryoOne benefits and team experience"
+            class="h-[320px] w-full rounded-3xl object-cover shadow-md ring-1 ring-black/5 lg:h-[560px]"
+            loading="lazy"
+          />
+        </div>
+        <div class="benefits-scroll-panel rounded-3xl border border-gray-100 bg-white p-4 shadow-sm sm:p-5">
+          <div class="space-y-4">
+            {perks.map((p) => (
+              <div class="benefit-item rounded-2xl border border-gray-100 bg-tebra-hero-bg p-5">
+                <h3 class="text-base font-bold text-gray-900">{p.title}</h3>
+                <ul class="mt-4 space-y-2 text-sm leading-relaxed text-gray-600">
+                  {p.items.map((item) => (
+                    <li class="flex gap-2">
+                      <span class="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-tebra-teal" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </PageSection>
 
   <PageSection variant="default">
-    <div class="mx-auto max-w-5xl">
-      <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
-        Recognition
-      </h2>
-      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {recognition.map((r) => (
-          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100">
-            <p class="text-xs font-bold uppercase tracking-[0.22em] text-gray-500">{r.label}</p>
-            <p class="mt-3 text-sm font-semibold text-gray-900">{r.detail}</p>
+    <div class="testimonial-root mx-auto max-w-6xl overflow-hidden rounded-[2rem] ring-1 ring-black/5">
+      {testimonials.map((item, i) => (
+        <article class:list={["testimonial-slide-careers grid min-h-[420px] lg:grid-cols-2", i === 0 ? "is-active" : ""]} data-testimonial-slide={i}>
+          <div class="overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.name}
+              class="testimonial-image h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
-        ))}
+          <div class="flex flex-col justify-center bg-gradient-to-br from-tebra-teal-dark to-[#5b2d85] px-8 py-10 text-white sm:px-10 lg:px-12">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/75">Team perspective</p>
+            <blockquote class="mt-5 text-2xl font-semibold leading-relaxed sm:text-3xl">
+              “{item.quote}”
+            </blockquote>
+            <p class="mt-6 text-sm font-medium text-white/85">{item.name}</p>
+          </div>
+        </article>
+      ))}
+      <div class="flex items-center justify-between gap-4 bg-white px-6 py-4">
+        <div class="testimonial-dots-careers flex gap-2">
+          {testimonials.map((_, i) => (
+            <button
+              type="button"
+              class:list={[
+                "h-2.5 w-2.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal",
+                i === 0 ? "bg-tebra-teal w-6" : "bg-gray-300",
+              ]}
+              data-testimonial-dot={i}
+              aria-label={`Show testimonial ${i + 1}`}
+              aria-selected={i === 0 ? "true" : "false"}
+            />
+          ))}
+        </div>
+        <div class="flex gap-3">
+          <button
+            type="button"
+            class="testimonial-prev flex h-10 w-10 items-center justify-center rounded-lg bg-gray-200/90 text-tebra-teal-dark transition hover:bg-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-tebra-teal"
+            aria-label="Previous testimonial"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="testimonial-next flex h-10 w-10 items-center justify-center rounded-lg bg-btn-primary text-white transition hover:bg-btn-primary-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-btn-primary"
+            aria-label="Next testimonial"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </PageSection>
@@ -351,24 +396,24 @@ const totalValues = coreValues.length;
     <div class="mx-auto max-w-content">
       <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="font-display text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">
-          Join Team Tebra
+          Join EmbryoOne
         </h2>
         <a
           href="/careers"
-          class="inline-flex w-fit shrink-0 items-center justify-center rounded-full border border-tebra-teal-dark bg-white px-6 py-2.5 text-sm font-semibold text-tebra-teal-dark transition hover:bg-tebra-hero-bg"
+          class="inline-flex w-fit shrink-0 items-center justify-center rounded-full border border-tebra-teal-dark/70 bg-white px-6 py-2.5 text-sm font-semibold text-tebra-teal-dark transition hover:bg-tebra-hero-bg"
         >
-          View more jobs
+          View all roles
         </a>
       </div>
 
-      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {featuredJobs.map((job) => (
           <a
             href={job.href}
-            class="group flex flex-col rounded-2xl bg-tebra-hero-bg p-6 shadow-sm ring-1 ring-black/[0.04] transition hover:shadow-md"
+            class="open-role-card group flex flex-col rounded-2xl p-6 transition"
           >
             <div class="flex flex-wrap gap-2">
-              <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 px-2.5 py-1 text-xs font-medium text-tebra-teal-dark">
+              <span class="open-role-chip inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium">
                 {job.deptIcon === "box" ? (
                   <svg class="h-3.5 w-3.5 shrink-0 opacity-80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path
@@ -395,7 +440,7 @@ const totalValues = coreValues.length;
                 )}
                 {job.dept}
               </span>
-              <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/90 px-2.5 py-1 text-xs font-medium text-tebra-teal-dark">
+              <span class="open-role-chip inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium">
                 <svg class="h-3.5 w-3.5 shrink-0 opacity-80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
                     d="M12 21s-8-4.5-8-11a8 8 0 1116 0c0 6.5-8 11-8 11z"
@@ -411,7 +456,7 @@ const totalValues = coreValues.length;
             <h3 class="mt-4 text-lg font-bold text-tebra-teal-dark group-hover:text-tebra-teal">
               {job.title}
             </h3>
-            <p class="mt-3 line-clamp-4 text-sm leading-relaxed text-gray-600">{recruitmentNotice}</p>
+            <p class="mt-3 line-clamp-4 text-sm leading-relaxed text-[#5B6370]">{job.summary}</p>
           </a>
         ))}
       </div>
@@ -419,58 +464,259 @@ const totalValues = coreValues.length;
   </PageSection>
 
   <CTASection
-    title="Automate, optimize, and thrive with Tebra"
-    description="The leading practice automation solution for independent practices."
-    primaryCtaLabel="Get a demo"
-    primaryCtaHref="/demo"
-    secondaryCtaLabel="Explore for Free"
-    secondaryCtaHref="/sign-up"
+    title="Make an impact in reproductive healthcare"
+    description="Join a team that’s redefining IVF technology with precision and intelligence."
+    primaryCtaLabel="Apply now"
+    primaryCtaHref="#open-roles"
+    secondaryCtaLabel="Join our mission"
+    secondaryCtaHref="#mission"
   />
 </BaseLayout>
 
-<script define:vars={{ careersSlides: coreValues }}>
+<style>
+  .careers-values-track {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+
+  .careers-values-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .careers-value-card {
+    transform: scale(0.98);
+    opacity: 0.88;
+    box-shadow: 0 12px 30px -24px rgba(15, 23, 42, 0.25);
+  }
+
+  .careers-value-card.is-active {
+    transform: scale(1.05);
+    opacity: 1;
+    box-shadow: 0 26px 44px -28px rgba(15, 23, 42, 0.32);
+  }
+
+  .benefits-scroll-panel {
+    max-height: 560px;
+    overflow-y: auto;
+  }
+
+  .benefit-item {
+    opacity: 0.7;
+    transform: translateY(8px);
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+
+  .benefit-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .open-role-card {
+    background: #f3eeff;
+    border: 1px solid #e4d8fb;
+    box-shadow: 0 14px 26px -22px rgba(15, 23, 42, 0.35);
+  }
+
+  .open-role-card:hover {
+    box-shadow: 0 20px 30px -22px rgba(15, 23, 42, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .open-role-chip {
+    background: #ece3ff;
+    color: #5a2f82;
+    border: 1px solid #d8c5f6;
+  }
+
+  .testimonial-slide-careers {
+    display: none;
+  }
+
+  .testimonial-slide-careers.is-active {
+    display: grid;
+  }
+
+  .testimonial-image {
+    animation: testimonialZoom 900ms ease;
+  }
+
+  @keyframes testimonialZoom {
+    from {
+      transform: scale(1.04);
+      opacity: 0.75;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .careers-value-card,
+    .benefit-item,
+    .testimonial-image {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script define:vars={{ careersSlides: coreValues, careersTestimonials: testimonials }}>
   function initCareersValues() {
     const root = document.querySelector(".careers-values-root");
     if (!root || !careersSlides || !careersSlides.length) return;
-    const slides = careersSlides;
-    const total = slides.length;
-    const indexEl = root.querySelector(".careers-values-index");
-    const titleEl = root.querySelector(".careers-values-title");
-    const descEl = root.querySelector(".careers-values-desc");
+    const prevButtons = root.querySelectorAll(".careers-values-prev");
+    const nextButtons = root.querySelectorAll(".careers-values-next");
     const dots = root.querySelectorAll("[data-dot]");
-    const prev = root.querySelector(".careers-values-prev");
-    const next = root.querySelector(".careers-values-next");
-    if (!indexEl || !titleEl || !descEl || !prev || !next) return;
+    const track = root.querySelector(".careers-values-track");
+    const cards = root.querySelectorAll(".careers-value-card");
+    if (!track || !cards.length) return;
 
     let i = 0;
-    function pad(n) {
-      return String(n).padStart(2, "0");
-    }
-    function render() {
-      const s = slides[i];
-      indexEl.textContent = `${pad(i + 1)} / ${pad(total)}`;
-      titleEl.textContent = s.title;
-      descEl.textContent = s.description;
+    let isProgrammaticScroll = false;
+    let scrollFrame = null;
+
+    function render(shouldScroll = true) {
+      cards.forEach((card, idx) => {
+        card.classList.toggle("is-active", idx === i);
+      });
       dots.forEach((d, idx) => {
         const on = idx === i;
         d.classList.toggle("bg-tebra-teal", on);
+        d.classList.toggle("w-6", on);
         d.classList.toggle("bg-gray-300", !on);
         d.setAttribute("aria-selected", String(on));
       });
+      if (!shouldScroll) return;
+      const activeCard = cards[i];
+      if (activeCard instanceof HTMLElement) {
+        isProgrammaticScroll = true;
+        track.scrollTo({ left: activeCard.offsetLeft - track.offsetLeft, behavior: "smooth" });
+        window.setTimeout(() => {
+          isProgrammaticScroll = false;
+        }, 280);
+      }
     }
+
     function go(delta) {
-      i = (i + delta + total) % total;
+      i = (i + delta + cards.length) % cards.length;
       render();
     }
-    prev.addEventListener("click", () => go(-1));
-    next.addEventListener("click", () => go(1));
+
+    prevButtons.forEach((button) => {
+      button.addEventListener("click", () => go(-1));
+    });
+    nextButtons.forEach((button) => {
+      button.addEventListener("click", () => go(1));
+    });
     dots.forEach((d, idx) => {
       d.addEventListener("click", () => {
         i = idx;
         render();
       });
     });
+
+    track.addEventListener(
+      "scroll",
+      () => {
+        if (isProgrammaticScroll) return;
+        if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
+        scrollFrame = window.requestAnimationFrame(() => {
+          const trackRect = track.getBoundingClientRect();
+          let nearest = 0;
+          let nearestDistance = Number.POSITIVE_INFINITY;
+          cards.forEach((card, idx) => {
+            const rect = card.getBoundingClientRect();
+            const distance = Math.abs(rect.left - trackRect.left);
+            if (distance < nearestDistance) {
+              nearest = idx;
+              nearestDistance = distance;
+            }
+          });
+          if (nearest !== i) {
+            i = nearest;
+            render(false);
+          }
+        });
+      },
+      { passive: true }
+    );
+
     render();
   }
+
+  function initBenefitsVisibility() {
+    const items = document.querySelectorAll(".benefit-item");
+    if (!items.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+        });
+      },
+      { threshold: 0.18 }
+    );
+    items.forEach((item) => observer.observe(item));
+  }
+
+  function initCareersTestimonials() {
+    const root = document.querySelector(".testimonial-root");
+    if (!root || !careersTestimonials || !careersTestimonials.length) return;
+    const slides = root.querySelectorAll("[data-testimonial-slide]");
+    const dots = root.querySelectorAll("[data-testimonial-dot]");
+    const prev = root.querySelector(".testimonial-prev");
+    const next = root.querySelector(".testimonial-next");
+    if (!slides.length || !dots.length || !prev || !next) return;
+
+    let index = 0;
+    let timer = null;
+
+    function render() {
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle("is-active", idx === index);
+      });
+      dots.forEach((dot, idx) => {
+        const on = idx === index;
+        dot.classList.toggle("bg-tebra-teal", on);
+        dot.classList.toggle("w-6", on);
+        dot.classList.toggle("bg-gray-300", !on);
+        dot.setAttribute("aria-selected", String(on));
+      });
+    }
+
+    function go(delta) {
+      index = (index + delta + slides.length) % slides.length;
+      render();
+    }
+
+    function start() {
+      if (timer) window.clearInterval(timer);
+      timer = window.setInterval(() => go(1), 4500);
+    }
+
+    prev.addEventListener("click", () => {
+      go(-1);
+      start();
+    });
+    next.addEventListener("click", () => {
+      go(1);
+      start();
+    });
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        index = idx;
+        render();
+        start();
+      });
+    });
+
+    render();
+    start();
+  }
+
   initCareersValues();
+  initBenefitsVisibility();
+  initCareersTestimonials();
 </script>

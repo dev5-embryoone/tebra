@@ -35,10 +35,9 @@ export const solutionsData: SolutionContent[] = [
     ],
     solutionHeading: "How EmbryoOne helps",
     solutionPoints: [
-      "Standardized lab workflows for fertilization, grading, freezing, and thawing.",
-      "AI-assisted embryo grading that improves consistency and reduces subjectivity.",
-      "Real-time action tracking that logs who performed each step, when, and where.",
-      "Integrated witness workflows that reduce human error during critical handoffs.",
+      "Standardize key lab steps across teams.",
+      "Use AI-assisted grading for consistency.",
+      "Track every action with user and timestamp logs.",
     ],
     featureHeading: "Feature deep dive",
     featurePoints: [
@@ -70,9 +69,9 @@ export const solutionsData: SolutionContent[] = [
     ],
     solutionHeading: "How EmbryoOne helps",
     solutionPoints: [
-      "Unified lab dashboard for workflows, outcomes, and team performance.",
-      "Performance analytics across time, providers, and protocols.",
-      "Compliance-ready workflows with complete auditability by design.",
+      "Monitor workflows and outcomes in one dashboard.",
+      "Compare performance by provider and protocol.",
+      "Keep audit-ready records by default.",
     ],
     featureHeading: "Feature deep dive",
     featurePoints: [
@@ -105,9 +104,9 @@ export const solutionsData: SolutionContent[] = [
     ],
     solutionHeading: "How EmbryoOne helps",
     solutionPoints: [
-      "Unified patient timeline for appointments, labs, embryos, and clinical decisions.",
-      "Real-time alerts when action is needed.",
-      "Decision support with AI insights and structured data context.",
+      "View cycle, embryo, and clinical updates in one timeline.",
+      "Get real-time alerts for time-sensitive actions.",
+      "Use AI-supported context for faster decisions.",
     ],
     featureHeading: "Feature deep dive",
     featurePoints: [
@@ -140,9 +139,9 @@ export const solutionsData: SolutionContent[] = [
     ],
     solutionHeading: "How EmbryoOne helps",
     solutionPoints: [
-      "Centralized operations platform for schedules, tasks, and team workflows.",
-      "Automated workflows that reduce manual coordination overhead.",
-      "Real-time reporting for instant operational insights.",
+      "Manage schedules, tasks, and workflows centrally.",
+      "Automate recurring coordination work.",
+      "Access real-time operational reporting.",
     ],
     featureHeading: "Feature deep dive",
     featurePoints: [
@@ -170,10 +169,9 @@ export const solutionsData: SolutionContent[] = [
     solutionHeading: "How EmbryoOne helps",
     solutionBody: "Build accountability into every step of the lab workflow.",
     solutionPoints: [
-      "End-to-end tracking from fertilization through cryo storage.",
-      "User-level accountability for every action taken.",
-      "Precise time-stamped logs across all events.",
-      "Witness-linked validation checkpoints at high-risk transitions.",
+      "Track every embryo action from fertilization to cryo storage.",
+      "Capture user-level, time-stamped logs automatically.",
+      "Validate high-risk steps with witness checkpoints.",
     ],
     featureHeading: "Feature deep dive",
     featurePoints: [
@@ -195,10 +193,9 @@ export const solutionsData: SolutionContent[] = [
       "Embryo selection is one of the most critical decisions in IVF. EmbryoOne supports clinicians with structured grading workflows and AI-powered insights for confident, consistent decisions.",
     solutionHeading: "How EmbryoOne helps",
     solutionPoints: [
-      "Image-based analysis with high-quality embryo capture.",
-      "AI confidence scoring to support decision-making.",
-      "Standardized grading workflows across embryologists.",
-      "Manual override controls with documented decision rationale.",
+      "Capture and review embryos with image-based workflows.",
+      "Use AI confidence scores as decision support.",
+      "Standardize grading with manual override controls.",
     ],
     featureHeading: "Feature deep dive",
     featurePoints: [
@@ -224,10 +221,9 @@ export const solutionsData: SolutionContent[] = [
       "Cryopreservation requires precise monitoring and tracking. EmbryoOne provides complete visibility and control across storage, movement, and system health.",
     solutionHeading: "How EmbryoOne helps",
     solutionPoints: [
-      "Tank monitoring for temperature, LN2 levels, and system status.",
-      "Movement tracking for transfer, storage, and retrieval events.",
-      "Alerts and thresholds to surface risk before failure.",
-      "Patient-linked cryo records for consent and retrieval readiness.",
+      "Monitor tank status, LN2 levels, and storage conditions.",
+      "Track all cryo movements with full history.",
+      "Get early alerts before risks escalate.",
     ],
     featureHeading: "Feature deep dive",
     featurePoints: [
@@ -249,10 +245,9 @@ export const solutionsData: SolutionContent[] = [
       "Consumables are critical to lab operations, and running out is not an option. EmbryoOne helps teams maintain real-time visibility into supply levels and usage.",
     solutionHeading: "How EmbryoOne helps",
     solutionPoints: [
-      "Real-time inventory tracking across locations and teams.",
-      "Usage insights to understand consumption patterns.",
-      "Automated low-stock alerts before disruptions occur.",
-      "Connected PR-PO-GRN workflows for replenishment continuity.",
+      "Track inventory in real time across locations.",
+      "Use consumption trends for better planning.",
+      "Automate low-stock alerts and replenishment flow.",
     ],
     featureHeading: "Feature deep dive",
     featurePoints: [

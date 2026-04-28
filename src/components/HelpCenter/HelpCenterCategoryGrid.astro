@@ -1,16 +1,35 @@
 ---
 import HelpCategoryIcon from "./HelpCategoryIcon.astro";
 import { helpCenterCategories } from "../../data/helpCenterPage";
+
+interface Props {
+  query?: string;
+}
+
+const { query = "" } = Astro.props as Props;
+const normalizedQuery = query.trim().toLowerCase();
+const filteredCategories = normalizedQuery
+  ? helpCenterCategories.filter(
+      (cat) =>
+        cat.title.toLowerCase().includes(normalizedQuery) ||
+        cat.description.toLowerCase().includes(normalizedQuery)
+    )
+  : helpCenterCategories;
 ---
 
 <section class="bg-white px-4 py-14 sm:py-16" aria-labelledby="learn-more-heading">
   <div class="mx-auto max-w-6xl">
     <h2 id="learn-more-heading" class="text-center text-2xl font-bold text-tebra-teal-dark sm:text-3xl">
-      Learn More
+      {normalizedQuery ? `Search Results in Categories` : "Learn More"}
     </h2>
+    {normalizedQuery ? (
+      <p class="mt-3 text-center text-sm text-neutral-600">
+        {filteredCategories.length} result{filteredCategories.length === 1 ? "" : "s"} for "<span class="font-semibold text-tebra-teal-dark">{query}</span>"
+      </p>
+    ) : null}
     <ul class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {
-        helpCenterCategories.map((cat) => (
+        filteredCategories.map((cat) => (
           <li>
             <a
               href={cat.href}
@@ -26,5 +45,10 @@ import { helpCenterCategories } from "../../data/helpCenterPage";
         ))
       }
     </ul>
+    {normalizedQuery && filteredCategories.length === 0 ? (
+      <p class="mt-10 text-center text-sm text-neutral-600">
+        No category matches found. Try a different keyword.
+      </p>
+    ) : null}
   </div>
 </section>

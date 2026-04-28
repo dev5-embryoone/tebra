@@ -1,5 +1,11 @@
 ---
 const placeholder = "Enter a keyword, topic, or question to search";
+
+interface Props {
+  query?: string;
+}
+
+const { query = "" } = Astro.props as Props;
 ---
 
 <section class="bg-tebra-teal-dark px-4 py-14 text-white sm:py-20" aria-labelledby="help-hero-heading">
@@ -20,6 +26,7 @@ const placeholder = "Enter a keyword, topic, or question to search";
         id="help-search"
         type="search"
         name="q"
+        value={query}
         placeholder={placeholder}
         class="min-w-0 flex-1 border-0 bg-transparent px-5 py-3.5 text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-0"
       />

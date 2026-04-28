@@ -11,6 +11,7 @@ import peopleClinicOrgChartImage from "../../../assets/people-clinic-org-chart.p
 import peopleTeamDashboardImage from "../../../assets/people-team-dashboard.png";
 import teamChatImage from "../../../assets/people-chat.png";
 import expensesImage from "../../../assets/people-expenses.png";
+import uploadedTeamStructureImage from "/Users/ismo/.cursor/projects/Users-ismo-Documents-tebra/assets/image-a3bd8ad1-b969-42d1-b294-562613fe2f51.png";
 
 const opsSnapshotPoints = [
   {
@@ -28,29 +29,6 @@ const opsSnapshotPoints = [
   {
     title: "Actionable Insights",
     description: "Move from tracking to decision-making.",
-  },
-];
-
-const taskHighlights = [
-  {
-    title: "Kanban workflow",
-    description:
-      "Move work across Pending, In Progress, and Completed so embryology, lab, and nursing always share the same picture of what is blocked and what is done.",
-  },
-  {
-    title: "Calendar sync",
-    description:
-      "Lay procedures, audits, and deadlines on one timeline so room prep, lab checks, and patient milestones never drift out of alignment.",
-  },
-  {
-    title: "Automated tracking",
-    description:
-      "Overdue and priority states surface automatically so managers are not chasing spreadsheets or side channels for status updates.",
-  },
-  {
-    title: "Role-based assignment",
-    description:
-      "Route tasks by role, department, branch, or case so the right person owns each step from ICSI prep through transfer readiness.",
   },
 ];
 
@@ -125,8 +103,8 @@ const peopleFaqs = [
       </div>
 
       <img
-        src={peopleHeroOrgChartImage.src}
-        alt="EmbryoOne organizational chart with clinic locations, departments, leads, and team members"
+        src={peopleClinicOrgChartImage.src}
+        alt="Clinic team hierarchy and department structure in EmbryoOne"
         class="w-full rounded-2xl border border-gray-200 shadow-sm"
         loading="eager"
       />
@@ -277,14 +255,6 @@ const peopleFaqs = [
           </figcaption>
         </figure>
       </div>
-      <ul class="mt-8 grid gap-4 md:grid-cols-2">
-        {taskHighlights.map((item) => (
-          <li class="rounded-xl border border-gray-200 bg-white px-4 py-4 text-sm text-gray-600">
-            <span class="font-semibold text-tebra-teal-dark">{item.title}</span>
-            <p class="mt-2 leading-relaxed">{item.description}</p>
-          </li>
-        ))}
-      </ul>
     </div>
   </section>
 
@@ -315,64 +285,37 @@ const peopleFaqs = [
     <div class="page-container">
       <h2 class="heading-md text-tebra-teal-dark">Your clinic structured the way it actually works</h2>
 
-      <p
-        class="mx-auto mt-4 max-w-6xl text-center text-base text-gray-600 text-balance xl:whitespace-nowrap"
-      >
-        Visualize how your teams operate not just who exists. Each department has defined roles,
-        assigned responsibilities, and workflow ownership. No overlap. No ambiguity.
-      </p>
-
-      <div class="mt-8 grid gap-8 md:grid-cols-2 md:items-start lg:gap-12">
+      <div class="mx-auto mt-4 max-w-6xl grid gap-8 md:grid-cols-2 md:items-center lg:gap-12">
         <div class="text-base text-gray-600">
-          <h3 class="text-xl font-semibold text-tebra-teal-dark">From organization to branch to department</h3>
-          <p class="mt-3">
-            The org view mirrors how clinics actually run: one organization, multiple locations,
-            and clear department charters under each branch. Leads and member counts stay visible so
-            accountability stays tied to structure, not tribal knowledge.
+          <p>
+            Visualize how teams operate with clear ownership across departments, branches, and roles.
+          </p>
+          <p class="mt-4">
+            The Team view surfaces headcount, lead ownership, and branch context so managers can align coverage and resolve workflow gaps quickly.
           </p>
           <ul class="mt-5 space-y-2 text-sm">
             <li class="flex gap-2">
               <span class="text-tebra-teal">•</span>
-              <span>Color-coded paths for Andrology, Culture Lab, Clinic Operations, and more</span>
+              <span>Clear department ownership and lead visibility</span>
             </li>
             <li class="flex gap-2">
               <span class="text-tebra-teal">•</span>
-              <span>Lead role and responsibility line on every department card</span>
+              <span>Branch-aware team structure in one dashboard</span>
             </li>
             <li class="flex gap-2">
               <span class="text-tebra-teal">•</span>
-              <span>Team member strip under each unit for quick who-is-where context</span>
+              <span>Faster member search and coverage alignment</span>
             </li>
           </ul>
         </div>
-        <div class="text-base text-gray-600">
-          <h3 class="text-xl font-semibold text-tebra-teal-dark">Department cards with live team signals</h3>
-          <p class="mt-3">
-            The Team view surfaces Embryology, Lab Operations, Nursing, Andrology, and other groups
-            in one grid: people per team, branch, named lead, and a short charter for what that
-            group owns day to day from retrieval and culture through witness checks and patient flow.
-          </p>
-          <p class="mt-4">
-            Search teams, open hierarchy, or jump into details when you need to add members, align
-            on coverage, or connect operational work to the right owner before it becomes a delay on
-            the floor.
-          </p>
+        <div>
+          <img
+            src={uploadedTeamStructureImage.src}
+            alt="Team dashboard with department cards, headcount, leads, and branch locations"
+            class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
+            loading="lazy"
+          />
         </div>
-      </div>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:gap-8">
-        <img
-          src={peopleClinicOrgChartImage.src}
-          alt="Embryo One organizational chart from organization through branches, departments, leads, and team members"
-          class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
-          loading="lazy"
-        />
-        <img
-          src={peopleTeamDashboardImage.src}
-          alt="Team dashboard with department cards, headcount, leads, and branch locations"
-          class="w-full rounded-2xl border border-gray-200 bg-white shadow-sm"
-          loading="lazy"
-        />
       </div>
     </div>
   </section>

@@ -68,7 +68,7 @@ export const mobileResourceLinks = [
 ] as const;
 
 export const mobileCompanyLinks = [
-  { label: "About", href: "/company/about" },
-  { label: "Careers", href: "/company/careers" },
-  { label: "Contact", href: "/company/contact" },
+  { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
 ] as const;
