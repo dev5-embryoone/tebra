@@ -1,126 +1,186 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Button from "../../components/Button/Button.astro";
-import heroImage from "../../assets/platform-lab-operations.png";
 import previewImage from "../../assets/ehr-hero-connected-system.png";
+
+const storySteps = [
+  {
+    label: "Step 1 - The problem",
+    title: "Fragmented systems slow IVF teams",
+    copy: "IVF clinics often rely on disconnected systems and manual handoffs that increase delays and missed context.",
+  },
+  {
+    label: "Step 2 - The gap",
+    title: "Variability blocks consistency",
+    copy: "Lack of standardization introduces differences in execution, documentation quality, and decision timing.",
+  },
+  {
+    label: "Step 3 - The solution",
+    title: "One connected operating layer",
+    copy: "EmbryoOne unifies clinical and lab workflows so teams can move with clarity, traceability, and shared context.",
+  },
+  {
+    label: "Step 4 - The future",
+    title: "Intelligent IVF ecosystems",
+    copy: "AI-driven decision support helps clinics move from observation to prediction while preserving clinical control.",
+  },
+];
+
+const valueSlides = [
+  {
+    title: "Precision over approximation",
+    copy: "Every workflow is designed to reduce ambiguity and keep decisions grounded in structured data.",
+  },
+  {
+    title: "Consistency at every step",
+    copy: "From intake to embryo decisions, teams follow repeatable pathways that improve reliability.",
+  },
+  {
+    title: "Data before assumption",
+    copy: "Objective metrics and traceable context replace guesswork and fragmented communication.",
+  },
+  {
+    title: "Designed for clinicians",
+    copy: "Interfaces, actions, and information hierarchy reflect how real IVF teams actually work.",
+  },
+];
+
+const impactCards = [
+  {
+    title: "Unified workflows",
+    copy:
+      "Everything connected in one system. Connect clinical, lab, and operations activity in one shared workflow, reduce handoff gaps between roles, and keep execution traceable across every stage.",
+  },
+  {
+    title: "Real-time visibility",
+    copy:
+      "Track every stage of IVF cycles. See patient progress, pending actions, and blockers as they happen, while doctors, embryologists, and coordinators stay aligned from the same live view.",
+  },
+  {
+    title: "AI-powered decisions",
+    copy:
+      "Objective embryo insights for faster confidence. Use explainable scoring and confidence context to support decisions, and standardize grading discussions with consistent, data-backed insights.",
+  },
+  {
+    title: "Operational efficiency",
+    copy:
+      "Reduce manual work and avoid preventable errors. Automate repetitive steps so teams can focus on high-value actions, and improve consistency with structured task tracking and clear ownership.",
+  },
+];
+
+const principles = [
+  "We prioritize usability for clinicians.",
+  "We design for accuracy and traceability.",
+  "We build systems that scale with clinics.",
+  "We continuously evolve with data.",
+];
 ---
 <BaseLayout
   title="About EmbryoOne | IVF Platform"
-  description="EmbryoOne is the operating system for modern IVF clinics, connecting clinical care, lab workflows, and AI insights."
+  description="EmbryoOne brings clinical workflows, lab intelligence, and AI together for consistent, traceable, and data-driven IVF decisions."
 >
-  <section class="page-section bg-tebra-hero-bg">
-    <div class="page-container max-w-6xl">
-      <div class="grid gap-10 md:grid-cols-2 md:items-center">
-        <div>
-          <h1 class="text-4xl font-semibold tracking-tight text-tebra-teal-dark sm:text-5xl">
-            The operating system for modern IVF clinics
+  <section class="about-hero relative overflow-hidden py-14 sm:py-16 md:py-20">
+    <div class="absolute inset-0 about-hero-gradient"></div>
+    <div class="page-container relative max-w-4xl">
+      <div class="mx-auto max-w-3xl space-y-6 text-center">
+          <p class="about-fade-up text-xs font-semibold uppercase tracking-[0.18em] text-[#5F5AA2]">About EmbryoOne</p>
+          <h1 class="about-fade-up text-4xl font-semibold tracking-tight text-tebra-teal-dark sm:text-5xl md:text-6xl">
+            Redefining precision in fertility care
           </h1>
-          <p class="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg">
-            EmbryoOne connects clinical care, lab workflows, and AI-powered insights into one unified platform-helping teams deliver consistent, high-quality outcomes at scale.
+          <p class="about-fade-up mx-auto max-w-2xl text-base leading-relaxed text-gray-700 sm:text-lg">
+            EmbryoOne brings clinical workflows, lab intelligence, and AI together so every IVF decision is consistent, traceable, and data-driven.
           </p>
-          <p class="mt-4 text-sm font-medium text-tebra-teal-dark sm:text-base">
-            Built for fertility clinics that demand precision, traceability, and smarter decision-making.
-          </p>
-          <div class="mt-7 flex flex-wrap gap-3">
+          <div class="about-fade-up flex flex-wrap justify-center gap-3">
             <Button href="/demo" label="Book a demo" variant="primary" size="md" />
             <Button href="/platform" label="Explore platform" variant="secondary" size="md" />
           </div>
-        </div>
-        <div>
-          <img
-            src={heroImage.src}
-            alt="EmbryoOne platform overview across clinic and lab workflows"
-            class="w-full rounded-3xl border border-gray-200 object-cover shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)]"
-            loading="eager"
-          />
-        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F9FBFC]">
+    <div class="page-container max-w-6xl">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Our story</h2>
+      <ol class="about-timeline mx-auto mt-10 max-w-5xl space-y-6">
+        {storySteps.map((step, index) => (
+          <li class="about-timeline-item relative">
+            <div class="grid gap-5 md:grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] md:items-center">
+              <article
+                class={`rounded-2xl border border-[#D9E4E8] bg-white p-5 shadow-[0_18px_42px_-32px_rgba(15,23,42,0.4)] ${index % 2 === 0 ? "md:col-start-1" : "md:col-start-3"}`}
+              >
+                <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F5AA2]">{step.label}</p>
+                <h3 class="mt-2 text-xl font-semibold text-tebra-teal-dark">{step.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-gray-700">{step.copy}</p>
+              </article>
+              <div class="relative hidden md:flex md:col-start-2 md:row-start-1 md:items-center md:justify-center">
+                <span class="block h-4 w-4 rounded-full bg-tebra-teal shadow-[0_0_0_6px_rgba(10,140,131,0.15)]"></span>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
   <section class="page-section bg-white">
     <div class="page-container max-w-6xl">
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-5"><p class="text-sm font-semibold text-tebra-teal-dark">100% traceability across IVF workflows</p></article>
-        <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-5"><p class="text-sm font-semibold text-tebra-teal-dark">60% reduction in manual lab documentation</p></article>
-        <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-5"><p class="text-sm font-semibold text-tebra-teal-dark">&lt;2 min to review complete embryo history</p></article>
-        <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-5"><p class="text-sm font-semibold text-tebra-teal-dark">Trusted by leading IVF clinics</p></article>
+      <h2 class="heading-md text-center text-tebra-teal-dark">Core values</h2>
+      <div class="mx-auto mt-8 max-w-5xl rounded-3xl border border-[#DCE8E8] bg-gradient-to-br from-[#FBFDFF] to-[#F8F4FF] p-6 md:p-8">
+        <div class="grid gap-6 md:grid-cols-[1fr_160px] md:items-center">
+          <article class="space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#5F5AA2]">Value <span id="valuesSlideCount">1</span> / {valueSlides.length}</p>
+            {valueSlides.map((slide, index) => (
+              <div class={`about-value-slide ${index === 0 ? "is-active" : ""}`} data-slide={index}>
+                <h3 class="text-3xl font-semibold tracking-tight text-tebra-teal-dark sm:text-4xl">{slide.title}</h3>
+                <p class="mt-3 max-w-xl text-base leading-relaxed text-gray-700">{slide.copy}</p>
+              </div>
+            ))}
+          </article>
+          <div class="flex justify-end gap-2">
+            <button id="valuesPrev" type="button" class="h-10 w-10 rounded-full border border-[#C9DCDD] bg-white text-xl text-tebra-teal-dark transition hover:-translate-y-0.5 hover:border-tebra-teal" aria-label="Previous value">
+              &#8592;
+            </button>
+            <button id="valuesNext" type="button" class="h-10 w-10 rounded-full border border-[#C9DCDD] bg-white text-xl text-tebra-teal-dark transition hover:-translate-y-0.5 hover:border-tebra-teal" aria-label="Next value">
+              &#8594;
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="page-section bg-[#F7FAFA]">
     <div class="page-container max-w-6xl">
-      <h2 class="heading-md text-tebra-teal-dark">Everything your IVF clinic needs-connected</h2>
-      <p class="mt-3 max-w-4xl text-gray-700">From patient intake to embryo transfer, EmbryoOne brings together every step of the IVF journey into a single, intelligent system.</p>
-      <div class="mt-7 grid gap-4 md:grid-cols-3">
-        <article class="rounded-2xl border border-[#D8E7E7] bg-white p-5"><h3 class="text-lg font-semibold text-tebra-teal-dark">Clinical workflows</h3><p class="mt-2 text-sm leading-relaxed text-gray-700">Manage patient records, cycle tracking, and treatment decisions with clarity and speed.</p></article>
-        <article class="rounded-2xl border border-[#D8E7E7] bg-white p-5"><h3 class="text-lg font-semibold text-tebra-teal-dark">Lab operations</h3><p class="mt-2 text-sm leading-relaxed text-gray-700">Standardize lab procedures, track every action, and eliminate variability.</p></article>
-        <article class="rounded-2xl border border-[#D8E7E7] bg-white p-5"><h3 class="text-lg font-semibold text-tebra-teal-dark">AI insights</h3><p class="mt-2 text-sm leading-relaxed text-gray-700">Use data-driven embryo grading and decision support to improve outcomes.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="page-section bg-white">
-    <div class="page-container max-w-6xl">
-      <h2 class="heading-md text-tebra-teal-dark">From intake to outcome-fully connected</h2>
-      <div class="mt-6 grid gap-4 md:grid-cols-5">
-        {[
-          { step: "1. Capture", copy: "Digitize patient intake, labs, and baseline data" },
-          { step: "2. Track", copy: "Monitor stimulation, follicle growth, and lab activity" },
-          { step: "3. Analyze", copy: "Use AI and structured data for embryo assessment" },
-          { step: "4. Decide", copy: "Enable faster, more confident clinical decisions" },
-          { step: "5. Deliver", copy: "Complete the cycle with full documentation and reporting" },
-        ].map((item) => (
-          <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-4"><p class="text-sm font-semibold text-tebra-teal-dark">{item.step}</p><p class="mt-2 text-sm text-gray-700">{item.copy}</p></article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="page-section bg-[#F7FAFA]">
-    <div class="page-container max-w-6xl">
-      <h2 class="heading-md text-tebra-teal-dark">Built specifically for IVF-not adapted to it</h2>
-      <div class="mt-6 grid gap-4 md:grid-cols-2">
-        {[
-          { title: "True lab traceability", copy: "Every action is recorded-from fertilization to cryostorage." },
-          { title: "Standardized workflows", copy: "Reduce variability across teams and procedures." },
-          { title: "AI-assisted decisions", copy: "Bring objectivity into embryo grading and selection." },
-          { title: "Real-time visibility", copy: "Clinicians and lab teams stay aligned at every step." },
-        ].map((item) => (
-          <article class="rounded-2xl border border-[#D8E7E7] bg-white p-5"><h3 class="text-lg font-semibold text-tebra-teal-dark">{item.title}</h3><p class="mt-2 text-sm leading-relaxed text-gray-700">{item.copy}</p></article>
+      <h2 class="heading-md text-center text-tebra-teal-dark">Platform impact</h2>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {impactCards.map((card) => (
+          <article class="group rounded-2xl border border-[#E4DAF2] bg-[#F5EFFD] p-5 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-34px_rgba(48,20,82,0.45)]">
+            <h3 class="text-2xl leading-tight font-semibold text-[#2E1D4B]">{card.title}</h3>
+            <p class="mt-3 text-base leading-relaxed text-[#4A3E62]">{card.copy}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
   <section class="page-section bg-white">
-    <div class="page-container max-w-6xl">
-      <h2 class="heading-md text-tebra-teal-dark">Designed for every role in your clinic</h2>
-      <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {[
-          { role: "Embryologists", copy: "Reduce manual work and improve consistency" },
-          { role: "Doctors", copy: "Access complete cycle data for faster decisions" },
-          { role: "Lab Directors", copy: "Monitor performance, quality, and compliance" },
-          { role: "Clinic Admins", copy: "Streamline operations and reporting" },
-        ].map((item) => (
-          <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-5"><h3 class="text-lg font-semibold text-tebra-teal-dark">{item.role}</h3><p class="mt-2 text-sm text-gray-700">{item.copy}</p></article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="page-section bg-[#F6FAFA]">
     <div class="page-container max-w-6xl grid gap-8 md:grid-cols-2 md:items-center">
       <div>
-        <h2 class="heading-md text-tebra-teal-dark">A platform your team will actually enjoy using</h2>
-        <p class="mt-3 text-gray-700">Designed with clinicians in mind-clean interfaces, intuitive workflows, and zero unnecessary complexity.</p>
+        <h2 class="heading-md text-tebra-teal-dark">Built for IVF from day one</h2>
+        <p class="mt-3 text-base leading-relaxed text-gray-700">
+          Not adapted from generic EHR systems. EmbryoOne is designed specifically for fertility workflows where precision, timing, and traceability matter.
+        </p>
+        <ul class="mt-5 space-y-2">
+          <li class="rounded-xl border border-[#D8E7E7] bg-[#FBFEFE] px-4 py-3 text-sm text-gray-700">Fertility-specific workflow architecture</li>
+          <li class="rounded-xl border border-[#D8E7E7] bg-[#FBFEFE] px-4 py-3 text-sm text-gray-700">Operational and clinical continuity in one platform</li>
+          <li class="rounded-xl border border-[#D8E7E7] bg-[#FBFEFE] px-4 py-3 text-sm text-gray-700">AI-ready foundation for evolving decision support</li>
+        </ul>
       </div>
       <div>
         <img
           src={previewImage.src}
-          alt="EmbryoOne product preview for clinical and lab teams"
-          class="w-full rounded-3xl border border-gray-200 object-cover shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)]"
+          alt="EmbryoOne IVF-specific product workspace"
+          class="about-zoom-image w-full rounded-3xl border border-gray-200 object-cover shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)]"
           loading="lazy"
         />
       </div>
@@ -129,57 +189,28 @@ import previewImage from "../../assets/ehr-hero-connected-system.png";
 
   <section class="page-section bg-white">
     <div class="page-container max-w-6xl">
-      <h2 class="heading-md text-tebra-teal-dark">Better systems. Better outcomes.</h2>
-      <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {[
-          "Improve workflow efficiency across clinic and lab",
-          "Reduce documentation errors and duplication",
-          "Standardize embryo grading decisions",
-          "Increase team alignment and productivity",
-        ].map((item) => (
-          <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-5"><p class="text-sm font-semibold text-tebra-teal-dark">{item}</p></article>
-        ))}
+      <div class="grid gap-7 md:grid-cols-[minmax(0,280px)_1fr] md:items-start">
+        <div class="md:sticky md:top-28">
+          <h2 class="heading-md text-tebra-teal-dark">How we build</h2>
+          <p class="mt-3 text-sm text-gray-600">Clinical-first principles that keep every release practical, trustworthy, and scalable.</p>
+        </div>
+        <div class="space-y-4">
+          {principles.map((principle, index) => (
+            <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F5AA2]">Principle {index + 1}</p>
+              <p class="mt-2 text-base font-medium text-tebra-teal-dark">{principle}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="page-section bg-[#F7FAFA]">
-    <div class="page-container max-w-6xl">
-      <h2 class="heading-md text-tebra-teal-dark">Built by experts in IVF, technology, and operations</h2>
-      <p class="mt-4 max-w-4xl text-base leading-relaxed text-gray-700">EmbryoOne was created to solve a fundamental problem in fertility care: fragmented systems and inconsistent workflows.</p>
-      <p class="mt-4 max-w-4xl text-base leading-relaxed text-gray-700">We bring together clinical expertise and modern software to build a platform that supports precision, transparency, and better outcomes across the IVF journey.</p>
-    </div>
-  </section>
-
-  <section class="page-section bg-white">
-    <div class="page-container max-w-6xl grid gap-4 md:grid-cols-2">
-      <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#5C7480]">Mission</p>
-        <p class="mt-3 text-base font-semibold text-tebra-teal-dark">To empower IVF clinics with intelligent systems that improve consistency, efficiency, and patient outcomes.</p>
-      </article>
-      <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#5C7480]">Vision</p>
-        <p class="mt-3 text-base font-semibold text-tebra-teal-dark">A future where every IVF decision is data-driven, standardized, and transparent.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="page-section bg-[#F6FAFA]">
-    <div class="page-container max-w-6xl">
-      <article class="rounded-3xl border border-[#D8E7E7] bg-white p-7 md:p-9">
-        <p class="text-base leading-relaxed text-gray-700 sm:text-lg">
-          “EmbryoOne transformed how our lab operates. We now have complete visibility and confidence in every decision we make.”
-        </p>
-        <p class="mt-4 text-sm font-semibold text-tebra-teal-dark">Lab Director</p>
-      </article>
-    </div>
-  </section>
-
   <section class="py-16 sm:py-20">
-    <div class="page-container max-w-6xl rounded-3xl bg-tebra-teal-dark px-6 py-10 sm:px-10">
-      <h2 class="text-3xl font-semibold text-white sm:text-4xl">Ready to modernize your IVF practice?</h2>
+    <div class="page-container max-w-6xl rounded-3xl bg-tebra-teal-dark px-6 py-10 shadow-[0_24px_56px_-36px_rgba(72,37,88,0.85)] sm:px-10">
+      <h2 class="text-3xl font-semibold text-white sm:text-4xl">Join the future of IVF care</h2>
       <p class="mt-4 max-w-3xl text-base text-gray-100">
-        See how EmbryoOne can transform your workflows and outcomes.
+        See how EmbryoOne transforms precision, efficiency, and outcomes.
       </p>
       <div class="mt-7 flex flex-wrap gap-3">
         <Button href="/demo" label="Book a demo" variant="primary" size="md" />
@@ -187,4 +218,159 @@ import previewImage from "../../assets/ehr-hero-connected-system.png";
       </div>
     </div>
   </section>
+
+  <style>
+    .about-hero-gradient {
+      background: radial-gradient(circle at 10% 15%, #efe7ff 0%, #f8f4ff 28%, #ffffff 68%);
+      animation: aboutGradientDrift 12s ease-in-out infinite alternate;
+    }
+
+    .about-fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: aboutFadeUp 700ms ease forwards;
+    }
+
+    .about-fade-up:nth-child(1) {
+      animation-delay: 80ms;
+    }
+    .about-fade-up:nth-child(2) {
+      animation-delay: 180ms;
+    }
+    .about-fade-up:nth-child(3) {
+      animation-delay: 280ms;
+    }
+    .about-fade-up:nth-child(4) {
+      animation-delay: 360ms;
+    }
+
+    .about-timeline {
+      position: relative;
+    }
+
+    .about-timeline::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 50%;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, rgba(14, 116, 113, 0), rgba(14, 116, 113, 0.55), rgba(14, 116, 113, 0));
+    }
+
+    .about-timeline-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+
+    .about-timeline-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-value-slide {
+      display: none;
+    }
+
+    .about-value-slide.is-active {
+      display: block;
+      animation: aboutFadeUp 400ms ease;
+    }
+
+    .about-zoom-image {
+      transform: scale(0.98);
+      transition: transform 600ms ease;
+    }
+
+    .about-zoom-image:hover {
+      transform: scale(1);
+    }
+
+    @keyframes aboutFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes aboutGradientDrift {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .about-timeline::before {
+        left: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-fade-up {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .about-timeline-item {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+
+  <script>
+    const timelineItems = Array.from(document.querySelectorAll(".about-timeline-item"));
+    if (timelineItems.length) {
+      const timelineObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      timelineItems.forEach((item) => timelineObserver.observe(item));
+    }
+
+    const slides = Array.from(document.querySelectorAll(".about-value-slide"));
+    const counter = document.querySelector("#valuesSlideCount");
+    const nextBtn = document.querySelector("#valuesNext");
+    const prevBtn = document.querySelector("#valuesPrev");
+    let activeSlide = 0;
+    let valuesInterval = null;
+
+    const setActiveSlide = (index) => {
+      if (!slides.length) return;
+      activeSlide = (index + slides.length) % slides.length;
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle("is-active", idx === activeSlide);
+      });
+      if (counter) counter.textContent = String(activeSlide + 1);
+    };
+
+    if (nextBtn && prevBtn && slides.length) {
+      nextBtn.addEventListener("click", () => setActiveSlide(activeSlide + 1));
+      prevBtn.addEventListener("click", () => setActiveSlide(activeSlide - 1));
+
+      valuesInterval = window.setInterval(() => {
+        setActiveSlide(activeSlide + 1);
+      }, 5200);
+    }
+
+    window.addEventListener("beforeunload", () => {
+      if (valuesInterval) window.clearInterval(valuesInterval);
+    });
+  </script>
 </BaseLayout>

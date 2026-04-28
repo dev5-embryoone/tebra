@@ -1,5 +1,5 @@
 ---
-import { BarChart3, ChevronDown, FlaskConical, Sparkles, Telescope } from "@lucide/astro";
+import { BarChart3, Bot, ChevronDown, FlaskConical, Sparkles, Telescope } from "@lucide/astro";
 
 const links = [
   {
@@ -26,6 +26,12 @@ const links = [
     description: "Advancing toward deeper insights and predictive capabilities",
     icon: "roadmap",
   },
+  {
+    title: "Embryo Copilot",
+    href: "/ai/embryo-copilot",
+    description: "AI-guided workflow assistance for faster, confident IVF decisions",
+    icon: "copilot",
+  },
 ] as const;
 
 function getIcon(name: string) {
@@ -34,6 +40,7 @@ function getIcon(name: string) {
     accuracy: BarChart3,
     clinical: FlaskConical,
     roadmap: Telescope,
+    copilot: Bot,
   } as const;
   return icons[name] || icons.overview;
 }

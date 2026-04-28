@@ -58,6 +58,7 @@ export const mobileAiLinks = [
   { label: "Accuracy & Validation", href: "/ai/accuracy-validation" },
   { label: "Clinical Use Cases", href: "/ai/clinical-use-cases" },
   { label: "Roadmap", href: "/ai/roadmap" },
+  { label: "Embryo Copilot", href: "/ai/embryo-copilot" },
 ] as const;
 
 export const mobileResourceLinks = [

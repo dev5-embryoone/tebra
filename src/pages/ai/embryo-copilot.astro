@@ -1,0 +1,489 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import demoChatOne from "../../assets/embryo-copilot-demo-1.png";
+import demoChatTwo from "../../assets/embryo-copilot-demo-2.png";
+import demoChatThree from "../../assets/embryo-copilot-demo-3.png";
+
+const suggestedPrompts = [
+  "How many embryos are frozen today?",
+  "Show embryo status by patient",
+  "Which cycles need consent review?",
+  "Who handled cryo transfers this week?",
+];
+
+const capabilities = [
+  {
+    title: "Natural language queries",
+    copy: "Ask questions the way you think and get answers without learning query syntax.",
+  },
+  {
+    title: "Clinical context awareness",
+    copy: "Understands IVF workflows, cycle stages, embryo events, and role-specific context.",
+  },
+  {
+    title: "Real-time data access",
+    copy: "Connected directly to your system so every response reflects current operational data.",
+  },
+  {
+    title: "Decision support",
+    copy: "Surface insights quickly so teams can act faster with clearer confidence.",
+  },
+];
+
+const useCases = [
+  {
+    id: "lab",
+    title: "Lab Operations",
+    copy: "Track embryos, cryo storage, and lab activity instantly without switching systems.",
+    chat: [
+      ["User", "Show cryo transfer activity this week"],
+      ["Copilot", "14 transfers completed\n3 pending verification\n0 unresolved exceptions"],
+      ["User", "Any anomalies?"],
+      ["Copilot", "No deviations detected. All transfers compliant with protocol."],
+      ["User", "Which cases are still pending approval?"],
+      ["Copilot", "3 cases pending approval: P-2007, P-2012, and P-2019. Review queue updated."],
+      ["User", "Any overdue cryo tasks?"],
+      ["Copilot", "2 overdue checks found in Cryo Bay B. Assigned reminders sent to lab ops."],
+    ],
+  },
+  {
+    id: "clinical",
+    title: "Clinical Decisions",
+    copy: "Access embryo insights and patient context quickly during decision moments.",
+    chat: [
+      ["User", "Which patient cycles need immediate review?"],
+      ["Copilot", "3 flagged cycles:\nP-2008 (consent)\nP-2011 (status mismatch)\nP-2014 (follow-up overdue)"],
+      ["User", "Any high-risk embryo alerts?"],
+      ["Copilot", "2 alerts detected. Priority review recommended for P-2011 and P-2014 today."],
+      ["User", "Show latest embryo grading updates"],
+      ["Copilot", "6 grading updates completed today. 2 require physician acknowledgment."],
+      ["User", "Which patient needs immediate consent follow-up?"],
+      ["Copilot", "P-2008 requires consent follow-up within 6 hours to avoid treatment delay."],
+    ],
+  },
+  {
+    id: "admin",
+    title: "Admin & Reporting",
+    copy: "Generate operational summaries without manual spreadsheet effort.",
+    chat: [
+      ["User", "Generate weekly IVF operations summary"],
+      ["Copilot", "Weekly summary ready:\nCycle volume +8%\nCryo activity stable\nPending consent cases down 22%"],
+      ["User", "Any unresolved blockers?"],
+      ["Copilot", "No unresolved blockers. 3 items pending approval only."],
+      ["User", "Export branch-wise performance snapshot"],
+      ["Copilot", "Snapshot exported: Adyar +11%, Anna Nagar +6%, Velachery +4% cycle throughput."],
+      ["User", "Show top delay reasons this week"],
+      ["Copilot", "Top delays: consent follow-up (41%), schedule overlap (33%), documentation lag (26%)."],
+    ],
+  },
+];
+
+const trustMetrics = [
+  { value: 70, suffix: "%", label: "reduction in manual data lookup" },
+  { value: 2, prefix: "< ", suffix: "s", label: "average response time" },
+  { value: 100, suffix: "%", label: "traceable data references" },
+];
+---
+
+<BaseLayout
+  title="Embryo Copilot | EmbryoOne AI"
+  description="Conversational AI for IVF labs. Ask Embryo Copilot anything and get real-time, traceable answers across clinical and lab workflows."
+>
+  <section class="copilot-hero relative overflow-hidden py-12 sm:py-14">
+    <div class="page-container relative max-w-6xl">
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#684B8F]">AI - Embryo Copilot</p>
+          <h1 class="mt-3 text-4xl font-semibold tracking-tight text-tebra-teal-dark sm:text-5xl">Ask your lab anything</h1>
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-gray-700 sm:text-lg">
+            Embryo Copilot turns complex IVF data into simple, real-time answers so your team can move faster, reduce errors, and make confident decisions.
+          </p>
+
+          <div class="mt-6 rounded-2xl border border-[#E3D8F3] bg-white/75 p-4 backdrop-blur-sm">
+            <div class="flex items-center gap-2 rounded-xl border border-[#DCD2EC] bg-white px-3 py-2.5">
+              <span class="h-2 w-2 rounded-full bg-tebra-teal"></span>
+              <p class="text-sm text-[#5D4D75]"><span id="heroPromptTyping"></span><span class="typing-caret">|</span></p>
+            </div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {suggestedPrompts.map((prompt) => (
+                <span class="rounded-full border border-[#E2D8F1] bg-[#F7F3FD] px-3 py-1 text-xs text-[#5F4C79]">{prompt}</span>
+              ))}
+            </div>
+          </div>
+
+          <a href="/demo" class="mt-6 inline-flex items-center text-sm font-semibold text-[#5B3383] transition hover:translate-x-1">
+            Try Copilot in action -
+          </a>
+        </div>
+
+        <article class="copilot-chat-window overflow-hidden rounded-[1.75rem] border border-[#DCCBEF] bg-[#F7F3FC] shadow-[0_30px_60px_-42px_rgba(45,23,75,0.6)]">
+          <div class="flex items-center justify-between bg-gradient-to-r from-[#6A3993] to-[#7B4AA8] px-5 py-4">
+            <p class="text-2xl font-semibold tracking-tight text-white">Embryo Copilot</p>
+            <span class="rounded-full bg-white/20 px-3 py-1 text-[12px] font-semibold uppercase tracking-wide text-white">Live</span>
+          </div>
+          <div class="relative space-y-3 px-5 py-5 text-sm" id="heroChatAuto">
+            <span class="absolute right-4 top-[-14px] inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#9468C3] text-white shadow-md">✦</span>
+            <div class="ml-auto w-[88%] rounded-2xl rounded-br-md bg-gradient-to-r from-[#6A3B95] to-[#73429D] px-4 py-3 text-base text-white" data-msg="user">
+              How many embryos are frozen today?
+            </div>
+            <div class="w-[86%] rounded-2xl border border-[#DAC8EE] bg-[#FDFBFF] px-4 py-3 text-base leading-relaxed text-[#46365F]" data-msg="bot">
+              There are <strong>42 embryos</strong> currently in frozen storage across all active patients.
+            </div>
+            <div class="ml-auto w-[88%] rounded-2xl rounded-br-md bg-gradient-to-r from-[#6A3B95] to-[#73429D] px-4 py-3 text-base text-white" data-msg="user">
+              Show embryo status by patient.
+            </div>
+            <div class="w-[86%] rounded-2xl border border-[#DAC8EE] bg-[#FDFBFF] px-4 py-3 text-base leading-relaxed text-[#46365F]" data-msg="bot">
+              18 patients have embryos in storage. 6 flagged for transfer planning this week.
+            </div>
+          </div>
+          <div class="border-t border-[#E2D2F2] bg-[#F5F0FA] px-5 py-4">
+            <p class="text-[1.05rem] text-[#6A5888]">Ask Copilot anything...</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-14 bg-white">
+    <div class="page-container max-w-6xl">
+      <h2 class="heading-md text-center text-tebra-teal-dark">How it works</h2>
+      <div class="copilot-steps mt-10 grid gap-4 md:grid-cols-3">
+        {[
+          ["Ask", "Type your question in plain language."],
+          ["Understand", "Copilot interprets clinical context, patients, and workflows."],
+          ["Answer", "Get instant, accurate insights from live lab data."],
+        ].map((step, index) => (
+          <article class="copilot-step rounded-2xl border border-[#E1D7F2] bg-[#FBF9FE] p-5" style={`transition-delay:${index * 120}ms`}>
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#6B4F8E]">Step {index + 1}</p>
+            <h3 class="mt-2 text-xl font-semibold text-tebra-teal-dark">{step[0]}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-700">{step[1]}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-14 bg-[#F8FBFC]">
+    <div class="page-container max-w-5xl">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Live interaction demo</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        <figure class="overflow-hidden rounded-2xl border border-[#DDD4EE] bg-white p-2">
+          <img src={demoChatOne.src} alt="Embryo Copilot conversation example showing patient summary response" class="h-full w-full rounded-xl object-cover" loading="lazy" />
+        </figure>
+        <figure class="overflow-hidden rounded-2xl border border-[#DDD4EE] bg-white p-2">
+          <img src={demoChatTwo.src} alt="Embryo Copilot conversation example showing frozen embryo breakdown by patient" class="h-full w-full rounded-xl object-cover" loading="lazy" />
+        </figure>
+        <figure class="overflow-hidden rounded-2xl border border-[#DDD4EE] bg-white p-2">
+          <img src={demoChatThree.src} alt="Embryo Copilot conversation example showing witness mismatch details" class="h-full w-full rounded-xl object-cover" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-14 bg-white">
+    <div class="page-container max-w-6xl">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Key capabilities</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {capabilities.map((item, index) => (
+          <article class="copilot-cap-card rounded-2xl border border-[#E3D9F2] bg-white/80 p-5 shadow-[0_18px_40px_-34px_rgba(39,22,70,0.45)] transition hover:-translate-y-1 hover:shadow-[0_25px_50px_-34px_rgba(56,30,90,0.55)]" style={`transition-delay:${index * 90}ms`}>
+            <h3 class="text-lg font-semibold text-[#3F2D5A]">{item.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-700">{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-14 bg-[#F9F7FC]">
+    <div class="page-container max-w-6xl">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Use cases</h2>
+      <div class="mt-7 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Copilot use cases">
+        {useCases.map((item, index) => (
+          <button
+            type="button"
+            class={`copilot-tab rounded-full border px-4 py-2 text-sm font-medium transition ${index === 0 ? "is-active border-transparent bg-gradient-to-r from-[#643592] to-[#7E4EAB] text-white shadow-[0_10px_24px_-16px_rgba(78,46,130,0.95)]" : "border-[#D8CCE9] bg-white text-[#5A4478] hover:border-[#BDA8DA]"}`}
+            data-tab={item.id}
+            role="tab"
+            aria-selected={index === 0 ? "true" : "false"}
+          >
+            {item.title}
+          </button>
+        ))}
+      </div>
+
+      <div class="mx-auto mt-6 max-w-4xl">
+        {useCases.map((item, index) => (
+          <article class={`copilot-panel rounded-3xl border border-white/70 bg-white/60 p-4 shadow-[0_22px_54px_-40px_rgba(58,30,96,0.55)] backdrop-blur-sm sm:p-5 ${index === 0 ? "" : "hidden"}`} data-panel={item.id} role="tabpanel">
+            <div class="grid gap-4 md:grid-cols-[0.85fr_1.75fr] md:items-start">
+              <div class="rounded-2xl border border-[#E1D5F2] bg-[#FBF8FF] p-4">
+                <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#6A4D8E]">{item.title}</p>
+                <p class="mt-2 text-sm leading-relaxed text-gray-700">{item.copy}</p>
+              </div>
+              <div class="copilot-live-chat rounded-2xl border border-[#DED2EE] bg-white p-4">
+                <div class="space-y-2.5 text-sm">
+                  <p class="ml-auto max-w-[86%] rounded-2xl rounded-br-md bg-gradient-to-r from-[#6A3B95] to-[#7848A5] px-3.5 py-2.5 text-white">{item.chat[0][1]}</p>
+                  <p class="inline-flex items-center gap-1 rounded-full border border-[#DDD0EF] bg-[#F7F2FD] px-3 py-1 text-xs text-[#6A5589]">
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA]"></span>
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA] [animation-delay:120ms]"></span>
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA] [animation-delay:240ms]"></span>
+                  </p>
+                  <p class="max-w-[88%] whitespace-pre-line rounded-2xl border border-[#DAC8EE] bg-[#FDFBFF] px-3.5 py-2.5 text-[#4A3A63]">{item.chat[1][1]}</p>
+                  <p class="ml-auto max-w-[86%] rounded-2xl rounded-br-md bg-gradient-to-r from-[#6A3B95] to-[#7848A5] px-3.5 py-2.5 text-white">{item.chat[2][1]}</p>
+                  <p class="inline-flex items-center gap-1 rounded-full border border-[#DDD0EF] bg-[#F7F2FD] px-3 py-1 text-xs text-[#6A5589]">
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA]"></span>
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA] [animation-delay:120ms]"></span>
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA] [animation-delay:240ms]"></span>
+                  </p>
+                  <p class="max-w-[88%] whitespace-pre-line rounded-2xl border border-[#DAC8EE] bg-[#FDFBFF] px-3.5 py-2.5 text-[#4A3A63]">{item.chat[3][1]}</p>
+                  <p class="ml-auto max-w-[86%] rounded-2xl rounded-br-md bg-gradient-to-r from-[#6A3B95] to-[#7848A5] px-3.5 py-2.5 text-white">{item.chat[4][1]}</p>
+                  <p class="inline-flex items-center gap-1 rounded-full border border-[#DDD0EF] bg-[#F7F2FD] px-3 py-1 text-xs text-[#6A5589]">
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA]"></span>
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA] [animation-delay:120ms]"></span>
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA] [animation-delay:240ms]"></span>
+                  </p>
+                  <p class="max-w-[88%] whitespace-pre-line rounded-2xl border border-[#DAC8EE] bg-[#FDFBFF] px-3.5 py-2.5 text-[#4A3A63]">{item.chat[5][1]}</p>
+                  <p class="ml-auto max-w-[86%] rounded-2xl rounded-br-md bg-gradient-to-r from-[#6A3B95] to-[#7848A5] px-3.5 py-2.5 text-white">{item.chat[6][1]}</p>
+                  <p class="inline-flex items-center gap-1 rounded-full border border-[#DDD0EF] bg-[#F7F2FD] px-3 py-1 text-xs text-[#6A5589]">
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA]"></span>
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA] [animation-delay:120ms]"></span>
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#7A52AA] [animation-delay:240ms]"></span>
+                  </p>
+                  <p class="max-w-[88%] whitespace-pre-line rounded-2xl border border-[#DAC8EE] bg-[#FDFBFF] px-3.5 py-2.5 text-[#4A3A63]">{item.chat[7][1]}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-14 bg-white">
+    <div class="page-container max-w-4xl">
+      <div class="overflow-hidden rounded-3xl border border-[#E4D9F4] bg-gradient-to-br from-[#FCFAFF] to-[#F6F1FD] p-5 sm:p-6">
+        <h2 class="heading-md text-tebra-teal-dark">Why Embryo Copilot</h2>
+        <p class="mt-2 text-sm text-[#695985]">Built to make high-stakes IVF decisions faster, clearer, and more consistent across teams.</p>
+        <ul class="mt-6 grid gap-3">
+          <li class="copilot-why-card rounded-2xl border border-[#E2D8F2] bg-white px-4 py-4 text-sm text-gray-700 shadow-[0_14px_32px_-28px_rgba(60,30,100,0.62)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_36px_-24px_rgba(72,40,116,0.72)]">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#F2E8FE] text-lg">🧠</span>
+              <div>
+                <p class="font-semibold text-tebra-teal-dark">Built for IVF workflows</p>
+                <p class="mt-1 text-gray-700">Designed specifically for fertility labs, not adapted from generic AI systems.</p>
+              </div>
+            </div>
+          </li>
+          <li class="copilot-why-card rounded-2xl border border-[#E2D8F2] bg-white px-4 py-4 text-sm text-gray-700 shadow-[0_14px_32px_-28px_rgba(60,30,100,0.62)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_36px_-24px_rgba(72,40,116,0.72)]">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#F2E8FE] text-lg">⚡</span>
+              <div>
+                <p class="font-semibold text-tebra-teal-dark">Eliminates friction</p>
+                <p class="mt-1 text-gray-700">Access insights instantly without navigating dashboards or manual reports.</p>
+              </div>
+            </div>
+          </li>
+          <li class="copilot-why-card rounded-2xl border border-[#E2D8F2] bg-white px-4 py-4 text-sm text-gray-700 shadow-[0_14px_32px_-28px_rgba(60,30,100,0.62)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_36px_-24px_rgba(72,40,116,0.72)]">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#F2E8FE] text-lg">🔄</span>
+              <div>
+                <p class="font-semibold text-tebra-teal-dark">Improves consistency</p>
+                <p class="mt-1 text-gray-700">Standardized information access across teams and workflows.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-14 bg-tebra-teal-dark text-white">
+    <div class="page-container max-w-6xl">
+      <h2 class="heading-md text-center text-white">Trust and proof</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        {trustMetrics.map((metric) => (
+          <article class="rounded-2xl border border-white/15 bg-white/5 p-5 text-center">
+            <p class="text-4xl font-semibold tracking-tight">
+              <span class="text-white/90">{metric.prefix ?? ""}</span><span class="copilot-count" data-value={metric.value}>0</span><span>{metric.suffix ?? ""}</span>
+            </p>
+            <p class="mt-2 text-sm text-white/85">{metric.label}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-14">
+    <div class="page-container max-w-6xl rounded-3xl bg-tebra-teal-dark px-6 py-10 shadow-[0_26px_65px_-40px_rgba(72,37,88,0.88)] sm:px-10">
+      <h2 class="text-3xl font-semibold text-white sm:text-4xl">Experience AI built for IVF</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-100">
+        See how Embryo Copilot transforms how your team works with data.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+        <Button href="/ai/embryo-copilot" label="Try Copilot" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .typing-caret {
+      animation: blink 1s steps(1) infinite;
+    }
+
+    .copilot-step,
+    .copilot-cap-card,
+    .copilot-why-card {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+
+    .copilot-step.is-visible,
+    .copilot-cap-card.is-visible,
+    .copilot-why-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .copilot-live-chat {
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .typing-caret {
+        animation: none;
+      }
+
+      .copilot-step,
+      .copilot-cap-card,
+      .copilot-why-card {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+
+  <script>
+    const prompts = [
+      "Ask anything about your lab...",
+      "How many embryos are frozen today?",
+      "Show embryo status by patient",
+      "Which cycles need consent review?",
+    ];
+    const typingTarget = document.querySelector("#heroPromptTyping");
+    if (typingTarget) {
+      let promptIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      const typeLoop = () => {
+        const current = prompts[promptIndex];
+        typingTarget.textContent = deleting ? current.slice(0, charIndex--) : current.slice(0, charIndex++);
+
+        if (!deleting && charIndex > current.length) {
+          deleting = true;
+          window.setTimeout(typeLoop, 1200);
+          return;
+        }
+        if (deleting && charIndex < 0) {
+          deleting = false;
+          promptIndex = (promptIndex + 1) % prompts.length;
+        }
+        window.setTimeout(typeLoop, deleting ? 26 : 42);
+      };
+
+      typeLoop();
+    }
+
+    const revealItems = document.querySelectorAll(".copilot-step, .copilot-cap-card");
+    if (revealItems.length) {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("is-visible");
+          });
+        },
+        { threshold: 0.2 }
+      );
+      revealItems.forEach((item) => revealObserver.observe(item));
+    }
+
+    const tabs = Array.from(document.querySelectorAll(".copilot-tab"));
+    const panels = Array.from(document.querySelectorAll(".copilot-panel"));
+    const setTab = (tabId) => {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.tab === tabId;
+        tab.classList.toggle("is-active", active);
+        tab.classList.toggle("bg-gradient-to-r", active);
+        tab.classList.toggle("from-[#643592]", active);
+        tab.classList.toggle("to-[#7E4EAB]", active);
+        tab.classList.toggle("text-white", active);
+        tab.classList.toggle("shadow-[0_10px_24px_-16px_rgba(78,46,130,0.95)]", active);
+        tab.classList.toggle("border-transparent", active);
+        tab.classList.toggle("bg-white", !active);
+        tab.classList.toggle("text-[#5A4478]", !active);
+        tab.classList.toggle("border-[#D8CCE9]", !active);
+        tab.classList.toggle("hover:border-[#BDA8DA]", !active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle("hidden", panel.dataset.panel !== tabId);
+      });
+    };
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => setTab(tab.dataset.tab));
+    });
+
+    const counts = Array.from(document.querySelectorAll(".copilot-count"));
+    if (counts.length) {
+      let counted = false;
+      const countObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting || counted) return;
+            counted = true;
+            counts.forEach((countEl) => {
+              const endValue = Number(countEl.dataset.value || "0");
+              let current = 0;
+              const step = Math.max(1, Math.ceil(endValue / 36));
+              const ticker = window.setInterval(() => {
+                current += step;
+                if (current >= endValue) {
+                  current = endValue;
+                  window.clearInterval(ticker);
+                }
+                countEl.textContent = String(current);
+              }, 28);
+            });
+          });
+        },
+        { threshold: 0.35 }
+      );
+      countObserver.observe(counts[0]);
+    }
+
+    const whyCards = document.querySelectorAll(".copilot-why-card");
+    if (whyCards.length) {
+      const whyObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("is-visible");
+          });
+        },
+        { threshold: 0.25 }
+      );
+      whyCards.forEach((card, idx) => {
+        card.style.transitionDelay = `${idx * 110}ms`;
+        whyObserver.observe(card);
+      });
+    }
+  </script>
+</BaseLayout>
