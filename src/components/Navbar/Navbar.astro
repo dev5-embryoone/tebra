@@ -1,6 +1,5 @@
 ---
 import { ChevronDown, Menu, X } from "@lucide/astro";
-import PlatformDropdown from "./PlatformDropdown.astro";
 import ProductsDropdown from "./ProductsDropdown.astro";
 import SolutionsDropdown from "./SolutionsDropdown.astro";
 import AIDropdown from "./AIDropdown.astro";
@@ -11,14 +10,13 @@ import logoSvg from "../../assets/logo.svg?url";
 import {
   mobileAiLinks,
   mobileCompanyLinks,
-  mobilePlatformLinks,
   mobileProductSections,
   mobileResourceLinks,
   mobileSolutionSections,
 } from "../../data/navbarMobile";
 
 const navItems = [
-  { label: "Platform", href: "#", hasDropdown: true },
+  { label: "Platform", href: "/platform", hasDropdown: false },
   { label: "Products", href: "#", hasDropdown: true },
   { label: "Solutions", href: "#", hasDropdown: true },
   { label: "AI", href: "#", hasDropdown: true },
@@ -55,7 +53,12 @@ const navItems = [
         <div class="flex items-center gap-6 overflow-visible xl:gap-8">
           {navItems.map((item) =>
             item.label === "Platform" ? (
-              <PlatformDropdown />
+              <a
+                href={item.href}
+                class="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-transparent px-3 py-2 text-sm font-semibold text-tebra-teal-dark hover:border-[#E8DAF8] hover:bg-white hover:text-[#5E2A84]"
+              >
+                {item.label}
+              </a>
             ) : item.label === "Products" ? (
               <ProductsDropdown />
             ) : item.label === "Solutions" ? (
@@ -112,33 +115,12 @@ const navItems = [
           <a href="tel:+18889383272" class="hover:text-tebra-teal">Call sales</a>
         </div>
 
-        <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
-          <summary
-            class="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark outline-none ring-tebra-teal/30 marker:content-none [&::-webkit-details-marker]:hidden hover:bg-gray-50/70"
-          >
-            <span>Platform</span>
-            <ChevronDown
-              class="h-4 w-4 shrink-0 text-gray-400"
-              aria-hidden="true"
-            />
-          </summary>
-          <div class="px-2 pb-3 pt-1">
-            <ul class="flex flex-col gap-0.5 py-1" role="list">
-              {
-                mobilePlatformLinks.map((link) => (
-                  <li>
-                    <a
-                      href={link.href}
-                      class="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-tebra-teal"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </details>
+        <a
+          href="/platform"
+          class="block whitespace-nowrap rounded-xl bg-white/70 px-3 py-3.5 text-sm font-semibold text-tebra-teal-dark hover:bg-white"
+        >
+          Platform
+        </a>
 
         <details name="main-nav" class="group rounded-xl bg-white/70 open:bg-white">
           <summary

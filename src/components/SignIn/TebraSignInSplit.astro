@@ -62,41 +62,8 @@ const d = tebraSignInLanding;
     class="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-tebra-teal-dark px-8 py-14 text-center text-white sm:py-16 lg:min-h-[520px] lg:py-20"
   >
     <div class="relative mx-auto flex max-w-md flex-col items-center">
-      <!-- Decorative ring + logo -->
-      <div class="relative flex h-56 w-56 items-center justify-center sm:h-64 sm:w-64">
-        <div
-          class="absolute inset-0 rounded-full border-2 border-btn-primary"
-          aria-hidden="true"
-        />
-        <!-- Orbiting icon positions -->
-        <span class="absolute left-1/2 top-0 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <path d="M9 22V12h6v10M12 5v3" stroke-linecap="round" />
-          </svg>
-        </span>
-        <span class="absolute right-0 top-1/2 flex h-9 w-9 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-        </span>
-        <span class="absolute bottom-0 right-8 flex h-9 w-9 translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M4.8 12a8 8 0 0 1 8-8V2m0 0v4m0-4h4M4.8 12H2m2.8 0a8 8 0 0 0 8 8V22m0 0v-4m0 4h4" stroke-linecap="round" />
-          </svg>
-        </span>
-        <span class="absolute bottom-0 left-8 flex h-9 w-9 translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="5" y="2" width="14" height="20" rx="2" />
-            <path d="M12 18h.01" stroke-linecap="round" />
-          </svg>
-        </span>
-        <span class="absolute left-0 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white" aria-hidden="true">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </span>
+      <!-- Brand logo -->
+      <div class="relative flex h-auto w-auto items-center justify-center">
         <picture>
           <source srcSet={logoSvg} type="image/svg+xml" />
           <img
@@ -107,7 +74,7 @@ const d = tebraSignInLanding;
         </picture>
       </div>
 
-      <h2 class="mt-10 text-xl font-bold leading-snug sm:text-2xl">{d.brandPanel.headline}</h2>
+      <h2 class="mt-5 text-xl font-bold leading-snug sm:text-2xl">{d.brandPanel.headline}</h2>
       <p class="mt-3 max-w-sm text-sm leading-relaxed text-white/85 sm:text-base">{d.brandPanel.body}</p>
       <a
         href={d.brandPanel.learnMoreHref}

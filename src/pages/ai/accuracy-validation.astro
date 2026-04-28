@@ -1,0 +1,259 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import validationVisual from "../../assets/ai-grading-step3-results.png";
+
+const trustMetrics = [
+  { value: "83% Accuracy", detail: "Across embryo grading classifications" },
+  { value: "High Confidence Scoring", detail: "Every prediction includes reliability insights" },
+  { value: "Reduced Variability", detail: "Standardized grading across embryologists" },
+];
+
+const modelPoints = [
+  "Multi-class grading support (e.g., AA, AB, BB)",
+  "Confidence score per prediction",
+  "Consistent output across datasets",
+  "Designed to support, not override, clinical judgment",
+];
+
+const trainingPoints = [
+  "Thousands of annotated embryo images",
+  "Expert-labeled grading datasets",
+  "Diverse morphology patterns",
+  "Continuous dataset expansion",
+];
+
+const validationSteps = [
+  "Expert grading baseline established",
+  "AI predictions compared against experts",
+  "Performance metrics evaluated (accuracy, agreement)",
+  "Continuous refinement based on results",
+];
+
+const clinicalAlignment = [
+  "Human-in-the-loop validation",
+  "Manual override always available",
+  "Seamless workflow integration",
+  "No forced automation",
+];
+
+const safetyFeatures = [
+  "Full audit trail for each grading decision",
+  "Image-to-result traceability",
+  "Confidence-based interpretation",
+  "Secure data handling",
+];
+
+const faqs = [
+  {
+    question: "How is EmbryoOne AI validated before clinical use?",
+    answer:
+      "Each model is benchmarked against expert embryologist grading on real IVF datasets. We evaluate agreement, consistency, and confidence behavior before release. Only validated versions are promoted to production workflows.",
+  },
+  {
+    question: "Does EmbryoOne AI replace embryologist decision-making?",
+    answer:
+      "No. EmbryoOne AI is designed as a decision-support layer that keeps clinicians in control. Every output is reviewable and can be confirmed, adjusted, or overridden by the embryologist. Human judgment remains central at every step.",
+  },
+  {
+    question: "What makes the model reliable across different lab conditions?",
+    answer:
+      "The system is trained on diverse, expert-labeled embryo image datasets collected from real clinical environments. This helps the model generalize to practical variation in morphology and image quality. Performance is continuously monitored as usage expands.",
+  },
+  {
+    question: "How do you ensure transparency in AI-generated results?",
+    answer:
+      "Each prediction is returned with confidence context and tied to an auditable image-to-result record. Labs can trace how outputs were generated and reviewed over time. This supports compliance, quality assurance, and internal governance requirements.",
+  },
+  {
+    question: "How often is EmbryoOne AI improved or retrained?",
+    answer:
+      "Model updates follow a controlled improvement cycle using new data and structured feedback signals. Retraining and evaluation happen through monitored pipelines before deployment. This approach improves performance while preserving clinical reliability.",
+  },
+];
+
+const differentiators = [
+  { title: "Training approach", embryoOne: "IVF-specific training", generic: "General imaging AI" },
+  { title: "Validation quality", embryoOne: "Real lab validation", generic: "Simulated datasets" },
+  { title: "Operational fit", embryoOne: "Workflow integration", generic: "Standalone tools" },
+];
+---
+
+<BaseLayout
+  title="Accuracy and Validation | EmbryoOne AI"
+  description="EmbryoOne AI is trained and validated on real-world IVF data with confidence scoring and clinically relevant performance insights."
+>
+  <section class="page-section bg-white">
+    <div class="page-container text-center">
+      <p class="eyebrow text-[#6C3CF0]">Accuracy & Validation</p>
+      <h1 class="mx-auto mt-3 max-w-4xl text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+        Clinically grounded AI you can trust
+      </h1>
+      <p class="mx-auto mt-5 max-w-3xl text-base text-gray-600 sm:text-lg">
+        EmbryoOne AI is trained on real IVF data and validated against expert grading standards.
+        Every prediction is designed to align with clinical expectations, so your team can rely on
+        it with confidence.
+      </p>
+      <p class="mt-4 text-sm font-medium text-[#51285f]">Built for real labs. Validated for real decisions.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <Button href="/demo" label="Request a demo" variant="primary" size="md" />
+        <Button href="#model-performance" label="View validation details" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Performance that meets clinical standards</h2>
+      <div class="mx-auto mt-8 grid max-w-6xl gap-4 md:grid-cols-3">
+        {trustMetrics.map((metric) => (
+          <article class="rounded-2xl border border-[#EADDFD] bg-white p-6 text-center shadow-[0_14px_28px_-24px_rgba(108,60,240,0.5)]">
+            <p class="text-2xl font-semibold text-[#51285f]">{metric.value}</p>
+            <p class="mt-2 text-sm text-[#5E5472]">{metric.detail}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="model-performance" class="page-section bg-white">
+    <div class="page-container grid gap-10 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Transparent performance, not black-box AI</h2>
+        <p class="mt-4 text-base leading-relaxed text-gray-700">
+          EmbryoOne AI evaluates embryo morphology using trained models aligned with established
+          grading frameworks. Each result is presented with a confidence score, allowing
+          embryologists to interpret and validate AI outputs.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {modelPoints.map((item) => (
+            <li class="rounded-xl border border-[#EADDFD] bg-[#FAF7FF] px-4 py-3 text-sm text-[#574C6A]">{item}</li>
+          ))}
+        </ul>
+      </div>
+      <img
+        src={validationVisual.src}
+        alt="Validation panel with embryo grade prediction and confidence values"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_24px_48px_-34px_rgba(108,60,240,0.45)]"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container grid gap-10 md:[grid-template-columns:minmax(0,1fr)_minmax(0,1fr)] md:items-stretch">
+      <article class="flex h-full flex-col">
+        <h2 class="heading-md text-tebra-teal-dark">Built on real-world IVF data</h2>
+        <p class="mt-4 text-base leading-relaxed text-gray-700">
+          Our models are trained on diverse embryo image datasets curated from real clinical
+          environments. This ensures that AI performance reflects actual lab conditions.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {trainingPoints.map((item) => (
+            <li class="rounded-xl border border-[#EADDFD] bg-white px-4 py-3 text-sm text-[#574C6A]">{item}</li>
+          ))}
+        </ul>
+        <p class="mt-5 text-sm font-medium text-[#51285f]">More data. Better generalization. Stronger reliability.</p>
+      </article>
+      <article class="flex h-full flex-col">
+        <h2 class="heading-md text-tebra-teal-dark">Validated against expert standards</h2>
+        <p class="mt-4 text-base leading-relaxed text-gray-700">
+          We benchmark AI predictions against experienced embryologist grading to measure accuracy,
+          consistency, and clinical relevance.
+        </p>
+        <ol class="mt-6 space-y-3">
+          {validationSteps.map((step, index) => (
+            <li class="rounded-xl border border-[#EADDFD] bg-white px-4 py-3 text-sm text-[#574C6A]">
+              <span class="mr-2 font-semibold text-[#51285f]">{index + 1}.</span>{step}
+            </li>
+          ))}
+        </ol>
+        <p class="mt-5 text-sm font-medium text-[#51285f]">
+          Measured against real clinical judgment, not theoretical benchmarks.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-10 md:grid-cols-2">
+      <article>
+        <h2 class="heading-md text-tebra-teal-dark">Designed to fit clinical workflows</h2>
+        <p class="mt-4 text-base leading-relaxed text-gray-700">
+          EmbryoOne AI is built as a decision-support tool, not a replacement for embryologists. It
+          enhances consistency while keeping clinicians fully in control.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {clinicalAlignment.map((item) => (
+            <li class="rounded-xl border border-[#EADDFD] bg-[#FAF7FF] px-4 py-3 text-sm text-[#574C6A]">{item}</li>
+          ))}
+        </ul>
+      </article>
+      <article>
+        <h2 class="heading-md text-tebra-teal-dark">Safe, explainable, and accountable</h2>
+        <p class="mt-4 text-base leading-relaxed text-gray-700">
+          Every AI-generated result is traceable, reviewable, and auditable, ensuring complete
+          transparency in your lab processes.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {safetyFeatures.map((item) => (
+            <li class="rounded-xl border border-[#EADDFD] bg-[#FAF7FF] px-4 py-3 text-sm text-[#574C6A]">{item}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="page-section bg-tebra-teal-dark text-white">
+    <div class="page-container">
+      <p class="eyebrow text-[#C3A5F8]">FAQs</p>
+      <h2 class="heading-md mt-3 max-w-3xl text-white">Common questions on accuracy and validation</h2>
+      <div class="mt-8 space-y-4">
+        {faqs.map((item) => (
+          <details class="group rounded-2xl border border-white/20 bg-white/5 p-5 open:bg-white/10">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-medium text-white marker:content-none">
+              <span>{item.question}</span>
+              <span class="text-xl leading-none text-white transition-transform duration-200 group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-3 pr-8 text-sm leading-relaxed text-gray-100">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <article class="mx-auto max-w-3xl">
+        <h2 class="heading-md text-tebra-teal-dark">Why EmbryoOne AI stands out</h2>
+        <p class="mt-4 text-base leading-relaxed text-gray-700">
+          Unlike generic AI tools, EmbryoOne is purpose-built for IVF workflows, ensuring
+          clinically relevant performance and real usability in lab environments.
+        </p>
+        <div class="mt-6 space-y-3">
+          {differentiators.map((item) => (
+            <div class="rounded-xl border border-[#EADDFD] bg-white p-4">
+              <p class="text-sm font-semibold text-[#51285f]">{item.title}</p>
+              <p class="mt-2 text-sm text-[#5E5472]"><span class="font-medium text-[#4A1F82]">EmbryoOne:</span> {item.embryoOne}</p>
+              <p class="mt-1 text-sm text-[#7A6E8D]"><span class="font-medium">Generic tools:</span> {item.generic}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl bg-[#51285f] px-6 py-10 text-white sm:px-10">
+      <h2 class="text-3xl font-semibold sm:text-4xl">See the data behind the decisions</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-100">
+        Explore how EmbryoOne AI performs in real clinical scenarios and how it can support your
+        lab.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Request validation report" variant="outline-light" size="md" />
+        <Button href="/demo" label="Book a demo" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

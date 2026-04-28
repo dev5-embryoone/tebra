@@ -1,0 +1,805 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import aiHeroImage from "../../assets/ai-grading-dashboard-grid.png";
+import aiConceptImage from "../../assets/ai-grading-lab-workflow.png";
+---
+
+<BaseLayout
+  title="AI Roadmap | EmbryoOne AI"
+  description="Explore EmbryoOne's AI roadmap from embryo grading foundation to predictive IVF decision intelligence."
+>
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow text-[#6C3CF0]">AI Roadmap</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Building the future of IVF intelligence
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          EmbryoOne AI is evolving beyond grading toward predictive insights, smarter workflows, and
+          outcome-driven decision support across the IVF cycle.
+        </p>
+        <p class="mt-4 text-sm font-semibold text-[#5A4C72]">From observation to intelligence to prediction.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+          <Button href="/contact" label="Join early access" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img
+        src={aiHeroImage.src}
+        alt="AI roadmap hero visual showing connected embryo intelligence interfaces"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_24px_48px_-36px_rgba(108,60,240,0.5)]"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Where we're headed</h2>
+      <p class="mx-auto mt-4 max-w-4xl text-center text-base text-gray-700">
+        Today, AI helps standardize embryo grading. Tomorrow, it will help predict outcomes,
+        optimize decisions, and guide the entire IVF journey.
+      </p>
+      <p class="mx-auto mt-3 max-w-4xl text-center text-base text-gray-700">
+        Our roadmap is focused on turning data into actionable intelligence without removing
+        clinical control.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-[#51285f]">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="text-3xl font-semibold text-white sm:text-4xl">Be part of what's next</h2>
+        <p class="mt-4 text-base text-gray-200">
+          Join early access programs and help shape the future of IVF intelligence.
+        </p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <Button href="/contact" label="Join early access" variant="primary" size="md" />
+          <Button href="/demo" label="Talk to our team" variant="outline-light" size="md" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">AI roadmap timeline</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-gray-600">
+        Clear phase-by-phase evolution from standardized grading to full clinical decision intelligence.
+      </p>
+
+      <ol class="mx-auto mt-10 max-w-6xl space-y-6">
+        <li class="grid gap-4 md:grid-cols-[160px_minmax(0,1fr)] md:gap-6">
+          <div class="flex items-start gap-3 md:flex-col md:gap-2">
+            <span class="inline-flex h-8 items-center rounded-full bg-tebra-teal px-3 text-xs font-semibold uppercase tracking-wide text-white">Phase 1</span>
+            <p class="text-sm font-semibold text-tebra-teal-dark">Foundation (Current)</p>
+          </div>
+          <article class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] p-5 md:p-6">
+            <h3 class="text-xl font-semibold text-tebra-teal-dark">Standardized embryo intelligence</h3>
+            <p class="mt-2 text-sm text-gray-700">
+              We've built a strong foundation for consistent, objective embryo assessment across labs.
+            </p>
+            <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">AI-based embryo grading</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Morphology classification</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Confidence scoring</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Image-based detection</li>
+            </ul>
+          </article>
+        </li>
+
+        <li class="grid gap-4 md:grid-cols-[160px_minmax(0,1fr)] md:gap-6">
+          <div class="flex items-start gap-3 md:flex-col md:gap-2">
+            <span class="inline-flex h-8 items-center rounded-full bg-tebra-teal px-3 text-xs font-semibold uppercase tracking-wide text-white">Phase 2</span>
+            <p class="text-sm font-semibold text-tebra-teal-dark">Enhanced Analysis (Near Term)</p>
+          </div>
+          <article class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] p-5 md:p-6">
+            <h3 class="text-xl font-semibold text-tebra-teal-dark">Deeper image understanding</h3>
+            <p class="mt-2 text-sm text-gray-700">Moving from single-image evaluation to richer, context-aware analysis.</p>
+            <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Multi-image / batch analysis</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Improved grading accuracy</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Enhanced morphology detection</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Workflow automation improvements</li>
+            </ul>
+          </article>
+        </li>
+
+        <li class="grid gap-4 md:grid-cols-[160px_minmax(0,1fr)] md:gap-6">
+          <div class="flex items-start gap-3 md:flex-col md:gap-2">
+            <span class="inline-flex h-8 items-center rounded-full bg-tebra-teal px-3 text-xs font-semibold uppercase tracking-wide text-white">Phase 3</span>
+            <p class="text-sm font-semibold text-tebra-teal-dark">Time-Lapse Intelligence</p>
+          </div>
+          <article class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] p-5 md:p-6">
+            <h3 class="text-xl font-semibold text-tebra-teal-dark">Understanding embryo development over time</h3>
+            <p class="mt-2 text-sm text-gray-700">Analyze how embryos evolve not just how they look at a single point in time.</p>
+            <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Time-lapse embryo tracking</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Morphokinetic analysis</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Development pattern recognition</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Progression trend visualization</li>
+            </ul>
+          </article>
+        </li>
+
+        <li class="grid gap-4 md:grid-cols-[160px_minmax(0,1fr)] md:gap-6">
+          <div class="flex items-start gap-3 md:flex-col md:gap-2">
+            <span class="inline-flex h-8 items-center rounded-full bg-tebra-teal px-3 text-xs font-semibold uppercase tracking-wide text-white">Phase 4</span>
+            <p class="text-sm font-semibold text-tebra-teal-dark">Predictive Modeling</p>
+          </div>
+          <article class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] p-5 md:p-6">
+            <h3 class="text-xl font-semibold text-tebra-teal-dark">From grading to prediction</h3>
+            <p class="mt-2 text-sm text-gray-700">AI begins to support outcome-based decisions not just classification.</p>
+            <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Implantation likelihood prediction</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Outcome probability scoring</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Cycle-level insights</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Risk stratification support</li>
+            </ul>
+          </article>
+        </li>
+
+        <li class="grid gap-4 md:grid-cols-[160px_minmax(0,1fr)] md:gap-6">
+          <div class="flex items-start gap-3 md:flex-col md:gap-2">
+            <span class="inline-flex h-8 items-center rounded-full bg-tebra-teal px-3 text-xs font-semibold uppercase tracking-wide text-white">Phase 5</span>
+            <p class="text-sm font-semibold text-tebra-teal-dark">Decision Intelligence (Future Vision)</p>
+          </div>
+          <article class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] p-5 md:p-6">
+            <h3 class="text-xl font-semibold text-tebra-teal-dark">Fully assisted IVF decision support</h3>
+            <p class="mt-2 text-sm text-gray-700">AI becomes a clinical co-pilot supporting every key decision across the IVF journey.</p>
+            <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Personalized embryo scoring</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Treatment optimization insights</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">End-to-end cycle intelligence</li>
+              <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Real-time decision recommendations</li>
+            </ul>
+          </article>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">A connected, intelligent IVF ecosystem</h2>
+        <p class="mt-4 text-base text-gray-700">
+          A connected, intelligent IVF ecosystem powered by data, guided by clinicians.
+        </p>
+      </div>
+      <img
+        src={aiConceptImage.src}
+        alt="AI concept visual connecting grading, workflow, and clinical intelligence"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_20px_40px_-34px_rgba(108,60,240,0.45)]"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">How we build AI</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-gray-700">
+        Our roadmap is guided by principles that ensure safety, trust, and clinical relevance.
+      </p>
+      <div class="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">Clinically grounded — Built for real IVF workflows</div>
+        <div class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">Human-in-the-loop — AI supports, not replaces</div>
+        <div class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">Transparent — Explainable outputs and traceability</div>
+        <div class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">Continuously improving — Learning from real-world data</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Why this evolution matters</h2>
+      <p class="mx-auto mt-4 max-w-4xl text-center text-base text-gray-700">
+        As IVF becomes more data-driven, labs need tools that go beyond manual interpretation.
+        EmbryoOne AI will help teams move faster, reduce uncertainty, and make more informed
+        decisions while maintaining full clinical control.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl bg-tebra-teal-dark px-6 py-10 text-white sm:px-10">
+      <h2 class="text-3xl font-semibold sm:text-4xl">See where AI can take your lab</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-100">
+        Explore EmbryoOne today and be ready for what comes next.
+      </p>
+      <div class="mt-7">
+        <Button href="/demo" label="Book a demo" variant="outline-light" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+{/*
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import aiHeroImage from "../../assets/ai-grading-dashboard-grid.png";
+import aiConceptImage from "../../assets/ai-grading-lab-workflow.png";
+---
+
+<BaseLayout
+  title="AI Roadmap | EmbryoOne AI"
+  description="Explore EmbryoOne's AI roadmap from embryo grading foundation to predictive IVF decision intelligence."
+>
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow text-[#6C3CF0]">AI Roadmap</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Building the future of IVF intelligence
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          EmbryoOne AI is evolving beyond grading toward predictive insights, smarter workflows, and
+          outcome-driven decision support across the IVF cycle.
+        </p>
+        <p class="mt-4 text-sm font-semibold text-[#5A4C72]">From observation to intelligence to prediction.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+          <Button href="/contact" label="Join early access" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img
+        src={aiHeroImage.src}
+        alt="AI roadmap hero visual showing connected embryo intelligence interfaces"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_24px_48px_-36px_rgba(108,60,240,0.5)]"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Where we're headed</h2>
+      <p class="mx-auto mt-4 max-w-4xl text-center text-base text-gray-700">
+        Today, AI helps standardize embryo grading. Tomorrow, it will help predict outcomes,
+        optimize decisions, and guide the entire IVF journey.
+      </p>
+      <p class="mx-auto mt-3 max-w-4xl text-center text-base text-gray-700">
+        Our roadmap is focused on turning data into actionable intelligence without removing
+        clinical control.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">AI roadmap timeline</h2>
+
+      <div class="mx-auto mt-10 max-w-6xl space-y-5">
+        <article class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 md:p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 1 — Foundation (Current)</p>
+          <h3 class="mt-2 text-xl font-semibold text-tebra-teal-dark">Standardized embryo intelligence</h3>
+          <p class="mt-2 text-sm text-gray-700">
+            We've built a strong foundation for consistent, objective embryo assessment across labs.
+          </p>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">AI-based embryo grading</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Morphology classification</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Confidence scoring</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Image-based detection</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-sky-200 bg-sky-50 p-5 md:p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 2 — Enhanced Analysis (Near Term)</p>
+          <h3 class="mt-2 text-xl font-semibold text-tebra-teal-dark">Deeper image understanding</h3>
+          <p class="mt-2 text-sm text-gray-700">Moving from single-image evaluation to richer, context-aware analysis.</p>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Multi-image / batch analysis</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Improved grading accuracy</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Enhanced morphology detection</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Workflow automation improvements</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-violet-200 bg-violet-50 p-5 md:p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 3 — Time-Lapse Intelligence</p>
+          <h3 class="mt-2 text-xl font-semibold text-tebra-teal-dark">Understanding embryo development over time</h3>
+          <p class="mt-2 text-sm text-gray-700">Analyze how embryos evolve not just how they look at a single point in time.</p>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Time-lapse embryo tracking</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Morphokinetic analysis</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Development pattern recognition</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 4 — Predictive Modeling</p>
+          <h3 class="mt-2 text-xl font-semibold text-tebra-teal-dark">From grading to prediction</h3>
+          <p class="mt-2 text-sm text-gray-700">AI begins to support outcome-based decisions not just classification.</p>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Implantation likelihood prediction</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Outcome probability scoring</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Cycle-level insights</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-rose-200 bg-rose-50 p-5 md:p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 5 — Decision Intelligence (Future Vision)</p>
+          <h3 class="mt-2 text-xl font-semibold text-tebra-teal-dark">Fully assisted IVF decision support</h3>
+          <p class="mt-2 text-sm text-gray-700">AI becomes a clinical co-pilot supporting every key decision across the IVF journey.</p>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Personalized embryo scoring</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Treatment optimization insights</li>
+            <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">End-to-end cycle intelligence</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">A connected, intelligent IVF ecosystem</h2>
+        <p class="mt-4 text-base text-gray-700">
+          A connected, intelligent IVF ecosystem powered by data, guided by clinicians.
+        </p>
+      </div>
+      <img
+        src={aiConceptImage.src}
+        alt="AI concept visual connecting grading, workflow, and clinical intelligence"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_20px_40px_-34px_rgba(108,60,240,0.45)]"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">How we build AI</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-gray-700">
+        Our roadmap is guided by principles that ensure safety, trust, and clinical relevance.
+      </p>
+      <div class="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">Clinically grounded — Built for real IVF workflows</div>
+        <div class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">Human-in-the-loop — AI supports, not replaces</div>
+        <div class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">Transparent — Explainable outputs and traceability</div>
+        <div class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">Continuously improving — Learning from real-world data</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Why this evolution matters</h2>
+      <p class="mx-auto mt-4 max-w-4xl text-center text-base text-gray-700">
+        As IVF becomes more data-driven, labs need tools that go beyond manual interpretation.
+        EmbryoOne AI will help teams move faster, reduce uncertainty, and make more informed
+        decisions while maintaining full clinical control.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">More than just AI grading</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-gray-700">
+        Most tools stop at classification. EmbryoOne is building toward full-cycle intelligence
+        connecting lab data, embryo development, and clinical outcomes.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-[#51285f]">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="text-3xl font-semibold text-white sm:text-4xl">Be part of what's next</h2>
+        <p class="mt-4 text-base text-gray-200">
+          Join early access programs and help shape the future of IVF intelligence.
+        </p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <Button href="/contact" label="Join early access" variant="primary" size="md" />
+          <Button href="/demo" label="Talk to our team" variant="outline-light" size="md" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl bg-tebra-teal-dark px-6 py-10 text-white sm:px-10">
+      <h2 class="text-3xl font-semibold sm:text-4xl">See where AI can take your lab</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-100">
+        Explore EmbryoOne today and be ready for what comes next.
+      </p>
+      <div class="mt-7">
+        <Button href="/demo" label="Book a demo" variant="outline-light" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import aiHeroImage from "../../assets/ai-grading-dashboard-grid.png";
+import aiConceptImage from "../../assets/ai-grading-lab-workflow.png";
+
+const aiPrinciples = [
+  "Clinically grounded — Built for real IVF workflows",
+  "Human-in-the-loop — AI supports, not replaces",
+  "Transparent — Explainable outputs and traceability",
+  "Continuously improving — Learning from real-world data",
+];
+---
+
+<BaseLayout
+  title="AI Roadmap | EmbryoOne AI"
+  description="Explore EmbryoOne's AI roadmap from embryo grading foundation to predictive IVF decision intelligence."
+>
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-10 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.8fr)_minmax(0,1.2fr)]">
+      <div>
+        <p class="eyebrow text-[#6C3CF0]">AI Roadmap</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Building the future of IVF intelligence
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          EmbryoOne AI is evolving beyond grading toward predictive insights, smarter workflows, and
+          outcome-driven decision support across the IVF cycle.
+        </p>
+        <p class="mt-4 text-sm font-semibold text-[#5A4C72]">From observation to intelligence to prediction.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+          <Button href="/contact" label="Join early access" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img
+        src={aiHeroImage.src}
+        alt="AI roadmap hero visual showing connected embryo intelligence interfaces"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_24px_48px_-36px_rgba(108,60,240,0.5)]"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container max-w-5xl">
+      <h2 class="heading-md text-tebra-teal-dark text-center">Where we're headed</h2>
+      <p class="mx-auto mt-4 text-center text-base text-gray-700">
+        Today, AI helps standardize embryo grading. Tomorrow, it will help predict outcomes,
+        optimize decisions, and guide the entire IVF journey.
+      </p>
+      <p class="mx-auto mt-3 text-center text-base text-gray-700">
+        Our roadmap is focused on turning data into actionable intelligence without removing
+        clinical control.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark text-center">AI roadmap timeline</h2>
+      <div class="mx-auto mt-10 max-w-6xl space-y-5">
+        <article class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 md:p-6">
+          <div class="grid gap-4 md:grid-cols-[minmax(0,0.35fr)_minmax(0,1fr)] md:gap-8">
+            <div>
+              <span class="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 1</p>
+              <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Foundation (Current)</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-tebra-teal-dark">Standardized embryo intelligence</h3>
+              <p class="mt-2 text-sm text-gray-700">
+                We've built a strong foundation for consistent, objective embryo assessment across labs.
+              </p>
+              <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">AI-based embryo grading</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Morphology classification</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Confidence scoring</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Image-based detection</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-2xl border border-sky-200 bg-sky-50 p-5 md:p-6">
+          <div class="grid gap-4 md:grid-cols-[minmax(0,0.35fr)_minmax(0,1fr)] md:gap-8">
+            <div>
+              <span class="inline-flex h-2.5 w-2.5 rounded-full bg-sky-500"></span>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 2</p>
+              <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Enhanced Analysis (Near Term)</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-tebra-teal-dark">Deeper image understanding</h3>
+              <p class="mt-2 text-sm text-gray-700">
+                Moving from single-image evaluation to richer, context-aware analysis.
+              </p>
+              <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Multi-image / batch analysis</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Improved grading accuracy</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Enhanced morphology detection</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Workflow automation improvements</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-2xl border border-violet-200 bg-violet-50 p-5 md:p-6">
+          <div class="grid gap-4 md:grid-cols-[minmax(0,0.35fr)_minmax(0,1fr)] md:gap-8">
+            <div>
+              <span class="inline-flex h-2.5 w-2.5 rounded-full bg-violet-500"></span>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 3</p>
+              <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Time-Lapse Intelligence</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-tebra-teal-dark">Understanding embryo development over time</h3>
+              <p class="mt-2 text-sm text-gray-700">
+                Analyze how embryos evolve not just how they look at a single point in time.
+              </p>
+              <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Time-lapse embryo tracking</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Morphokinetic analysis</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Development pattern recognition</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-2xl border border-amber-200 bg-amber-50 p-5 md:p-6">
+          <div class="grid gap-4 md:grid-cols-[minmax(0,0.35fr)_minmax(0,1fr)] md:gap-8">
+            <div>
+              <span class="inline-flex h-2.5 w-2.5 rounded-full bg-amber-500"></span>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 4</p>
+              <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Predictive Modeling</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-tebra-teal-dark">From grading to prediction</h3>
+              <p class="mt-2 text-sm text-gray-700">
+                AI begins to support outcome-based decisions not just classification.
+              </p>
+              <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Implantation likelihood prediction</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Outcome probability scoring</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Cycle-level insights</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-2xl border border-rose-200 bg-rose-50 p-5 md:p-6">
+          <div class="grid gap-4 md:grid-cols-[minmax(0,0.35fr)_minmax(0,1fr)] md:gap-8">
+            <div>
+              <span class="inline-flex h-2.5 w-2.5 rounded-full bg-rose-500"></span>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Phase 5</p>
+              <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Decision Intelligence (Future Vision)</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-tebra-teal-dark">Fully assisted IVF decision support</h3>
+              <p class="mt-2 text-sm text-gray-700">
+                AI becomes a clinical co-pilot supporting every key decision across the IVF journey.
+              </p>
+              <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Personalized embryo scoring</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">Treatment optimization insights</li>
+                <li class="rounded-lg border border-white/60 bg-white/80 px-3 py-2 text-sm text-gray-700">End-to-end cycle intelligence</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">A connected, intelligent IVF ecosystem</h2>
+        <p class="mt-4 text-base text-gray-700">
+          A connected, intelligent IVF ecosystem powered by data, guided by clinicians.
+        </p>
+      </div>
+      <img
+        src={aiConceptImage.src}
+        alt="AI concept visual connecting grading, workflow, and clinical intelligence"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_20px_40px_-34px_rgba(108,60,240,0.45)]"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">How we build AI</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-gray-700">
+        Our roadmap is guided by principles that ensure safety, trust, and clinical relevance.
+      </p>
+      <ul class="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+        {aiPrinciples.map((principle) => (
+          <li class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] px-5 py-4 text-sm font-medium text-[#51285f]">
+            {principle}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark text-center">Why this evolution matters</h2>
+      <p class="mx-auto mt-4 max-w-4xl text-center text-base text-gray-700">
+        As IVF becomes more data-driven, labs need tools that go beyond manual interpretation.
+        EmbryoOne AI will help teams move faster, reduce uncertainty, and make more informed
+        decisions while maintaining full clinical control.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark text-center">More than just AI grading</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-gray-700">
+        Most tools stop at classification. EmbryoOne is building toward full-cycle intelligence
+        connecting lab data, embryo development, and clinical outcomes.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-[#51285f]">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="text-3xl font-semibold text-white sm:text-4xl">Be part of what's next</h2>
+        <p class="mt-4 text-base text-gray-200">
+          Join early access programs and help shape the future of IVF intelligence.
+        </p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <Button href="/contact" label="Join early access" variant="primary" size="md" />
+          <Button href="/demo" label="Talk to our team" variant="outline-light" size="md" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl bg-tebra-teal-dark px-6 py-10 text-white sm:px-10">
+      <h2 class="text-3xl font-semibold sm:text-4xl">See where AI can take your lab</h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-100">
+        Explore EmbryoOne today and be ready for what comes next.
+      </p>
+      <div class="mt-7">
+        <Button href="/demo" label="Book a demo" variant="outline-light" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import roadmapVisual from "../../assets/ai-grading-dashboard-grid.png";
+
+const currentCapabilities = [
+  "Embryo grading",
+  "Detection and classification",
+  "Confidence scoring",
+];
+
+const roadmapPhases = [
+  {
+    phase: "Phase 1 (Near Term)",
+    items: ["Improved grading accuracy", "Multi-image sequence analysis"],
+  },
+  {
+    phase: "Phase 2",
+    items: ["Time-lapse embryo analysis", "Morphokinetic modeling"],
+  },
+  {
+    phase: "Phase 3",
+    items: ["Implantation prediction models", "Outcome forecasting"],
+  },
+  {
+    phase: "Phase 4",
+    items: ["Fully assisted decision systems", "Personalized embryo scoring"],
+  },
+];
+
+const principles = [
+  "Clinically grounded AI",
+  "Human-in-the-loop",
+  "Transparent models",
+  "Continuous learning",
+];
+---
+
+<BaseLayout
+  title="AI Roadmap | EmbryoOne"
+  description="Explore EmbryoOne AI roadmap from grading to predictive intelligence, outcome forecasting, and next-generation IVF decision support."
+>
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-10 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow text-[#6C3CF0]">Roadmap</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          Building the future of IVF intelligence
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          EmbryoOne AI is evolving beyond grading toward predictive insights, automation, and
+          full-cycle intelligence.
+        </p>
+      </div>
+      <img
+        src={roadmapVisual.src}
+        alt="AI roadmap visual for next-generation embryo intelligence"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_24px_48px_-34px_rgba(108,60,240,0.45)]"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container grid gap-10 md:grid-cols-2">
+      <article>
+        <h2 class="heading-md text-tebra-teal-dark">Current Capabilities</h2>
+        <ul class="mt-6 space-y-3">
+          {currentCapabilities.map((item) => (
+            <li class="rounded-xl border border-[#EADDFD] bg-white px-4 py-3 text-sm text-[#574C6A]">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </article>
+      <article>
+        <h2 class="heading-md text-tebra-teal-dark">Long-Term Vision</h2>
+        <p class="mt-4 text-lg font-semibold text-[#4A1F82]">From grading -> prediction -> outcomes</p>
+        <p class="mt-4 text-base leading-relaxed text-gray-700">
+          Our goal is to support complete IVF decision intelligence, from lab to patient outcomes.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark">Upcoming Features</h2>
+      <div class="mt-8 space-y-4">
+        {roadmapPhases.map((phase, index) => (
+          <article class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] p-5 shadow-[0_14px_28px_-24px_rgba(108,60,240,0.55)]">
+            <div class="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
+              <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F2E8FB] text-sm font-semibold text-[#51285f]">
+                {index + 1}
+              </span>
+              <div>
+                <h3 class="text-lg font-semibold text-[#51285f]">{phase.phase}</h3>
+                <ul class="mt-2 space-y-1.5 text-sm text-[#51285f]">
+                  {phase.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Innovation Principles</h2>
+      <div class="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-4">
+        {principles.map((item) => (
+          <article class="rounded-xl border border-[#EADDFD] bg-white px-4 py-4 text-center text-sm font-medium text-[#4A1F82]">
+            {item}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl bg-[#51285f] px-6 py-10 text-white sm:px-10">
+      <h2 class="text-3xl font-semibold sm:text-4xl">Be part of the future of IVF</h2>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Join early access" variant="outline-light" size="md" />
+        <Button href="/contact" label="Talk to us" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+*/}

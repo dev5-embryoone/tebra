@@ -1,14 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import g2logo from "../../assets/g2logo.36d61f52.svg";
-import awardUsersLoveUs from "../../assets/award3.9dad656e.svg";
-import productGraphic from "../../assets/sidebar-image.webp";
-import g2Easiest1 from "../../assets/G2-Easiest-to-Use-1.webp";
-import g2Easiest3 from "../../assets/G2-Easiest-to-Use-3.webp";
-
-const g2logoSrc = typeof g2logo === "string" ? g2logo : g2logo.src;
-const awardSrc =
-  typeof awardUsersLoveUs === "string" ? awardUsersLoveUs : awardUsersLoveUs.src;
+import tourPreviewImage from "../../assets/platform-lab-operations.png";
 
 /** Copy aligned with https://www.tebra.com/product-tour/form */
 const tourBullets = [
@@ -29,63 +20,11 @@ const textGreen = "text-tebra-teal-dark";
 <section
   class="flex w-full min-h-[calc(100dvh-var(--nav-product-tour-offset))] flex-col bg-gray-50 lg:h-[calc(100dvh-var(--nav-product-tour-offset))] lg:min-h-0 lg:flex-row lg:overflow-hidden"
 >
-  <!-- Left: grey half — badges → copy → checklist; mockup anchored to bottom on desktop -->
+  <!-- Left: grey half — copy and checklist -->
   <div
-    class="flex min-h-0 flex-1 flex-col justify-between gap-10 bg-gray-50 px-6 py-10 sm:px-8 sm:py-12 lg:gap-7 lg:px-10 lg:py-6 xl:px-12"
+    class="flex min-h-0 flex-1 flex-col bg-gray-50 px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-6 xl:px-12"
   >
-    <div class="space-y-6">
-      <!-- G2 trust row -->
-      <div
-        class="flex flex-wrap items-end gap-3 sm:gap-4"
-        aria-label="G2 awards and ratings"
-      >
-        <div
-          class="flex max-w-[280px] items-center gap-3 rounded-xl border border-black/10 bg-white/90 px-4 py-3 shadow-sm"
-        >
-          <img
-            src={g2logoSrc}
-            alt=""
-            class="h-11 w-11 shrink-0"
-            width="53"
-            height="53"
-            aria-hidden="true"
-          />
-          <div class="min-w-0 leading-tight">
-            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-600">
-              G2
-            </p>
-            <p class={`text-base font-semibold leading-snug sm:text-lg ${textGreen}`}>
-              2025 Practice
-              <br />
-              Management Leader
-            </p>
-          </div>
-        </div>
-
-        <img
-          src={awardSrc}
-          alt="G2 Users Love Us"
-          class="h-[4.5rem] w-auto shrink-0 sm:h-[5.25rem]"
-          width="52"
-          height="59"
-        />
-
-        <Image
-          src={g2Easiest1}
-          alt="G2 Easiest to Use"
-          class="h-16 w-auto shrink-0 object-contain sm:h-[4.75rem]"
-          widths={[120, 160]}
-          sizes="120px"
-        />
-        <Image
-          src={g2Easiest3}
-          alt="G2 Easiest Setup"
-          class="h-16 w-auto shrink-0 object-contain sm:h-[4.75rem]"
-          widths={[120, 160]}
-          sizes="120px"
-        />
-      </div>
-
+    <div class="space-y-6 lg:pt-4">
       <div>
         <h1
           class={`font-display text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.1rem] lg:leading-[1.1] ${textGreen}`}
@@ -126,17 +65,15 @@ const textGreen = "text-tebra-teal-dark";
           ))}
         </ul>
       </div>
-    </div>
 
-    <div class="relative mt-4 shrink-0 lg:mt-0">
-      <Image
-        src={productGraphic}
-        alt=""
-        role="presentation"
-        class="w-full max-w-lg rounded-2xl shadow-[0_20px_50px_-20px_rgba(0,0,0,0.22)] lg:max-w-[92%] lg:rounded-xl xl:max-w-none"
-        widths={[400, 600, 800, 960]}
-        sizes="(max-width: 1023px) 90vw, 50vw"
-      />
+      <div class="pt-2">
+        <img
+          src={tourPreviewImage.src}
+          alt="EmbryoOne platform preview with connected clinic and lab workflows"
+          class="w-full max-w-xl rounded-2xl border border-gray-200 object-cover shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)]"
+          loading="lazy"
+        />
+      </div>
     </div>
   </div>
 

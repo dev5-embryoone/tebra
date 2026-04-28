@@ -1,15 +1,12 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { kareoStyleLogin } from "../../../data/signInPage";
-import aiPromoRaw from "../../../assets/hero-short.webp";
-
-const promoImg = typeof aiPromoRaw === "string" ? aiPromoRaw : aiPromoRaw.src;
 const c = kareoStyleLogin;
 ---
 
 <BaseLayout
-  title="Login | Tebra"
-  description="Sign in to Tebra with your username and password."
+  title="Login | EmbryoOne"
+  description="Sign in to EmbryoOne with your username and password."
   navMode="logo-only"
   showFooter={false}
   mainClass="min-h-[calc(100dvh-var(--nav-product-tour-offset))] bg-white"
@@ -95,9 +92,17 @@ const c = kareoStyleLogin;
     <aside class="min-w-0 flex-1 rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-sm sm:p-8 lg:max-w-md">
       <h2 class="text-lg font-bold leading-snug text-gray-900 sm:text-xl">
         {c.promo.title}
-        <span class="text-tebra-teal-dark">{c.promo.titleAccent}</span>
+        {c.promo.titleAccent && <span class="text-tebra-teal-dark">{c.promo.titleAccent}</span>}
       </h2>
       <p class="mt-3 text-sm leading-relaxed text-gray-800">{c.promo.description}</p>
+      <ul class="mt-5 space-y-3 text-sm text-gray-700">
+        {c.promo.points.map((point) => (
+          <li class="flex items-start gap-2.5">
+            <span class="mt-1 inline-block h-2 w-2 rounded-full bg-tebra-teal" aria-hidden="true"></span>
+            <span>{point}</span>
+          </li>
+        ))}
+      </ul>
       <a
         href={c.promo.learnMoreHref}
         class="mt-4 inline-flex items-center text-sm font-semibold text-tebra-teal hover:underline"
@@ -110,10 +115,9 @@ const c = kareoStyleLogin;
           />
         </svg>
       </a>
-      <div class="mt-6 overflow-hidden rounded-xl border border-gray-200 bg-gray-100">
-        <img src={promoImg} alt="" class="h-auto w-full object-cover" loading="lazy" width={800} height={500} />
-      </div>
-      <p class="mt-3 text-center text-xs text-gray-500">Product preview — connect to Tebra AI Note Assist in a live demo.</p>
+      <p class="mt-5 text-xs text-gray-500">
+        Need a guided walkthrough? Request a personalized demo and we will tailor it to your IVF clinic workflows.
+      </p>
     </aside>
   </div>
 
@@ -163,7 +167,7 @@ const c = kareoStyleLogin;
           ok = false;
         } else errP.classList.add("hidden");
         if (ok) {
-          alert("This is a static demo. In production this would sign in via Tebra.");
+          alert("This is a static demo. In production this would sign in via EmbryoOne.");
         }
       });
 

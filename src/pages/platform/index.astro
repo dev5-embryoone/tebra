@@ -1,0 +1,695 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import { Cpu, Layers3, Radio } from "@lucide/astro";
+import heroImage from "../../assets/home-platform-hero-chart.png";
+import accordionPatientImage from "../../assets/patients1.png";
+import accordionLabImage from "../../assets/embryo1.png";
+import splitPatientImage from "../../assets/patients1.png";
+import splitLabImage from "../../assets/lab1.png";
+import caseImageOne from "../../assets/lab3.png";
+import caseImageTwo from "../../assets/ai-grading-lab-workflow.png";
+import caseImageThree from "../../assets/cryo-storage-map-detailed.png";
+
+const accordionItems = [
+  {
+    title: "Reach new patients",
+    content:
+      "Patients today expect a digital-first IVF journey before they even call your clinic. EmbryoOne helps you launch online intake, faster teleconsultation, and clear treatment visibility in one experience. Your team follows every lead consistently, responds faster, and converts more right-fit patients.",
+    image: accordionPatientImage.src,
+  },
+  {
+    title: "Connected patient experience",
+    content:
+      "Bring appointments, cycle milestones, lab updates, and care communication into one connected workspace. Patients see the right updates at the right time, while staff avoid duplicate follow-ups and missed handoffs. That means fewer calls, clearer expectations, and better continuity throughout treatment.",
+    image: accordionPatientImage.src,
+  },
+  {
+    title: "Precision-driven lab workflows",
+    content:
+      "Standardize embryology routines, AI grading review, witness checks, and cryo handling with structured protocols. Real-time validations reduce variation between shifts and prevent critical workflow drift. Every step is documented the same way, so quality stays high across the lab.",
+    image: accordionLabImage.src,
+  },
+  {
+    title: "Faster clinical decisions",
+    content:
+      "Surface key alerts, lab outcomes, and cycle insights the moment they matter to the care team. Clinicians no longer wait on manual updates or chase information across separate systems. Decisions happen earlier, with stronger context and less operational delay.",
+    image: accordionLabImage.src,
+  },
+  {
+    title: "Complete traceability",
+    content:
+      "Track every embryo, every movement, and every user action with complete event history. Audit logs are always available and tied directly to workflow context, not scattered across tools. Compliance reporting becomes faster, cleaner, and far more reliable.",
+    image: accordionLabImage.src,
+  },
+  {
+    title: "Easy implementation",
+    content:
+      "Go live in phases with modular onboarding designed for active IVF clinics. Start with one workflow, train quickly, and expand across lab, cryo, and clinical operations without disruption. Your team adopts confidently while day-to-day care continues smoothly.",
+    image: accordionPatientImage.src,
+  },
+] as const;
+
+const testimonials = [
+  {
+    quote:
+      "EmbryoOne transformed how we manage our lab. Every embryo, every action is traceable — we've eliminated manual errors completely.",
+    author: "Dr. Kavya Iyer, IVF Director",
+  },
+  {
+    quote:
+      "The integration between cryo tracking and EHR is something we've never seen before. It just works.",
+    author: "Rahul Mehta, Lab Manager",
+  },
+] as const;
+---
+
+<BaseLayout
+  title="The platform powering modern IVF clinics | EmbryoOne Platform"
+  description="Connect your lab, clinic, cryo storage, and AI workflows into one intelligent system built for precision, speed, and traceability."
+>
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-10 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow">Platform overview</p>
+        <h1 class="mt-3 max-w-2xl text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          The platform powering modern IVF clinics
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          Connect your lab, clinic, cryo storage, and AI workflows into one intelligent system —
+          built for precision, speed, and traceability.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/demo" label="Get a demo" variant="primary" size="md" />
+          <Button href="/platform" label="Explore platform" variant="secondary" size="md" />
+        </div>
+      </div>
+
+      <div class="relative">
+        <img
+          src={heroImage.src}
+          alt="Platform hero chart visualization with weekly trend lines"
+          class="h-full min-h-[360px] w-full rounded-3xl border border-gray-200 object-cover shadow-[0_24px_45px_-36px_rgba(15,23,42,0.65)] sm:min-h-[420px]"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7FAFA]">
+    <div class="page-container grid gap-10 md:grid-cols-2 md:items-start">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">Run a connected IVF operation — end to end</h2>
+        <div class="mt-7">
+          {accordionItems.map((item, index) => (
+            <details
+              class="platform-accordion-item border-b border-gray-200 py-3"
+              open={index === 0}
+            >
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-1 text-lg font-medium text-tebra-teal-dark marker:content-none">
+                <span>{item.title}</span>
+                <span class="platform-accordion-icon" aria-hidden="true">
+                  <span class="platform-accordion-icon-line platform-accordion-icon-line-h"></span>
+                  <span class="platform-accordion-icon-line platform-accordion-icon-line-v"></span>
+                </span>
+              </summary>
+              <div class="platform-accordion-answer-wrap">
+                <div class="platform-accordion-answer">
+                  <p class="max-w-xl text-base leading-relaxed text-[#3E3361] sm:text-lg">{item.content}</p>
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <img
+          src={accordionLabImage.src}
+          alt="Patient and clinician using mobile-connected IVF tools"
+          class="w-full rounded-3xl border border-gray-200 object-cover shadow-[0_24px_45px_-36px_rgba(15,23,42,0.65)]"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F6FAFA]">
+    <div class="page-container">
+      <h2 class="text-center text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+        A connected IVF platform that actually works
+      </h2>
+      <p class="mx-auto mt-3 max-w-3xl text-center text-sm text-[#5B7280]">
+        Built for real-time IVF operations
+      </p>
+      <div class="mx-auto mt-10 grid max-w-6xl gap-4 md:grid-cols-3">
+        <div class="rounded-2xl border border-[#D6E6E6] bg-white p-6">
+          <p class="text-2xl" aria-hidden="true">🧬</p>
+          <h3 class="mt-3 text-xl font-semibold text-tebra-teal-dark">Everything in one system</h3>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">
+            Manage EHR, cryo storage, lab workflows, AI grading, and team operations — without
+            switching tools.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-[#D6E6E6] bg-white p-6">
+          <p class="text-2xl" aria-hidden="true">⚙️</p>
+          <h3 class="mt-3 text-xl font-semibold text-tebra-teal-dark">Automated workflows</h3>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">
+            Trigger tasks, alerts, and validations automatically across the IVF lifecycle.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-[#D6E6E6] bg-white p-6">
+          <p class="text-2xl" aria-hidden="true">📊</p>
+          <h3 class="mt-3 text-xl font-semibold text-tebra-teal-dark">Real-time insights</h3>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">
+            Understand performance, outcomes, and bottlenecks instantly.
+          </p>
+        </div>
+
+        <article class="rounded-2xl border border-[#D6E6E6] bg-white p-6">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF5F5] text-tebra-teal-dark">
+            <Cpu class="h-5 w-5" aria-hidden="true" />
+          </span>
+          <h3 class="mt-4 text-xl font-semibold text-tebra-teal-dark">Device Integration</h3>
+          <ul class="mt-3 space-y-1 text-sm text-gray-600">
+            <li>Cryo sensors</li>
+            <li>Lab instruments</li>
+            <li>Imaging systems</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-[#D6E6E6] bg-white p-6">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF5F5] text-tebra-teal-dark">
+            <Radio class="h-5 w-5" aria-hidden="true" />
+          </span>
+          <h3 class="mt-4 text-xl font-semibold text-tebra-teal-dark">Cloud-first infrastructure</h3>
+          <ul class="mt-3 space-y-1 text-sm text-gray-600">
+            <li>Real-time sync</li>
+            <li>Multi-location support</li>
+            <li>High availability</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-[#D6E6E6] bg-white p-6">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF5F5] text-tebra-teal-dark">
+            <Layers3 class="h-5 w-5" aria-hidden="true" />
+          </span>
+          <h3 class="mt-4 text-xl font-semibold text-tebra-teal-dark">Modular design</h3>
+          <p class="mt-3 text-sm leading-relaxed text-gray-600">
+            Each product works independently but becomes powerful together.
+          </p>
+        </article>
+      </div>
+      <p class="mx-auto mt-10 max-w-4xl text-center text-base leading-relaxed text-gray-600">
+        Unlike generic hospital systems, EmbryoOne is engineered for lab-first workflows and
+        real-time monitoring.
+      </p>
+    </div>
+  </section>
+
+  <section class="platform-stats-section py-16 sm:py-20 bg-tebra-teal-dark">
+    <div class="page-container">
+      <h2 class="text-center text-3xl font-semibold text-white sm:text-4xl">
+        Clinics using EmbryoOne operate faster and safer
+      </h2>
+      <div class="mt-10 grid gap-6 text-center sm:grid-cols-3">
+        <div>
+          <p class="text-5xl font-semibold text-white">
+            <span class="stat-counter" data-target="72" data-suffix="%">0%</span>
+          </p>
+          <p class="mt-2 text-sm text-gray-200">faster cycle coordination</p>
+        </div>
+        <div>
+          <p class="text-5xl font-semibold text-white">
+            <span class="stat-counter" data-target="89" data-suffix="%">0%</span>
+          </p>
+          <p class="mt-2 text-sm text-gray-200">reduction in manual tracking errors</p>
+        </div>
+        <div>
+          <p class="text-5xl font-semibold text-white">
+            <span class="stat-counter" data-target="3" data-suffix="x">0x</span>
+          </p>
+          <p class="mt-2 text-sm text-gray-200">faster embryo traceability audits</p>
+        </div>
+      </div>
+      <div class="mt-10 rounded-2xl bg-white px-6 py-6 sm:px-8">
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="text-4xl font-semibold text-tebra-teal-dark">Is your practice ready?</p>
+            <p class="mt-3 text-base text-gray-600">
+              See how EmbryoOne can help your clinic grow and transform in this new era of IVF care.
+            </p>
+          </div>
+          <Button href="/demo" label="Learn more" variant="primary" size="md" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container space-y-16">
+      <div class="grid gap-10 md:grid-cols-2 md:items-center">
+        <img
+          src={splitPatientImage.src}
+          alt="Patient using mobile IVF app for appointments and cycle updates"
+          class="w-full rounded-3xl border border-gray-200 object-cover"
+          loading="lazy"
+        />
+        <div>
+          <h2 class="heading-md text-tebra-teal-dark">Patient-first IVF experience</h2>
+          <p class="mt-4 text-base text-gray-600">
+            Give patients clarity, confidence, and control — from intake to transfer.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm text-gray-600">
+            <li>Online scheduling</li>
+            <li>Cycle visibility</li>
+            <li>Consent tracking</li>
+            <li>Real-time updates</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid gap-10 md:grid-cols-2 md:items-center">
+        <div class="md:order-2">
+          <img
+            src={splitLabImage.src}
+            alt="Clinical team coordinating IVF lab operations on a unified workflow board"
+            class="w-full rounded-3xl border border-gray-200 object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="md:order-1">
+          <h2 class="heading-md text-tebra-teal-dark">Clinical and lab workflows — unified</h2>
+          <p class="mt-4 text-base text-gray-600">
+            Your team works from one system — reducing errors and improving outcomes.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm text-gray-600">
+            <li>Cycle board + task tracking</li>
+            <li>Lab operations + QA</li>
+            <li>Cryo monitoring</li>
+            <li>AI-assisted grading</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="platform-testimonials platform-testimonials--dark py-20">
+    <div class="page-container grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div class="relative min-h-[240px]">
+        <svg viewBox="0 0 600 280" class="h-full w-full">
+          <path
+            id="testimonial-path"
+            class="testimonial-path"
+            d="M10 20 H480 C530 20 530 90 480 90 H300 C250 90 250 160 300 160 H380 C430 160 430 230 380 230 H10"
+          />
+        </svg>
+      </div>
+      <div>
+        <div id="testimonial-content" class="relative min-h-[190px]">
+          {testimonials.map((item, index) => (
+            <article class={`testimonial-slide ${index === 0 ? "is-active" : ""}`}>
+              <p class="testimonial-quote text-3xl leading-tight">{item.quote}</p>
+              <p class="testimonial-author mt-6 text-sm font-medium">{item.author}</p>
+            </article>
+          ))}
+        </div>
+        <div class="mt-6 flex items-center gap-2">
+          {testimonials.map((_, index) => (
+            <button
+              class={`testimonial-dot ${index === 0 ? "is-active" : ""}`}
+              type="button"
+              aria-label={`Go to testimonial ${index + 1}`}
+              data-index={index}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F6F7F7]">
+    <div class="page-container">
+      <h2 class="text-center text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+        How IVF clinics are scaling with EmbryoOne
+      </h2>
+      <div class="mt-10 grid gap-4 md:grid-cols-3">
+        <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+          <img
+            src={caseImageOne.src}
+            alt="Lab team discussing witness validation improvements"
+            class="h-48 w-full object-cover"
+            loading="lazy"
+          />
+          <div class="p-5">
+            <p class="text-lg font-semibold text-tebra-teal-dark">Reduced lab errors by 85%</p>
+            <p class="mt-2 text-sm text-gray-600">By implementing real-time witness tracking</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+          <img
+            src={caseImageTwo.src}
+            alt="Cycle board and workflow automation interface in clinic"
+            class="h-48 w-full object-cover"
+            loading="lazy"
+          />
+          <div class="p-5">
+            <p class="text-lg font-semibold text-tebra-teal-dark">3x faster cycle coordination</p>
+            <p class="mt-2 text-sm text-gray-600">With automated task workflows</p>
+          </div>
+        </article>
+        <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+          <img
+            src={caseImageThree.src}
+            alt="Embryo storage map showing traceability across locations"
+            class="h-48 w-full object-cover"
+            loading="lazy"
+          />
+          <div class="p-5">
+            <p class="text-lg font-semibold text-tebra-teal-dark">Full embryo traceability achieved</p>
+            <p class="mt-2 text-sm text-gray-600">Across multiple locations</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl bg-tebra-teal-dark px-6 py-10 sm:px-10">
+      <h2 class="text-3xl font-semibold text-white sm:text-4xl">See the platform in action</h2>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+        <Button href="/platform" label="Explore platform" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+
+  <style>
+    :root {
+      --embryoone-dark-bar: #4b2a63;
+      --embryoone-lavender: #f3eeff;
+    }
+
+    .platform-accordion-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .platform-accordion-icon {
+      position: relative;
+      display: inline-flex;
+      height: 1.25rem;
+      width: 1.25rem;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      color: #f38b6a;
+    }
+
+    .platform-accordion-icon-line {
+      position: absolute;
+      display: block;
+      border-radius: 9999px;
+      background: currentColor;
+      transition: transform 260ms ease, opacity 260ms ease;
+    }
+
+    .platform-accordion-icon-line-h {
+      height: 2px;
+      width: 0.85rem;
+    }
+
+    .platform-accordion-icon-line-v {
+      height: 0.85rem;
+      width: 2px;
+    }
+
+    .platform-accordion-item[open] .platform-accordion-icon-line-v {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+
+    .platform-accordion-answer-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 320ms ease;
+    }
+
+    .platform-accordion-item[open] .platform-accordion-answer-wrap {
+      grid-template-rows: 1fr;
+    }
+
+    .platform-accordion-answer {
+      overflow: hidden;
+      margin-top: 0.5rem;
+      border: 1px solid #e5d7ff;
+      border-radius: 0.85rem;
+      background: #f4edff;
+      padding: 0.95rem 1rem;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 260ms ease, transform 260ms ease;
+    }
+
+    .platform-accordion-item[open] .platform-accordion-answer {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .platform-testimonials {
+      background: var(--embryoone-dark-bar);
+      transition: background-color 650ms ease;
+    }
+
+    .platform-testimonials--dark {
+      background: var(--embryoone-dark-bar);
+    }
+
+    .platform-testimonials--dark .testimonial-path {
+      stroke: #cda7ea;
+    }
+
+    .platform-testimonials--dark .testimonial-quote {
+      color: #ffffff;
+    }
+
+    .platform-testimonials--dark .testimonial-author {
+      color: #e7dbf5;
+    }
+
+    .platform-testimonials--dark .testimonial-dot {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .platform-testimonials--dark .testimonial-dot.is-active {
+      background: #ffffff;
+    }
+
+    .platform-testimonials--lavender {
+      background: var(--embryoone-lavender);
+    }
+
+    .platform-testimonials--lavender .testimonial-path {
+      stroke: #7a55a0;
+    }
+
+    .platform-testimonials--lavender .testimonial-quote {
+      color: #2f1f4a;
+    }
+
+    .platform-testimonials--lavender .testimonial-author {
+      color: #5d4a7e;
+    }
+
+    .platform-testimonials--lavender .testimonial-dot {
+      background: rgba(74, 42, 115, 0.3);
+    }
+
+    .platform-testimonials--lavender .testimonial-dot.is-active {
+      background: #4a2a73;
+    }
+
+    .testimonial-path {
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+    }
+
+    .testimonial-path.is-animating {
+      animation: drawLine 2s ease forwards;
+    }
+
+    @keyframes drawLine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .testimonial-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.8s ease;
+    }
+
+    .testimonial-slide.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .testimonial-dot {
+      height: 0.42rem;
+      width: 0.42rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.35);
+      transition: all 250ms ease;
+    }
+
+    .testimonial-dot.is-active {
+      width: 1.3rem;
+      background: #fff;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .testimonial-path {
+        stroke-dashoffset: 0;
+      }
+
+      .testimonial-slide {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    const accordionItemsEls = Array.from(document.querySelectorAll(".platform-accordion-item"));
+
+    accordionItemsEls.forEach((item) => {
+      item.addEventListener("toggle", () => {
+        if (!item.open) return;
+        accordionItemsEls.forEach((other) => {
+          if (other !== item) other.open = false;
+        });
+      });
+    });
+
+    const slides = Array.from(document.querySelectorAll(".testimonial-slide"));
+    const dots = Array.from(document.querySelectorAll(".testimonial-dot"));
+    const path = document.querySelector("#testimonial-path");
+    const testimonialSection = document.querySelector(".platform-testimonials");
+    const testimonialContent = document.querySelector("#testimonial-content");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let currentIndex = 0;
+    let timer = null;
+
+    const animatePath = () => {
+      if (!path || reduceMotion) return;
+      path.classList.remove("is-animating");
+      void path.getBoundingClientRect();
+      path.classList.add("is-animating");
+    };
+
+    const showSlide = (index) => {
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === index);
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === index);
+      });
+      if (testimonialSection) {
+        testimonialSection.classList.toggle("platform-testimonials--dark", index % 2 === 0);
+        testimonialSection.classList.toggle("platform-testimonials--lavender", index % 2 === 1);
+      }
+      currentIndex = index;
+      animatePath();
+    };
+
+    const startCarousel = () => {
+      if (timer) window.clearInterval(timer);
+      timer = window.setInterval(() => {
+        const next = (currentIndex + 1) % slides.length;
+        showSlide(next);
+      }, 4000);
+    };
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showSlide(index);
+        startCarousel();
+      });
+    });
+
+    const fitTestimonialHeight = () => {
+      if (!testimonialContent || !slides.length) return;
+      let maxHeight = 0;
+      slides.forEach((slide) => {
+        const height = slide.scrollHeight;
+        if (height > maxHeight) maxHeight = height;
+      });
+      testimonialContent.style.height = `${maxHeight}px`;
+    };
+
+    fitTestimonialHeight();
+    window.addEventListener("resize", fitTestimonialHeight);
+
+    showSlide(0);
+    startCarousel();
+
+    const statsSection = document.querySelector(".platform-stats-section");
+    const statCounters = Array.from(document.querySelectorAll(".stat-counter"));
+    let statsFrame = null;
+
+    const resetCounters = () => {
+      statCounters.forEach((counter) => {
+        const suffix = counter.getAttribute("data-suffix") ?? "";
+        counter.textContent = `0${suffix}`;
+      });
+    };
+
+    const animateCounters = () => {
+      if (!statCounters.length) return;
+      const start = performance.now();
+      const duration = 1400;
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        statCounters.forEach((counter) => {
+          const target = Number(counter.getAttribute("data-target") ?? "0");
+          const suffix = counter.getAttribute("data-suffix") ?? "";
+          const value = Math.round(target * progress);
+          counter.textContent = `${value}${suffix}`;
+        });
+        if (progress < 1) {
+          statsFrame = window.requestAnimationFrame(tick);
+        }
+      };
+
+      if (statsFrame) window.cancelAnimationFrame(statsFrame);
+      statsFrame = window.requestAnimationFrame(tick);
+    };
+
+    if (statsSection && statCounters.length) {
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              resetCounters();
+              animateCounters();
+            } else {
+              if (statsFrame) window.cancelAnimationFrame(statsFrame);
+              statsFrame = null;
+              resetCounters();
+            }
+          });
+        },
+        { threshold: 0.45 }
+      );
+      statsObserver.observe(statsSection);
+    }
+  </script>
+</BaseLayout>

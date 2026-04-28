@@ -1,21 +1,20 @@
 /**
- * Copy + links for /sign-in (EmbryoOne marketing) and /sign-in/login (app-style).
- * Reference: https://www.tebra.com/sign-in and app.kareo.com sign-in.
+ * Copy + links for /sign-in (EmbryoOne) and /sign-in/login (app-style).
  */
 export const tebraSignInLanding = {
   welcomeTitle: "Welcome back!",
-  welcomeSubtitle: "Sign in to your EmbryoOne accounts",
+  welcomeSubtitle: "Sign in to your EmbryoOne workspace",
   cards: [
     {
-      title: "Practice Operations",
-      legacyLabel: "PREVIOUSLY KAREO",
-      cta: "Sign in to your account",
+      title: "Clinic Operations",
+      legacyLabel: "LAB + CLINICAL WORKFLOW",
+      cta: "Sign in to continue",
       href: "/sign-in/login",
     },
     {
-      title: "Practice Growth",
-      legacyLabel: "PREVIOUSLY PATIENTPOP",
-      cta: "Sign in to your account",
+      title: "Insights & Reporting",
+      legacyLabel: "ANALYTICS + PERFORMANCE",
+      cta: "Sign in to continue",
       href: "/sign-in/login",
     },
   ] as const,
@@ -23,10 +22,10 @@ export const tebraSignInLanding = {
   requestDemoLabel: "Request a demo",
   requestDemoHref: "/demo",
   brandPanel: {
-    headline: "Kareo and PatientPop are now EmbryoOne",
-    body: "A new era of healthcare, a new world of practice well-being.",
-    learnMoreLabel: "Learn More",
-    learnMoreHref: "/about",
+    headline: "EmbryoOne for modern IVF teams",
+    body: "Unify IVF lab workflow, embryo tracking, and clinical operations in one connected platform.",
+    learnMoreLabel: "Explore Platform",
+    learnMoreHref: "/platform",
   },
   footerCopyright: "Copyright © 2026 EmbryoOne Technologies, Inc",
 } as const;
@@ -44,10 +43,16 @@ export const kareoStyleLogin = {
   troubleLabel: "Trouble signing in?",
   troubleHref: "/help",
   promo: {
-    title: "Cut Documentation Time by 70% with ",
-    titleAccent: "EmbryoOne AI Note Assist",
-    description: "AI-powered notes that improve accuracy and keep you HIPAA compliant.",
-    learnMoreLabel: "Learn More",
-    learnMoreHref: "/ai",
+    title: "Built for IVF teams that need accuracy and speed",
+    titleAccent: "",
+    description:
+      "EmbryoOne connects lab, clinical, and reporting workflows so your team can reduce manual steps and stay aligned at every stage.",
+    points: [
+      "Track embryo and cycle data with complete visibility",
+      "Coordinate lab and clinical teams in one shared workspace",
+      "Access performance insights and outcome reporting quickly",
+    ] as const,
+    learnMoreLabel: "Explore EmbryoOne Platform",
+    learnMoreHref: "/platform",
   },
 } as const;

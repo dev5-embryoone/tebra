@@ -1,0 +1,428 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import aiHeroImage from "../../assets/ai-grading-hero-grid.png";
+import aiFlowImage from "../../assets/ai-grading-dashboard-grid.png";
+
+const benefitCards = [
+  {
+    title: "Reduce Subjectivity",
+    copy: "Standardize grading across embryologists and shifts.",
+  },
+  {
+    title: "Increase Speed",
+    copy: "Get AI-assisted grading in seconds, not minutes.",
+  },
+  {
+    title: "Improve Consistency",
+    copy: "Maintain uniform grading across all cycles.",
+  },
+];
+
+const steps = [
+  { label: "Step 1", title: "Upload embryo image" },
+  { label: "Step 2", title: "AI detects and segments embryo" },
+  { label: "Step 3", title: "Classification based on morphology" },
+  { label: "Step 4", title: "Confidence score + grade output" },
+  { label: "Step 5", title: "Review and confirm" },
+];
+
+const metrics = [
+  { value: "83%", label: "grading accuracy (current model)", target: 83, prefix: "", suffix: "%" },
+  { value: "<10 sec", label: "per image from capture to output", target: 10, prefix: "<", suffix: " sec" },
+  { value: "Reduced variability", label: "between observers and shifts" },
+];
+
+const adoptionPoints = [
+  {
+    title: "Rapid team onboarding",
+    copy: "Get embryologists productive quickly with guided workflows and familiar grading review screens.",
+  },
+  {
+    title: "Protocol-aligned rollout",
+    copy: "Map AI grading to your existing SOPs so every shift follows the same process from day one.",
+  },
+  {
+    title: "Audit-ready implementation",
+    copy: "Keep every prediction, review action, and confirmation traceable for QA and compliance reporting.",
+  },
+];
+
+const faqs = [
+  {
+    id: "workflow-fit",
+    question: "How does AI Grading fit into our current embryo assessment workflow?",
+    answer:
+      "EmbryoOne AI is designed to layer into your existing process without forcing a workflow reset. Your team can capture images, review AI output, and confirm final grades in the same sequence they already follow. That means faster adoption, less training overhead, and no disruption to daily lab operations.",
+  },
+  {
+    id: "manual-override",
+    question: "Can embryologists override AI predictions before finalizing grades?",
+    answer:
+      "Yes, embryologists remain fully in control of every final grading decision. AI suggestions are presented with confidence context, and staff can edit, override, or add remarks before confirming. Every change is logged so your team maintains both accountability and clinical autonomy.",
+  },
+  {
+    id: "confidence-reliability",
+    question: "How reliable are the confidence scores shown with each grade?",
+    answer:
+      "Confidence scores are generated per prediction to support interpretation, not replace expert judgment. They help embryologists quickly identify outputs that deserve additional review or comparison. Used together with morphology context, they improve consistency while preserving human decision-making.",
+  },
+  {
+    id: "go-live-speed",
+    question: "How quickly can clinics start using AI Grading in production?",
+    answer:
+      "Most clinics can begin phased deployment quickly by starting with a subset of cycles or users. Implementation can be staged by workflow, allowing teams to validate performance before broader rollout. This approach reduces operational risk and builds trust through real lab usage.",
+  },
+  {
+    id: "traceability",
+    question: "What data traceability is available for quality and compliance reviews?",
+    answer:
+      "EmbryoOne stores prediction outputs, user reviews, and final confirmations as part of a complete activity trail. Teams can track who reviewed what, when decisions changed, and how final grades were approved. This makes QA audits, case reviews, and compliance documentation significantly easier.",
+  },
+];
+---
+
+<BaseLayout
+  title="AI Grading Overview | EmbryoOne AI"
+  description="Standardize embryo assessment with objective, data-driven AI grading designed for speed, consistency, and clinical confidence."
+>
+  <section class="page-section bg-white">
+    <div class="page-container grid gap-10 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="eyebrow text-[#6C3CF0]">AI Grading Overview</p>
+        <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+          AI-powered embryo grading you can trust
+        </h1>
+        <p class="mt-5 max-w-xl text-base text-gray-600 sm:text-lg">
+          Standardize embryo assessment with objective, data-driven grading. EmbryoOne AI reduces
+          variability, improves consistency, and supports confident clinical decisions.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href="/demo" label="Request a demo" variant="primary" size="md" />
+          <Button href="#how-it-works" label="See how it works" variant="secondary" size="md" />
+        </div>
+      </div>
+      <img
+        src={aiHeroImage.src}
+        alt="Embryo grading workspace with AI grades and confidence scores"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_24px_48px_-36px_rgba(108,60,240,0.5)]"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container grid gap-8 md:grid-cols-2 md:items-center">
+      <div>
+        <h2 class="heading-md text-tebra-teal-dark">From image capture to final grade, fully assisted and fully traceable</h2>
+        <p class="mt-4 text-base text-gray-700">
+          AI identifies morphology features, classifies embryos, and presents confidence-backed
+          grades in seconds.
+        </p>
+        <p class="mt-4 text-base text-gray-700">
+          Every prediction is linked to a clear review workflow so embryologists can validate
+          outputs, compare findings, and confirm final grades without switching tools. This reduces
+          friction during high-volume lab windows and helps teams maintain grading consistency
+          across shifts.
+        </p>
+        <p class="mt-4 text-base text-gray-700">
+          With built-in traceability, each grading event is recorded with user actions and timing
+          context, supporting stronger quality assurance and audit readiness. The result is faster,
+          more standardized embryo assessment while keeping full clinical control in expert hands.
+        </p>
+      </div>
+      <img
+        src={aiFlowImage.src}
+        alt="AI grading dashboard from image upload to output"
+        class="w-full rounded-3xl border border-[#E9DDFB] shadow-[0_20px_40px_-34px_rgba(108,60,240,0.45)]"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Key Benefits</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        {benefitCards.map((card) => (
+          <article class="rounded-2xl border border-[#EADDFD] bg-white p-6 shadow-[0_14px_30px_-24px_rgba(108,60,240,0.6)]">
+            <h3 class="text-xl font-semibold text-[#4A1F82]">{card.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#574C6A]">{card.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-tebra-teal-dark">How It Works</h2>
+      <ol class="ai-stepper mt-8 grid gap-4 lg:grid-cols-5">
+        {steps.map((step, index) => (
+          <li class="ai-stepper-item rounded-2xl border bg-white p-5">
+            <div class="flex items-start gap-3">
+              <span class="ai-stepper-dot" aria-hidden="true">{index + 1}</span>
+              <div>
+                <p class="ai-stepper-label text-xs font-semibold uppercase tracking-wide">{step.label}</p>
+                <p class="ai-stepper-title mt-2 text-sm font-medium">{step.title}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-[#51285f]">
+    <div class="page-container">
+      <div class="mx-auto max-w-5xl">
+        <p class="eyebrow !text-gray-200">AI Grading FAQ</p>
+        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base text-gray-200">
+          Quick answers about how AI Grading supports consistent embryo assessment, review
+          confidence, and clinical workflow control across IVF labs.
+        </p>
+        <div class="mt-8 space-y-3">
+          {faqs.map((item, index) => (
+            <details
+              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
+              open={index === 0}
+            >
+              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
+                {item.question}
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics-section page-section bg-white">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Performance Metrics</h2>
+      <div class="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-3">
+        {metrics.map((metric) => (
+          <article class="rounded-2xl border border-[#EADDFD] bg-[#FAF7FF] p-6 text-center">
+            <p class="metric-value text-4xl font-semibold">
+              {typeof metric.target === "number" ? (
+                <span
+                  class="metric-counter"
+                  data-target={metric.target}
+                  data-prefix={metric.prefix ?? ""}
+                  data-suffix={metric.suffix ?? ""}
+                >
+                  {metric.prefix ?? ""}0{metric.suffix ?? ""}
+                </span>
+              ) : (
+                metric.value
+              )}
+            </p>
+            <p class="metric-label mt-2 text-sm">{metric.label}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-[#F7F1FF]">
+    <div class="page-container">
+      <h2 class="heading-md text-center text-tebra-teal-dark">Built for real lab adoption</h2>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-base text-[#5A4C72]">
+        Beyond grading speed, EmbryoOne helps your team implement AI safely with standardized
+        processes, transparent reviews, and workflow continuity across shifts.
+      </p>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        {adoptionPoints.map((item) => (
+          <article class="rounded-2xl border border-[#EADDFD] bg-white p-6 shadow-[0_14px_30px_-24px_rgba(81,40,95,0.45)]">
+            <h3 class="text-lg font-semibold text-[#51285f]">{item.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#5A4C72]">{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl bg-tebra-teal-dark px-6 py-10 text-white sm:px-10">
+      <h2 class="text-3xl font-semibold sm:text-4xl">Upgrade your grading workflow</h2>
+      <div class="mt-7">
+        <Button href="/demo" label="Book a demo" variant="outline-light" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  :root {
+    --ai-secondary-purple: #51285f;
+  }
+
+  .ai-stepper-item {
+    position: relative;
+    border-color: #d7c5fb;
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 700ms ease,
+      transform 700ms ease,
+      box-shadow 250ms ease;
+  }
+
+  .ai-stepper-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ai-stepper-item:hover {
+    box-shadow: 0 20px 35px -28px rgba(108, 60, 240, 0.75);
+  }
+
+  .ai-stepper-dot {
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: #f2e8fb;
+    color: var(--ai-secondary-purple);
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 8px 20px -14px rgba(81, 40, 95, 0.55);
+  }
+
+  .ai-stepper-label {
+    color: var(--ai-secondary-purple);
+  }
+
+  .ai-stepper-title {
+    color: var(--ai-secondary-purple);
+  }
+
+  .ai-stepper-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 0.25rem);
+    transform: translateX(-50%);
+    height: 1.25rem;
+    width: 2px;
+    background: linear-gradient(180deg, #094067 0%, #6f9fbd 100%);
+    opacity: 0.65;
+  }
+
+  .metric-value,
+  .metric-label {
+    color: var(--ai-secondary-purple);
+  }
+
+  @media (min-width: 1024px) {
+    .ai-stepper-item:not(:last-child)::after {
+      left: auto;
+      right: -1.15rem;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 2px;
+      width: 1.15rem;
+      background: linear-gradient(90deg, #094067 0%, #6f9fbd 100%);
+      opacity: 0.65;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-stepper-item {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+</style>
+
+<script>
+  const stepperItems = Array.from(document.querySelectorAll(".ai-stepper-item"));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion) {
+    stepperItems.forEach((item) => item.classList.add("is-visible"));
+  } else if (stepperItems.length) {
+    const showSteps = () => {
+      stepperItems.forEach((item) => item.classList.remove("is-visible"));
+      stepperItems.forEach((item, index) => {
+        window.setTimeout(() => {
+          item.classList.add("is-visible");
+        }, index * 180);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            showSteps();
+          } else {
+            stepperItems.forEach((item) => item.classList.remove("is-visible"));
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(stepperItems[0]);
+  }
+
+  const metricsSection = document.querySelector(".metrics-section");
+  const metricCounters = Array.from(document.querySelectorAll(".metric-counter"));
+
+  const resetMetricCounters = () => {
+    metricCounters.forEach((counter) => {
+      const prefix = counter.getAttribute("data-prefix") ?? "";
+      const suffix = counter.getAttribute("data-suffix") ?? "";
+      counter.textContent = `${prefix}0${suffix}`;
+    });
+  };
+
+  const animateMetricCounters = () => {
+    if (!metricCounters.length) return;
+    const start = performance.now();
+    const duration = 1300;
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      metricCounters.forEach((counter) => {
+        const target = Number(counter.getAttribute("data-target") ?? "0");
+        const prefix = counter.getAttribute("data-prefix") ?? "";
+        const suffix = counter.getAttribute("data-suffix") ?? "";
+        const value = Math.round(target * progress);
+        counter.textContent = `${prefix}${value}${suffix}`;
+      });
+
+      if (progress < 1) {
+        window.requestAnimationFrame(tick);
+      }
+    };
+
+    window.requestAnimationFrame(tick);
+  };
+
+  if (metricsSection && metricCounters.length) {
+    const metricObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            resetMetricCounters();
+            animateMetricCounters();
+          } else {
+            resetMetricCounters();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    metricObserver.observe(metricsSection);
+  }
+</script>

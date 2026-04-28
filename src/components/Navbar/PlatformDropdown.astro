@@ -2,30 +2,6 @@
 import { Blocks, ChevronDown, Lock, Network, Waypoints } from "@lucide/astro";
 
 const links = [
-  {
-    title: "Overview",
-    href: "/platform/overview",
-    description: "A unified system connecting lab, clinical, and patient workflows",
-    icon: "overview",
-  },
-  {
-    title: "How It Works",
-    href: "/platform/how-it-works",
-    description: "Capture, track, and analyze every step across the IVF cycle",
-    icon: "flow",
-  },
-  {
-    title: "Architecture",
-    href: "/platform/architecture",
-    description: "Built for real-time data flow across lab devices and systems",
-    icon: "architecture",
-  },
-  {
-    title: "Security",
-    href: "/platform/security",
-    description: "Ensure data integrity, traceability, and compliance across workflows",
-    icon: "security",
-  },
 ] as const;
 
 function getIcon(name: string) {

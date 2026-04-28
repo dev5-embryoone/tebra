@@ -1,0 +1,1487 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button/Button.astro";
+import embryoSectionImage from "../../assets/embryo1.png";
+import labWorkflowImage from "../../assets/lab1.png";
+import cryoWorkflowImage from "../../assets/cryo-dashboard-monitoring.png";
+import inventoryWorkflowImage from "../../assets/consumption-first-section-inventory-management.png";
+import doctorWorkflowImage from "../../assets/ehr-cycle-board.png";
+import clinicAdminWorkflowImage from "../../assets/people-ops-dashboard.png";
+import { solutionsData } from "../../data/solutions";
+import type { SolutionContent } from "../../data/solutions";
+
+type Stat = {
+  value: string;
+  label: string;
+};
+
+type WorkflowStep = {
+  title: string;
+  description: string;
+};
+
+type FAQ = {
+  question: string;
+  answer: string;
+};
+
+type RelatedModule = {
+  title: string;
+  href: string;
+  description: string;
+};
+
+type PageExpansion = {
+  sectionIntro: string;
+  stats: Stat[];
+  workflowTitle: string;
+  workflowSteps: WorkflowStep[];
+  integrations: string[];
+  faqs: FAQ[];
+  relatedModules: RelatedModule[];
+};
+
+type RelevantSection = {
+  heading: string;
+  body: string;
+  points: string[];
+  image: { src: string };
+  imageAlt: string;
+};
+
+const pageExpansions: Record<string, PageExpansion> = {
+  embryologists: {
+    sectionIntro:
+      "Built for embryologists who need repeatable quality, lower variability, and complete traceability at every touchpoint.",
+    stats: [
+      { value: "70%", label: "less manual documentation effort" },
+      { value: "< 2 min", label: "to review recent embryo history" },
+      { value: "100%", label: "event-level action traceability" },
+    ],
+    workflowTitle: "Daily lab workflows, standardized",
+    workflowSteps: [
+      {
+        title: "Fertilization and early checks",
+        description:
+          "Launch each cycle with protocol-linked checklists so every handoff follows the same process and timing.",
+      },
+      {
+        title: "Grading and selection",
+        description:
+          "Use image-first review and AI-assisted grading support to reduce subjectivity while preserving expert control.",
+      },
+      {
+        title: "Freeze, thaw, and transfer readiness",
+        description:
+          "Track storage state, witness validation, and decision notes in one continuous timeline.",
+      },
+    ],
+    integrations: ["Witness workflows", "AI Grading", "Cryo Tracker", "Lab Health", "EHR timeline"],
+    faqs: [
+      {
+        question: "Can embryologists override AI suggestions?",
+        answer:
+          "Yes. AI outputs are assistive, not prescriptive, and the embryologist keeps final authority at every stage. Teams can validate, adjust, or reject AI grading with full visibility into confidence context. Every decision is logged in the audit trail so clinical reasoning remains clear and defensible.",
+      },
+      {
+        question: "How does EmbryoOne improve handoff safety?",
+        answer:
+          "Critical handoffs include witness checkpoints to verify identity and workflow context before progression. Each transition is captured with user-level accountability so teams know who performed which action and when. This reduces avoidable risk during high-sensitivity steps like grading, freezing, and transfer preparation.",
+      },
+      {
+        question: "Does this replace our current SOPs?",
+        answer:
+          "No. EmbryoOne does not replace your SOP framework, it operationalizes it in a structured digital workflow. Protocol logic, required checks, and documentation steps are embedded so every embryologist follows the same standard. The result is stronger consistency across shifts without losing clinical flexibility where it matters.",
+      },
+      {
+        question: "Can we review full embryo history before decisions?",
+        answer:
+          "Yes. EmbryoOne provides a continuous history across fertilization, grading, movement, and cryo events in one timeline. Teams can quickly review interventions, comments, and witness validations before final actions. This improves confidence in decisions and reduces the risk of missing context during high-pressure workflows.",
+      },
+      {
+        question: "How does EmbryoOne support shift-to-shift consistency?",
+        answer:
+          "The platform uses standardized protocols and required checkpoints so each team follows the same documented workflow. Structured tasking and digital validation reduce variation in process execution between users and shifts. This creates more predictable quality outcomes even as staffing patterns change.",
+      },
+      {
+        question: "Can we use EmbryoOne during audits or quality reviews?",
+        answer:
+          "Absolutely. Every key action is tied to user, timestamp, and workflow step so compliance evidence is always available. Audit logs can be reviewed in-platform or exported for regulatory and internal QA processes. This significantly reduces audit preparation effort and improves traceability confidence.",
+      },
+    ],
+    relatedModules: [
+      {
+        title: "AI Grading",
+        href: "/products/ai-grading",
+        description: "Improve grading consistency with structured AI-assisted workflows.",
+      },
+      {
+        title: "Witness",
+        href: "/products/witness",
+        description: "Reduce human error during high-risk lab steps with built-in verification.",
+      },
+      {
+        title: "Cryo Tracker",
+        href: "/products/cryo-tracker",
+        description: "Track storage, movement, and retrieval with full chain-of-custody history.",
+      },
+    ],
+  },
+  "lab-directors": {
+    sectionIntro:
+      "Give lab leadership one command center for outcomes, utilization, quality, and compliance readiness.",
+    stats: [
+      { value: "3x", label: "faster audit prep cycles" },
+      { value: "24/7", label: "visibility into workflow health" },
+      { value: "1 view", label: "for multi-team performance tracking" },
+    ],
+    workflowTitle: "How lab directors run operations in EmbryoOne",
+    workflowSteps: [
+      {
+        title: "Monitor live performance",
+        description:
+          "Track fertilization rates, grading distribution, and stage progression without waiting for manual reporting.",
+      },
+      {
+        title: "Enforce protocol adherence",
+        description:
+          "Identify deviation risk early with standardized workflows and task-level completion evidence.",
+      },
+      {
+        title: "Prepare audits continuously",
+        description:
+          "Keep every action, override, and witness event exportable for inspections and regulatory reviews.",
+      },
+    ],
+    integrations: ["Lab Health", "Witness", "AI Grading", "Cycle analytics", "Multi-location dashboards"],
+    faqs: [
+      {
+        question: "Can I compare performance across providers or protocols?",
+        answer:
+          "Yes. EmbryoOne supports segmented analytics by provider, protocol, and time period for operational benchmarking.",
+      },
+      {
+        question: "How does multi-location oversight work?",
+        answer:
+          "You can monitor shared KPIs and site-level quality indicators in one dashboard while retaining local accountability.",
+      },
+      {
+        question: "Is reporting export-friendly for audits?",
+        answer:
+          "Yes. Logs and reports are exportable and tied to user, timestamp, and workflow context.",
+      },
+    ],
+    relatedModules: [
+      {
+        title: "Lab Health",
+        href: "/products/lab-health",
+        description: "Watch lab performance and risk indicators in real time.",
+      },
+      {
+        title: "Witness",
+        href: "/products/witness",
+        description: "Ensure critical process compliance with built-in verification.",
+      },
+      {
+        title: "Consumption Tracking",
+        href: "/products/consumption",
+        description: "Connect operational decisions with consumable usage trends.",
+      },
+    ],
+  },
+  doctors: {
+    sectionIntro:
+      "Designed for doctors who need real-time lab context and faster confidence in clinical decisions.",
+    stats: [
+      { value: "Real-time", label: "lab-to-clinic decision visibility" },
+      { value: "1 timeline", label: "for cycle events and embryo updates" },
+      { value: "Lower lag", label: "between lab signal and treatment action" },
+    ],
+    workflowTitle: "Clinical decision flow, connected to lab data",
+    workflowSteps: [
+      {
+        title: "Track cycle progression",
+        description:
+          "Follow baseline-to-transfer milestones with aligned notes, task status, and embryo updates in one view.",
+      },
+      {
+        title: "Act on meaningful alerts",
+        description:
+          "Receive timely notifications for events that need physician attention instead of chasing manual updates.",
+      },
+      {
+        title: "Document final decisions",
+        description:
+          "Capture rationale and next actions with full visibility into grading context and cycle history.",
+      },
+    ],
+    integrations: ["EHR", "AI Grading", "Cryo Tracker", "Cycle board", "Smart reminders"],
+    faqs: [
+      {
+        question: "Will this reduce delays in decision-making?",
+        answer:
+          "Yes. Doctors receive direct visibility into lab signals and status changes, reducing communication lag.",
+      },
+      {
+        question: "Can I see cryo and lab data together?",
+        answer:
+          "Yes. EmbryoOne unifies cryo, grading, and cycle context so decisions are made with complete information.",
+      },
+      {
+        question: "Is this usable during active clinic hours?",
+        answer:
+          "The interface is optimized for rapid review and clear action cues, so teams can work without disruption.",
+      },
+    ],
+    relatedModules: [
+      {
+        title: "EHR",
+        href: "/products/ehr",
+        description: "Bring clinical records and lab outcomes into one patient-centric view.",
+      },
+      {
+        title: "AI Grading",
+        href: "/products/ai-grading",
+        description: "Add structured grading insights to support embryo-related decisions.",
+      },
+      {
+        title: "Patient Experience",
+        href: "/products/patient-experience",
+        description: "Close the loop with coordinated communication and care visibility.",
+      },
+    ],
+  },
+  "clinic-admin": {
+    sectionIntro:
+      "Support clinic administrators with scheduling clarity, team coordination, and faster operational reporting.",
+    stats: [
+      { value: "Faster", label: "cross-team coordination" },
+      { value: "Live", label: "operations and workload visibility" },
+      { value: "Lower", label: "manual reporting overhead" },
+    ],
+    workflowTitle: "Operational workflows that keep clinics moving",
+    workflowSteps: [
+      {
+        title: "Coordinate schedules and resources",
+        description:
+          "Manage appointments, procedures, and team capacity from one consolidated calendar workflow.",
+      },
+      {
+        title: "Automate recurring operations",
+        description:
+          "Trigger tasks by cycle stage and protocol so work moves without constant manual follow-up.",
+      },
+      {
+        title: "Report in real time",
+        description:
+          "Generate operational snapshots quickly with current data, not spreadsheet lag.",
+      },
+    ],
+    integrations: ["Scheduling", "Task management", "Operational dashboards", "Team coordination", "Reporting"],
+    faqs: [
+      {
+        question: "Can admins track bottlenecks across teams?",
+        answer:
+          "Yes. Workload and task visibility helps identify delays by team, role, and process stage.",
+      },
+      {
+        question: "Does it reduce manual follow-ups?",
+        answer:
+          "Automated task generation and reminders reduce repetitive coordination work significantly.",
+      },
+      {
+        question: "Can we use this for executive reporting?",
+        answer:
+          "Yes. Real-time dashboards and exportable summaries support leadership reporting needs.",
+      },
+    ],
+    relatedModules: [
+      {
+        title: "People",
+        href: "/products/people",
+        description: "Coordinate teams, responsibilities, and workflow ownership.",
+      },
+      {
+        title: "Patient Experience",
+        href: "/products/patient-experience",
+        description: "Align front-office communication with clinical and lab operations.",
+      },
+      {
+        title: "Consumption Tracking",
+        href: "/products/consumption",
+        description: "Plan inventory and purchasing with usage visibility.",
+      },
+    ],
+  },
+  "lab-traceability": {
+    sectionIntro:
+      "Traceability is the foundation of safety, accountability, and compliance in IVF operations.",
+    stats: [
+      { value: "End-to-end", label: "embryo event history" },
+      { value: "User-level", label: "action accountability" },
+      { value: "Audit-ready", label: "log exports on demand" },
+    ],
+    workflowTitle: "How traceability works in practice",
+    workflowSteps: [
+      {
+        title: "Record every event automatically",
+        description:
+          "Actions are captured in the workflow itself, so documentation is complete without extra manual steps.",
+      },
+      {
+        title: "Validate high-risk transitions",
+        description:
+          "Witness-linked checkpoints enforce validation during critical movements and interventions.",
+      },
+      {
+        title: "Review or export instantly",
+        description:
+          "Historical timelines and event logs are available immediately for QA, incident review, or audits.",
+      },
+    ],
+    integrations: ["Witness", "Cryo Tracker", "Lab workflows", "QA reports", "Compliance exports"],
+    faqs: [
+      {
+        question: "Can we track who did what and when?",
+        answer:
+          "Yes. Every action includes user identity, timestamp, and workflow context for complete accountability.",
+      },
+      {
+        question: "How quickly can teams investigate an incident?",
+        answer:
+          "Teams can review full event history in minutes, including movement, interventions, and validation records.",
+      },
+      {
+        question: "Is this suitable for compliance reviews?",
+        answer:
+          "Yes. Logs are structured and exportable for regulatory and internal audit workflows.",
+      },
+    ],
+    relatedModules: [
+      {
+        title: "Witness",
+        href: "/products/witness",
+        description: "Embed verification into critical IVF workflow steps.",
+      },
+      {
+        title: "Cryo Tracker",
+        href: "/products/cryo-tracker",
+        description: "Add location and movement traceability to storage workflows.",
+      },
+      {
+        title: "Lab Health",
+        href: "/products/lab-health",
+        description: "Combine traceability with proactive risk and quality monitoring.",
+      },
+    ],
+  },
+  "embryo-selection": {
+    sectionIntro:
+      "Improve selection consistency with image-based review, standardized grading, and AI-supported decision context.",
+    stats: [
+      { value: "More consistent", label: "grading across embryologists" },
+      { value: "Faster", label: "review cycles for care teams" },
+      { value: "Documented", label: "selection rationale and decisions" },
+    ],
+    workflowTitle: "Selection workflow from image to decision",
+    workflowSteps: [
+      {
+        title: "Capture and review images",
+        description:
+          "Centralize embryo images with structured review tools for side-by-side comparison and timeline context.",
+      },
+      {
+        title: "Use AI confidence as support",
+        description:
+          "AI-assisted scoring adds consistency signals while embryologists retain final authority.",
+      },
+      {
+        title: "Finalize and communicate decisions",
+        description:
+          "Publish selection outcomes into the cycle workflow so clinical teams can act without delay.",
+      },
+    ],
+    integrations: ["AI Grading", "Embryo Capture", "Cycle board", "EHR", "Clinical queue"],
+    faqs: [
+      {
+        question: "Does AI replace embryologist judgment?",
+        answer:
+          "No. AI is decision support only. Final grading and selection always remain with the clinical team.",
+      },
+      {
+        question: "Can teams compare embryos in one interface?",
+        answer:
+          "Yes. Image-centric workflows make comparison and documentation straightforward and consistent.",
+      },
+      {
+        question: "Is decision history retained?",
+        answer:
+          "Yes. Overrides, comments, and final decisions are tracked for quality and retrospective analysis.",
+      },
+    ],
+    relatedModules: [
+      {
+        title: "AI Grading",
+        href: "/products/ai-grading",
+        description: "Add confidence-based grading support to embryo evaluation.",
+      },
+      {
+        title: "Embryo Capture",
+        href: "/products/embryo-capture",
+        description: "Capture and organize embryo images for structured review.",
+      },
+      {
+        title: "EHR",
+        href: "/products/ehr",
+        description: "Connect lab decisions to patient-level clinical context.",
+      },
+    ],
+  },
+  "cryo-management": {
+    sectionIntro:
+      "Maintain safer cryo operations with real-time monitoring, movement traceability, and proactive alerts.",
+    stats: [
+      { value: "Real-time", label: "tank and threshold visibility" },
+      { value: "Zero-blind-spots", label: "for sample movement tracking" },
+      { value: "Earlier", label: "risk detection before failures" },
+    ],
+    workflowTitle: "Cryo control from monitoring to intervention",
+    workflowSteps: [
+      {
+        title: "Monitor storage health",
+        description:
+          "Track tank conditions, LN2 levels, and system status with clear risk thresholds.",
+      },
+      {
+        title: "Track every movement",
+        description:
+          "Document transfer, retrieval, and storage updates with chain-of-custody detail.",
+      },
+      {
+        title: "Escalate quickly",
+        description:
+          "Trigger alerts before conditions become critical so teams can intervene early.",
+      },
+    ],
+    integrations: ["Cryo Tracker", "Witness", "Smart alerts", "Audit logs", "Multi-site storage map"],
+    faqs: [
+      {
+        question: "Can we monitor risk before sample loss events?",
+        answer:
+          "Yes. Threshold-based alerts surface changes early so teams can act before storage risk escalates.",
+      },
+      {
+        question: "Is movement history fully visible?",
+        answer:
+          "Yes. Every transfer and retrieval action is logged with user and timestamp context.",
+      },
+      {
+        question: "Does this support compliance reporting?",
+        answer:
+          "Yes. Cryo events and validations are available in audit-ready export formats.",
+      },
+    ],
+    relatedModules: [
+      {
+        title: "Cryo Tracker",
+        href: "/products/cryo-tracker",
+        description: "Centralize storage maps, condition monitoring, and sample movement.",
+      },
+      {
+        title: "Witness",
+        href: "/products/witness",
+        description: "Add process validation to high-risk cryo workflows.",
+      },
+      {
+        title: "Lab Health",
+        href: "/products/lab-health",
+        description: "Combine cryo monitoring with broader lab safety indicators.",
+      },
+    ],
+  },
+  "inventory-tracking": {
+    sectionIntro:
+      "Avoid stockouts and reduce waste with inventory workflows built for IVF lab realities.",
+    stats: [
+      { value: "Fewer", label: "unexpected consumable shortages" },
+      { value: "Higher", label: "planning accuracy by usage trend" },
+      { value: "Lower", label: "waste from over-ordering" },
+    ],
+    workflowTitle: "Inventory workflows for proactive planning",
+    workflowSteps: [
+      {
+        title: "Track stock in real time",
+        description:
+          "Get current quantity and status visibility by item, location, and workflow dependency.",
+      },
+      {
+        title: "Monitor consumption patterns",
+        description:
+          "Use historical usage by cycle volume and protocol to forecast replenishment needs.",
+      },
+      {
+        title: "Prevent disruptions",
+        description:
+          "Automated alerts notify teams before items hit critical thresholds.",
+      },
+    ],
+    integrations: ["Consumption", "Scheduling context", "Operations dashboards", "Alerts", "Reporting"],
+    faqs: [
+      {
+        question: "Can we manage inventory across multiple sites?",
+        answer:
+          "Yes. Inventory status can be monitored by location with shared visibility for planning teams.",
+      },
+      {
+        question: "How are low-stock events handled?",
+        answer:
+          "Threshold rules trigger alerts before critical shortages, giving teams time to replenish.",
+      },
+      {
+        question: "Does this help with budgeting?",
+        answer:
+          "Usage insights help align purchasing with actual consumption trends and operational demand.",
+      },
+    ],
+    relatedModules: [
+      {
+        title: "Consumption Tracking",
+        href: "/products/consumption",
+        description: "Measure and forecast consumable usage across workflows.",
+      },
+      {
+        title: "People",
+        href: "/products/people",
+        description: "Assign inventory ownership and task accountability by team.",
+      },
+      {
+        title: "Lab Health",
+        href: "/products/lab-health",
+        description: "Connect supply planning with operational risk visibility.",
+      },
+    ],
+  },
+};
+
+export function getStaticPaths() {
+  return solutionsData.map((solution) => ({
+    params: { slug: solution.slug },
+    props: { solution },
+  }));
+}
+
+const { solution } = Astro.props as { solution: SolutionContent };
+const pageExpansion = pageExpansions[solution.slug];
+const showcaseSlugs = [
+  "embryologists",
+  "lab-directors",
+  "doctors",
+  "clinic-admin",
+  "lab-traceability",
+  "embryo-selection",
+  "cryo-management",
+  "inventory-tracking",
+];
+const isShowcasePage = showcaseSlugs.includes(solution.slug);
+
+const solutionSectionEnhancements: Record<
+  string,
+  {
+    image: { src: string };
+    imageAlt: string;
+    bodyOne: string;
+    bodyTwo: string;
+    highlightOneTitle: string;
+    highlightOneBody: string;
+    highlightTwoTitle: string;
+    highlightTwoBody: string;
+  }
+> = {
+  embryologists: {
+    image: embryoSectionImage,
+    imageAlt: "Embryologist reviewing embryo lifecycle and grading workflow",
+    bodyOne:
+      "Beyond documentation, EmbryoOne helps embryologists execute every protocol step with clear sequence control, built-in validation, and context-aware prompts. This reduces dependency on memory, improves repeatability between shifts, and keeps quality standards stable even during high cycle volume periods.",
+    bodyTwo:
+      "As procedures progress, your team can instantly review grading rationale, storage movement history, and witness confirmations in one place. That means fewer handoff gaps, faster internal coordination, and stronger confidence in every embryo-related decision from lab bench to transfer planning.",
+    highlightOneTitle: "Workflow consistency",
+    highlightOneBody: "Same protocol execution across users and shifts",
+    highlightTwoTitle: "Traceable decisions",
+    highlightTwoBody: "Complete context for grading, witness, and cryo actions",
+  },
+  "lab-directors": {
+    image: labWorkflowImage,
+    imageAlt: "Lab operations dashboard with performance and compliance visibility",
+    bodyOne:
+      "EmbryoOne gives lab directors a single operational view across workflows, performance signals, and quality checkpoints. Instead of waiting for manual summaries, leadership can monitor cycle progress, team execution, and exceptions as they happen.",
+    bodyTwo:
+      "With complete traceability and structured reporting, SOP adherence and audit readiness become part of daily operations. This helps reduce risk, speed up reviews, and keep lab performance consistently measurable over time.",
+    highlightOneTitle: "Operational visibility",
+    highlightOneBody: "Track workflow and outcome performance in real time",
+    highlightTwoTitle: "Continuous compliance",
+    highlightTwoBody: "Audit-ready records built into routine lab execution",
+  },
+  doctors: {
+    image: doctorWorkflowImage,
+    imageAlt: "Doctor reviewing cycle timeline and embryo insights dashboard",
+    bodyOne:
+      "Doctors can access cycle milestones, embryo updates, and clinical context in one connected timeline. This reduces delays from fragmented systems and helps care teams prioritize time-sensitive decisions with full supporting data.",
+    bodyTwo:
+      "EmbryoOne keeps lab and clinical signals aligned, so treatment decisions happen faster and with greater confidence. Alerts, grading context, and decision documentation stay visible across the full cycle journey.",
+    highlightOneTitle: "Faster decisions",
+    highlightOneBody: "Real-time cycle and embryo visibility for clinical action",
+    highlightTwoTitle: "Connected care context",
+    highlightTwoBody: "Lab insights aligned directly with patient treatment flow",
+  },
+  "clinic-admin": {
+    image: clinicAdminWorkflowImage,
+    imageAlt: "Clinic operations dashboard showing reporting and team workload",
+    bodyOne:
+      "EmbryoOne helps clinic admins coordinate schedules, tasks, and resources from one place. Operational workflows become easier to manage across teams, reducing manual follow-ups and day-to-day coordination overhead.",
+    bodyTwo:
+      "With real-time reporting and workload visibility, administrators can identify bottlenecks earlier and plan resources more effectively. This keeps operations smoother while improving consistency in execution across the clinic.",
+    highlightOneTitle: "Operational flow",
+    highlightOneBody: "Streamlined scheduling, tasks, and cross-team coordination",
+    highlightTwoTitle: "Reporting clarity",
+    highlightTwoBody: "Live metrics for faster planning and management decisions",
+  },
+  "lab-traceability": {
+    image: labWorkflowImage,
+    imageAlt: "Lab operations dashboard showing monitored events and traceability context",
+    bodyOne:
+      "Lab Traceability brings event history, witness validation, and user-level accountability into one continuous workflow record. Instead of reconstructing timelines from different systems, teams get a complete source of truth for every embryo action.",
+    bodyTwo:
+      "This model supports quality assurance and incident review with less operational delay. When teams need answers, EmbryoOne provides immediate context around who performed each action, when it occurred, and how it connects to the broader cycle journey.",
+    highlightOneTitle: "Faster investigations",
+    highlightOneBody: "Trace full event history in minutes, not hours",
+    highlightTwoTitle: "Compliance confidence",
+    highlightTwoBody: "Export-ready logs tied to real workflow context",
+  },
+  "embryo-selection": {
+    image: embryoSectionImage,
+    imageAlt: "Embryo imaging and grading review for clinical selection workflows",
+    bodyOne:
+      "Embryo Selection combines structured imaging workflows with AI-assisted grading signals so teams can evaluate embryos consistently. Side-by-side review, confidence context, and documented overrides reduce variability without removing expert judgment.",
+    bodyTwo:
+      "Because selection data connects directly to cycle workflows, decisions move faster from lab review to clinical action. Teams spend less time reconciling records and more time focusing on treatment-critical choices.",
+    highlightOneTitle: "Selection consistency",
+    highlightOneBody: "Standardized review patterns across embryologists",
+    highlightTwoTitle: "Decision transparency",
+    highlightTwoBody: "Clear rationale with confidence and override history",
+  },
+  "cryo-management": {
+    image: cryoWorkflowImage,
+    imageAlt: "Cryostorage monitoring dashboard with tank status and alerts",
+    bodyOne:
+      "Cryo Management centralizes tank monitoring, movement logging, and threshold alerts so cryostorage safety is always visible. Teams can monitor LN2 levels, temperature status, and storage conditions in real time.",
+    bodyTwo:
+      "With movement traceability and alert-driven escalation, high-risk events are detected earlier and resolved faster. This protects sample integrity while reducing manual oversight burden for embryology and operations teams.",
+    highlightOneTitle: "Storage safety",
+    highlightOneBody: "Early alerts for LN2 and temperature deviations",
+    highlightTwoTitle: "Chain of custody",
+    highlightTwoBody: "Every cryo transfer and retrieval fully traceable",
+  },
+  "inventory-tracking": {
+    image: inventoryWorkflowImage,
+    imageAlt: "Inventory control dashboard with stock levels and usage activity",
+    bodyOne:
+      "Inventory Tracking connects item master, consumption events, and procurement workflows into one operational system. As lab procedures progress, stock updates happen in real time instead of being reconciled manually.",
+    bodyTwo:
+      "This creates higher confidence in inventory data across teams and locations. Labs can forecast demand better, prevent stock gaps earlier, and reduce waste from over-ordering or fragmented tracking practices.",
+    highlightOneTitle: "Operational inventory",
+    highlightOneBody: "Stock reflects real lab usage as it happens",
+    highlightTwoTitle: "Planning clarity",
+    highlightTwoBody: "Usage trends support smarter replenishment decisions",
+  },
+};
+
+const outcomesShowcaseContent: Record<
+  string,
+  { kicker: string; title: string; bodyOne: string; bodyTwo: string; bodyThree: string }
+> = {
+  embryologists: {
+    kicker: "Operational Value",
+    title: "Improve embryology outcomes with structured precision",
+    bodyOne:
+      "Embryology performance is not only about completing tasks, it is about ensuring every step is consistent, traceable, and clinically reliable across the full lab lifecycle.",
+    bodyTwo:
+      "EmbryoOne connects grading, witness workflows, and action tracking in one workflow layer so each movement and intervention is backed by real-time data and accountability.",
+    bodyThree:
+      "With clearer visibility, standardized procedures, and faster coordination, your team can focus on delivering safer handoffs and stronger outcomes across every cycle.",
+  },
+  "lab-directors": {
+    kicker: "Leadership Value",
+    title: "Drive lab performance with complete operational visibility",
+    bodyOne:
+      "Lab directors need continuous insight into workflow quality, team execution, and cycle outcomes. EmbryoOne brings these signals together in one command view for faster, better-informed operational decisions.",
+    bodyTwo:
+      "By combining live metrics with traceable workflow data, leadership can identify process drift early, improve adherence, and strengthen accountability across roles and locations.",
+    bodyThree:
+      "The result is a more predictable lab operation with reduced risk, stronger compliance posture, and clearer performance tracking over time.",
+  },
+  doctors: {
+    kicker: "Clinical Value",
+    title: "Make cycle decisions faster with connected embryo insights",
+    bodyOne:
+      "Timely decisions depend on immediate access to cycle progress and embryo context. EmbryoOne unifies those signals so doctors can act quickly without waiting for fragmented updates.",
+    bodyTwo:
+      "Clinical teams can review grading context, milestone progress, and action-ready alerts in one place, improving coordination across lab and care workflows.",
+    bodyThree:
+      "This shortens decision lag, supports treatment precision, and improves continuity for both clinicians and patients throughout the cycle.",
+  },
+  "clinic-admin": {
+    kicker: "Operational Value",
+    title: "Run clinic operations with less friction and better control",
+    bodyOne:
+      "Clinic admins manage high-volume coordination across appointments, tasks, and reporting demands. EmbryoOne centralizes these workflows to reduce manual effort and improve day-to-day execution.",
+    bodyTwo:
+      "Live operational visibility helps teams allocate resources sooner, resolve bottlenecks quickly, and keep schedules aligned with real clinic demand.",
+    bodyThree:
+      "With streamlined reporting and clearer workload tracking, administrators can support growth while maintaining consistent operational quality.",
+  },
+  "lab-traceability": {
+    kicker: "Operational Value",
+    title: "Make traceability a continuous operational advantage",
+    bodyOne:
+      "Traceability is most effective when it is embedded in workflows, not added after the fact. EmbryoOne captures each event in context so teams can trust the integrity of every record.",
+    bodyTwo:
+      "By linking user actions, timestamps, and validation checkpoints, labs reduce ambiguity in daily operations and during high-pressure investigation scenarios.",
+    bodyThree:
+      "This approach strengthens compliance readiness while giving leadership better visibility into process quality and accountability trends over time.",
+  },
+  "embryo-selection": {
+    kicker: "Clinical Value",
+    title: "Turn embryo review into a more consistent decision process",
+    bodyOne:
+      "Selection quality depends on consistency, transparency, and speed. EmbryoOne structures image review and grading context so teams evaluate embryos with aligned criteria.",
+    bodyTwo:
+      "AI-assisted insights support confidence without replacing clinical authority, helping reduce inter-observer variability and improve communication across teams.",
+    bodyThree:
+      "The result is a more reliable selection workflow that helps clinics make better-timed decisions across each treatment cycle.",
+  },
+  "cryo-management": {
+    kicker: "Safety Value",
+    title: "Protect cryostorage with proactive control and visibility",
+    bodyOne:
+      "Cryo safety requires real-time awareness, not delayed reporting. EmbryoOne monitors storage conditions continuously and surfaces risk indicators before escalation.",
+    bodyTwo:
+      "Movement traceability and structured validation improve reliability during transfers, retrievals, and routine storage operations.",
+    bodyThree:
+      "With better monitoring and faster response loops, labs reduce avoidable risk while maintaining high confidence in cryo integrity.",
+  },
+  "inventory-tracking": {
+    kicker: "Operational Value",
+    title: "Turn lab inventory into a system your team can trust",
+    bodyOne:
+      "Inventory management in IVF is not just about counting items, it is about making sure every procedure has what it needs at the right time.",
+    bodyTwo:
+      "EmbryoOne links usage, location, and procurement data so stock visibility reflects live lab activity instead of delayed reconciliation.",
+    bodyThree:
+      "Structured workflows and real-time updates reduce stock disruption, improve planning accuracy, and free teams from manual tracking overhead.",
+  },
+};
+
+const relevantSectionContent: Record<string, RelevantSection> = {
+  embryologists: {
+    heading: "Embryologist workflow impact",
+    body:
+      "Reduce manual work and improve consistency in lab procedures with structured protocols, guided actions, and complete embryo history in one place.",
+    points: [
+      "Standardize grading and handling across shifts.",
+      "Capture every critical step with traceable logs.",
+      "Improve team consistency without slowing execution.",
+    ],
+    image: embryoSectionImage,
+    imageAlt: "Embryologist workflow with protocol guidance and embryo records",
+  },
+  "lab-directors": {
+    heading: "Director-level operational visibility",
+    body:
+      "Gain full visibility into lab operations and performance through live metrics, quality signals, and compliance-ready activity tracking.",
+    points: [
+      "Track outcomes and workflow trends in real time.",
+      "Identify bottlenecks and protocol drift early.",
+      "Support audits with structured evidence exports.",
+    ],
+    image: labWorkflowImage,
+    imageAlt: "Lab director dashboard showing performance and quality indicators",
+  },
+  doctors: {
+    heading: "Clinical decisions with real-time embryo context",
+    body:
+      "Access cycle data and embryo insights for faster decisions by connecting lab updates, alerts, and patient timeline context in one interface.",
+    points: [
+      "Review cycle and embryo status without data chasing.",
+      "Act quickly on time-sensitive treatment events.",
+      "Document decisions with complete supporting context.",
+    ],
+    image: doctorWorkflowImage,
+    imageAlt: "Doctor reviewing cycle data and embryo insight timeline",
+  },
+  "clinic-admin": {
+    heading: "Operational control for clinic admins",
+    body:
+      "Streamline operations, reporting, and resource management with centralized task flows, team visibility, and live operational reporting.",
+    points: [
+      "Coordinate schedules and responsibilities from one hub.",
+      "Reduce manual follow-ups with automated workflows.",
+      "Generate timely reports with current operational data.",
+    ],
+    image: clinicAdminWorkflowImage,
+    imageAlt: "Clinic admin operations view with tasks and reporting insights",
+  },
+  "lab-traceability": {
+    heading: "Traceability for safer daily operations",
+    body:
+      "Track every action to reduce risk and improve accountability with user-level logs, witness checkpoints, and event-linked audit history.",
+    points: [
+      "Review full action history by embryo and cycle.",
+      "Strengthen accountability with time-stamped events.",
+      "Accelerate incident and quality review workflows.",
+    ],
+    image: labWorkflowImage,
+    imageAlt: "Traceability dashboard with event logs and accountability tracking",
+  },
+  "embryo-selection": {
+    heading: "Selection consistency with imaging and AI",
+    body:
+      "Use imaging and AI to support consistent decision-making while preserving embryologist control and transparent override documentation.",
+    points: [
+      "Compare embryos with structured image review tools.",
+      "Use AI scoring as decision support context.",
+      "Reduce grading variability across care teams.",
+    ],
+    image: embryoSectionImage,
+    imageAlt: "Embryo selection workspace with imaging and AI-assisted grading",
+  },
+  "cryo-management": {
+    heading: "Cryo monitoring with proactive safety control",
+    body:
+      "Monitor storage, movement, and status of all cryo samples with live conditions, movement logs, and alert-driven intervention workflows.",
+    points: [
+      "Watch tank status and thresholds in real time.",
+      "Track sample movement with chain-of-custody detail.",
+      "Respond earlier to conditions that increase risk.",
+    ],
+    image: cryoWorkflowImage,
+    imageAlt: "Cryo operations monitoring with movement and storage status",
+  },
+  "inventory-tracking": {
+    heading: "Inventory accuracy for uninterrupted lab workflows",
+    body:
+      "Ensure accurate usage and availability of lab consumables with real-time stock visibility, usage trends, and low-stock alerts.",
+    points: [
+      "Link consumable usage directly to lab activity.",
+      "Forecast replenishment using trend visibility.",
+      "Prevent shortages that disrupt clinical schedules.",
+    ],
+    image: inventoryWorkflowImage,
+    imageAlt: "Inventory dashboard showing consumable usage and stock availability",
+  },
+};
+---
+
+<BaseLayout
+  title={`${solution.title} Solutions | EmbryoOne`}
+  description={`${solution.subtitle}. ${solution.heroBody}`}
+>
+  <section class={`${isShowcasePage ? "embryo-surface embryo-surface--white" : "bg-tebra-hero-bg"} py-14 sm:py-16 lg:py-20`}>
+    <div class="page-container max-w-5xl">
+      <p class="eyebrow">{solution.eyebrow}</p>
+      <h1 class="mt-3 text-4xl font-semibold leading-tight text-tebra-teal-dark sm:text-5xl">
+        {solution.heroHeading}
+      </h1>
+      <p class="mt-5 max-w-4xl text-base text-gray-700 sm:text-lg">{solution.heroBody}</p>
+      <p class="mt-4 max-w-4xl text-sm leading-relaxed text-gray-600 sm:text-base">
+        {pageExpansion.sectionIntro}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+        <Button href="/platform" label="Explore platform" variant="secondary" size="md" />
+      </div>
+      <div class="mt-8 grid gap-3 sm:grid-cols-3">
+        {pageExpansion.stats.map((stat) => (
+          <article class="rounded-2xl border border-[#D9EBEB] bg-white p-4">
+            <p class="text-2xl font-semibold text-tebra-teal-dark">{stat.value}</p>
+            <p class="mt-1 text-xs uppercase tracking-wide text-[#5B7280]">{stat.label}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {solution.challenges?.length ? (
+    <section class={`page-section ${isShowcasePage ? "embryo-surface embryo-surface--lavender" : "bg-white"}`}>
+      <div class="page-container max-w-5xl">
+        <h2 class={`heading-md text-tebra-teal-dark ${isShowcasePage ? "text-center" : ""}`}>
+          {solution.challengesHeading ?? "Challenges"}
+        </h2>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          {solution.challenges.map((item) => (
+            <article class={`rounded-2xl border border-gray-200 bg-white p-5 shadow-sm ${isShowcasePage ? "text-center" : ""}`}>
+              <p class="text-sm leading-relaxed text-gray-700">{item}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : null}
+
+  <section class={`page-section ${isShowcasePage ? "embryo-surface embryo-surface--gray" : "bg-[#F7FAFA]"}`}>
+    <div class="page-container max-w-5xl">
+      {isShowcasePage ? (
+        <div class="grid gap-8 md:grid-cols-2 md:items-center">
+          <div>
+            <h2 class="heading-md text-tebra-teal-dark">{solution.solutionHeading}</h2>
+            {solution.solutionBody ? (
+              <p class="mt-4 max-w-3xl text-base text-gray-700">{solution.solutionBody}</p>
+            ) : null}
+            <ul class="mt-6 space-y-3">
+              {solution.solutionPoints.map((item) => (
+                <li class="flex items-start gap-3 text-gray-700">
+                  <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-6 text-sm leading-relaxed text-gray-700">
+              {solutionSectionEnhancements[solution.slug]?.bodyOne}
+            </p>
+            <p class="mt-4 text-sm leading-relaxed text-gray-700">
+              {solutionSectionEnhancements[solution.slug]?.bodyTwo}
+            </p>
+            <div class="mt-5 grid gap-3 sm:grid-cols-2">
+              <article class="rounded-xl border border-[#D7E6E6] bg-white px-4 py-3">
+                <p class="text-[11px] font-semibold uppercase tracking-wide text-[#5F7480]">
+                  {solutionSectionEnhancements[solution.slug]?.highlightOneTitle}
+                </p>
+                <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">
+                  {solutionSectionEnhancements[solution.slug]?.highlightOneBody}
+                </p>
+              </article>
+              <article class="rounded-xl border border-[#D7E6E6] bg-white px-4 py-3">
+                <p class="text-[11px] font-semibold uppercase tracking-wide text-[#5F7480]">
+                  {solutionSectionEnhancements[solution.slug]?.highlightTwoTitle}
+                </p>
+                <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">
+                  {solutionSectionEnhancements[solution.slug]?.highlightTwoBody}
+                </p>
+              </article>
+            </div>
+          </div>
+          <div>
+            <img
+              src={solutionSectionEnhancements[solution.slug]?.image.src}
+              alt={solutionSectionEnhancements[solution.slug]?.imageAlt}
+              class="w-full rounded-3xl border border-gray-200 object-cover shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      ) : (
+        <>
+          <h2 class="heading-md text-tebra-teal-dark">{solution.solutionHeading}</h2>
+          {solution.solutionBody ? (
+            <p class="mt-4 max-w-3xl text-base text-gray-700">{solution.solutionBody}</p>
+          ) : null}
+          <ul class="mt-6 space-y-3">
+            {solution.solutionPoints.map((item) => (
+              <li class="flex items-start gap-3 text-gray-700">
+                <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  </section>
+
+  <section class={`page-section ${isShowcasePage ? "embryo-surface embryo-surface--white" : "bg-white"}`}>
+    <div class="page-container max-w-5xl">
+      <h2 class={`heading-md text-tebra-teal-dark ${isShowcasePage ? "text-center" : ""}`}>
+        {solution.featureHeading}
+      </h2>
+      {isShowcasePage ? (
+        <div class="mt-6">
+          <div class="feature-deep-dive-track" id="feature-deep-dive-track">
+            {solution.featurePoints.map((item, index) => (
+              <article class={`feature-deep-dive-card feature-tone-${index % 4}`}>
+                <p class="feature-deep-dive-label">Feature highlight</p>
+                <p class="feature-deep-dive-copy">{item}</p>
+              </article>
+            ))}
+          </div>
+          <div class="mt-4 flex items-center justify-center gap-2">
+            <button
+              type="button"
+              class="feature-slider-btn"
+              id="feature-prev-btn"
+              aria-label="Show previous feature card"
+            >
+              &larr;
+            </button>
+            <button
+              type="button"
+              class="feature-slider-btn"
+              id="feature-next-btn"
+              aria-label="Show next feature card"
+            >
+              &rarr;
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div class="mt-6 grid gap-4 md:grid-cols-2">
+          {solution.featurePoints.map((item) => (
+            <article class="rounded-2xl border border-gray-200 bg-[#FCFEFE] p-5">
+              <p class="text-sm leading-relaxed text-gray-700">{item}</p>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  {isShowcasePage ? (
+    <section class="page-section bg-tebra-teal-dark">
+      <div class="page-container max-w-5xl">
+        <h2 class="heading-md text-white">Frequently asked questions</h2>
+        <div class="mt-6 space-y-3">
+          {pageExpansion.faqs.map((faq) => (
+            <details class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4">
+              <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-semibold text-white marker:content-none">
+                <span>{faq.question}</span>
+                <span class="faq-icon text-xl leading-none" aria-hidden="true">
+                  <span class="faq-icon-plus">+</span>
+                  <span class="faq-icon-minus hidden">-</span>
+                </span>
+              </summary>
+              <p class="mt-3 max-w-4xl text-sm leading-relaxed text-gray-100">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : null}
+
+  <section class={`page-section ${isShowcasePage ? "embryo-surface embryo-surface--lavender" : "bg-[#F7FAFA]"}`}>
+    <div class="page-container max-w-5xl">
+      <h2 class="heading-md text-tebra-teal-dark">{pageExpansion.workflowTitle}</h2>
+      <div class="workflow-steps mt-6 grid gap-4 md:grid-cols-3">
+        {pageExpansion.workflowSteps.map((step, index) => (
+          <article class="workflow-step-card group relative overflow-hidden rounded-2xl border border-[#D8E7E7] bg-white p-5">
+            <span class="workflow-step-glow" aria-hidden="true"></span>
+            <div class="flex items-center gap-2">
+              <span class="workflow-step-badge">Step {index + 1}</span>
+              {index < pageExpansion.workflowSteps.length - 1 ? (
+                <span class="workflow-step-link hidden h-px flex-1 bg-[#CFE0E0] md:block"></span>
+              ) : null}
+            </div>
+            <h3 class="mt-3 text-lg font-semibold text-tebra-teal-dark">{step.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-700">{step.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class={`page-section ${isShowcasePage ? "embryo-surface embryo-surface--gray" : "bg-[#F6FAFA]"}`}>
+    <div class="page-container max-w-5xl">
+      {isShowcasePage ? (
+        <div class="outcomes-showcase">
+          <p class="outcomes-showcase-kicker">{outcomesShowcaseContent[solution.slug]?.kicker}</p>
+          <h2 class="mt-2 text-4xl font-semibold leading-tight text-[#42245E] sm:text-5xl">
+            {outcomesShowcaseContent[solution.slug]?.title}
+          </h2>
+          <div class="mt-6 space-y-4 text-base leading-relaxed text-[#4F4760]">
+            <p>{outcomesShowcaseContent[solution.slug]?.bodyOne}</p>
+            <p>{outcomesShowcaseContent[solution.slug]?.bodyTwo}</p>
+            <p>{outcomesShowcaseContent[solution.slug]?.bodyThree}</p>
+          </div>
+          <div class="mt-7 grid gap-3 md:grid-cols-3">
+            {solution.outcomes.map((item) => (
+              <article class="outcomes-showcase-card">
+                <p class="text-lg font-semibold leading-snug text-[#3D245B]">{item}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <h2 class={`heading-md text-tebra-teal-dark ${solution.slug === "embryologists" ? "text-center" : ""}`}>
+          {solution.outcomesHeading ?? "Outcomes"}
+        </h2>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          {solution.outcomes.map((item) => (
+            <article class="rounded-2xl border border-[#D6E6E6] bg-white p-5">
+              <p class={`text-base font-semibold text-tebra-teal-dark ${solution.slug === "embryologists" ? "text-center" : ""}`}>
+                {item}
+              </p>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class={`page-section ${isShowcasePage ? "embryo-surface embryo-surface--white" : "bg-white"}`}>
+    <div class="page-container max-w-5xl">
+      <div class="grid gap-8 md:grid-cols-2 md:items-center">
+        <div>
+          <h2 class="heading-md text-tebra-teal-dark">{relevantSectionContent[solution.slug]?.heading}</h2>
+          <p class="mt-4 text-base leading-relaxed text-gray-700">
+            {relevantSectionContent[solution.slug]?.body}
+          </p>
+          <ul class="mt-5 space-y-3">
+            {(relevantSectionContent[solution.slug]?.points ?? []).map((item) => (
+              <li class="flex items-start gap-3 text-gray-700">
+                <span class="mt-2 h-2 w-2 rounded-full bg-tebra-teal"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <img
+            src={relevantSectionContent[solution.slug]?.image.src}
+            alt={relevantSectionContent[solution.slug]?.imageAlt}
+            class="w-full rounded-3xl border border-gray-200 object-cover shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)]"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class={`page-section ${isShowcasePage ? "embryo-surface embryo-surface--white" : "bg-[#F7FAFA]"}`}>
+    <div class="page-container max-w-5xl">
+      <h2 class="heading-md text-tebra-teal-dark">Recommended products for this solution</h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-3">
+        {pageExpansion.relatedModules.map((module) => (
+          <article class="rounded-2xl border border-[#D8E7E7] bg-white p-5">
+            <h3 class="text-lg font-semibold text-tebra-teal-dark">{module.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-700">{module.description}</p>
+            <a class="mt-4 inline-flex text-sm font-semibold text-[#295E79] hover:text-[#1E4A60]" href={module.href}>
+              Learn more
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {!isShowcasePage ? (
+    <section class="page-section bg-white">
+      <div class="page-container max-w-5xl">
+        <h2 class="heading-md text-tebra-teal-dark">Frequently asked questions</h2>
+        <div class="mt-6 space-y-3">
+          {pageExpansion.faqs.map((faq) => (
+            <details class="rounded-2xl border border-gray-200 bg-white px-5 py-4">
+              <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-semibold text-tebra-teal-dark marker:content-none">
+                <span>{faq.question}</span>
+                <span class="faq-icon text-xl leading-none" aria-hidden="true">
+                  <span class="faq-icon-plus">+</span>
+                  <span class="faq-icon-minus hidden">-</span>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-700">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : null}
+
+  <style>
+    .embryo-surface {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .embryo-surface::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(130deg, rgba(126, 87, 160, 0.09), rgba(126, 87, 160, 0));
+    }
+
+    .embryo-surface > .page-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .embryo-surface--white {
+      background: #ffffff;
+    }
+
+    .embryo-surface--lavender {
+      background: #f6f2ff;
+    }
+
+    .embryo-surface--gray {
+      background: #fbf9ff;
+    }
+
+    details[open] .faq-icon-plus {
+      display: none;
+    }
+
+    details[open] .faq-icon-minus {
+      display: inline;
+    }
+
+    .workflow-step-card {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 520ms ease,
+        transform 520ms ease,
+        box-shadow 260ms ease,
+        border-color 260ms ease;
+      box-shadow: 0 14px 30px -24px rgba(15, 23, 42, 0.38);
+    }
+
+    .workflow-step-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .workflow-step-card:hover {
+      border-color: #b8d3d3;
+      box-shadow: 0 24px 42px -28px rgba(15, 23, 42, 0.45);
+    }
+
+    .workflow-step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      background: #e8f4f4;
+      color: #1f5b75;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .workflow-step-glow {
+      pointer-events: none;
+      position: absolute;
+      top: -3.5rem;
+      right: -3rem;
+      width: 8rem;
+      height: 8rem;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(48, 119, 149, 0.17), rgba(48, 119, 149, 0));
+      transform: scale(0.85);
+      transition: transform 280ms ease;
+    }
+
+    .workflow-step-card:hover .workflow-step-glow {
+      transform: scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .workflow-step-card {
+        opacity: 1;
+        transform: none;
+        transition: box-shadow 260ms ease, border-color 260ms ease;
+      }
+    }
+
+    .feature-deep-dive-track {
+      display: flex;
+      gap: 0.9rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 0.25rem;
+    }
+
+    .feature-deep-dive-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .feature-deep-dive-card {
+      flex: 0 0 88%;
+      border-radius: 1.2rem;
+      padding: 1.3rem 1.15rem;
+      min-height: 168px;
+      border: 1px solid transparent;
+      box-shadow: 0 14px 32px -26px rgba(43, 22, 61, 0.5);
+      transition: transform 240ms ease, box-shadow 240ms ease;
+      scroll-snap-align: start;
+    }
+
+    .feature-deep-dive-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 34px -24px rgba(43, 22, 61, 0.55);
+    }
+
+    .feature-deep-dive-label {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      opacity: 0.9;
+    }
+
+    .feature-deep-dive-copy {
+      margin-top: 0.7rem;
+      font-size: 1.02rem;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .feature-tone-0 {
+      background: linear-gradient(145deg, #4a2a73, #2f1a4a);
+      border-color: #6d49a0;
+      color: #f4ecff;
+    }
+
+    .feature-tone-1 {
+      background: linear-gradient(145deg, #f2e9ff, #e9d9ff);
+      border-color: #ddc7ff;
+      color: #3b2459;
+    }
+
+    .feature-tone-2 {
+      background: linear-gradient(145deg, #ede4ff, #dac3ff);
+      border-color: #cfb0ff;
+      color: #35204f;
+    }
+
+    .feature-tone-3 {
+      background: linear-gradient(145deg, #efe6ff, #f6f1ff);
+      border-color: #ddc9ff;
+      color: #3a2457;
+    }
+
+    .feature-slider-btn {
+      display: inline-flex;
+      height: 2rem;
+      width: 2rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: 1px solid #d7c2f7;
+      background: #f5ecff;
+      color: #4a2a73;
+      font-weight: 700;
+      transition: all 180ms ease;
+    }
+
+    .feature-slider-btn:hover {
+      background: #eadbff;
+      border-color: #caa7f7;
+    }
+
+    .outcomes-showcase {
+      border-radius: 1.4rem;
+      border: 1px solid #e0d0f5;
+      background: linear-gradient(145deg, #ece2fb, #e5d7f7);
+      padding: 1.3rem 1.15rem;
+    }
+
+    .outcomes-showcase-kicker {
+      display: inline-flex;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7f669d;
+      font-weight: 700;
+    }
+
+    .outcomes-showcase-card {
+      border-radius: 0.95rem;
+      border: 1px solid #dfd5ee;
+      background: #f8f4fc;
+      padding: 1rem 0.95rem;
+      box-shadow: 0 12px 24px -24px rgba(59, 36, 88, 0.45);
+    }
+
+    @media (min-width: 768px) {
+      .feature-deep-dive-card {
+        flex-basis: calc((100% - 1.8rem) / 3);
+      }
+
+      .outcomes-showcase {
+        padding: 1.9rem 2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .outcomes-showcase-card {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const cards = Array.from(document.querySelectorAll(".workflow-step-card"));
+      if (!cards.length) return;
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        cards.forEach((card) => card.classList.add("is-visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const card = entry.target;
+            const index = cards.indexOf(card);
+            window.setTimeout(() => {
+              card.classList.add("is-visible");
+            }, index * 140);
+            observer.unobserve(card);
+          });
+        },
+        { threshold: 0.24 }
+      );
+
+      cards.forEach((card) => observer.observe(card));
+    })();
+
+    (() => {
+      const track = document.querySelector("#feature-deep-dive-track");
+      const prevBtn = document.querySelector("#feature-prev-btn");
+      const nextBtn = document.querySelector("#feature-next-btn");
+      if (!(track instanceof HTMLElement) || !(prevBtn instanceof HTMLButtonElement) || !(nextBtn instanceof HTMLButtonElement)) return;
+
+      const card = track.querySelector(".feature-deep-dive-card");
+      if (!(card instanceof HTMLElement)) return;
+      const step = () => card.getBoundingClientRect().width + 14;
+
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -step(), behavior: "smooth" });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: step(), behavior: "smooth" });
+      });
+    })();
+
+  </script>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-container rounded-3xl bg-tebra-teal-dark px-6 py-10 sm:px-10">
+      <h2 class="text-3xl font-semibold text-white sm:text-4xl">
+        Ready to operationalize this workflow in your clinic?
+      </h2>
+      <p class="mt-4 max-w-3xl text-base text-gray-100">
+        See how EmbryoOne can be configured for your team, SOPs, and reporting requirements.
+      </p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href="/demo" label="Book a demo" variant="primary" size="md" />
+        <Button href="/product-tour" label="View product tour" variant="secondary" size="md" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

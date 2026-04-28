@@ -3,10 +3,6 @@
  * Platform / Products / Solutions / AI / Resources / Company
  */
 export const mobilePlatformLinks = [
-  { label: "Overview", href: "/platform/overview" },
-  { label: "How It Works", href: "/platform/how-it-works" },
-  { label: "Architecture", href: "/platform/architecture" },
-  { label: "Security", href: "/platform/security" },
 ] as const;
 
 export const mobileProductSections = [
@@ -22,7 +18,6 @@ export const mobileProductSections = [
   {
     heading: "Embryo Intelligence",
     links: [
-      { label: "Embryo Intelligence", href: "/products/embryo-intelligence" },
       { label: "Embryo Capture", href: "/products/embryo-capture" },
       { label: "AI Grading", href: "/products/ai-grading" },
     ],
@@ -66,10 +61,10 @@ export const mobileAiLinks = [
 ] as const;
 
 export const mobileResourceLinks = [
-  { label: "Case Studies", href: "/resources/case-studies" },
-  { label: "Blog / Insights", href: "/resources/blog" },
-  { label: "Documentation", href: "/resources/documentation" },
-  { label: "Help Center", href: "/resources/help-center" },
+  { label: "Case Studies", href: "/home-resources/case-studies" },
+  { label: "Blog / Insights", href: "/home-resources/blog" },
+  { label: "Documentation", href: "/home-resources/documentation" },
+  { label: "Help Center", href: "/home-resources/help-center" },
 ] as const;
 
 export const mobileCompanyLinks = [
