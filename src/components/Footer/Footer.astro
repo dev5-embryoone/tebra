@@ -6,7 +6,7 @@ import { footerColumns, footerContact } from "../../data/footer";
 
 <footer class="bg-tebra-teal-dark text-white">
   <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-12 pt-14 pb-10">
-    <div class="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <div class="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
       {footerColumns.map((col) => (
         <FooterColumn title={col.title} links={col.links} />
       ))}
@@ -14,44 +14,25 @@ import { footerColumns, footerContact } from "../../data/footer";
   </div>
 
   <div class="border-t border-white/15">
-    <div class="max-w-content mx-auto flex flex-col gap-6 px-4 py-6 sm:px-6 lg:px-12 md:flex-row md:items-start md:justify-between">
-      <div class="flex flex-col gap-3">
-        <a
-          href="/"
-          class="inline-flex items-center"
-          aria-label="EmbryoOne homepage"
-        >
-          <img
-            src={logoPng}
-            alt=""
-            width="24"
-            height="24"
-            class="block h-6 w-6 object-contain"
-          />
-          <span class="ml-2 text-[14px] font-semibold text-white">Embryo One</span>
-        </a>
-        <p class="mt-1 text-[11px] font-bold uppercase tracking-wide text-white/90">
-          Contact Us
-        </p>
-        <address class="not-italic text-[13px] leading-[1.5] text-white/90">
-          {footerContact.addressLines.map((line) => (
-            <>
-              {line}
-              <br />
-            </>
-          ))}
-        </address>
-        <a
-          href={footerContact.phoneHref}
-          class="text-[13px] text-white/90 transition-colors hover:text-white"
-        >
-          {footerContact.phoneDisplay}
-        </a>
-      </div>
+    <div class="max-w-content mx-auto flex flex-col items-center gap-3 px-4 py-6 sm:px-6 lg:px-12 md:flex-row md:items-center md:justify-between">
+      <a
+        href="/"
+        class="inline-flex items-center"
+        aria-label="EmbryoOne homepage"
+      >
+        <img
+          src={logoPng}
+          alt=""
+          width="24"
+          height="24"
+          class="block h-6 w-6 object-contain"
+        />
+        <span class="ml-2 text-[14px] font-semibold text-white">Embryo One</span>
+      </a>
 
-      <div class="flex flex-col items-start gap-1 md:items-end md:text-right">
+      <div class="flex flex-col items-center gap-1 text-center md:items-end md:text-right">
         <p class="text-[13px] text-white/90">{footerContact.copyright}</p>
-        <div class="flex flex-wrap gap-x-4 gap-y-1 text-[13px]">
+        <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-[13px] md:justify-end">
           {footerContact.legal.map((item) => (
             <a href={item.href} class="text-white/90 transition-colors hover:text-white">
               {item.label}

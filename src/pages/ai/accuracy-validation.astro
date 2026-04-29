@@ -204,24 +204,6 @@ const differentiators = [
     </div>
   </section>
 
-  <section class="page-section bg-tebra-teal-dark text-white">
-    <div class="page-container">
-      <p class="eyebrow text-[#C3A5F8]">FAQs</p>
-      <h2 class="heading-md mt-3 max-w-3xl text-white">Common questions on accuracy and validation</h2>
-      <div class="mt-8 space-y-4">
-        {faqs.map((item) => (
-          <details class="group rounded-2xl border border-white/20 bg-white/5 p-5 open:bg-white/10">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-medium text-white marker:content-none">
-              <span>{item.question}</span>
-              <span class="text-xl leading-none text-white transition-transform duration-200 group-open:rotate-45">+</span>
-            </summary>
-            <p class="mt-3 pr-8 text-sm leading-relaxed text-gray-100">{item.answer}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section class="page-section bg-[#F7F1FF]">
     <div class="page-container">
       <article class="mx-auto max-w-3xl">
@@ -240,6 +222,24 @@ const differentiators = [
           ))}
         </div>
       </article>
+    </div>
+  </section>
+
+  <section class="page-section bg-tebra-teal-dark text-white">
+    <div class="page-container">
+      <p class="eyebrow text-[#C3A5F8]">FAQs</p>
+      <h2 class="heading-md mt-3 max-w-3xl text-white">Common questions on accuracy and validation</h2>
+      <div class="mt-8 space-y-4">
+        {faqs.map((item) => (
+          <details class="group rounded-2xl border border-white/20 bg-white/5 p-5 open:bg-white/10">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-medium text-white marker:content-none">
+              <span>{item.question}</span>
+              <span class="text-xl leading-none text-white transition-transform duration-200 group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-3 pr-8 text-sm leading-relaxed text-gray-100">{item.answer}</p>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 

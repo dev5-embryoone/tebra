@@ -169,34 +169,6 @@ const ehrFaqs = [
     </div>
   </section>
 
-  <section class="py-16 sm:py-20 bg-tebra-teal-dark">
-    <div class="page-container">
-      <div class="mx-auto max-w-4xl">
-        <p class="eyebrow !text-gray-200">EHR FAQ</p>
-        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-          Frequently Asked Questions
-        </h2>
-        <p class="mt-4 text-base text-gray-200">
-          Quick answers about how EmbryoOne EHR supports IVF workflows, team coordination, and
-          decision-ready care.
-        </p>
-        <div class="mt-8 space-y-3">
-          {ehrFaqs.map((item, index) => (
-            <details
-              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
-              open={index === 0}
-            >
-              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
-                {item.question}
-              </summary>
-              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="page-section bg-white">
     <div class="page-container">
       <h2 class="heading-md text-tebra-teal-dark md:whitespace-nowrap">
@@ -393,16 +365,6 @@ const ehrFaqs = [
             </li>
           ))}
         </ul>
-        <div class="mt-7 grid gap-3 sm:grid-cols-2">
-          <div class="rounded-xl border border-gray-200 bg-white px-4 py-3">
-            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Turnaround</p>
-            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Reduce time from result to decision</p>
-          </div>
-          <div class="rounded-xl border border-gray-200 bg-white px-4 py-3">
-            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Safety</p>
-            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Escalate protocol-critical findings quickly</p>
-          </div>
-        </div>
       </div>
       <img src={orderDetailsImage.src} alt="Order details panel with lab result lifecycle, alerts, and review actions" class="w-full rounded-2xl border border-gray-200 md:order-1" loading="lazy" />
     </div>
@@ -429,18 +391,36 @@ const ehrFaqs = [
             </li>
           ))}
         </ul>
-        <div class="mt-7 grid gap-3 sm:grid-cols-2">
-          <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
-            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Clinical Focus</p>
-            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Surface high-impact decisions first</p>
-          </div>
-          <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
-            <p class="text-[11px] font-semibold uppercase tracking-wide text-gray-500">Team Visibility</p>
-            <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">Share queue status across roles in real time</p>
-          </div>
-        </div>
       </div>
       <img src={clinicalDecisionQueueImage.src} alt="Clinical decision queue with prioritized actions, stage-aware context, and critical alerts" class="w-full rounded-2xl border border-gray-200" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-tebra-teal-dark">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl">
+        <p class="eyebrow !text-gray-200">EHR FAQ</p>
+        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-4 text-base text-gray-200">
+          Quick answers about how EmbryoOne EHR supports IVF workflows, team coordination, and
+          decision-ready care.
+        </p>
+        <div class="mt-8 space-y-3">
+          {ehrFaqs.map((item, index) => (
+            <details
+              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
+              open={index === 0}
+            >
+              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
+                {item.question}
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 

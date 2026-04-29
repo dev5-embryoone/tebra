@@ -195,6 +195,22 @@ const trustMetrics = [
     </div>
   </section>
 
+  <section class="py-12 sm:py-14 bg-tebra-teal-dark text-white">
+    <div class="page-container max-w-6xl">
+      <h2 class="heading-md text-center text-white">Trust and proof</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        {trustMetrics.map((metric) => (
+          <article class="rounded-2xl border border-white/15 bg-white/5 p-5 text-center">
+            <p class="text-4xl font-semibold tracking-tight">
+              <span class="text-white/90">{metric.prefix ?? ""}</span><span class="copilot-count" data-value={metric.value}>0</span><span>{metric.suffix ?? ""}</span>
+            </p>
+            <p class="mt-2 text-sm text-white/85">{metric.label}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="py-12 sm:py-14 bg-[#F9F7FC]">
     <div class="page-container max-w-6xl">
       <h2 class="heading-md text-center text-tebra-teal-dark">Use cases</h2>
@@ -293,22 +309,6 @@ const trustMetrics = [
             </div>
           </li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-12 sm:py-14 bg-tebra-teal-dark text-white">
-    <div class="page-container max-w-6xl">
-      <h2 class="heading-md text-center text-white">Trust and proof</h2>
-      <div class="mt-8 grid gap-4 md:grid-cols-3">
-        {trustMetrics.map((metric) => (
-          <article class="rounded-2xl border border-white/15 bg-white/5 p-5 text-center">
-            <p class="text-4xl font-semibold tracking-tight">
-              <span class="text-white/90">{metric.prefix ?? ""}</span><span class="copilot-count" data-value={metric.value}>0</span><span>{metric.suffix ?? ""}</span>
-            </p>
-            <p class="mt-2 text-sm text-white/85">{metric.label}</p>
-          </article>
-        ))}
       </div>
     </div>
   </section>

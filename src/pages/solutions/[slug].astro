@@ -952,18 +952,18 @@ const relevantSectionContent: Record<string, RelevantSection> = {
             </p>
             <div class="mt-5 grid gap-3 sm:grid-cols-2">
               <article class="rounded-xl border border-[#D7E6E6] bg-white px-4 py-3">
-                <p class="text-[11px] font-semibold uppercase tracking-wide text-[#5F7480]">
+                <p class="text-[11px] font-semibold uppercase tracking-wide text-[#6B4A93]">
                   {solutionSectionEnhancements[solution.slug]?.highlightOneTitle}
                 </p>
-                <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">
+                <p class="mt-1 text-sm font-semibold text-[#4A2A73]">
                   {solutionSectionEnhancements[solution.slug]?.highlightOneBody}
                 </p>
               </article>
               <article class="rounded-xl border border-[#D7E6E6] bg-white px-4 py-3">
-                <p class="text-[11px] font-semibold uppercase tracking-wide text-[#5F7480]">
+                <p class="text-[11px] font-semibold uppercase tracking-wide text-[#6B4A93]">
                   {solutionSectionEnhancements[solution.slug]?.highlightTwoTitle}
                 </p>
-                <p class="mt-1 text-sm font-semibold text-tebra-teal-dark">
+                <p class="mt-1 text-sm font-semibold text-[#4A2A73]">
                   {solutionSectionEnhancements[solution.slug]?.highlightTwoBody}
                 </p>
               </article>
@@ -1043,40 +1043,14 @@ const relevantSectionContent: Record<string, RelevantSection> = {
     </div>
   </section>
 
-  {isShowcasePage ? (
-    <section class="page-section bg-tebra-teal-dark">
-      <div class="page-container max-w-5xl">
-        <h2 class="heading-md text-white">Frequently asked questions</h2>
-        <div class="mt-6 space-y-3">
-          {pageExpansion.faqs.map((faq) => (
-            <details class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4">
-              <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-semibold text-white marker:content-none">
-                <span>{faq.question}</span>
-                <span class="faq-icon text-xl leading-none" aria-hidden="true">
-                  <span class="faq-icon-plus">+</span>
-                  <span class="faq-icon-minus hidden">-</span>
-                </span>
-              </summary>
-              <p class="mt-3 max-w-4xl text-sm leading-relaxed text-gray-100">{faq.answer}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-  ) : null}
-
   <section class={`page-section ${isShowcasePage ? "embryo-surface embryo-surface--lavender" : "bg-[#F7FAFA]"}`}>
     <div class="page-container max-w-5xl">
       <h2 class="heading-md text-tebra-teal-dark">{pageExpansion.workflowTitle}</h2>
       <div class="workflow-steps mt-6 grid gap-4 md:grid-cols-3">
         {pageExpansion.workflowSteps.map((step, index) => (
           <article class="workflow-step-card group relative overflow-hidden rounded-2xl border border-[#D8E7E7] bg-white p-5">
-            <span class="workflow-step-glow" aria-hidden="true"></span>
             <div class="flex items-center gap-2">
               <span class="workflow-step-badge">Step {index + 1}</span>
-              {index < pageExpansion.workflowSteps.length - 1 ? (
-                <span class="workflow-step-link hidden h-px flex-1 bg-[#CFE0E0] md:block"></span>
-              ) : null}
             </div>
             <h3 class="mt-3 text-lg font-semibold text-tebra-teal-dark">{step.title}</h3>
             <p class="mt-2 text-sm leading-relaxed text-gray-700">{step.description}</p>
@@ -1161,7 +1135,7 @@ const relevantSectionContent: Record<string, RelevantSection> = {
           <article class="rounded-2xl border border-[#D8E7E7] bg-white p-5">
             <h3 class="text-lg font-semibold text-tebra-teal-dark">{module.title}</h3>
             <p class="mt-2 text-sm leading-relaxed text-gray-700">{module.description}</p>
-            <a class="mt-4 inline-flex text-sm font-semibold text-[#295E79] hover:text-[#1E4A60]" href={module.href}>
+            <a class="mt-4 inline-flex text-sm font-semibold text-[#4A2A73] hover:text-[#3D245B]" href={module.href}>
               Learn more
             </a>
           </article>
@@ -1170,7 +1144,27 @@ const relevantSectionContent: Record<string, RelevantSection> = {
     </div>
   </section>
 
-  {!isShowcasePage ? (
+  {isShowcasePage ? (
+    <section class="page-section bg-tebra-teal-dark">
+      <div class="page-container max-w-5xl">
+        <h2 class="heading-md text-white">Frequently asked questions</h2>
+        <div class="mt-6 space-y-3">
+          {pageExpansion.faqs.map((faq) => (
+            <details class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4">
+              <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-semibold text-white marker:content-none">
+                <span>{faq.question}</span>
+                <span class="faq-icon text-xl leading-none" aria-hidden="true">
+                  <span class="faq-icon-plus">+</span>
+                  <span class="faq-icon-minus hidden">-</span>
+                </span>
+              </summary>
+              <p class="mt-3 max-w-4xl text-sm leading-relaxed text-gray-100">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  ) : (
     <section class="page-section bg-white">
       <div class="page-container max-w-5xl">
         <h2 class="heading-md text-tebra-teal-dark">Frequently asked questions</h2>
@@ -1190,7 +1184,7 @@ const relevantSectionContent: Record<string, RelevantSection> = {
         </div>
       </div>
     </section>
-  ) : null}
+  )}
 
   <style>
     .embryo-surface {
@@ -1257,30 +1251,13 @@ const relevantSectionContent: Record<string, RelevantSection> = {
       align-items: center;
       justify-content: center;
       border-radius: 9999px;
-      background: #e8f4f4;
-      color: #1f5b75;
+      background: #efe7ff;
+      color: #4a2a73;
       padding: 0.25rem 0.75rem;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .workflow-step-glow {
-      pointer-events: none;
-      position: absolute;
-      top: -3.5rem;
-      right: -3rem;
-      width: 8rem;
-      height: 8rem;
-      border-radius: 9999px;
-      background: radial-gradient(circle, rgba(48, 119, 149, 0.17), rgba(48, 119, 149, 0));
-      transform: scale(0.85);
-      transition: transform 280ms ease;
-    }
-
-    .workflow-step-card:hover .workflow-step-glow {
-      transform: scale(1);
     }
 
     @media (prefers-reduced-motion: reduce) {

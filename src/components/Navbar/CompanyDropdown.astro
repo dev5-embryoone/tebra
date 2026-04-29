@@ -1,5 +1,5 @@
 ---
-import { BriefcaseBusiness, Building2, ChevronDown, Mail } from "@lucide/astro";
+import { BriefcaseBusiness, Building2, ChevronDown } from "@lucide/astro";
 
 const links = [
   {
@@ -14,19 +14,12 @@ const links = [
     description: "Join us in transforming IVF workflows",
     icon: "careers",
   },
-  {
-    title: "Contact",
-    href: "/contact",
-    description: "Connect with our team for support or partnerships",
-    icon: "contact",
-  },
 ] as const;
 
 function getIcon(name: string) {
   const icons = {
     about: Building2,
     careers: BriefcaseBusiness,
-    contact: Mail,
   } as const;
   return icons[name] || icons.about;
 }

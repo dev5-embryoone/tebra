@@ -97,32 +97,6 @@ const witnessFaqs = [
     </div>
   </section>
 
-  <section class="py-16 sm:py-20 bg-tebra-teal-dark">
-    <div class="page-container">
-      <div class="mx-auto max-w-4xl">
-        <p class="eyebrow !text-gray-200">Witness FAQ</p>
-        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">Frequently Asked Questions</h2>
-        <p class="mt-4 text-base text-gray-200">
-          Quick answers about how Witness supports traceability, verification, and compliance across
-          IVF lab workflows.
-        </p>
-        <div class="mt-8 space-y-3">
-          {witnessFaqs.map((item, index) => (
-            <details
-              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
-              open={index === 0}
-            >
-              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
-                {item.question}
-              </summary>
-              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="page-section bg-white">
     <div class="page-container grid gap-6 md:grid-cols-2 md:items-center md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
       <div class="lg:order-2">
@@ -244,7 +218,7 @@ const witnessFaqs = [
     </div>
   </section>
 
-  <section class="page-section bg-[#FFF7F7]">
+  <section class="page-section bg-white">
     <div class="page-container grid gap-6 md:grid-cols-2 md:items-stretch md:[grid-template-columns:minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
       <div>
         <h2 class="heading-md text-tebra-teal-dark">Detect and Resolve Lab Mismatches Early</h2>
@@ -297,6 +271,32 @@ const witnessFaqs = [
           class="w-full"
           loading="lazy"
         />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-tebra-teal-dark">
+    <div class="page-container">
+      <div class="mx-auto max-w-4xl">
+        <p class="eyebrow !text-gray-200">Witness FAQ</p>
+        <h2 class="mt-3 text-3xl font-semibold text-white sm:text-4xl">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base text-gray-200">
+          Quick answers about how Witness supports traceability, verification, and compliance across
+          IVF lab workflows.
+        </p>
+        <div class="mt-8 space-y-3">
+          {witnessFaqs.map((item, index) => (
+            <details
+              class="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 text-white"
+              open={index === 0}
+            >
+              <summary class="cursor-pointer list-none pr-7 text-base font-semibold marker:content-none">
+                {item.question}
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-200">{item.answer}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   </section>

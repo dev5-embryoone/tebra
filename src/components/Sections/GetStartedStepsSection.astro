@@ -37,25 +37,30 @@ import SectionHeader from '../SectionHeader/SectionHeader.astro';
           class="pointer-events-none absolute -right-8 -bottom-6 h-24 w-24 rounded-full bg-tebra-orange/10"
         />
 
-        <div class="card-radius bg-card w-full overflow-hidden border border-gray-200/80 p-8 shadow-sm lg:p-10">
+        <div
+          class="get-started-stepper card-radius bg-card w-full overflow-hidden border border-gray-200/80 p-8 shadow-sm lg:p-10"
+        >
         <ul class="flex flex-col gap-0">
           {getStartedSteps.map((step, index) => (
-            <li class="relative flex gap-6 pb-8 last:pb-0">
-              <!-- Vertical connecting line: orange -->
+            <li class="get-started-step-item relative grid grid-cols-[auto_minmax(0,1fr)] gap-6 pb-8 last:pb-0">
+              <!-- Line: below this number through step spacing until the next number (none after step 3) -->
               {index < getStartedSteps.length - 1 && (
                 <span
-                  class="absolute left-[27px] top-16 bottom-0 w-0.5 bg-tebra-orange lg:left-[31px] lg:top-[4.5rem]"
+                  class="get-started-step-connector-wrap pointer-events-none absolute top-14 bottom-0 left-[1.75rem] z-0 w-0.5 -translate-x-1/2 overflow-hidden lg:top-16 lg:left-[2rem]"
                   aria-hidden="true"
-                />
+                >
+                  <span class="get-started-step-connector-inner block h-full w-full origin-top bg-tebra-orange" />
+                </span>
               )}
-              <!-- Large number - bigger text -->
-              <span
-                class="relative z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center text-3xl font-bold text-tebra-teal lg:h-16 lg:w-16 lg:text-4xl"
-                aria-hidden="true"
-              >
-                {step.number}
-              </span>
-              <div class="min-w-0 flex-1 pt-1">
+              <div class="relative z-10 flex w-14 shrink-0 justify-center lg:w-16">
+                <span
+                  class="flex h-14 w-14 shrink-0 items-center justify-center text-3xl font-bold text-tebra-teal lg:h-16 lg:w-16 lg:text-4xl"
+                  aria-hidden="true"
+                >
+                  {step.number}
+                </span>
+              </div>
+              <div class="relative z-10 min-w-0 pt-1">
                 <h3 class="text-lg font-bold text-gray-900 lg:text-xl">
                   {step.title}
                 </h3>
@@ -70,4 +75,79 @@ import SectionHeader from '../SectionHeader/SectionHeader.astro';
       </div>
     </div>
   </div>
+
+  <style>
+    .get-started-step-item {
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+        opacity 800ms ease,
+        transform 800ms ease;
+    }
+
+    .get-started-step-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .get-started-step-connector-inner {
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 700ms ease;
+    }
+
+    .get-started-step-item.is-visible .get-started-step-connector-inner {
+      transform: scaleY(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .get-started-step-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .get-started-step-connector-inner {
+        transform: scaleY(1);
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    const stepperRoot = document.querySelector(".get-started-stepper");
+    const stepItems = Array.from(document.querySelectorAll(".get-started-step-item"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const applyVisible = (visible) => {
+      stepItems.forEach((item) => item.classList.toggle("is-visible", visible));
+    };
+
+    if (reduceMotion) {
+      applyVisible(true);
+    } else if (stepperRoot && stepItems.length) {
+      const staggerMs = 480;
+
+      const play = () => {
+        applyVisible(false);
+        window.requestAnimationFrame(() => {
+          stepItems.forEach((item, index) => {
+            window.setTimeout(() => item.classList.add("is-visible"), index * staggerMs);
+          });
+        });
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) play();
+            else applyVisible(false);
+          });
+        },
+        { threshold: 0.35 }
+      );
+
+      observer.observe(stepperRoot);
+    }
+  </script>
 </section>

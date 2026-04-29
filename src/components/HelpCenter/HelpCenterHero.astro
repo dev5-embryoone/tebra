@@ -28,7 +28,7 @@ const { query = "" } = Astro.props as Props;
         name="q"
         value={query}
         placeholder={placeholder}
-        class="min-w-0 flex-1 border-0 bg-transparent px-5 py-3.5 text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-0"
+        class="min-w-0 flex-1 appearance-none border-0 bg-transparent px-5 py-3.5 text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:ring-0 focus:shadow-none"
       />
       <button
         type="submit"
@@ -46,3 +46,32 @@ const { query = "" } = Astro.props as Props;
     </p>
   </div>
 </section>
+
+<style>
+  #help-search::-webkit-search-decoration,
+  #help-search::-webkit-search-cancel-button,
+  #help-search::-webkit-search-results-button,
+  #help-search::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+</style>
+
+<script>
+  (() => {
+    const form = document.querySelector('form[role="search"][action="/help"]');
+    const input = document.getElementById("help-search");
+    if (!(input instanceof HTMLInputElement) || !(form instanceof HTMLFormElement)) return;
+
+    const q = new URLSearchParams(window.location.search).get("q") ?? "";
+    if (!input.value && q) input.value = q;
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const next = input.value.trim();
+      const url = new URL("/help", window.location.origin);
+      if (next) url.searchParams.set("q", next);
+      window.location.assign(url.toString());
+    });
+  })();
+</script>

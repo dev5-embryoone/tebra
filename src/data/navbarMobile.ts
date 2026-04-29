@@ -63,7 +63,6 @@ export const mobileAiLinks = [
 
 export const mobileResourceLinks = [
   { label: "Case Studies", href: "/home-resources/case-studies" },
-  { label: "Blog / Insights", href: "/home-resources/blog" },
   { label: "Documentation", href: "/home-resources/documentation" },
   { label: "Help Center", href: "/home-resources/help-center" },
 ] as const;
@@ -71,5 +70,4 @@ export const mobileResourceLinks = [
 export const mobileCompanyLinks = [
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
 ] as const;

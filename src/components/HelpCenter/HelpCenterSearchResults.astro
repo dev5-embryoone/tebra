@@ -1,0 +1,108 @@
+---
+import { helpCenterSearchDocuments } from "../../data/helpCenterPage";
+---
+
+<section id="help-search-results" class="hidden bg-white px-4 pb-6 pt-8" aria-labelledby="search-results-heading">
+  <div class="mx-auto max-w-6xl">
+    <h2 id="search-results-heading" class="text-xl font-semibold text-tebra-teal-dark sm:text-2xl">
+      Search results
+    </h2>
+    <p id="help-search-meta" class="mt-2 text-sm text-neutral-600"></p>
+    <ul id="help-search-list" class="mt-6 space-y-2"></ul>
+    <p id="help-search-empty" class="hidden mt-6 rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-600">
+      No relevant help results found. Try broader keywords like
+      <span class="font-medium">EHR</span>,
+      <span class="font-medium">AI</span>,
+      <span class="font-medium">cryo</span>,
+      or
+      <span class="font-medium">inventory</span>.
+    </p>
+  </div>
+</section>
+
+<script
+  type="application/json"
+  id="help-search-docs"
+  set:html={JSON.stringify(helpCenterSearchDocuments)}
+></script>
+
+<script>
+  const initHelpSearchResults = () => {
+    const root = document.getElementById("help-search-results");
+    const meta = document.getElementById("help-search-meta");
+    const list = document.getElementById("help-search-list");
+    const empty = document.getElementById("help-search-empty");
+    const docsEl = document.getElementById("help-search-docs");
+    if (!root || !meta || !list || !empty || !docsEl) return false;
+
+    const q = new URLSearchParams(window.location.search).get("q")?.trim() ?? "";
+    if (!q) return false;
+
+    let docs = [];
+    try {
+      docs = JSON.parse(docsEl.textContent || "[]");
+    } catch {
+      return false;
+    }
+
+    const normalized = q.toLowerCase();
+    const terms = normalized.split(/\s+/).filter(Boolean);
+
+    const unique = new Map();
+    for (const doc of docs) {
+      if (!unique.has(doc.href)) unique.set(doc.href, doc);
+    }
+
+    const score = (doc) => {
+      const title = String(doc.title || "").toLowerCase();
+      const excerpt = String(doc.excerpt || "").toLowerCase();
+      const keywords = Array.isArray(doc.keywords)
+        ? doc.keywords.map((kw) => String(kw).toLowerCase()).join(" ")
+        : "";
+
+      let total = 0;
+      for (const term of terms) {
+        if (title.includes(term)) total += 6;
+        if (keywords.includes(term)) total += 4;
+        if (excerpt.includes(term)) total += 2;
+      }
+      if (title.includes(normalized)) total += 10;
+      return total;
+    };
+
+    const results = Array.from(unique.values())
+      .map((doc) => ({ doc, score: score(doc) }))
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => b.score - a.score || String(a.doc.title).localeCompare(String(b.doc.title)))
+      .slice(0, 12);
+
+    root.classList.remove("hidden");
+    meta.textContent = `${results.length} result${results.length === 1 ? "" : "s"} for "${q}"`;
+
+    if (!results.length) {
+      empty.classList.remove("hidden");
+      return true;
+    }
+
+    list.innerHTML = results
+      .map(
+        ({ doc }) => `
+          <li>
+            <a href="${doc.href}" class="block rounded-xl border border-neutral-200 bg-white px-4 py-3 transition hover:border-tebra-teal/30 hover:bg-tebra-hero-bg/35">
+              <p class="text-sm font-semibold text-tebra-teal-dark">${doc.title}</p>
+              <p class="mt-1 text-xs text-neutral-600">${doc.excerpt}</p>
+              <p class="mt-1 text-xs text-neutral-500">${doc.href}</p>
+            </a>
+          </li>
+        `
+      )
+      .join("");
+    return true;
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHelpSearchResults, { once: true });
+  } else {
+    initHelpSearchResults();
+  }
+</script>

@@ -1,6 +1,5 @@
 ---
 import {
-  BookOpenText,
   ChevronDown,
   FileText,
   LineChart,
@@ -17,12 +16,6 @@ const menuSections = [
         href: "/home-resources/case-studies",
         description: "See how clinics improve workflows using EmbryoOne",
         icon: "chart",
-      },
-      {
-        title: "Blog / Insights",
-        href: "/home-resources/blog",
-        description: "Perspectives on IVF lab optimization and technology",
-        icon: "blog",
       },
       {
         title: "Documentation",
@@ -43,7 +36,6 @@ const menuSections = [
 function getIcon(name: string) {
   const icons = {
     document: FileText,
-    blog: BookOpenText,
     chart: LineChart,
     help: LifeBuoy,
   } as const;
