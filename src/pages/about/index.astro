@@ -29,19 +29,23 @@ const storySteps = [
 const valueSlides = [
   {
     title: "Precision over approximation",
-    copy: "Every workflow is designed to reduce ambiguity and keep decisions grounded in structured data.",
+    copy:
+      "Every workflow is designed to reduce ambiguity and keep decisions grounded in structured data. From embryo status updates to final verification, teams work from clear, consistent inputs instead of fragmented notes. This improves confidence at every clinical checkpoint.",
   },
   {
     title: "Consistency at every step",
-    copy: "From intake to embryo decisions, teams follow repeatable pathways that improve reliability.",
+    copy:
+      "From intake to embryo decisions, teams follow repeatable pathways that improve reliability. Standardized handoffs, role-based actions, and defined checkpoints reduce variability across branches and shifts. Clinics can deliver quality outcomes with less operational drift.",
   },
   {
     title: "Data before assumption",
-    copy: "Objective metrics and traceable context replace guesswork and fragmented communication.",
+    copy:
+      "Objective metrics and traceable context replace guesswork and fragmented communication. EmbryoOne surfaces timeline history, status movement, and relevant patient context in one view so teams can align quickly. Decisions stay transparent, auditable, and evidence-led.",
   },
   {
     title: "Designed for clinicians",
-    copy: "Interfaces, actions, and information hierarchy reflect how real IVF teams actually work.",
+    copy:
+      "Interfaces, actions, and information hierarchy reflect how real IVF teams actually work. Screens are structured for embryologists, clinicians, and coordinators to move faster with fewer clicks and fewer missed details. The platform supports real lab rhythm, not generic templates.",
   },
 ];
 
@@ -69,10 +73,26 @@ const impactCards = [
 ];
 
 const principles = [
-  "We prioritize usability for clinicians.",
-  "We design for accuracy and traceability.",
-  "We build systems that scale with clinics.",
-  "We continuously evolve with data.",
+  {
+    title: "We prioritize usability for clinicians.",
+    copy:
+      "Every screen is designed around real IVF workflows, so embryologists and care teams can complete critical actions with fewer clicks and less cognitive load. Clear information hierarchy and context-first layouts help teams move quickly without sacrificing confidence.",
+  },
+  {
+    title: "We design for accuracy and traceability.",
+    copy:
+      "Structured actions, timestamped records, and role-aware workflows keep each update auditable from intake through embryo decisions. Teams can verify what changed, who performed it, and when it happened without piecing together fragmented systems.",
+  },
+  {
+    title: "We build systems that scale with clinics.",
+    copy:
+      "EmbryoOne supports growth across branches, teams, and service lines while preserving consistent standards. Clinics can onboard new users, expand operations, and manage higher cycle volume without losing workflow clarity.",
+  },
+  {
+    title: "We continuously evolve with data.",
+    copy:
+      "We use product signals and clinical feedback to improve workflows, reporting, and decision support over time. This ensures the platform keeps pace with modern embryology practice and emerging AI-assisted care models.",
+  },
 ];
 ---
 <BaseLayout
@@ -164,41 +184,65 @@ const principles = [
   </section>
 
   <section class="page-section bg-white">
-    <div class="page-container max-w-6xl grid gap-8 md:grid-cols-2 md:items-center">
-      <div>
-        <h2 class="heading-md text-tebra-teal-dark">Built for IVF from day one</h2>
-        <p class="mt-3 text-base leading-relaxed text-gray-700">
-          Not adapted from generic EHR systems. EmbryoOne is designed specifically for fertility workflows where precision, timing, and traceability matter.
-        </p>
-        <ul class="mt-5 space-y-2">
-          <li class="rounded-xl border border-[#D8E7E7] bg-[#FBFEFE] px-4 py-3 text-sm text-gray-700">Fertility-specific workflow architecture</li>
-          <li class="rounded-xl border border-[#D8E7E7] bg-[#FBFEFE] px-4 py-3 text-sm text-gray-700">Operational and clinical continuity in one platform</li>
-          <li class="rounded-xl border border-[#D8E7E7] bg-[#FBFEFE] px-4 py-3 text-sm text-gray-700">AI-ready foundation for evolving decision support</li>
-        </ul>
-      </div>
-      <div>
-        <img
-          src={previewImage.src}
-          alt="EmbryoOne IVF-specific product workspace"
-          class="about-zoom-image w-full rounded-3xl border border-gray-200 object-cover shadow-[0_20px_40px_-28px_rgba(15,23,42,0.45)]"
-          loading="lazy"
-        />
+    <div class="page-container max-w-6xl">
+      <div class="rounded-3xl border border-[#DDD2ED] bg-gradient-to-br from-[#FCF9FF] via-white to-[#F6EEFF] p-5 shadow-[0_24px_50px_-36px_rgba(72,37,88,0.45)] sm:p-8 lg:p-10">
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
+          <div>
+            <p class="inline-flex rounded-full bg-[#EEDFFD] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#5F5AA2]">
+              IVF-native platform
+            </p>
+            <h2 class="mt-4 heading-md text-tebra-teal-dark">Built for IVF from day one</h2>
+            <p class="mt-4 text-base leading-relaxed text-gray-700">
+              Not adapted from generic EHR systems. EmbryoOne is designed specifically for fertility workflows where precision, timing, and traceability matter.
+            </p>
+
+            <ul class="mt-6 space-y-3">
+              <li class="flex items-start gap-3 rounded-xl border border-[#E4DAF2] bg-white px-4 py-3 text-sm text-gray-700">
+                <span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F0E6FF] text-[#5F5AA2]">✓</span>
+                <span>Fertility-specific workflow architecture</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl border border-[#E4DAF2] bg-white px-4 py-3 text-sm text-gray-700">
+                <span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F0E6FF] text-[#5F5AA2]">✓</span>
+                <span>Operational and clinical continuity in one platform</span>
+              </li>
+              <li class="flex items-start gap-3 rounded-xl border border-[#E4DAF2] bg-white px-4 py-3 text-sm text-gray-700">
+                <span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F0E6FF] text-[#5F5AA2]">✓</span>
+                <span>AI-ready foundation for evolving decision support</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="rounded-3xl border border-[#DED2EE] bg-white p-3 shadow-[0_20px_46px_-34px_rgba(72,37,88,0.5)]">
+            <img
+              src={previewImage.src}
+              alt="EmbryoOne IVF-specific product workspace"
+              class="about-zoom-image w-full rounded-2xl border border-gray-200 object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="page-section bg-white">
     <div class="page-container max-w-6xl">
-      <div class="grid gap-7 md:grid-cols-[minmax(0,280px)_1fr] md:items-start">
+      <div class="grid gap-7 md:grid-cols-[minmax(0,320px)_1fr] md:items-start">
         <div class="md:sticky md:top-28">
           <h2 class="heading-md text-tebra-teal-dark">How we build</h2>
           <p class="mt-3 text-sm text-gray-600">Clinical-first principles that keep every release practical, trustworthy, and scalable.</p>
         </div>
-        <div class="space-y-4">
+        <div class="grid gap-4 md:grid-cols-2">
           {principles.map((principle, index) => (
-            <article class="rounded-2xl border border-[#D8E7E7] bg-[#FCFEFE] p-5">
-              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F5AA2]">Principle {index + 1}</p>
-              <p class="mt-2 text-base font-medium text-tebra-teal-dark">{principle}</p>
+            <article class="group rounded-2xl border border-[#DFD5EE] bg-gradient-to-br from-[#FCFAFF] to-white p-5 shadow-[0_20px_45px_-36px_rgba(72,37,88,0.45)] transition duration-300 hover:-translate-y-0.5 hover:border-[#CDB7E5] hover:shadow-[0_26px_50px_-34px_rgba(72,37,88,0.55)]">
+              <div class="inline-flex items-center gap-2 rounded-full bg-[#EFE2FD] px-3 py-1">
+                <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#5F5AA2] text-[11px] font-semibold text-white">
+                  {index + 1}
+                </span>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#5F5AA2]">Principle</p>
+              </div>
+              <p class="mt-3 text-base font-semibold leading-relaxed text-[#34244E]">{principle.title}</p>
+              <p class="mt-2 text-sm leading-relaxed text-[#5E4F73]">{principle.copy}</p>
             </article>
           ))}
         </div>

@@ -125,10 +125,10 @@ function getIcon(name: string) {
 
   <div
     id="nav-dropdown-products"
-    class="pointer-events-none nav-mega absolute left-1/2 top-full z-[100] w-[1040px] max-w-[min(1040px,calc(100vw-2rem))] -translate-x-1/2 pt-3 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
+    class="pointer-events-none fixed left-1/2 top-[calc(var(--nav-sticky-offset)-0.25rem)] z-[110] w-[min(1040px,calc(100vw-1rem))] max-h-[calc(100dvh-var(--nav-sticky-offset)-1rem)] overflow-y-auto -translate-x-1/2 opacity-0 invisible group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible hover:pointer-events-auto hover:opacity-100 hover:visible group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible"
   >
     <div class="rounded-2xl border border-[#ECE5F8] bg-white p-4 shadow-[0_20px_60px_-38px_rgba(94,42,132,0.45)] sm:p-5">
-      <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-3 lg:gap-2">
+      <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2 2xl:grid-cols-3 lg:gap-2">
         {menuSections.map((section) => (
           <section class="min-w-0 px-0 py-1 md:px-1.5 lg:px-2">
             <h3 class="px-1.5 pb-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#6F3E95]">

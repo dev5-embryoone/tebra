@@ -314,7 +314,7 @@ export const resourceLibraryLinkTiles = [
     title: "IVF Workflow Glossary",
     description: "Key terms and operational definitions used across lab and clinic teams.",
     cta: "Learn more",
-    href: "/documentation",
+    href: "/home-resources/product-guide",
     icon: "book" as const,
   },
   {

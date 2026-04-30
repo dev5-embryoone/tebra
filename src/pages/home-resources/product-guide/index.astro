@@ -1,0 +1,713 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const quickLinks = [
+  { label: "Getting started", href: "#quick-start" },
+  { label: "Embryo tracking", href: "#ivf-workflow-walkthrough" },
+  { label: "Cryo management", href: "#explore-by-module" },
+  { label: "Copilot", href: "#embryo-copilot-highlight" },
+  { label: "Reports", href: "#best-practices" },
+];
+
+const quickStartSteps = [
+  {
+    title: "Set up your lab",
+    description: "Create branches, teams, and roles",
+    details: "Start by mapping your clinic structure so each location and team follows the same operating baseline.",
+    icon: "01",
+  },
+  {
+    title: "Add users & permissions",
+    description: "Invite staff and define access levels",
+    details: "Assign role-based access for embryologists, clinicians, and admins to protect sensitive workflows.",
+    icon: "02",
+  },
+  {
+    title: "Configure workflows",
+    description: "Customize IVF processes and checkpoints",
+    details: "Set stage-specific checkpoints for fertilization, grading, cryo, and transfer to keep execution consistent.",
+    icon: "03",
+  },
+  {
+    title: "Start tracking cycles",
+    description: "Capture, monitor, and manage embryo activity",
+    details: "Track status changes in real time and keep a complete, auditable history for every embryo journey.",
+    icon: "04",
+  },
+];
+
+const modules = [
+  {
+    title: "Tasks & Workflow",
+    description: "Assign, track, and complete lab tasks.",
+    details:
+      "Coordinate daily worklists, ownership, due dates, and completion states so each lab stage moves forward without delays.",
+  },
+  {
+    title: "Embryo Tracking",
+    description: "Monitor lifecycle from fertilization to cryo.",
+    details:
+      "Follow embryo progression across checkpoints with clear status history, timestamps, and stage-by-stage visibility for every cycle.",
+  },
+  {
+    title: "Cryo Management",
+    description: "Track storage, movement, and status.",
+    details:
+      "Maintain accurate cryostorage records, movement logs, and verification workflows to support safety and operational confidence.",
+  },
+  {
+    title: "Users & Roles",
+    description: "Manage teams, permissions, and access.",
+    details:
+      "Set role-based access by clinic or branch to ensure the right people can act on the right data at the right time.",
+  },
+  {
+    title: "Reports & Insights",
+    description: "View activity, trends, and performance.",
+    details:
+      "Review throughput, pending actions, and quality metrics to identify bottlenecks early and improve lab decision-making.",
+  },
+  {
+    title: "Embryo Copilot",
+    description: "Ask questions, get real-time answers.",
+    details:
+      "Use natural language prompts to surface lab summaries, patient-level context, and operational insights in seconds.",
+  },
+];
+
+const workflowSteps = [
+  {
+    label: "Capture",
+    description: "Record patient and embryo data",
+    details:
+      "Capture source data at intake, fertilization, and grading checkpoints with structured fields that preserve context and reduce missing details.",
+  },
+  {
+    label: "Track",
+    description: "Monitor status and movements",
+    details:
+      "Track embryo progress, location changes, and task ownership in real time so teams stay aligned across shifts and lab stations.",
+  },
+  {
+    label: "Analyze",
+    description: "Review insights and trends",
+    details:
+      "Review timeline patterns, cycle-level activity, and quality indicators to spot risk early and standardize decision-making.",
+  },
+  {
+    label: "Decide",
+    description: "Make informed clinical decisions",
+    details:
+      "Use complete operational and clinical context to support selection, verification, and final actions with confidence and traceability.",
+  },
+];
+
+const featureGuides = [
+  {
+    title: "Task management",
+    description:
+      "Create, assign, and monitor task execution from one queue so every embryology, cryo, and verification handoff stays visible and accountable. EmbryoOne helps teams prioritize by due time, owner, and stage, reducing missed actions during high-volume days. Built-in status history keeps each workflow step auditable, with clear completion context for supervisors and quality teams.",
+  },
+  {
+    title: "Embryo lifecycle",
+    description:
+      "Track embryo progress from fertilization through culture, grading, cryo, and transfer within a single connected timeline. Each lifecycle update is timestamped and linked to responsible users, making reviews faster and safer. Clinics can standardize stage checkpoints while still adapting to branch-specific protocols and decision pathways.",
+  },
+  {
+    title: "Inventory tracking",
+    description:
+      "Monitor critical consumables, media, and lab supplies in real time to prevent stock gaps that delay procedures. EmbryoOne supports quantity visibility, usage patterns, and replenishment awareness across teams and branches. This helps labs align procurement decisions with actual demand while reducing manual reconciliation effort.",
+  },
+  {
+    title: "Audit & traceability",
+    description:
+      "Maintain a complete action trail across workflows, user activity, and embryo status updates with full historical visibility. Every key event is captured in context, supporting internal QA checks and external compliance expectations. Teams can quickly answer what changed, who performed it, and when it occurred.",
+  },
+];
+
+const copilotPrompts = [
+  "How many embryos are frozen today?",
+  "Show embryo status by patient",
+  "What tasks are pending today?",
+  "Which cycles need attention today?",
+];
+
+const bestPractices = [
+  {
+    title: "Standardized workflow playbooks",
+    description:
+      "Use protocol-based checklists across fertilization, grading, cryo, and transfer to keep execution consistent across shifts and branches.",
+    label: "Protocol guide",
+  },
+  {
+    title: "Copilot-assisted status review",
+    description:
+      "Use Embryo Copilot to surface pending actions, patient-level status, and priority changes quickly during daily lab rounds.",
+    label: "Data insight",
+  },
+  {
+    title: "Audit-ready reporting cadence",
+    description:
+      "Review weekly trend reports and maintain timestamped audit logs so your clinic can resolve bottlenecks while staying compliance-ready.",
+    label: "Compliance",
+  },
+];
+
+const troubleshootingFaq = [
+  {
+    title: "Data not updating?",
+    answer: "Check sync status and confirm the latest workflow step has been saved.",
+  },
+  {
+    title: "User access issues?",
+    answer: "Verify role permissions and branch-level access in Users & Roles.",
+  },
+  {
+    title: "Missing records?",
+    answer: "Review workflow configuration and required fields for that stage.",
+  },
+];
+
+const troubleshootingTags = ["Incubator", "Microscopy", "Data sync", "Power supply", "Security", "Calibration"];
+---
+
+<BaseLayout
+  title="Product Guide | EmbryoOne"
+  description="Search-first product guide for EmbryoOne IVF workflows, modules, Copilot, and best practices."
+>
+  <section class="page-section bg-gradient-to-b from-[#F4ECFF] to-white">
+    <div class="page-container max-w-5xl text-center">
+      <p class="eyebrow text-[#6F3E95]">Product Guide</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-[#34184A] sm:text-5xl">
+        Learn EmbryoOne, faster
+      </h1>
+      <p class="mx-auto mt-4 max-w-3xl text-base text-gray-700 sm:text-lg">
+        Explore workflows, features, and best practices designed for IVF labs.
+      </p>
+
+      <div class="mx-auto mt-8 max-w-3xl rounded-[20px] border border-[#E7D8F7] bg-white p-2 shadow-[0_20px_65px_-35px_rgba(94,42,132,0.35)]">
+        <div class="flex items-center gap-3 rounded-2xl px-4 py-3">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#F2E8FF] text-[#6F3E95]">⌕</span>
+          <input
+            id="product-guide-search"
+            type="text"
+            class="w-full border-0 bg-transparent p-0 text-sm text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-base"
+            placeholder="Search tasks, embryos, cryo, users, Copilot..."
+          />
+        </div>
+        <div id="product-guide-search-results" class="hidden border-t border-[#EEE3FA] px-4 py-2 text-left"></div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        {quickLinks.map((item, index) => (
+          <a
+            href={item.href}
+            class="guide-chip rounded-full border border-[#E7D8F7] bg-white px-4 py-2 text-xs font-medium text-[#4E3163] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#CFAEEC] hover:shadow-md sm:text-sm"
+            style={`animation-delay: ${index * 90}ms`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="quick-start" class="page-section bg-white scroll-mt-28">
+    <div class="page-container max-w-6xl">
+      <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.2fr)] lg:gap-12">
+        <div class="max-w-lg">
+          <h2 class="heading-md text-[#34184A]">Quick start in 4 steps</h2>
+          <p class="mt-4 text-base leading-relaxed text-gray-700">
+            Move from setup to day-to-day use quickly with a clear onboarding path designed for IVF labs.
+          </p>
+          <a
+            href="/demo"
+            class="mt-6 inline-flex items-center justify-center rounded-full bg-[#6F3E95] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#5E2A84]"
+          >
+            Request a demo
+          </a>
+        </div>
+
+        <div class="quickstart-stepper rounded-3xl border border-[#E9DEF7] bg-[#FBF7FF] p-5 shadow-[0_16px_40px_-30px_rgba(94,42,132,0.65)] sm:p-7">
+          <ol class="flex flex-col gap-0">
+            {quickStartSteps.map((step, index) => (
+              <li class="quickstart-step-item relative grid grid-cols-[3rem_minmax(0,1fr)] gap-4 pb-6 last:pb-0 sm:gap-5">
+                {index < quickStartSteps.length - 1 && (
+                  <span
+                    class="quickstart-step-connector-wrap pointer-events-none absolute bottom-0 left-6 top-10 z-0 w-px -translate-x-1/2 overflow-hidden"
+                    aria-hidden="true"
+                  >
+                    <span class="quickstart-step-connector-inner block h-full w-full bg-[#D5B8EE]" />
+                  </span>
+                )}
+                <div class="relative z-10 flex w-12 justify-center pt-0.5">
+                  <span class="block w-full text-center text-4xl font-semibold leading-none tabular-nums text-[#5E2A84] sm:text-[2.1rem]">
+                    {String(index + 1)}
+                  </span>
+                </div>
+                <div class="relative z-10">
+                  <h3 class="text-base font-semibold text-[#34184A]">{step.title}</h3>
+                  <p class="mt-1.5 text-sm leading-relaxed text-gray-700">{step.description}</p>
+                  <p class="mt-1.5 text-xs leading-relaxed text-[#6C5A7D] sm:text-sm">{step.details}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="explore-by-module" class="page-section bg-[#FBF7FF] scroll-mt-28">
+    <div class="page-container max-w-6xl">
+      <h2 class="heading-md text-[#34184A]">Explore by module</h2>
+      <p class="mt-3 max-w-3xl text-base text-gray-700">Move quickly through the capabilities your team uses every day.</p>
+      <div class="mt-8 rounded-3xl border border-[#E9DEF7] bg-[#F4EFFA] p-5 sm:p-7 lg:p-8">
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {modules.map((module, index) => (
+            <article
+              class="reveal-up rounded-2xl border border-transparent bg-transparent p-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#DDCBF2] hover:bg-white/45"
+              style={`transition-delay: ${index * 70}ms`}
+            >
+              <div class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#EADAFB] text-xs font-semibold text-[#6F3E95]">
+                {index + 1}
+              </div>
+              <h3 class="mt-3 text-lg font-semibold text-[#34184A]">{module.title}</h3>
+              <p class="mt-1.5 text-sm font-medium text-[#4E3163]">{module.description}</p>
+              <p class="mt-2 text-sm leading-relaxed text-[#6B5A7C]">{module.details}</p>
+              <a href="#" class="mt-3 inline-flex items-center text-xs font-semibold text-[#5E2A84] hover:text-[#4A2068] sm:text-sm">
+                Learn more →
+              </a>
+            </article>
+          ))}
+        </div>
+        <div class="mt-6 flex justify-center">
+          <a
+            href="/demo"
+            class="inline-flex items-center justify-center rounded-full bg-[#6F3E95] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#5E2A84]"
+          >
+            Get a demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ivf-workflow-walkthrough" class="page-section bg-white scroll-mt-28">
+    <div class="page-container max-w-6xl">
+      <div class="text-center">
+        <span class="inline-flex rounded-full bg-[#EEDFFD] px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#6F3E95]">
+          IVF workflow walkthrough
+        </span>
+        <h2 class="mt-4 heading-md text-[#34184A]">From observation to actionable intelligence</h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base text-[#6C5A7D]">
+          Follow a visual flow from intake to confident clinical action. EmbryoOne connects lab observations, status movement, and insight-driven review in one continuous workflow.
+        </p>
+      </div>
+      <div class="workflow-cards-wrap mt-10 rounded-3xl border border-[#E8DDF6] bg-[#F7F2FC] p-5 sm:p-6 lg:p-7">
+        <ol class="workflow-cards relative grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {workflowSteps.map((step, index) => (
+            <li class="reveal-up workflow-card relative rounded-2xl border border-[#E4D8F4] bg-[#FCFAFF] p-5">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#EDE2FA] text-lg text-[#6F3E95]">
+                  {index === 0 ? "○" : index === 1 ? "↗" : index === 2 ? "✣" : "✦"}
+                </span>
+                <span class="text-xs font-semibold tracking-wide text-[#C3AEDC]">0{index + 1}</span>
+              </div>
+              <h3 class="mt-6 text-4xl font-semibold tracking-tight text-[#4A2A65]">{step.label}</h3>
+              <p class="mt-3 text-sm font-medium text-[#5A3B75]">{step.description}</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#6E5D82]">{step.details}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-tebra-teal-dark">
+    <div class="page-container max-w-6xl">
+      <h2 class="text-center text-3xl font-semibold tracking-tight text-white sm:text-4xl">Feature guides</h2>
+      <p class="mx-auto mt-3 max-w-3xl text-center text-sm text-white/75 sm:text-base">
+        Explore practical walkthroughs for core EmbryoOne capabilities and day-to-day IVF lab operations.
+      </p>
+      <div class="mt-8 grid gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-start">
+        <div class="rounded-2xl border border-white/20 bg-white/5 p-3 sm:p-4">
+          {featureGuides.map((guide, index) => (
+            <details class="feature-guide-item border-b border-white/20 px-2 py-3 last:border-b-0 sm:px-3" open={index === 0}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-white sm:text-lg">
+                <span>{guide.title}</span>
+                <span class="feature-guide-icon text-2xl font-light leading-none text-[#F0C4A6]">+</span>
+              </summary>
+              <p class="mt-3 max-w-2xl text-sm leading-7 text-white/85">
+                {guide.description}
+              </p>
+            </details>
+          ))}
+        </div>
+        <div class="rounded-3xl border border-white/20 bg-gradient-to-br from-white/15 to-white/5 p-4 sm:p-5">
+          <div class="rounded-2xl border border-white/25 bg-white/10 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-[#EFDCCF]">Guide spotlight</p>
+            <h3 class="mt-3 text-2xl font-semibold text-white">Standardize every lab handoff</h3>
+            <p class="mt-3 text-sm leading-7 text-white/85">
+              Follow clear step-by-step playbooks for task assignment, embryo progression, and compliance checkpoints. Teams can execute faster with fewer gaps while preserving complete traceability across every patient workflow.
+            </p>
+            <a href="/product-tour" class="mt-5 inline-flex items-center text-sm font-semibold text-[#F3C9AF] hover:text-[#FFDCC8]">
+              View walkthrough →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="embryo-copilot-highlight" class="page-section bg-white scroll-mt-28">
+    <div class="page-container max-w-6xl">
+      <div class="grid gap-8 md:grid-cols-2 md:items-start">
+        <div class="max-w-xl">
+          <h2 class="heading-sm text-[#34184A]">Use Copilot to get answers instantly</h2>
+          <p class="mt-3 text-base text-gray-700">Ask natural questions and retrieve lab insights in seconds.</p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            {copilotPrompts.map((prompt) => (
+              <span class="rounded-full border border-[#E3D4F5] bg-white px-3 py-1.5 text-xs font-medium text-[#4E3163] sm:text-sm">
+                {prompt}
+              </span>
+            ))}
+          </div>
+          <a href="/ai/embryo-copilot" class="mt-6 inline-flex items-center text-sm font-semibold text-[#5E2A84] hover:text-[#4A2068]">
+            Try Copilot →
+          </a>
+        </div>
+        <div class="rounded-2xl border border-[#E8DDF6] bg-white p-4 shadow-[0_24px_55px_-36px_rgba(94,42,132,0.35)] md:justify-self-end md:min-w-[360px]">
+          <div class="space-y-3 text-sm">
+            <div class="rounded-2xl bg-[#F4ECFF] px-3 py-2 text-[#4E3163]">User: Show cryo activity this week</div>
+            <div class="flex items-center gap-2 text-xs text-[#7D6793]">
+              <span>Copilot is typing</span>
+              <span class="typing-dots inline-flex gap-1"><span></span><span></span><span></span></span>
+            </div>
+            <div class="copilot-reply hidden rounded-2xl bg-[#EEE4FB] px-3 py-2 text-[#34184A]">
+              Copilot: 14 completed, 3 pending verification, 0 exceptions.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="best-practices" class="page-section bg-[#F4F1F8] scroll-mt-28">
+    <div class="page-container max-w-6xl">
+      <div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.08em] text-[#7A6891]">Clinical excellence</p>
+          <h3 class="mt-1 text-2xl font-semibold text-[#3E2358]">Best practices</h3>
+        </div>
+      </div>
+
+      <div class="mt-5 grid gap-4 md:grid-cols-3">
+        {bestPractices.map((item, index) => (
+          <article class="reveal-up rounded-2xl border border-[#E1D5F0] bg-white p-5 shadow-[0_14px_35px_-30px_rgba(94,42,132,0.8)]">
+            <div class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#EEDFFD] text-[#6F3E95]">
+              {index === 0 ? "⚗" : index === 1 ? "◔" : "◈"}
+            </div>
+            <h4 class="mt-4 text-lg font-semibold text-[#3E2358]">{item.title}</h4>
+            <p class="mt-2 text-sm leading-relaxed text-[#67567B]">{item.description}</p>
+            <p class="mt-5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9586AA]">{item.label}</p>
+          </article>
+        ))}
+      </div>
+
+      <p class="mt-12 text-xs font-semibold uppercase tracking-[0.08em] text-[#7A6891]">Clinical intelligence & operational support</p>
+      <p class="mt-3 max-w-3xl text-sm leading-relaxed text-[#5D4D70] sm:text-base">
+        Access practical guidance for modern embryology teams, from protocol standardization to technical troubleshooting and compliance workflows.
+      </p>
+
+      <div class="mt-8 rounded-3xl border border-[#E5DAF3] bg-[#EEE7F8] p-5 sm:p-6">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#7A6891]">Technical support</p>
+        <h3 class="mt-1 text-lg font-semibold text-[#3E2358]">Troubleshooting portal</h3>
+        <div class="mt-4 rounded-xl border border-[#D7CAE9] bg-white px-4 py-3">
+          <input
+            type="text"
+            placeholder="Search issues quickly..."
+            class="w-full border-0 bg-transparent p-0 text-sm text-[#3E2358] placeholder:text-[#9A89B0] focus:ring-0"
+          />
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {troubleshootingTags.map((tag) => (
+            <button type="button" class="rounded-full border border-[#D8CBEA] bg-white px-3 py-1.5 text-xs font-semibold text-[#5D4D70] sm:text-sm">
+              {tag}
+            </button>
+          ))}
+        </div>
+        <div class="mt-5 grid gap-2 sm:grid-cols-3">
+          {troubleshootingFaq.map((faq) => (
+            <details class="guide-accordion rounded-xl border border-[#DCCFED] bg-white px-3 py-2.5">
+              <summary class="cursor-pointer list-none text-sm font-semibold text-[#43275D]">{faq.title}</summary>
+              <p class="mt-1.5 text-xs leading-relaxed text-[#6D5B82] sm:text-sm">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section bg-tebra-teal-dark">
+    <div class="page-container max-w-6xl">
+      <div class="rounded-3xl bg-tebra-teal-dark px-6 py-10 text-center text-white">
+        <h2 class="text-3xl font-semibold tracking-tight">Need help getting started?</h2>
+        <p class="mx-auto mt-3 max-w-3xl text-sm text-[#E9D9FA] sm:text-base">
+          Our team is here to guide you every step of the way.
+        </p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <a href="/home-resources/help-center" class="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#4E3163] transition hover:-translate-y-0.5">Visit Help Center →</a>
+          <a href="/demo" class="rounded-full border border-[#D6BAF6] bg-[#7A48A3] px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#8757B0]">Book a demo →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .guide-chip {
+    opacity: 0;
+    animation: chip-fade-in 520ms ease forwards;
+  }
+
+  @keyframes chip-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .workflow-card {
+    z-index: 1;
+    transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+  }
+
+  .workflow-card:hover {
+    transform: translateY(-2px);
+    border-color: #cfb9e8;
+    box-shadow: 0 20px 45px -36px rgba(94, 42, 132, 0.8);
+  }
+
+  .quickstart-step-item {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 700ms ease,
+      transform 700ms ease;
+  }
+
+  .quickstart-step-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .quickstart-step-connector-inner {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 620ms ease;
+  }
+
+  .quickstart-step-item.is-visible .quickstart-step-connector-inner {
+    transform: scaleY(1);
+  }
+
+  .typing-dots span {
+    display: inline-flex;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #6f3e95;
+    animation: blink 900ms infinite ease-in-out;
+  }
+  .typing-dots span:nth-child(2) {
+    animation-delay: 140ms;
+  }
+  .typing-dots span:nth-child(3) {
+    animation-delay: 280ms;
+  }
+
+  @keyframes blink {
+    0%,
+    80%,
+    100% {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+    40% {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 500ms ease, transform 500ms ease;
+  }
+
+  .reveal-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .guide-accordion[open] .accordion-arrow {
+    transform: rotate(45deg);
+  }
+
+  .feature-guide-item[open] .feature-guide-icon {
+    transform: rotate(45deg);
+  }
+</style>
+
+<script>
+  (() => {
+    const searchInput = document.querySelector("#product-guide-search");
+    const searchResults = document.querySelector("#product-guide-search-results");
+    const placeholders = [
+      "Search tasks, embryos, cryo, users, Copilot...",
+      "Search workflows, reports, permissions, activity...",
+      "Search IVF checkpoints, traceability, outcomes...",
+    ];
+    const searchableItems = [
+      {
+        title: "Getting started",
+        href: "#quick-start",
+        keywords: ["setup", "onboarding", "users", "permissions", "workflows", "cycles"],
+      },
+      {
+        title: "Embryo tracking",
+        href: "#ivf-workflow-walkthrough",
+        keywords: ["embryo", "lifecycle", "track", "capture", "analyze", "decide"],
+      },
+      {
+        title: "Cryo management",
+        href: "#explore-by-module",
+        keywords: ["cryo", "storage", "status", "movement", "frozen"],
+      },
+      {
+        title: "Copilot",
+        href: "#embryo-copilot-highlight",
+        keywords: ["copilot", "chat", "answers", "questions", "insights"],
+      },
+      {
+        title: "Reports",
+        href: "#best-practices",
+        keywords: ["reports", "insights", "trends", "activity", "performance"],
+      },
+    ];
+
+    let index = 0;
+    const cyclePlaceholder = () => {
+      if (!(searchInput instanceof HTMLInputElement) || document.activeElement === searchInput) return;
+      index = (index + 1) % placeholders.length;
+      searchInput.placeholder = placeholders[index];
+    };
+    window.setInterval(cyclePlaceholder, 2200);
+
+    const jumpTo = (href) => {
+      const section = document.querySelector(href);
+      if (!(section instanceof HTMLElement)) return;
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState({}, "", href);
+    };
+
+    const renderResults = (matches, rawQuery) => {
+      if (!(searchResults instanceof HTMLElement)) return;
+      if (!rawQuery.trim()) {
+        searchResults.classList.add("hidden");
+        searchResults.innerHTML = "";
+        return;
+      }
+      if (!matches.length) {
+        searchResults.classList.remove("hidden");
+        searchResults.innerHTML =
+          '<p class="py-1 text-xs text-[#6C5A7D] sm:text-sm">No matches yet. Try: embryos, cryo, users, Copilot, reports.</p>';
+        return;
+      }
+      searchResults.classList.remove("hidden");
+      searchResults.innerHTML = matches
+        .map(
+          (item) =>
+            `<button type="button" data-href="${item.href}" class="search-result-item block w-full rounded-lg px-3 py-2 text-left text-xs font-medium text-[#4E3163] hover:bg-[#F5ECFF] sm:text-sm">${item.title}</button>`
+        )
+        .join("");
+      searchResults.querySelectorAll(".search-result-item").forEach((button) => {
+        button.addEventListener("click", () => {
+          const href = button.getAttribute("data-href");
+          if (!href) return;
+          jumpTo(href);
+          searchResults.classList.add("hidden");
+        });
+      });
+    };
+
+    if (searchInput instanceof HTMLInputElement) {
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.trim().toLowerCase();
+        const matches = searchableItems.filter((item) => {
+          const haystack = `${item.title} ${item.keywords.join(" ")}`.toLowerCase();
+          return haystack.includes(query);
+        });
+        renderResults(matches, query);
+      });
+
+      searchInput.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        const query = searchInput.value.trim().toLowerCase();
+        const topMatch = searchableItems.find((item) => {
+          const haystack = `${item.title} ${item.keywords.join(" ")}`.toLowerCase();
+          return haystack.includes(query);
+        });
+        if (!topMatch) return;
+        event.preventDefault();
+        jumpTo(topMatch.href);
+        if (searchResults instanceof HTMLElement) searchResults.classList.add("hidden");
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    document.querySelectorAll(".reveal-up").forEach((el) => observer.observe(el));
+
+    const quickstartRoot = document.querySelector(".quickstart-stepper");
+    const quickstartItems = Array.from(document.querySelectorAll(".quickstart-step-item"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      quickstartItems.forEach((item) => item.classList.add("is-visible"));
+    } else if (quickstartRoot && quickstartItems.length) {
+      const staggerMs = 260;
+      const stepObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            quickstartItems.forEach((item, index) => {
+              window.setTimeout(() => item.classList.add("is-visible"), index * staggerMs);
+            });
+            stepObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.25 }
+      );
+      stepObserver.observe(quickstartRoot);
+    }
+
+    window.setTimeout(() => {
+      const reply = document.querySelector(".copilot-reply");
+      if (reply instanceof HTMLElement) reply.classList.remove("hidden");
+    }, 1800);
+  })();
+</script>

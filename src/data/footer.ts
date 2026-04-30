@@ -58,7 +58,7 @@ export const footerColumns: FooterColumnData[] = [
     title: "Resources",
     links: [
       { label: "Case Studies", href: "/home-resources/case-studies" },
-      { label: "Documentation", href: "/home-resources/documentation" },
+      { label: "Product Guide", href: "/home-resources/product-guide" },
       { label: "Help Center", href: "/home-resources/help-center" },
     ],
   },

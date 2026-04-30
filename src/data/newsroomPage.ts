@@ -139,7 +139,7 @@ export const pressResources = {
       title: "Media kit",
       description: "Access Tebra logos and other brand assets",
       cta: "Download",
-      href: "/documentation",
+      href: "/home-resources/product-guide",
     },
   ],
 };

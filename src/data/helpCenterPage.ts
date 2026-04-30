@@ -9,7 +9,7 @@ export const helpCenterAnnouncement = {
 
 export const helpCenterNav = [
   { label: "Help Center", href: "/help", current: true as boolean },
-  { label: "Documentation", href: "/documentation", current: false },
+  { label: "Product Guide", href: "/home-resources/product-guide", current: false },
   { label: "My Account", href: "/sign-in", current: false },
 ] as const;
 
@@ -72,7 +72,7 @@ export const helpCenterResourceColumns: Array<{
     headerClass: "bg-tebra-teal",
     links: [
       { label: "Product Tour", href: "/product-tour" },
-      { label: "Documentation", href: "/documentation" },
+      { label: "Product Guide", href: "/home-resources/product-guide" },
       { label: "Demo Request", href: "/demo" },
       { label: "Sign In", href: "/sign-in" },
     ],
@@ -104,7 +104,7 @@ export const helpCenterResourceColumns: Array<{
     headerClass: "bg-[#6B4A93]",
     links: [
       { label: "Help Center Home", href: "/help" },
-      { label: "Documentation", href: "/documentation" },
+      { label: "Product Guide", href: "/home-resources/product-guide" },
       { label: "Case Studies", href: "/case-studies" },
     ],
   },
